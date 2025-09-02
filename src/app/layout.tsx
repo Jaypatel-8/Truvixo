@@ -1,50 +1,52 @@
 import type { Metadata } from 'next'
-import { Inter, Poppins } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
+import CustomCursor from '@/components/CustomCursor'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
-
-const poppins = Poppins({ 
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  variable: '--font-poppins',
-})
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'TruVixo™ - AI-Driven Digital Marketing & Software Development',
-  description: 'Transform your business with TruVixo™ - a new age digital marketing, branding, and software development company. We use AI-driven technology to help businesses recognize and grow their brand.',
-  keywords: 'digital marketing, branding, software development, AI solutions, cloud computing, DevOps, IT consulting',
-  authors: [{ name: 'TruVixo Team' }],
+  title: 'TruVixo™ - AI-Driven Digital Solutions & Branding',
+  description: 'Transform your business with TruVixo™ - leading provider of AI-driven digital solutions, creative branding, and innovative software development.',
+  keywords: 'AI solutions, digital marketing, branding, software development, web design, digital transformation',
+  authors: [{ name: 'TruVixo' }],
   creator: 'TruVixo',
   publisher: 'TruVixo',
-  robots: 'index, follow',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://truvixo.com'),
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
+    title: 'TruVixo™ - AI-Driven Digital Solutions & Branding',
+    description: 'Transform your business with AI-driven digital solutions, creative branding, and innovative software development.',
     url: 'https://truvixo.com',
-    title: 'TruVixo™ - AI-Driven Digital Marketing & Software Development',
-    description: 'Transform your business with AI-driven technology for digital marketing, branding, and software development.',
     siteName: 'TruVixo',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'TruVixo - AI-Driven Digital Marketing & Software Development',
-      },
-    ],
+    locale: 'en_US',
+    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TruVixo™ - AI-Driven Digital Marketing & Software Development',
-    description: 'Transform your business with AI-driven technology for digital marketing, branding, and software development.',
-    images: ['/og-image.jpg'],
+    title: 'TruVixo™ - AI-Driven Digital Solutions & Branding',
+    description: 'Transform your business with AI-driven digital solutions, creative branding, and innovative software development.',
   },
-  viewport: 'width=device-width, initial-scale=1',
-  themeColor: '#8B5CF6',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'your-google-verification-code',
+  },
 }
 
 export default function RootLayout({
@@ -53,16 +55,19 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable}`}>
+    <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="preload" href="/TruVixo 2.svg" as="image" type="image/svg+xml" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className={`${inter.className} antialiased`}>
-        {children}
+      <body className={inter.className}>
+        <CustomCursor />
+        <Navbar />
+        <main>
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )

@@ -1,217 +1,153 @@
-# TruVixo™ Website
+# TruVixo Website
 
-A modern, animated, and professional website for TruVixo™ - an AI-driven digital marketing, branding, and software development company.
+A modern, responsive website for TruVixo creative agency built with Next.js, TypeScript, Tailwind CSS, and Framer Motion.
 
-## 🚀 Features
+## ✨ Features
 
-- **Modern Design**: Clean, minimal design with TruVixo brand colors (purple, red, yellow, pink, white, black)
-- **Responsive**: Fully responsive across desktop, tablet, and mobile devices
-- **Animations**: Smooth animations and transitions using Framer Motion
-- **SEO Optimized**: Built with Next.js metadata, schema, and OpenGraph
-- **Performance**: Optimized for speed and user experience
+### 🎨 **Enhanced Design & UX**
+- **Custom Logo**: Modern SVG logo with gradient design
+- **Advanced Custom Cursor**: Dual-cursor system with magnetic effects, hover states, and smooth animations
+- **Sliding Services Cards**: Horizontal scrolling service showcase similar to expandi.io
+- **Responsive Design**: Mobile-first approach with smooth animations
+
+### 🚀 **New Pages & Routing**
+- **Products Page** (`/products`): Detailed product showcase with ratings and features
+- **Solutions Page** (`/solutions`): Industry-specific solutions and use cases
+- **Pricing Page** (`/pricing`): Transparent pricing with multiple tiers
+- **Resources Page** (`/resources`): Blog posts, guides, and video content
+- **About Page** (`/about`): Company information and team details
+- **Work Page** (`/work`): Portfolio and case studies
+- **Contact Page** (`/contact`): Contact form and information
+
+### 🎯 **Interactive Components**
+- **Enhanced Services Section**: Horizontal sliding cards with navigation arrows
+- **Improved Navigation**: Dropdown menus and proper routing
+- **Custom Cursor**: Magnetic effects, hover states, and click animations
+- **Smooth Animations**: Framer Motion powered transitions and micro-interactions
 
 ## 🛠️ Tech Stack
 
-### Frontend
-- **Next.js 14** - React framework with App Router
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS framework
-- **Framer Motion** - Animation library
-- **Lucide React** - Icon library
+- **Framework**: Next.js 14 with App Router
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Deployment**: Vercel (recommended)
 
-### Backend (Ready for Integration)
-- **Node.js** - JavaScript runtime
-- **Express.js** - Web framework
-- **MongoDB** - Database
-- **MERN Stack** - Full-stack JavaScript solution
+## 🚀 Getting Started
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd truvixo-website
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 📁 Project Structure
 
 ```
 src/
-├── app/                    # Next.js App Router pages
-│   ├── page.tsx          # Home page
-│   ├── about/            # About page
-│   ├── work/             # Work/Portfolio page
-│   ├── contact/          # Contact page
-│   ├── layout.tsx        # Root layout
-│   └── globals.css       # Global styles
-├── components/            # Reusable components
-│   ├── Navbar.tsx        # Navigation component
-│   ├── Hero.tsx          # Hero section
-│   ├── Services.tsx      # Services showcase
-│   ├── WorkShowcase.tsx  # Portfolio showcase
-│   ├── Testimonials.tsx  # Client testimonials
-│   ├── LogoLoop.tsx      # Company logos loop
-│   └── Footer.tsx        # Footer component
-├── lib/                   # Utility libraries
-├── types/                 # TypeScript type definitions
-└── utils/                 # Helper functions
+├── app/                    # Next.js App Router
+│   ├── about/             # About page
+│   ├── contact/           # Contact page
+│   ├── work/              # Work/Portfolio page
+│   ├── products/          # Products page
+│   ├── solutions/         # Solutions page
+│   ├── pricing/           # Pricing page
+│   ├── resources/         # Resources page
+│   ├── globals.css        # Global styles
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── components/             # React components
+│   ├── Navbar.tsx         # Navigation component
+│   ├── Footer.tsx         # Footer component
+│   ├── Hero.tsx           # Hero section
+│   ├── Services.tsx       # Services showcase
+│   ├── WorkShowcase.tsx   # Work portfolio
+│   ├── Testimonials.tsx   # Client testimonials
+│   ├── LogoLoop.tsx       # Logo carousel
+│   ├── CustomCursor.tsx   # Custom cursor
+│   └── Logo.tsx           # Logo component
+└── public/                 # Static assets
+    └── logo.svg           # SVG logo file
 ```
 
-## 🎨 Design System
+## 🎨 Customization
 
-### Color Palette
-- **Primary Purple**: `#8B5CF6`
-- **Primary Red**: `#EF4444`
-- **Primary Yellow**: `#F59E0B`
-- **Primary Pink**: `#EC4899`
-- **White**: `#FFFFFF`
-- **Black**: `#111827`
+### Colors
+The website uses a custom color palette defined in `tailwind.config.js`:
+- `truvixo-purple`: Primary brand color
+- `truvixo-purple-dark`: Darker shade for hover states
+- Additional gradient colors for icons and accents
 
-### Typography
-- **Primary Font**: Inter (body text)
-- **Display Font**: Poppins (headings)
+### Components
+- **Services**: Easily add new services by updating the `services` array
+- **Navigation**: Modify menu items in the `Navbar.tsx` component
+- **Custom Cursor**: Adjust cursor behavior in `CustomCursor.tsx`
 
-## 🚀 Getting Started
+## 📱 Responsive Design
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+The website is fully responsive with:
+- Mobile-first approach
+- Breakpoint-specific layouts
+- Touch-friendly interactions
+- Optimized for all device sizes
 
-### Installation
+## 🚀 Performance Features
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd truvixo-website
-```
+- **Image Optimization**: Next.js Image component for optimal loading
+- **Code Splitting**: Automatic route-based code splitting
+- **Lazy Loading**: Components load as needed
+- **Smooth Animations**: Hardware-accelerated animations with Framer Motion
 
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Build for Production
-
-```bash
-npm run build
-npm start
-```
-
-## 📱 Pages & Components
-
-### Home Page (`/`)
-- Hero section with animated background
-- Services overview with interactive cards
-- Work showcase with project gallery
-- Client testimonials carousel
-- Company logos infinite loop
-- Call-to-action sections
-
-### About Page (`/about`)
-- Company mission and vision
-- Why choose us section
-- Team member profiles
-- Focus areas showcase
-- Company values
-
-### Work Page (`/work`)
-- Portfolio with category filters
-- Project showcases with details
-- Interactive project modals
-- Technology stacks
-- Results and metrics
-
-### Contact Page (`/contact`)
-- Contact information
-- Contact form
-- Scheduling modal for consultations
-- Multiple contact methods
-
-## 🎭 Animations
-
-- **Scroll-triggered animations** using Framer Motion
-- **Hover effects** on interactive elements
-- **Page transitions** and micro-interactions
-- **Loading states** and feedback animations
-- **Parallax effects** and smooth scrolling
-
-## 🔧 Customization
-
-### Adding New Services
-Edit `src/components/Services.tsx` to add new service cards.
-
-### Updating Team Members
-Edit `src/app/about/page.tsx` to modify team information.
-
-### Changing Colors
-Update `tailwind.config.js` to modify the color palette.
+## 🔧 Development
 
 ### Adding New Pages
-Create new directories in `src/app/` following Next.js App Router conventions.
+1. Create a new folder in `src/app/`
+2. Add a `page.tsx` file
+3. Update navigation in `Navbar.tsx`
 
-## 📊 Performance
+### Styling
+- Use Tailwind CSS classes for consistent styling
+- Custom CSS in `globals.css` for complex animations
+- Component-specific styles using CSS modules if needed
 
-- **Lazy loading** for images and components
-- **Optimized animations** with Framer Motion
-- **CSS-in-JS** with Tailwind for minimal bundle size
-- **SEO optimization** with Next.js metadata
-- **Responsive images** and optimized assets
+### Animations
+- Use Framer Motion for smooth animations
+- Implement scroll-triggered animations with `useInView`
+- Add micro-interactions for better UX
 
-## 🌐 Deployment
+## 📄 License
 
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Deploy automatically on push to main branch
-
-### Other Platforms
-- **Netlify**: Build command: `npm run build`, Publish directory: `.next`
-- **AWS Amplify**: Build settings for Next.js
-- **Docker**: Use the provided Dockerfile
-
-## 🔒 Environment Variables
-
-Create a `.env.local` file for local development:
-
-```env
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_CONTACT_EMAIL=hello@truvixo.com
-```
-
-## 📈 Analytics & Monitoring
-
-Ready for integration with:
-- Google Analytics
-- Google Tag Manager
-- Hotjar
-- Sentry (error tracking)
+This project is licensed under the MIT License.
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+4. Submit a pull request
 
-## 📄 License
+## 📞 Support
 
-This project is proprietary to TruVixo™. All rights reserved.
-
-## 🆘 Support
-
-For support and questions:
-- Email: hello@truvixo.com
-- Phone: +1 (555) 123-4567
-- Website: [truvixo.com](https://truvixo.com)
-
-## 🎯 Roadmap
-
-- [ ] Backend API integration
-- [ ] Blog system
-- [ ] E-commerce integration
-- [ ] Multi-language support
-- [ ] Advanced analytics dashboard
-- [ ] Mobile app companion
+For support or questions, please contact the development team or create an issue in the repository.
 
 ---
 
-**Built with ❤️ by the TruVixo™ Team**
+Built with ❤️ by the TruVixo team
