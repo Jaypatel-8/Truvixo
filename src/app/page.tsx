@@ -1,60 +1,19 @@
 'use client'
 
-import { useEffect } from 'react'
-import { ArrowRight, Play, CheckCircle, Star, Users, Target, Zap, BarChart3, Globe, Building2, Linkedin, Mail, MessageSquare, Palette, Sparkles, Rocket, TrendingUp, Award, MousePointer, Zap as Lightning } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { ArrowRight, Play, CheckCircle, Star, Users, Target, Zap, BarChart3, Globe, Building2, Linkedin, Mail, MessageSquare, Palette, Sparkles, Rocket, TrendingUp, Award, MousePointer, Zap as Lightning, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Autoplay, EffectCoverflow, EffectCards, EffectCreative } from 'swiper/modules'
+
+// Import Swiper styles
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/effect-coverflow'
+import 'swiper/css/effect-cards'
+import 'swiper/css/effect-creative'
 
 export default function Home() {
-  useEffect(() => {
-    let currentSlide = 0
-    const totalSlides = 5 // Number of services
-    const container = document.getElementById('servicesContainer')
-    const dots = document.querySelectorAll('[data-dot]')
-    
-    const slideToService = (index: number) => {
-      if (container) {
-        const translateX = -index * 50 // 50% for each slide (2 services per view)
-        container.style.transform = `translateX(${translateX}%)`
-        currentSlide = index
-        
-        // Update dots
-        dots.forEach((dot, i) => {
-          if (i === index) {
-            dot.classList.add('bg-truvixo-blue', 'scale-125')
-            dot.classList.remove('bg-gray-300')
-          } else {
-            dot.classList.remove('bg-truvixo-blue', 'scale-125')
-            dot.classList.add('bg-gray-300')
-          }
-        })
-      }
-    }
-    
-    const nextSlide = () => {
-      const next = (currentSlide + 1) % totalSlides
-      slideToService(next)
-    }
-    
-    const prevSlide = () => {
-      const prev = currentSlide === 0 ? totalSlides - 1 : currentSlide - 1
-      slideToService(prev)
-    }
-    
-    // Add event listeners
-    const nextBtn = document.getElementById('nextServices')
-    const prevBtn = document.getElementById('prevServices')
-    
-    if (nextBtn) nextBtn.addEventListener('click', nextSlide)
-    if (prevBtn) prevBtn.addEventListener('click', prevSlide)
-    
-    // Auto-slide every 5 seconds
-    const autoSlide = setInterval(nextSlide, 5000)
-    
-    return () => {
-      if (nextBtn) nextBtn.removeEventListener('click', nextSlide)
-      if (prevBtn) prevBtn.removeEventListener('click', prevSlide)
-      clearInterval(autoSlide)
-    }
-  }, [])
   const services = [
     {
       number: '01.',
@@ -180,10 +139,77 @@ export default function Home() {
     { number: '7+', label: 'Years Experience', icon: <TrendingUp className="w-6 h-6" /> }
   ]
 
+  const testimonials = [
+    {
+      name: "Sarah Johnson",
+      role: "CEO, TechStart Inc.",
+      content: "TruVixo transformed our digital presence completely. Our lead generation increased by 300% in just 3 months!",
+      rating: 5,
+      avatar: "SJ",
+      color: "truvixo-blue"
+    },
+    {
+      name: "Michael Chen",
+      role: "Marketing Director, GrowthCo",
+      content: "The creative design team at TruVixo is phenomenal. They understood our vision and brought it to life perfectly.",
+      rating: 5,
+      avatar: "MC",
+      color: "truvixo-purple"
+    },
+    {
+      name: "Emily Rodriguez",
+      role: "Founder, InnovateLab",
+      content: "Working with TruVixo was a game-changer. Their white-label solutions helped us scale our business rapidly.",
+      rating: 5,
+      avatar: "ER",
+      color: "truvixo-red"
+    },
+    {
+      name: "David Thompson",
+      role: "VP Sales, Enterprise Solutions",
+      content: "The brand strategy work TruVixo did for us was exceptional. Our market positioning improved dramatically.",
+      rating: 5,
+      avatar: "DT",
+      color: "truvixo-yellow"
+    },
+    {
+      name: "Lisa Wang",
+      role: "CMO, Digital Dynamics",
+      content: "TruVixo's digital innovation approach is cutting-edge. They delivered results beyond our expectations.",
+      rating: 5,
+      avatar: "LW",
+      color: "truvixo-blue"
+    },
+    {
+      name: "James Wilson",
+      role: "CEO, FutureTech",
+      content: "The team's expertise in lead generation is unmatched. We saw immediate ROI from their campaigns.",
+      rating: 5,
+      avatar: "JW",
+      color: "truvixo-purple"
+    },
+    {
+      name: "Anna Martinez",
+      role: "Head of Marketing, ScaleUp",
+      content: "TruVixo's creative design capabilities are outstanding. They made our brand stand out in a crowded market.",
+      rating: 5,
+      avatar: "AM",
+      color: "truvixo-red"
+    },
+    {
+      name: "Robert Kim",
+      role: "Founder, NextGen Solutions",
+      content: "The white-label services allowed us to offer premium solutions under our own brand. Highly recommended!",
+      rating: 5,
+      avatar: "RK",
+      color: "truvixo-yellow"
+    }
+  ]
+
   return (
     <main className="min-h-screen bg-white overflow-hidden">
       {/* Enhanced Hero Section with Advanced Animations */}
-      <section className="relative min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-red-50 flex items-center justify-center overflow-hidden py-20">
+      <section className="relative min-h-screen bg-gradient-to-br from-blue-50/50 via-purple-50/30 to-pink-50/50 flex items-center justify-center overflow-hidden py-20">
         {/* Animated Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-20 h-20 bg-truvixo-blue/20 rounded-full animate-float"></div>
@@ -207,38 +233,38 @@ export default function Home() {
           <div className="animate-fade-in">
             {/* Main Heading with Enhanced Typography */}
             <div className="mb-8">
-              <h1 className="text-6xl lg:text-8xl font-black text-gray-900 mb-6 leading-tight">
-                Experience the{' '}
-                <span className="gradient-text animate-pulse-slow">3X</span>{' '}
-                meeting multiplier
-              </h1>
+                          <h1 className="text-display-2xl font-display text-gray-900 mb-6 leading-tight">
+              Experience the{' '}
+              <span className="animate-text-shimmer bg-gradient-to-r from-truvixo-blue via-truvixo-purple to-truvixo-red bg-clip-text text-transparent">3X</span>{' '}
+              meeting multiplier
+            </h1>
               <div className="flex items-center justify-center gap-4 mb-4">
-                <span className="text-2xl lg:text-4xl font-bold text-truvixo-blue">with</span>
+                <span className="text-display-lg font-display text-truvixo-blue">with</span>
                 <div className="relative">
-                  <span className="text-4xl lg:text-6xl font-black text-truvixo-blue animate-bounce-in">
+                  <span className="text-display-xl font-display text-truvixo-blue animate-bounce-in">
                     TruVixo
                   </span>
-                  <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-truvixo-yellow animate-pulse-slow" />
+                  <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-truvixo-yellow animate-pulse" />
                 </div>
               </div>
             </div>
 
             {/* Enhanced Subtitle */}
-            <p className="text-xl lg:text-3xl text-gray-600 mb-12 max-w-5xl mx-auto leading-relaxed">
+            <p className="text-body-lg font-primary text-gray-600 mb-12 max-w-5xl mx-auto leading-relaxed">
               More outreach channels — more chances to succeed in sales.{' '}
               <span className="text-truvixo-purple font-semibold">Transform your business today.</span>
             </p>
 
             {/* Enhanced CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-              <button className="group bg-gradient-to-r from-truvixo-blue to-truvixo-purple text-white font-bold py-5 px-10 rounded-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 btn-animated">
+              <button className="group btn-modern bg-gradient-to-r from-truvixo-blue to-truvixo-purple text-white font-display font-bold py-5 px-10 rounded-2xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1">
                 <span className="flex items-center gap-3">
                   <Rocket className="w-6 h-6 group-hover:animate-bounce" />
                   Generate Leads
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
                 </span>
               </button>
-              <button className="group bg-white text-truvixo-blue font-bold py-5 px-10 rounded-xl hover:shadow-2xl transition-all duration-500 border-2 border-truvixo-blue hover:bg-truvixo-blue hover:text-white">
+              <button className="group btn-modern glass text-truvixo-blue font-display font-bold py-5 px-10 rounded-2xl hover:shadow-2xl transition-all duration-500 border-2 border-truvixo-blue hover:bg-truvixo-blue hover:text-white">
                 <span className="flex items-center gap-3">
                   <Play className="w-5 h-5" />
                   Try a demo now
@@ -277,136 +303,116 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Enhanced Services Section */}
-      <section className="py-32 bg-gradient-to-br from-blue-50 via-purple-50 to-red-50 relative overflow-hidden">
-        {/* Enhanced Background Elements */}
+      {/* Modern Grid Services Section */}
+      <section className="py-24 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40 relative overflow-hidden">
+        {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-truvixo-blue/10 to-truvixo-purple/10"></div>
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
-          
-          {/* Animated Background Shapes */}
-          <div className="absolute top-10 left-10 w-32 h-32 bg-truvixo-blue/20 rounded-full animate-float"></div>
-          <div className="absolute top-20 right-20 w-24 h-24 bg-truvixo-purple/20 rounded-full animate-float-delay-1"></div>
-          <div className="absolute bottom-20 left-20 w-28 h-28 bg-truvixo-red/20 rounded-full animate-float-delay-2"></div>
-          <div className="absolute bottom-10 right-10 w-20 h-20 bg-truvixo-yellow/20 rounded-full animate-float-delay-3"></div>
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full animate-pulse"></div>
+          <div className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-gradient-to-br from-indigo-400/20 to-blue-400/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
           <div className="text-center mb-20">
-            <div className="mb-8">
-              <h2 className="text-6xl lg:text-8xl font-black text-gray-900 mb-6 leading-tight">
-                Our <span className="text-truvixo-blue animate-pulse-slow">Services</span>
-              </h2>
-              <div className="w-24 h-1 bg-truvixo-blue mx-auto mb-8 animate-scale-in"></div>
+            <div className="inline-flex items-center gap-3 glass rounded-full px-6 py-3 mb-8 shadow-lg">
+              <Sparkles className="w-5 h-5 text-truvixo-blue animate-pulse" />
+              <span className="text-sm font-primary font-semibold text-gray-700">Our Premium Services</span>
             </div>
-            <p className="text-2xl lg:text-3xl text-gray-600 max-w-5xl mx-auto leading-relaxed font-medium">
-              Comprehensive solutions designed to transform your business and drive{' '}
-              <span className="text-truvixo-purple font-bold">exponential growth</span>
+            <h2 className="text-display-xl font-display text-gray-900 mb-6 leading-tight">
+              Transform Your Business with{' '}
+              <span className="animate-text-shimmer bg-gradient-to-r from-truvixo-blue via-truvixo-purple to-truvixo-red bg-clip-text text-transparent">
+                Expert Solutions
+              </span>
+            </h2>
+            <p className="text-body-lg font-primary text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              We deliver cutting-edge digital solutions that drive growth, enhance brand presence, and maximize your ROI
             </p>
           </div>
 
-          {/* Services Slider Container */}
-          <div className="relative">
-            {/* Navigation Buttons */}
-            <div className="flex justify-center gap-4 mb-12">
-              <button 
-                id="prevServices"
-                className="group bg-white text-truvixo-blue font-bold py-3 px-6 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 border-2 border-truvixo-blue"
-              >
-                <span className="flex items-center gap-2">
-                  <ArrowRight className="w-5 h-5 rotate-180 group-hover:-translate-x-1 transition-transform duration-300" />
-                  Previous
-                </span>
-              </button>
-              <button 
-                id="nextServices"
-                className="group bg-truvixo-blue text-white font-bold py-3 px-6 rounded-xl hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              >
-                <span className="flex items-center gap-2">
-                  Next
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
-              </button>
-            </div>
-
-            {/* Services Grid with Sliding Effect */}
-            <div className="overflow-hidden">
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => (
               <div 
-                id="servicesContainer"
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: 'translateX(0%)' }}
+                key={index} 
+                className="group relative"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                {services.map((service, index) => (
-                  <div 
-                    key={index} 
-                    className="w-full lg:w-1/2 flex-shrink-0 px-4"
-                  >
-                    <div className="group interactive-card animate-fade-in-up hover:scale-105 transition-all duration-500 hover:animate-pulse-slow">
-                      <div className="relative overflow-hidden rounded-3xl bg-white shadow-2xl hover:shadow-3xl transition-all duration-500">
-                        {/* Service Header */}
-                        <div className={`${service.gradient} p-8 text-white relative overflow-hidden`}>
-                          <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
-                          <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
-                          
-                          <div className="flex items-start gap-6 relative z-10">
-                            <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                              <div className="text-white">
-                                {service.icon}
-                              </div>
-                            </div>
-                            <div className="flex-1">
-                              <div className="text-6xl font-black text-white/30 mb-2">{service.number}</div>
-                              <h3 className="text-3xl font-bold mb-2">{service.title}</h3>
-                              <h4 className="text-xl font-semibold text-white/90">{service.subtitle}</h4>
-                            </div>
-                          </div>
-                        </div>
+                {/* Card Container */}
+                <div className="relative card-modern p-8 h-full overflow-hidden">
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-truvixo-blue/5 via-transparent to-truvixo-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Service Number Badge */}
+                  <div className="absolute top-6 right-6 w-12 h-12 bg-gradient-to-br from-truvixo-blue to-truvixo-purple rounded-2xl flex items-center justify-center text-white font-black text-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                    {service.number.replace('.', '')}
+                  </div>
 
-                        {/* Service Content */}
-                        <div className="p-8">
-                          <p className="text-gray-600 mb-8 leading-relaxed text-lg">{service.description}</p>
-                          
-                          <ul className="space-y-4 mb-8">
-                            {service.features.map((feature, idx) => (
-                              <li key={idx} className="flex items-start gap-3 group-hover:translate-x-2 transition-transform duration-300">
-                                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300" />
-                                <span className="text-gray-700">{feature}</span>
-                              </li>
-                            ))}
-                          </ul>
-
-                          <button className="w-full bg-truvixo-blue text-white font-bold py-4 px-8 rounded-xl hover:bg-truvixo-purple transition-all duration-300 transform hover:scale-105 group-hover:shadow-lg">
-                            <span className="flex items-center justify-center gap-2">
-                              Get Started
-                              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                            </span>
-                          </button>
-                        </div>
+                  {/* Icon Container */}
+                  <div className="relative mb-8">
+                    <div className="w-20 h-20 bg-gradient-to-br from-truvixo-blue/10 to-truvixo-purple/10 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                      <div className="text-truvixo-blue group-hover:text-truvixo-purple transition-colors duration-300">
+                        {service.icon}
                       </div>
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
 
-            {/* Dots Indicator */}
-            <div className="flex justify-center gap-3 mt-12">
-              {services.map((_, index) => (
-                <button
-                  key={index}
-                  data-dot
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === 0 ? 'bg-truvixo-blue scale-125' : 'bg-gray-300 hover:bg-truvixo-blue/50'
-                  }`}
-                ></button>
-              ))}
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <h3 className="text-display-md font-display text-gray-900 mb-3 group-hover:text-truvixo-blue transition-colors duration-300">
+                      {service.title}
+                    </h3>
+                    <h4 className="text-body-lg text-truvixo-purple font-primary font-semibold mb-4">
+                      {service.subtitle}
+                    </h4>
+                    <p className="text-body-sm font-primary text-gray-600 leading-relaxed mb-6">
+                      {service.description}
+                    </p>
+
+                    {/* Features List */}
+                    <div className="space-y-3 mb-8">
+                      {service.features.slice(0, 2).map((feature, idx) => (
+                        <div key={idx} className="flex items-start gap-3 group-hover:translate-x-2 transition-transform duration-300">
+                          <div className="w-2 h-2 bg-gradient-to-r from-truvixo-blue to-truvixo-purple rounded-full flex-shrink-0 mt-2"></div>
+                          <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* CTA Button */}
+                    <button className="w-full btn-modern bg-gradient-to-r from-truvixo-blue to-truvixo-purple text-white font-display font-bold py-3 px-6 rounded-2xl hover:shadow-xl hover:from-truvixo-purple hover:to-truvixo-red transition-all duration-300 transform hover:scale-105 group-hover:-translate-y-1 relative overflow-hidden">
+                      <span className="relative z-10 flex items-center justify-center gap-2">
+                        Get Started
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                      </span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-truvixo-purple to-truvixo-red opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </button>
+                  </div>
+
+                  {/* Hover Effect Border */}
+                  <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-gradient-to-r group-hover:from-truvixo-blue group-hover:to-truvixo-purple transition-all duration-500"></div>
+                </div>
+
+                {/* Floating Elements */}
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-truvixo-yellow rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-bounce transition-all duration-500"></div>
+                <div className="absolute -bottom-2 -left-2 w-3 h-3 bg-truvixo-red rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-all duration-500" style={{ animationDelay: '0.5s' }}></div>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center mt-16">
+            <div className="inline-flex items-center gap-4 bg-gradient-to-r from-truvixo-blue to-truvixo-purple text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+              <Rocket className="w-6 h-6" />
+              <span className="font-bold text-lg">Explore All Services</span>
+              <ArrowRight className="w-5 h-5" />
             </div>
           </div>
         </div>
       </section>
 
       {/* Enhanced Features Section */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-blue-50 relative overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-purple-50/40 via-pink-50/30 to-red-50/40 relative overflow-hidden">
         <div className="absolute inset-0 opacity-50">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-100/20 to-purple-100/20"></div>
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_50%)]"></div>
@@ -454,7 +460,7 @@ export default function Home() {
       </section>
 
       {/* Enhanced Capabilities Section with Infinite Sliding */}
-      <section className="py-24 bg-white overflow-hidden">
+      <section className="py-24 bg-gradient-to-br from-yellow-50/30 via-blue-50/20 to-purple-50/30 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center mb-16 animate-fade-in">
             <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-8">
@@ -474,7 +480,7 @@ export default function Home() {
                 {[...capabilities, ...capabilities].map((capability, index) => (
                   <div 
                     key={`row1-${index}`}
-                    className="sliding-item mx-4 flex-shrink-0"
+                    className="sliding-item mx-6 flex-shrink-0"
                   >
                     <div className="text-center group hover:scale-110 transition-transform duration-300">
                       <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-xl transition-all duration-300 border border-gray-100">
@@ -482,7 +488,7 @@ export default function Home() {
                           {capability.icon}
                         </div>
                       </div>
-                      <p className="text-sm text-gray-700 leading-tight font-medium w-32">{capability.name}</p>
+                      <p className="text-sm text-gray-700 leading-relaxed font-medium w-40 text-center whitespace-nowrap overflow-hidden text-ellipsis">{capability.name}</p>
                     </div>
                   </div>
                 ))}
@@ -495,7 +501,7 @@ export default function Home() {
                 {[...capabilities, ...capabilities].map((capability, index) => (
                   <div 
                     key={`row2-${index}`}
-                    className="sliding-item mx-4 flex-shrink-0"
+                    className="sliding-item mx-6 flex-shrink-0"
                   >
                     <div className="text-center group hover:scale-110 transition-transform duration-300">
                       <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-xl transition-all duration-300 border border-gray-100">
@@ -503,7 +509,7 @@ export default function Home() {
                           {capability.icon}
                         </div>
                       </div>
-                      <p className="text-sm text-gray-700 leading-tight font-medium w-32">{capability.name}</p>
+                      <p className="text-sm text-gray-700 leading-relaxed font-medium w-40 text-center whitespace-nowrap overflow-hidden text-ellipsis">{capability.name}</p>
                     </div>
                   </div>
                 ))}
@@ -516,7 +522,7 @@ export default function Home() {
                 {[...capabilities, ...capabilities].map((capability, index) => (
                   <div 
                     key={`row3-${index}`}
-                    className="sliding-item mx-4 flex-shrink-0"
+                    className="sliding-item mx-6 flex-shrink-0"
                   >
                     <div className="text-center group hover:scale-110 transition-transform duration-300">
                       <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-xl transition-all duration-300 border border-gray-100">
@@ -524,7 +530,7 @@ export default function Home() {
                           {capability.icon}
                         </div>
                       </div>
-                      <p className="text-sm text-gray-700 leading-tight font-medium w-32">{capability.name}</p>
+                      <p className="text-sm text-gray-700 leading-relaxed font-medium w-40 text-center whitespace-nowrap overflow-hidden text-ellipsis">{capability.name}</p>
                     </div>
                   </div>
                 ))}
@@ -534,105 +540,144 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sliding Testimonials Section */}
-      <section className="py-16 bg-gray-50 overflow-hidden">
-        <div className="relative">
-          <div className="marquee">
-            <div className="marquee-content">
-              {[
-                "🚀 500+ Projects Completed",
-                "⭐ 98% Client Satisfaction", 
-                "💼 50+ Team Members",
-                "🎯 7+ Years Experience",
-                "🔥 300% Average ROI",
-                "✨ Award-Winning Design",
-                "🚀 500+ Projects Completed",
-                "⭐ 98% Client Satisfaction", 
-                "💼 50+ Team Members",
-                "🎯 7+ Years Experience",
-                "🔥 300% Average ROI",
-                "✨ Award-Winning Design"
-              ].map((testimonial, index) => (
-                <div key={index} className="sliding-item mx-8 flex-shrink-0">
-                  <div className="bg-white rounded-2xl px-8 py-4 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                    <p className="text-lg font-semibold text-gray-800 whitespace-nowrap">
-                      {testimonial}
-                    </p>
+      {/* Enhanced Testimonials Section with Infinite Loops */}
+      <section className="py-24 bg-gradient-to-br from-pink-50/40 via-purple-50/30 to-blue-50/40 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-truvixo-blue/10 rounded-full animate-float"></div>
+          <div className="absolute bottom-10 right-10 w-24 h-24 bg-truvixo-purple/10 rounded-full animate-float-delay-1"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-8 lg:px-12 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <div className="mb-8">
+              <h2 className="text-6xl lg:text-8xl font-black text-gray-900 mb-6 leading-tight">
+                What Our <span className="text-truvixo-blue animate-pulse-slow">Clients</span> Say
+              </h2>
+              <div className="w-24 h-1 bg-truvixo-blue mx-auto mb-8 animate-scale-in"></div>
+            </div>
+            <p className="text-2xl lg:text-3xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
+              Don't just take our word for it. Here's what our satisfied clients have to say about{' '}
+              <span className="text-truvixo-purple font-bold">TruVixo's impact</span>
+            </p>
+          </div>
+
+          {/* Single Infinite Loop Testimonials */}
+          <div className="relative">
+            <div className="marquee">
+              <div className="marquee-content">
+                {[...testimonials, ...testimonials].map((testimonial, index) => (
+                  <div key={index} className="sliding-item mx-8 flex-shrink-0">
+                    <div className="group bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 w-[420px] hover:scale-105 border border-white/50">
+                      {/* Avatar and Rating */}
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className={`w-16 h-16 bg-${testimonial.color} rounded-2xl flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
+                          {testimonial.avatar}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1 mb-2">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                              <Star key={i} className="w-5 h-5 fill-truvixo-yellow text-truvixo-yellow" />
+                            ))}
+                          </div>
+                          <h4 className="font-bold text-gray-900 text-lg truncate">{testimonial.name}</h4>
+                          <p className="text-sm text-gray-500 truncate">{testimonial.role}</p>
+                        </div>
+                      </div>
+                      
+                      {/* Testimonial Content */}
+                      <p className="text-gray-700 leading-relaxed text-base italic line-clamp-4">
+                        "{testimonial.content}"
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Enhanced CTA Section */}
-      <section className="py-32 bg-gradient-to-br from-truvixo-blue via-truvixo-purple to-truvixo-red text-white relative overflow-hidden">
-        {/* Enhanced Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600/30 to-purple-600/30"></div>
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.15),transparent_50%)]"></div>
-          
-          {/* Animated Background Shapes */}
-          <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full animate-float"></div>
-          <div className="absolute top-20 right-20 w-24 h-24 bg-white/10 rounded-full animate-float-delay-1"></div>
-          <div className="absolute bottom-20 left-20 w-28 h-28 bg-white/10 rounded-full animate-float-delay-2"></div>
-          <div className="absolute bottom-10 right-10 w-20 h-20 bg-white/10 rounded-full animate-float-delay-3"></div>
+      {/* High Contrast CTA Section */}
+      <section className="py-24 bg-black text-white relative overflow-hidden">
+        {/* Animated Background Pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-gradient-to-r from-truvixo-blue/30 via-transparent to-truvixo-purple/30"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_25%_25%,rgba(59,130,246,0.3),transparent_50%)]"></div>
+          <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_75%_75%,rgba(147,51,234,0.3),transparent_50%)]"></div>
         </div>
         
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 text-center relative z-10">
+        {/* Floating Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-4 h-4 bg-truvixo-blue rounded-full animate-pulse"></div>
+          <div className="absolute top-40 right-32 w-3 h-3 bg-truvixo-purple rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-32 left-40 w-5 h-5 bg-truvixo-yellow rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-20 right-20 w-2 h-2 bg-truvixo-red rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center relative z-10">
           <div className="animate-fade-in">
-            {/* Enhanced Heading */}
-            <div className="mb-12">
-              <h2 className="text-6xl lg:text-8xl font-black mb-6 leading-tight">
+            {/* High Contrast Heading */}
+            <div className="mb-8">
+              <h2 className="text-display-2xl font-display mb-6 leading-tight">
                 Ready to{' '}
-                <span className="text-yellow-300 animate-pulse-slow">Transform</span>{' '}
-                Your Business?
+                <span className="animate-text-shimmer bg-gradient-to-r from-truvixo-blue via-truvixo-purple to-truvixo-yellow bg-clip-text text-transparent">
+                  Transform?
+                </span>
               </h2>
-              <div className="w-24 h-1 bg-yellow-300 mx-auto mb-8 animate-scale-in"></div>
+              <div className="w-32 h-1 bg-gradient-to-r from-truvixo-blue to-truvixo-purple mx-auto mb-8"></div>
             </div>
             
-            {/* Enhanced Subtitle */}
-            <p className="text-2xl lg:text-3xl text-white/95 max-w-5xl mx-auto mb-16 leading-relaxed font-medium">
-              Join 500+ successful businesses that have already transformed their digital presence with TruVixo.{' '}
-              <span className="text-yellow-300 font-bold">Let's make it happen together.</span>
+            {/* Contrasting Subtitle */}
+            <p className="text-display-lg font-primary text-gray-300 max-w-4xl mx-auto mb-16 leading-relaxed">
+              Join <span className="text-truvixo-yellow font-display font-bold">500+ businesses</span> already growing with{' '}
+              <span className="text-truvixo-blue font-display font-bold">TruVixo</span>
             </p>
             
-            {/* Enhanced CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-8 justify-center mb-12">
-              <button className="group bg-white text-truvixo-blue font-black py-6 px-12 rounded-2xl hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-2 btn-animated text-lg">
-                <span className="flex items-center gap-4">
-                  <Rocket className="w-8 h-8 group-hover:animate-bounce" />
-                  Book a Free Demo
+            {/* High Contrast CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-8 justify-center mb-20">
+              <button className="group btn-modern bg-gradient-to-r from-truvixo-blue to-truvixo-purple text-white font-display font-bold py-6 px-12 rounded-2xl hover:shadow-2xl hover:shadow-truvixo-blue/50 transition-all duration-300 transform hover:scale-105 text-xl relative overflow-hidden">
+                <span className="relative z-10 flex items-center gap-4">
+                  <Rocket className="w-7 h-7 group-hover:animate-bounce" />
+                  Start Free Trial
                   <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
                 </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-truvixo-purple to-truvixo-red opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
-              <button className="group border-3 border-white text-white font-black py-6 px-12 rounded-2xl hover:bg-white hover:text-truvixo-blue transition-all duration-500 transform hover:scale-110 hover:-translate-y-2 text-lg">
+              
+              <button className="group btn-modern border-2 border-white text-white font-display font-bold py-6 px-12 rounded-2xl hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 text-xl hover:shadow-2xl">
                 <span className="flex items-center gap-4">
-                  <MessageSquare className="w-8 h-8 group-hover:animate-bounce" />
-                  Chat with Us
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                  <MessageSquare className="w-7 h-7 group-hover:animate-pulse" />
+                  Schedule Demo
                 </span>
               </button>
             </div>
             
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-black text-yellow-300 mb-2">500+</div>
-                <div className="text-white/80 font-medium">Projects Completed</div>
+            {/* Enhanced Trust Indicators */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto">
+              <div className="text-center group">
+                <div className="w-20 h-20 bg-gradient-to-br from-truvixo-blue to-truvixo-purple rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Award className="w-10 h-10 text-white" />
+                </div>
+                <div className="text-4xl font-black text-white mb-2 group-hover:text-truvixo-yellow transition-colors duration-300">500+</div>
+                <div className="text-gray-400 text-lg font-medium">Projects Completed</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-black text-yellow-300 mb-2">98%</div>
-                <div className="text-white/80 font-medium">Client Satisfaction</div>
+              
+              <div className="text-center group">
+                <div className="w-20 h-20 bg-gradient-to-br from-truvixo-purple to-truvixo-red rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Star className="w-10 h-10 text-white" />
+                </div>
+                <div className="text-4xl font-black text-white mb-2 group-hover:text-truvixo-yellow transition-colors duration-300">98%</div>
+                <div className="text-gray-400 text-lg font-medium">Client Satisfaction</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-black text-yellow-300 mb-2">7+</div>
-                <div className="text-white/80 font-medium">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl lg:text-4xl font-black text-yellow-300 mb-2">24/7</div>
-                <div className="text-white/80 font-medium">Support Available</div>
+              
+              <div className="text-center group">
+                <div className="w-20 h-20 bg-gradient-to-br from-truvixo-red to-truvixo-yellow rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <TrendingUp className="w-10 h-10 text-white" />
+                </div>
+                <div className="text-4xl font-black text-white mb-2 group-hover:text-truvixo-yellow transition-colors duration-300">7+</div>
+                <div className="text-gray-400 text-lg font-medium">Years Experience</div>
               </div>
             </div>
           </div>

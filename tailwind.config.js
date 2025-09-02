@@ -9,23 +9,19 @@ module.exports = {
     extend: {
       colors: {
         truvixo: {
-          purple: '#8B5CF6',
-          red: '#EF4444',
-          yellow: '#F59E0B',
-          pink: '#EC4899',
-          magenta: '#DB2777',
+          blue: '#5e2cb6',
+          purple: '#c91a6f',
+          red: '#d42628',
+          yellow: '#fecc4d',
           white: '#FFFFFF',
           black: '#111827',
-          'purple-dark': '#7C3AED',
-          'red-dark': '#DC2626',
-          'yellow-dark': '#D97706',
-          'pink-dark': '#DB2777',
-          'magenta-dark': '#BE185D',
         }
       },
       fontFamily: {
+        primary: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'Monaco', 'monospace'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Poppins', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
