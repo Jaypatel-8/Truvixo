@@ -1,13 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Static export for Hostinger
+  output: 'export',
+  trailingSlash: true,
+  
   // Performance optimizations
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['lucide-react', 'swiper'],
   },
   
-  // Image optimization
+  // Image optimization for static export
   images: {
+    unoptimized: true,
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -48,46 +53,8 @@ const nextConfig = {
     return config;
   },
 
-  // Headers for better caching
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-XSS-Protection',
-            value: '1; mode=block',
-          },
-        ],
-      },
-      {
-        source: '/fonts/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        source: '/_next/static/(.*)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-    ];
-  },
+  // Note: Headers are not supported with static export
+  // You can configure these in your hosting provider (Hostinger)
 };
 
 module.exports = nextConfig;
