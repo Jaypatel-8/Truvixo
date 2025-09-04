@@ -2,6 +2,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 
+/* Le Petite Cocho Font */
+@font-face {
+  font-family: 'Le Petite Cocho';
+  src: url('/fonts/LePetiteCocho-Regular.woff2') format('woff2'),
+       url('/fonts/LePetiteCocho-Regular.woff') format('woff'),
+       url('/fonts/LePetiteCocho-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Le Petite Cocho';
+  src: url('/fonts/LePetiteCocho-Bold.woff2') format('woff2'),
+       url('/fonts/LePetiteCocho-Bold.woff') format('woff'),
+       url('/fonts/LePetiteCocho-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,10 +32,16 @@
   --truvixo-purple: #c91a6f;
   --truvixo-red: #d42628;
   --truvixo-yellow: #fecc4d;
+  --truvixo-green: #10b981;
+  --truvixo-orange: #f59e0b;
+  --truvixo-pink: #ec4899;
+  --truvixo-indigo: #6366f1;
+  --truvixo-teal: #14b8a6;
+  --truvixo-cyan: #06b6d4;
   
   /* Font Families */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-primary: 'Le Petite Cocho', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Le Petite Cocho', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
   
   /* Enhanced Color Palette */
@@ -51,11 +78,23 @@
 .text-truvixo-purple { color: var(--truvixo-purple); }
 .text-truvixo-red { color: var(--truvixo-red); }
 .text-truvixo-yellow { color: var(--truvixo-yellow); }
+.text-truvixo-green { color: var(--truvixo-green); }
+.text-truvixo-orange { color: var(--truvixo-orange); }
+.text-truvixo-pink { color: var(--truvixo-pink); }
+.text-truvixo-indigo { color: var(--truvixo-indigo); }
+.text-truvixo-teal { color: var(--truvixo-teal); }
+.text-truvixo-cyan { color: var(--truvixo-cyan); }
 
 .bg-truvixo-blue { background-color: var(--truvixo-blue); }
 .bg-truvixo-purple { background-color: var(--truvixo-purple); }
 .bg-truvixo-red { background-color: var(--truvixo-red); }
 .bg-truvixo-yellow { background-color: var(--truvixo-yellow); }
+.bg-truvixo-green { background-color: var(--truvixo-green); }
+.bg-truvixo-orange { background-color: var(--truvixo-orange); }
+.bg-truvixo-pink { background-color: var(--truvixo-pink); }
+.bg-truvixo-indigo { background-color: var(--truvixo-indigo); }
+.bg-truvixo-teal { background-color: var(--truvixo-teal); }
+.bg-truvixo-cyan { background-color: var(--truvixo-cyan); }
 
 .bg-truvixo-blue-100 { background-color: #dbeafe; }
 .bg-truvixo-purple-100 { background-color: #e9d5ff; }
@@ -288,34 +327,30 @@
   transform: rotate(5deg);
 }
 
-/* Gradient Backgrounds */
-.gradient-bg {
-  background: linear-gradient(135deg, var(--truvixo-blue) 0%, var(--truvixo-purple) 100%);
+/* Solid Color Backgrounds */
+.solid-bg {
+  background-color: var(--truvixo-blue);
 }
 
-.gradient-bg-2 {
-  background: linear-gradient(135deg, var(--truvixo-purple) 0%, var(--truvixo-red) 100%);
+.solid-bg-2 {
+  background-color: var(--truvixo-purple);
 }
 
-.gradient-bg-3 {
-  background: linear-gradient(135deg, var(--truvixo-red) 0%, var(--truvixo-yellow) 100%);
+.solid-bg-3 {
+  background-color: var(--truvixo-red);
 }
 
-.gradient-bg-4 {
-  background: linear-gradient(135deg, var(--truvixo-yellow) 0%, var(--truvixo-blue) 100%);
+.solid-bg-4 {
+  background-color: var(--truvixo-yellow);
 }
 
-.gradient-text {
-  background: linear-gradient(135deg, var(--truvixo-blue), var(--truvixo-purple));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.solid-text {
+  color: var(--truvixo-blue);
 }
 
 /* Shimmer Effect */
 .shimmer {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
+  background-color: #f0f0f0;
   animation: shimmer 2s infinite;
 }
 
@@ -368,7 +403,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background-color: rgba(255, 255, 255, 0.2);
   transition: left 0.5s;
 }
 
@@ -414,12 +449,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, var(--truvixo-blue), var(--truvixo-purple));
+  background-color: var(--truvixo-blue);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, #1d4ed8, #5b21b6);
+  background-color: var(--truvixo-purple);
 }
 
 /* Loading Spinner */
@@ -615,11 +650,7 @@
 }
 
 .animate-text-shimmer {
-  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--truvixo-blue);
   animation: textShimmer 3s ease-in-out infinite;
 }
 
@@ -682,29 +713,31 @@
   75% { transform: translateX(5px); }
 }
 
-/* Advanced Gradient Backgrounds */
-.gradient-bg-animated {
-  background: linear-gradient(-45deg, var(--truvixo-blue), var(--truvixo-purple), var(--truvixo-red), var(--truvixo-yellow));
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+/* Advanced Solid Backgrounds */
+.solid-bg-animated {
+  background-color: var(--truvixo-blue);
+  animation: colorShift 15s ease infinite;
 }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes colorShift {
+  0% { background-color: var(--truvixo-blue); }
+  25% { background-color: var(--truvixo-purple); }
+  50% { background-color: var(--truvixo-red); }
+  75% { background-color: var(--truvixo-yellow); }
+  100% { background-color: var(--truvixo-blue); }
 }
 
-.gradient-bg-rainbow {
-  background: linear-gradient(45deg, var(--truvixo-blue), var(--truvixo-purple), var(--truvixo-red), var(--truvixo-yellow));
-  background-size: 300% 300%;
+.solid-bg-rainbow {
+  background-color: var(--truvixo-blue);
   animation: rainbowShift 8s ease infinite;
 }
 
 @keyframes rainbowShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { background-color: var(--truvixo-blue); }
+  25% { background-color: var(--truvixo-purple); }
+  50% { background-color: var(--truvixo-red); }
+  75% { background-color: var(--truvixo-yellow); }
+  100% { background-color: var(--truvixo-blue); }
 }
 
 /* 3D Effects */
@@ -774,8 +807,7 @@
 
 /* Loading States */
 .loading-skeleton {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
+  background-color: #f0f0f0;
   animation: shimmer 1.5s infinite;
 }
 
@@ -950,8 +982,7 @@
   }
   
   .loading-skeleton {
-    background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
-    background-size: 200% 100%;
+    background-color: #2a2a2a;
   }
 }
 
@@ -1029,7 +1060,7 @@
 }
 
 .swiper-pagination-custom .swiper-pagination-bullet-active {
-  background: linear-gradient(45deg, var(--truvixo-blue), var(--truvixo-purple)) !important;
+  background-color: var(--truvixo-blue) !important;
   transform: scale(1.25) !important;
   box-shadow: 0 4px 12px rgba(94, 44, 182, 0.4) !important;
 }
@@ -1041,7 +1072,7 @@
 
 /* Coverflow Effect Enhancements */
 .swiper-container-custom .swiper-slide-shadow-coverflow {
-  background: linear-gradient(45deg, rgba(94, 44, 182, 0.1), rgba(201, 26, 111, 0.1)) !important;
+  background-color: rgba(94, 44, 182, 0.1) !important;
 }
 
 /* Responsive Adjustments */
@@ -1436,8 +1467,7 @@
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 200% 100%;
+  background-color: #f0f0f0;
   animation: shimmer 2s infinite;
 }
 
@@ -1446,11 +1476,7 @@
 }
 
 .animate-text-shimmer {
-  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--truvixo-blue);
   animation: textShimmer 3s ease-in-out infinite;
 }
 
@@ -1506,7 +1532,7 @@
 }
 
 .glass-colored {
-  background: linear-gradient(135deg, rgba(94, 44, 182, 0.1), rgba(201, 26, 111, 0.1));
+  background-color: rgba(94, 44, 182, 0.1);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 8px 32px 0 rgba(94, 44, 182, 0.37);
@@ -1529,7 +1555,7 @@
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background-color: rgba(255, 255, 255, 0.2);
   transition: left 0.5s;
 }
 
@@ -1585,12 +1611,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, var(--truvixo-blue), var(--truvixo-purple));
+  background-color: var(--truvixo-blue);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, var(--truvixo-purple), var(--truvixo-red));
+  background-color: var(--truvixo-purple);
 }
 
 /* Responsive Typography */
@@ -1606,4 +1632,83 @@
   .text-display-xl { font-size: 2rem; }
   .text-display-lg { font-size: 1.75rem; }
   .text-display-md { font-size: 1.5rem; }
+}
+
+/* Services Swiper Styles */
+.services-swiper {
+  padding: 40px 0 80px 0;
+  overflow: visible;
+}
+
+.services-swiper .swiper-slide-custom {
+  width: 380px;
+  height: auto;
+  transition: all 0.3s ease;
+}
+
+.services-swiper .swiper-slide-active .swiper-slide-custom {
+  transform: scale(1.05);
+}
+
+.services-swiper .swiper-slide-shadow-coverflow {
+  background: rgba(0, 0, 0, 0.1) !important;
+  border-radius: 24px !important;
+}
+
+/* Custom Navigation Buttons */
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: white !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
+}
+
+.swiper-button-prev-custom:hover,
+.swiper-button-next-custom:hover {
+  background: #f8fafc !important;
+  transform: translateY(-50%) scale(1.1) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.swiper-button-prev-custom {
+  left: 20px !important;
+}
+
+.swiper-button-next-custom {
+  right: 20px !important;
+}
+
+/* Custom Pagination */
+.swiper-pagination-custom {
+  position: relative !important;
+  bottom: 0 !important;
+  margin-top: 40px !important;
+}
+
+.swiper-pagination-custom .swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: #e2e8f0 !important;
+  opacity: 1 !important;
+  margin: 0 6px !important;
+  transition: all 0.3s ease !important;
+  border-radius: 50% !important;
+}
+
+.swiper-pagination-custom .swiper-pagination-bullet-active {
+  background: var(--truvixo-blue) !important;
+  transform: scale(1.25) !important;
+  box-shadow: 0 4px 12px rgba(94, 44, 182, 0.4) !important;
+}
+
+.swiper-pagination-custom .swiper-pagination-bullet:hover {
+  background: var(--truvixo-blue) !important;
+  transform: scale(1.1) !important;
 }
