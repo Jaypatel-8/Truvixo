@@ -1,72 +1,108 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
-  const [isClicking, setIsClicking] = useState(false)
+  const cursorRef = useRef<HTMLDivElement>(null)
+  const rafRef = useRef<number>()
 
   useEffect(() => {
-    const updatePosition = (e: MouseEvent) => {
-      setPosition({ x: e.clientX, y: e.clientY })
+    // Only show custom cursor on desktop (not touch devices)
+    if (typeof window === 'undefined' || window.matchMedia('(pointer: coarse)').matches) {
+      return
     }
 
-    const handleMouseEnter = (e: MouseEvent) => {
-      const target = e.target as Element
-      if (target && target.closest && target.closest('button, a, [data-cursor="hover"]')) {
-        setIsHovering(true)
+    // Hide default cursor
+    document.body.style.cursor = 'none'
+
+    const updatePosition = (e: MouseEvent) => {
+      // Cancel previous animation frame
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+
+      // Use requestAnimationFrame for smooth updates
+      rafRef.current = requestAnimationFrame(() => {
+        setPosition({ x: e.clientX, y: e.clientY })
+      })
+    }
+
+    // Simple hover detection using mouseover/mouseout on interactive elements
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target
+      if (target && target instanceof HTMLElement) {
+        const tagName = target.tagName?.toUpperCase()
+        if (tagName === 'BUTTON' || tagName === 'A' || target.getAttribute('data-cursor') === 'hover') {
+          setIsHovering(true)
+        }
       }
     }
 
-    const handleMouseLeave = () => {
+    const handleMouseOut = () => {
       setIsHovering(false)
     }
 
-    const handleMouseDown = () => {
-      setIsClicking(true)
-    }
-
-    const handleMouseUp = () => {
-      setIsClicking(false)
-    }
-
-    document.addEventListener('mousemove', updatePosition)
-    document.addEventListener('mouseenter', handleMouseEnter)
-    document.addEventListener('mouseleave', handleMouseLeave)
-    document.addEventListener('mousedown', handleMouseDown)
-    document.addEventListener('mouseup', handleMouseUp)
+    // Use mouseover/mouseout on document for better performance
+    document.addEventListener('mousemove', updatePosition, { passive: true })
+    document.addEventListener('mouseover', handleMouseOver, { passive: true })
+    document.addEventListener('mouseout', handleMouseOut, { passive: true })
 
     return () => {
       document.removeEventListener('mousemove', updatePosition)
-      document.removeEventListener('mouseenter', handleMouseEnter)
-      document.removeEventListener('mouseleave', handleMouseLeave)
-      document.removeEventListener('mousedown', handleMouseDown)
-      document.removeEventListener('mouseup', handleMouseUp)
+      document.removeEventListener('mouseover', handleMouseOver)
+      document.removeEventListener('mouseout', handleMouseOut)
+      document.body.style.cursor = ''
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
     }
   }, [])
 
+  // Hide on touch devices
+  if (typeof window !== 'undefined' && window.matchMedia('(pointer: coarse)').matches) {
+    return null
+  }
+
   return (
     <div
-      className="fixed pointer-events-none z-50 transition-all duration-100 ease-out"
+      ref={cursorRef}
+      className="fixed pointer-events-none z-[10000] mix-blend-difference"
       style={{
-        left: position.x - 10,
-        top: position.y - 10,
-        transform: `scale(${isHovering ? 2 : 1})`,
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        transform: 'translate(-50%, -50%)',
+        willChange: 'transform',
+        transition: 'none',
       }}
     >
+      {/* Outer ring */}
       <div
-        className={`w-5 h-5 rounded-full transition-all duration-200 ${
-          isHovering
-            ? 'bg-blue-600 scale-150'
-            : isClicking
-            ? 'bg-blue-800 scale-75'
-            : 'bg-blue-500'
+        className={`absolute inset-0 rounded-full border-2 border-white transition-all duration-300 ease-out ${
+          isHovering ? 'scale-150 opacity-50' : 'scale-100 opacity-100'
         }`}
+        style={{
+          width: '24px',
+          height: '24px',
+          margin: '-12px 0 0 -12px',
+        }}
+      />
+      {/* Inner dot */}
+      <div
+        className={`absolute rounded-full bg-white transition-all duration-300 ease-out ${
+          isHovering ? 'scale-75' : 'scale-100'
+        }`}
+        style={{
+          width: '6px',
+          height: '6px',
+          left: '50%',
+          top: '50%',
+          margin: '-3px 0 0 -3px',
+        }}
       />
     </div>
   )
 }
 
 export default CustomCursor
-

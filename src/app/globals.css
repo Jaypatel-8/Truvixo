@@ -1,47 +1,450 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+/* Fonts are loaded via Next.js font optimization - removed external imports for better performance */
 
-/* Le Petite Cocho Font */
+/* Le Petite Cocho Font - Optimized for faster loading */
 @font-face {
   font-family: 'Le Petite Cocho';
-  src: url('/fonts/LePetiteCocho-Regular.woff2') format('woff2'),
-       url('/fonts/LePetiteCocho-Regular.woff') format('woff'),
+  src: url('/fonts/LePetiteCocho-Regular.otf') format('opentype'),
        url('/fonts/LePetiteCocho-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0020-007F, U+00A0-00FF;
 }
 
 @font-face {
   font-family: 'Le Petite Cocho';
-  src: url('/fonts/LePetiteCocho-Bold.woff2') format('woff2'),
-       url('/fonts/LePetiteCocho-Bold.woff') format('woff'),
+  src: url('/fonts/LePetiteCocho-Bold.otf') format('opentype'),
        url('/fonts/LePetiteCocho-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0020-007F, U+00A0-00FF;
+}
+
+/* Performance optimizations */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure headings are visible immediately - no delays */
+h1, h2, h3, h4, h5, h6 {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+/* Scroll animations - visible by default, animate on scroll */
+.scroll-animate,
+.scroll-animate-left,
+.scroll-animate-right,
+.scroll-animate-scale {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Only apply animation when class is added */
+.scroll-animate.animate {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.scroll-animate-left.animate {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.scroll-animate-right.animate {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.scroll-animate-scale.animate {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+/* Hollow Font Effect - Modern Monochromatic with Le Petite Cocho */
+.hollow-text {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 3px #000000;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+  position: relative;
+}
+
+.hollow-text-white {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 3px #ffffff;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.hollow-text-gray {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 2.5px #2a2a2a;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.hollow-text-white {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 3px #ffffff;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.hollow-text-purple {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 3px #8b5cf6;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.hollow-text-blue {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 3px #5e2cb6;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.hollow-text-brand {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 3px #000000;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.hollow-text-pink {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 3px #ec4899;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.hollow-text-yellow {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 3px #fbbf24;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.hollow-text-orange {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 3px #f97316;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.hollow-text-indigo {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 3px #6366f1;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+.hollow-text-teal {
+  font-family: 'Le Petite Cocho', sans-serif;
+  -webkit-text-stroke: 3px #14b8a6;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-block;
+}
+
+/* Alternative hollow text with background for better visibility */
+.hollow-text-alt {
+  -webkit-text-stroke: 4px #8b5cf6;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  padding: 0 4px;
+  position: relative;
+}
+
+.hollow-text-alt::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-text-stroke: 4px #8b5cf6;
+  -webkit-text-fill-color: transparent;
+  z-index: -1;
+  filter: blur(1px);
+  opacity: 0.5;
+}
+
+/* Scrollbar Hide */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Services Slider Styles */
+.services-swiper {
+  padding: 20px 0 60px 0;
+  overflow: visible !important;
+  margin: 0;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.services-swiper .swiper-slide {
+  display: flex;
+  height: 100%;
+}
+
+.services-swiper .swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.services-swiper .swiper-slide {
+  height: auto;
+  display: flex;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  align-items: stretch;
+}
+
+.services-swiper .swiper-slide > a {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.services-swiper .swiper-slide > a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.services-swiper .swiper-pagination-bullet {
+  background: #5e2cb6;
+  opacity: 0.3;
+  width: 12px;
+  height: 12px;
+  margin: 0 6px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.services-swiper .swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #5e2cb6;
+  transform: scale(1.25);
+  box-shadow: 0 4px 12px rgba(94, 44, 182, 0.4);
+}
+
+.services-swiper .swiper-pagination-bullet:hover {
+  opacity: 0.7;
+  transform: scale(1.1);
+}
+
+/* Custom Navigation Buttons for Services */
+.swiper-button-prev-services,
+.swiper-button-next-services {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: white !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  z-index: 10 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 2px solid rgba(94, 44, 182, 0.1) !important;
+}
+
+@media (min-width: 768px) {
+  .swiper-button-prev-services {
+    left: -24px !important;
+  }
+
+  .swiper-button-next-services {
+    right: -24px !important;
+  }
+}
+
+.swiper-button-prev-services:hover,
+.swiper-button-next-services:hover {
+  background: #f3f4f6 !important;
+  border-color: rgba(94, 44, 182, 0.3) !important;
+  transform: translateY(-50%) scale(1.1) !important;
+  box-shadow: 0 8px 30px rgba(94, 44, 182, 0.2) !important;
+}
+
+.swiper-button-prev-services:active,
+.swiper-button-next-services:active {
+  transform: translateY(-50%) scale(0.95) !important;
+}
+
+/* Custom Pagination for Services */
+.swiper-pagination-services {
+  position: relative !important;
+  bottom: 0 !important;
+  margin-top: 40px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.swiper-pagination-services .swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: #d1d5db !important;
+  opacity: 1 !important;
+  margin: 0 !important;
+  transition: all 0.3s ease !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+}
+
+.swiper-pagination-services .swiper-pagination-bullet-active {
+  background: #5e2cb6 !important;
+  transform: scale(1.25) !important;
+  box-shadow: 0 4px 12px rgba(94, 44, 182, 0.4) !important;
+}
+
+.swiper-pagination-services .swiper-pagination-bullet:hover {
+  background: #5e2cb6 !important;
+  transform: scale(1.1) !important;
+}
+
+@media (max-width: 1024px) {
+  .swiper-button-prev-services {
+    left: 10px !important;
+  }
+  
+  .swiper-button-next-services {
+    right: 10px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .swiper-button-prev-services,
+  .swiper-button-next-services {
+    display: none !important;
+  }
 }
 
 @tailwind base;
+
+/* Global Cursor Styles - Hide default cursor on desktop */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+/* Performance Optimizations for Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* GPU Acceleration for Smooth Animations */
+* {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
+/* Optimize transitions */
+*,
+*::before,
+*::after {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  /* Modern Monochromatic Color System */
+  --primary-black: #0a0a0a;
+  --primary-gray-900: #111111;
+  --primary-gray-800: #1a1a1a;
+  --primary-gray-700: #2a2a2a;
+  --primary-gray-600: #404040;
+  --primary-gray-500: #6b6b6b;
+  --primary-gray-400: #9a9a9a;
+  --primary-gray-300: #d4d4d4;
+  --primary-gray-200: #e8e8e8;
+  --primary-gray-100: #f5f5f5;
+  --primary-gray-50: #fafafa;
+  --primary-white: #ffffff;
+  
+  /* TruVixo Brand Colors from Logo */
   --truvixo-blue: #5e2cb6;
   --truvixo-purple: #c91a6f;
-  --truvixo-red: #d42628;
   --truvixo-yellow: #fecc4d;
+  --truvixo-red: #d42628;
   --truvixo-green: #10b981;
   --truvixo-orange: #f59e0b;
-  --truvixo-pink: #ec4899;
-  --truvixo-indigo: #6366f1;
-  --truvixo-teal: #14b8a6;
-  --truvixo-cyan: #06b6d4;
+  
+  /* Accent Colors */
+  --accent-primary: #5e2cb6;
+  --accent-secondary: #c91a6f;
+  --accent-highlight: #fecc4d;
+  --accent-hover: #4a1f8f;
+  --truvixo-red: #2a2a2a;
+  --truvixo-yellow: #404040;
+  --truvixo-green: #6b6b6b;
+  --truvixo-orange: #9a9a9a;
+  --truvixo-pink: #d4d4d4;
+  --truvixo-indigo: #e8e8e8;
+  --truvixo-teal: #f5f5f5;
+  --truvixo-cyan: #fafafa;
   
   /* Font Families */
-  --font-primary: 'Le Petite Cocho', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-display: 'Le Petite Cocho', 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-primary: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Playfair Display', 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
   
   /* Enhanced Color Palette */
@@ -230,6 +633,53 @@
   }
   75% {
     transform: translateY(5px);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 20s linear infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-draw-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawLine 3s ease-in-out infinite;
+}
+
+.animate-scroll-indicator {
+  animation: scrollIndicator 2s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes drawLine {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scrollIndicator {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(12px);
+    opacity: 0.5;
   }
 }
 
@@ -433,10 +883,101 @@
   will-change: transform;
 }
 
-/* Smooth Transitions */
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth Transitions - Optimized for performance */
 * {
   transition: all 0.3s ease;
 }
+
+/* Performance optimizations */
+.scroll-animate,
+.scroll-animate-left,
+.scroll-animate-right,
+.scroll-animate-scale,
+.scroll-animate-rotate {
+  will-change: transform, opacity;
+}
+
+.services-swiper-modern .swiper-slide {
+  will-change: transform;
+}
+
+/* Scroll Animations - Headings visible immediately */
+.scroll-animate {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Headings are always visible */
+.scroll-animate h1,
+.scroll-animate h2,
+.scroll-animate h3,
+.scroll-animate h4,
+.scroll-animate h5,
+.scroll-animate h6,
+.scroll-animate p {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+
+.scroll-animate.animate {
+  animation: fadeInUp 0.4s ease-out;
+}
+
+.scroll-animate-left {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.scroll-animate-left.animate {
+  animation: slideInLeft 0.4s ease-out;
+}
+
+.scroll-animate-right {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.scroll-animate-right.animate {
+  animation: slideInRight 0.4s ease-out;
+}
+
+.scroll-animate-scale {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.scroll-animate-scale.animate {
+  animation: scaleIn 0.4s ease-out;
+}
+
+.scroll-animate-rotate {
+  opacity: 0;
+  transform: rotate(-10deg) scale(0.9);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate-rotate.animate {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Staggered Animations */
+.scroll-stagger-1 { transition-delay: 0.1s; }
+.scroll-stagger-2 { transition-delay: 0.2s; }
+.scroll-stagger-3 { transition-delay: 0.3s; }
+.scroll-stagger-4 { transition-delay: 0.4s; }
+.scroll-stagger-5 { transition-delay: 0.5s; }
+.scroll-stagger-6 { transition-delay: 0.6s; }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
@@ -455,6 +996,131 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--truvixo-purple);
+}
+
+/* Modern Services Slider Styles */
+.services-swiper-modern {
+  padding: 20px 0 60px 0;
+  overflow: visible;
+}
+
+.services-swiper-modern .swiper-slide {
+  height: auto;
+  display: flex;
+  align-items: stretch;
+}
+
+.services-swiper-modern .swiper-slide-active {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+.services-swiper-modern .swiper-slide-next,
+.services-swiper-modern .swiper-slide-prev {
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+/* Custom Navigation Styles */
+.services-prev,
+.services-next {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.services-prev:hover,
+.services-next:hover {
+  background: white;
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.services-prev:active,
+.services-next:active {
+  transform: scale(0.95);
+}
+
+/* Custom Pagination Styles */
+.services-pagination {
+  position: relative;
+  margin-top: 32px;
+}
+
+.services-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: rgba(59, 130, 246, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin: 0 4px;
+}
+
+.services-pagination .swiper-pagination-bullet-active {
+  background: var(--truvixo-blue);
+  transform: scale(1.3);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.services-pagination .swiper-pagination-bullet:hover {
+  background: var(--truvixo-purple);
+  transform: scale(1.1);
+}
+
+/* Responsive Slider Adjustments */
+@media (max-width: 640px) {
+  .services-swiper-modern {
+    padding: 16px 0 48px 0;
+  }
+  
+  .services-prev,
+  .services-next {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .services-prev {
+    left: 8px;
+  }
+  
+  .services-next {
+    right: 8px;
+  }
+}
+
+/* Smooth Transitions for Slider */
+.services-swiper-modern .swiper-wrapper {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card Hover Effects */
+.services-swiper-modern .swiper-slide:hover .group {
+  transform: translateY(-4px);
+}
+
+/* Loading Animation */
+.services-swiper-modern .swiper-slide {
+  opacity: 0;
+  animation: slideInUp 0.6s ease-out forwards;
+}
+
+.services-swiper-modern .swiper-slide:nth-child(1) { animation-delay: 0.1s; }
+.services-swiper-modern .swiper-slide:nth-child(2) { animation-delay: 0.2s; }
+.services-swiper-modern .swiper-slide:nth-child(3) { animation-delay: 0.3s; }
+.services-swiper-modern .swiper-slide:nth-child(4) { animation-delay: 0.4s; }
+.services-swiper-modern .swiper-slide:nth-child(5) { animation-delay: 0.5s; }
+.services-swiper-modern .swiper-slide:nth-child(6) { animation-delay: 0.6s; }
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Loading Spinner */
@@ -975,6 +1641,24 @@
 }
 
 /* Dark Mode Support */
+.dark {
+  color-scheme: dark;
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .loading-skeleton {
+  background-color: #2a2a2a;
+}
+
+.dark .hollow-text-brand {
+  -webkit-text-stroke: 3px #ffffff;
+  color: transparent;
+}
+
 @media (prefers-color-scheme: dark) {
   .glass {
     background: rgba(0, 0, 0, 0.2);
@@ -1619,20 +2303,47 @@
   background-color: var(--truvixo-purple);
 }
 
-/* Responsive Typography */
-@media (max-width: 768px) {
-  .text-display-2xl { font-size: 3rem; }
-  .text-display-xl { font-size: 2.5rem; }
-  .text-display-lg { font-size: 2rem; }
-  .text-display-md { font-size: 1.75rem; }
-}
+/* Responsive Typography System */
+.text-responsive-xs { font-size: clamp(0.75rem, 2vw, 0.875rem); }
+.text-responsive-sm { font-size: clamp(0.875rem, 2.5vw, 1rem); }
+.text-responsive-base { font-size: clamp(1rem, 3vw, 1.125rem); }
+.text-responsive-lg { font-size: clamp(1.125rem, 3.5vw, 1.25rem); }
+.text-responsive-xl { font-size: clamp(1.25rem, 4vw, 1.5rem); }
+.text-responsive-2xl { font-size: clamp(1.5rem, 5vw, 1.875rem); }
+.text-responsive-3xl { font-size: clamp(1.875rem, 6vw, 2.25rem); }
+.text-responsive-4xl { font-size: clamp(2.25rem, 7vw, 3rem); }
+.text-responsive-5xl { font-size: clamp(3rem, 8vw, 3.75rem); }
+.text-responsive-6xl { font-size: clamp(3.75rem, 10vw, 4.5rem); }
+.text-responsive-7xl { font-size: clamp(4.5rem, 12vw, 6rem); }
+.text-responsive-8xl { font-size: clamp(6rem, 15vw, 8rem); }
+.text-responsive-9xl { font-size: clamp(8rem, 20vw, 10rem); }
 
-@media (max-width: 480px) {
-  .text-display-2xl { font-size: 2.5rem; }
-  .text-display-xl { font-size: 2rem; }
-  .text-display-lg { font-size: 1.75rem; }
-  .text-display-md { font-size: 1.5rem; }
-}
+/* Responsive Headings */
+.heading-hero { font-size: clamp(2.5rem, 8vw, 6rem); line-height: 1.1; font-weight: 900; }
+.heading-section { font-size: clamp(2rem, 6vw, 4rem); line-height: 1.2; font-weight: 800; }
+.heading-card { font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.3; font-weight: 700; }
+.heading-sub { font-size: clamp(1.25rem, 3vw, 1.75rem); line-height: 1.4; font-weight: 600; }
+
+/* Responsive Body Text */
+.body-large { font-size: clamp(1.125rem, 3vw, 1.375rem); line-height: 1.6; }
+.body-medium { font-size: clamp(1rem, 2.5vw, 1.125rem); line-height: 1.5; }
+.body-small { font-size: clamp(0.875rem, 2vw, 1rem); line-height: 1.4; }
+
+/* Responsive Spacing */
+.space-responsive-xs { margin: clamp(0.5rem, 2vw, 1rem); }
+.space-responsive-sm { margin: clamp(1rem, 3vw, 1.5rem); }
+.space-responsive-md { margin: clamp(1.5rem, 4vw, 2rem); }
+.space-responsive-lg { margin: clamp(2rem, 5vw, 3rem); }
+.space-responsive-xl { margin: clamp(3rem, 6vw, 4rem); }
+.space-responsive-2xl { margin: clamp(4rem, 8vw, 6rem); }
+
+/* Responsive Padding */
+.padding-responsive-xs { padding: clamp(0.5rem, 2vw, 1rem); }
+.padding-responsive-sm { padding: clamp(1rem, 3vw, 1.5rem); }
+.padding-responsive-md { padding: clamp(1.5rem, 4vw, 2rem); }
+.padding-responsive-lg { padding: clamp(2rem, 5vw, 3rem); }
+.padding-responsive-xl { padding: clamp(3rem, 6vw, 4rem); }
+.padding-responsive-2xl { padding: clamp(4rem, 8vw, 6rem); }
 
 /* Services Swiper Styles */
 .services-swiper {
@@ -1711,4 +2422,48 @@
 .swiper-pagination-custom .swiper-pagination-bullet:hover {
   background: var(--truvixo-blue) !important;
   transform: scale(1.1) !important;
+}
+
+/* Modern Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Enhanced Modal Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out;
 }

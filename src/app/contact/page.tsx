@@ -1,277 +1,324 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Send, 
-  CheckCircle, 
-  Calendar,
-  User,
-  Building,
-  MessageSquare,
-  ArrowRight,
-  Sparkles,
-  Zap,
-  Star,
-  ChevronLeft,
-  ChevronRight
-} from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { ArrowRight, CheckCircle, Star, Users, Target, Zap, BarChart3, Globe, Building2, Linkedin, Mail, MessageSquare, Palette, Sparkles, Rocket, TrendingUp, Award, MousePointer, ChevronLeft, ChevronRight, Phone, MapPin, Clock, Send, Calendar, Loader2, X } from 'lucide-react'
+import Link from 'next/link'
+import { sendContactEmail, type ContactFormData } from '@/lib/emailService'
 
-const ContactPage = () => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-  const [selectedTime, setSelectedTime] = useState<string>('')
-  const [currentMonth, setCurrentMonth] = useState(new Date())
+export default function Contact() {
+  const [activeSection, setActiveSection] = useState('contact')
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    phone: '',
     company: '',
-    service: '',
-    message: ''
+    message: '',
+    industry: '',
+    service: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
 
-  // Set page title and meta description
+  // Scroll animation hook
   useEffect(() => {
-    document.title = 'Contact TruVixo - Get in Touch'
-    const metaDescription = document.querySelector('meta[name="description"]')
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Ready to start your project? Contact TruVixo today for a free consultation and let\'s discuss how we can help transform your business.')
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate')
+          const sectionId = entry.target.getAttribute('data-section')
+          if (sectionId) {
+            setActiveSection(sectionId)
+          }
+        }
+      })
+    }, observerOptions)
+
+    // Observe all scroll animation elements
+    const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale, .scroll-animate-rotate')
+    scrollElements.forEach((el) => observer.observe(el))
+
+    return () => {
+      scrollElements.forEach((el) => observer.unobserve(el))
     }
   }, [])
 
-  const contactInfo = [
-    {
-      icon: <Mail className="w-8 h-8" />,
-      title: 'Email Us',
-      details: 'hello@truvixo.com',
-      description: 'Send us a message anytime',
-      color: 'truvixo-blue'
-    },
-    {
-      icon: <Phone className="w-8 h-8" />,
-      title: 'Call Us',
-      details: '+1 (555) 123-4567',
-      description: 'Mon-Fri from 9am to 6pm',
-      color: 'truvixo-purple'
-    },
-    {
-      icon: <MapPin className="w-8 h-8" />,
-      title: 'Visit Us',
-      details: 'San Francisco, CA',
-      description: 'Schedule an in-person meeting',
-      color: 'truvixo-red'
-    },
-    {
-      icon: <Clock className="w-8 h-8" />,
-      title: 'Response Time',
-      details: 'Within 24 hours',
-      description: 'We\'ll get back to you quickly',
-      color: 'truvixo-yellow'
-    }
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const industries = [
+    'FinTech',
+    'Healthcare',
+    'Retail & E-commerce',
+    'EdTech',
+    'Manufacturing',
+    'Real Estate',
+    'Logistics & Supply Chain',
+    'Construction',
+    'Other'
   ]
 
   const services = [
-    'Lead Generation',
-    'Brand Strategy',
-    'Creative Design',
-    'Digital Innovation',
-    'White Label Solutions'
+    'AI & Emerging Technologies',
+    'Software Development & Product Engineering',
+    'Cloud & DevOps',
+    'Testing & QA + IT Consulting',
+    'Digital Marketing & Growth Strategy',
+    'Product Design & UX',
+    'Data, Analytics & Business Intelligence',
+    'Cybersecurity & Infrastructure',
+    'Not Sure'
+  ]
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitMessage('')
+
+    const emailData: ContactFormData = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      company: formData.company,
+      message: formData.message,
+      industry: formData.industry,
+      service: formData.service,
+      subject: 'New Contact Form Submission from TruVixo Website'
+    }
+
+    const result = await sendContactEmail(emailData)
+    
+    setIsSubmitting(false)
+    setSubmitMessage(result.message)
+    
+    if (result.success) {
+      // Reset form on success
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        company: '',
+        message: '',
+        industry: '',
+        service: ''
+      })
+    }
+  }
+
+  const contactInfo = [
+    {
+      icon: <Phone className="w-6 h-6" />,
+      title: 'Phone',
+      details: '+91 63543 26412',
+      color: '#5e2cb6'
+    },
+    {
+      icon: <Mail className="w-6 h-6" />,
+      title: 'Email',
+      details: 'sales@truvixoo.com',
+      color: '#c91a6f'
+    },
+    {
+      icon: <MapPin className="w-6 h-6" />,
+      title: 'Address',
+      details: '123 Innovation Drive, Tech City, TC 12345',
+      color: '#fecc4d'
+    },
+    {
+      icon: <Clock className="w-6 h-6" />,
+      title: 'Hours',
+      details: 'Mon - Fri: 9:00 AM - 6:00 PM',
+      color: '#10b981'
+    }
   ]
 
   const timeSlots = [
-    '9:00 AM', '10:00 AM', '11:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'
+    '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM',
+    '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'
   ]
 
-  const generateCalendarDays = () => {
-    const year = currentMonth.getFullYear()
-    const month = currentMonth.getMonth()
-    const firstDay = new Date(year, month, 1)
-    const lastDay = new Date(year, month + 1, 0)
-    const startDate = new Date(firstDay)
-    startDate.setDate(startDate.getDate() - firstDay.getDay())
-    
-    const days = []
-    const today = new Date()
-    
-    for (let i = 0; i < 42; i++) {
-      const date = new Date(startDate)
-      date.setDate(startDate.getDate() + i)
-      
-      const isCurrentMonth = date.getMonth() === month
-      const isToday = date.toDateString() === today.toDateString()
-      const isPast = date < today
-      
-      days.push({
-        date,
-        isCurrentMonth,
-        isToday,
-        isPast
-      })
-    }
-    
-    return days
-  }
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', { ...formData, selectedDate, selectedTime })
-  }
-
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/40 relative overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-purple-400/20 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-gradient-to-br from-indigo-400/20 to-blue-400/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+    <main className="min-h-screen bg-white dark:bg-gray-900 overflow-hidden">
+
+      {/* Hero Section - Matching Homepage Style */}
+      <section className="relative min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden pt-20">
+        {/* Minimal Grid Background - Matching Homepage */}
+        <div className="absolute inset-0 overflow-hidden opacity-[0.03] dark:opacity-[0.05]">
+          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-contact" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-gray-900 dark:text-gray-100"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-contact)" />
+          </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
-          <div className="animate-fade-in">
-            <div className="inline-flex items-center gap-3 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-8 shadow-lg border border-white/50">
-              <Sparkles className="w-5 h-5 text-truvixo-blue animate-pulse" />
-              <span className="text-sm font-semibold text-gray-700">Let's Connect</span>
-            </div>
-                        <h1 className="text-display-2xl font-display text-gray-900 mb-6 leading-tight">
-              Ready to{' '}
-              <span className="animate-text-shimmer bg-gradient-to-r from-truvixo-blue via-truvixo-purple to-truvixo-red bg-clip-text text-transparent">
-                Transform?
+        {/* Subtle Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
+          <div className="scroll-animate">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 dark:text-white mb-6 leading-[0.9] tracking-tight">
+              <span className="block mb-2">
+                Let's{' '}
+                <span className="hollow-text-brand">
+                  Connect
+                </span>
+              </span>
+              <span className="block text-gray-700 dark:text-gray-300 font-light text-4xl md:text-5xl lg:text-6xl mt-4">
+                and Build Together
               </span>
             </h1>
-                        <p className="text-body-lg font-primary text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Schedule a meeting with our team and let's discuss how we can help bring your vision to life
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto font-light leading-relaxed mb-8 px-4">
+              We'd love to hear about your ideas, challenges, or upcoming projects. Get in touch and let's transform your vision into reality.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Contact Info Cards */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactInfo.map((info, index) => (
-              <div 
-                key={index} 
-                className="group card-modern p-6 animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className={`w-16 h-16 bg-gradient-to-br from-${info.color}/10 to-${info.color}/20 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
-                  <div className={`text-${info.color}`}>
-                    {info.icon}
-          </div>
-                </div>
-                <h3 className="text-display-md font-display text-gray-900 mb-2 group-hover:text-truvixo-blue transition-colors duration-300">{info.title}</h3>
-                <p className={`text-${info.color} font-primary font-semibold mb-2`}>{info.details}</p>
-                <p className="text-body-sm font-primary text-gray-600">{info.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Main Contact Section */}
-      <section className="py-24 bg-gradient-to-br from-gray-50/50 via-blue-50/30 to-indigo-50/40">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            
+      {/* Contact Form & Info Section */}
+      <section className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
       {/* Contact Form */}
-            <div className="animate-fade-in-up">
-              <div className="card-modern p-8">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 bg-gradient-to-br from-truvixo-blue to-truvixo-purple rounded-2xl flex items-center justify-center">
-                    <MessageSquare className="w-6 h-6 text-white" />
-                  </div>
-                  <h2 className="text-display-lg font-display text-gray-900">Send us a Message</h2>
+            <div className="scroll-animate-left">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+                Send us a{' '}
+                <span className="hollow-text-brand">
+                  Message
+                </span>
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                Fill out the form below and we'll get back to you within 24 hours.
+              </p>
+              
+              {submitMessage && (
+                <div className={`mb-6 p-4 border rounded-xl ${
+                  submitMessage.includes('Thank you') || submitMessage.includes('success')
+                    ? 'bg-green-50 border-green-200 text-green-800'
+                    : 'bg-red-50 border-red-200 text-red-800'
+                }`}>
+                  <p>{submitMessage}</p>
                 </div>
+              )}
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                      Name *
                     </label>
-                    <div className="relative">
-                      <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                     <input
                       type="text"
-                        id="name"
-                        name="name"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
                       required
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        className="w-full pl-12 pr-4 py-4 input-modern focus:ring-2 focus:ring-truvixo-blue focus:border-transparent transition-all duration-300"
-                        placeholder="Your full name"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                      placeholder="your@email.com"
                     />
                   </div>
                 </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                    <div className="relative">
-                      <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        className="w-full pl-12 pr-4 py-4 input-modern focus:ring-2 focus:ring-truvixo-blue focus:border-transparent transition-all duration-300"
-                    placeholder="your.email@example.com"
-                  />
-                    </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                      Phone *
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                      placeholder="+1 (555) 123-4567"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                      placeholder="Your company name"
+                    />
+                  </div>
                 </div>
 
-                <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                    Company
-                  </label>
-                    <div className="relative">
-                      <Building className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                        value={formData.company}
-                        onChange={handleInputChange}
-                        className="w-full pl-12 pr-4 py-4 input-modern focus:ring-2 focus:ring-truvixo-blue focus:border-transparent transition-all duration-300"
-                    placeholder="Your company name"
-                  />
-                    </div>
-                </div>
-
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
-                    Service Interest *
-                  </label>
-                  <select
-                    id="service"
-                    name="service"
-                    required
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="industry" className="block text-sm font-medium text-gray-700 mb-2">
+                      Industry *
+                    </label>
+                    <select
+                      id="industry"
+                      name="industry"
+                      value={formData.industry}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                    >
+                      <option value="">Select Industry</option>
+                      {industries.map((industry) => (
+                        <option key={industry} value={industry}>{industry}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                      Service Interested In *
+                    </label>
+                    <select
+                      id="service"
+                      name="service"
                       value={formData.service}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-4 input-modern focus:ring-2 focus:ring-truvixo-blue focus:border-transparent transition-all duration-300"
-                  >
-                    <option value="">Select a service</option>
-                    {services.map((service, index) => (
-                      <option key={index} value={service.toLowerCase().replace(' ', '-')}>
-                        {service}
-                      </option>
-                    ))}
-                  </select>
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                    >
+                      <option value="">Select Service</option>
+                      {services.map((service) => (
+                        <option key={service} value={service}>{service}</option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
 
                 <div>
@@ -281,146 +328,217 @@ const ContactPage = () => {
                   <textarea
                     id="message"
                     name="message"
-                      rows={4}
+                    value={formData.message}
+                    onChange={handleInputChange}
                     required
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-4 input-modern focus:ring-2 focus:ring-truvixo-blue focus:border-transparent transition-all duration-300 resize-none"
-                      placeholder="Tell us about your project and goals..."
+                    rows={6}
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300 resize-none"
+                    placeholder="Tell us about your project..."
                   />
                 </div>
 
-                <button
-                  type="submit"
-                    className="w-full btn-modern bg-gradient-to-r from-truvixo-blue to-truvixo-purple text-white font-display font-bold py-4 px-8 rounded-2xl hover:shadow-xl hover:from-truvixo-purple hover:to-truvixo-red transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 group"
-                >
-                    <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  Send Message
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="flex-1 bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] dark:hover:bg-[#7c3ae0] hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 className="w-5 h-5 animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        Send a Message
+                      </>
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsCalendarOpen(true)}
+                    className="flex-1 border-2 border-[#5e2cb6] dark:border-[#8b5cf6] text-[#5e2cb6] dark:text-[#8b5cf6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 dark:hover:bg-[#8b5cf6]/10 transition-all duration-300 flex items-center justify-center gap-2"
+                  >
+                    <Calendar className="w-5 h-5" />
+                    Schedule a Consultation
+                  </button>
+                </div>
               </form>
-              </div>
             </div>
 
-            {/* Calendar Section */}
-            <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-              <div className="card-modern p-8">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className="w-12 h-12 bg-gradient-to-br from-truvixo-purple to-truvixo-red rounded-2xl flex items-center justify-center">
-                    <Calendar className="w-6 h-6 text-white" />
-                  </div>
-                  <h2 className="text-display-lg font-display text-gray-900">Schedule a Meeting</h2>
-                </div>
+            {/* Contact Info & Calendar */}
+            <div className="scroll-animate-right">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+                Get in{' '}
+                <span className="hollow-text-brand">
+                  Touch
+                </span>
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+                We're here to help you succeed. Reach out to us through any of these channels.
+              </p>
 
-                {/* Calendar Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <button
-                    onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
-                    className="p-2 hover:bg-gray-100 rounded-xl transition-colors duration-300"
+              {/* Contact Info Cards */}
+              <div className="space-y-4 mb-8">
+                {contactInfo.map((info, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-1"
                   >
-                    <ChevronLeft className="w-5 h-5 text-gray-600" />
-                  </button>
-                  <h3 className="text-display-md font-display text-gray-900">
-                    {currentMonth.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
-                  </h3>
-                  <button
-                    onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
-                    className="p-2 hover:bg-gray-100 rounded-xl transition-colors duration-300"
-                  >
-                    <ChevronRight className="w-5 h-5 text-gray-600" />
-                  </button>
-                </div>
-
-                {/* Calendar Grid */}
-                <div className="grid grid-cols-7 gap-2 mb-6">
-                  {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-                    <div key={day} className="text-center text-sm font-semibold text-gray-500 py-2">
-                      {day}
-                    </div>
-                  ))}
-                  {generateCalendarDays().map((day, index) => (
-                    <button
-                      key={index}
-                      onClick={() => !day.isPast && setSelectedDate(day.date)}
-                      disabled={day.isPast}
-                      className={`
-                        p-2 text-sm rounded-xl transition-all duration-300
-                        ${!day.isCurrentMonth ? 'text-gray-300' : ''}
-                        ${day.isPast ? 'text-gray-300 cursor-not-allowed' : 'hover:bg-truvixo-blue/10 cursor-pointer'}
-                        ${day.isToday ? 'bg-truvixo-blue/20 text-truvixo-blue font-bold' : ''}
-                        ${selectedDate?.toDateString() === day.date.toDateString() ? 'bg-truvixo-blue text-white font-bold' : ''}
-                      `}
+                    <div 
+                      className="w-12 h-12 rounded-xl flex items-center justify-center"
+                      style={{ 
+                        backgroundColor: info.color + '10',
+                        color: info.color
+                      }}
                     >
-                      {day.date.getDate()}
-                    </button>
+                      {info.icon}
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 dark:text-white">{info.title}</h3>
+                      <p className="text-gray-600 dark:text-gray-400">{info.details}</p>
+                    </div>
+                  </div>
                   ))}
           </div>
 
-                {/* Time Slots */}
-                {selectedDate && (
-                <div className="space-y-4">
-                    <h4 className="text-display-md font-display text-gray-900">Available Times</h4>
-                    <div className="grid grid-cols-2 gap-3">
-                      {timeSlots.map((time) => (
+              {/* Book a Call Button */}
+              <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 text-center border border-gray-200 dark:border-gray-700">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                  Prefer to talk?
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-6">
+                  Schedule a free consultation call with our team.
+                </p>
                         <button
-                          key={time}
-                          onClick={() => setSelectedTime(time)}
-                          className={`
-                            p-3 text-sm font-medium rounded-xl transition-all duration-300
-                            ${selectedTime === time 
-                              ? 'bg-truvixo-blue text-white' 
-                              : 'bg-gray-100 text-gray-700 hover:bg-truvixo-blue/10 hover:text-truvixo-blue'
-                            }
-                          `}
-                        >
-                          {time}
-                        </button>
-                    ))}
-                  </div>
-                </div>
-                )}
-
-                {/* Schedule Button */}
-                {selectedDate && selectedTime && (
-                  <button className="w-full mt-6 btn-modern bg-gradient-to-r from-truvixo-purple to-truvixo-red text-white font-display font-bold py-4 px-8 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 group">
+                  onClick={() => setIsCalendarOpen(true)}
+                  className="bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] dark:hover:bg-[#7c3ae0] hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2 mx-auto shadow-lg"
+                >
                     <Calendar className="w-5 h-5" />
-                    Schedule Meeting
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  Book a Call
                   </button>
-                )}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Trust Indicators */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-display-lg font-display text-gray-900 mb-4">Why Choose TruVixo?</h2>
-            <p className="text-body-lg font-primary text-gray-600">Join 500+ satisfied clients who trust us with their projects</p>
+      {/* FAQ Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              Frequently Asked{' '}
+              <span className="hollow-text-brand">
+                Questions
+              </span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              Got questions? We've got answers. Here are some common questions we receive.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
-              { icon: <Zap className="w-8 h-8" />, title: 'Fast Response', desc: 'We respond within 24 hours' },
-              { icon: <Star className="w-8 h-8" />, title: '98% Satisfaction', desc: 'Client satisfaction rate' },
-              { icon: <CheckCircle className="w-8 h-8" />, title: 'Quality Guaranteed', desc: 'Premium results every time' }
-            ].map((item, index) => (
-              <div key={index} className="text-center animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
-                <div className="w-16 h-16 bg-gradient-to-br from-truvixo-blue/10 to-truvixo-purple/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                  <div className="text-truvixo-blue">{item.icon}</div>
-                </div>
-                <h3 className="text-display-md font-display text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-body-md font-primary text-gray-600">{item.desc}</p>
+              {
+                question: "How long does a typical project take?",
+                answer: "Project timelines vary depending on scope and complexity. Most projects range from 4-12 weeks, with larger transformations taking 3-6 months."
+              },
+              {
+                question: "Do you work with startups?",
+                answer: "Absolutely! We love working with startups and offer special packages designed for early-stage companies looking to scale quickly."
+              },
+              {
+                question: "What's your pricing structure?",
+                answer: "We offer flexible pricing based on project scope and requirements. Contact us for a customized quote that fits your budget."
+              },
+              {
+                question: "Do you provide ongoing support?",
+                answer: "Yes! We offer comprehensive support and maintenance packages to ensure your solutions continue to perform optimally."
+              },
+              {
+                question: "Can you work with our existing team?",
+                answer: "Of course! We work collaboratively with your internal teams and can integrate seamlessly into your existing workflows."
+              },
+              {
+                question: "What makes TruVixo different?",
+                answer: "We combine human creativity with AI intelligence, offering end-to-end solutions from branding to funding. We're not just service providers - we're your growth partners."
+              }
+            ].map((faq, index) => (
+              <div
+                key={index}
+                className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-1 scroll-animate-scale"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                  {faq.question}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {faq.answer}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* Calendar Modal */}
+      {isCalendarOpen && (
+        <div className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-white dark:bg-gray-900 rounded-2xl max-w-md w-full p-6 border border-gray-200 dark:border-gray-700">
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Book a Call</h3>
+              <button
+                onClick={() => setIsCalendarOpen(false)}
+                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Select Date
+              </label>
+              <input
+                type="date"
+                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent"
+                min={new Date().toISOString().split('T')[0]}
+              />
+            </div>
+            
+            <div className="mb-6">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Select Time
+              </label>
+              <div className="grid grid-cols-3 gap-2">
+                {timeSlots.map((time, index) => (
+                  <button
+                    key={index}
+                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-[#5e2cb6]/10 dark:hover:bg-[#8b5cf6]/20 hover:border-[#5e2cb6] dark:hover:border-[#8b5cf6] transition-colors duration-200"
+                  >
+                    {time}
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            <div className="flex gap-4">
+              <button
+                onClick={() => setIsCalendarOpen(false)}
+                className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+              >
+                Cancel
+              </button>
+              <button className="flex-1 bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white px-4 py-3 rounded-xl hover:bg-[#4a1f8f] dark:hover:bg-[#7c3ae0] hover:shadow-lg transition-all duration-300">
+                Confirm Booking
+              </button>
+            </div>
+          </div>
     </div>
+      )}
+
+    </main>
   )
 }
-
-export default ContactPage

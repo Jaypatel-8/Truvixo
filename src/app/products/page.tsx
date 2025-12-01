@@ -6,17 +6,19 @@ import Link from 'next/link'
 const ProductsPage = () => {
   const products = [
     {
-      id: 'lead-generation',
-      title: 'Lead Generation',
-      subtitle: 'Boost Your Sales Quota',
-      description: 'Get more leads by improving cold outreach conversions. Warm up before outreach, omnichannel campaigns, and smart automation.',
+      id: 'trumanage',
+      title: 'TruManage',
+      subtitle: 'Complete Project & Team Management',
+      description: 'Streamline your project management, team collaboration, and workflow automation with TruManage. Track progress, manage resources, and deliver projects on time with our comprehensive management platform.',
       features: [
-        'Warm up before outreach',
-        'Omnichannel campaigns', 
-        'Smart automation',
-        'Campaign priorities',
-        'Lead scoring & qualification',
-        'CRM integration'
+        'Project Planning & Scheduling',
+        'Team Collaboration Tools',
+        'Task Management & Tracking',
+        'Resource Allocation',
+        'Time Tracking & Reporting',
+        'Workflow Automation',
+        'Document Management',
+        'Real-time Dashboards'
       ],
       icon: <Target className="w-12 h-12" />,
       color: 'purple',
@@ -25,17 +27,19 @@ const ProductsPage = () => {
       reviews: 127
     },
     {
-      id: 'brand-strategy',
-      title: 'Brand Strategy',
-      subtitle: 'Find Your True North',
-      description: 'Decode your audience, sharpen your brand narrative, and design the strategic foundation for everything you build next.',
+      id: 'trudesk',
+      title: 'TruDesk',
+      subtitle: 'Customer Support & Helpdesk Solution',
+      description: 'Deliver exceptional customer support with TruDesk. Manage tickets, automate responses, and provide seamless customer service across multiple channels with our intelligent helpdesk platform.',
       features: [
-        'Brand Audit',
-        'Competitor Analysis',
-        'Audience Insights',
-        'Brand Narrative',
-        'Positioning Strategy',
-        'Brand Guidelines'
+        'Multi-channel Ticket Management',
+        'Automated Ticket Routing',
+        'Knowledge Base & FAQs',
+        'Live Chat Integration',
+        'Customer Satisfaction Surveys',
+        'Analytics & Reporting',
+        'Team Performance Metrics',
+        'Integration with CRM Systems'
       ],
       icon: <BarChart3 className="w-12 h-12" />,
       color: 'pink',
@@ -44,17 +48,19 @@ const ProductsPage = () => {
       reviews: 89
     },
     {
-      id: 'creative-design',
-      title: 'Creative Design',
-      subtitle: 'Visual Excellence',
-      description: 'Through smart strategy and fearless design, we line up your vision, voice, and visuals into one unstoppable force.',
+      id: 'truanalytics',
+      title: 'TruAnalytics',
+      subtitle: 'Business Intelligence & Data Analytics',
+      description: 'Transform your data into actionable insights with TruAnalytics. Build custom dashboards, generate reports, and make data-driven decisions with our powerful business intelligence platform.',
       features: [
-        'Identity Design',
-        'Design Systems',
-        'Brand Collaterals',
-        'Motion Identity',
-        'UI/UX Design',
-        'Print & Digital Assets'
+        'Custom Dashboard Creation',
+        'Real-time Data Visualization',
+        'Advanced Reporting & Analytics',
+        'Data Integration & ETL',
+        'Predictive Analytics',
+        'Automated Report Generation',
+        'Data Export & Sharing',
+        'Mobile Analytics Access'
       ],
       icon: <Palette className="w-12 h-12" />,
       color: 'yellow',
@@ -63,17 +69,19 @@ const ProductsPage = () => {
       reviews: 156
     },
     {
-      id: 'digital-innovation',
-      title: 'Digital Innovation',
-      subtitle: 'Transform Raw Emotion',
-      description: 'We transform raw emotion into lasting impact, creating brands that win markets, inspire teams, and charm investors.',
+      id: 'trusocial',
+      title: 'TruSocial',
+      subtitle: 'Social Media Management & Marketing',
+      description: 'Manage all your social media accounts, schedule posts, engage with audiences, and track performance with TruSocial. Streamline your social media marketing efforts in one unified platform.',
       features: [
-        'User Experience',
-        'Digital Design',
-        'Immersive Experiences',
-        'Front-end Development',
-        'Web Applications',
-        'Digital Products'
+        'Multi-platform Social Media Management',
+        'Content Scheduling & Publishing',
+        'Social Media Analytics',
+        'Audience Engagement Tools',
+        'Influencer Management',
+        'Content Calendar',
+        'Social Listening & Monitoring',
+        'ROI Tracking & Reporting'
       ],
       icon: <Globe className="w-12 h-12" />,
       color: 'magenta',
@@ -92,10 +100,11 @@ const ProductsPage = () => {
         <div className="container-expandi py-20">
           <div className="text-center max-w-4xl mx-auto animate-fade-in-up">
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-              Our <span className="text-truvixo-purple">Products</span>
+              Smart Tools That Power Modern{' '}
+              <span className="hollow-text-blue">Businesses</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-              Discover our comprehensive suite of solutions designed to transform your brand and drive exceptional results
+              Explore Truvixo's suite of innovative digital products designed to simplify operations and scale success.
             </p>
           </div>
         </div>
@@ -166,17 +175,19 @@ const ProductsPage = () => {
         <div className="container-expandi">
           <div className="text-center max-w-3xl mx-auto animate-fade-in-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Ready to get started?
+              Ready to <span className="hollow-text-blue">get started</span>?
             </h2>
             <p className="text-gray-600 mb-8">
               Let's discuss how our products can help you achieve your goals and create something extraordinary together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn-primary">
-                Get in Touch
+              <Link href="/contact" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-4 px-8 rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2">
+                Book a Demo
+                <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link href="/work" className="btn-secondary">
-                View Our Work
+              <Link href="/contact" className="border-2 border-purple-500 text-purple-600 font-bold py-4 px-8 rounded-xl hover:bg-purple-50 transition-all duration-300 inline-flex items-center justify-center gap-2">
+                Get Pricing
+                <ArrowRight className="w-5 h-5" />
               </Link>
             </div>
           </div>

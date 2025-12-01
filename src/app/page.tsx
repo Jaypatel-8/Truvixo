@@ -1,766 +1,880 @@
 'use client'
 
-import { useEffect, useRef, useState, useMemo, useCallback } from 'react'
-import { ArrowRight, Play, CheckCircle, Star, Users, Target, Zap, BarChart3, Globe, Building2, Linkedin, Mail, MessageSquare, Palette, Sparkles, Rocket, TrendingUp, Award, MousePointer, Zap as Lightning, ChevronLeft, ChevronRight } from 'lucide-react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Autoplay, EffectCoverflow, EffectCards, EffectCreative } from 'swiper/modules'
+import { useEffect, useState } from 'react'
+import { ArrowRight, Calendar, Code, Brain, Smartphone, Cloud, Database, Server, Target, Settings, Wrench, Megaphone, Palette, Award, Rocket, Shield, MessageSquare, Phone, Mail, ChevronRight, Users, TrendingUp, Zap, BarChart3, Building2, Heart, ShoppingCart, Truck, Home as HomeIcon, GraduationCap, CheckCircle, Clock, DollarSign, Briefcase, Lightbulb, FileCheck, Activity, Headphones } from 'lucide-react'
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
+const Technologies = dynamic(() => import('../components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px]"></div>,
+})
 
-// Import Swiper styles
+const FAQDropdown = dynamic(() => import('../components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px]"></div>,
+})
+
+const NewsletterCTA = dynamic(() => import('../components/NewsletterCTA'), {
+  ssr: false,
+  loading: () => null,
+})
+
+const ContactSection = dynamic(() => import('../components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px]"></div>,
+})
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import 'swiper/css/effect-coverflow'
-import 'swiper/css/effect-cards'
-import 'swiper/css/effect-creative'
+
+const ContactFormModal = dynamic(() => import('../components/ContactFormModal'), {
+  ssr: false,
+  loading: () => null,
+})
+
+const TestimonialCarousel = dynamic(() => import('../components/TestimonialCarousel'), {
+  ssr: false,
+  loading: () => null,
+})
+
+const ProcessDiagram = dynamic(
+  () => import('../components/ProcessDiagram'),
+  {
+    ssr: false,
+    loading: () => <div className="min-h-[400px]"></div>,
+  }
+)
+
+const Clientele = dynamic(() => import('../components/Clientele'), {
+  ssr: false,
+  loading: () => null,
+})
+
+const ServicesSwiper = dynamic(() => import('../components/ServicesSwiper'), {
+  ssr: false,
+  loading: () => (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {Array.from({ length: 11 }).map((_, index) => (
+        <div key={index} className="h-full bg-white rounded-lg p-8 border border-gray-200 animate-pulse">
+          <div className="w-16 h-16 bg-gray-200 rounded-lg mb-4"></div>
+          <div className="h-6 bg-gray-200 rounded mb-3"></div>
+          <div className="h-4 bg-gray-200 rounded"></div>
+        </div>
+      ))}
+    </div>
+  )
+})
 
 export default function Home() {
-  const services = useMemo(() => [
-    {
-      number: '01.',
-      title: 'Lead Generation',
-      subtitle: 'Boost Your Sales Quota',
-      description: 'Get more leads by improving cold outreach conversions. Warm up before outreach. Omnichannel campaigns. GIF & Image hyper-personalization. Campaign priorities.',
-      features: [
-        'Get more leads by improving cold outreach conversions',
-        'Work smarter, not harder, by automating routine tasks',
-        'Choose a simple solution for complex tasks'
-      ],
-      icon: <Target className="w-12 h-12" />,
-      color: 'truvixo-blue',
-      bgColor: 'bg-truvixo-blue',
-      textColor: 'text-truvixo-blue'
-    },
-    {
-      number: '02.',
-      title: 'Brand Strategy',
-      subtitle: 'Find Your True North',
-      description: 'Find your ideal brand positioning in several simple clicks. Build-in strategy tools. Smart filters of opportunities. Brand data clean-up.',
-      features: [
-        'Find your ideal brand positioning in several simple clicks',
-        'Reach your brand goals faster by increasing engagement rates',
-        'Improve your brand results based on truthful analytics'
-      ],
-      icon: <BarChart3 className="w-12 h-12" />,
-      color: 'truvixo-green',
-      bgColor: 'bg-truvixo-green',
-      textColor: 'text-truvixo-green'
-    },
-    {
-      number: '03.',
-      title: 'Creative Design',
-      subtitle: 'Visual Excellence',
-      description: 'Achieve creative excellence for your business ideas. Extended design capabilities. Data-driven insights. Different campaign types.',
-      features: [
-        'Find gold-mine creative opportunities with smart algorithms',
-        'Enhance your brand engagement rate by up to 35%',
-        'Improve your campaign results and manage your pipeline'
-      ],
-      icon: <Palette className="w-12 h-12" />,
-      color: 'truvixo-pink',
-      bgColor: 'bg-truvixo-pink',
-      textColor: 'text-truvixo-pink'
-    },
-    {
-      number: '04.',
-      title: 'Digital Innovation',
-      subtitle: 'Transform Raw Emotion',
-      description: 'Grow your digital presence with fewer efforts. Extended capabilities. Different campaign types. Hyper-personalization. Top-notch service.',
-      features: [
-        'Increase your digital ROI by generating more qualified leads',
-        'Get the most of team management',
-        'Keep your digital process organized with integrations'
-      ],
-      icon: <Globe className="w-12 h-12" />,
-      color: 'truvixo-orange',
-      bgColor: 'bg-truvixo-orange',
-      textColor: 'text-truvixo-orange'
-    },
-    {
-      number: '05.',
-      title: 'White Label',
-      subtitle: 'Do Digital Marketing Under Your Own Brand',
-      description: 'Build your brand reputation by delivering high-quality digital solutions. Seamless setup. Your own domain to win trust. Dedicated customer success manager.',
-      features: [
-        'Build your brand reputation by delivering high-quality solutions',
-        'Upsell your customers by offering different pricing plans',
-        'Increase your agency\'s ROI by generating more qualified leads'
-      ],
-      icon: <Building2 className="w-12 h-12" />,
-      color: 'truvixo-indigo',
-      bgColor: 'bg-truvixo-indigo',
-      textColor: 'text-truvixo-indigo'
-    },
-    {
-      number: '06.',
-      title: 'Analytics & Insights',
-      subtitle: 'Data-Driven Decisions',
-      description: 'Make informed decisions with comprehensive analytics and insights. Track performance and optimize your strategies for maximum impact.',
-      features: [
-        'Make informed decisions with comprehensive analytics',
-        'Track performance and optimize strategies',
-        'Gain valuable insights from data'
-      ],
-      icon: <TrendingUp className="w-12 h-12" />,
-      color: 'truvixo-teal',
-      bgColor: 'bg-truvixo-teal',
-      textColor: 'text-truvixo-teal'
-    }
-  ], [])
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
-  const features = [
-    {
-      title: 'Digital Marketing',
-      description: 'Bypass digital limits. Send up to 300+ campaigns per week in a safe way with TruVixo\'s growth hacking features.',
-      icon: <Linkedin className="w-8 h-8" />,
-      color: 'truvixo-blue',
-      stat: '300+',
-      gradient: 'solid-bg'
+  useEffect(() => {
+    // Immediate IntersectionObserver initialization for faster rendering
+    const observerOptions = {
+      threshold: 0.01,
+      rootMargin: '50px 0px'
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate')
+          // Unobserve after animation to improve performance
+          observer.unobserve(entry.target)
+        }
+      })
+    }, observerOptions)
+
+    // Use requestIdleCallback for non-critical animations
+    const initObserver = () => {
+      const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
+      scrollElements.forEach((el) => observer.observe(el))
+    }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initObserver, { timeout: 100 })
+    } else {
+      setTimeout(initObserver, 0)
+    }
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
+
+  // Technologies data with categories and colored logos
+  const technologies = [
+    // Frontend
+    { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'frontend' as const },
+    { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', color: '#000000', category: 'frontend' as const },
+    { name: 'Vue.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg', color: '#4FC08D', category: 'frontend' as const },
+    { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6', category: 'frontend' as const },
+    { name: 'Tailwind CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg', color: '#06B6D4', category: 'frontend' as const },
+    
+    // Backend
+    { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
+    { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
+    { name: 'Django', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg', color: '#092E20', category: 'backend' as const },
+    { name: 'FastAPI', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg', color: '#009688', category: 'backend' as const },
+    { name: 'NestJS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg', color: '#E0234E', category: 'backend' as const },
+    
+    // Cloud
+    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'cloud' as const },
+    { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', color: '#326CE5', category: 'cloud' as const },
+    { name: 'Azure', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg', color: '#0078D4', category: 'cloud' as const },
+    
+    // Mobile
+    { name: 'Flutter', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg', color: '#02569B', category: 'mobile' as const },
+    { name: 'React Native', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'mobile' as const },
+    
+    // Database
+    { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248', category: 'database' as const },
+    { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
+    { name: 'MySQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg', color: '#4479A1', category: 'database' as const },
+    
+    // DevOps
+    { name: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', color: '#F05032', category: 'devops' as const },
+    { name: 'Jenkins', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg', color: '#D24939', category: 'devops' as const },
+    { name: 'Terraform', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg', color: '#7B42BC', category: 'devops' as const }
+  ]
+
+  const servicesList = [
+    { 
+      name: 'Custom Software Development', 
+      description: 'Tailored software solutions built to scale with your business needs and drive digital transformation',
+      icon: <Code className="w-8 h-8" strokeWidth={2} />,
+      color: '#5e2cb6'
     },
     {
-      title: 'Email Marketing',
-      description: 'Enhance your follow-up strategy. Get triple the open rates with multi-channel prospecting combined.',
-      icon: <Mail className="w-8 h-8" />,
-      color: 'truvixo-purple',
-      stat: '3x',
-      gradient: 'solid-bg-2'
+      name: 'AI & Machine Learning', 
+      description: 'Intelligent systems that learn, adapt, and deliver measurable results through advanced algorithms',
+      icon: <Brain className="w-8 h-8" strokeWidth={2} />,
+      color: '#c91a6f'
+    },
+    { 
+      name: 'Web & Mobile Development', 
+      description: 'Modern applications that deliver exceptional user experiences across all devices and platforms',
+      icon: <Smartphone className="w-8 h-8" strokeWidth={2} />,
+      color: '#fecc4d'
+    },
+    { 
+      name: 'Cloud & DevOps', 
+      description: 'Scalable infrastructure and seamless deployment pipelines that accelerate your time to market',
+      icon: <Cloud className="w-8 h-8" strokeWidth={2} />,
+      color: '#10b981'
     },
     {
-      title: 'Smart Sequences',
-      description: 'Increase engagement rates. Engage your cold audience before outreach with actions that make prospects more likely to respond.',
-      icon: <MessageSquare className="w-8 h-8" />,
-      color: 'truvixo-red',
-      stat: '85%',
-      gradient: 'solid-bg-3'
+      name: 'Digital Marketing', 
+      description: 'Data-driven strategies that amplify your brand and drive growth through targeted campaigns',
+      icon: <Megaphone className="w-8 h-8" strokeWidth={2} />,
+      color: '#5e2cb6'
+    },
+    { 
+      name: 'UI/UX Design', 
+      description: 'Intuitive interfaces that engage users and drive conversions through exceptional design',
+      icon: <Palette className="w-8 h-8" strokeWidth={2} />,
+      color: '#c91a6f'
+    },
+    { 
+      name: 'Data Engineering', 
+      description: 'Transform raw data into actionable insights and intelligence that power business decisions',
+      icon: <Database className="w-8 h-8" strokeWidth={2} />,
+      color: '#fecc4d'
+    },
+    {
+      name: 'Enterprise Solutions', 
+      description: 'Robust systems designed for scale, security, and performance to support enterprise growth',
+      icon: <Server className="w-8 h-8" strokeWidth={2} />,
+      color: '#10b981'
+    },
+    { 
+      name: 'Consulting & Strategy', 
+      description: 'Strategic guidance to optimize your technology investments and accelerate digital transformation',
+      icon: <Target className="w-8 h-8" strokeWidth={2} />,
+      color: '#5e2cb6'
+    },
+    { 
+      name: 'Maintenance & Support', 
+      description: 'Ongoing optimization and support to keep your systems running smoothly and efficiently',
+      icon: <Settings className="w-8 h-8" strokeWidth={2} />,
+      color: '#c91a6f'
+    },
+    {
+      name: 'Legacy Modernization', 
+      description: 'Transform outdated systems into modern, efficient solutions that drive innovation',
+      icon: <Wrench className="w-8 h-8" strokeWidth={2} />,
+      color: '#fecc4d'
     }
   ]
 
-  const capabilities = [
-    { name: 'Detailed metrics and reporting', icon: <BarChart3 className="w-6 h-6" />, color: 'truvixo-blue' },
-    { name: 'Role and permission management', icon: <Users className="w-6 h-6" />, color: 'truvixo-purple' },
-    { name: 'Multiple accounts management', icon: <Building2 className="w-6 h-6" />, color: 'truvixo-red' },
-    { name: 'White labeling', icon: <Award className="w-6 h-6" />, color: 'truvixo-yellow' },
-    { name: 'Unlimited number of campaigns', icon: <Target className="w-6 h-6" />, color: 'truvixo-blue' },
-    { name: 'Campaign A/B testing', icon: <Zap className="w-6 h-6" />, color: 'truvixo-purple' },
-    { name: 'Webhook integrations', icon: <Globe className="w-6 h-6" />, color: 'truvixo-red' },
-    { name: 'Customer success team', icon: <MessageSquare className="w-6 h-6" />, color: 'truvixo-yellow' },
-    { name: 'Specialized customer support team', icon: <Users className="w-6 h-6" />, color: 'truvixo-blue' },
-    { name: 'Export Campaign Data Options', icon: <BarChart3 className="w-6 h-6" />, color: 'truvixo-purple' },
-    { name: 'Campaign Priority Management', icon: <Target className="w-6 h-6" />, color: 'truvixo-red' },
-    { name: 'Built-in Scraping Features', icon: <Zap className="w-6 h-6" />, color: 'truvixo-yellow' },
-    { name: 'Variety of Campaigns', icon: <Globe className="w-6 h-6" />, color: 'truvixo-blue' },
-    { name: 'Smart Campaign Builder', icon: <Palette className="w-6 h-6" />, color: 'truvixo-purple' },
-    { name: 'Duplication Security', icon: <Award className="w-6 h-6" />, color: 'truvixo-red' }
+  const featuredProjects = [
+    { 
+      title: 'Enterprise Platform', 
+      category: 'Software Development',
+      description: 'Scalable cloud infrastructure for enterprise operations',
+      href: '/our-work' 
+    },
+    { 
+      title: 'AI Analytics System', 
+      category: 'AI & Machine Learning',
+      description: 'Intelligent data processing and predictive analytics',
+      href: '/our-work' 
+    },
+    { 
+      title: 'Mobile Application', 
+      category: 'Mobile Development',
+      description: 'Cross-platform mobile solution with native performance',
+      href: '/our-work' 
+    },
+    { 
+      title: 'Digital Transformation', 
+      category: 'Consulting',
+      description: 'End-to-end modernization of legacy systems',
+      href: '/our-work' 
+    }
   ]
 
-  const stats = [
-    { number: '500+', label: 'Projects Completed', icon: <Award className="w-6 h-6" /> },
-    { number: '98%', label: 'Client Satisfaction', icon: <Star className="w-6 h-6" /> },
-    { number: '50+', label: 'Team Members', icon: <Users className="w-6 h-6" /> },
-    { number: '7+', label: 'Years Experience', icon: <TrendingUp className="w-6 h-6" /> }
+  const whyChooseUs = [
+    { title: 'Proven Expertise', icon: <Award className="w-6 h-6" strokeWidth={2} /> },
+    { title: 'Scalable Solutions', icon: <Rocket className="w-6 h-6" strokeWidth={2} /> },
+    { title: 'Risk-Free Trial', icon: <Shield className="w-6 h-6" strokeWidth={2} /> },
+    { title: 'Enterprise Security', icon: <Shield className="w-6 h-6" strokeWidth={2} /> },
+    { title: 'Transparent Communication', icon: <MessageSquare className="w-6 h-6" strokeWidth={2} /> }
   ]
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart Inc.",
-      content: "TruVixo transformed our digital presence completely. Our lead generation increased by 300% in just 3 months!",
-      rating: 5,
-      avatar: "SJ",
-      color: "truvixo-blue"
+      quote: 'They delivered our MVP in 8 weeks — excellent engineering and communication. The team was responsive, professional, and delivered exactly what we needed.', 
+      author: 'Sarah Johnson', 
+      role: 'Product Lead',
+      company: 'SaaS Startup',
+      rating: 5
     },
-    {
-      name: "Michael Chen",
-      role: "Marketing Director, GrowthCo",
-      content: "The creative design team at TruVixo is phenomenal. They understood our vision and brought it to life perfectly.",
-      rating: 5,
-      avatar: "MC",
-      color: "truvixo-purple"
+    { 
+      quote: 'Our internal search accuracy improved dramatically after their AI implementation. The system they built has transformed how we handle customer queries.', 
+      author: 'Michael Chen', 
+      role: 'CTO',
+      company: 'Healthcare Company',
+      rating: 5
     },
-    {
-      name: "Emily Rodriguez",
-      role: "Founder, InnovateLab",
-      content: "Working with TruVixo was a game-changer. Their white-label solutions helped us scale our business rapidly.",
-      rating: 5,
-      avatar: "ER",
-      color: "truvixo-red"
+    { 
+      quote: 'TruVixo helped us scale from 0 to 100K users in 6 months. Their expertise in cloud infrastructure and DevOps was invaluable.', 
+      author: 'David Rodriguez', 
+      role: 'Founder & CEO',
+      company: 'FinTech Startup',
+      rating: 5
     },
-    {
-      name: "David Thompson",
-      role: "VP Sales, Enterprise Solutions",
-      content: "The brand strategy work TruVixo did for us was exceptional. Our market positioning improved dramatically.",
-      rating: 5,
-      avatar: "DT",
-      color: "truvixo-yellow"
+    { 
+      quote: 'The mobile app they developed exceeded our expectations. Clean code, on-time delivery, and great support throughout the project.', 
+      author: 'Emily Watson', 
+      role: 'Product Manager',
+      company: 'E-commerce Platform',
+      rating: 5
     },
-    {
-      name: "Lisa Wang",
-      role: "CMO, Digital Dynamics",
-      content: "TruVixo's digital innovation approach is cutting-edge. They delivered results beyond our expectations.",
-      rating: 5,
-      avatar: "LW",
-      color: "truvixo-blue"
+    { 
+      quote: 'Working with TruVixo was seamless. They understood our vision and delivered a product that perfectly matched our requirements.', 
+      author: 'James Anderson', 
+      role: 'Co-Founder',
+      company: 'EdTech Company',
+      rating: 5
     },
-    {
-      name: "James Wilson",
-      role: "CEO, FutureTech",
-      content: "The team's expertise in lead generation is unmatched. We saw immediate ROI from their campaigns.",
-      rating: 5,
-      avatar: "JW",
-      color: "truvixo-purple"
-    },
-    {
-      name: "Anna Martinez",
-      role: "Head of Marketing, ScaleUp",
-      content: "TruVixo's creative design capabilities are outstanding. They made our brand stand out in a crowded market.",
-      rating: 5,
-      avatar: "AM",
-      color: "truvixo-red"
-    },
-    {
-      name: "Robert Kim",
-      role: "Founder, NextGen Solutions",
-      content: "The white-label services allowed us to offer premium solutions under our own brand. Highly recommended!",
-      rating: 5,
-      avatar: "RK",
-      color: "truvixo-yellow"
+    { 
+      quote: 'Their AI development team is top-notch. They built a custom ML model that increased our conversion rates by 40%.', 
+      author: 'Lisa Thompson', 
+      role: 'Head of Marketing',
+      company: 'Retail Company',
+      rating: 5
     }
   ]
 
+  const faqs = [
+    { question: 'How quickly can you start?', answer: 'We can onboard a developer within 1–2 weeks; full teams vary by scope.' },
+    { question: 'Do you sign NDAs?', answer: 'Yes — we sign NDAs and follow strict security practices.' },
+    { question: 'Do you offer a trial?', answer: 'Yes — 1-week risk-free trial for development engagements.' },
+    { question: 'What industries do you serve?', answer: 'Fintech, Healthcare, Retail, Logistics, Education, and more.' },
+    { question: 'Can you integrate third-party APIs?', answer: 'Yes — payments, mapping, CRM, analytics, and more.' }
+  ]
+
   return (
-    <main className="min-h-screen bg-white overflow-hidden">
-      {/* Enhanced Hero Section with Advanced Animations */}
-      <section className="relative min-h-screen bg-blue-50/50 flex items-center justify-center overflow-hidden py-20">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-20 h-20 bg-truvixo-blue/20 rounded-full animate-float"></div>
-          <div className="absolute top-40 right-20 w-16 h-16 bg-truvixo-purple/20 rounded-full animate-float-delay-1"></div>
-          <div className="absolute bottom-40 left-20 w-24 h-24 bg-truvixo-red/20 rounded-full animate-float-delay-2"></div>
-          <div className="absolute bottom-20 right-10 w-12 h-12 bg-truvixo-yellow/20 rounded-full animate-float-delay-3"></div>
-          
-          {/* Floating Icons */}
-          <div className="absolute top-1/4 left-1/4 animate-rotate-slow">
-            <MousePointer className="w-8 h-8 text-truvixo-blue/30" />
-          </div>
-          <div className="absolute top-1/3 right-1/4 animate-rotate-slow" style={{ animationDirection: 'reverse' }}>
-            <Lightning className="w-6 h-6 text-truvixo-purple/30" />
-          </div>
-          <div className="absolute bottom-1/3 left-1/3 animate-rotate-slow">
-            <Zap className="w-7 h-7 text-truvixo-red/30" />
-          </div>
+    <main className="min-h-screen bg-white dark:bg-gray-900 overflow-hidden">
+      {/* 1. Hero Section - Sleek & Modern */}
+      <section className="relative min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden pt-20">
+        {/* Minimal Grid Background */}
+        <div className="absolute inset-0 overflow-hidden opacity-[0.03] dark:opacity-[0.05]">
+          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-gray-900 dark:text-gray-100"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+          </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 text-center relative z-10">
-          <div className="animate-fade-in">
-            {/* Main Heading with Enhanced Typography */}
-            <div className="mb-8">
-                          <h1 className="text-display-2xl font-display text-gray-900 mb-6 leading-tight">
-                Experience the{' '}
-              <span className="animate-text-shimmer text-truvixo-blue">3X</span>{' '}
-                meeting multiplier
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
+          <div className="scroll-animate">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 dark:text-white mb-6 leading-[0.9] tracking-tight">
+              <span className="block mb-2">
+                Building the{' '}
+                <span className="hollow-text-brand">
+                  Future
+                </span>
+              </span>
+              <span className="block text-gray-700 dark:text-gray-300 font-light text-4xl md:text-5xl lg:text-6xl mt-4">
+                with Intelligent Technology
+              </span>
               </h1>
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <span className="text-display-lg font-display text-truvixo-blue">with</span>
-                <div className="relative">
-                  <span className="text-display-xl font-display text-truvixo-blue animate-bounce-in">
-                    TruVixo
-                  </span>
-                  <Sparkles className="absolute -top-2 -right-2 w-6 h-6 text-truvixo-yellow animate-pulse" />
-                </div>
-              </div>
-            </div>
 
-            {/* Enhanced Subtitle */}
-            <p className="text-body-lg font-primary text-gray-600 mb-12 max-w-5xl mx-auto leading-relaxed">
-              More outreach channels — more chances to succeed in sales.{' '}
-              <span className="text-truvixo-purple font-semibold">Transform your business today.</span>
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto font-light leading-relaxed mb-8 px-4">
+              We design, build, and scale custom software, AI solutions, and digital platforms that transform businesses from concept to market leader.
             </p>
 
-            {/* Enhanced CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-              <button className="group btn-modern bg-truvixo-blue text-white font-display font-bold py-5 px-10 rounded-2xl hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1">
-                <span className="flex items-center gap-3">
-                  <Rocket className="w-6 h-6 group-hover:animate-bounce" />
-                  Generate Leads
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
-                </span>
+            {/* CTA Buttons - With Logo Colors */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 mb-12">
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white font-semibold py-4 px-10 rounded-lg hover:bg-[#4a1f8f] dark:hover:bg-[#7c3ae0] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg shadow-[#5e2cb6]/20"
+              >
+                <Calendar className="w-5 h-5" strokeWidth={2} />
+                <span>Book a Call</span>
               </button>
-              <button className="group btn-modern glass text-truvixo-blue font-display font-bold py-5 px-10 rounded-2xl hover:shadow-2xl transition-all duration-500 border-2 border-truvixo-blue hover:bg-truvixo-blue hover:text-white">
-                <span className="flex items-center gap-3">
-                  <Play className="w-5 h-5" />
-                  Try a demo now
-                </span>
+              <button 
+                onClick={(e) => {
+                  e.preventDefault()
+                  const servicesSection = document.getElementById('services-section')
+                  if (servicesSection) {
+                    servicesSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                  }
+                }}
+                className="bg-white dark:bg-gray-800 text-[#10b981] dark:text-[#10b981] border-2 border-[#10b981] dark:border-[#10b981] font-semibold py-4 px-10 rounded-lg hover:bg-[#10b981]/5 dark:hover:bg-[#10b981]/10 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg"
+              >
+                <span>Explore Services</span>
+                <ArrowRight className="w-5 h-5" strokeWidth={2} />
               </button>
             </div>
 
-            {/* Enhanced Stats Section */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              {stats.map((stat, index) => (
-                <div 
-                  key={index} 
-                  className="text-center animate-fade-in-up group"
-                  style={{ animationDelay: `${index * 0.1}s` }}
-                >
-                  <div className="w-16 h-16 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                    <div className="text-truvixo-blue group-hover:animate-pulse">
-                      {stat.icon}
-                    </div>
-                  </div>
-                  <div className="text-3xl lg:text-4xl font-black text-truvixo-blue mb-2 group-hover:scale-110 transition-transform duration-300">
-                    {stat.number}
-                  </div>
-                  <div className="text-gray-600 font-medium text-sm">{stat.label}</div>
+            {/* Stats Section - With Logo Colors */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              {[
+                { value: '20+', label: 'Projects', color: '#5e2cb6' },
+                { value: '7+', label: 'Clients', color: '#c91a6f' },
+                { value: '98%', label: 'Satisfaction', color: '#fecc4d' },
+                { value: '24/7', label: 'Support', color: '#10b981' }
+              ].map((stat, index) => (
+                <div key={index} className="text-center bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-600">
+                  <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: stat.color }}>{stat.value}</div>
+                  <div className="text-gray-600 dark:text-gray-400 font-medium text-sm">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="w-6 h-10 border-2 border-truvixo-blue rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-truvixo-blue rounded-full mt-2 animate-pulse"></div>
-          </div>
-        </div>
       </section>
 
-      {/* Modern Grid Services Section */}
-      <section className="py-24 bg-slate-50 relative overflow-hidden">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-400/20 rounded-full animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-24 h-24 bg-purple-400/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 bg-indigo-400/20 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-        </div>
+      {/* 2. Our Client Section - Right after hero */}
+      <Clientele />
 
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-20">
-            <div className="inline-flex items-center gap-3 glass rounded-full px-6 py-3 mb-8 shadow-lg">
-              <Sparkles className="w-5 h-5 text-truvixo-blue animate-pulse" />
-              <span className="text-sm font-primary font-semibold text-gray-700">Our Premium Services</span>
-            </div>
-            <h2 className="text-display-xl font-display text-gray-900 mb-6 leading-tight">
-              Transform Your Business with{' '}
-              <span className="animate-text-shimmer text-truvixo-blue">
-                Expert Solutions
+      {/* 3. Our Services */}
+      <section id="services-section" className="py-16 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              Our{' '}
+              <span className="hollow-text-brand">
+                Services
               </span>
             </h2>
-            <p className="text-body-lg font-primary text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              We deliver cutting-edge digital solutions that drive growth, enhance brand presence, and maximize your ROI
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-2">
+              Comprehensive solutions to transform your business
             </p>
-          </div>
+            <p className="text-base text-gray-500 dark:text-gray-500 max-w-2xl mx-auto">
+              From custom software development to AI solutions, digital marketing, and cloud infrastructure - we deliver end-to-end technology services that drive innovation, efficiency, and growth for businesses across industries.
+            </p>
+        </div>
 
-          {/* Attractive Swiper Services Section */}
           <div className="relative">
-            <Swiper
-              modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
-              effect="coverflow"
-              grabCursor={true}
-              centeredSlides={true}
-              slidesPerView="auto"
-              coverflowEffect={{
-                rotate: 0,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true,
-              }}
-              autoplay={{
-                delay: 4000,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true,
-              }}
-              navigation={{
-                nextEl: '.swiper-button-next-custom',
-                prevEl: '.swiper-button-prev-custom',
-              }}
-              pagination={{
-                el: '.swiper-pagination-custom',
-                clickable: true,
-                dynamicBullets: true,
-              }}
-              breakpoints={{
-                320: {
-                  slidesPerView: 1,
-                  spaceBetween: 20,
-                },
-                768: {
-                  slidesPerView: 2,
-                  spaceBetween: 30,
-                },
-                1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 40,
-                },
-              }}
-              className="services-swiper"
-            >
-              {services.map((service, index) => (
-                <SwiperSlide key={index} className="swiper-slide-custom">
-                  <div className="group relative h-full">
-                    {/* Enhanced Card Container */}
-                    <div className="relative bg-white rounded-3xl p-8 h-full overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-gray-100">
-                      {/* Dynamic Background Pattern */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <div className={`absolute top-0 right-0 w-32 h-32 ${service.bgColor}/5 rounded-full -translate-y-16 translate-x-16`}></div>
-                        <div className={`absolute bottom-0 left-0 w-24 h-24 ${service.bgColor}/5 rounded-full translate-y-12 -translate-x-12`}></div>
-                      </div>
-                      
-                      {/* Enhanced Service Number Badge */}
-                      <div className={`absolute top-6 right-6 w-14 h-14 ${service.bgColor} rounded-2xl flex items-center justify-center text-white font-black text-xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg`}>
-                        {service.number.replace('.', '')}
-                      </div>
-
-                      {/* Enhanced Icon Container */}
-                      <div className="relative mb-8">
-                        <div className={`w-24 h-24 ${service.bgColor}/10 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg border ${service.bgColor}/20`}>
-                          <div className={`${service.textColor} group-hover:scale-125 transition-all duration-300 scale-125`}>
-                            {service.icon}
-                          </div>
-                        </div>
-                        {/* Decorative Elements */}
-                        <div className="absolute -top-2 -left-2 w-6 h-6 bg-truvixo-yellow rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-bounce transition-all duration-500"></div>
-                        <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-truvixo-red rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-all duration-500" style={{ animationDelay: '0.3s' }}></div>
-                    </div>
-                    
-                      {/* Enhanced Content */}
-                      <div className="relative z-10">
-                        <h3 className={`text-display-md font-display text-gray-900 mb-3 group-hover:${service.textColor} transition-colors duration-300`}>
-                          {service.title}
-                        </h3>
-                        <h4 className={`text-body-lg ${service.textColor} font-primary font-semibold mb-4`}>
-                          {service.subtitle}
-                        </h4>
-                        <p className="text-body-sm font-primary text-gray-600 leading-relaxed mb-6">
-                          {service.description}
-                        </p>
-
-                        {/* Enhanced Features List */}
-                        <div className="space-y-4 mb-8">
-                          {service.features.slice(0, 2).map((feature, idx) => (
-                            <div key={idx} className="flex items-start gap-3 group-hover:translate-x-2 transition-transform duration-300">
-                              <div className={`w-3 h-3 ${service.bgColor} rounded-full flex-shrink-0 mt-1 shadow-sm`}></div>
-                              <span className="text-gray-700 text-sm leading-relaxed font-medium">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                      
-                        {/* Enhanced CTA Button */}
-                        <button className={`w-full ${service.bgColor} text-white font-display font-bold py-4 px-6 rounded-2xl hover:shadow-xl transition-all duration-300 transform hover:scale-105 group-hover:-translate-y-1 relative overflow-hidden shadow-lg`}>
-                          <span className="relative z-10 flex items-center justify-center gap-2">
-                          Get Started
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                        </span>
-                      </button>
-                      </div>
-
-                      {/* Enhanced Hover Effect Border */}
-                      <div className={`absolute inset-0 rounded-3xl border-2 border-transparent group-hover:${service.bgColor} transition-all duration-500`}></div>
-                      
-                      {/* Corner Accents */}
-                      <div className={`absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 ${service.bgColor}/20 rounded-tl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                      <div className={`absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 ${service.bgColor}/20 rounded-br-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-
-            {/* Custom Navigation Buttons */}
-            <div className="swiper-button-prev-custom absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors duration-300">
-              <ChevronLeft className="w-6 h-6 text-gray-600" />
+            <div className="relative px-4 md:px-0">
+              <ServicesSwiper servicesList={servicesList} />
+              {/* Navigation Buttons */}
+              <button 
+                className="swiper-button-prev-services hidden md:flex absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-white dark:bg-gray-800 rounded-full items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 border-2 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl"
+                aria-label="Previous services"
+              >
+                <ChevronRight className="w-6 h-6 text-gray-900 dark:text-white rotate-180" strokeWidth={2} />
+              </button>
+              <button 
+                className="swiper-button-next-services hidden md:flex absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-white dark:bg-gray-800 rounded-full items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 border-2 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl"
+                aria-label="Next services"
+              >
+                <ChevronRight className="w-6 h-6 text-gray-900 dark:text-white" strokeWidth={2} />
+              </button>
             </div>
-            <div className="swiper-button-next-custom absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center cursor-pointer hover:bg-gray-50 transition-colors duration-300">
-              <ChevronRight className="w-6 h-6 text-gray-600" />
-            </div>
-
-            {/* Custom Pagination */}
-            <div className="swiper-pagination-custom flex justify-center mt-8 space-x-2"></div>
-          </div>
-
-          {/* Bottom CTA */}
-          <div className="text-center mt-16">
-            <div className="inline-flex items-center gap-4 bg-truvixo-blue text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              <Rocket className="w-6 h-6" />
-              <span className="font-bold text-lg">Explore All Services</span>
-              <ArrowRight className="w-5 h-5" />
+            {/* Pagination */}
+            <div className="swiper-pagination-services flex justify-center items-center gap-2 mt-8"></div>
+            
+            {/* View All Services Button */}
+            <div className="text-center mt-8">
+              <Link
+                href="/services"
+                prefetch={true}
+                className="inline-flex items-center gap-2 text-[#5e2cb6] dark:text-[#8b5cf6] font-semibold hover:text-[#4a1f8f] dark:hover:text-[#7c3ae0] transition-colors duration-300 group"
+              >
+                <span>View All Services</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={2} />
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Enhanced Features Section */}
-      <section className="py-24 bg-purple-50/40 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-50">
-          <div className="absolute inset-0 bg-blue-100/20"></div>
-          <div className="absolute top-0 left-0 w-full h-full bg-blue-100/10"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
-          <div className="mb-16 animate-fade-in">
-            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-8">
-              Struggling with digital marketing automation?
+      {/* 4. Our Works */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              Our{' '}
+              <span className="hollow-text-brand">
+                Works
+              </span>
             </h2>
-            <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto">
-              TruVixo helps you navigate the world of automated digital marketing and handle all the problems below in the easiest and fastest way
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Showcasing excellence in technology and innovation
             </p>
           </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredProjects.map((project, index) => (
+              <Link
+                key={index}
+                href={project.href}
+                prefetch={true}
+                className="group bg-white dark:bg-gray-900 rounded-lg p-8 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
+              >
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-3">{project.category}</p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">{project.description}</p>
+                <div className="text-gray-900 dark:text-white font-semibold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                  View Case Study <ArrowRight className="w-4 h-4" strokeWidth={2} />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
+      {/* 5. Technologies We Use - Two Grid System */}
+      <Technologies technologies={technologies} />
+
+      {/* 6. Why Choose TruVixo */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              Why Choose{' '}
+              <span className="hollow-text-brand">
+                TruVixo
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              We combine technical expertise with business acumen to deliver solutions that drive real results
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            {whyChooseUs.map((item, index) => {
+              const logoColors = ['#5e2cb6', '#c91a6f', '#fecc4d', '#10b981', '#d42628', '#f59e0b']
+              const color = logoColors[index % logoColors.length]
+              return (
               <div 
                 key={index} 
-                className="group bg-white rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 animate-fade-in-up interactive-card"
-                style={{ animationDelay: `${index * 0.2}s` }}
-              >
-                <div className="relative mb-6">
-                  <div className={`w-20 h-20 ${feature.gradient} rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <div className="text-white">
-                      {feature.icon}
-                    </div>
+                  className="bg-white dark:bg-gray-800 rounded-lg p-6 text-center border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:scale-105"
+                >
+                  <div className="mb-3 flex justify-center" style={{ color: color }}>
+                    {item.icon}
                   </div>
-                  <div className="absolute -top-2 -right-2 bg-truvixo-yellow text-white text-sm font-bold px-3 py-1 rounded-full animate-pulse">
-                    {feature.stat}
-                  </div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{item.title}</h3>
                 </div>
-                
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-truvixo-blue transition-colors duration-300">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-6">{feature.description}</p>
-                
-                <button className="text-truvixo-blue font-bold hover:text-gray-800 transition-colors duration-300 flex items-center gap-2 mx-auto group-hover:translate-x-2 transition-transform duration-300">
-                  Learn more about {feature.title}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </button>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 6.5. Industries We Serve */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              Industries We{' '}
+              <span className="hollow-text-brand">
+                Serve
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              Specialized solutions tailored to your industry's unique challenges and opportunities
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {[
+              { name: 'FinTech', icon: <DollarSign className="w-8 h-8" strokeWidth={2} />, color: '#5e2cb6', description: 'Secure financial platforms' },
+              { name: 'Healthcare', icon: <Heart className="w-8 h-8" strokeWidth={2} />, color: '#c91a6f', description: 'HIPAA-compliant systems' },
+              { name: 'E-commerce', icon: <ShoppingCart className="w-8 h-8" strokeWidth={2} />, color: '#fecc4d', description: 'Scalable online stores' },
+              { name: 'Logistics', icon: <Truck className="w-8 h-8" strokeWidth={2} />, color: '#10b981', description: 'Supply chain systems' },
+              { name: 'Real Estate', icon: <HomeIcon className="w-8 h-8" strokeWidth={2} />, color: '#d42628', description: 'Property platforms' },
+              { name: 'Education', icon: <GraduationCap className="w-8 h-8" strokeWidth={2} />, color: '#f59e0b', description: 'E-learning solutions' },
+              { name: 'Manufacturing', icon: <Settings className="w-8 h-8" strokeWidth={2} />, color: '#5e2cb6', description: 'IoT automation' },
+              { name: 'Retail', icon: <ShoppingCart className="w-8 h-8" strokeWidth={2} />, color: '#c91a6f', description: 'POS systems' }
+            ].map((industry, index) => (
+              <Link
+                key={index}
+                href={`/industry/${industry.name.toLowerCase().replace(/\s+/g, '-')}`}
+                prefetch={true}
+                className="group bg-white dark:bg-gray-900 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg text-center"
+              >
+                <div className="mb-4 flex justify-center" style={{ color: industry.color }}>
+                  {industry.icon}
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors">
+                  {industry.name}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {industry.description}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6.6. Company Achievements & Stats */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              Our{' '}
+              <span className="hollow-text-brand">
+                Achievements
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              Numbers that reflect our commitment to excellence and client success
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { value: '20+', label: 'Projects Completed', icon: <Briefcase className="w-8 h-8" strokeWidth={2} />, color: '#5e2cb6', description: 'Delivered across industries' },
+              { value: '7+', label: 'Clients', icon: <Users className="w-8 h-8" strokeWidth={2} />, color: '#c91a6f', description: 'Trust us with their business' },
+              { value: '98%', label: 'Client Satisfaction', icon: <Award className="w-8 h-8" strokeWidth={2} />, color: '#fecc4d', description: 'Consistently high ratings' },
+              { value: '24/7', label: 'Support Available', icon: <Clock className="w-8 h-8" strokeWidth={2} />, color: '#10b981', description: 'Round-the-clock assistance' }
+            ].map((stat, index) => (
+              <div
+                key={index}
+                className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center"
+              >
+                <div className="mb-4 flex justify-center" style={{ color: stat.color }}>
+                  {stat.icon}
+                </div>
+                <div className="text-4xl md:text-5xl font-black mb-2" style={{ color: stat.color }}>
+                  {stat.value}
+                </div>
+                <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg">
+                  {stat.label}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  {stat.description}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Enhanced Capabilities Section with Infinite Sliding */}
-      <section className="py-24 bg-yellow-50/30 overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-5xl lg:text-6xl font-black text-gray-900 mb-8">
-              One tool to rule them all!{' '}
-              <span className="text-truvixo-blue">✨</span>
+      {/* 6.7. Our Expertise & Capabilities */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              Our{' '}
+              <span className="hollow-text-brand">
+                Expertise
+              </span>
             </h2>
-            <p className="text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto">
-              We combined everything you need for successful digital marketing into one tool to maximize your outreach potential with TruVixo.
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              Deep technical knowledge and industry experience across cutting-edge technologies
             </p>
           </div>
-
-          {/* Infinite Sliding Capabilities */}
-          <div className="relative">
-            {/* First Row - Left to Right */}
-            <div className="marquee mb-8">
-              <div className="marquee-content">
-                {[...capabilities, ...capabilities].map((capability, index) => (
-                  <div 
-                    key={`row1-${index}`}
-                    className="sliding-item mx-6 flex-shrink-0"
-                  >
-                    <div className="text-center group hover:scale-110 transition-transform duration-300">
-                      <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-xl transition-all duration-300 border border-gray-100">
-                        <div className={`text-${capability.color} group-hover:animate-bounce`}>
-                          {capability.icon}
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-700 leading-relaxed font-medium w-40 text-center whitespace-nowrap overflow-hidden text-ellipsis">{capability.name}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Full-Stack Development',
+                description: 'End-to-end development from frontend to backend, database design, and API integration. We build scalable, maintainable applications using modern frameworks and best practices.',
+                icon: <Code className="w-8 h-8" strokeWidth={2} />,
+                color: '#5e2cb6',
+                features: ['React, Next.js, Vue.js', 'Node.js, Python, Django', 'REST & GraphQL APIs', 'Microservices Architecture']
+              },
+              {
+                title: 'AI & Machine Learning',
+                description: 'Custom AI solutions including natural language processing, computer vision, predictive analytics, and automated decision-making systems that learn and adapt.',
+                icon: <Brain className="w-8 h-8" strokeWidth={2} />,
+                color: '#c91a6f',
+                features: ['Custom ML Models', 'NLP & Chatbots', 'Computer Vision', 'Predictive Analytics']
+              },
+              {
+                title: 'Cloud & DevOps',
+                description: 'Scalable cloud infrastructure, CI/CD pipelines, containerization, and infrastructure as code. We ensure your applications are always available and performant.',
+                icon: <Cloud className="w-8 h-8" strokeWidth={2} />,
+                color: '#fecc4d',
+                features: ['AWS, Azure, GCP', 'Docker & Kubernetes', 'CI/CD Pipelines', 'Infrastructure as Code']
+              },
+              {
+                title: 'Mobile Development',
+                description: 'Native and cross-platform mobile applications for iOS and Android. We create engaging, high-performance mobile experiences that users love.',
+                icon: <Smartphone className="w-8 h-8" strokeWidth={2} />,
+                color: '#10b981',
+                features: ['React Native', 'Flutter', 'Native iOS & Android', 'Progressive Web Apps']
+              },
+              {
+                title: 'Digital Marketing',
+                description: 'Data-driven marketing strategies including SEO, PPC, social media marketing, content marketing, and conversion rate optimization to grow your business.',
+                icon: <Megaphone className="w-8 h-8" strokeWidth={2} />,
+                color: '#d42628',
+                features: ['SEO & Content Marketing', 'PPC & Performance Marketing', 'Social Media Marketing', 'CRO & Analytics']
+              },
+              {
+                title: 'UI/UX Design',
+                description: 'User-centered design that combines aesthetics with functionality. We create intuitive interfaces that engage users and drive conversions through exceptional user experience.',
+                icon: <Palette className="w-8 h-8" strokeWidth={2} />,
+                color: '#f59e0b',
+                features: ['User Research', 'Wireframing & Prototyping', 'Visual Design', 'Usability Testing']
+              }
+            ].map((expertise, index) => {
+              // Map expertise to service pages
+              const getExpertiseUrl = (title: string): string => {
+                const urlMap: { [key: string]: string } = {
+                  'Custom Software Development': '/services/custom-software-development',
+                  'AI & Machine Learning': '/services/ai-development-services',
+                  'Cloud & DevOps': '/services/maintenance-support',
+                  'Mobile Development': '/services/mobile-app-development',
+                  'Digital Marketing': '/services/seo',
+                  'UI/UX Design': '/services/custom-software-development'
+                }
+                return urlMap[title] || '/services'
+              }
+              
+              return (
+              <Link
+                key={index}
+                href={getExpertiseUrl(expertise.title)}
+                prefetch={true}
+                className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl block group"
+              >
+                <div className="mb-6 flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-xl flex items-center justify-center border-2" style={{ borderColor: expertise.color, backgroundColor: expertise.color + '10' }}>
+                    <div style={{ color: expertise.color }}>
+                      {expertise.icon}
                     </div>
                   </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Second Row - Right to Left */}
-            <div className="marquee mb-8">
-              <div className="marquee-content" style={{ animationDirection: 'reverse' }}>
-                {[...capabilities, ...capabilities].map((capability, index) => (
-                  <div 
-                    key={`row2-${index}`}
-                    className="sliding-item mx-6 flex-shrink-0"
-                  >
-                    <div className="text-center group hover:scale-110 transition-transform duration-300">
-                      <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-xl transition-all duration-300 border border-gray-100">
-                        <div className={`text-${capability.color} group-hover:animate-bounce`}>
-                          {capability.icon}
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-700 leading-relaxed font-medium w-40 text-center whitespace-nowrap overflow-hidden text-ellipsis">{capability.name}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Third Row - Left to Right (Faster) */}
-            <div className="marquee">
-              <div className="marquee-content" style={{ animationDuration: '20s' }}>
-                {[...capabilities, ...capabilities].map((capability, index) => (
-                  <div 
-                    key={`row3-${index}`}
-                    className="sliding-item mx-6 flex-shrink-0"
-                  >
-                    <div className="text-center group hover:scale-110 transition-transform duration-300">
-                      <div className="w-24 h-24 bg-white rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:shadow-xl transition-all duration-300 border border-gray-100">
-                        <div className={`text-${capability.color} group-hover:animate-bounce`}>
-                          {capability.icon}
-                        </div>
-                      </div>
-                      <p className="text-sm text-gray-700 leading-relaxed font-medium w-40 text-center whitespace-nowrap overflow-hidden text-ellipsis">{capability.name}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white flex-1 group-hover:text-[#5e2cb6] dark:group-hover:text-[#8b5cf6] transition-colors">
+                    {expertise.title}
+                  </h3>
+                </div>
+                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                  {expertise.description}
+                </p>
+                <ul className="space-y-2 mb-4">
+                  {expertise.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                      <CheckCircle className="w-4 h-4" style={{ color: expertise.color }} strokeWidth={2} />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex items-center gap-2 text-sm font-semibold mt-4" style={{ color: expertise.color }}>
+                  <span>Learn More</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" strokeWidth={2} />
+                </div>
+              </Link>
+              )
+            })}
           </div>
         </div>
       </section>
 
-      {/* Enhanced Testimonials Section with Infinite Loops */}
-      <section className="py-24 bg-pink-50/40 relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-truvixo-blue/10 rounded-full animate-float"></div>
-          <div className="absolute bottom-10 right-10 w-24 h-24 bg-truvixo-purple/10 rounded-full animate-float-delay-1"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-8 lg:px-12 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <div className="mb-8">
-              <h2 className="text-6xl lg:text-8xl font-black text-gray-900 mb-6 leading-tight">
-                What Our <span className="text-truvixo-blue animate-pulse-slow">Clients</span> Say
-              </h2>
-              <div className="w-24 h-1 bg-truvixo-blue mx-auto mb-8 animate-scale-in"></div>
-            </div>
-            <p className="text-2xl lg:text-3xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-medium">
-              Don't just take our word for it. Here's what our satisfied clients have to say about{' '}
-              <span className="text-truvixo-purple font-bold">TruVixo's impact</span>
-            </p>
-          </div>
-
-          {/* Single Infinite Loop Testimonials */}
-          <div className="relative">
-            <div className="marquee">
-              <div className="marquee-content">
-                {[...testimonials, ...testimonials].map((testimonial, index) => (
-                  <div key={index} className="sliding-item mx-8 flex-shrink-0">
-                    <div className="group bg-white/90 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 w-[420px] hover:scale-105 border border-white/50">
-                      {/* Avatar and Rating */}
-                      <div className="flex items-center gap-4 mb-6">
-                        <div className={`w-16 h-16 bg-${testimonial.color} rounded-2xl flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg`}>
-                          {testimonial.avatar}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-1 mb-2">
-                            {[...Array(testimonial.rating)].map((_, i) => (
-                              <Star key={i} className="w-5 h-5 fill-truvixo-yellow text-truvixo-yellow" />
-                            ))}
-                          </div>
-                          <h4 className="font-bold text-gray-900 text-lg truncate">{testimonial.name}</h4>
-                          <p className="text-sm text-gray-500 truncate">{testimonial.role}</p>
-                        </div>
-                      </div>
-                      
-                      {/* Testimonial Content */}
-                      <p className="text-gray-700 leading-relaxed text-base italic line-clamp-4">
-                        "{testimonial.content}"
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* High Contrast CTA Section */}
-      <section className="py-24 bg-black text-white relative overflow-hidden">
-        {/* Animated Background Pattern */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-truvixo-blue/30"></div>
-          <div className="absolute top-0 left-0 w-full h-full bg-blue-300/30"></div>
-          <div className="absolute bottom-0 right-0 w-full h-full bg-purple-300/30"></div>
-        </div>
-        
-        {/* Floating Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-4 h-4 bg-truvixo-blue rounded-full animate-pulse"></div>
-          <div className="absolute top-40 right-32 w-3 h-3 bg-truvixo-purple rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-          <div className="absolute bottom-32 left-40 w-5 h-5 bg-truvixo-yellow rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
-          <div className="absolute bottom-20 right-20 w-2 h-2 bg-truvixo-red rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-        </div>
-        
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 text-center relative z-10">
-          <div className="animate-fade-in">
-            {/* High Contrast Heading */}
-            <div className="mb-8">
-              <h2 className="text-display-2xl font-display mb-6 leading-tight">
-                Ready to{' '}
-                <span className="animate-text-shimmer text-truvixo-blue">
-                  Transform?
-                </span>
+      {/* 7. Process of Work */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              Our{' '}
+              <span className="hollow-text-brand">
+                Process
+              </span>
             </h2>
-              <div className="w-32 h-1 bg-truvixo-blue mx-auto mb-8"></div>
-            </div>
-            
-            {/* Contrasting Subtitle */}
-            <p className="text-display-lg font-primary text-gray-300 max-w-4xl mx-auto mb-16 leading-relaxed">
-              Join <span className="text-truvixo-yellow font-display font-bold">500+ businesses</span> already growing with{' '}
-              <span className="text-truvixo-blue font-display font-bold">TruVixo</span>
+            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              A proven methodology that delivers results - from concept to deployment and beyond
             </p>
-            
-            {/* High Contrast CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-8 justify-center mb-20">
-              <button className="group btn-modern bg-truvixo-blue text-white font-display font-bold py-6 px-12 rounded-2xl hover:shadow-2xl hover:shadow-truvixo-blue/50 transition-all duration-300 transform hover:scale-105 text-xl relative overflow-hidden">
-                <span className="relative z-10 flex items-center gap-4">
-                  <Rocket className="w-7 h-7 group-hover:animate-bounce" />
-                  Start Free Trial
-                  <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
-                </span>
-                <div className="absolute inset-0 bg-truvixo-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
-              
-              <button className="group btn-modern border-2 border-white text-white font-display font-bold py-6 px-12 rounded-2xl hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 text-xl hover:shadow-2xl">
-                <span className="flex items-center gap-4">
-                  <MessageSquare className="w-7 h-7 group-hover:animate-pulse" />
-                  Schedule Demo
-                </span>
-              </button>
-            </div>
-            
-            {/* Enhanced Trust Indicators */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-4xl mx-auto">
-              <div className="text-center group">
-                <div className="w-20 h-20 bg-truvixo-blue rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Award className="w-10 h-10 text-white" />
-                </div>
-                <div className="text-4xl font-black text-white mb-2 group-hover:text-truvixo-yellow transition-colors duration-300">500+</div>
-                <div className="text-gray-400 text-lg font-medium">Projects Completed</div>
-              </div>
-              
-              <div className="text-center group">
-                <div className="w-20 h-20 bg-truvixo-purple rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <Star className="w-10 h-10 text-white" />
-                </div>
-                <div className="text-4xl font-black text-white mb-2 group-hover:text-truvixo-yellow transition-colors duration-300">98%</div>
-                <div className="text-gray-400 text-lg font-medium">Client Satisfaction</div>
-              </div>
-              
-              <div className="text-center group">
-                <div className="w-20 h-20 bg-truvixo-red rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                  <TrendingUp className="w-10 h-10 text-white" />
-                </div>
-                <div className="text-4xl font-black text-white mb-2 group-hover:text-truvixo-yellow transition-colors duration-300">7+</div>
-                <div className="text-gray-400 text-lg font-medium">Years Experience</div>
-              </div>
-            </div>
+          </div>
+        </div>
+        <ProcessDiagram 
+          title=""
+          subtitle=""
+        />
+      </section>
+
+      {/* 8. Testimonials - Redesigned */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              What Our{' '}
+              <span className="hollow-text-brand">
+                Clients
+              </span>
+              {' '}Say
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Don't just take our word for it — hear from businesses we've helped transform
+            </p>
+          </div>
+
+          <div className="relative">
+            <TestimonialCarousel testimonials={testimonials} speed={40} className="py-4" />
           </div>
         </div>
       </section>
+
+      {/* 9. Partnership & Trust */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              Trusted{' '}
+              <span className="hollow-text-brand">
+                Partners
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              We work with leading technology platforms and tools to deliver best-in-class solutions
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60 hover:opacity-100 transition-opacity duration-300">
+            {[
+              { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg', color: '#FF9900' },
+              { name: 'Microsoft Azure', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg', color: '#0078D4' },
+              { name: 'Google Cloud', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg', color: '#4285F4' },
+              { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED' },
+              { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', color: '#326CE5' },
+              { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB' }
+            ].map((partner, index) => (
+              <div
+                key={index}
+                className="bg-white dark:bg-gray-900 rounded-lg p-6 border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center h-24 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 group"
+                style={{ borderColor: partner.color + '40' }}
+              >
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="w-12 h-12 object-contain grayscale group-hover:grayscale-0 transition-all duration-300 opacity-60 group-hover:opacity-100"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 10. Company Values */}
+      <section className="py-20 bg-white dark:bg-gray-900">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              Our{' '}
+              <span className="hollow-text-brand">
+                Values
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+              The principles that guide everything we do and shape how we work with our clients
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                title: 'Innovation First',
+                description: 'We stay ahead of technology trends and continuously explore new solutions to solve complex problems.',
+                icon: <Lightbulb className="w-8 h-8" strokeWidth={2} />,
+                color: '#5e2cb6'
+              },
+              {
+                title: 'Client-Centric',
+                description: 'Your success is our success. We prioritize understanding your business goals and delivering solutions that drive real value.',
+                icon: <Users className="w-8 h-8" strokeWidth={2} />,
+                color: '#c91a6f'
+              },
+              {
+                title: 'Transparency',
+                description: 'Clear communication, honest feedback, and regular updates ensure you always know where your project stands.',
+                icon: <MessageSquare className="w-8 h-8" strokeWidth={2} />,
+                color: '#fecc4d'
+              },
+              {
+                title: 'Excellence',
+                description: 'We maintain the highest standards in code quality, design, and delivery to ensure exceptional outcomes every time.',
+                icon: <Award className="w-8 h-8" strokeWidth={2} />,
+                color: '#10b981'
+              }
+            ].map((value, index) => (
+              <div
+                key={index}
+                className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:scale-105 text-center"
+              >
+                <div className="mb-6 flex justify-center" style={{ color: value.color }}>
+                  {value.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                  {value.title}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {value.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 11. FAQs Section */}
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              Frequently Asked{' '}
+              <span className="hollow-text-brand">
+                Questions
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+              Get answers to common questions about our services, process, and how we work
+            </p>
+          </div>
+          <FAQDropdown faqs={faqs} title="" />
+        </div>
+      </section>
+
+      {/* 12. Newsletter/Call Section */}
+      <NewsletterCTA onContactClick={() => setIsContactModalOpen(true)} />
+
+      {/* 13. Contact Section - Before Footer */}
+      <ContactSection 
+        title="Get in Touch"
+        description="Have a project in mind? Let's discuss how we can help transform your business."
+      />
+
+      <ContactFormModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
     </main>
   )
 }

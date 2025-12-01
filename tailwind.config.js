@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -21,13 +22,35 @@ module.exports = {
           cyan: '#06b6d4',
           white: '#FFFFFF',
           black: '#111827',
-        }
+        },
+        // Pastel Colors
+        'purple-50': '#faf5ff',
+        'purple-100': '#f3e8ff',
+        'purple-200': '#e9d5ff',
+        'pink-50': '#fdf2f8',
+        'pink-100': '#fce7f3',
+        'pink-200': '#fbcfe8',
+        'yellow-50': '#fefce8',
+        'yellow-100': '#fef3c7',
+        'yellow-200': '#fde68a',
+        'red-50': '#fef2f2',
+        'red-100': '#fee2e2',
+        'red-200': '#fecaca',
+        'orange-50': '#fff7ed',
+        'orange-100': '#ffedd5',
+        'orange-200': '#fed7aa',
+        'blue-50': '#eff6ff',
+        'blue-100': '#dbeafe',
+        'blue-200': '#bfdbfe',
+        'green-50': '#f0fdf4',
+        'green-100': '#dcfce7',
+        'green-200': '#bbf7d0',
       },
       fontFamily: {
-        primary: ['Le Petite Cocho', 'Inter', 'system-ui', 'sans-serif'],
-        display: ['Le Petite Cocho', 'Space Grotesk', 'system-ui', 'sans-serif'],
+        primary: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Playfair Display', 'Poppins', 'system-ui', 'serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'Monaco', 'monospace'],
-        sans: ['Le Petite Cocho', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

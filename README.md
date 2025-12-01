@@ -112,9 +112,13 @@ The website is fully responsive with:
 ## 🚀 Performance Features
 
 - **Image Optimization**: Next.js Image component for optimal loading
-- **Code Splitting**: Automatic route-based code splitting
-- **Lazy Loading**: Components load as needed
-- **Smooth Animations**: Hardware-accelerated animations with Framer Motion
+- **Code Splitting**: Automatic route-based code splitting with dynamic imports
+- **Lazy Loading**: Components load as needed (ContactFormModal, CustomCursor)
+- **Font Optimization**: Next.js font optimization with display swap
+- **Build Optimizations**: SWC minification, console removal in production
+- **Browser Caching**: Optimized .htaccess for compression and caching
+- **CSS Optimization**: Removed unused imports, added performance hints
+- **Network Optimizations**: DNS prefetch, preconnect for faster resource loading
 
 ## 🔧 Development
 
