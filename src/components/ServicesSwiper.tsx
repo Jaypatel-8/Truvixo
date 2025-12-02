@@ -42,11 +42,7 @@ export default function ServicesSwiper({ servicesList, onServiceClick }: Service
     return serviceMap[serviceName] || '/services'
   }
 
-  const handleCardClick = (service: Service) => {
-    if (onServiceClick) {
-      onServiceClick(service.name)
-    }
-  }
+  // Removed handleCardClick - Link component handles navigation directly for faster redirects
 
   return (
     <div className="services-swiper-wrapper">
@@ -98,7 +94,6 @@ export default function ServicesSwiper({ servicesList, onServiceClick }: Service
                 target.style.borderColor = service.color + '40'
                 target.style.boxShadow = 'none'
               }}
-              onClick={() => handleCardClick(service)}
             >
               {/* Decorative background element */}
               <div 

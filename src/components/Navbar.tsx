@@ -182,8 +182,8 @@ const Navbar = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-white/98 backdrop-blur-md shadow-sm border-b border-gray-100'
-            : 'bg-white/90 backdrop-blur-sm'
+            ? 'bg-white shadow-sm border-b border-gray-100'
+            : 'bg-white'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -391,7 +391,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 top-20 z-40 bg-white/95 backdrop-blur-sm overflow-y-auto"
+          className="lg:hidden fixed inset-0 top-20 z-40 bg-white overflow-y-auto"
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
             <div className="space-y-4">

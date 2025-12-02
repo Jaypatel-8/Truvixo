@@ -4,9 +4,10 @@ import './globals.css'
 import dynamic from 'next/dynamic'
 
 // Lazy load components for better performance
-const CustomCursor = dynamic(() => import('@/components/CustomCursor'), {
-  ssr: false,
-})
+// CustomCursor removed - no longer using custom cursor
+// const CustomCursor = dynamic(() => import('@/components/CustomCursor'), {
+//   ssr: false,
+// })
 const Navbar = dynamic(() => import('@/components/Navbar'), {
   ssr: true,
 })
@@ -19,7 +20,11 @@ const Clientele = dynamic(() => import('@/components/Clientele'), {
 const GoToTop = dynamic(() => import('@/components/GoToTop'), {
   ssr: false,
 })
-const ContactPopup = dynamic(() => import('@/components/ContactPopup'), {
+// ContactPopup removed - no longer showing on page load
+// const ContactPopup = dynamic(() => import('@/components/ContactPopup'), {
+//   ssr: false,
+// })
+const PageLoader = dynamic(() => import('@/components/PageLoader'), {
   ssr: false,
 })
 
@@ -198,14 +203,15 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <CustomCursor />
+        <PageLoader />
+        {/* CustomCursor removed */}
         <Navbar />
         <main>
           {children}
         </main>
         <Footer />
         <GoToTop />
-        <ContactPopup />
+        {/* ContactPopup removed - no longer showing on page load */}
       </body>
     </html>
   )

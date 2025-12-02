@@ -27,6 +27,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Prevent blur during page load */
+html, body {
+  filter: none !important;
+  -webkit-filter: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 /* Ensure headings are visible immediately - no delays */
 h1, h2, h3, h4, h5, h6 {
   content-visibility: auto;
@@ -85,15 +93,6 @@ h1, h2, h3, h4, h5, h6 {
 .hollow-text-gray {
   font-family: 'Le Petite Cocho', sans-serif;
   -webkit-text-stroke: 2.5px #2a2a2a;
-  -webkit-text-fill-color: transparent;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  display: inline-block;
-}
-
-.hollow-text-white {
-  font-family: 'Le Petite Cocho', sans-serif;
-  -webkit-text-stroke: 3px #ffffff;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -395,11 +394,9 @@ h1, h2, h3, h4, h5, h6 {
 
 @tailwind base;
 
-/* Global Cursor Styles - Hide default cursor on desktop */
-@media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
+/* Global Cursor Styles - Use normal browser cursor */
+* {
+  cursor: auto;
 }
 
 /* Performance Optimizations for Smooth Scrolling */
@@ -2494,12 +2491,3 @@ html {
   animation: scale-in 0.3s ease-out;
 }
 
-/* Custom Cursor Animations */
-@keyframes cursorRotate {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
