@@ -434,77 +434,77 @@ export default function EnterpriseSoftwareDevelopment() {
       </section>
 
       {/* Additional Content - Benefits */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Enterprise Software{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Discover how enterprise software development can transform your organization and drive efficiency
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Building2 className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Building2 className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Unified Operations</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Unified Operations</h3>
+              <p className="text-gray-600">
                 Integrate all business functions into a single platform. Enterprise software eliminates data silos, improves collaboration, and provides a unified view of operations across departments.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Enterprise Security</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Enterprise Security</h3>
+              <p className="text-gray-600">
                 Built-in security features including encryption, access controls, audit trails, and compliance with industry standards like SOC 2, HIPAA, and GDPR.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 dark:bg-[#fecc4d]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
                 <Cloud className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Scalable Infrastructure</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Scalable Infrastructure</h3>
+              <p className="text-gray-600">
                 Cloud-native architecture scales automatically with your business growth. Handle increasing users, data, and transactions without performance degradation.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 dark:bg-[#10b981]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
                 <BarChart3 className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Data-Driven Decisions</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Data-Driven Decisions</h3>
+              <p className="text-gray-600">
                 Real-time analytics and reporting dashboards provide insights for data-driven decision making. Track KPIs, monitor performance, and identify opportunities.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Zap className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Process Automation</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Process Automation</h3>
+              <p className="text-gray-600">
                 Automate repetitive tasks and workflows to increase efficiency. Reduce manual errors, save time, and allow employees to focus on strategic work.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">High Availability</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">High Availability</h3>
+              <p className="text-gray-600">
                 99.9% uptime with redundant systems, failover mechanisms, and disaster recovery. Ensure business continuity even during infrastructure failures.
               </p>
             </div>
@@ -513,27 +513,27 @@ export default function EnterpriseSoftwareDevelopment() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Enterprise Software{' '}
               <span className="hollow-text-brand">
                 Use Cases
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore how enterprises leverage custom software to streamline operations and drive growth
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 dark:from-[#5e2cb6]/10 dark:to-[#c91a6f]/10 rounded-xl p-8 border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">ERP Systems</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 rounded-xl p-8 border border-[#5e2cb6]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">ERP Systems</h3>
+              <p className="text-gray-600 mb-4">
                 Build comprehensive ERP systems that integrate finance, HR, inventory, manufacturing, and sales. Streamline operations and provide real-time visibility across the organization.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Financial management and accounting</li>
                 <li>• Inventory and supply chain management</li>
                 <li>• Human resources and payroll</li>
@@ -541,12 +541,12 @@ export default function EnterpriseSoftwareDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 dark:from-[#fecc4d]/10 dark:to-[#10b981]/10 rounded-xl p-8 border border-[#fecc4d]/20 dark:border-[#fecc4d]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Enterprise CRM</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Enterprise CRM</h3>
+              <p className="text-gray-600 mb-4">
                 Develop custom CRM systems for large sales teams. Manage customer relationships, track sales pipelines, automate follow-ups, and generate comprehensive reports.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Lead and opportunity management</li>
                 <li>• Sales pipeline tracking</li>
                 <li>• Customer interaction history</li>
@@ -554,12 +554,12 @@ export default function EnterpriseSoftwareDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 dark:from-[#10b981]/10 dark:to-[#5e2cb6]/10 rounded-xl p-8 border border-[#10b981]/20 dark:border-[#10b981]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Business Intelligence Platforms</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Business Intelligence Platforms</h3>
+              <p className="text-gray-600 mb-4">
                 Create BI platforms that aggregate data from multiple sources, provide real-time dashboards, and enable advanced analytics for strategic decision making.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Multi-source data integration</li>
                 <li>• Real-time dashboards and KPIs</li>
                 <li>• Advanced analytics and reporting</li>
@@ -567,12 +567,12 @@ export default function EnterpriseSoftwareDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 dark:from-[#c91a6f]/10 dark:to-[#fecc4d]/10 rounded-xl p-8 border border-[#c91a6f]/20 dark:border-[#c91a6f]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Workflow Automation Systems</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Workflow Automation Systems</h3>
+              <p className="text-gray-600 mb-4">
                 Build workflow automation platforms that streamline business processes, manage approvals, and automate repetitive tasks across departments.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Process workflow design</li>
                 <li>• Approval and routing automation</li>
                 <li>• Document management</li>
@@ -595,3 +595,4 @@ export default function EnterpriseSoftwareDevelopment() {
     </main>
   )
 }
+

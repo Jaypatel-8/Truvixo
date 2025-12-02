@@ -169,8 +169,8 @@ export default function SMM() {
   const faqs = getFAQsForPage('smm')
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 overflow-hidden">
-      <section className="relative min-h-[85vh] bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden pt-24">
+    <main className="min-h-screen bg-gray-50 overflow-hidden">
+      <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
@@ -183,53 +183,53 @@ export default function SMM() {
                 <Share2 className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
                 <span className="text-sm font-semibold text-[#5e2cb6]">Social Media Marketing</span>
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
                 Social Media{' '}
                 <span className="hollow-text-brand block mt-2">
                   Marketing
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
                 Build your brand presence and engage with your audience through strategic social media marketing. Grow your following and drive conversions. Our social media experts create compelling content, manage your online presence, and build authentic relationships with your audience across all major platforms including Facebook, Instagram, LinkedIn, Twitter, and TikTok. We help businesses establish a strong social media presence that drives engagement, builds brand loyalty, and generates measurable results.
               </p>
-              <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 dark:from-[#5e2cb6]/20 dark:to-[#c91a6f]/20 rounded-xl border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-                <p className="text-gray-700 dark:text-gray-300 font-medium mb-3">Why Social Media Marketing Matters:</p>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+              <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 rounded-xl border border-[#5e2cb6]/20">
+                <p className="text-gray-700 font-medium mb-3">Why Social Media Marketing Matters:</p>
+                <ul className="space-y-2 text-gray-600 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Brand Awareness:</strong> Reach millions of potential customers on social platforms where they spend hours daily</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Customer Engagement:</strong> Build meaningful relationships through direct communication and authentic interactions</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Lead Generation:</strong> Convert social media followers into customers with strategic content and campaigns</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Cost-Effective Marketing:</strong> Achieve significant reach and engagement at a fraction of traditional advertising costs</span>
                   </li>
                 </ul>
               </div>
               <div className="mt-8 space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <Users className="w-4 h-4 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+                  <div className="w-6 h-6 rounded-full bg-[#5e2cb6]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <Users className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">Community Building</p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Build engaged communities around your brand with authentic interactions and valuable content.</p>
+                    <p className="text-gray-700 font-medium">Community Building</p>
+                    <p className="text-gray-600 text-sm">Build engaged communities around your brand with authentic interactions and valuable content.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#c91a6f]/10 dark:bg-[#ec4899]/20 flex items-center justify-center flex-shrink-0 mt-1">
-                    <TrendingUp className="w-4 h-4 text-[#c91a6f] dark:text-[#ec4899]" strokeWidth={2} />
+                  <div className="w-6 h-6 rounded-full bg-[#c91a6f]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <TrendingUp className="w-4 h-4 text-[#c91a6f]" strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">Content Strategy</p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Data-driven content strategies that resonate with your audience and drive engagement.</p>
+                    <p className="text-gray-700 font-medium">Content Strategy</p>
+                    <p className="text-gray-600 text-sm">Data-driven content strategies that resonate with your audience and drive engagement.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -237,8 +237,8 @@ export default function SMM() {
                     <BarChart className="w-4 h-4 text-[#fecc4d]" strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">Performance Analytics</p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Track and measure social media performance with detailed analytics and insights.</p>
+                    <p className="text-gray-700 font-medium">Performance Analytics</p>
+                    <p className="text-gray-600 text-sm">Track and measure social media performance with detailed analytics and insights.</p>
                   </div>
                 </div>
               </div>
@@ -252,7 +252,7 @@ export default function SMM() {
                 </button>
                 <button 
                   onClick={() => setIsContactModalOpen(true)}
-                  className="bg-white dark:bg-gray-800 text-[#5e2cb6] dark:text-[#8b5cf6] border-2 border-[#5e2cb6] dark:border-[#8b5cf6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 dark:hover:bg-[#8b5cf6]/10 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+                  className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
                 >
                   <span>Contact Us</span>
                   <ArrowRight className="w-5 h-5" strokeWidth={2} />
@@ -264,14 +264,14 @@ export default function SMM() {
               {services.slice(0, 4).map((service, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  className="bg-white rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   style={{ borderColor: service.color + '40' }}
                 >
                   <div className="mb-4" style={{ color: service.color }}>
                     {service.icon}
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-white text-sm mb-2">{service.title}</h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">{service.description}</p>
+                  <h3 className="font-bold text-gray-900 text-sm mb-2">{service.title}</h3>
+                  <p className="text-xs text-gray-600 line-clamp-2">{service.description}</p>
                 </div>
               ))}
             </div>
@@ -328,10 +328,10 @@ export default function SMM() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Why Choose Our{' '}
               <span className="hollow-text-brand">
                 SMM Services
@@ -343,7 +343,7 @@ export default function SMM() {
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white dark:bg-gray-900 rounded-2xl p-8 border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: item.color + '40'
                 }}
@@ -359,10 +359,10 @@ export default function SMM() {
                   <div className="mb-6 flex justify-center" style={{ color: item.color }}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#5e2cb6] dark:group-hover:text-[#8b5cf6] transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -373,77 +373,77 @@ export default function SMM() {
       </section>
 
       {/* Additional Content - SMM Benefits */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Social Media{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Discover how strategic social media marketing can transform your brand presence and drive business growth
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Users className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Users className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Increased Brand Awareness</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Increased Brand Awareness</h3>
+              <p className="text-gray-600">
                 Reach millions of potential customers on social platforms where they spend hours daily. Social media marketing helps you build brand recognition, establish your brand voice, and stay top-of-mind with your target audience. Consistent, engaging content increases visibility and helps your brand stand out in crowded markets.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <MessageSquare className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Direct Customer Engagement</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Direct Customer Engagement</h3>
+              <p className="text-gray-600">
                 Build meaningful relationships through direct communication and authentic interactions. Social media provides a platform for real-time customer service, feedback collection, and community building. Engage with customers, respond to inquiries, and create a loyal community around your brand.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 dark:bg-[#fecc4d]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
                 <TrendingUp className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Lead Generation & Sales</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Lead Generation & Sales</h3>
+              <p className="text-gray-600">
                 Convert social media followers into customers with strategic content and campaigns. Social media marketing drives qualified traffic to your website, generates leads through targeted campaigns, and directly influences purchase decisions. Track ROI and measure conversion rates from social media efforts.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 dark:bg-[#10b981]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
                 <BarChart className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Cost-Effective Marketing</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Cost-Effective Marketing</h3>
+              <p className="text-gray-600">
                 Achieve significant reach and engagement at a fraction of traditional advertising costs. Social media marketing offers excellent ROI, especially for small and medium businesses. Organic content is free, and paid social ads are more affordable than traditional media while offering better targeting and measurability.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Share2 className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Share2 className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Viral Potential</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Viral Potential</h3>
+              <p className="text-gray-600">
                 Create content that can go viral and reach millions of people organically. Well-crafted social media content has the potential to be shared widely, exponentially increasing your reach without additional advertising costs. Viral content builds brand awareness and drives massive traffic to your business.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Competitive Advantage</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Competitive Advantage</h3>
+              <p className="text-gray-600">
                 Stay ahead of competitors with active social media presence. Businesses with strong social media strategies outperform those without. Social media helps you monitor competitors, identify market opportunities, and position your brand as an industry leader through thought leadership and valuable content.
               </p>
             </div>
@@ -452,27 +452,27 @@ export default function SMM() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Social Media{' '}
               <span className="hollow-text-brand">
                 Use Cases
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore how businesses across industries leverage social media marketing to achieve their goals
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 dark:from-[#5e2cb6]/10 dark:to-[#c91a6f]/10 rounded-xl p-8 border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">E-Commerce Brand Building</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 rounded-xl p-8 border border-[#5e2cb6]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">E-Commerce Brand Building</h3>
+              <p className="text-gray-600 mb-4">
                 Build brand awareness and drive sales for e-commerce businesses through visual content, product showcases, and influencer partnerships. Use Instagram Shopping, Facebook Shops, and Pinterest to create seamless shopping experiences.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Product launches and promotional campaigns</li>
                 <li>• User-generated content and customer testimonials</li>
                 <li>• Influencer collaborations and brand partnerships</li>
@@ -480,12 +480,12 @@ export default function SMM() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 dark:from-[#fecc4d]/10 dark:to-[#10b981]/10 rounded-xl p-8 border border-[#fecc4d]/20 dark:border-[#fecc4d]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">B2B Lead Generation</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">B2B Lead Generation</h3>
+              <p className="text-gray-600 mb-4">
                 Generate high-quality B2B leads through LinkedIn marketing, thought leadership content, and professional networking. Build authority in your industry and connect with decision-makers.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• LinkedIn content marketing and networking</li>
                 <li>• Industry-specific thought leadership</li>
                 <li>• Webinar and event promotion</li>
@@ -493,12 +493,12 @@ export default function SMM() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 dark:from-[#10b981]/10 dark:to-[#5e2cb6]/10 rounded-xl p-8 border border-[#10b981]/20 dark:border-[#10b981]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Local Business Promotion</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Local Business Promotion</h3>
+              <p className="text-gray-600 mb-4">
                 Drive foot traffic and local sales with geo-targeted social media campaigns. Use location-based features, local hashtags, and community engagement to attract nearby customers.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Location-based advertising and targeting</li>
                 <li>• Local event promotion and community engagement</li>
                 <li>• Customer reviews and testimonials</li>
@@ -506,12 +506,12 @@ export default function SMM() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 dark:from-[#c91a6f]/10 dark:to-[#fecc4d]/10 rounded-xl p-8 border border-[#c91a6f]/20 dark:border-[#c91a6f]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Content Marketing & SEO</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Content Marketing & SEO</h3>
+              <p className="text-gray-600 mb-4">
                 Amplify content marketing efforts and improve SEO through social media distribution. Share blog posts, videos, and resources to drive traffic and improve search rankings.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Content distribution and amplification</li>
                 <li>• Social signals for SEO improvement</li>
                 <li>• Video content marketing on YouTube and TikTok</li>
@@ -522,10 +522,10 @@ export default function SMM() {
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Industries We{' '}
               <span className="hollow-text-brand">
                 Serve
@@ -537,7 +537,7 @@ export default function SMM() {
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
                 style={{ 
                   borderColor: industry.color + '40'
                 }}
@@ -551,7 +551,7 @@ export default function SMM() {
                 <div className="mb-3 flex justify-center" style={{ color: industry.color }}>
                   {industry.icon}
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{industry.name}</h3>
+                <h3 className="font-semibold text-gray-900 text-sm">{industry.name}</h3>
               </div>
             ))}
           </div>
@@ -615,4 +615,5 @@ export default function SMM() {
     </main>
   )
 }
+
 

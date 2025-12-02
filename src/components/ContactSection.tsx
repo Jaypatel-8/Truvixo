@@ -73,14 +73,14 @@ export default function ContactSection({
   }
 
   return (
-    <section className={`py-16 bg-gray-50 dark:bg-gray-900 ${className}`} id="contact-section">
+    <section className={`py-16 bg-gray-50 ${className}`} id="contact-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 scroll-animate">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
             {title.split(' ').slice(0, -1).join(' ')}{' '}
             <span className="hollow-text-brand">{title.split(' ').slice(-1)[0]}</span>
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             {description}
           </p>
         </div>
@@ -88,28 +88,28 @@ export default function ContactSection({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Contact Details */}
           <div className="space-y-4">
-            <div className="flex items-center gap-4 p-5 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 hover:shadow-md">
+            <div className="flex items-center gap-4 p-5 bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-md">
               <div className="w-12 h-12 rounded-lg flex items-center justify-center border-2 flex-shrink-0" style={{ backgroundColor: '#5e2cb6' + '15', borderColor: '#5e2cb6' }}>
                 <Phone className="w-6 h-6" style={{ color: '#5e2cb6' }} strokeWidth={2} />
               </div>
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Phone</p>
-                <a href="tel:+916354326412" className="text-gray-900 dark:text-white font-semibold hover:text-[#5e2cb6] transition-colors">+91 63543 26412</a>
+                <p className="text-sm text-gray-500 mb-1">Phone</p>
+                <a href="tel:+916354326412" className="text-gray-900 font-semibold hover:text-[#5e2cb6] transition-colors">+91 63543 26412</a>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-5 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 hover:shadow-md">
+            <div className="flex items-center gap-4 p-5 bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-md">
               <div className="w-12 h-12 rounded-lg flex items-center justify-center border-2 flex-shrink-0" style={{ backgroundColor: '#c91a6f' + '15', borderColor: '#c91a6f' }}>
                 <Mail className="w-6 h-6" style={{ color: '#c91a6f' }} strokeWidth={2} />
               </div>
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Email</p>
-                <a href="mailto:sales@truvixoo.com" className="text-gray-900 dark:text-white font-semibold hover:text-[#c91a6f] transition-colors">sales@truvixoo.com</a>
+                <p className="text-sm text-gray-500 mb-1">Email</p>
+                <a href="mailto:sales@truvixoo.com" className="text-gray-900 font-semibold hover:text-[#c91a6f] transition-colors">sales@truvixoo.com</a>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 shadow-sm">
+          <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -119,7 +119,7 @@ export default function ContactSection({
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 outline-none text-sm"
+                    className="w-full px-4 py-2.5 border border-gray-300 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 outline-none text-sm"
                     placeholder="Name *"
                   />
                 </div>
@@ -130,7 +130,7 @@ export default function ContactSection({
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 outline-none text-sm"
+                    className="w-full px-4 py-2.5 border border-gray-300 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 outline-none text-sm"
                     placeholder="Email *"
                   />
                 </div>
@@ -143,7 +143,7 @@ export default function ContactSection({
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 outline-none text-sm"
+                    className="w-full px-4 py-2.5 border border-gray-300 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 outline-none text-sm"
                     placeholder="Phone"
                   />
                 </div>
@@ -153,7 +153,7 @@ export default function ContactSection({
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 outline-none text-sm"
+                    className="w-full px-4 py-2.5 border border-gray-300 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 outline-none text-sm"
                     placeholder="Company"
                   />
                 </div>
@@ -166,7 +166,7 @@ export default function ContactSection({
                   onChange={handleInputChange}
                   required
                   rows={4}
-                  className="w-full px-4 py-2.5 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 outline-none resize-none text-sm"
+                  className="w-full px-4 py-2.5 border border-gray-300 bg-white text-gray-900 rounded-lg focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 outline-none resize-none text-sm"
                   placeholder="Message *"
                 />
               </div>
@@ -201,3 +201,4 @@ export default function ContactSection({
     </section>
   )
 }
+

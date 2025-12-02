@@ -30,7 +30,7 @@ export default function FAQDropdown({
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {title && (
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               {title.split(' ').map((word, index, arr) => {
                 if (index === arr.length - 1) {
                   return <span key={index} className="hollow-text-brand">{word}</span>
@@ -76,4 +76,5 @@ export default function FAQDropdown({
     </div>
   )
 }
+
 

@@ -29,7 +29,7 @@ export default function TestimonialCarousel({
     return (
       <div
         key={index}
-        className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 h-full flex flex-col min-w-[360px] max-w-[360px] mx-4 hover:border-gray-300 dark:hover:border-gray-600 hover:shadow-lg transition-all duration-300 group"
+        className="bg-white rounded-xl p-8 border border-gray-200 h-full flex flex-col min-w-[360px] max-w-[360px] mx-4 hover:border-gray-300 hover:shadow-lg transition-all duration-300 group"
       >
         {/* Minimal Quote Icon */}
         <div 
@@ -40,12 +40,12 @@ export default function TestimonialCarousel({
         </div>
 
         {/* Quote Text - Minimal */}
-        <p className="text-gray-700 dark:text-gray-300 mb-8 text-base leading-relaxed flex-grow font-normal">
+        <p className="text-gray-700 mb-8 text-base leading-relaxed flex-grow font-normal">
           {testimonial.quote}
         </p>
 
         {/* Author Info - Minimal */}
-        <div className="flex items-center gap-3 pt-6 border-t border-gray-100 dark:border-gray-700">
+        <div className="flex items-center gap-3 pt-6 border-t border-gray-100">
           <div 
             className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 border"
             style={{ 
@@ -66,15 +66,15 @@ export default function TestimonialCarousel({
             </span>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-gray-900 dark:text-white font-semibold text-sm mb-0.5 truncate">{testimonial.author}</p>
+            <p className="text-gray-900 font-semibold text-sm mb-0.5 truncate">{testimonial.author}</p>
             {testimonial.role && testimonial.company && (
-              <p className="text-gray-500 dark:text-gray-400 text-xs truncate">{testimonial.role} • {testimonial.company}</p>
+              <p className="text-gray-500 text-xs truncate">{testimonial.role} • {testimonial.company}</p>
             )}
             {testimonial.role && !testimonial.company && (
-              <p className="text-gray-500 dark:text-gray-400 text-xs truncate">{testimonial.role}</p>
+              <p className="text-gray-500 text-xs truncate">{testimonial.role}</p>
             )}
             {!testimonial.role && testimonial.company && (
-              <p className="text-gray-500 dark:text-gray-400 text-xs truncate">{testimonial.company}</p>
+              <p className="text-gray-500 text-xs truncate">{testimonial.company}</p>
             )}
           </div>
         </div>
@@ -88,3 +88,4 @@ export default function TestimonialCarousel({
     </div>
   )
 }
+

@@ -1,8 +1,111 @@
-# TruVixo Website - Performance Optimizations for Hostinger
+# TruVixo Website - Hostinger Configuration for Next.js Static Export
+# Comprehensive routing configuration for all pages
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # ============================================
+  # STEP 1: Don't rewrite existing files
+  # ============================================
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^ - [L]
+  
+# ============================================
+# STEP 2: Exclude static assets and Next.js files
+# Serve CSS, JS, and other static files directly
+# ============================================
+# CRITICAL: Allow direct access to _next static files (MUST be first)
+RewriteCond %{REQUEST_URI} ^/_next/
+RewriteRule ^ - [L]
+
+# Also allow _next folder access without trailing slash
+RewriteCond %{REQUEST_URI} ^/_next
+RewriteRule ^ - [L]
+
+# Allow direct access to fonts
+RewriteCond %{REQUEST_URI} ^/fonts/
+RewriteRule ^ - [L]
+
+# Allow direct access to images
+RewriteCond %{REQUEST_URI} ^/images/
+RewriteRule ^ - [L]
+
+# Allow direct access to CSS files
+RewriteCond %{REQUEST_URI} \.css$
+RewriteRule ^ - [L]
+
+# Allow direct access to JS files
+RewriteCond %{REQUEST_URI} \.js$
+RewriteRule ^ - [L]
+
+# Allow direct access to other static assets
+RewriteCond %{REQUEST_URI} \.(png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|json|xml|txt|webp|avif|map|eot)$
+RewriteRule ^ - [L]
+  
+  # ============================================
+  # STEP 3: Handle root and direct file access
+  # ============================================
+  RewriteCond %{REQUEST_URI} ^/$
+  RewriteRule ^$ /index.html [L]
+  
+  # ============================================
+  # STEP 4: Handle requests without trailing slash
+  # Add trailing slash if missing (for Next.js trailingSlash: true)
+  # ============================================
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !(.*)/$
+  RewriteCond %{REQUEST_URI} !^/_next/
+  RewriteCond %{REQUEST_URI} !^/fonts/
+  RewriteCond %{REQUEST_URI} !^/images/
+  RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|json|xml|txt|webp|avif|map|eot)$
+  RewriteRule ^(.*)$ $1/ [L,R=301]
+  
+  # ============================================
+  # STEP 5: Serve index.html from existing directories
+  # If directory exists and has index.html, serve it
+  # ============================================
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_FILENAME}/index.html -f
+  RewriteRule ^(.*)$ $1/index.html [L]
+  
+  # ============================================
+  # STEP 6: Handle paths with trailing slash
+  # Check if corresponding index.html exists in directory
+  # ============================================
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^(.+)/$
+  RewriteCond %{DOCUMENT_ROOT}%1/index.html -f
+  RewriteRule ^(.+)/$ $1/index.html [L]
+  
+  # ============================================
+  # STEP 7: Handle nested paths (e.g., /services/custom-software-development/)
+  # Check if path/index.html exists
+  # ============================================
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^(.+)/$
+  RewriteCond %{DOCUMENT_ROOT}%1/index.html -f
+  RewriteRule ^(.+)/$ $1/index.html [L]
+  
+  # ============================================
+  # STEP 8: Fallback to root index.html
+  # For client-side routing (404 pages, etc.)
+  # ============================================
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !^/_next/
+  RewriteCond %{REQUEST_URI} !^/fonts/
+  RewriteCond %{REQUEST_URI} !^/images/
+  RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|otf|json|xml|txt|webp|avif|map|eot)$
+  RewriteRule ^(.*)$ /index.html [L]
+</IfModule>
 
 # Enable Compression
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml
+  AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
 # Browser Caching
@@ -15,6 +118,7 @@
   ExpiresByType image/gif "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
   
   # CSS and JavaScript
   ExpiresByType text/css "access plus 1 month"
@@ -27,7 +131,7 @@
   ExpiresByType font/ttf "access plus 1 year"
   ExpiresByType font/otf "access plus 1 year"
   
-  # HTML
+  # HTML - no cache for HTML files
   ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
@@ -35,7 +139,7 @@
 <IfModule mod_headers.c>
   # Cache static assets
   <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|otf)$">
-    Header set Cache-Control "max-age=31536000, public"
+    Header set Cache-Control "max-age=31536000, public, immutable"
   </FilesMatch>
   
   # Cache CSS and JS
@@ -43,17 +147,41 @@
     Header set Cache-Control "max-age=2592000, public"
   </FilesMatch>
   
+  # No cache for HTML
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+  
   # Security Headers
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-XSS-Protection "1; mode=block"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # CORS for fonts (if needed)
+  <FilesMatch "\.(woff|woff2|ttf|otf)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+  
+  # Ensure CSS files are served correctly
+  <FilesMatch "\.css$">
+    Header set Content-Type "text/css; charset=UTF-8"
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
 </IfModule>
 
-# Enable Gzip Compression
+# Enable Gzip Compression and MIME Types
 <IfModule mod_mime.c>
   AddType application/javascript .js
   AddType text/css .css
+  AddCharset UTF-8 .css
+  AddType application/json .json
+  # Ensure CSS files are served with correct MIME type
+  <FilesMatch "\.css$">
+    ForceType text/css
+  </FilesMatch>
 </IfModule>
 
 # Remove ETags
@@ -62,10 +190,16 @@
 </IfModule>
 FileETag None
 
-# Force HTTPS (uncomment if you have SSL)
+# Force HTTPS (uncomment if you have SSL certificate)
 # <IfModule mod_rewrite.c>
 #   RewriteEngine On
 #   RewriteCond %{HTTPS} off
 #   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 # </IfModule>
 
+# Prevent directory listing
+Options -Indexes
+
+# Custom Error Pages (optional)
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html

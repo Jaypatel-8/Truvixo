@@ -1,8 +1,18 @@
-User-Agent: *
+User-agent: *
 Allow: /
+
+Sitemap: https://truvixo.com/sitemap.xml
+
+# Disallow admin and private areas
 Disallow: /admin/
 Disallow: /api/
 Disallow: /_next/
 Disallow: /out/
 
-Sitemap: https://truvixo.com/sitemap.xml
+
+
+
+
+
+
+

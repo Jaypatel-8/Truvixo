@@ -29,7 +29,7 @@ export default function GetQuoteSection({
   phone = '+91 63543 26412'
 }: GetQuoteSectionProps) {
   return (
-    <section className="py-20 bg-[#5e2cb6] dark:bg-[#4a1f8f] text-white relative overflow-hidden">
+    <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
       </div>
@@ -49,7 +49,7 @@ export default function GetQuoteSection({
               {primaryCTA && (
                 <button 
                   onClick={primaryCTA.onClick}
-                  className="bg-white text-[#5e2cb6] dark:bg-gray-100 dark:text-[#4a1f8f] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+                  className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
                 >
                   <Phone className="w-5 h-5" strokeWidth={2} />
                   <span>{primaryCTA.text}</span>
@@ -81,5 +81,6 @@ export default function GetQuoteSection({
     </section>
   )
 }
+
 
 

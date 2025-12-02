@@ -13,7 +13,7 @@ const Logo = () => {
           alt="TruVixo Logo"
           width={120}
           height={40}
-          className="hidden md:block h-10 w-auto shadow-none dark:brightness-0 dark:invert transition-all duration-300"
+          className="hidden md:block h-10 w-auto shadow-none transition-all duration-300"
           priority
         />
         {/* Mobile: TruVixo logo.png */}
@@ -22,7 +22,7 @@ const Logo = () => {
           alt="TruVixo Logo"
           width={120}
           height={40}
-          className="md:hidden h-8 w-auto shadow-none dark:brightness-0 dark:invert transition-all duration-300"
+          className="md:hidden h-8 w-auto shadow-none transition-all duration-300"
           priority
           unoptimized
         />
@@ -32,3 +32,4 @@ const Logo = () => {
 }
 
 export default Logo
+

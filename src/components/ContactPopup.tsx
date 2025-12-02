@@ -59,7 +59,7 @@ export default function ContactPopup() {
     <>
       <div
         ref={backdropRef}
-        className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-md z-[9998] animate-fade-in"
+        className="fixed inset-0 bg-black/60 backdrop-blur-md z-[9998] animate-fade-in"
         onMouseDown={handleBackdropClick}
       >
         <div
@@ -67,9 +67,9 @@ export default function ContactPopup() {
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md mx-4 animate-scale-in"
           onMouseDown={(e) => e.stopPropagation()}
         >
-          <div className="bg-white dark:bg-gray-900 rounded-3xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
+          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
             {/* Header with gradient */}
-            <div className="bg-[#5e2cb6] dark:bg-[#8b5cf6] p-6 text-white relative overflow-hidden">
+            <div className="bg-[#5e2cb6] p-6 text-white relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16"></div>
               <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-12 -mb-12"></div>
               <div className="relative z-10">
@@ -96,7 +96,7 @@ export default function ContactPopup() {
 
             {/* Content */}
             <div className="p-6 space-y-4">
-              <p className="text-gray-700 dark:text-gray-300 text-center">
+              <p className="text-gray-700 text-center">
                 We're excited to help you achieve your business goals! Get in touch with us to discuss your project.
               </p>
 
@@ -108,7 +108,7 @@ export default function ContactPopup() {
                       setIsContactModalOpen(true)
                     }, 300)
                   }}
-                  className="w-full bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white font-semibold py-4 px-6 rounded-xl hover:bg-[#4a1f8f] dark:hover:bg-[#7c3ae0] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
+                  className="w-full bg-[#5e2cb6] text-white font-semibold py-4 px-6 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 shadow-lg"
                 >
                   <Calendar className="w-5 h-5" strokeWidth={2} />
                   <span>Schedule a Free Consultation</span>
@@ -118,14 +118,14 @@ export default function ContactPopup() {
                 <div className="grid grid-cols-2 gap-3">
                   <a
                     href="mailto:sales@truvixoo.com"
-                    className="flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors"
                   >
                     <Mail className="w-5 h-5" strokeWidth={2} />
                     <span className="text-sm font-medium">Email Us</span>
                   </a>
                   <a
                     href="tel:+916354326412"
-                    className="flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors"
                   >
                     <Phone className="w-5 h-5" strokeWidth={2} />
                     <span className="text-sm font-medium">Call Us</span>
@@ -133,8 +133,8 @@ export default function ContactPopup() {
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
-                <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
+              <div className="pt-4 border-t border-gray-200">
+                <p className="text-xs text-gray-500 text-center">
                   💡 Tip: Our AI assistant is available 24/7 to answer your questions!
                 </p>
               </div>
@@ -150,4 +150,5 @@ export default function ContactPopup() {
     </>
   )
 }
+
 

@@ -49,115 +49,116 @@ export default function ServicesSwiper({ servicesList, onServiceClick }: Service
   }
 
   return (
-    <Swiper
-      modules={[Navigation, Pagination, Autoplay]}
-      spaceBetween={20}
-      slidesPerView={1}
-      breakpoints={{
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 16,
-        },
-        1024: {
-          slidesPerView: 3,
-          spaceBetween: 20,
-        },
-      }}
-      navigation={{
-        nextEl: '.swiper-button-next-services',
-        prevEl: '.swiper-button-prev-services',
-      }}
-      pagination={{
-        clickable: true,
-        el: '.swiper-pagination-services',
-      }}
-      autoplay={{
-        delay: 3000,
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true,
-      }}
-      loop={false}
-      className="services-swiper"
-    >
-      {servicesList.map((service, index) => {
-        const serviceUrl = service.href || getServiceUrl(service.name)
-        return (
-        <SwiperSlide key={index} className="h-auto">
-          <Link 
-            href={serviceUrl}
-            prefetch={true}
-            className="h-full bg-white dark:bg-gray-800 rounded-2xl p-5 md:p-6 border-2 group relative overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl flex flex-col cursor-pointer no-underline"
-            style={{ 
-              borderColor: service.color + '40',
-            }}
-            onMouseEnter={(e) => {
-              const target = e.currentTarget
-              target.style.borderColor = service.color
-              target.style.boxShadow = `0 20px 40px -10px ${service.color}30`
-            }}
-            onMouseLeave={(e) => {
-              const target = e.currentTarget
-              target.style.borderColor = service.color + '40'
-              target.style.boxShadow = 'none'
-            }}
-            onClick={() => handleCardClick(service)}
-          >
-            {/* Decorative background element */}
-            <div 
-              className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity duration-300 rounded-full blur-3xl pointer-events-none"
-              style={{ backgroundColor: service.color }}
-            />
-            
-            <div className="relative z-10 flex flex-col h-full">
-              {/* Icon Container */}
-              <div className="mb-4 flex-shrink-0">
-                <div 
-                  className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-sm group-hover:shadow-lg border-2" 
-                  style={{ 
-                    borderColor: service.color,
-                    backgroundColor: service.color + '10',
-                    color: service.color
-                  }}
-                >
-                  {service.icon}
+    <div className="services-swiper-wrapper">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        spaceBetween={20}
+        slidesPerView={1}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 16,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
+        }}
+        navigation={{
+          nextEl: '.swiper-button-next-services',
+          prevEl: '.swiper-button-prev-services',
+        }}
+        pagination={false}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        }}
+        loop={false}
+        className="services-swiper"
+      >
+        {servicesList.map((service, index) => {
+          const serviceUrl = service.href || getServiceUrl(service.name)
+          return (
+          <SwiperSlide key={index}>
+            <Link 
+              href={serviceUrl}
+              prefetch={true}
+              className="service-card-link block bg-white rounded-2xl p-6 md:p-7 border-2 group relative overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl flex flex-col cursor-pointer no-underline"
+              style={{ 
+                borderColor: service.color + '40',
+              }}
+              onMouseEnter={(e) => {
+                const target = e.currentTarget
+                target.style.borderColor = service.color
+                target.style.boxShadow = `0 20px 40px -10px ${service.color}30`
+              }}
+              onMouseLeave={(e) => {
+                const target = e.currentTarget
+                target.style.borderColor = service.color + '40'
+                target.style.boxShadow = 'none'
+              }}
+              onClick={() => handleCardClick(service)}
+            >
+              {/* Decorative background element */}
+              <div 
+                className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity duration-300 rounded-full blur-3xl pointer-events-none"
+                style={{ backgroundColor: service.color }}
+              />
+              
+              <div className="relative z-10 flex flex-col h-full">
+                {/* Icon Container */}
+                <div className="mb-5 flex-shrink-0">
+                  <div 
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-all duration-300 shadow-sm group-hover:shadow-lg border-2" 
+                    style={{ 
+                      borderColor: service.color,
+                      backgroundColor: service.color + '10',
+                      color: service.color
+                    }}
+                  >
+                    {service.icon}
+                  </div>
+                </div>
+                
+                {/* Content */}
+                <div className="flex-grow flex flex-col min-h-0 mb-4 overflow-hidden">
+                  <h3 
+                    className="text-lg md:text-xl font-bold text-gray-900 mb-3 transition-colors duration-300 line-clamp-2"
+                    style={{ minHeight: '3.5rem', maxHeight: '3.5rem' }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = service.color
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = ''
+                    }}
+                  >
+                    {service.name}
+                  </h3>
+                  <p className="text-sm md:text-base text-gray-600 leading-relaxed line-clamp-3 flex-grow overflow-hidden">
+                    {service.description}
+                  </p>
+                </div>
+                
+                {/* CTA Button - Bottom Right */}
+                <div className="mt-auto pt-2 flex-shrink-0 flex justify-end">
+                  <div 
+                    className="w-12 h-12 rounded-full flex items-center justify-center border-2 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
+                    style={{ 
+                      borderColor: service.color,
+                      backgroundColor: service.color + '10',
+                      color: service.color
+                    }}
+                  >
+                    <ArrowRight className="w-5 h-5" style={{ color: service.color }} strokeWidth={2} />
+                  </div>
                 </div>
               </div>
-              
-              {/* Content */}
-              <div className="flex-grow flex flex-col">
-                <h3 
-                  className="text-base md:text-lg font-bold text-gray-900 dark:text-white mb-2 md:mb-3 transition-colors duration-300 line-clamp-2"
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = service.color
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = ''
-                  }}
-                >
-                  {service.name}
-                </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-3 md:mb-4 line-clamp-3">
-                  {service.description}
-                </p>
-              </div>
-              
-              {/* Arrow indicator */}
-              <div className="mt-auto pt-2 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                <div 
-                  className="w-9 h-9 rounded-full flex items-center justify-center border-2"
-                  style={{ 
-                    borderColor: service.color,
-                    backgroundColor: service.color + '10'
-                  }}
-                >
-                  <ArrowRight className="w-4 h-4" style={{ color: service.color }} strokeWidth={2} />
-                </div>
-              </div>
-            </div>
-          </Link>
-        </SwiperSlide>
-        )
-      })}
-    </Swiper>
+            </Link>
+          </SwiperSlide>
+          )
+        })}
+      </Swiper>
+    </div>
   )
 }

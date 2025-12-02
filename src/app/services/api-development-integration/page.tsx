@@ -434,77 +434,77 @@ export default function APIDevelopmentIntegration() {
       </section>
 
       {/* Additional Content - Benefits */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               API Development{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Discover how API development and integration can connect your systems and enable innovation
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Network className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Network className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">System Integration</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">System Integration</h3>
+              <p className="text-gray-600">
                 Connect disparate systems and applications through APIs. Enable data sharing, workflow automation, and seamless integration between your software ecosystem.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Faster Development</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Faster Development</h3>
+              <p className="text-gray-600">
                 Reuse APIs across multiple applications to accelerate development. Build new features faster by leveraging existing API functionality instead of rebuilding from scratch.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 dark:bg-[#fecc4d]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Secure Access</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Secure Access</h3>
+              <p className="text-gray-600">
                 Implement robust authentication and authorization for API access. Control who can access what data with OAuth, JWT, and API key management.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 dark:bg-[#10b981]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
                 <Code className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Third-Party Services</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Third-Party Services</h3>
+              <p className="text-gray-600">
                 Integrate with payment gateways, email services, SMS providers, and other third-party APIs. Extend functionality without building everything in-house.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Database className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Database className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Data Synchronization</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Data Synchronization</h3>
+              <p className="text-gray-600">
                 Keep data synchronized across systems in real-time. APIs enable automatic data updates, ensuring consistency across your entire technology stack.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Scalable Architecture</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Scalable Architecture</h3>
+              <p className="text-gray-600">
                 APIs enable microservices architecture and horizontal scaling. Scale individual services independently based on demand without affecting the entire system.
               </p>
             </div>
@@ -513,27 +513,27 @@ export default function APIDevelopmentIntegration() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               API Development{' '}
               <span className="hollow-text-brand">
                 Use Cases
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore how businesses leverage APIs to connect systems and enable innovation
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 dark:from-[#5e2cb6]/10 dark:to-[#c91a6f]/10 rounded-xl p-8 border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Payment Gateway Integration</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 rounded-xl p-8 border border-[#5e2cb6]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Payment Gateway Integration</h3>
+              <p className="text-gray-600 mb-4">
                 Integrate payment processing APIs from Stripe, PayPal, Razorpay, and other providers. Enable secure online payments, subscriptions, and refunds in your applications.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Payment processing APIs</li>
                 <li>• Subscription billing integration</li>
                 <li>• Webhook handling for payment events</li>
@@ -541,12 +541,12 @@ export default function APIDevelopmentIntegration() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 dark:from-[#fecc4d]/10 dark:to-[#10b981]/10 rounded-xl p-8 border border-[#fecc4d]/20 dark:border-[#fecc4d]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">ERP/CRM Integration</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">ERP/CRM Integration</h3>
+              <p className="text-gray-600 mb-4">
                 Connect your applications with enterprise systems like Salesforce, SAP, Oracle, and Microsoft Dynamics. Sync data, automate workflows, and streamline operations.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Salesforce API integration</li>
                 <li>• SAP system connectivity</li>
                 <li>• Data synchronization</li>
@@ -554,12 +554,12 @@ export default function APIDevelopmentIntegration() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 dark:from-[#10b981]/10 dark:to-[#5e2cb6]/10 rounded-xl p-8 border border-[#10b981]/20 dark:border-[#10b981]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Microservices Architecture</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Microservices Architecture</h3>
+              <p className="text-gray-600 mb-4">
                 Build microservices-based applications with RESTful or GraphQL APIs. Enable independent service development, deployment, and scaling.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Service-to-service communication</li>
                 <li>• API gateway implementation</li>
                 <li>• Service discovery and load balancing</li>
@@ -567,12 +567,12 @@ export default function APIDevelopmentIntegration() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 dark:from-[#c91a6f]/10 dark:to-[#fecc4d]/10 rounded-xl p-8 border border-[#c91a6f]/20 dark:border-[#c91a6f]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Mobile App Backend</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Mobile App Backend</h3>
+              <p className="text-gray-600 mb-4">
                 Develop RESTful or GraphQL APIs to power mobile applications. Provide data access, authentication, and business logic through well-designed APIs.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Mobile app data APIs</li>
                 <li>• User authentication APIs</li>
                 <li>• Push notification services</li>
@@ -595,3 +595,4 @@ export default function APIDevelopmentIntegration() {
     </main>
   )
 }
+

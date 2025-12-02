@@ -442,77 +442,77 @@ export default function EcommerceDevelopment() {
       </section>
 
       {/* Additional Content - Benefits */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               E-commerce{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Discover how custom e-commerce development can transform your online business and drive sales
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <ShoppingCart className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <ShoppingCart className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">24/7 Sales Channel</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">24/7 Sales Channel</h3>
+              <p className="text-gray-600">
                 Sell products around the clock without physical store limitations. E-commerce platforms enable global reach and continuous revenue generation.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <TrendingUp className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Scalable Growth</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Scalable Growth</h3>
+              <p className="text-gray-600">
                 Scale your business without proportional cost increases. Cloud-based e-commerce platforms handle traffic spikes and growing product catalogs seamlessly.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 dark:bg-[#fecc4d]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
                 <CreditCard className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Multiple Payment Options</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Multiple Payment Options</h3>
+              <p className="text-gray-600">
                 Accept various payment methods including credit cards, digital wallets, and buy-now-pay-later options. Increase conversion rates by offering preferred payment methods.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 dark:bg-[#10b981]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
                 <Package className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Inventory Management</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Inventory Management</h3>
+              <p className="text-gray-600">
                 Real-time inventory tracking prevents overselling and stockouts. Automated inventory management reduces manual errors and improves operational efficiency.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Shield className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Secure Transactions</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Secure Transactions</h3>
+              <p className="text-gray-600">
                 PCI DSS compliant payment processing ensures secure transactions. SSL encryption and secure checkout protect customer data and build trust.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Globe className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Global Reach</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Global Reach</h3>
+              <p className="text-gray-600">
                 Reach customers worldwide with multi-currency support, international shipping, and localized experiences. Expand your market without physical presence.
               </p>
             </div>
@@ -521,27 +521,27 @@ export default function EcommerceDevelopment() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               E-commerce{' '}
               <span className="hollow-text-brand">
                 Use Cases
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore how businesses leverage e-commerce platforms to grow online sales
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 dark:from-[#5e2cb6]/10 dark:to-[#c91a6f]/10 rounded-xl p-8 border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">B2C Retail Stores</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 rounded-xl p-8 border border-[#5e2cb6]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">B2C Retail Stores</h3>
+              <p className="text-gray-600 mb-4">
                 Build online stores for retail businesses selling directly to consumers. Include product catalogs, shopping carts, and seamless checkout experiences.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Product catalog management</li>
                 <li>• Shopping cart and checkout</li>
                 <li>• Customer accounts and order history</li>
@@ -549,12 +549,12 @@ export default function EcommerceDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 dark:from-[#fecc4d]/10 dark:to-[#10b981]/10 rounded-xl p-8 border border-[#fecc4d]/20 dark:border-[#fecc4d]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Multi-Vendor Marketplaces</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Multi-Vendor Marketplaces</h3>
+              <p className="text-gray-600 mb-4">
                 Create marketplace platforms where multiple vendors can sell products. Include vendor management, commission systems, and unified checkout.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Vendor registration and management</li>
                 <li>• Commission and payment splitting</li>
                 <li>• Vendor dashboards</li>
@@ -562,12 +562,12 @@ export default function EcommerceDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 dark:from-[#10b981]/10 dark:to-[#5e2cb6]/10 rounded-xl p-8 border border-[#10b981]/20 dark:border-[#10b981]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">B2B E-commerce Platforms</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">B2B E-commerce Platforms</h3>
+              <p className="text-gray-600 mb-4">
                 Develop B2B e-commerce solutions with bulk ordering, custom pricing, and account management for business customers.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Custom pricing per customer</li>
                 <li>• Bulk ordering capabilities</li>
                 <li>• Purchase order management</li>
@@ -575,12 +575,12 @@ export default function EcommerceDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 dark:from-[#c91a6f]/10 dark:to-[#fecc4d]/10 rounded-xl p-8 border border-[#c91a6f]/20 dark:border-[#c91a6f]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Subscription E-commerce</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Subscription E-commerce</h3>
+              <p className="text-gray-600 mb-4">
                 Build subscription-based e-commerce for recurring product deliveries. Manage subscriptions, billing, and customer preferences.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Subscription management</li>
                 <li>• Recurring billing</li>
                 <li>• Subscription customization</li>
@@ -617,3 +617,4 @@ export default function EcommerceDevelopment() {
     </main>
   )
 }
+

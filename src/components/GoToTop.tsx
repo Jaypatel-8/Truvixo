@@ -62,7 +62,7 @@ export default function GoToTop() {
         <button
           onClick={scrollToTop}
           type="button"
-          className="fixed bottom-8 right-8 z-[9999] w-12 h-12 md:w-14 md:h-14 bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white rounded-full shadow-lg hover:shadow-xl hover:bg-[#4a1f8f] dark:hover:bg-[#7c3ae0] transition-all duration-300 transform hover:scale-110 active:scale-95 flex items-center justify-center group animate-fade-in cursor-pointer"
+          className="fixed bottom-8 right-8 z-[9999] w-12 h-12 md:w-14 md:h-14 bg-[#5e2cb6] text-white rounded-full shadow-lg hover:shadow-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-110 active:scale-95 flex items-center justify-center group animate-fade-in cursor-pointer"
           style={{ 
             boxShadow: '0 4px 20px rgba(94, 44, 182, 0.3)',
             pointerEvents: 'auto'
@@ -75,4 +75,5 @@ export default function GoToTop() {
     </>
   )
 }
+
 

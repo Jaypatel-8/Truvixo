@@ -31,9 +31,7 @@
 h1, h2, h3, h4, h5, h6 {
   content-visibility: auto;
   contain-intrinsic-size: auto 500px;
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
+  /* Removed !important to allow page-specific styles */
 }
 
 /* Scroll animations - visible by default, animate on scroll */
@@ -212,7 +210,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Services Slider Styles */
 .services-swiper {
-  padding: 20px 0 60px 0;
+  padding: 10px 0 20px 0;
   overflow: visible !important;
   margin: 0;
   width: 100%;
@@ -220,32 +218,60 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 0;
 }
 
-.services-swiper .swiper-slide {
-  display: flex;
-  height: 100%;
+/* Services Swiper Wrapper - Equal Height Cards - CSS Only Solution */
+.services-swiper-wrapper {
+  width: 100%;
 }
 
-.services-swiper .swiper-wrapper {
-  display: flex;
-  align-items: stretch;
-}
-
-.services-swiper .swiper-slide {
-  height: auto;
-  display: flex;
+.services-swiper-wrapper .swiper-slide {
+  display: flex !important;
+  height: 100% !important;
   box-sizing: border-box;
   flex-shrink: 0;
-  align-items: stretch;
+  align-items: stretch !important;
 }
 
-.services-swiper .swiper-slide > a {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+.services-swiper-wrapper .swiper-wrapper {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+/* Fixed height for all cards - CSS only solution */
+.services-swiper-wrapper .service-card-link {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+  min-height: 320px !important;
+  max-height: 320px !important;
   text-decoration: none;
   color: inherit;
+  box-sizing: border-box;
+  overflow: hidden;
 }
+
+/* Ensure equal heights on tablet and desktop */
+@media (min-width: 640px) {
+  .services-swiper-wrapper .swiper-slide {
+    height: 100% !important;
+    display: flex !important;
+    align-items: stretch !important;
+  }
+  
+  .services-swiper-wrapper .service-card-link {
+    min-height: 340px !important;
+    max-height: 340px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-swiper-wrapper .service-card-link {
+    min-height: 360px !important;
+    max-height: 360px !important;
+  }
+}
+
+/* Keep existing .services-swiper styles for backward compatibility */
 
 .services-swiper .swiper-slide > a:hover {
   text-decoration: none;
@@ -2466,4 +2492,14 @@ html {
 
 .animate-scale-in {
   animation: scale-in 0.3s ease-out;
+}
+
+/* Custom Cursor Animations */
+@keyframes cursorRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }

@@ -64,7 +64,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+    <footer className="bg-white border-t border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12 mb-12">
@@ -76,11 +76,11 @@ const Footer = () => {
                 alt="TruVixo Logo"
                 width={140}
                 height={50}
-                className="h-12 w-auto dark:brightness-0 dark:invert transition-all duration-300"
+                className="h-12 w-auto transition-all duration-300"
                 priority
               />
             </Link>
-            <p className="text-gray-600 dark:text-gray-400 mb-6 text-sm leading-relaxed">
+            <p className="text-gray-600 mb-6 text-sm leading-relaxed">
               AI-powered branding, marketing, and technology company helping businesses scale from concept to market leader.
             </p>
             
@@ -88,19 +88,19 @@ const Footer = () => {
             <div className="space-y-3 mb-6">
               <a 
                 href="tel:+916354326412" 
-                className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300 group"
+                className="flex items-center gap-3 text-gray-700 hover:text-black transition-colors duration-300 group"
               >
-                <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">
-                  <Phone className="w-5 h-5 text-gray-900 dark:text-white" />
+                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-gray-200 transition-colors">
+                  <Phone className="w-5 h-5 text-gray-900" />
                 </div>
                 <span className="text-sm font-medium">+91 63543 26412</span>
               </a>
               <a 
                 href="mailto:sales@truvixoo.com" 
-                className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors duration-300 group"
+                className="flex items-center gap-3 text-gray-700 hover:text-black transition-colors duration-300 group"
               >
-                <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">
-                  <Mail className="w-5 h-5 text-gray-900 dark:text-white" />
+                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-gray-200 transition-colors">
+                  <Mail className="w-5 h-5 text-gray-900" />
                 </div>
                 <span className="text-sm font-medium">sales@truvixoo.com</span>
               </a>
@@ -112,37 +112,38 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/truvixo%E2%84%A2/posts/?feedView=all" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+                className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors duration-300"
                 aria-label="Visit TruVixo on LinkedIn"
               >
-                <Linkedin className="w-5 h-5 text-gray-900 dark:text-white" />
+                <Linkedin className="w-5 h-5 text-gray-900" />
               </a>
               <a 
                 href="mailto:sales@truvixoo.com"
-                className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+                className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors duration-300"
                 aria-label="Email TruVixo"
               >
-                <Mail className="w-5 h-5 text-gray-900 dark:text-white" />
+                <Mail className="w-5 h-5 text-gray-900" />
               </a>
               <a 
                 href="/contact"
-                className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+                className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center hover:bg-gray-200 transition-colors duration-300"
                 aria-label="Contact TruVixo"
               >
-                <MessageSquare className="w-5 h-5 text-gray-900 dark:text-white" />
+                <MessageSquare className="w-5 h-5 text-gray-900" />
               </a>
             </div>
           </div>
 
           {/* Services - Software Development */}
           <div>
-            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Software Development</h3>
+            <h3 className="text-base font-bold text-gray-900 mb-4 uppercase tracking-wide">Software Development</h3>
             <ul className="space-y-2.5">
               {services['Software Development'].map((service, index) => (
                 <li key={index}>
                   <Link 
-                    href={service.href} 
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 block"
+                    href={service.href}
+                    prefetch={true}
+                    className="text-sm text-gray-600 hover:text-black transition-colors duration-300 block"
                   >
                     {service.name}
                   </Link>
@@ -153,16 +154,16 @@ const Footer = () => {
 
           {/* Services - AI & Digital Marketing */}
           <div>
-            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">AI & Marketing</h3>
+            <h3 className="text-base font-bold text-gray-900 mb-4 uppercase tracking-wide">AI & Marketing</h3>
             <div className="space-y-4">
               <div>
-                <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2.5 uppercase">AI & Machine Learning</h4>
+                <h4 className="text-xs font-semibold text-gray-700 mb-2.5 uppercase">AI & Machine Learning</h4>
                 <ul className="space-y-2.5">
                   {services['AI & Machine Learning'].map((service, index) => (
                     <li key={index}>
                       <Link 
                         href={service.href} 
-                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-[#8b5cf6] transition-colors duration-300 block"
+                        className="text-sm text-gray-600 hover:text-purple-600 transition-colors duration-300 block"
                       >
                         {service.name}
                       </Link>
@@ -171,13 +172,13 @@ const Footer = () => {
                 </ul>
               </div>
               <div>
-                <h4 className="text-xs font-semibold text-gray-700 dark:text-gray-300 mb-2.5 uppercase">Digital Marketing</h4>
+                <h4 className="text-xs font-semibold text-gray-700 mb-2.5 uppercase">Digital Marketing</h4>
                 <ul className="space-y-2.5">
                   {services['Digital Marketing'].map((service, index) => (
                     <li key={index}>
                       <Link 
                         href={service.href} 
-                        className="text-sm text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-[#8b5cf6] transition-colors duration-300 block"
+                        className="text-sm text-gray-600 hover:text-purple-600 transition-colors duration-300 block"
                       >
                         {service.name}
                       </Link>
@@ -190,13 +191,14 @@ const Footer = () => {
 
           {/* Hire Developers */}
           <div>
-            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Hire Developers</h3>
+            <h3 className="text-base font-bold text-gray-900 mb-4 uppercase tracking-wide">Hire Developers</h3>
             <ul className="space-y-2.5">
               {services['Hire Developers'].map((service, index) => (
                 <li key={index}>
                   <Link 
-                    href={service.href} 
-                    className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 block"
+                    href={service.href}
+                    prefetch={true}
+                    className="text-sm text-gray-600 hover:text-black transition-colors duration-300 block"
                   >
                     {service.name}
                   </Link>
@@ -207,13 +209,14 @@ const Footer = () => {
 
           {/* Industries & Company */}
           <div>
-            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Industries</h3>
+            <h3 className="text-base font-bold text-gray-900 mb-4 uppercase tracking-wide">Industries</h3>
             <ul className="space-y-2.5 mb-6">
               {industries.map((industry, index) => (
                 <li key={index}>
               <Link 
-                href={industry.href} 
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 block"
+                href={industry.href}
+                prefetch={true}
+                className="text-sm text-gray-600 hover:text-black transition-colors duration-300 block"
               >
                 {industry.name}
               </Link>
@@ -221,16 +224,17 @@ const Footer = () => {
               ))}
             </ul>
 
-            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Company</h3>
+            <h3 className="text-base font-bold text-gray-900 mb-4 uppercase tracking-wide">Company</h3>
             <ul className="space-y-2.5">
               {company.map((item, index) => (
                 <li key={index}>
-              <Link 
-                href={item.href} 
-                className="text-sm text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300 block"
-              >
-                {item.name}
-              </Link>
+                  <Link 
+                    href={item.href}
+                    prefetch={true}
+                    className="text-sm text-gray-600 hover:text-black transition-colors duration-300 block"
+                  >
+                    {item.name}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -238,19 +242,19 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-200 dark:border-gray-800 pt-8">
+        <div className="border-t border-gray-200 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-600 dark:text-gray-400">
+            <p className="text-sm text-gray-600">
               © {new Date().getFullYear()} TruVixo. All rights reserved.
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
-              <Link href="/privacy" prefetch={true} className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+              <Link href="/privacy" prefetch={true} className="text-gray-600 hover:text-black transition-colors duration-300">
                 Privacy Policy
               </Link>
-              <Link href="/terms" prefetch={true} className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+              <Link href="/terms" prefetch={true} className="text-gray-600 hover:text-black transition-colors duration-300">
                 Terms of Service
               </Link>
-              <Link href="/contact" prefetch={true} className="text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors duration-300">
+              <Link href="/contact" prefetch={true} className="text-gray-600 hover:text-black transition-colors duration-300">
                 Contact Us
               </Link>
             </div>
@@ -262,3 +266,6 @@ const Footer = () => {
 }
 
 export default Footer
+
+
+

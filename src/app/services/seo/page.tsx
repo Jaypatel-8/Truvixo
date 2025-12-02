@@ -403,77 +403,77 @@ export default function SEO() {
       </section>
 
       {/* Additional Content - SEO Benefits */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               SEO{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Discover how search engine optimization can transform your online presence and drive sustainable business growth
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <TrendingUp className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Increased Organic Traffic</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Increased Organic Traffic</h3>
+              <p className="text-gray-600">
                 Drive qualified visitors to your website through improved search engine rankings. SEO helps you attract users who are actively searching for your products or services, resulting in higher-quality traffic that's more likely to convert.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Target className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Cost-Effective Marketing</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Cost-Effective Marketing</h3>
+              <p className="text-gray-600">
                 Unlike paid advertising, SEO provides long-term results without ongoing ad spend. Once you rank well, you continue to receive organic traffic without paying per click, making it one of the most cost-effective marketing channels.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 dark:bg-[#fecc4d]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
                 <BarChart className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Higher Conversion Rates</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Higher Conversion Rates</h3>
+              <p className="text-gray-600">
                 Organic search traffic typically converts better than paid traffic because users are actively searching for solutions. SEO helps you reach customers at the right moment in their buying journey, resulting in higher conversion rates.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 dark:bg-[#10b981]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Brand Credibility</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Brand Credibility</h3>
+              <p className="text-gray-600">
                 High search rankings build trust and credibility with potential customers. Users trust websites that appear at the top of search results, viewing them as authoritative and reliable sources in their industry.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Globe className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Globe className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">24/7 Visibility</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">24/7 Visibility</h3>
+              <p className="text-gray-600">
                 SEO provides round-the-clock visibility for your business. Unlike business hours, search engines work 24/7, allowing potential customers to find you at any time, from anywhere in the world.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Long-Term Results</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Long-Term Results</h3>
+              <p className="text-gray-600">
                 SEO provides sustainable, long-term results that compound over time. Unlike one-time campaigns, SEO improvements continue to drive traffic and conversions for months and years after implementation.
               </p>
             </div>
@@ -482,27 +482,27 @@ export default function SEO() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               SEO{' '}
               <span className="hollow-text-brand">
                 Use Cases
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore how businesses leverage SEO to achieve their marketing and growth goals
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 dark:from-[#5e2cb6]/10 dark:to-[#c91a6f]/10 rounded-xl p-8 border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">E-Commerce Product Visibility</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 rounded-xl p-8 border border-[#5e2cb6]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">E-Commerce Product Visibility</h3>
+              <p className="text-gray-600 mb-4">
                 Increase product visibility and sales through optimized product pages, category pages, and content. Rank for product-related keywords to capture high-intent shoppers ready to purchase.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Product page optimization</li>
                 <li>• Category page SEO</li>
                 <li>• Product review optimization</li>
@@ -510,12 +510,12 @@ export default function SEO() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 dark:from-[#fecc4d]/10 dark:to-[#10b981]/10 rounded-xl p-8 border border-[#fecc4d]/20 dark:border-[#fecc4d]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Local Business Discovery</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Local Business Discovery</h3>
+              <p className="text-gray-600 mb-4">
                 Help local businesses get found by customers in their area. Local SEO ensures your business appears in "near me" searches and Google Maps, driving foot traffic and local sales.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Google My Business optimization</li>
                 <li>• Local citation building</li>
                 <li>• Location-based content</li>
@@ -523,12 +523,12 @@ export default function SEO() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 dark:from-[#10b981]/10 dark:to-[#5e2cb6]/10 rounded-xl p-8 border border-[#10b981]/20 dark:border-[#10b981]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Content Marketing Amplification</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Content Marketing Amplification</h3>
+              <p className="text-gray-600 mb-4">
                 Amplify content marketing efforts through SEO-optimized blog posts, guides, and resources. Rank for informational keywords to attract and educate potential customers throughout their buying journey.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Blog post optimization</li>
                 <li>• Content topic research</li>
                 <li>• Internal linking strategies</li>
@@ -536,12 +536,12 @@ export default function SEO() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 dark:from-[#c91a6f]/10 dark:to-[#fecc4d]/10 rounded-xl p-8 border border-[#c91a6f]/20 dark:border-[#c91a6f]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">B2B Lead Generation</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">B2B Lead Generation</h3>
+              <p className="text-gray-600 mb-4">
                 Generate high-quality B2B leads through targeted SEO strategies. Rank for industry-specific keywords and long-tail search terms that indicate strong purchase intent from decision-makers.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Industry keyword targeting</li>
                 <li>• Thought leadership content</li>
                 <li>• Case study optimization</li>
@@ -564,4 +564,5 @@ export default function SEO() {
     </main>
   )
 }
+
 

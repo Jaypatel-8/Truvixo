@@ -131,7 +131,7 @@ export default function Contact() {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Address',
-      details: '123 Innovation Drive, Tech City, TC 12345',
+      details: 'Ahmedabad, Gujarat, India',
       color: '#fecc4d'
     },
     {
@@ -148,16 +148,16 @@ export default function Contact() {
   ]
 
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900 overflow-hidden">
+    <main className="min-h-screen bg-white overflow-hidden">
 
       {/* Hero Section - Matching Homepage Style */}
-      <section className="relative min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-screen bg-white flex items-center justify-center overflow-hidden pt-20">
         {/* Minimal Grid Background - Matching Homepage */}
-        <div className="absolute inset-0 overflow-hidden opacity-[0.03] dark:opacity-[0.05]">
+        <div className="absolute inset-0 overflow-hidden opacity-[0.03]">
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="grid-contact" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-gray-900 dark:text-gray-100"/>
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-gray-900"/>
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid-contact)" />
@@ -172,18 +172,18 @@ export default function Contact() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
           <div className="scroll-animate">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 dark:text-white mb-6 leading-[0.9] tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 mb-6 leading-[0.9] tracking-tight">
               <span className="block mb-2">
                 Let's{' '}
                 <span className="hollow-text-brand">
                   Connect
                 </span>
               </span>
-              <span className="block text-gray-700 dark:text-gray-300 font-light text-4xl md:text-5xl lg:text-6xl mt-4">
+              <span className="block text-gray-700 font-light text-4xl md:text-5xl lg:text-6xl mt-4">
                 and Build Together
               </span>
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto font-light leading-relaxed mb-8 px-4">
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed mb-8 px-4">
               We'd love to hear about your ideas, challenges, or upcoming projects. Get in touch and let's transform your vision into reality.
             </p>
           </div>
@@ -191,18 +191,18 @@ export default function Contact() {
       </section>
 
       {/* Contact Form & Info Section */}
-      <section className="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+      <section className="py-20 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
       {/* Contact Form */}
             <div className="scroll-animate-left">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
                 Send us a{' '}
                 <span className="hollow-text-brand">
                   Message
                 </span>
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+              <p className="text-lg text-gray-600 mb-8">
                 Fill out the form below and we'll get back to you within 24 hours.
               </p>
               
@@ -219,7 +219,7 @@ export default function Contact() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       Name *
                     </label>
                     <input
@@ -229,7 +229,7 @@ export default function Contact() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300"
                       placeholder="Your full name"
                     />
                   </div>
@@ -244,7 +244,7 @@ export default function Contact() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -262,7 +262,7 @@ export default function Contact() {
                       value={formData.phone}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300"
                       placeholder="+1 (555) 123-4567"
                     />
                   </div>
@@ -276,7 +276,7 @@ export default function Contact() {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300"
                       placeholder="Your company name"
                     />
                   </div>
@@ -293,7 +293,7 @@ export default function Contact() {
                       value={formData.industry}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300"
                     >
                       <option value="">Select Industry</option>
                       {industries.map((industry) => (
@@ -311,7 +311,7 @@ export default function Contact() {
                       value={formData.service}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300"
                     >
                       <option value="">Select Service</option>
                       {services.map((service) => (
@@ -332,7 +332,7 @@ export default function Contact() {
                     onChange={handleInputChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 resize-none"
                     placeholder="Tell us about your project..."
                   />
                 </div>
@@ -341,7 +341,7 @@ export default function Contact() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="flex-1 bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] dark:hover:bg-[#7c3ae0] hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg"
+                    className="flex-1 bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 shadow-lg"
                   >
                     {isSubmitting ? (
                       <>
@@ -358,7 +358,7 @@ export default function Contact() {
                   <button
                     type="button"
                     onClick={() => setIsCalendarOpen(true)}
-                    className="flex-1 border-2 border-[#5e2cb6] dark:border-[#8b5cf6] text-[#5e2cb6] dark:text-[#8b5cf6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 dark:hover:bg-[#8b5cf6]/10 transition-all duration-300 flex items-center justify-center gap-2"
+                    className="flex-1 border-2 border-[#5e2cb6] text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Calendar className="w-5 h-5" />
                     Schedule a Consultation
@@ -369,13 +369,13 @@ export default function Contact() {
 
             {/* Contact Info & Calendar */}
             <div className="scroll-animate-right">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
                 Get in{' '}
                 <span className="hollow-text-brand">
                   Touch
                 </span>
               </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
+              <p className="text-lg text-gray-600 mb-8">
                 We're here to help you succeed. Reach out to us through any of these channels.
               </p>
 
@@ -384,7 +384,7 @@ export default function Contact() {
                 {contactInfo.map((info, index) => (
                   <div
                     key={index}
-                    className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-1"
+                    className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1"
                   >
                     <div 
                       className="w-12 h-12 rounded-xl flex items-center justify-center"
@@ -396,24 +396,24 @@ export default function Contact() {
                       {info.icon}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white">{info.title}</h3>
-                      <p className="text-gray-600 dark:text-gray-400">{info.details}</p>
+                      <h3 className="font-semibold text-gray-900">{info.title}</h3>
+                      <p className="text-gray-600">{info.details}</p>
                     </div>
                   </div>
                   ))}
           </div>
 
               {/* Book a Call Button */}
-              <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 text-center border border-gray-200 dark:border-gray-700">
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+              <div className="bg-gray-50 rounded-2xl p-8 text-center border border-gray-200">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
                   Prefer to talk?
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-6">
+                <p className="text-gray-600 mb-6">
                   Schedule a free consultation call with our team.
                 </p>
                         <button
                   onClick={() => setIsCalendarOpen(true)}
-                  className="bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] dark:hover:bg-[#7c3ae0] hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2 mx-auto shadow-lg"
+                  className="bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2 mx-auto shadow-lg"
                 >
                     <Calendar className="w-5 h-5" />
                   Book a Call
@@ -425,16 +425,16 @@ export default function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800 relative overflow-hidden">
+      <section className="py-20 bg-gray-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Frequently Asked{' '}
               <span className="hollow-text-brand">
                 Questions
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               Got questions? We've got answers. Here are some common questions we receive.
             </p>
           </div>
@@ -468,13 +468,13 @@ export default function Contact() {
             ].map((faq, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-900 rounded-2xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-1 scroll-animate-scale"
+                className="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-xl hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 scroll-animate-scale"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   {faq.question}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   {faq.answer}
                 </p>
               </div>
@@ -485,38 +485,38 @@ export default function Contact() {
 
       {/* Calendar Modal */}
       {isCalendarOpen && (
-        <div className="fixed inset-0 bg-black/60 dark:bg-black/80 backdrop-blur-md flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-gray-900 rounded-2xl max-w-md w-full p-6 border border-gray-200 dark:border-gray-700">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl max-w-md w-full p-6 border border-gray-200">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Book a Call</h3>
+              <h3 className="text-2xl font-bold text-gray-900">Book a Call</h3>
               <button
                 onClick={() => setIsCalendarOpen(false)}
-                className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors duration-200"
+                className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
               >
                 <X className="w-6 h-6" />
               </button>
             </div>
             
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Select Date
               </label>
               <input
                 type="date"
-                className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-[#5e2cb6] dark:focus:ring-[#8b5cf6] focus:border-transparent"
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent"
                 min={new Date().toISOString().split('T')[0]}
               />
             </div>
             
             <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Select Time
               </label>
               <div className="grid grid-cols-3 gap-2">
                 {timeSlots.map((time, index) => (
                   <button
                     key={index}
-                    className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white hover:bg-[#5e2cb6]/10 dark:hover:bg-[#8b5cf6]/20 hover:border-[#5e2cb6] dark:hover:border-[#8b5cf6] transition-colors duration-200"
+                    className="px-3 py-2 text-sm border border-gray-300 rounded-lg bg-white text-gray-900 hover:bg-[#5e2cb6]/10 hover:border-[#5e2cb6] transition-colors duration-200"
                   >
                     {time}
                   </button>
@@ -527,11 +527,11 @@ export default function Contact() {
             <div className="flex gap-4">
               <button
                 onClick={() => setIsCalendarOpen(false)}
-                className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-200"
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-xl text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
               >
                 Cancel
               </button>
-              <button className="flex-1 bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white px-4 py-3 rounded-xl hover:bg-[#4a1f8f] dark:hover:bg-[#7c3ae0] hover:shadow-lg transition-all duration-300">
+              <button className="flex-1 bg-[#5e2cb6] text-white px-4 py-3 rounded-xl hover:bg-[#4a1f8f] hover:shadow-lg transition-all duration-300">
                 Confirm Booking
               </button>
             </div>

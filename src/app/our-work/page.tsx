@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { 
   ExternalLink, 
   ArrowRight, 
@@ -20,7 +20,8 @@ import Link from 'next/link'
 
 const OurWork = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
-  const featuredProjects = [
+  const [isMounted, setIsMounted] = useState(false)
+  const [featuredProjects, setFeaturedProjects] = useState([
     {
       id: 1,
       title: 'Nova Logistics',
@@ -85,7 +86,13 @@ const OurWork = () => {
       link: '/our-work#padmavat',
       gradient: 'gradient-bg-4'
     }
-  ]
+  ])
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  // Removed dynamic project loading - using static projects to prevent rendering issues
 
   const industriesServed = [
     { name: 'FinTech', icon: '💳' },

@@ -1,15 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Static export for Hostinger (only in production build)
-  // output: 'export', // Commented out for development
+  // Disable in development mode to allow proper rendering
+  ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
   trailingSlash: true,
+  
+  // Disable dynamic routes for static export (they're handled by specific pages)
+  skipTrailingSlashRedirect: true,
   
   // Performance optimizations
   experimental: {
-    optimizeCss: true,
+    // optimizeCss: true, // Disabled - requires critters module
     optimizePackageImports: ['lucide-react', 'swiper'],
-    // Enable faster navigation
-    optimizeServerReact: true,
   },
   
   // Power optimizations
@@ -20,9 +22,8 @@ const nextConfig = {
   swcMinify: true,
   reactStrictMode: true,
   
-  // Performance optimizations
-  compress: true,
-  poweredByHeader: false,
+  // Compression - disabled for static export (handled by server)
+  // compress: true,
   
   // Optimize images
   images: {
@@ -39,9 +40,6 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
-
-  // Compression
-  compress: true,
   
   // Bundle analyzer (uncomment to analyze bundle)
   // bundleAnalyzer: {

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import Logo from './Logo'
-import ThemeToggle from './ThemeToggle'
 import { getMenuIcon } from '@/lib/menuIcons'
 
 const Navbar = () => {
@@ -183,8 +182,8 @@ const Navbar = () => {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-white/98 dark:bg-gray-900/98 backdrop-blur-md shadow-sm border-b border-gray-100 dark:border-gray-800'
-            : 'bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm'
+            ? 'bg-white/98 backdrop-blur-md shadow-sm border-b border-gray-100'
+            : 'bg-white/90 backdrop-blur-sm'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -201,18 +200,18 @@ const Navbar = () => {
                     e.preventDefault()
                     handleDropdownToggle('services')
                   }}
-                  className="dropdown-trigger text-gray-900 dark:text-white hover:text-black dark:hover:text-gray-200 font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
                 >
                   SERVICES
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {servicesOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-[900px] bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 py-6 z-50 max-h-[80vh] overflow-y-auto">
+                  <div className="absolute top-full left-0 mt-2 w-[900px] bg-white rounded-lg shadow-xl border border-gray-200 py-6 z-50 max-h-[80vh] overflow-y-auto">
                     <div className="grid grid-cols-3 gap-6 px-6">
                       {servicesCategories.map((category, catIndex) => (
                         <div key={catIndex} className="space-y-2">
-                          <h3 className="font-bold text-sm text-gray-900 dark:text-white mb-3 uppercase tracking-wide">
+                          <h3 className="font-bold text-sm text-gray-900 mb-3 uppercase tracking-wide">
                             {category.category}
                           </h3>
                           <div className="space-y-1">
@@ -222,9 +221,10 @@ const Navbar = () => {
                                 <Link
                                   key={itemIndex}
                                   href={item.href}
-                                  className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-black dark:hover:text-white rounded-lg transition-colors duration-200"
+                                  prefetch={true}
+                                  className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-black rounded-lg transition-colors duration-200"
                                 >
-                                  {icon && <span className="text-[#5e2cb6] dark:text-[#8b5cf6]">{icon}</span>}
+                                  {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                                   {item.name}
                                 </Link>
                               )
@@ -244,23 +244,24 @@ const Navbar = () => {
                     e.preventDefault()
                     handleDropdownToggle('ai')
                   }}
-                  className="dropdown-trigger text-gray-900 dark:text-white hover:text-black dark:hover:text-gray-200 font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
                 >
                   AI
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${aiOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {aiOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-72 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 py-3 z-50">
+                  <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-200 py-3 z-50">
                     {aiItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
                         <Link
                           key={index}
                           href={item.href}
-                          className="flex items-center gap-2 px-5 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-black dark:hover:text-white transition-colors duration-200 border-b border-gray-100 dark:border-gray-700 last:border-0"
+                          prefetch={true}
+                          className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6] dark:text-[#8b5cf6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -276,23 +277,24 @@ const Navbar = () => {
                     e.preventDefault()
                     handleDropdownToggle('hire')
                   }}
-                  className="dropdown-trigger text-gray-900 dark:text-white hover:text-black dark:hover:text-gray-200 font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
                 >
                   HIRE
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${hireOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {hireOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 py-3 z-50 max-h-[600px] overflow-y-auto">
+                  <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 py-3 z-50 max-h-[600px] overflow-y-auto">
                     {hireItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
                         <Link
                           key={index}
                           href={item.href}
-                          className="flex items-center gap-2 px-5 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-black dark:hover:text-white transition-colors duration-200 border-b border-gray-100 dark:border-gray-700 last:border-0"
+                          prefetch={true}
+                          className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6] dark:text-[#8b5cf6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -308,23 +310,24 @@ const Navbar = () => {
                     e.preventDefault()
                     handleDropdownToggle('industry')
                   }}
-                  className="dropdown-trigger text-gray-900 dark:text-white hover:text-black dark:hover:text-gray-200 font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
                 >
                   INDUSTRY
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${industryOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {industryOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 py-3 z-50">
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-3 z-50">
                     {industryItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
                         <Link
                           key={index}
                           href={item.href}
-                          className="flex items-center gap-2 px-5 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-black dark:hover:text-white transition-colors duration-200 border-b border-gray-100 dark:border-gray-700 last:border-0"
+                          prefetch={true}
+                          className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6] dark:text-[#8b5cf6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -340,23 +343,24 @@ const Navbar = () => {
                     e.preventDefault()
                     handleDropdownToggle('company')
                   }}
-                  className="dropdown-trigger text-gray-900 dark:text-white hover:text-black dark:hover:text-gray-200 font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
                 >
                   COMPANY
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${companyOpen ? 'rotate-180' : ''}`} />
                 </button>
                 
                 {companyOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 py-3 z-50">
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-3 z-50">
                     {companyItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
                         <Link
                           key={index}
                           href={item.href}
-                          className="flex items-center gap-2 px-5 py-3 text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 hover:text-black dark:hover:text-white transition-colors duration-200 border-b border-gray-100 dark:border-gray-700 last:border-0"
+                          prefetch={true}
+                          className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6] dark:text-[#8b5cf6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -366,10 +370,9 @@ const Navbar = () => {
               </div>
             </div>
 
-            {/* Theme Toggle & CTA Button */}
+            {/* CTA Button */}
             <div className="hidden lg:flex items-center gap-4">
-              <ThemeToggle />
-              <Link href="/contact" prefetch={true} className="bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#4a1f8f] dark:hover:bg-[#7c3aed] transition-all duration-300 inline-block shadow-sm shadow-[#5e2cb6]/20">
+              <Link href="/contact" prefetch={true} className="bg-[#5e2cb6] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 inline-block shadow-sm shadow-[#5e2cb6]/20">
                 Get Started
               </Link>
             </div>
@@ -388,24 +391,24 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 top-20 z-40 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm overflow-y-auto"
+          className="lg:hidden fixed inset-0 top-20 z-40 bg-white/95 backdrop-blur-sm overflow-y-auto"
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
             <div className="space-y-4">
               {/* Mobile Services Dropdown */}
-              <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <div className="border-b border-gray-200 pb-4">
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
-                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 dark:text-gray-300 hover:text-truvixo-blue dark:hover:text-[#8b5cf6] transition-colors duration-300 py-2"
+                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
                 >
                   SERVICES
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {mobileServicesOpen && (
-                  <div className="mt-3 pl-4 space-y-4 bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                  <div className="mt-3 pl-4 space-y-4 bg-gray-50 rounded-lg p-4">
                     {servicesCategories.map((category, catIndex) => (
                       <div key={catIndex} className="space-y-2">
-                        <h3 className="font-bold text-sm text-gray-900 dark:text-white mb-2 uppercase">
+                        <h3 className="font-bold text-sm text-gray-900 mb-2 uppercase">
                           {category.category}
                         </h3>
                         <div className="space-y-1 pl-2">
@@ -415,13 +418,14 @@ const Navbar = () => {
                               <Link
                                 key={itemIndex}
                                 href={item.href}
-                                className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-[#8b5cf6] transition-colors duration-200 py-1.5"
+                                prefetch={true}
+                                className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-1.5"
                                 onClick={() => {
                                   setIsOpen(false)
                                   setMobileServicesOpen(false)
                                 }}
                               >
-                                {icon && <span className="text-[#5e2cb6] dark:text-[#8b5cf6]">{icon}</span>}
+                                {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                                 {item.name}
                               </Link>
                             )
@@ -434,29 +438,30 @@ const Navbar = () => {
               </div>
 
               {/* Mobile AI Dropdown */}
-              <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <div className="border-b border-gray-200 pb-4">
                 <button
                   onClick={() => setMobileAiOpen(!mobileAiOpen)}
-                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 dark:text-gray-300 hover:text-truvixo-blue dark:hover:text-[#8b5cf6] transition-colors duration-300 py-2"
+                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
                 >
                   AI
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileAiOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {mobileAiOpen && (
-                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">
                     {aiItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
                         <Link
                           key={index}
                           href={item.href}
-                          className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-[#8b5cf6] transition-colors duration-200 py-2"
+                          prefetch={true}
+                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
                           onClick={() => {
                             setIsOpen(false)
                             setMobileAiOpen(false)
                           }}
                         >
-                          {icon && <span className="text-[#5e2cb6] dark:text-[#8b5cf6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -466,29 +471,30 @@ const Navbar = () => {
               </div>
 
               {/* Mobile HIRE Dropdown */}
-              <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <div className="border-b border-gray-200 pb-4">
                 <button
                   onClick={() => setMobileHireOpen(!mobileHireOpen)}
-                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 dark:text-gray-300 hover:text-truvixo-blue dark:hover:text-[#8b5cf6] transition-colors duration-300 py-2"
+                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
                 >
                   HIRE
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileHireOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {mobileHireOpen && (
-                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">
                     {hireItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
                         <Link
                           key={index}
                           href={item.href}
-                          className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-[#8b5cf6] transition-colors duration-200 py-2"
+                          prefetch={true}
+                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
                           onClick={() => {
                             setIsOpen(false)
                             setMobileHireOpen(false)
                           }}
                         >
-                          {icon && <span className="text-[#5e2cb6] dark:text-[#8b5cf6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -498,29 +504,30 @@ const Navbar = () => {
               </div>
 
               {/* Mobile INDUSTRY Dropdown */}
-              <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <div className="border-b border-gray-200 pb-4">
                 <button
                   onClick={() => setMobileIndustryOpen(!mobileIndustryOpen)}
-                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 dark:text-gray-300 hover:text-truvixo-blue dark:hover:text-[#8b5cf6] transition-colors duration-300 py-2"
+                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
                 >
                   INDUSTRY
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileIndustryOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {mobileIndustryOpen && (
-                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">
                     {industryItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
                         <Link
                           key={index}
                           href={item.href}
-                          className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-[#8b5cf6] transition-colors duration-200 py-2"
+                          prefetch={true}
+                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
                           onClick={() => {
                             setIsOpen(false)
                             setMobileIndustryOpen(false)
                           }}
                         >
-                          {icon && <span className="text-[#5e2cb6] dark:text-[#8b5cf6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -530,29 +537,30 @@ const Navbar = () => {
               </div>
 
               {/* Mobile COMPANY Dropdown */}
-              <div className="border-b border-gray-200 dark:border-gray-700 pb-4">
+              <div className="border-b border-gray-200 pb-4">
                 <button
                   onClick={() => setMobileCompanyOpen(!mobileCompanyOpen)}
-                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 dark:text-gray-300 hover:text-truvixo-blue dark:hover:text-[#8b5cf6] transition-colors duration-300 py-2"
+                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
                 >
                   COMPANY
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileCompanyOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {mobileCompanyOpen && (
-                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 dark:bg-gray-800 rounded-lg p-4">
+                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">
                     {companyItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
                         <Link
                           key={index}
                           href={item.href}
-                          className="flex items-center gap-2 text-sm text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-[#8b5cf6] transition-colors duration-200 py-2"
+                          prefetch={true}
+                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
                           onClick={() => {
                             setIsOpen(false)
                             setMobileCompanyOpen(false)
                           }}
                         >
-                          {icon && <span className="text-[#5e2cb6] dark:text-[#8b5cf6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -575,3 +583,6 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+
+

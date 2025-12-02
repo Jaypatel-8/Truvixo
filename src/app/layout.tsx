@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import dynamic from 'next/dynamic'
-import { ThemeProvider } from '@/contexts/ThemeContext'
 
 // Lazy load components for better performance
 const CustomCursor = dynamic(() => import('@/components/CustomCursor'), {
@@ -18,9 +17,6 @@ const Clientele = dynamic(() => import('@/components/Clientele'), {
   ssr: false,
 })
 const GoToTop = dynamic(() => import('@/components/GoToTop'), {
-  ssr: false,
-})
-const AIChatbot = dynamic(() => import('@/components/AIChatbot'), {
   ssr: false,
 })
 const ContactPopup = dynamic(() => import('@/components/ContactPopup'), {
@@ -202,17 +198,14 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <ThemeProvider>
-          <CustomCursor />
-          <Navbar />
-          <main>
-            {children}
-          </main>
-          <Footer />
-          <GoToTop />
-          <AIChatbot />
-          <ContactPopup />
-        </ThemeProvider>
+        <CustomCursor />
+        <Navbar />
+        <main>
+          {children}
+        </main>
+        <Footer />
+        <GoToTop />
+        <ContactPopup />
       </body>
     </html>
   )

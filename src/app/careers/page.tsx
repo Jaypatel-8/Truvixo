@@ -1,19 +1,51 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowRight, Briefcase, Users, Zap, TrendingUp, Heart, Phone, Mail, Calendar, MapPin, Clock } from 'lucide-react'
-import dynamic from 'next/dynamic'
+import { ArrowRight, Briefcase, Users, Zap, TrendingUp, Heart, Mail, MapPin, Clock } from 'lucide-react'
+import Link from 'next/link'
 import Clientele from '@/components/Clientele'
 import ContactSection from '@/components/ContactSection'
-
-const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
-  ssr: false,
-  loading: () => null,
-})
+// Removed dynamic job loading and admin features to prevent rendering issues
 
 export default function Careers() {
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  
+  // Static job positions - removed dynamic loading
+  const openPositions = [
+    {
+      id: '1',
+      title: 'Senior Full-Stack Developer',
+      department: 'Engineering',
+      location: 'Remote',
+      type: 'Full-time',
+      description: 'We are looking for an experienced full-stack developer to join our team.',
+      requirements: ['5+ years experience', 'React, Node.js', 'TypeScript'],
+      isActive: true,
+      color: '#5e2cb6'
+    },
+    {
+      id: '2',
+      title: 'AI/ML Engineer',
+      department: 'AI & Machine Learning',
+      location: 'Remote',
+      type: 'Full-time',
+      description: 'Join our AI team to build cutting-edge machine learning solutions.',
+      requirements: ['3+ years experience', 'Python, TensorFlow', 'ML expertise'],
+      isActive: true,
+      color: '#c91a6f'
+    },
+    {
+      id: '3',
+      title: 'DevOps Engineer',
+      department: 'Infrastructure',
+      location: 'Remote',
+      type: 'Full-time',
+      description: 'Help us build and maintain scalable cloud infrastructure.',
+      requirements: ['4+ years experience', 'AWS, Docker, Kubernetes'],
+      isActive: true,
+      color: '#fecc4d'
+    }
+  ]
 
   useEffect(() => {
     setIsMounted(true)
@@ -41,40 +73,7 @@ export default function Careers() {
     }
   }, [])
 
-  const openPositions = [
-    {
-      title: 'Senior Full-Stack Developer',
-      department: 'Engineering',
-      location: 'Remote / On-site',
-      type: 'Full-time',
-      description: 'We are looking for an experienced full-stack developer to join our team.',
-      color: '#5e2cb6'
-    },
-    {
-      title: 'AI/ML Engineer',
-      department: 'AI & Machine Learning',
-      location: 'Remote / On-site',
-      type: 'Full-time',
-      description: 'Join our AI team to build cutting-edge machine learning solutions.',
-      color: '#c91a6f'
-    },
-    {
-      title: 'Digital Marketing Specialist',
-      department: 'Marketing',
-      location: 'Remote / On-site',
-      type: 'Full-time',
-      description: 'Drive our digital marketing initiatives and grow our brand presence.',
-      color: '#fecc4d'
-    },
-    {
-      title: 'UI/UX Designer',
-      department: 'Design',
-      location: 'Remote / On-site',
-      type: 'Full-time',
-      description: 'Create beautiful and intuitive user experiences for our clients.',
-      color: '#10b981'
-    }
-  ]
+  // Removed HiringFormModal - using contact page instead
 
   const benefits = [
     {
@@ -184,13 +183,13 @@ export default function Careers() {
                       <span>{position.type}</span>
                     </div>
                   </div>
-                  <button 
-                    onClick={() => setIsContactModalOpen(true)}
+                  <Link 
+                    href="/contact"
                     className="inline-flex items-center gap-2 text-[#5e2cb6] font-semibold hover:gap-3 transition-all"
                   >
                     Apply Now
                     <ArrowRight className="w-4 h-4" strokeWidth={2} />
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -257,13 +256,13 @@ export default function Careers() {
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
               We're always looking for talented people. Send us your resume and we'll keep you in mind for future opportunities.
             </p>
-            <button 
-              onClick={() => setIsContactModalOpen(true)}
+            <Link 
+              href="/contact"
               className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
             >
               <Mail className="w-5 h-5" strokeWidth={2} />
               <span>Send Your Resume</span>
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -273,10 +272,7 @@ export default function Careers() {
         description="Have questions about working with us? Let's connect."
       />
 
-      <ContactFormModal 
-        isOpen={isContactModalOpen} 
-        onClose={() => setIsContactModalOpen(false)} 
-      />
+      {/* Removed HiringFormModal - using contact page instead */}
     </main>
   )
 }

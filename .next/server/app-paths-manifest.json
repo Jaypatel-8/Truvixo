@@ -1,3 +1,8 @@
 {
-  "/page": "app/page.js"
+  "/industry/logistics/page": "app/industry/logistics/page.js",
+  "/contact/page": "app/contact/page.js",
+  "/our-work/page": "app/our-work/page.js",
+  "/about/page": "app/about/page.js",
+  "/services/page": "app/services/page.js",
+  "/services/custom-software-development/page": "app/services/custom-software-development/page.js"
 }

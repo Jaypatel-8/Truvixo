@@ -161,7 +161,7 @@ export default function PageTemplate({
   }))
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 overflow-hidden">
+    <main className="min-h-screen bg-gray-50 overflow-hidden">
       <HeroSection
         badge={badge}
         title={title}
@@ -201,10 +201,10 @@ export default function PageTemplate({
       )}
 
       {industries.length > 0 && (
-        <section className="py-20 bg-white dark:bg-gray-900">
+        <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12 scroll-animate">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
                 {industriesTitle}{' '}
                 <span className="hollow-text-brand">
                   {industriesHollowText}
@@ -216,7 +216,7 @@ export default function PageTemplate({
               {industries.map((industry, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                  className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
                   style={{ 
                     borderColor: industry.color + '40'
                   }}
@@ -230,7 +230,7 @@ export default function PageTemplate({
                   <div className="mb-3 flex justify-center" style={{ color: industry.color }}>
                     {industry.icon}
                   </div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{industry.name}</h3>
+                  <h3 className="font-semibold text-gray-900 text-sm">{industry.name}</h3>
                 </div>
               ))}
             </div>
@@ -264,4 +264,5 @@ export default function PageTemplate({
     </main>
   )
 }
+
 

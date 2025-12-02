@@ -19,9 +19,9 @@ export default function NewsletterCTA({ onContactClick, className = '' }: Newsle
   }
 
   return (
-    <section className={`py-16 bg-white dark:bg-gray-900 ${className}`}>
+    <section className={`py-16 bg-white ${className}`}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-[#5e2cb6] dark:bg-[#4a1f8f] rounded-2xl p-8 md:p-12 text-white relative overflow-hidden">
+        <div className="bg-[#5e2cb6] rounded-2xl p-8 md:p-12 text-white relative overflow-hidden">
           {/* Decorative Elements */}
           <div className="absolute inset-0 overflow-hidden opacity-10">
             <div className="absolute top-10 right-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
@@ -72,4 +72,5 @@ export default function NewsletterCTA({ onContactClick, className = '' }: Newsle
     </section>
   )
 }
+
 

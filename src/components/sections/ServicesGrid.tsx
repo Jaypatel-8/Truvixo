@@ -29,17 +29,17 @@ export default function ServicesGrid({
     : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
 
   return (
-    <section className="py-20 bg-white dark:bg-gray-900">
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 scroll-animate">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
             {title}{' '}
             <span className="hollow-text-brand">
               {hollowText}
             </span>
           </h2>
           {subtitle && (
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               {subtitle}
             </p>
           )}
@@ -49,7 +49,7 @@ export default function ServicesGrid({
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+              className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
               style={{ 
                 borderColor: service.color + '40'
               }}
@@ -65,10 +65,10 @@ export default function ServicesGrid({
                 <div className="mb-6 flex justify-center" style={{ color: service.color }}>
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#5e2cb6] dark:group-hover:text-[#8b5cf6] transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -79,5 +79,6 @@ export default function ServicesGrid({
     </section>
   )
 }
+
 
 

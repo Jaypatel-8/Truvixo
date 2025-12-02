@@ -169,8 +169,8 @@ export default function EmailMarketing() {
   const faqs = getFAQsForPage('email-marketing')
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 overflow-hidden">
-      <section className="relative min-h-[85vh] bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden pt-24">
+    <main className="min-h-screen bg-gray-50 overflow-hidden">
+      <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
@@ -183,32 +183,32 @@ export default function EmailMarketing() {
                 <Mail className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
                 <span className="text-sm font-semibold text-[#5e2cb6]">Email Marketing</span>
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
                 Email{' '}
                 <span className="hollow-text-brand block mt-2">
                   Marketing
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
                 Drive engagement and conversions with personalized email marketing campaigns. Build relationships and nurture leads with automated email sequences. Email marketing delivers one of the highest ROIs of any marketing channel, making it essential for businesses looking to grow their customer base and increase revenue. Our email marketing experts create campaigns that resonate with your audience and drive measurable results.
               </p>
-              <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 dark:from-[#5e2cb6]/20 dark:to-[#c91a6f]/20 rounded-xl border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-                <p className="text-gray-700 dark:text-gray-300 font-medium mb-3">Why Email Marketing Works:</p>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+              <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 rounded-xl border border-[#5e2cb6]/20">
+                <p className="text-gray-700 font-medium mb-3">Why Email Marketing Works:</p>
+                <ul className="space-y-2 text-gray-600 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>High ROI:</strong> Email marketing delivers an average ROI of $42 for every $1 spent</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Direct Communication:</strong> Reach customers directly in their inbox with personalized messages</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Automation:</strong> Set up automated campaigns that nurture leads and drive conversions 24/7</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Measurable Results:</strong> Track opens, clicks, conversions, and ROI with detailed analytics</span>
                   </li>
                 </ul>
@@ -223,7 +223,7 @@ export default function EmailMarketing() {
                 </button>
                 <button 
                   onClick={() => setIsContactModalOpen(true)}
-                  className="bg-white dark:bg-gray-800 text-[#5e2cb6] dark:text-[#8b5cf6] border-2 border-[#5e2cb6] dark:border-[#8b5cf6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 dark:hover:bg-[#8b5cf6]/10 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+                  className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
                 >
                   <span>Contact Us</span>
                   <ArrowRight className="w-5 h-5" strokeWidth={2} />
@@ -235,14 +235,14 @@ export default function EmailMarketing() {
               {services.slice(0, 4).map((service, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  className="bg-white rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   style={{ borderColor: service.color + '40' }}
                 >
                   <div className="mb-4" style={{ color: service.color }}>
                     {service.icon}
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-white text-sm mb-2">{service.title}</h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">{service.description}</p>
+                  <h3 className="font-bold text-gray-900 text-sm mb-2">{service.title}</h3>
+                  <p className="text-xs text-gray-600 line-clamp-2">{service.description}</p>
                 </div>
               ))}
             </div>
@@ -252,16 +252,16 @@ export default function EmailMarketing() {
 
       {isMounted && <div className="mt-12"><Clientele /></div>}
 
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Email Marketing{' '}
               <span className="hollow-text-brand">
                 Services
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Comprehensive email marketing solutions tailored to your business goals
             </p>
           </div>
@@ -270,7 +270,7 @@ export default function EmailMarketing() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: service.color + '40'
                 }}
@@ -286,10 +286,10 @@ export default function EmailMarketing() {
                   <div className="mb-6 flex justify-center" style={{ color: service.color }}>
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#5e2cb6] dark:group-hover:text-[#8b5cf6] transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-600 text-sm leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -299,10 +299,10 @@ export default function EmailMarketing() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Why Choose Our{' '}
               <span className="hollow-text-brand">
                 Email Marketing
@@ -314,7 +314,7 @@ export default function EmailMarketing() {
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white dark:bg-gray-900 rounded-2xl p-8 border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: item.color + '40'
                 }}
@@ -330,10 +330,10 @@ export default function EmailMarketing() {
                   <div className="mb-6 flex justify-center" style={{ color: item.color }}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#5e2cb6] dark:group-hover:text-[#8b5cf6] transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -343,10 +343,10 @@ export default function EmailMarketing() {
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Industries We{' '}
               <span className="hollow-text-brand">
                 Serve
@@ -358,7 +358,7 @@ export default function EmailMarketing() {
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
                 style={{ 
                   borderColor: industry.color + '40'
                 }}
@@ -372,7 +372,7 @@ export default function EmailMarketing() {
                 <div className="mb-3 flex justify-center" style={{ color: industry.color }}>
                   {industry.icon}
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{industry.name}</h3>
+                <h3 className="font-semibold text-gray-900 text-sm">{industry.name}</h3>
               </div>
             ))}
           </div>
@@ -425,77 +425,77 @@ export default function EmailMarketing() {
       </section>
 
       {/* Additional Content - Email Marketing Benefits */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Email Marketing{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Discover how email marketing can transform your customer relationships and drive business growth
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <DollarSign className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <DollarSign className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Exceptional ROI</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Exceptional ROI</h3>
+              <p className="text-gray-600">
                 Email marketing delivers an average ROI of $42 for every $1 spent, making it one of the most cost-effective marketing channels. Unlike paid advertising, you own your email list and can reach customers repeatedly without additional costs per message.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Users className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Direct Customer Communication</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Direct Customer Communication</h3>
+              <p className="text-gray-600">
                 Reach customers directly in their inbox with personalized messages. Email marketing allows you to bypass social media algorithms and ad blockers, ensuring your message reaches your audience when they're ready to engage.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 dark:bg-[#fecc4d]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Marketing Automation</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Marketing Automation</h3>
+              <p className="text-gray-600">
                 Set up automated email sequences that nurture leads and drive conversions 24/7. Welcome series, abandoned cart emails, and re-engagement campaigns work automatically, saving time while maintaining consistent communication with your audience.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 dark:bg-[#10b981]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
                 <BarChart className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Measurable Results</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Measurable Results</h3>
+              <p className="text-gray-600">
                 Track opens, clicks, conversions, and ROI with detailed analytics. Email marketing provides comprehensive metrics that help you understand what works, optimize campaigns, and make data-driven decisions to improve performance.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Target className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Target className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Personalization at Scale</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Personalization at Scale</h3>
+              <p className="text-gray-600">
                 Personalize emails based on customer behavior, preferences, and purchase history. Dynamic content, segmentation, and personalization tokens allow you to send relevant messages to thousands of subscribers while maintaining a personal touch.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Build Customer Loyalty</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Build Customer Loyalty</h3>
+              <p className="text-gray-600">
                 Regular email communication helps build strong relationships with customers. Newsletters, exclusive offers, and valuable content keep your brand top-of-mind and encourage repeat purchases, increasing customer lifetime value.
               </p>
             </div>
@@ -504,27 +504,27 @@ export default function EmailMarketing() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Email Marketing{' '}
               <span className="hollow-text-brand">
                 Use Cases
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore how businesses leverage email marketing to achieve their goals
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 dark:from-[#5e2cb6]/10 dark:to-[#c91a6f]/10 rounded-xl p-8 border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">E-Commerce Sales & Promotions</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 rounded-xl p-8 border border-[#5e2cb6]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">E-Commerce Sales & Promotions</h3>
+              <p className="text-gray-600 mb-4">
                 Drive sales with promotional emails, product launches, and seasonal campaigns. Use abandoned cart emails to recover lost sales and personalized product recommendations to increase average order value.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Abandoned cart recovery campaigns</li>
                 <li>• Product launch announcements</li>
                 <li>• Seasonal sales and promotions</li>
@@ -532,12 +532,12 @@ export default function EmailMarketing() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 dark:from-[#fecc4d]/10 dark:to-[#10b981]/10 rounded-xl p-8 border border-[#fecc4d]/20 dark:border-[#fecc4d]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Lead Nurturing & Education</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Lead Nurturing & Education</h3>
+              <p className="text-gray-600 mb-4">
                 Nurture leads through the sales funnel with educational content, case studies, and thought leadership. Build trust and establish your brand as an industry expert before asking for the sale.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Welcome series for new subscribers</li>
                 <li>• Educational content and resources</li>
                 <li>• Case studies and success stories</li>
@@ -545,12 +545,12 @@ export default function EmailMarketing() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 dark:from-[#10b981]/10 dark:to-[#5e2cb6]/10 rounded-xl p-8 border border-[#10b981]/20 dark:border-[#10b981]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Customer Retention & Loyalty</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Customer Retention & Loyalty</h3>
+              <p className="text-gray-600 mb-4">
                 Keep customers engaged and encourage repeat purchases with loyalty programs, exclusive offers, and valuable content. Increase customer lifetime value through strategic email communication.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Loyalty program communications</li>
                 <li>• Exclusive member offers</li>
                 <li>• Birthday and anniversary emails</li>
@@ -558,12 +558,12 @@ export default function EmailMarketing() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 dark:from-[#c91a6f]/10 dark:to-[#fecc4d]/10 rounded-xl p-8 border border-[#c91a6f]/20 dark:border-[#c91a6f]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Event Promotion & Webinars</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Event Promotion & Webinars</h3>
+              <p className="text-gray-600 mb-4">
                 Promote events, webinars, and workshops through targeted email campaigns. Send invitations, reminders, and follow-up content to maximize attendance and engagement.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Event invitations and RSVPs</li>
                 <li>• Reminder emails before events</li>
                 <li>• Post-event follow-up and resources</li>
@@ -586,4 +586,5 @@ export default function EmailMarketing() {
     </main>
   )
 }
+
 

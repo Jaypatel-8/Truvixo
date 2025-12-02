@@ -151,9 +151,9 @@ export default function WebApplicationDevelopment() {
   const faqs = getFAQsForPage('web-application-development')
 
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900 overflow-hidden">
+    <main className="min-h-screen bg-white overflow-hidden">
       {/* 1. Hero Section */}
-      <section className="relative min-h-[70vh] bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-[70vh] bg-white flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 overflow-hidden opacity-[0.02]">
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -167,56 +167,56 @@ export default function WebApplicationDevelopment() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
           <div className="scroll-animate">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 mb-6 leading-tight">
               Web Application{' '}
               <span className="hollow-text-brand">
                 Development
               </span>
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
               We create modern, scalable, SEO-friendly web applications designed for user engagement and business performance. Our web applications are built with cutting-edge technologies, responsive design, and optimized performance to deliver exceptional user experiences. From single-page applications to complex enterprise web platforms, we transform your ideas into powerful digital solutions that drive business growth and user satisfaction.
             </p>
-            <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 dark:from-[#5e2cb6]/20 dark:to-[#c91a6f]/20 rounded-xl border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30 max-w-4xl mx-auto">
-              <p className="text-gray-700 dark:text-gray-300 font-medium mb-3">Why Choose Our Web Application Development:</p>
+            <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 rounded-xl border border-[#5e2cb6]/20 max-w-4xl mx-auto">
+              <p className="text-gray-700 font-medium mb-3">Why Choose Our Web Application Development:</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                 <div className="flex items-start gap-2">
-                  <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">✓</span>
-                  <span className="text-gray-600 dark:text-gray-400"><strong>Modern Tech Stack:</strong> Built with React, Next.js, Vue, Angular, and other cutting-edge frameworks</span>
+                  <span className="text-[#5e2cb6] mt-1">✓</span>
+                  <span className="text-gray-600"><strong>Modern Tech Stack:</strong> Built with React, Next.js, Vue, Angular, and other cutting-edge frameworks</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">✓</span>
-                  <span className="text-gray-600 dark:text-gray-400"><strong>Responsive Design:</strong> Mobile-first approach ensuring perfect experience on all devices</span>
+                  <span className="text-[#5e2cb6] mt-1">✓</span>
+                  <span className="text-gray-600"><strong>Responsive Design:</strong> Mobile-first approach ensuring perfect experience on all devices</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">✓</span>
-                  <span className="text-gray-600 dark:text-gray-400"><strong>SEO Optimized:</strong> Built with SEO best practices for better search engine rankings</span>
+                  <span className="text-[#5e2cb6] mt-1">✓</span>
+                  <span className="text-gray-600"><strong>SEO Optimized:</strong> Built with SEO best practices for better search engine rankings</span>
                 </div>
                 <div className="flex items-start gap-2">
-                  <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">✓</span>
-                  <span className="text-gray-600 dark:text-gray-400"><strong>Scalable Architecture:</strong> Cloud-native solutions that grow with your business</span>
+                  <span className="text-[#5e2cb6] mt-1">✓</span>
+                  <span className="text-gray-600"><strong>Scalable Architecture:</strong> Cloud-native solutions that grow with your business</span>
                 </div>
               </div>
             </div>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <div className="flex items-start gap-3 p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg">
-                <Zap className="w-5 h-5 text-[#5e2cb6] dark:text-[#8b5cf6] flex-shrink-0 mt-1" strokeWidth={2} />
+              <div className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
+                <Zap className="w-5 h-5 text-[#5e2cb6] flex-shrink-0 mt-1" strokeWidth={2} />
                 <div>
-                  <p className="text-gray-900 dark:text-white font-semibold mb-1">Fast Performance</p>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">Lightning-fast load times and optimized performance for better user experience.</p>
+                  <p className="text-gray-900 font-semibold mb-1">Fast Performance</p>
+                  <p className="text-gray-600 text-sm">Lightning-fast load times and optimized performance for better user experience.</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg">
-                <Shield className="w-5 h-5 text-[#c91a6f] dark:text-[#ec4899] flex-shrink-0 mt-1" strokeWidth={2} />
+              <div className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
+                <Shield className="w-5 h-5 text-[#c91a6f] flex-shrink-0 mt-1" strokeWidth={2} />
                 <div>
-                  <p className="text-gray-900 dark:text-white font-semibold mb-1">Secure & Scalable</p>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">Enterprise-grade security and architecture that scales with your business.</p>
+                  <p className="text-gray-900 font-semibold mb-1">Secure & Scalable</p>
+                  <p className="text-gray-600 text-sm">Enterprise-grade security and architecture that scales with your business.</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3 p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg">
+              <div className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
                 <TrendingUp className="w-5 h-5 text-[#fecc4d] flex-shrink-0 mt-1" strokeWidth={2} />
                 <div>
-                  <p className="text-gray-900 dark:text-white font-semibold mb-1">SEO Optimized</p>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">Built with SEO best practices to improve search engine visibility and rankings.</p>
+                  <p className="text-gray-900 font-semibold mb-1">SEO Optimized</p>
+                  <p className="text-gray-600 text-sm">Built with SEO best practices to improve search engine visibility and rankings.</p>
                 </div>
               </div>
             </div>
@@ -244,16 +244,16 @@ export default function WebApplicationDevelopment() {
       {isMounted && <Clientele />}
 
       {/* 3. Services */}
-      <section className="py-16 bg-white dark:bg-gray-900">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Web Application{' '}
               <span className="hollow-text-brand">
                 Services
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Comprehensive web application development services tailored to your business needs. From responsive web apps to progressive web applications, we deliver solutions that drive engagement and growth.
             </p>
           </div>
@@ -262,15 +262,15 @@ export default function WebApplicationDevelopment() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-lg p-8 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
+                className="bg-white rounded-lg p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
               >
-                <div className="text-gray-900 dark:text-white mb-4 flex justify-center">
+                <div className="text-gray-900 mb-4 flex justify-center">
                   {service.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -280,16 +280,16 @@ export default function WebApplicationDevelopment() {
       </section>
 
       {/* 4. Why Choose */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Why Choose{' '}
               <span className="hollow-text-brand">
                 Us
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We combine technical expertise with business acumen to deliver web applications that not only look great but also drive real business results.
             </p>
           </div>
@@ -298,15 +298,15 @@ export default function WebApplicationDevelopment() {
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-900 rounded-lg p-8 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
+                className="bg-white rounded-lg p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
               >
-                <div className="text-gray-900 dark:text-white mb-4 flex justify-center">
+                <div className="text-gray-900 mb-4 flex justify-center">
                   {item.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   {item.description}
                 </p>
               </div>
@@ -316,16 +316,16 @@ export default function WebApplicationDevelopment() {
       </section>
 
       {/* 5. Industries */}
-      <section className="py-16 bg-white dark:bg-gray-900">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Industries We{' '}
               <span className="hollow-text-brand">
                 Specialize
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We have extensive experience building web applications for various industries, understanding unique requirements and delivering tailored solutions.
             </p>
           </div>
@@ -334,12 +334,12 @@ export default function WebApplicationDevelopment() {
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-lg p-6 text-center border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg"
+                className="bg-white rounded-lg p-6 text-center border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg"
               >
-                <div className="text-gray-900 dark:text-white mb-3 flex justify-center">
+                <div className="text-gray-900 mb-3 flex justify-center">
                   {industry.icon}
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{industry.name}</h3>
+                <h3 className="font-semibold text-gray-900 text-sm">{industry.name}</h3>
               </div>
             ))}
           </div>
@@ -347,7 +347,7 @@ export default function WebApplicationDevelopment() {
       </section>
 
       {/* 6. Get a Quote Section */}
-      <section className="py-16 bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white relative overflow-hidden">
+      <section className="py-16 bg-[#5e2cb6] text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
@@ -391,77 +391,77 @@ export default function WebApplicationDevelopment() {
 
       {/* 7. Technologies We Use */}
       {/* Additional Content - Web App Benefits */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Web Application{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Discover how modern web applications can transform your business operations and customer engagement
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Globe className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Globe className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Cross-Platform Compatibility</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Cross-Platform Compatibility</h3>
+              <p className="text-gray-600">
                 Access your web application from any device or browser. No need for separate iOS or Android apps - one web application works seamlessly across desktop, tablet, and mobile devices, reducing development and maintenance costs.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Instant Updates</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Instant Updates</h3>
+              <p className="text-gray-600">
                 Deploy updates instantly without requiring users to download new versions. Web applications allow you to push updates, new features, and bug fixes immediately, ensuring all users always have access to the latest version.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 dark:bg-[#fecc4d]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
                 <TrendingUp className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Cost-Effective Development</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Cost-Effective Development</h3>
+              <p className="text-gray-600">
                 Build once, deploy everywhere. Web applications eliminate the need for separate native apps, reducing development time and costs. Maintenance is also simpler with a single codebase to manage and update.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 dark:bg-[#10b981]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
                 <Shield className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Enhanced Security</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Enhanced Security</h3>
+              <p className="text-gray-600">
                 Web applications benefit from centralized security updates and SSL encryption. Data is stored securely on servers, reducing the risk of data loss from device theft or damage. Regular security patches protect against vulnerabilities.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Code className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Code className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Easy Integration</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Easy Integration</h3>
+              <p className="text-gray-600">
                 Seamlessly integrate with third-party services, APIs, and existing business systems. Web applications can connect to payment gateways, CRM systems, analytics tools, and more, creating a unified business ecosystem.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Scalable Infrastructure</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Scalable Infrastructure</h3>
+              <p className="text-gray-600">
                 Cloud-based web applications scale automatically with your business growth. Handle traffic spikes, user growth, and increased data without performance degradation. Scale resources up or down based on demand.
               </p>
             </div>
@@ -470,27 +470,27 @@ export default function WebApplicationDevelopment() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Web Application{' '}
               <span className="hollow-text-brand">
                 Use Cases
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore how businesses leverage web applications to streamline operations and enhance customer experiences
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 dark:from-[#5e2cb6]/10 dark:to-[#c91a6f]/10 rounded-xl p-8 border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">E-Commerce Platforms</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 rounded-xl p-8 border border-[#5e2cb6]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">E-Commerce Platforms</h3>
+              <p className="text-gray-600 mb-4">
                 Build comprehensive online stores with shopping carts, payment processing, inventory management, and order tracking. Create seamless shopping experiences that drive conversions and customer satisfaction.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Product catalogs with advanced search and filtering</li>
                 <li>• Secure payment gateway integration</li>
                 <li>• Real-time inventory management</li>
@@ -498,12 +498,12 @@ export default function WebApplicationDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 dark:from-[#fecc4d]/10 dark:to-[#10b981]/10 rounded-xl p-8 border border-[#fecc4d]/20 dark:border-[#fecc4d]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Business Management Systems</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Business Management Systems</h3>
+              <p className="text-gray-600 mb-4">
                 Develop custom CRM, ERP, and project management solutions tailored to your business workflows. Streamline operations, improve collaboration, and gain insights with integrated business applications.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Customer relationship management (CRM)</li>
                 <li>• Enterprise resource planning (ERP)</li>
                 <li>• Project and task management</li>
@@ -511,12 +511,12 @@ export default function WebApplicationDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 dark:from-[#10b981]/10 dark:to-[#5e2cb6]/10 rounded-xl p-8 border border-[#10b981]/20 dark:border-[#10b981]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">SaaS Applications</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">SaaS Applications</h3>
+              <p className="text-gray-600 mb-4">
                 Create software-as-a-service platforms with subscription management, multi-tenancy, and scalable architecture. Build recurring revenue businesses with cloud-based SaaS solutions.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Subscription and billing management</li>
                 <li>• Multi-tenant architecture</li>
                 <li>• User authentication and authorization</li>
@@ -524,12 +524,12 @@ export default function WebApplicationDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 dark:from-[#c91a6f]/10 dark:to-[#fecc4d]/10 rounded-xl p-8 border border-[#c91a6f]/20 dark:border-[#c91a6f]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Content Management Systems</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Content Management Systems</h3>
+              <p className="text-gray-600 mb-4">
                 Build custom CMS platforms for content creation, publishing, and management. Create intuitive interfaces for content editors while maintaining powerful backend functionality.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• WYSIWYG content editors</li>
                 <li>• Media library and asset management</li>
                 <li>• Role-based access control</li>
@@ -573,3 +573,4 @@ export default function WebApplicationDevelopment() {
     </main>
   )
 }
+

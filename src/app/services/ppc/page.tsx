@@ -168,8 +168,8 @@ export default function PPC() {
   const faqs = getFAQsForPage('ppc')
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 overflow-hidden">
-      <section className="relative min-h-[85vh] bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden pt-24">
+    <main className="min-h-screen bg-gray-50 overflow-hidden">
+      <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
@@ -182,32 +182,32 @@ export default function PPC() {
                 <MousePointerClick className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
                 <span className="text-sm font-semibold text-[#5e2cb6]">PPC Services</span>
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
                 PPC{' '}
                 <span className="hollow-text-brand block mt-2">
                   Advertising
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
                 Drive immediate traffic and conversions with our pay-per-click advertising services. Maximize ROI with data-driven PPC campaigns. Our PPC experts manage campaigns across Google, Facebook, LinkedIn, and more to deliver measurable results. We specialize in creating high-converting ad campaigns that target the right audience at the right time, ensuring every dollar spent drives maximum value for your business.
               </p>
-              <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 dark:from-[#5e2cb6]/20 dark:to-[#c91a6f]/20 rounded-xl border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-                <p className="text-gray-700 dark:text-gray-300 font-medium mb-2">Why PPC Advertising Works:</p>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+              <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 rounded-xl border border-[#5e2cb6]/20">
+                <p className="text-gray-700 font-medium mb-2">Why PPC Advertising Works:</p>
+                <ul className="space-y-2 text-gray-600 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Immediate Results:</strong> Unlike SEO, PPC campaigns start driving traffic within hours of launch</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Precise Targeting:</strong> Reach specific demographics, locations, and interests with advanced targeting options</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Measurable ROI:</strong> Track every click, conversion, and dollar spent with detailed analytics</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Budget Control:</strong> Set daily budgets and bid limits to maintain complete control over ad spend</span>
                   </li>
                 </ul>
@@ -218,8 +218,8 @@ export default function PPC() {
                     <Target className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">Targeted Audience Reach</p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Precisely target your ideal customers with advanced audience segmentation and targeting options.</p>
+                    <p className="text-gray-700 font-medium">Targeted Audience Reach</p>
+                    <p className="text-gray-600 text-sm">Precisely target your ideal customers with advanced audience segmentation and targeting options.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -227,8 +227,8 @@ export default function PPC() {
                     <BarChart className="w-4 h-4 text-[#c91a6f]" strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">Real-Time Performance Tracking</p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Monitor campaign performance in real-time with comprehensive analytics and reporting dashboards.</p>
+                    <p className="text-gray-700 font-medium">Real-Time Performance Tracking</p>
+                    <p className="text-gray-600 text-sm">Monitor campaign performance in real-time with comprehensive analytics and reporting dashboards.</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -236,8 +236,8 @@ export default function PPC() {
                     <DollarSign className="w-4 h-4 text-[#fecc4d]" strokeWidth={2} />
                   </div>
                   <div>
-                    <p className="text-gray-700 dark:text-gray-300 font-medium">Cost-Effective Campaigns</p>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">Optimize ad spend to reduce cost per acquisition while maximizing conversion rates and ROI.</p>
+                    <p className="text-gray-700 font-medium">Cost-Effective Campaigns</p>
+                    <p className="text-gray-600 text-sm">Optimize ad spend to reduce cost per acquisition while maximizing conversion rates and ROI.</p>
                   </div>
                 </div>
               </div>
@@ -251,7 +251,7 @@ export default function PPC() {
                 </button>
                 <button 
                   onClick={() => setIsContactModalOpen(true)}
-                  className="bg-white dark:bg-gray-800 text-[#5e2cb6] dark:text-[#8b5cf6] border-2 border-[#5e2cb6] dark:border-[#8b5cf6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 dark:hover:bg-[#8b5cf6]/10 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+                  className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
                 >
                   <span>Contact Us</span>
                   <ArrowRight className="w-5 h-5" strokeWidth={2} />
@@ -263,14 +263,14 @@ export default function PPC() {
               {services.slice(0, 4).map((service, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  className="bg-white rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   style={{ borderColor: service.color + '40' }}
                 >
                   <div className="mb-4" style={{ color: service.color }}>
                     {service.icon}
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-white text-sm mb-2">{service.title}</h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">{service.description}</p>
+                  <h3 className="font-bold text-gray-900 text-sm mb-2">{service.title}</h3>
+                  <p className="text-xs text-gray-600 line-clamp-2">{service.description}</p>
                 </div>
               ))}
             </div>
@@ -280,16 +280,16 @@ export default function PPC() {
 
       {isMounted && <div className="mt-12"><Clientele /></div>}
 
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               PPC{' '}
               <span className="hollow-text-brand">
                 Services
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Comprehensive pay-per-click advertising solutions designed to drive qualified traffic and maximize your return on investment. From search ads to display campaigns, we create and manage PPC strategies that deliver measurable results and help you achieve your business goals.
             </p>
           </div>
@@ -298,7 +298,7 @@ export default function PPC() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: service.color + '40'
                 }}
@@ -314,10 +314,10 @@ export default function PPC() {
                   <div className="mb-6 flex justify-center" style={{ color: service.color }}>
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#5e2cb6] dark:group-hover:text-[#8b5cf6] transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-600 text-sm leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -327,10 +327,10 @@ export default function PPC() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Why Choose Our{' '}
               <span className="hollow-text-brand">
                 PPC Services
@@ -342,7 +342,7 @@ export default function PPC() {
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white dark:bg-gray-900 rounded-2xl p-8 border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: item.color + '40'
                 }}
@@ -358,10 +358,10 @@ export default function PPC() {
                   <div className="mb-6 flex justify-center" style={{ color: item.color }}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#5e2cb6] dark:group-hover:text-[#8b5cf6] transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -371,10 +371,10 @@ export default function PPC() {
         </div>
       </section>
 
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Industries We{' '}
               <span className="hollow-text-brand">
                 Serve
@@ -386,7 +386,7 @@ export default function PPC() {
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 text-center border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
                 style={{ 
                   borderColor: industry.color + '40'
                 }}
@@ -400,7 +400,7 @@ export default function PPC() {
                 <div className="mb-3 flex justify-center" style={{ color: industry.color }}>
                   {industry.icon}
                 </div>
-                <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{industry.name}</h3>
+                <h3 className="font-semibold text-gray-900 text-sm">{industry.name}</h3>
               </div>
             ))}
           </div>
@@ -453,77 +453,77 @@ export default function PPC() {
       </section>
 
       {/* Additional Content Section - PPC Benefits */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               PPC{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Discover how PPC advertising can transform your business growth and drive measurable results
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Target className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Target className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Immediate Visibility</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Immediate Visibility</h3>
+              <p className="text-gray-600">
                 Get your ads in front of potential customers immediately. Unlike organic SEO that takes months, PPC campaigns can start driving qualified traffic within hours of launch, helping you capture leads and sales right away.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <BarChart className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Data-Driven Decisions</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Data-Driven Decisions</h3>
+              <p className="text-gray-600">
                 Make informed marketing decisions with comprehensive analytics. Track clicks, impressions, conversions, and ROI in real-time. Our detailed reporting helps you understand what works and optimize campaigns for better performance.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 dark:bg-[#fecc4d]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
                 <DollarSign className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Cost-Effective Scaling</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Cost-Effective Scaling</h3>
+              <p className="text-gray-600">
                 Scale your advertising budget up or down based on performance. With PPC, you only pay when someone clicks on your ad, making it a cost-effective way to test new markets, products, or messaging before committing larger budgets.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 dark:bg-[#10b981]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
                 <Zap className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Advanced Targeting</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Advanced Targeting</h3>
+              <p className="text-gray-600">
                 Reach your ideal customers with precision. Target by demographics, interests, behaviors, location, device, and more. Our advanced targeting strategies ensure your ads are seen by people most likely to convert.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <TrendingUp className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Competitive Advantage</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Competitive Advantage</h3>
+              <p className="text-gray-600">
                 Outrank competitors in search results even if they have better organic rankings. PPC ads appear at the top of search results, giving you prime real estate and the opportunity to capture customers before they see your competitors.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Flexible & Adaptable</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Flexible & Adaptable</h3>
+              <p className="text-gray-600">
                 Quickly adapt to market changes, seasonal trends, or business needs. PPC campaigns can be paused, modified, or scaled instantly, giving you the flexibility to respond to opportunities or challenges in real-time.
               </p>
             </div>
@@ -532,63 +532,63 @@ export default function PPC() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               PPC{' '}
               <span className="hollow-text-brand">
                 Use Cases
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore how businesses across industries leverage PPC advertising to achieve their goals
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 dark:from-[#5e2cb6]/10 dark:to-[#c91a6f]/10 rounded-xl p-8 border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">E-commerce Product Launches</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 rounded-xl p-8 border border-[#5e2cb6]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">E-commerce Product Launches</h3>
+              <p className="text-gray-600 mb-4">
                 Launch new products with targeted PPC campaigns that drive immediate sales. Use Shopping Ads to showcase products directly in search results, increasing visibility and click-through rates.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Product listing ads (PLAs) for visual product discovery</li>
                 <li>• Dynamic remarketing to re-engage previous visitors</li>
                 <li>• Seasonal campaign optimization for peak shopping periods</li>
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 dark:from-[#fecc4d]/10 dark:to-[#10b981]/10 rounded-xl p-8 border border-[#fecc4d]/20 dark:border-[#fecc4d]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Lead Generation for B2B</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Lead Generation for B2B</h3>
+              <p className="text-gray-600 mb-4">
                 Generate high-quality leads for B2B businesses with LinkedIn and Google Ads campaigns. Target decision-makers with job titles, company sizes, and industry-specific keywords.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• LinkedIn Sponsored Content for professional targeting</li>
                 <li>• Google Search Ads for high-intent B2B keywords</li>
                 <li>• Lead form campaigns to capture contact information</li>
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 dark:from-[#10b981]/10 dark:to-[#5e2cb6]/10 rounded-xl p-8 border border-[#10b981]/20 dark:border-[#10b981]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Local Business Promotion</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Local Business Promotion</h3>
+              <p className="text-gray-600 mb-4">
                 Drive foot traffic and local sales with geo-targeted PPC campaigns. Reach customers in your service area with location-specific ads and local extensions.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Google Local Services Ads for service businesses</li>
                 <li>• Location extensions to show business address and hours</li>
                 <li>• Call-only campaigns for immediate phone inquiries</li>
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 dark:from-[#c91a6f]/10 dark:to-[#fecc4d]/10 rounded-xl p-8 border border-[#c91a6f]/20 dark:border-[#c91a6f]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Brand Awareness Campaigns</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Brand Awareness Campaigns</h3>
+              <p className="text-gray-600 mb-4">
                 Build brand recognition and reach new audiences with display and video advertising. Expand your market presence and stay top-of-mind with potential customers.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• YouTube video ads for engaging brand storytelling</li>
                 <li>• Display network campaigns for broad reach</li>
                 <li>• Social media advertising for brand engagement</li>
@@ -610,4 +610,5 @@ export default function PPC() {
     </main>
   )
 }
+
 

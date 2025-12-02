@@ -6,17 +6,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin/', '/api/', '/_next/', '/out/'],
+        disallow: ['/api/', '/admin/'],
       },
     ],
-    sitemap: 'https://truvixo.com/sitemap.xml',
+    sitemap: 'https://truvixoo.com/sitemap.xml',
   }
 }
-
-
-
-
-
-
-
-

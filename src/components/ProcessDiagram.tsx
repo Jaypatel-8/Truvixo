@@ -102,11 +102,11 @@ export default function ProcessDiagram({
   }, [isVisible, steps.length])
 
   return (
-    <section className={`py-16 bg-white dark:bg-gray-900 relative overflow-hidden ${className}`} id="process-diagram-section">
+    <section className={`py-16 bg-white relative overflow-hidden ${className}`} id="process-diagram-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-12 scroll-animate">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
             {title === "Our Process" ? (
               <>
                 Our <span className="hollow-text-brand">Process</span>
@@ -121,7 +121,7 @@ export default function ProcessDiagram({
             )}
           </h2>
           {subtitle && (
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               {subtitle}
             </p>
           )}
@@ -131,7 +131,7 @@ export default function ProcessDiagram({
         <div className="hidden lg:block">
           <div className="relative">
             {/* Connecting Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 dark:bg-gray-700 transform -translate-y-1/2 z-0">
+            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 transform -translate-y-1/2 z-0">
               <div 
                 className="absolute top-0 left-0 h-full transition-all duration-1000 ease-in-out"
                 style={{ 
@@ -194,14 +194,14 @@ export default function ProcessDiagram({
                     <div className="text-center max-w-[180px]">
                       <h3
                         className={`font-bold mb-2 transition-all duration-500 ${
-                          isActive ? 'text-gray-900 dark:text-white text-lg' : 'text-gray-500 dark:text-gray-400 text-base'
+                          isActive ? 'text-gray-900 text-lg' : 'text-gray-500 text-base'
                         }`}
                       >
                         {step.title}
                       </h3>
                       <p
                         className={`text-sm transition-all duration-500 ${
-                          isActive ? 'text-gray-600 dark:text-gray-300' : 'text-gray-400 dark:text-gray-500'
+                          isActive ? 'text-gray-600' : 'text-gray-400'
                         }`}
                       >
                         {step.description}
@@ -340,3 +340,4 @@ export default function ProcessDiagram({
     </section>
   )
 }
+

@@ -68,6 +68,40 @@ const ServicesSwiper = dynamic(() => import('../components/ServicesSwiper'), {
 
 export default function Home() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+  const [isMounted, setIsMounted] = useState(false)
+  const [featuredProjects, setFeaturedProjects] = useState<any[]>([
+    { 
+      title: 'Enterprise Platform', 
+      category: 'Software Development',
+      description: 'Scalable cloud infrastructure for enterprise operations',
+      href: '/our-work' 
+    },
+    { 
+      title: 'AI Analytics System', 
+      category: 'AI & Machine Learning',
+      description: 'Intelligent data processing and predictive analytics',
+      href: '/our-work' 
+    },
+    { 
+      title: 'Mobile Application', 
+      category: 'Mobile Development',
+      description: 'Cross-platform mobile solution with native performance',
+      href: '/our-work' 
+    },
+    { 
+      title: 'Digital Transformation', 
+      category: 'Consulting',
+      description: 'End-to-end modernization of legacy systems',
+      href: '/our-work' 
+    }
+  ])
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
+
+  // Removed dynamic project loading to prevent rendering issues
+  // Using static featured projects instead
 
   useEffect(() => {
     // Immediate IntersectionObserver initialization for faster rendering
@@ -209,32 +243,6 @@ export default function Home() {
     }
   ]
 
-  const featuredProjects = [
-    { 
-      title: 'Enterprise Platform', 
-      category: 'Software Development',
-      description: 'Scalable cloud infrastructure for enterprise operations',
-      href: '/our-work' 
-    },
-    { 
-      title: 'AI Analytics System', 
-      category: 'AI & Machine Learning',
-      description: 'Intelligent data processing and predictive analytics',
-      href: '/our-work' 
-    },
-    { 
-      title: 'Mobile Application', 
-      category: 'Mobile Development',
-      description: 'Cross-platform mobile solution with native performance',
-      href: '/our-work' 
-    },
-    { 
-      title: 'Digital Transformation', 
-      category: 'Consulting',
-      description: 'End-to-end modernization of legacy systems',
-      href: '/our-work' 
-    }
-  ]
 
   const whyChooseUs = [
     { title: 'Proven Expertise', icon: <Award className="w-6 h-6" strokeWidth={2} /> },
@@ -298,15 +306,15 @@ export default function Home() {
   ]
 
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-900 overflow-hidden">
+    <main className="min-h-screen bg-white overflow-hidden">
       {/* 1. Hero Section - Sleek & Modern */}
-      <section className="relative min-h-screen bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden pt-20">
+      <section className="relative min-h-screen bg-white flex items-center justify-center overflow-hidden pt-20">
         {/* Minimal Grid Background */}
-        <div className="absolute inset-0 overflow-hidden opacity-[0.03] dark:opacity-[0.05]">
+        <div className="absolute inset-0 overflow-hidden opacity-[0.03]">
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-gray-900 dark:text-gray-100"/>
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-gray-900"/>
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid)" />
@@ -315,19 +323,19 @@ export default function Home() {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
           <div className="scroll-animate">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 dark:text-white mb-6 leading-[0.9] tracking-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 mb-6 leading-[0.9] tracking-tight">
               <span className="block mb-2">
                 Building the{' '}
                 <span className="hollow-text-brand">
                   Future
                 </span>
               </span>
-              <span className="block text-gray-700 dark:text-gray-300 font-light text-4xl md:text-5xl lg:text-6xl mt-4">
+              <span className="block text-gray-700 font-light text-4xl md:text-5xl lg:text-6xl mt-4">
                 with Intelligent Technology
               </span>
               </h1>
 
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto font-light leading-relaxed mb-8 px-4">
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed mb-8 px-4">
               We design, build, and scale custom software, AI solutions, and digital platforms that transform businesses from concept to market leader.
             </p>
 
@@ -335,24 +343,19 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 mb-12">
               <button 
                 onClick={() => setIsContactModalOpen(true)}
-                className="bg-[#5e2cb6] dark:bg-[#8b5cf6] text-white font-semibold py-4 px-10 rounded-lg hover:bg-[#4a1f8f] dark:hover:bg-[#7c3ae0] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg shadow-[#5e2cb6]/20"
+                className="bg-[#5e2cb6] text-white font-semibold py-4 px-10 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg shadow-[#5e2cb6]/20"
               >
                 <Calendar className="w-5 h-5" strokeWidth={2} />
                 <span>Book a Call</span>
               </button>
-              <button 
-                onClick={(e) => {
-                  e.preventDefault()
-                  const servicesSection = document.getElementById('services-section')
-                  if (servicesSection) {
-                    servicesSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                  }
-                }}
-                className="bg-white dark:bg-gray-800 text-[#10b981] dark:text-[#10b981] border-2 border-[#10b981] dark:border-[#10b981] font-semibold py-4 px-10 rounded-lg hover:bg-[#10b981]/5 dark:hover:bg-[#10b981]/10 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg"
+              <Link 
+                href="/services"
+                prefetch={true}
+                className="bg-white text-[#10b981] border-2 border-[#10b981] font-semibold py-4 px-10 rounded-lg hover:bg-[#10b981]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg"
               >
                 <span>Explore Services</span>
                 <ArrowRight className="w-5 h-5" strokeWidth={2} />
-              </button>
+              </Link>
             </div>
 
             {/* Stats Section - With Logo Colors */}
@@ -363,9 +366,9 @@ export default function Home() {
                 { value: '98%', label: 'Satisfaction', color: '#fecc4d' },
                 { value: '24/7', label: 'Support', color: '#10b981' }
               ].map((stat, index) => (
-                <div key={index} className="text-center bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gray-300 dark:hover:border-gray-600">
+                <div key={index} className="text-center bg-white rounded-lg p-4 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gray-300">
                   <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: stat.color }}>{stat.value}</div>
-                  <div className="text-gray-600 dark:text-gray-400 font-medium text-sm">{stat.label}</div>
+                  <div className="text-gray-600 font-medium text-sm">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -377,69 +380,69 @@ export default function Home() {
       <Clientele />
 
       {/* 3. Our Services */}
-      <section id="services-section" className="py-16 bg-white dark:bg-gray-900">
+      <section id="services-section" className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+          <div className="text-center mb-12 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Our{' '}
               <span className="hollow-text-brand">
                 Services
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto mb-2">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-2">
               Comprehensive solutions to transform your business
             </p>
-            <p className="text-base text-gray-500 dark:text-gray-500 max-w-2xl mx-auto">
+            <p className="text-base text-gray-500 max-w-2xl mx-auto mb-8">
               From custom software development to AI solutions, digital marketing, and cloud infrastructure - we deliver end-to-end technology services that drive innovation, efficiency, and growth for businesses across industries.
             </p>
-        </div>
-
-          <div className="relative">
-            <div className="relative px-4 md:px-0">
-              <ServicesSwiper servicesList={servicesList} />
-              {/* Navigation Buttons */}
-              <button 
-                className="swiper-button-prev-services hidden md:flex absolute left-0 md:-left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-white dark:bg-gray-800 rounded-full items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 border-2 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl"
-                aria-label="Previous services"
-              >
-                <ChevronRight className="w-6 h-6 text-gray-900 dark:text-white rotate-180" strokeWidth={2} />
-              </button>
-              <button 
-                className="swiper-button-next-services hidden md:flex absolute right-0 md:-right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 md:w-14 md:h-14 bg-white dark:bg-gray-800 rounded-full items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 hover:scale-110 border-2 border-gray-200 dark:border-gray-700 shadow-lg hover:shadow-xl"
-                aria-label="Next services"
-              >
-                <ChevronRight className="w-6 h-6 text-gray-900 dark:text-white" strokeWidth={2} />
-              </button>
-            </div>
-            {/* Pagination */}
-            <div className="swiper-pagination-services flex justify-center items-center gap-2 mt-8"></div>
             
-            {/* View All Services Button */}
-            <div className="text-center mt-8">
+            {/* CTA Button - Prominently placed after description */}
+            <div className="flex justify-center mb-10">
               <Link
                 href="/services"
                 prefetch={true}
-                className="inline-flex items-center gap-2 text-[#5e2cb6] dark:text-[#8b5cf6] font-semibold hover:text-[#4a1f8f] dark:hover:text-[#7c3ae0] transition-colors duration-300 group"
+                className="inline-flex items-center gap-2 bg-[#5e2cb6] text-white font-semibold py-3 px-8 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 shadow-lg shadow-[#5e2cb6]/20 group"
               >
                 <span>View All Services</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={2} />
               </Link>
+            </div>
+        </div>
+
+          <div className="relative">
+            <div className="relative px-4 md:px-0 flex items-center">
+              <ServicesSwiper servicesList={servicesList} />
+              {/* Navigation Buttons - Centered Vertically */}
+              <button 
+                className="swiper-button-prev-services hidden md:flex absolute left-0 md:-left-4 z-20 w-12 h-12 md:w-14 md:h-14 bg-white rounded-full items-center justify-center hover:bg-gray-50 transition-all duration-300 hover:scale-110 border-2 border-gray-200 shadow-lg hover:shadow-xl"
+                style={{ top: '50%', transform: 'translateY(-50%)' }}
+                aria-label="Previous services"
+              >
+                <ChevronRight className="w-6 h-6 text-gray-900 rotate-180" strokeWidth={2} />
+              </button>
+              <button 
+                className="swiper-button-next-services hidden md:flex absolute right-0 md:-right-4 z-20 w-12 h-12 md:w-14 md:h-14 bg-white rounded-full items-center justify-center hover:bg-gray-50 transition-all duration-300 hover:scale-110 border-2 border-gray-200 shadow-lg hover:shadow-xl"
+                style={{ top: '50%', transform: 'translateY(-50%)' }}
+                aria-label="Next services"
+              >
+                <ChevronRight className="w-6 h-6 text-gray-900" strokeWidth={2} />
+              </button>
             </div>
           </div>
         </div>
       </section>
 
       {/* 4. Our Works */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Our{' '}
               <span className="hollow-text-brand">
                 Works
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Showcasing excellence in technology and innovation
             </p>
           </div>
@@ -449,14 +452,14 @@ export default function Home() {
                 key={index}
                 href={project.href}
                 prefetch={true}
-                className="group bg-white dark:bg-gray-900 rounded-lg p-8 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
+                className="group bg-white rounded-lg p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
               >
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 font-medium mb-3">{project.category}</p>
-                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">{project.description}</p>
-                <div className="text-gray-900 dark:text-white font-semibold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
+                <p className="text-sm text-gray-500 font-medium mb-3">{project.category}</p>
+                <p className="text-gray-600 text-sm mb-4 leading-relaxed">{project.description}</p>
+                <div className="text-gray-900 font-semibold text-sm flex items-center gap-2 group-hover:translate-x-1 transition-transform">
                   View Case Study <ArrowRight className="w-4 h-4" strokeWidth={2} />
                 </div>
               </Link>
@@ -469,16 +472,16 @@ export default function Home() {
       <Technologies technologies={technologies} />
 
       {/* 6. Why Choose TruVixo */}
-      <section className="py-16 bg-white dark:bg-gray-900">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Why Choose{' '}
               <span className="hollow-text-brand">
                 TruVixo
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               We combine technical expertise with business acumen to deliver solutions that drive real results
             </p>
           </div>
@@ -489,12 +492,12 @@ export default function Home() {
               return (
               <div 
                 key={index} 
-                  className="bg-white dark:bg-gray-800 rounded-lg p-6 text-center border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:scale-105"
+                  className="bg-white rounded-lg p-6 text-center border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105"
                 >
                   <div className="mb-3 flex justify-center" style={{ color: color }}>
                     {item.icon}
                   </div>
-                  <h3 className="font-semibold text-gray-900 dark:text-white text-sm">{item.title}</h3>
+                  <h3 className="font-semibold text-gray-900 text-sm">{item.title}</h3>
                 </div>
               )
             })}
@@ -503,43 +506,43 @@ export default function Home() {
       </section>
 
       {/* 6.5. Industries We Serve */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Industries We{' '}
               <span className="hollow-text-brand">
                 Serve
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Specialized solutions tailored to your industry's unique challenges and opportunities
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {[
-              { name: 'FinTech', icon: <DollarSign className="w-8 h-8" strokeWidth={2} />, color: '#5e2cb6', description: 'Secure financial platforms' },
-              { name: 'Healthcare', icon: <Heart className="w-8 h-8" strokeWidth={2} />, color: '#c91a6f', description: 'HIPAA-compliant systems' },
-              { name: 'E-commerce', icon: <ShoppingCart className="w-8 h-8" strokeWidth={2} />, color: '#fecc4d', description: 'Scalable online stores' },
-              { name: 'Logistics', icon: <Truck className="w-8 h-8" strokeWidth={2} />, color: '#10b981', description: 'Supply chain systems' },
-              { name: 'Real Estate', icon: <HomeIcon className="w-8 h-8" strokeWidth={2} />, color: '#d42628', description: 'Property platforms' },
-              { name: 'Education', icon: <GraduationCap className="w-8 h-8" strokeWidth={2} />, color: '#f59e0b', description: 'E-learning solutions' },
-              { name: 'Manufacturing', icon: <Settings className="w-8 h-8" strokeWidth={2} />, color: '#5e2cb6', description: 'IoT automation' },
-              { name: 'Retail', icon: <ShoppingCart className="w-8 h-8" strokeWidth={2} />, color: '#c91a6f', description: 'POS systems' }
+              { name: 'FinTech', href: '/industry/fintech', icon: <DollarSign className="w-8 h-8" strokeWidth={2} />, color: '#5e2cb6', description: 'Secure financial platforms' },
+              { name: 'Healthcare', href: '/industry/healthcare', icon: <Heart className="w-8 h-8" strokeWidth={2} />, color: '#c91a6f', description: 'HIPAA-compliant systems' },
+              { name: 'E-commerce', href: '/industry/retail-ecommerce', icon: <ShoppingCart className="w-8 h-8" strokeWidth={2} />, color: '#fecc4d', description: 'Scalable online stores' },
+              { name: 'Logistics', href: '/industry/logistics', icon: <Truck className="w-8 h-8" strokeWidth={2} />, color: '#10b981', description: 'Supply chain systems' },
+              { name: 'Real Estate', href: '/industry/real-estate', icon: <HomeIcon className="w-8 h-8" strokeWidth={2} />, color: '#d42628', description: 'Property platforms' },
+              { name: 'Education', href: '/industry/education', icon: <GraduationCap className="w-8 h-8" strokeWidth={2} />, color: '#f59e0b', description: 'E-learning solutions' },
+              { name: 'Manufacturing', href: '/industry/manufacturing', icon: <Settings className="w-8 h-8" strokeWidth={2} />, color: '#5e2cb6', description: 'IoT automation' },
+              { name: 'Retail', href: '/industry/retail-ecommerce', icon: <ShoppingCart className="w-8 h-8" strokeWidth={2} />, color: '#c91a6f', description: 'POS systems' }
             ].map((industry, index) => (
               <Link
                 key={index}
-                href={`/industry/${industry.name.toLowerCase().replace(/\s+/g, '-')}`}
+                href={industry.href}
                 prefetch={true}
-                className="group bg-white dark:bg-gray-900 rounded-xl p-6 border-2 border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg text-center"
+                className="group bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg text-center"
               >
                 <div className="mb-4 flex justify-center" style={{ color: industry.color }}>
                   {industry.icon}
                 </div>
-                <h3 className="font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gray-800 dark:group-hover:text-gray-200 transition-colors">
+                <h3 className="font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">
                   {industry.name}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {industry.description}
                 </p>
               </Link>
@@ -549,16 +552,16 @@ export default function Home() {
       </section>
 
       {/* 6.6. Company Achievements & Stats */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Our{' '}
               <span className="hollow-text-brand">
                 Achievements
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Numbers that reflect our commitment to excellence and client success
             </p>
           </div>
@@ -571,7 +574,7 @@ export default function Home() {
             ].map((stat, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center"
+                className="bg-white rounded-xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center"
               >
                 <div className="mb-4 flex justify-center" style={{ color: stat.color }}>
                   {stat.icon}
@@ -579,10 +582,10 @@ export default function Home() {
                 <div className="text-4xl md:text-5xl font-black mb-2" style={{ color: stat.color }}>
                   {stat.value}
                 </div>
-                <h3 className="font-bold text-gray-900 dark:text-white mb-2 text-lg">
+                <h3 className="font-bold text-gray-900 mb-2 text-lg">
                   {stat.label}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-400">
+                <p className="text-sm text-gray-600">
                   {stat.description}
                 </p>
               </div>
@@ -592,16 +595,16 @@ export default function Home() {
       </section>
 
       {/* 6.7. Our Expertise & Capabilities */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Our{' '}
               <span className="hollow-text-brand">
                 Expertise
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Deep technical knowledge and industry experience across cutting-edge technologies
             </p>
           </div>
@@ -653,6 +656,7 @@ export default function Home() {
               // Map expertise to service pages
               const getExpertiseUrl = (title: string): string => {
                 const urlMap: { [key: string]: string } = {
+                  'Full-Stack Development': '/services/custom-software-development',
                   'Custom Software Development': '/services/custom-software-development',
                   'AI & Machine Learning': '/services/ai-development-services',
                   'Cloud & DevOps': '/services/maintenance-support',
@@ -668,7 +672,7 @@ export default function Home() {
                 key={index}
                 href={getExpertiseUrl(expertise.title)}
                 prefetch={true}
-                className="bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl block group"
+                className="bg-white rounded-xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl block group"
               >
                 <div className="mb-6 flex items-center gap-4">
                   <div className="w-16 h-16 rounded-xl flex items-center justify-center border-2" style={{ borderColor: expertise.color, backgroundColor: expertise.color + '10' }}>
@@ -676,16 +680,16 @@ export default function Home() {
                       {expertise.icon}
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white flex-1 group-hover:text-[#5e2cb6] dark:group-hover:text-[#8b5cf6] transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 flex-1 group-hover:text-[#5e2cb6] transition-colors">
                     {expertise.title}
                   </h3>
                 </div>
-                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                <p className="text-gray-600 mb-6 leading-relaxed">
                   {expertise.description}
                 </p>
                 <ul className="space-y-2 mb-4">
                   {expertise.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                    <li key={idx} className="flex items-center gap-2 text-sm text-gray-600">
                       <CheckCircle className="w-4 h-4" style={{ color: expertise.color }} strokeWidth={2} />
                       <span>{feature}</span>
                     </li>
@@ -703,16 +707,16 @@ export default function Home() {
       </section>
 
       {/* 7. Process of Work */}
-      <section className="py-16 bg-white dark:bg-gray-900">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Our{' '}
               <span className="hollow-text-brand">
                 Process
               </span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               A proven methodology that delivers results - from concept to deployment and beyond
             </p>
           </div>
@@ -724,17 +728,17 @@ export default function Home() {
       </section>
 
       {/* 8. Testimonials - Redesigned */}
-      <section className="py-16 bg-gray-50 dark:bg-gray-800">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               What Our{' '}
               <span className="hollow-text-brand">
                 Clients
               </span>
               {' '}Say
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Don't just take our word for it — hear from businesses we've helped transform
             </p>
           </div>
@@ -746,16 +750,16 @@ export default function Home() {
       </section>
 
       {/* 9. Partnership & Trust */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Trusted{' '}
               <span className="hollow-text-brand">
                 Partners
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               We work with leading technology platforms and tools to deliver best-in-class solutions
             </p>
           </div>
@@ -770,7 +774,7 @@ export default function Home() {
             ].map((partner, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-900 rounded-lg p-6 border-2 border-gray-200 dark:border-gray-700 flex items-center justify-center h-24 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 group"
+                className="bg-white rounded-lg p-6 border-2 border-gray-200 flex items-center justify-center h-24 hover:border-gray-300 transition-all duration-300 group"
                 style={{ borderColor: partner.color + '40' }}
               >
                 <img
@@ -785,16 +789,16 @@ export default function Home() {
       </section>
 
       {/* 10. Company Values */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Our{' '}
               <span className="hollow-text-brand">
                 Values
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               The principles that guide everything we do and shape how we work with our clients
             </p>
           </div>
@@ -827,15 +831,15 @@ export default function Home() {
             ].map((value, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300 transform hover:scale-105 text-center"
+                className="bg-white rounded-xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105 text-center"
               >
                 <div className="mb-6 flex justify-center" style={{ color: value.color }}>
                   {value.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   {value.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed">
                   {value.description}
                 </p>
               </div>
@@ -845,16 +849,16 @@ export default function Home() {
       </section>
 
       {/* 11. FAQs Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Frequently Asked{' '}
               <span className="hollow-text-brand">
                 Questions
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Get answers to common questions about our services, process, and how we work
             </p>
           </div>
@@ -878,3 +882,5 @@ export default function Home() {
     </main>
   )
 }
+
+

@@ -37,28 +37,28 @@ export default function HeroSection({
   previewCards
 }: HeroSectionProps) {
   return (
-    <section className="relative min-h-[85vh] bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden pt-24">
+    <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 dark:bg-[#5e2cb6]/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 dark:bg-[#c91a6f]/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="scroll-animate">
             {badge && (
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 dark:bg-[#5e2cb6]/20 rounded-full mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                 {badge.icon}
-                <span className="text-sm font-semibold text-[#5e2cb6] dark:text-[#8b5cf6]">{badge.text}</span>
+                <span className="text-sm font-semibold text-[#5e2cb6]">{badge.text}</span>
               </div>
             )}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
               {title}{' '}
               <span className="hollow-text-brand block mt-2">
                 {hollowText}
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
               {description}
             </p>
             {(primaryCTA || secondaryCTA) && (
@@ -75,7 +75,7 @@ export default function HeroSection({
                 {secondaryCTA && (
                   <button 
                     onClick={secondaryCTA.onClick}
-                    className="bg-white dark:bg-gray-800 text-[#5e2cb6] dark:text-[#8b5cf6] border-2 border-[#5e2cb6] dark:border-[#8b5cf6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 dark:hover:bg-[#8b5cf6]/10 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+                    className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
                   >
                     <span>{secondaryCTA.text}</span>
                     <ArrowRight className="w-5 h-5" strokeWidth={2} />
@@ -90,14 +90,14 @@ export default function HeroSection({
               {previewCards.slice(0, 4).map((card, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  className="bg-white rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   style={{ borderColor: card.color + '40' }}
                 >
                   <div className="mb-4" style={{ color: card.color }}>
                     {card.icon}
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-white text-sm mb-2">{card.title}</h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">{card.description}</p>
+                  <h3 className="font-bold text-gray-900 text-sm mb-2">{card.title}</h3>
+                  <p className="text-xs text-gray-600 line-clamp-2">{card.description}</p>
                 </div>
               ))}
             </div>
@@ -107,5 +107,6 @@ export default function HeroSection({
     </section>
   )
 }
+
 
 

@@ -85,15 +85,15 @@ export default function Technologies({
     : null
 
   return (
-    <section className={`py-16 bg-white dark:bg-gray-900 ${className}`}>
+    <section className={`py-16 bg-white ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 scroll-animate">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
             {title.split(' ').slice(0, -1).join(' ')}{' '}
             <span className="hollow-text-brand">{title.split(' ').slice(-1)[0]}</span>
           </h2>
           {subtitle && (
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               {subtitle}
             </p>
           )}
@@ -220,3 +220,4 @@ export default function Technologies({
     </section>
   )
 }
+

@@ -169,8 +169,8 @@ export default function PerformanceMarketing() {
   const faqs = getFAQsForPage('performance-marketing')
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 overflow-hidden">
-      <section className="relative min-h-[85vh] bg-white dark:bg-gray-900 flex items-center justify-center overflow-hidden pt-24">
+    <main className="min-h-screen bg-gray-50 overflow-hidden">
+      <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
@@ -183,32 +183,32 @@ export default function PerformanceMarketing() {
                 <Gauge className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
                 <span className="text-sm font-semibold text-[#5e2cb6]">Performance Marketing</span>
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
                 Performance{' '}
                 <span className="hollow-text-brand block mt-2">
                   Marketing
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
                 Pay only for results with our performance-based marketing services. Drive leads, sales, and conversions with measurable ROI. Our performance marketing approach ensures you only pay when you achieve your business objectives, making it a risk-free investment that scales with your success. We track every touchpoint, optimize continuously, and deliver measurable results that directly impact your bottom line.
               </p>
-              <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 dark:from-[#5e2cb6]/20 dark:to-[#c91a6f]/20 rounded-xl border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-                <p className="text-gray-700 dark:text-gray-300 font-medium mb-3">Why Performance Marketing Works:</p>
-                <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+              <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 rounded-xl border border-[#5e2cb6]/20">
+                <p className="text-gray-700 font-medium mb-3">Why Performance Marketing Works:</p>
+                <ul className="space-y-2 text-gray-600 text-sm">
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Risk-Free Investment:</strong> Pay only for actual results - leads, sales, or conversions - not just impressions or clicks</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Measurable ROI:</strong> Track every dollar spent and attribute revenue directly to marketing efforts</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Scalable Growth:</strong> Scale successful campaigns while maintaining performance and profitability</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <span className="text-[#5e2cb6] dark:text-[#8b5cf6] mt-1">•</span>
+                    <span className="text-[#5e2cb6] mt-1">•</span>
                     <span><strong>Data-Driven Optimization:</strong> Continuous testing and optimization based on real performance data</span>
                   </li>
                 </ul>
@@ -223,7 +223,7 @@ export default function PerformanceMarketing() {
                 </button>
                 <button 
                   onClick={() => setIsContactModalOpen(true)}
-                  className="bg-white dark:bg-gray-800 text-[#5e2cb6] dark:text-[#8b5cf6] border-2 border-[#5e2cb6] dark:border-[#8b5cf6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 dark:hover:bg-[#8b5cf6]/10 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+                  className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
                 >
                   <span>Contact Us</span>
                   <ArrowRight className="w-5 h-5" strokeWidth={2} />
@@ -235,14 +235,14 @@ export default function PerformanceMarketing() {
               {services.slice(0, 4).map((service, index) => (
                 <div
                   key={index}
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  className="bg-white rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                   style={{ borderColor: service.color + '40' }}
                 >
                   <div className="mb-4" style={{ color: service.color }}>
                     {service.icon}
                   </div>
-                  <h3 className="font-bold text-gray-900 dark:text-white text-sm mb-2">{service.title}</h3>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 line-clamp-2">{service.description}</p>
+                  <h3 className="font-bold text-gray-900 text-sm mb-2">{service.title}</h3>
+                  <p className="text-xs text-gray-600 line-clamp-2">{service.description}</p>
                 </div>
               ))}
             </div>
@@ -252,16 +252,16 @@ export default function PerformanceMarketing() {
 
       {isMounted && <div className="mt-12"><Clientele /></div>}
 
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Performance{' '}
               <span className="hollow-text-brand">
                 Services
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Results-driven marketing solutions tailored to your business goals
             </p>
           </div>
@@ -270,7 +270,7 @@ export default function PerformanceMarketing() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white dark:bg-gray-800 rounded-2xl p-8 border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: service.color + '40'
                 }}
@@ -286,10 +286,10 @@ export default function PerformanceMarketing() {
                   <div className="mb-6 flex justify-center" style={{ color: service.color }}>
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#5e2cb6] dark:group-hover:text-[#8b5cf6] transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  <p className="text-gray-600 text-sm leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -299,10 +299,10 @@ export default function PerformanceMarketing() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Why Choose{' '}
               <span className="hollow-text-brand">
                 Performance Marketing
@@ -314,7 +314,7 @@ export default function PerformanceMarketing() {
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white dark:bg-gray-900 rounded-2xl p-8 border-2 border-gray-100 dark:border-gray-700 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: item.color + '40'
                 }}
@@ -330,10 +330,10 @@ export default function PerformanceMarketing() {
                   <div className="mb-6 flex justify-center" style={{ color: item.color }}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#5e2cb6] dark:group-hover:text-[#8b5cf6] transition-colors">
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -344,77 +344,77 @@ export default function PerformanceMarketing() {
       </section>
 
       {/* Additional Content - Performance Marketing Benefits */}
-      <section className="py-20 bg-white dark:bg-gray-900">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Performance Marketing{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Discover how performance-based marketing can transform your ROI and drive measurable business growth
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <DollarSign className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <DollarSign className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Risk-Free Investment</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Risk-Free Investment</h3>
+              <p className="text-gray-600">
                 Pay only for actual results - leads, sales, or conversions - not just impressions or clicks. Performance marketing eliminates wasted ad spend by ensuring every dollar is tied to measurable outcomes. This risk-free model allows you to test new markets and strategies without financial uncertainty.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <BarChart className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Measurable ROI</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Measurable ROI</h3>
+              <p className="text-gray-600">
                 Track every dollar spent and attribute revenue directly to marketing efforts. Performance marketing provides complete transparency with detailed analytics showing exactly how your marketing budget converts into revenue. Make data-driven decisions with clear ROI metrics.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 dark:bg-[#fecc4d]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
                 <TrendingUp className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Scalable Growth</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Scalable Growth</h3>
+              <p className="text-gray-600">
                 Scale successful campaigns while maintaining performance and profitability. Once you identify what works, performance marketing allows you to increase budgets and expand reach without sacrificing ROI. Scale up or down based on performance data and business needs.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 dark:bg-[#10b981]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
                 <Target className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Precise Targeting</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Precise Targeting</h3>
+              <p className="text-gray-600">
                 Reach the right audience at the right time with advanced targeting and attribution models. Performance marketing uses data to identify high-value customers and optimize campaigns for maximum conversion rates. Every campaign is optimized for your specific business goals.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 dark:bg-[#8b5cf6]/20 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-[#5e2cb6] dark:text-[#8b5cf6]" strokeWidth={2} />
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                <Zap className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Continuous Optimization</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Continuous Optimization</h3>
+              <p className="text-gray-600">
                 Continuous testing and optimization based on real performance data. Performance marketing is an iterative process that constantly improves results. A/B testing, multivariate testing, and data analysis ensure your campaigns get better over time.
               </p>
             </div>
 
-            <div className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 dark:bg-[#c91a6f]/20 rounded-lg flex items-center justify-center mb-4">
+            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
+              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
                 <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
               </div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Quick Results</h3>
-              <p className="text-gray-600 dark:text-gray-400">
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Quick Results</h3>
+              <p className="text-gray-600">
                 See measurable results within days, not months. Performance marketing campaigns can start driving leads and sales immediately. Unlike long-term brand building, performance marketing delivers quick wins while building sustainable growth.
               </p>
             </div>
@@ -423,27 +423,27 @@ export default function PerformanceMarketing() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-white mb-4">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Performance Marketing{' '}
               <span className="hollow-text-brand">
                 Use Cases
               </span>
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Explore how businesses leverage performance marketing to achieve measurable results
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 dark:from-[#5e2cb6]/10 dark:to-[#c91a6f]/10 rounded-xl p-8 border border-[#5e2cb6]/20 dark:border-[#5e2cb6]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">E-Commerce Lead Generation</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#5e2cb6]/5 to-[#c91a6f]/5 rounded-xl p-8 border border-[#5e2cb6]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">E-Commerce Lead Generation</h3>
+              <p className="text-gray-600 mb-4">
                 Generate qualified leads and drive sales for e-commerce businesses with performance-based campaigns. Pay only for actual purchases or qualified leads that convert.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Cost-per-acquisition (CPA) campaigns</li>
                 <li>• Affiliate marketing programs</li>
                 <li>• Shopping cart abandonment recovery</li>
@@ -451,12 +451,12 @@ export default function PerformanceMarketing() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 dark:from-[#fecc4d]/10 dark:to-[#10b981]/10 rounded-xl p-8 border border-[#fecc4d]/20 dark:border-[#fecc4d]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">B2B Lead Generation</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">B2B Lead Generation</h3>
+              <p className="text-gray-600 mb-4">
                 Generate high-quality B2B leads with performance-based pricing. Pay only for qualified leads that meet your specific criteria and convert into customers.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Cost-per-lead (CPL) campaigns</li>
                 <li>• Account-based marketing (ABM)</li>
                 <li>• LinkedIn performance campaigns</li>
@@ -464,12 +464,12 @@ export default function PerformanceMarketing() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 dark:from-[#10b981]/10 dark:to-[#5e2cb6]/10 rounded-xl p-8 border border-[#10b981]/20 dark:border-[#10b981]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">App Install Campaigns</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">App Install Campaigns</h3>
+              <p className="text-gray-600 mb-4">
                 Drive mobile app installs with performance-based pricing. Pay only for actual app installations or active users, ensuring quality over quantity.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Cost-per-install (CPI) campaigns</li>
                 <li>• Cost-per-action (CPA) for in-app events</li>
                 <li>• User acquisition optimization</li>
@@ -477,12 +477,12 @@ export default function PerformanceMarketing() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 dark:from-[#c91a6f]/10 dark:to-[#fecc4d]/10 rounded-xl p-8 border border-[#c91a6f]/20 dark:border-[#c91a6f]/30">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">SaaS Subscription Growth</h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-4">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">SaaS Subscription Growth</h3>
+              <p className="text-gray-600 mb-4">
                 Scale SaaS businesses with performance-based marketing that focuses on customer lifetime value. Pay based on trial sign-ups, conversions, or recurring revenue.
               </p>
-              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+              <ul className="space-y-2 text-sm text-gray-600">
                 <li>• Trial-to-paid conversion campaigns</li>
                 <li>• Cost-per-trial (CPT) optimization</li>
                 <li>• Customer lifetime value (LTV) focus</li>
@@ -586,4 +586,5 @@ export default function PerformanceMarketing() {
     </main>
   )
 }
+
 
