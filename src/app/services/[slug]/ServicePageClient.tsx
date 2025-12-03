@@ -3,8 +3,41 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import dynamic from 'next/dynamic'
+import { generateServiceSEO } from '@/lib/seoContent'
+
+const SEOLocationSection = dynamic(() => import('@/components/SEOLocationSection'), {
+  ssr: false,
+})
 
 export default function ServicePageClient({ slug }: { slug: string }) {
+  // Get service name from slug
+  const serviceNameMap: Record<string, string> = {
+    'custom-software-development': 'Custom Software Development',
+    'ai-development-services': 'AI Development Services',
+    'mobile-app-development': 'Mobile App Development',
+    'web-application-development': 'Web Application Development',
+    'saas-product-development': 'SaaS Product Development',
+    'enterprise-software-development': 'Enterprise Software Development',
+    'api-development-integration': 'API Development & Integration',
+    'cms-development': 'CMS Development',
+    'ecommerce-development': 'E-commerce Development',
+    'legacy-app-modernization': 'Legacy App Modernization',
+    'maintenance-support': 'Maintenance & Support',
+    'machine-learning-model-development': 'Machine Learning Model Development',
+    'seo': 'SEO Services',
+    'ppc': 'PPC Services',
+    'smm': 'Social Media Marketing',
+    'performance-marketing': 'Performance Marketing',
+    'email-marketing': 'Email Marketing',
+    'cro': 'Conversion Rate Optimization',
+  }
+
+  const serviceName = serviceNameMap[slug] || slug
+    .split('-')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ')
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -27,11 +60,6 @@ export default function ServicePageClient({ slug }: { slug: string }) {
     }
   }, [])
 
-  const serviceName = slug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
-
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       {/* Hero Section */}
@@ -39,10 +67,13 @@ export default function ServicePageClient({ slug }: { slug: string }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
-              {serviceName}
+              Expert <span className="hollow-text-brand">{serviceName}</span> Services
             </h1>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 mb-6 leading-tight">
+              Delivering Excellence and Innovation
+            </h2>
             <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light">
-              Professional {serviceName.toLowerCase()} services tailored to your needs
+              We deliver exceptional {serviceName.toLowerCase()} services with proven expertise and innovative solutions tailored to your business needs. Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. Transform your vision into reality with cutting-edge technology and industry-leading practices.
             </p>
           </div>
         </div>
@@ -57,18 +88,21 @@ export default function ServicePageClient({ slug }: { slug: string }) {
             </h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                At TruVixo, we specialize in delivering exceptional {serviceName.toLowerCase()} solutions 
-                that drive business growth and innovation. Our team of experienced professionals combines 
-                cutting-edge technology with industry best practices to deliver results that exceed expectations.
+                TruVixo stands out as the premier {serviceName.toLowerCase()} company, delivering comprehensive solutions that help businesses achieve their goals through innovative technology and expert execution. Our team combines deep technical expertise with strategic thinking to deliver results that drive growth and success.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Whether you're a startup looking to build your first product or an enterprise seeking to 
-                modernize your existing systems, we have the expertise to help you achieve your goals.
+                With a proven track record spanning multiple industries, we've established ourselves as a trusted partner for businesses seeking exceptional {serviceName.toLowerCase()} services. We understand the unique challenges and opportunities in your industry and provide tailored solutions that align with your business objectives.
+              </p>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. Whether you're a local business or a global enterprise, TruVixo provides {serviceName.toLowerCase()} services tailored to your specific needs, market requirements, and regulatory environment.
               </p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* SEO Location Section */}
+      <SEOLocationSection serviceName={serviceName} />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-purple-500 to-pink-500 relative overflow-hidden">

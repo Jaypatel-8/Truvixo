@@ -1,4 +1,6 @@
+import { Metadata } from 'next'
 import ServicePageClient from './ServicePageClient'
+import { generateServiceMetadata } from '@/lib/serviceMetadata'
 
 export const dynamicParams = false
 
@@ -24,6 +26,10 @@ export async function generateStaticParams() {
     { slug: 'email-marketing' },
     { slug: 'cro' }
   ]
+}
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  return generateServiceMetadata(params.slug)
 }
 
 export default function ServicePage({ params }: { params: { slug: string } }) {

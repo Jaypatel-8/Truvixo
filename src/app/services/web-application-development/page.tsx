@@ -8,6 +8,7 @@ import FAQDropdown from '@/components/FAQDropdown'
 import Clientele from '@/components/Clientele'
 import ContactSection from '@/components/ContactSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
+import SEOLocationSection from '@/components/SEOLocationSection'
 import { getFAQsForPage } from '@/lib/pageData'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -168,9 +169,12 @@ export default function WebApplicationDevelopment() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
           <div className="scroll-animate">
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 mb-6 leading-tight">
-              Web Application{' '}
+              Best Web Application{' '}
               <span className="hollow-text-brand">
-                Development
+                Development Company
+              </span>
+              <span className="text-xl md:text-2xl font-semibold text-gray-600 block mt-4">
+                India • Gujarat • Ahmedabad • Dubai • USA • Australia • Worldwide
               </span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
@@ -552,7 +556,10 @@ export default function WebApplicationDevelopment() {
       {/* 9. FAQs */}
       <FAQDropdown faqs={faqs} />
 
-      {/* 10. Contact Section */}
+      {/* 10. SEO Location Section */}
+      <SEOLocationSection serviceName="Web Application Development" />
+
+      {/* 11. Contact Section */}
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business with web applications."

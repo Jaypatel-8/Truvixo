@@ -8,6 +8,7 @@ import FAQDropdown from '@/components/FAQDropdown'
 import Clientele from '@/components/Clientele'
 import ContactSection from '@/components/ContactSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
+import SEOLocationSection from '@/components/SEOLocationSection'
 import { getFAQsForPage } from '@/lib/pageData'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -213,9 +214,12 @@ export default function AIDevelopmentServices() {
                 <span className="text-sm font-semibold text-[#5e2cb6]">AI Development</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                AI Development{' '}
+                Best AI Development{' '}
                 <span className="hollow-text-brand block mt-2">
-                  Services
+                  Services Company
+                </span>
+                <span className="text-2xl md:text-3xl font-semibold text-gray-600 block mt-4">
+                  India • Gujarat • Ahmedabad • Dubai • USA • Australia • Worldwide
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
@@ -609,7 +613,10 @@ export default function AIDevelopmentServices() {
       {/* 9. FAQs */}
       <FAQDropdown faqs={faqs} />
 
-      {/* 10. Contact Section */}
+      {/* 10. SEO Location Section */}
+      <SEOLocationSection serviceName="AI Development Services" />
+
+      {/* 11. Contact Section */}
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business with AI solutions."

@@ -394,9 +394,38 @@ h1, h2, h3, h4, h5, h6 {
 
 @tailwind base;
 
-/* Global Cursor Styles - Use normal browser cursor */
+/* Global Cursor Styles - Pointer for interactive elements */
 * {
   cursor: auto;
+}
+
+/* Pointer cursor for all interactive elements */
+a,
+button,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+select,
+label[for],
+.dropdown-trigger,
+.dropdown-menu a,
+.dropdown-menu button,
+nav a,
+nav button,
+.menu-item,
+[onclick],
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* Ensure menu items and submenu items have pointer cursor */
+nav a,
+nav button,
+.dropdown-menu a,
+.dropdown-menu button,
+.menu-link,
+.menu-item {
+  cursor: pointer !important;
 }
 
 /* Performance Optimizations for Smooth Scrolling */

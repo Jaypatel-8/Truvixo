@@ -9,8 +9,9 @@ interface ClientLogo {
   url?: string
 }
 
-// Placeholder client logos - Replace with actual client logos
+// Client logos
 const clientLogos: ClientLogo[] = [
+  { name: 'Physiofi', logo: '/Physiofi Logo(1).png' },
   { name: 'Client 1', logo: '/TruVixo.png' },
   { name: 'Client 2', logo: '/TruVixo.png' },
   { name: 'Client 3', logo: '/TruVixo.png' },
@@ -18,7 +19,6 @@ const clientLogos: ClientLogo[] = [
   { name: 'Client 5', logo: '/TruVixo.png' },
   { name: 'Client 6', logo: '/TruVixo.png' },
   { name: 'Client 7', logo: '/TruVixo.png' },
-  { name: 'Client 8', logo: '/TruVixo.png' },
 ]
 
 interface ClienteleProps {

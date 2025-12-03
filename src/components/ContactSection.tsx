@@ -94,7 +94,10 @@ export default function ContactSection({
               </div>
               <div>
                 <p className="text-sm text-gray-500 mb-1">Phone</p>
-                <a href="tel:+916354326412" className="text-gray-900 font-semibold hover:text-[#5e2cb6] transition-colors">+91 63543 26412</a>
+                <div className="space-y-1">
+                  <a href="tel:+916354326412" className="block text-gray-900 font-semibold hover:text-[#5e2cb6] transition-colors">+91 63543 26412</a>
+                  <a href="tel:+917990631490" className="block text-gray-900 font-semibold hover:text-[#5e2cb6] transition-colors">+91 79906 31490</a>
+                </div>
               </div>
             </div>
             <div className="flex items-center gap-4 p-5 bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-md">

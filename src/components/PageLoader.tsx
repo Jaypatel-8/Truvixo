@@ -1,103 +1,143 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function PageLoader() {
   const [isLoading, setIsLoading] = useState(true)
   const [progress, setProgress] = useState(0)
   const progressRef = useRef(0)
   const isCompleteRef = useRef(false)
+  const pathname = usePathname()
+  const previousPathnameRef = useRef<string | null>(null)
+  const isLoadingRef = useRef(false) // Track if we're currently loading to prevent double triggers
 
-  useEffect(() => {
-    // Prevent body scroll during loading
+  // Function to start loading - only if not already loading
+  const startLoading = () => {
+    if (isLoadingRef.current) return // Prevent double triggers
+    
+    isLoadingRef.current = true
+    setIsLoading(true)
+    progressRef.current = 0
+    setProgress(0)
+    isCompleteRef.current = false
     document.body.style.overflow = 'hidden'
-    // Remove any blur effects from body/html
-    document.body.style.filter = 'none'
-    document.body.style.webkitFilter = 'none'
-    if (document.documentElement) {
-      document.documentElement.style.filter = 'none'
-      document.documentElement.style.webkitFilter = 'none'
+  }
+
+  // Function to stop loading
+  const stopLoading = () => {
+    isLoadingRef.current = false
+    isCompleteRef.current = true
+    setIsLoading(false)
+    document.body.style.overflow = ''
+  }
+
+  // Function to check if we can hide the loader
+  const checkAndHide = () => {
+    if (progressRef.current >= 100 && document.readyState === 'complete' && !isCompleteRef.current) {
+      setTimeout(() => {
+        stopLoading()
+      }, 300)
+    }
+  }
+
+  // Handle route changes - ONLY when pathname actually changes
+  useEffect(() => {
+    const currentPath = pathname
+    const previousPath = previousPathnameRef.current
+
+    // Initial load - track pathname but don't trigger loader
+    if (previousPath === null) {
+      previousPathnameRef.current = currentPath
+      return
+    }
+
+    // Only show loader if pathname actually changed (different page) and we're not already loading
+    if (previousPath !== currentPath && !isLoadingRef.current) {
+      startLoading()
     }
     
-    // Function to check if we can hide the loader
-    const checkAndHide = () => {
-      if (progressRef.current >= 100 && document.readyState === 'complete' && !isCompleteRef.current) {
-        isCompleteRef.current = true
-        // Small delay for smooth transition
-        setTimeout(() => {
-          setIsLoading(false)
-          document.body.style.overflow = ''
-          // Ensure no blur remains
-          document.body.style.filter = 'none'
-          document.body.style.webkitFilter = 'none'
-          if (document.documentElement) {
-            document.documentElement.style.filter = 'none'
-            document.documentElement.style.webkitFilter = 'none'
-          }
-        }, 400)
-      }
-    }
+    previousPathnameRef.current = currentPath
+  }, [pathname])
 
-    // Simulate loading progress - must reach 100%
+  // Progress simulation and completion check
+  useEffect(() => {
+    // Only start progress if we're loading
+    if (!isLoading || !isLoadingRef.current) return
+
+    // Reset progress when starting a new load
+    progressRef.current = 0
+    setProgress(0)
+    isCompleteRef.current = false
+
+    // Simulate loading progress
     const progressInterval = setInterval(() => {
-      progressRef.current += Math.random() * 12 + 8 // Random increment between 8-20
+      if (!isLoadingRef.current) {
+        clearInterval(progressInterval)
+        return
+      }
+      
+      progressRef.current += Math.random() * 20 + 15 // Faster progress
       if (progressRef.current >= 100) {
         progressRef.current = 100
         clearInterval(progressInterval)
       }
       setProgress(Math.min(progressRef.current, 100))
       checkAndHide()
-    }, 120)
+    }, 60)
 
     // Listen for page load event
     const handleLoad = () => {
+      if (progressRef.current < 100) {
+        progressRef.current = 100
+        setProgress(100)
+      }
       checkAndHide()
     }
 
     // Check if page is already loaded
     if (document.readyState === 'complete') {
-      // Still need to wait for progress to reach 100%
       const checkInterval = setInterval(() => {
         checkAndHide()
         if (isCompleteRef.current) {
           clearInterval(checkInterval)
         }
-      }, 100)
+      }, 50)
       
-      // Fallback: ensure it completes after max 3.5 seconds
-      setTimeout(() => {
+      // Fallback: ensure it completes after max 1 second
+      const timeout = setTimeout(() => {
         clearInterval(checkInterval)
-        if (!isCompleteRef.current) {
+        if (!isCompleteRef.current && isLoadingRef.current) {
           progressRef.current = 100
           setProgress(100)
           checkAndHide()
         }
-      }, 3500)
+      }, 1000)
       
       return () => {
         clearInterval(progressInterval)
         clearInterval(checkInterval)
+        clearTimeout(timeout)
       }
     } else {
       window.addEventListener('load', handleLoad)
       
-      // Fallback: ensure it completes after max 3.5 seconds
+      // Fallback: ensure it completes after max 1 second
       const timeout = setTimeout(() => {
-        if (!isCompleteRef.current) {
+        if (!isCompleteRef.current && isLoadingRef.current) {
           progressRef.current = 100
           setProgress(100)
           checkAndHide()
         }
-      }, 3500)
+      }, 1000)
 
       return () => {
         clearInterval(progressInterval)
         clearTimeout(timeout)
         window.removeEventListener('load', handleLoad)
-        document.body.style.overflow = ''
       }
     }
-  }, [])
+  }, [isLoading, pathname])
 
   if (!isLoading) return null
 

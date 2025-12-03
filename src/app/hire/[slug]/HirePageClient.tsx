@@ -3,6 +3,11 @@
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import dynamic from 'next/dynamic'
+
+const SEOLocationSection = dynamic(() => import('@/components/SEOLocationSection'), {
+  ssr: false,
+})
 
 export default function HirePageClient({ slug }: { slug: string }) {
   useEffect(() => {
@@ -38,10 +43,13 @@ export default function HirePageClient({ slug }: { slug: string }) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
-              {pageName}
+              Hire Expert <span className="hollow-text-brand">{pageName}</span>
             </h1>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 mb-6 leading-tight">
+              Connect with Top-Tier Talent
+            </h2>
             <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light">
-              Hire expert developers to build your next project
+              Connect with top-tier {pageName.toLowerCase()} talent for your development needs. Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. Our expert team brings years of experience and proven track record in delivering exceptional results.
             </p>
           </div>
         </div>
@@ -55,13 +63,18 @@ export default function HirePageClient({ slug }: { slug: string }) {
             </h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Find the perfect {pageName.toLowerCase()} to join your team. Our vetted professionals 
-                bring expertise and dedication to every project.
+                TruVixo is your trusted partner for hiring {pageName.toLowerCase()}. Our comprehensive talent network connects you with skilled professionals who understand your business needs and deliver exceptional results. We carefully vet all candidates to ensure they meet the highest standards of technical expertise and professional excellence.
+              </p>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. Whether you're a local business or a global enterprise, we connect you with top-tier {pageName.toLowerCase()} who understand your market dynamics and can contribute to your success from day one.
               </p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* SEO Location Section */}
+      <SEOLocationSection serviceName={`Hire ${pageName}`} />
 
       <section className="py-20 bg-gradient-to-r from-purple-500 to-pink-500 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -82,6 +95,7 @@ export default function HirePageClient({ slug }: { slug: string }) {
     </main>
   )
 }
+
 
 
 

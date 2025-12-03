@@ -3,6 +3,25 @@
 // Hiring forms → hr@truvixoo.com (Template: template_zxfomo7)
 // This uses EmailJS which works with static sites - no backend required
 
+// ============================================================================
+// EmailJS Configuration - Stored directly in code for GitHub compatibility
+// ============================================================================
+// ✅ FULLY CONFIGURED - Ready for production
+// Service ID: service_97of3nl
+// Public Key: Vn75Ce0fKV52dOkPC
+// Contact Template: template_7ezfh6w (for sales@truvixoo.com)
+// Hiring Template: template_zxfomo7 (for hr@truvixoo.com)
+// 
+// All configuration is complete. Ready to build: npm run build
+// ============================================================================
+
+const EMAILJS_CONFIG = {
+  SERVICE_ID: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_97of3nl',
+  PUBLIC_KEY: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'Vn75Ce0fKV52dOkPC',
+  CONTACT_TEMPLATE_ID: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_7ezfh6w',
+  HIRING_TEMPLATE_ID: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_HIRING || 'template_zxfomo7',
+}
+
 export interface ContactFormData {
   name: string
   email: string
@@ -83,17 +102,17 @@ export const sendContactEmail = async (data: ContactFormData): Promise<{ success
     // Dynamic import to avoid SSR issues
     const emailjs = (await import('@emailjs/browser')).default
     
-    // Get environment variables
-    const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-    const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_7ezfh6w'
-    const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    // Get configuration (from env vars or defaults)
+    const EMAILJS_SERVICE_ID = EMAILJS_CONFIG.SERVICE_ID
+    const EMAILJS_TEMPLATE_ID = EMAILJS_CONFIG.CONTACT_TEMPLATE_ID
+    const EMAILJS_PUBLIC_KEY = EMAILJS_CONFIG.PUBLIC_KEY
 
-    // Validate environment variables
+    // Validate configuration
     if (!EMAILJS_SERVICE_ID || !EMAILJS_PUBLIC_KEY) {
-      console.error('EmailJS configuration missing. Please check your .env.local file.')
+      console.error('EmailJS configuration missing. Please set NEXT_PUBLIC_EMAILJS_PUBLIC_KEY or add PUBLIC_KEY in emailService.ts')
       return { 
         success: false, 
-        message: 'Email service is not configured. Please contact us directly at sales@truvixoo.com' 
+        message: 'Email service configuration is missing. Please contact us directly at sales@truvixoo.com or call +91 63543 26412' 
       }
     }
 
@@ -147,17 +166,17 @@ export const sendHiringEmail = async (data: HiringFormData): Promise<{ success: 
     // Dynamic import to avoid SSR issues
     const emailjs = (await import('@emailjs/browser')).default
     
-    // Get environment variables
-    const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID
-    const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID_HIRING || 'template_zxfomo7'
-    const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+    // Get configuration (from env vars or defaults)
+    const EMAILJS_SERVICE_ID = EMAILJS_CONFIG.SERVICE_ID
+    const EMAILJS_TEMPLATE_ID = EMAILJS_CONFIG.HIRING_TEMPLATE_ID
+    const EMAILJS_PUBLIC_KEY = EMAILJS_CONFIG.PUBLIC_KEY
 
-    // Validate environment variables
+    // Validate configuration
     if (!EMAILJS_SERVICE_ID || !EMAILJS_PUBLIC_KEY) {
-      console.error('EmailJS configuration missing. Please check your .env.local file.')
+      console.error('EmailJS configuration missing. Please set NEXT_PUBLIC_EMAILJS_PUBLIC_KEY or add PUBLIC_KEY in emailService.ts')
       return { 
         success: false, 
-        message: 'Email service is not configured. Please contact us directly at hr@truvixoo.com' 
+        message: 'Email service configuration is missing. Please contact us directly at hr@truvixoo.com or call +91 63543 26412' 
       }
     }
 
@@ -205,9 +224,10 @@ export const sendScheduleDemoEmail = async (data: ScheduleDemoData): Promise<{ s
     // Dynamic import to avoid SSR issues
     const emailjs = (await import('@emailjs/browser')).default
     
-    const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'your_service_id'
-    const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'your_template_id'
-    const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'your_public_key'
+    // Get configuration (from env vars or defaults)
+    const EMAILJS_SERVICE_ID = EMAILJS_CONFIG.SERVICE_ID
+    const EMAILJS_TEMPLATE_ID = EMAILJS_CONFIG.CONTACT_TEMPLATE_ID
+    const EMAILJS_PUBLIC_KEY = EMAILJS_CONFIG.PUBLIC_KEY
 
     // Initialize EmailJS
     emailjs.init(EMAILJS_PUBLIC_KEY)

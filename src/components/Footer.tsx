@@ -96,6 +96,15 @@ const Footer = () => {
                 <span className="text-sm font-medium">+91 63543 26412</span>
               </a>
               <a 
+                href="tel:+917990631490" 
+                className="flex items-center gap-3 text-gray-700 hover:text-black transition-colors duration-300 group"
+              >
+                <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center group-hover:bg-gray-200 transition-colors">
+                  <Phone className="w-5 h-5 text-gray-900" />
+                </div>
+                <span className="text-sm font-medium">+91 79906 31490</span>
+              </a>
+              <a 
                 href="mailto:sales@truvixoo.com" 
                 className="flex items-center gap-3 text-gray-700 hover:text-black transition-colors duration-300 group"
               >

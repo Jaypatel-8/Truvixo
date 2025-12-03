@@ -8,6 +8,7 @@ import FAQDropdown from '@/components/FAQDropdown'
 import Clientele from '@/components/Clientele'
 import ContactSection from '@/components/ContactSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
+import SEOLocationSection from '@/components/SEOLocationSection'
 import { getFAQsForPage } from '@/lib/pageData'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -213,13 +214,14 @@ export default function CustomSoftwareDevelopment() {
                 <span className="text-sm font-semibold text-[#5e2cb6]">Custom Development</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                Custom Software{' '}
-                <span className="hollow-text-brand block mt-2">
-                  Development
-                </span>
+                Custom <span className="hollow-text-brand">Software Development</span>{' '}
+                <span className="hollow-text-brand">Solutions</span>
               </h1>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 mb-6 leading-tight">
+                Tailored to Your Business Needs
+              </h2>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-                We build scalable, secure, and high-performance custom software tailored to your business needs. Transform your ideas into powerful digital solutions.
+                We build scalable, secure, and high-performance custom software tailored to your business needs. Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. Transform your ideas into powerful digital solutions that drive innovation and growth.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -437,10 +439,16 @@ export default function CustomSoftwareDevelopment() {
                 <Mail className="w-5 h-5" strokeWidth={2} />
                 <span>sales@truvixoo.com</span>
               </a>
-              <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>+91 63543 26412</span>
-              </a>
+              <div className="flex flex-col gap-2">
+                <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
+                  <Phone className="w-5 h-5" strokeWidth={2} />
+                  <span>+91 63543 26412</span>
+                </a>
+                <a href="tel:+917990631490" className="flex items-center gap-2 hover:text-white transition-colors">
+                  <Phone className="w-5 h-5" strokeWidth={2} />
+                  <span>+91 79906 31490</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -609,7 +617,10 @@ export default function CustomSoftwareDevelopment() {
       {/* 9. FAQs */}
       <FAQDropdown faqs={faqs} />
 
-      {/* 10. Contact Section */}
+      {/* 10. SEO Location Section */}
+      <SEOLocationSection serviceName="Custom Software Development" />
+
+      {/* 11. Contact Section */}
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business with custom software solutions."

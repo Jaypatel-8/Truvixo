@@ -51,6 +51,11 @@ const Clientele = dynamic(() => import('../components/Clientele'), {
   loading: () => null,
 })
 
+const SEOLocationSection = dynamic(() => import('../components/SEOLocationSection'), {
+  ssr: false,
+  loading: () => null,
+})
+
 const ServicesSwiper = dynamic(() => import('../components/ServicesSwiper'), {
   ssr: false,
   loading: () => (
@@ -298,11 +303,34 @@ export default function Home() {
   ]
 
   const faqs = [
-    { question: 'How quickly can you start?', answer: 'We can onboard a developer within 1–2 weeks; full teams vary by scope.' },
-    { question: 'Do you sign NDAs?', answer: 'Yes — we sign NDAs and follow strict security practices.' },
-    { question: 'Do you offer a trial?', answer: 'Yes — 1-week risk-free trial for development engagements.' },
-    { question: 'What industries do you serve?', answer: 'Fintech, Healthcare, Retail, Logistics, Education, and more.' },
-    { question: 'Can you integrate third-party APIs?', answer: 'Yes — payments, mapping, CRM, analytics, and more.' }
+    { 
+      question: 'How quickly can you start a software development project?', 
+      answer: 'We can onboard a dedicated developer within 1–2 weeks, while full development teams are assembled based on project scope and requirements. Our agile onboarding process ensures quick project initiation without compromising quality or thorough planning.' 
+    },
+    { 
+      question: 'Do you sign NDAs and maintain data security?', 
+      answer: 'Yes, we sign comprehensive NDAs and follow strict security practices including ISO 27001 standards, regular security audits, encrypted communications, and secure development environments. Client data confidentiality and intellectual property protection are our top priorities.' 
+    },
+    { 
+      question: 'Do you offer a risk-free trial period?', 
+      answer: 'Yes, we offer a 1-week risk-free trial for development engagements. This allows you to evaluate our technical expertise, communication style, and work quality before committing to a long-term partnership. If you are not satisfied, there is no obligation to continue.' 
+    },
+    { 
+      question: 'What industries do you serve with your software solutions?', 
+      answer: 'We serve diverse industries including FinTech, Healthcare, Retail & E-commerce, Logistics & Transportation, Education, Real Estate, Manufacturing, and Travel & Hospitality. Our industry-specific expertise enables us to understand unique requirements, compliance needs, and market dynamics for each sector.' 
+    },
+    { 
+      question: 'Can you integrate third-party APIs and services?', 
+      answer: 'Yes, we have extensive experience integrating third-party APIs including payment gateways (Stripe, PayPal), mapping services (Google Maps, Mapbox), CRM systems (Salesforce, HubSpot), analytics platforms (Google Analytics, Mixpanel), cloud services, and many more. We ensure seamless integration with proper error handling and documentation.' 
+    },
+    {
+      question: 'What technologies and frameworks do you use for software development?',
+      answer: 'We use modern technology stacks including React, Next.js, Vue.js for frontend development; Node.js, Python, Django for backend; React Native, Flutter for mobile apps; AWS, Azure, GCP for cloud infrastructure; and Docker, Kubernetes for containerization. We choose technologies based on project requirements, scalability needs, and long-term maintainability.'
+    },
+    {
+      question: 'How do you ensure software quality and testing?',
+      answer: 'We follow comprehensive quality assurance practices including unit testing, integration testing, automated testing, code reviews, performance testing, and security audits. Our development process includes continuous integration and deployment (CI/CD) pipelines to catch issues early and ensure reliable, high-quality software delivery.'
+    }
   ]
 
   return (
@@ -324,16 +352,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
           <div className="scroll-animate">
             <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 mb-6 leading-[0.9] tracking-tight">
-              <span className="block mb-2">
-                Building the{' '}
-                <span className="hollow-text-brand">
-                  Future
-                </span>
-              </span>
-              <span className="block text-gray-700 font-light text-4xl md:text-5xl lg:text-6xl mt-4">
-                with Intelligent Technology
-              </span>
-              </h1>
+              Building the{' '}
+              <span className="hollow-text-brand">Future</span>
+            </h1>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 mb-6 leading-tight">
+              with Intelligent Technology
+            </h2>
 
             <p className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed mb-8 px-4">
               We design, build, and scale custom software, AI solutions, and digital platforms that transform businesses from concept to market leader.
@@ -390,10 +414,10 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-2">
-              Comprehensive solutions to transform your business
+              Comprehensive technology solutions to transform your business
             </p>
             <p className="text-base text-gray-500 max-w-2xl mx-auto mb-8">
-              From custom software development to AI solutions, digital marketing, and cloud infrastructure - we deliver end-to-end technology services that drive innovation, efficiency, and growth for businesses across industries.
+              From custom software development to AI solutions, digital marketing, and cloud infrastructure - we deliver end-to-end technology services that drive innovation, efficiency, and growth for businesses across industries. Our proven methodology combines cutting-edge technology with strategic business insights to deliver measurable results.
             </p>
             
             {/* CTA Button - Prominently placed after description */}
@@ -443,7 +467,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Showcasing excellence in technology and innovation
+              Showcasing excellence in software development, AI solutions, and digital innovation across diverse industries and use cases
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -482,7 +506,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We combine technical expertise with business acumen to deliver solutions that drive real results
+              We combine technical expertise with business acumen to deliver software solutions that drive real results. Our approach integrates industry best practices, modern technology stacks, and strategic thinking to create solutions that not only meet current needs but scale with your business growth.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -516,7 +540,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Specialized solutions tailored to your industry's unique challenges and opportunities
+              Specialized software solutions tailored to your industry's unique challenges. Expert custom development for FinTech, Healthcare, E-commerce, Logistics, Real Estate, Education, Manufacturing, and Retail sectors. We understand industry-specific requirements and deliver solutions that comply with regulations while driving business value.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
@@ -605,49 +629,49 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Deep technical knowledge and industry experience across cutting-edge technologies
+              Deep technical knowledge in full-stack development, AI & machine learning, cloud infrastructure, and mobile applications. Our team stays current with emerging technologies and industry trends to deliver solutions that leverage the latest innovations while maintaining reliability and performance.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 title: 'Full-Stack Development',
-                description: 'End-to-end development from frontend to backend, database design, and API integration. We build scalable, maintainable applications using modern frameworks and best practices.',
+                description: 'Comprehensive end-to-end development services covering frontend interfaces, backend systems, database architecture, and API integration. Our full-stack development approach ensures seamless integration between all application layers, resulting in robust, scalable, and maintainable software solutions built with modern frameworks and industry best practices.',
                 icon: <Code className="w-8 h-8" strokeWidth={2} />,
                 color: '#5e2cb6',
                 features: ['React, Next.js, Vue.js', 'Node.js, Python, Django', 'REST & GraphQL APIs', 'Microservices Architecture']
               },
               {
                 title: 'AI & Machine Learning',
-                description: 'Custom AI solutions including natural language processing, computer vision, predictive analytics, and automated decision-making systems that learn and adapt.',
+                description: 'Advanced artificial intelligence and machine learning solutions tailored to your business needs. We develop custom AI systems including natural language processing, computer vision, predictive analytics, and intelligent automation that learn from data and adapt to changing conditions, enabling smarter decision-making and operational efficiency.',
                 icon: <Brain className="w-8 h-8" strokeWidth={2} />,
                 color: '#c91a6f',
                 features: ['Custom ML Models', 'NLP & Chatbots', 'Computer Vision', 'Predictive Analytics']
               },
               {
                 title: 'Cloud & DevOps',
-                description: 'Scalable cloud infrastructure, CI/CD pipelines, containerization, and infrastructure as code. We ensure your applications are always available and performant.',
+                description: 'Enterprise-grade cloud infrastructure and DevOps practices designed for scalability, reliability, and performance. We implement automated CI/CD pipelines, containerization strategies, and infrastructure as code to ensure your applications are always available, secure, and can scale seamlessly with your business growth.',
                 icon: <Cloud className="w-8 h-8" strokeWidth={2} />,
                 color: '#fecc4d',
                 features: ['AWS, Azure, GCP', 'Docker & Kubernetes', 'CI/CD Pipelines', 'Infrastructure as Code']
               },
               {
                 title: 'Mobile Development',
-                description: 'Native and cross-platform mobile applications for iOS and Android. We create engaging, high-performance mobile experiences that users love.',
+                description: 'Native and cross-platform mobile application development for iOS and Android platforms. We create engaging, high-performance mobile experiences that users love, combining intuitive design with powerful functionality. Our mobile solutions are optimized for performance, security, and seamless user experience across all devices.',
                 icon: <Smartphone className="w-8 h-8" strokeWidth={2} />,
                 color: '#10b981',
                 features: ['React Native', 'Flutter', 'Native iOS & Android', 'Progressive Web Apps']
               },
               {
                 title: 'Digital Marketing',
-                description: 'Data-driven marketing strategies including SEO, PPC, social media marketing, content marketing, and conversion rate optimization to grow your business.',
+                description: 'Data-driven digital marketing strategies that drive measurable business growth. Our comprehensive approach includes search engine optimization, pay-per-click advertising, social media marketing, content creation, and conversion rate optimization. We leverage analytics and insights to continuously improve campaign performance and maximize return on investment.',
                 icon: <Megaphone className="w-8 h-8" strokeWidth={2} />,
                 color: '#d42628',
                 features: ['SEO & Content Marketing', 'PPC & Performance Marketing', 'Social Media Marketing', 'CRO & Analytics']
               },
               {
                 title: 'UI/UX Design',
-                description: 'User-centered design that combines aesthetics with functionality. We create intuitive interfaces that engage users and drive conversions through exceptional user experience.',
+                description: 'User-centered design solutions that combine aesthetic appeal with functional excellence. We create intuitive, engaging interfaces that not only look beautiful but also drive user engagement and conversions. Our design process includes comprehensive user research, wireframing, prototyping, and usability testing to ensure exceptional user experiences.',
                 icon: <Palette className="w-8 h-8" strokeWidth={2} />,
                 color: '#f59e0b',
                 features: ['User Research', 'Wireframing & Prototyping', 'Visual Design', 'Usability Testing']
@@ -717,7 +741,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-              A proven methodology that delivers results - from concept to deployment and beyond
+              Our proven software development methodology delivers exceptional results through systematic approach from initial concept and requirements analysis to deployment, maintenance, and continuous improvement. We follow agile principles and industry best practices to ensure timely delivery and superior quality.
             </p>
           </div>
         </div>
@@ -739,7 +763,7 @@ export default function Home() {
               {' '}Say
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Don't just take our word for it — hear from businesses we've helped transform
+              Don't just take our word for it — hear from businesses we've helped transform through innovative software solutions, digital marketing strategies, and technology consulting. Our clients span various industries and have achieved significant growth and operational improvements.
             </p>
           </div>
 
@@ -760,7 +784,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We work with leading technology platforms and tools to deliver best-in-class solutions
+              We partner with leading technology platforms and tools including AWS, Microsoft Azure, Google Cloud, Docker, Kubernetes, and modern development frameworks to deliver best-in-class software solutions. Our expertise with these platforms ensures scalable, secure, and high-performance applications.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60 hover:opacity-100 transition-opacity duration-300">
@@ -799,7 +823,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              The principles that guide everything we do and shape how we work with our clients
+              The core principles that guide everything we do and shape how we work with our clients. Our values of innovation, transparency, excellence, and client-centricity drive our commitment to delivering exceptional software development and digital marketing services that exceed expectations.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -859,17 +883,22 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Get answers to common questions about our services, process, and how we work
+              Get answers to common questions about our software development services, digital marketing solutions, project process, pricing, and how we collaborate with clients to deliver exceptional results. Learn more about our expertise, methodologies, and commitment to client success.
             </p>
           </div>
           <FAQDropdown faqs={faqs} title="" />
         </div>
       </section>
 
-      {/* 12. Newsletter/Call Section */}
+      {/* 12. SEO Location Section - Subtle placement for SEO */}
+      <div className="hidden md:block">
+        <SEOLocationSection serviceName="Software Development & Digital Marketing" />
+      </div>
+
+      {/* 13. Newsletter/Call Section */}
       <NewsletterCTA onContactClick={() => setIsContactModalOpen(true)} />
 
-      {/* 13. Contact Section - Before Footer */}
+      {/* 14. Contact Section - Before Footer */}
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business."

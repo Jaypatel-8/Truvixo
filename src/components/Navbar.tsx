@@ -222,7 +222,7 @@ const Navbar = () => {
                                   key={itemIndex}
                                   href={item.href}
                                   prefetch={true}
-                                  className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-black rounded-lg transition-colors duration-200"
+                                  className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-black rounded-lg transition-colors duration-200 cursor-pointer"
                                 >
                                   {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                                   {item.name}

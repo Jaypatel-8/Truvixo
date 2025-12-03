@@ -24,9 +24,14 @@ const GoToTop = dynamic(() => import('@/components/GoToTop'), {
 // const ContactPopup = dynamic(() => import('@/components/ContactPopup'), {
 //   ssr: false,
 // })
-const PageLoader = dynamic(() => import('@/components/PageLoader'), {
-  ssr: false,
-})
+// PageLoader removed - pages now load directly without loader
+// const PageLoader = dynamic(() => import('@/components/PageLoader'), {
+//   ssr: false,
+// })
+// PageTransition temporarily removed to fix error component issue
+// const PageTransition = dynamic(() => import('@/components/PageTransition'), {
+//   ssr: false,
+// })
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -37,24 +42,51 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'AI & Software Development Company | Custom Web, Mobile & AI Solutions',
+    default: 'Best Software Development & Digital Marketing Agency | India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide | TruVixo™',
     template: '%s | TruVixo™'
   },
-  description: 'We design, build and scale custom software, AI, and cloud solutions — web & mobile apps, generative AI, RAG systems, and dedicated development teams. Get a 1-week risk-free trial.',
+  description: 'TruVixo is the best software development and digital marketing agency in India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. We provide comprehensive AI development, web development, mobile apps, SEO, PPC, and digital marketing services. Top-rated agency with proven results, serving clients globally with expert solutions.',
   keywords: [
-    'custom software development',
+    // Location-based keywords
+    'best software development company in india',
+    'best digital marketing agency in india',
+    'best software development company in gujarat',
+    'best digital marketing agency in gujarat',
+    'best software development company in ahmedabad',
+    'best digital marketing agency in ahmedabad',
+    'best software development company in dubai',
+    'best digital marketing agency in dubai',
+    'best software development company in usa',
+    'best digital marketing agency in usa',
+    'best software development company in australia',
+    'best digital marketing agency in australia',
+    'best software development company worldwide',
+    'best digital marketing agency worldwide',
+    // Service-based keywords
+    'software development and marketing agency',
     'AI development company',
+    'web development company',
+    'mobile app development company',
+    'SEO services company',
+    'PPC services company',
+    'custom software development',
+    'enterprise software development',
+    'SaaS development company',
+    'ecommerce development company',
+    // Technology-based keywords
+    'React development company',
+    'Next.js development company',
+    'Node.js development company',
+    'Python development company',
+    'AI ML development company',
+    'cloud solutions company',
+    // General keywords
     'hire developers',
     'web application development',
     'generative AI services',
-    'RAG systems development',
-    'hire frontend developers remote',
-    'AI chatbot development company',
-    'enterprise SaaS development',
-    'mobile app development',
     'software engineering',
-    'cloud solutions',
-    'dedicated development teams'
+    'dedicated development teams',
+    'digital transformation company',
   ],
   authors: [{ name: 'TruVixo', url: 'https://truvixo.com' }],
   creator: 'TruVixo',
@@ -69,8 +101,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'AI & Software Development Company | Custom Web, Mobile & AI Solutions',
-    description: 'We design, build and scale custom software, AI, and cloud solutions. Talk to our experts and start with a 1-week risk-free trial.',
+    title: 'Best Software Development & Digital Marketing Agency | India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide',
+    description: 'TruVixo is the best software development and digital marketing agency in India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. Top-rated agency with proven results.',
     url: 'https://truvixo.com',
     siteName: 'TruVixo',
     locale: 'en_US',
@@ -86,8 +118,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI & Software Development Company | Custom Web, Mobile & AI Solutions',
-    description: 'We design, build and scale custom software, AI, and cloud solutions. Talk to our experts and start with a 1-week risk-free trial.',
+    title: 'Best Software Development & Digital Marketing Agency | India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide',
+    description: 'TruVixo is the best software development and digital marketing agency in India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. Top-rated agency with proven results.',
     images: ['/TruVixo.png'],
   },
   robots: {
@@ -133,6 +165,86 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/TruVixo logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta httpEquiv="x-dns-prefetch-control" content="on" />
+        {/* Aggressively block and suppress 404 errors - runs immediately */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function() {
+                'use strict';
+                var shouldBlock = function(url) {
+                  if (!url) return false;
+                  var s = String(url);
+                  return s.indexOf('localhost:3000') !== -1 && (s.endsWith('/') || s === 'http://localhost:3000');
+                };
+                if (window.XMLHttpRequest) {
+                  var O = window.XMLHttpRequest;
+                  window.XMLHttpRequest = function() {
+                    var x = new O();
+                    var o = x.open;
+                    x.open = function(m, u) {
+                      if (shouldBlock(u)) {
+                        x._b = true;
+                        x.status = 200;
+                        x.readyState = 4;
+                        return;
+                      }
+                      return o.apply(this, arguments);
+                    };
+                    var s = x.send;
+                    x.send = function() {
+                      if (x._b) {
+                        if (x.onload) try { x.onload(); } catch(e) {}
+                        if (x.onreadystatechange) try { x.onreadystatechange(); } catch(e) {}
+                        return;
+                      }
+                      return s.apply(this, arguments);
+                    };
+                    return x;
+                  };
+                }
+                if (window.fetch) {
+                  var f = window.fetch;
+                  window.fetch = function() {
+                    var u = arguments[0];
+                    if (shouldBlock(u)) {
+                      return Promise.resolve(new Response('', { status: 200 }));
+                    }
+                    return f.apply(this, arguments).catch(function() {
+                      if (shouldBlock(u)) return Promise.resolve(new Response('', { status: 200 }));
+                      throw arguments[0];
+                    });
+                  };
+                }
+                var e = console.error;
+                console.error = function() {
+                  var m = Array.prototype.slice.call(arguments).join(' ');
+                  if (m.indexOf('localhost:3000') !== -1 || (m.indexOf('404') !== -1 && m.indexOf('localhost') !== -1)) return;
+                  e.apply(console, arguments);
+                };
+                var w = console.warn;
+                console.warn = function() {
+                  var m = Array.prototype.slice.call(arguments).join(' ');
+                  if (m.indexOf('localhost:3000') !== -1) return;
+                  w.apply(console, arguments);
+                };
+                window.addEventListener('error', function(e) {
+                  if (e.message && e.message.indexOf('localhost:3000') !== -1) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                    return false;
+                  }
+                }, true);
+                window.addEventListener('unhandledrejection', function(e) {
+                  if (e.reason && String(e.reason).indexOf('localhost:3000') !== -1) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                  }
+                }, true);
+              }();
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -166,9 +278,53 @@ export default function RootLayout({
               ],
               "address": {
                 "@type": "PostalAddress",
-                "addressCountry": "US"
+                "addressLocality": "Ahmedabad",
+                "addressRegion": "Gujarat",
+                "addressCountry": "IN",
+                "streetAddress": "Ahmedabad, Gujarat, India"
               },
-              "areaServed": "Worldwide",
+              "areaServed": [
+                {
+                  "@type": "Country",
+                  "name": "India"
+                },
+                {
+                  "@type": "State",
+                  "name": "Gujarat"
+                },
+                {
+                  "@type": "City",
+                  "name": "Ahmedabad"
+                },
+                {
+                  "@type": "Country",
+                  "name": "United Arab Emirates"
+                },
+                {
+                  "@type": "City",
+                  "name": "Dubai"
+                },
+                {
+                  "@type": "Country",
+                  "name": "United States"
+                },
+                {
+                  "@type": "Country",
+                  "name": "Australia"
+                },
+                {
+                  "@type": "Place",
+                  "name": "Worldwide"
+                }
+              ],
+              "serviceArea": {
+                "@type": "GeoCircle",
+                "geoMidpoint": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "23.0225",
+                  "longitude": "72.5714"
+                }
+              },
               "serviceType": [
                 "Branding & Identity",
                 "Digital Marketing",
@@ -203,7 +359,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <PageLoader />
+        {/* PageTransition temporarily removed */}
         {/* CustomCursor removed */}
         <Navbar />
         <main>

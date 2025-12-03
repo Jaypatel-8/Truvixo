@@ -12,11 +12,11 @@ try {
     process.exit(1);
   }
 
-  // Check if out folder exists
+  // Check if out folder exists, create if it doesn't
   const outDir = path.join(__dirname, '..', 'out');
   if (!fs.existsSync(outDir)) {
-    console.error('❌ out folder not found. Run "npm run build" first.');
-    process.exit(1);
+    console.log('⚠️  out folder not found. Creating it...');
+    fs.mkdirSync(outDir, { recursive: true });
   }
 
   // Copy .htaccess to out folder
@@ -41,4 +41,5 @@ try {
   console.error('❌ Error copying .htaccess:', error.message);
   process.exit(1);
 }
+
 

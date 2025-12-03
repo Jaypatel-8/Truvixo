@@ -119,7 +119,7 @@ export default function Contact() {
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Phone',
-      details: '+91 63543 26412',
+      details: '+91 63543 26412, +91 79906 31490',
       color: '#5e2cb6'
     },
     {
