@@ -488,6 +488,32 @@ export const pageFAQs: Record<string, Array<{ question: string; answer: string }
       answer: 'Yes, we build complete hotel management systems with room booking, check-in/out, and more.'
     }
   ],
+  'about': [
+    {
+      question: 'Where is TruVixo located?',
+      answer: 'We are based in Ahmedabad, Gujarat, India, and serve clients across India, Dubai (UAE), USA, Australia, and worldwide.'
+    },
+    {
+      question: 'How many projects has TruVixo completed?',
+      answer: 'We have successfully completed 500+ projects across various industries with a 98% client satisfaction rate.'
+    },
+    {
+      question: 'What services does TruVixo offer?',
+      answer: 'We offer comprehensive solutions including custom software development, AI & machine learning, web and mobile app development, digital marketing, branding, cloud infrastructure, and business consulting.'
+    },
+    {
+      question: 'What industries do you serve?',
+      answer: 'We serve diverse industries including FinTech, Healthcare, Retail, EdTech, Manufacturing, Real Estate, Logistics, and Construction.'
+    },
+    {
+      question: 'How long has TruVixo been in business?',
+      answer: 'TruVixo has been delivering innovative solutions for over 3 years, helping businesses transform and grow.'
+    },
+    {
+      question: 'What makes TruVixo different?',
+      answer: 'We combine AI-driven innovation, end-to-end partnership, proven results, and future-ready solutions. We\'re not just service providers – we\'re your partners in transformation.'
+    }
+  ],
   'default': [
     {
       question: 'How quickly can you start?',

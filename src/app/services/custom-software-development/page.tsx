@@ -440,10 +440,10 @@ export default function CustomSoftwareDevelopment() {
                 <span>sales@truvixoo.com</span>
               </a>
               <div className="flex flex-col gap-2">
-                <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
-                  <Phone className="w-5 h-5" strokeWidth={2} />
-                  <span>+91 63543 26412</span>
-                </a>
+              <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Phone className="w-5 h-5" strokeWidth={2} />
+                <span>+91 63543 26412</span>
+              </a>
                 <a href="tel:+917990631490" className="flex items-center gap-2 hover:text-white transition-colors">
                   <Phone className="w-5 h-5" strokeWidth={2} />
                   <span>+91 79906 31490</span>

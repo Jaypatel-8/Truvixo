@@ -354,7 +354,7 @@ export default function Home() {
             <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 mb-6 leading-[0.9] tracking-tight">
               Building the{' '}
               <span className="hollow-text-brand">Future</span>
-            </h1>
+              </h1>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 mb-6 leading-tight">
               with Intelligent Technology
             </h2>
@@ -892,7 +892,7 @@ export default function Home() {
 
       {/* 12. SEO Location Section - Subtle placement for SEO */}
       <div className="hidden md:block">
-        <SEOLocationSection serviceName="Software Development & Digital Marketing" />
+      <SEOLocationSection serviceName="Software Development & Digital Marketing" />
       </div>
 
       {/* 13. Newsletter/Call Section */}

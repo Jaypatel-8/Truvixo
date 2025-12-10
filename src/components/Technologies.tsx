@@ -3,6 +3,58 @@
 import { useState } from 'react'
 import { Code, Server, Cloud, Database, Smartphone, Globe, Layers, Cpu, ArrowRight } from 'lucide-react'
 
+// Separate component for technology item to manage its own error state
+function TechnologyItem({ tech }: { tech: Technology }) {
+  const [imageError, setImageError] = useState(false)
+  
+  return (
+    <div
+      className="group bg-white rounded-lg p-4 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center"
+      style={{
+        borderColor: tech.color + '40'
+      }}
+    >
+      <div className="mb-3 flex justify-center items-center h-12">
+        <div 
+          className="w-12 h-12 flex items-center justify-center relative"
+        >
+          {/* Outlined colored icon effect */}
+          <div 
+            className="absolute inset-0 rounded-lg border-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            style={{
+              borderColor: tech.color
+            }}
+          ></div>
+          {tech.logo && tech.logo.trim() !== '' && !imageError ? (
+            <img 
+              src={tech.logo} 
+              alt={tech.name}
+              className="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
+              loading="lazy"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div 
+              className="w-full h-full flex items-center justify-center"
+              style={{ color: tech.color }}
+            >
+              <Cloud className="w-8 h-8" strokeWidth={2} />
+            </div>
+          )}
+        </div>
+      </div>
+      <h3 
+        className="font-semibold text-xs transition-colors"
+        style={{
+          color: tech.color
+        }}
+      >
+        {tech.name}
+      </h3>
+    </div>
+  )
+}
+
 interface Technology {
   name: string
   logo: string // URL or path to logo
@@ -165,40 +217,7 @@ export default function Technologies({
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-h-[500px] overflow-y-auto pr-2">
               {displayTechnologies.map((tech, index) => (
-                <div
-                  key={index}
-                  className="group bg-white rounded-lg p-4 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center"
-                  style={{
-                    borderColor: tech.color + '40'
-                  }}
-                >
-                  <div className="mb-3 flex justify-center items-center h-12">
-                    <div 
-                      className="w-12 h-12 flex items-center justify-center relative"
-                    >
-                      {/* Outlined colored icon effect */}
-                      <div 
-                        className="absolute inset-0 rounded-lg border-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        style={{
-                          borderColor: tech.color
-                        }}
-                      ></div>
-                      <img 
-                        src={tech.logo} 
-                        alt={tech.name}
-                        className="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
-                      />
-                    </div>
-                  </div>
-                  <h3 
-                    className="font-semibold text-xs transition-colors"
-                    style={{
-                      color: tech.color
-                    }}
-                  >
-                    {tech.name}
-                  </h3>
-                </div>
+                <TechnologyItem key={index} tech={tech} />
               ))}
             </div>
           </div>

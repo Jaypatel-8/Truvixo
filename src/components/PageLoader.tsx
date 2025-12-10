@@ -30,12 +30,12 @@ export default function PageLoader() {
     isCompleteRef.current = true
     setIsLoading(false)
     document.body.style.overflow = ''
-  }
-
-  // Function to check if we can hide the loader
-  const checkAndHide = () => {
-    if (progressRef.current >= 100 && document.readyState === 'complete' && !isCompleteRef.current) {
-      setTimeout(() => {
+    }
+    
+    // Function to check if we can hide the loader
+    const checkAndHide = () => {
+      if (progressRef.current >= 100 && document.readyState === 'complete' && !isCompleteRef.current) {
+        setTimeout(() => {
         stopLoading()
       }, 300)
     }
