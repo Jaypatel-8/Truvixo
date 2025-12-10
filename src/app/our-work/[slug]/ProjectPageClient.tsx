@@ -429,7 +429,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
                         {/* Connecting Arrow */}
                         {index < project.approach.length - 1 && (
                           <div className="absolute top-24 left-full transform -translate-x-1/2 -translate-y-1/2 z-10">
-                            <ArrowRight className="w-6 h-6 text-gray-400" strokeWidth={2.5} />
+                            <ArrowRight className="w-6 h-6 text-gray-600" strokeWidth={2.5} aria-hidden="true" />
                           </div>
                         )}
                       </div>

@@ -45,18 +45,23 @@ export default function Clientele({
 
     const animate = () => {
       if (!isPaused && container) {
-        scrollPosition += scrollSpeed
-        
-        const firstSet = container.querySelector('.logo-set') as HTMLElement
-        if (firstSet) {
-          const setWidth = firstSet.offsetWidth
-          
-          if (scrollPosition >= setWidth) {
-            scrollPosition = 0
+        // Batch DOM reads and writes to avoid forced reflow
+        requestAnimationFrame(() => {
+          const firstSet = container.querySelector('.logo-set') as HTMLElement
+          if (firstSet) {
+            // Read layout properties
+            const setWidth = firstSet.offsetWidth
+            
+            // Calculate new position
+            scrollPosition += scrollSpeed
+            if (scrollPosition >= setWidth) {
+              scrollPosition = 0
+            }
+            
+            // Write changes in the same frame
+            container.style.transform = `translateX(-${scrollPosition}px)`
           }
-          
-          container.style.transform = `translateX(-${scrollPosition}px)`
-        }
+        })
       }
       
       animationId = requestAnimationFrame(animate)

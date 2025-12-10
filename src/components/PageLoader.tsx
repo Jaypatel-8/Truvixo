@@ -209,7 +209,7 @@ export default function PageLoader() {
 
         {/* Minimal Progress Text */}
         <div className="mt-8">
-          <p className="text-xs font-medium text-gray-400 tracking-[0.2em] uppercase">
+          <p className="text-xs font-medium text-gray-600 tracking-[0.2em] uppercase">
             {Math.round(progress)}%
           </p>
         </div>

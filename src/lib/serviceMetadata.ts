@@ -35,9 +35,22 @@ export function generateServiceMetadata(serviceSlug: string): Metadata {
 
   const seoData = generateServiceSEO(service.name, serviceSlug)
 
+  // Ensure title is under 60 characters
+  const maxTitleLength = 60
+  const finalTitle = seoData.title.length > maxTitleLength 
+    ? seoData.title.substring(0, maxTitleLength - 3) + '...' 
+    : seoData.title
+
+  // Ensure description is 130-155 characters
+  const finalDescription = seoData.description.length > 155
+    ? seoData.description.substring(0, 152) + '...'
+    : seoData.description.length < 130
+    ? seoData.description + '. Get expert solutions with proven results.'
+    : seoData.description
+
   return {
-    title: seoData.title,
-    description: seoData.description,
+    title: finalTitle,
+    description: finalDescription,
     keywords: seoData.keywords,
     openGraph: {
       title: seoData.title,

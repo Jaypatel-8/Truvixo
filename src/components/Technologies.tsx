@@ -31,6 +31,8 @@ function TechnologyItem({ tech }: { tech: Technology }) {
               alt={tech.name}
               className="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-300"
               loading="lazy"
+              width="48"
+              height="48"
               onError={() => setImageError(true)}
             />
           ) : (
@@ -184,6 +186,8 @@ export default function Technologies({
                       borderColor: isSelected ? category.color : undefined,
                       boxShadow: isSelected ? `0 10px 25px -5px ${category.color}40` : undefined
                     }}
+                    aria-label={`Filter by ${category.name} technologies`}
+                    aria-pressed={isSelected}
                   >
                     <div 
                       className="mb-3 flex justify-center transition-transform duration-300 group-hover:scale-110"
@@ -235,9 +239,10 @@ export default function Technologies({
             <button
               onClick={() => setSelectedCategory(null)}
               className="text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors inline-flex items-center gap-2"
+              aria-label="Show all technologies"
             >
               Show All Technologies
-              <ArrowRight className="w-4 h-4" strokeWidth={2} />
+              <ArrowRight className="w-4 h-4" strokeWidth={2} aria-hidden="true" />
             </button>
           </div>
         )}

@@ -85,8 +85,8 @@ export function generateLocationSEO(
   return {
     location,
     country,
-    title: `Best ${serviceName} Company ${locationText.charAt(0).toUpperCase() + locationText.slice(1)} | TruVixo™`,
-    description: `TruVixo is recognized as the best ${serviceName.toLowerCase()} company ${locationText}. We deliver exceptional ${serviceName.toLowerCase()} services ${countryText} with proven expertise, innovative solutions, and client-focused approach. Trusted by businesses ${locationText} for reliable, scalable, and cost-effective ${serviceName.toLowerCase()} solutions.`,
+    title: `${serviceName} ${location === 'Worldwide' ? 'Services' : `in ${location}`} | TruVixo™`,
+    description: `Expert ${serviceName.toLowerCase()} services ${locationText}. Proven results, innovative solutions. Get professional ${serviceName.toLowerCase()} ${countryText}. Contact us.`,
     h1: `Best ${serviceName} Company ${locationText.charAt(0).toUpperCase() + locationText.slice(1)}`,
     content: `When businesses ${locationText} need exceptional ${serviceName.toLowerCase()} services, they turn to TruVixo. Our team of expert professionals has established a strong reputation ${countryText} for delivering innovative ${serviceName.toLowerCase()} solutions that drive real business results. 
 
@@ -113,11 +113,14 @@ export function generateServiceSEO(serviceName: string, serviceSlug: string): Se
     generateLocationSEO(serviceName, loc.location, loc.country)
   )
 
+  // Shorten service name if needed for title
+  const shortServiceName = serviceName.length > 25 ? serviceName.substring(0, 22) + '...' : serviceName
+  
   return {
     serviceName,
     serviceSlug,
-    title: `Best ${serviceName} Company | India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide | TruVixo™`,
-    description: `TruVixo is the best ${serviceName.toLowerCase()} company in India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. We provide comprehensive ${serviceName.toLowerCase()} services with proven expertise, innovative solutions, and exceptional results. Trusted by businesses globally.`,
+    title: `${shortServiceName} Services | TruVixo™`,
+    description: `Expert ${serviceName.toLowerCase()} services in India, Dubai, USA, Australia. Get professional solutions with proven results. Contact TruVixo today.`,
     h1: `Best ${serviceName} Company in India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide`,
     content: `TruVixo stands out as the premier ${serviceName.toLowerCase()} company, serving clients across India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. Our comprehensive ${serviceName.toLowerCase()} services are designed to help businesses achieve their goals through innovative solutions and expert execution.
 

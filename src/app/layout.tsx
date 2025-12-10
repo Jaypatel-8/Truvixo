@@ -39,10 +39,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Best Software Development & Digital Marketing Agency | India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide | TruVixo™',
+    default: 'TruVixo™ - Software & Digital Marketing Agency',
     template: '%s | TruVixo™'
   },
-  description: 'TruVixo is the best software development and digital marketing agency in India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. We provide comprehensive AI development, web development, mobile apps, SEO, PPC, and digital marketing services. Top-rated agency with proven results, serving clients globally with expert solutions.',
+  description: 'Top software development & digital marketing agency in India, Dubai, USA, Australia. AI development, web apps, mobile apps, SEO, PPC services. Get expert solutions.',
   keywords: [
     // Location-based keywords
     'best software development company in india',
@@ -98,8 +98,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Best Software Development & Digital Marketing Agency | India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide',
-    description: 'TruVixo is the best software development and digital marketing agency in India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. Top-rated agency with proven results.',
+    title: 'TruVixo™ - Software & Digital Marketing Agency',
+    description: 'Top software development & digital marketing agency in India, Dubai, USA, Australia. AI development, web apps, mobile apps, SEO, PPC services.',
     url: 'https://truvixo.com',
     siteName: 'TruVixo',
     locale: 'en_US',
@@ -115,8 +115,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Software Development & Digital Marketing Agency | India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide',
-    description: 'TruVixo is the best software development and digital marketing agency in India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. Top-rated agency with proven results.',
+    title: 'TruVixo™ - Software & Digital Marketing Agency',
+    description: 'Top software development & digital marketing agency in India, Dubai, USA, Australia. AI development, web apps, mobile apps, SEO, PPC services.',
     images: ['/TruVixo.png'],
   },
   robots: {
@@ -144,16 +144,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Critical Resources - Preload for faster LCP */}
         <link rel="preload" href="/TruVixo.png" as="image" type="image/png" fetchPriority="high" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        {/* Font Preloading - Critical for FOUT prevention */}
         <link rel="preload" href="/fonts/LePetiteCocho-Regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/LePetiteCocho-Bold.otf" as="font" type="font/otf" crossOrigin="anonymous" />
-        <link rel="prefetch" href="/fonts/LePetiteCocho-Regular.otf" as="font" crossOrigin="anonymous" />
-        <link rel="prefetch" href="/fonts/LePetiteCocho-Bold.otf" as="font" crossOrigin="anonymous" />
-        {/* Prefetch important routes for faster navigation */}
+        {/* Route Prefetching - Non-blocking */}
         <link rel="prefetch" href="/contact" />
         <link rel="prefetch" href="/services" />
         <link rel="prefetch" href="/our-work" />
@@ -162,8 +162,13 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/TruVixo logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta httpEquiv="x-dns-prefetch-control" content="on" />
+        {/* Critical CSS - Inline for above-the-fold content */}
+        <style dangerouslySetInnerHTML={{
+          __html: `html{scroll-behavior:smooth}body{margin:0;font-family:var(--font-inter),system-ui,-apple-system,sans-serif}nav{position:sticky;top:0;z-index:50;background:white;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.hollow-text{font-family:'Le Petite Cocho',sans-serif;-webkit-text-stroke:3px #000;-webkit-text-fill-color:transparent;font-weight:700}h1,h2{font-weight:900;line-height:1.1;color:#111}button{cursor:pointer}a{cursor:pointer}img{max-width:100%;height:auto}`
+        }} />
         {/* Aggressively block and suppress 404 errors - runs immediately */}
         <script
+          defer
           dangerouslySetInnerHTML={{
             __html: `
               !function() {
@@ -244,6 +249,7 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
+          defer
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -337,6 +343,7 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
+          defer
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",

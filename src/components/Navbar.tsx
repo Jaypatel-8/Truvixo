@@ -201,9 +201,11 @@ const Navbar = () => {
                     handleDropdownToggle('services')
                   }}
                   className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  aria-label="Services menu"
+                  aria-expanded={servicesOpen}
                 >
                   SERVICES
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 
                 {servicesOpen && (
@@ -245,9 +247,11 @@ const Navbar = () => {
                     handleDropdownToggle('ai')
                   }}
                   className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  aria-label="AI services menu"
+                  aria-expanded={aiOpen}
                 >
                   AI
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${aiOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${aiOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 
                 {aiOpen && (
@@ -278,9 +282,11 @@ const Navbar = () => {
                     handleDropdownToggle('hire')
                   }}
                   className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  aria-label="Hire developers menu"
+                  aria-expanded={hireOpen}
                 >
                   HIRE
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${hireOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${hireOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 
                 {hireOpen && (
@@ -311,9 +317,11 @@ const Navbar = () => {
                     handleDropdownToggle('industry')
                   }}
                   className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  aria-label="Industry solutions menu"
+                  aria-expanded={industryOpen}
                 >
                   INDUSTRY
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${industryOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${industryOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 
                 {industryOpen && (
@@ -344,9 +352,11 @@ const Navbar = () => {
                     handleDropdownToggle('company')
                   }}
                   className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  aria-label="Company information menu"
+                  aria-expanded={companyOpen}
                 >
                   COMPANY
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${companyOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${companyOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 
                 {companyOpen && (
@@ -381,6 +391,8 @@ const Navbar = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2 text-gray-900 hover:text-black transition-colors duration-300"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -400,9 +412,11 @@ const Navbar = () => {
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                   className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
+                  aria-label="Services menu"
+                  aria-expanded={mobileServicesOpen}
                 >
                   SERVICES
-                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 {mobileServicesOpen && (
                   <div className="mt-3 pl-4 space-y-4 bg-gray-50 rounded-lg p-4">
@@ -442,9 +456,11 @@ const Navbar = () => {
                 <button
                   onClick={() => setMobileAiOpen(!mobileAiOpen)}
                   className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
+                  aria-label="AI services menu"
+                  aria-expanded={mobileAiOpen}
                 >
                   AI
-                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileAiOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileAiOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 {mobileAiOpen && (
                   <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">
@@ -475,9 +491,11 @@ const Navbar = () => {
                 <button
                   onClick={() => setMobileHireOpen(!mobileHireOpen)}
                   className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
+                  aria-label="Hire developers menu"
+                  aria-expanded={mobileHireOpen}
                 >
                   HIRE
-                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileHireOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileHireOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 {mobileHireOpen && (
                   <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">
@@ -508,9 +526,11 @@ const Navbar = () => {
                 <button
                   onClick={() => setMobileIndustryOpen(!mobileIndustryOpen)}
                   className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
+                  aria-label="Industry solutions menu"
+                  aria-expanded={mobileIndustryOpen}
                 >
                   INDUSTRY
-                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileIndustryOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileIndustryOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 {mobileIndustryOpen && (
                   <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">
@@ -541,9 +561,11 @@ const Navbar = () => {
                 <button
                   onClick={() => setMobileCompanyOpen(!mobileCompanyOpen)}
                   className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
+                  aria-label="Company information menu"
+                  aria-expanded={mobileCompanyOpen}
                 >
                   COMPANY
-                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileCompanyOpen ? 'rotate-180' : ''}`} />
+                  <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileCompanyOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 {mobileCompanyOpen && (
                   <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">

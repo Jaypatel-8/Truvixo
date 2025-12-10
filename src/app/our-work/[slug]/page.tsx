@@ -23,8 +23,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const title = projectNames[params.slug] || 'Project Case Study'
   
   return {
-    title: `${title} | TruVixo`,
-    description: `Explore how TruVixo delivered exceptional results through innovative technology solutions. Case study showcasing team size, location, tech stack, problem solving, and our approach.`,
+    title: title.length > 50 ? `${title.substring(0, 47)}... | TruVixo` : `${title} | TruVixo`,
+    description: `TruVixo case study: ${title.toLowerCase()}. Explore innovative tech solutions, team expertise, and proven results. Get expert development services.`,
     keywords: 'project case study, software development, digital transformation, TruVixo projects',
   }
 }

@@ -1,3 +1,8 @@
+/* Tailwind CSS Directives - Must be at the top */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Fonts are loaded via Next.js font optimization - removed external imports for better performance */
 
 /* Le Petite Cocho Font - Optimized for faster loading */
@@ -392,8 +397,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-@tailwind base;
-
 /* Global Cursor Styles - Pointer only where needed, normal everywhere else */
 
 /* Default: normal cursor for everything */
@@ -547,8 +550,6 @@ body {
 *::after {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-@tailwind components;
-@tailwind utilities;
 
 :root {
   /* Modern Monochromatic Color System */
@@ -1423,10 +1424,10 @@ html {
 
 @keyframes typewriter {
   from {
-    width: 0;
+    clip-path: inset(0 100% 0 0);
   }
   to {
-    width: 100%;
+    clip-path: inset(0 0 0 0);
   }
 }
 

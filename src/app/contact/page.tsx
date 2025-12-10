@@ -491,7 +491,7 @@ export default function Contact() {
               <h3 className="text-2xl font-bold text-gray-900">Book a Call</h3>
               <button
                 onClick={() => setIsCalendarOpen(false)}
-                className="text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                className="text-gray-600 hover:text-gray-900 transition-colors duration-200"
               >
                 <X className="w-6 h-6" />
               </button>
