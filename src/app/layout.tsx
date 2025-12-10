@@ -4,10 +4,7 @@ import './globals.css'
 import dynamic from 'next/dynamic'
 
 // Lazy load components for better performance
-// CustomCursor removed - no longer using custom cursor
-// const CustomCursor = dynamic(() => import('@/components/CustomCursor'), {
-//   ssr: false,
-// })
+// CustomCursor removed - using default browser cursor
 const Navbar = dynamic(() => import('@/components/Navbar'), {
   ssr: true,
 })
@@ -360,7 +357,6 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         {/* PageTransition temporarily removed */}
-        {/* CustomCursor removed */}
         <Navbar />
         <main>
           {children}

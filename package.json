@@ -11,7 +11,7 @@
     "start": "next start",
     "lint": "next lint",
     "export": "next build",
-    "clean": "rm -rf .next out",
+    "clean": "node -e \"const fs=require('fs');['.next','out'].forEach(d=>{try{fs.rmSync(d,{recursive:true,force:true})}catch(e){}})\"",
     "prebuild": "npm run clean"
   },
   "keywords": [

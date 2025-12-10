@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Code, Server, Cloud, Database, Smartphone, Globe, Layers, Cpu, ArrowRight } from 'lucide-react'
+import { Code, Server, Cloud, Database, Smartphone, Globe, Layers, Cpu, ArrowRight, Brain } from 'lucide-react'
 
 // Separate component for technology item to manage its own error state
 function TechnologyItem({ tech }: { tech: Technology }) {
@@ -59,7 +59,7 @@ interface Technology {
   name: string
   logo: string // URL or path to logo
   color: string // Brand color for the technology
-  category: 'frontend' | 'backend' | 'cloud' | 'mobile' | 'database' | 'devops'
+  category: 'frontend' | 'backend' | 'cloud' | 'mobile' | 'database' | 'devops' | 'ai'
 }
 
 interface TechnologiesProps {
@@ -106,6 +106,12 @@ const categories = [
     icon: <Layers className="w-8 h-8" strokeWidth={2} />, 
     color: '#d42628', // truvixo-red
     description: 'Deployment and infrastructure tools'
+  },
+  { 
+    name: 'AI', 
+    icon: <Brain className="w-8 h-8" strokeWidth={2} />, 
+    color: '#8b5cf6', // purple for AI
+    description: 'Artificial Intelligence and Machine Learning'
   }
 ]
 

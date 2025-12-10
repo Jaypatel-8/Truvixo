@@ -394,38 +394,131 @@ h1, h2, h3, h4, h5, h6 {
 
 @tailwind base;
 
-/* Global Cursor Styles - Pointer for interactive elements */
+/* Global Cursor Styles - Pointer only where needed, normal everywhere else */
+
+/* Default: normal cursor for everything */
 * {
-  cursor: auto;
+  cursor: default;
 }
 
-/* Pointer cursor for all interactive elements */
+/* Pointer cursor ONLY for interactive/clickable elements */
 a,
-button,
-[role="button"],
-input[type="submit"],
-input[type="button"],
-select,
+button:not(:disabled),
+[role="button"]:not([aria-disabled="true"]),
+input[type="submit"]:not(:disabled),
+input[type="button"]:not(:disabled),
+input[type="reset"]:not(:disabled),
+select:not(:disabled),
 label[for],
 .dropdown-trigger,
 .dropdown-menu a,
-.dropdown-menu button,
+.dropdown-menu button:not(:disabled),
 nav a,
-nav button,
+nav button:not(:disabled),
 .menu-item,
-[onclick],
-.cursor-pointer {
+.menu-link,
+[onclick]:not([disabled]),
+.cursor-pointer,
+[data-cursor="pointer"],
+.swiper-slide,
+.service-card-link,
+.card-link,
+[tabindex]:not([tabindex="-1"]) {
   cursor: pointer !important;
 }
 
-/* Ensure menu items and submenu items have pointer cursor */
-nav a,
-nav button,
-.dropdown-menu a,
-.dropdown-menu button,
-.menu-link,
-.menu-item {
+/* Logo in navbar - must have pointer cursor (logo is clickable) */
+.logo-container,
+.logo-link,
+.logo-image,
+nav a[href="/"],
+nav a[href="/"] img,
+nav a[href="/"] *,
+a[href="/"] img,
+a[href="/"] *,
+.logo,
+.logo img,
+.logo *,
+[class*="logo"] img,
+[class*="Logo"] img,
+[class*="logo-container"] img,
+[class*="logo-link"] img,
+[class*="logo-image"] {
   cursor: pointer !important;
+}
+
+/* All CTA buttons and links - must have pointer cursor */
+/* CTA by class names */
+[class*="cta"],
+[class*="CTA"],
+[class*="get-quote"],
+[class*="GetQuote"],
+[class*="contact-us"],
+[class*="ContactUs"],
+[class*="get-started"],
+[class*="GetStarted"],
+button[class*="quote"],
+button[class*="Quote"],
+button[class*="contact"],
+button[class*="Contact"],
+a[class*="quote"],
+a[class*="Quote"],
+a[class*="contact"],
+a[class*="Contact"],
+[href*="contact"]:not(input):not(textarea),
+[href*="quote"]:not(input):not(textarea) {
+  cursor: pointer !important;
+}
+
+/* CTA buttons by background color (TruVixo blue buttons) */
+button[class*="bg-[#5e2cb6]"],
+button[class*="bg-truvixo-blue"],
+button.bg-\[#5e2cb6\],
+button.bg-truvixo-blue,
+a[class*="bg-[#5e2cb6]"],
+a[class*="bg-truvixo-blue"],
+a.bg-\[#5e2cb6\],
+a.bg-truvixo-blue {
+  cursor: pointer !important;
+}
+
+/* All buttons with CTA-like styling (rounded, padding, hover effects) */
+button[class*="rounded"]:not(:disabled),
+button[class*="px-"]:not(:disabled),
+button[class*="py-"]:not(:disabled),
+button[class*="hover:"]:not(:disabled),
+button[class*="transition"]:not(:disabled),
+button[class*="shadow"]:not(:disabled) {
+  cursor: pointer !important;
+}
+
+/* Ensure all buttons have pointer (comprehensive coverage) */
+button:not(:disabled),
+button:not([disabled]),
+button:not([aria-disabled="true"]) {
+  cursor: pointer !important;
+}
+
+/* Text cursor ONLY for text input fields */
+input[type="text"]:not(:disabled),
+input[type="email"]:not(:disabled),
+input[type="password"]:not(:disabled),
+input[type="search"]:not(:disabled),
+input[type="tel"]:not(:disabled),
+input[type="url"]:not(:disabled),
+input[type="number"]:not(:disabled),
+textarea:not(:disabled) {
+  cursor: text !important;
+}
+
+/* Not-allowed cursor for disabled elements */
+button:disabled,
+input:disabled,
+textarea:disabled,
+select:disabled,
+[disabled],
+[aria-disabled="true"] {
+  cursor: not-allowed !important;
 }
 
 /* Performance Optimizations for Smooth Scrolling */
