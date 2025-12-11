@@ -14,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/ai`, priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${baseUrl}/hire`, priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${baseUrl}/industry`, priority: 0.8, changeFrequency: 'weekly' as const },
-    { url: `${baseUrl}/technology`, priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/technology`, priority: 0.9, changeFrequency: 'weekly' as const },
     { url: `${baseUrl}/careers`, priority: 0.7, changeFrequency: 'monthly' as const },
     { url: `${baseUrl}/blog`, priority: 0.7, changeFrequency: 'weekly' as const },
     { url: `${baseUrl}/our-approach`, priority: 0.7, changeFrequency: 'monthly' as const },
@@ -113,8 +113,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const technologyPages = technologySlugs.map(slug => ({
     url: `${baseUrl}/technology/${slug}`,
     lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.6,
+    changeFrequency: 'weekly' as const,
+    priority: 0.9, // Higher priority for technology pages
   }))
 
   const projectPages = projectSlugs.map(slug => ({

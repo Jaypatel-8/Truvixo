@@ -67,6 +67,70 @@ export const metadata: Metadata = {
     'custom software development',
     'enterprise software development',
     'SaaS development company',
+    // Technology-specific keywords - Frontend
+    'React development company',
+    'Next.js development services',
+    'Vue.js development company',
+    'Angular development services',
+    'TypeScript development company',
+    'frontend development services',
+    'React.js developers',
+    'Next.js experts',
+    'Vue.js developers',
+    'Angular developers',
+    // Technology-specific keywords - Backend
+    'Node.js development company',
+    'Python development services',
+    'Django development company',
+    'FastAPI development services',
+    'backend development services',
+    'Node.js developers',
+    'Python developers',
+    'Django developers',
+    'API development services',
+    'microservices development',
+    // Technology-specific keywords - Mobile
+    'React Native development company',
+    'Flutter development services',
+    'iOS development company',
+    'Android development services',
+    'mobile app developers',
+    'React Native developers',
+    'Flutter developers',
+    'iOS developers',
+    'Android developers',
+    'cross-platform development',
+    // Technology-specific keywords - AI/ML
+    'TensorFlow development company',
+    'PyTorch development services',
+    'machine learning development',
+    'AI solutions company',
+    'LLM integration services',
+    'OpenAI development',
+    'AI developers',
+    'machine learning developers',
+    'TensorFlow developers',
+    'PyTorch developers',
+    // Technology-specific keywords - Cloud/DevOps
+    'AWS development services',
+    'Azure development company',
+    'Docker development services',
+    'Kubernetes development',
+    'cloud development company',
+    'DevOps services company',
+    'AWS developers',
+    'Azure developers',
+    'Docker experts',
+    'Kubernetes experts',
+    // Technology-specific keywords - Database
+    'MongoDB development services',
+    'PostgreSQL development company',
+    'MySQL development services',
+    'database development company',
+    'MongoDB developers',
+    'PostgreSQL developers',
+    'database optimization',
+    'database design services',
     'ecommerce development company',
     // Technology-based keywords
     'React development company',
@@ -325,7 +389,25 @@ export default function RootLayout({
                 "IT Consulting",
                 "AI & Automation",
                 "Cloud & DevOps",
-                "Startup Growth & Funding"
+                "Startup Growth & Funding",
+                "Frontend Development",
+                "Backend Development",
+                "Mobile App Development",
+                "AI & Machine Learning Development",
+                "Database Development",
+                "API Development",
+                "Microservices Development"
+              ],
+              "knowsAbout": [
+                "React", "Next.js", "Vue.js", "Angular", "TypeScript", "JavaScript",
+                "Node.js", "Python", "Django", "FastAPI", "NestJS", "Express.js",
+                "React Native", "Flutter", "iOS", "Android", "Swift", "Kotlin",
+                "TensorFlow", "PyTorch", "Machine Learning", "AI Development", "LLM Integration",
+                "AWS", "Azure", "Google Cloud", "Docker", "Kubernetes", "Terraform",
+                "MongoDB", "PostgreSQL", "MySQL", "Redis", "Database Design",
+                "API Development", "REST APIs", "GraphQL", "Microservices",
+                "Frontend Development", "Backend Development", "Full Stack Development",
+                "Cloud Development", "DevOps", "CI/CD", "Infrastructure as Code"
               ]
             })
           }}
@@ -360,6 +442,43 @@ export default function RootLayout({
         <Footer />
         <GoToTop />
         {/* ContactPopup removed - no longer showing on page load */}
+        {/* Global Structured Data for SEO */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'TruVixo',
+              url: 'https://truvixo.com',
+              logo: 'https://truvixo.com/TruVixo.png',
+              description: 'Leading software development and digital marketing agency providing AI development, web development, mobile app development, React, Node.js, Python, TensorFlow, AWS, Docker, and technology services worldwide.',
+              foundingDate: '2021',
+              areaServed: { '@type': 'Place', name: 'Worldwide' },
+              knowsAbout: [
+                'Software Development', 'AI Development', 'Machine Learning', 'Web Development',
+                'Mobile App Development', 'React', 'Next.js', 'Node.js', 'Python', 'Django',
+                'TensorFlow', 'PyTorch', 'AWS', 'Azure', 'Docker', 'Kubernetes', 'MongoDB',
+                'PostgreSQL', 'React Native', 'Flutter', 'TypeScript', 'Vue.js', 'Angular',
+                'Frontend Development', 'Backend Development', 'Cloud Development', 'DevOps',
+                'Database Development', 'API Development', 'Microservices'
+              ],
+              sameAs: [
+                'https://www.linkedin.com/company/truvixo',
+                'https://twitter.com/truvixo',
+                'https://www.facebook.com/truvixo'
+              ],
+              contactPoint: {
+                '@type': 'ContactPoint',
+                telephone: '+91-63543-26412',
+                contactType: 'Customer Service',
+                email: 'sales@truvixo.com',
+                areaServed: 'Worldwide',
+                availableLanguage: ['English']
+              }
+            })
+          }}
+        />
       </body>
     </html>
   )

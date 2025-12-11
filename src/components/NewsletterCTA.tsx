@@ -29,7 +29,7 @@ export default function NewsletterCTA({ onContactClick, className = '' }: Newsle
           </div>
 
           <div className="relative z-10 text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black mb-4 text-white">
               Let's Start Your{' '}
               <span className="hollow-text-white">
                 Project
