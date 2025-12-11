@@ -4,22 +4,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://truvixo.com'
   const now = new Date()
   
-  // Main pages
+  // Main pages - High priority for core pages
   const mainPages = [
-    { url: baseUrl, priority: 1.0, changeFrequency: 'weekly' as const },
-    { url: `${baseUrl}/about`, priority: 0.8, changeFrequency: 'monthly' as const },
+    { url: baseUrl, priority: 1.0, changeFrequency: 'daily' as const },
     { url: `${baseUrl}/services`, priority: 0.9, changeFrequency: 'weekly' as const },
-    { url: `${baseUrl}/contact`, priority: 0.8, changeFrequency: 'monthly' as const },
+    { url: `${baseUrl}/technology`, priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/hire`, priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/industry`, priority: 0.9, changeFrequency: 'weekly' as const },
     { url: `${baseUrl}/our-work`, priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${baseUrl}/ai`, priority: 0.8, changeFrequency: 'weekly' as const },
-    { url: `${baseUrl}/hire`, priority: 0.8, changeFrequency: 'weekly' as const },
-    { url: `${baseUrl}/industry`, priority: 0.8, changeFrequency: 'weekly' as const },
-    { url: `${baseUrl}/technology`, priority: 0.9, changeFrequency: 'weekly' as const },
-    { url: `${baseUrl}/careers`, priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: `${baseUrl}/about`, priority: 0.8, changeFrequency: 'monthly' as const },
+    { url: `${baseUrl}/contact`, priority: 0.8, changeFrequency: 'monthly' as const },
     { url: `${baseUrl}/blog`, priority: 0.7, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/work`, priority: 0.7, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/careers`, priority: 0.7, changeFrequency: 'monthly' as const },
     { url: `${baseUrl}/our-approach`, priority: 0.7, changeFrequency: 'monthly' as const },
     { url: `${baseUrl}/products`, priority: 0.7, changeFrequency: 'monthly' as const },
-    { url: `${baseUrl}/work`, priority: 0.7, changeFrequency: 'weekly' as const },
   ]
 
   // Service pages
@@ -89,25 +89,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'padmavat-construction-management'
   ]
 
+  // Service pages - High priority for SEO
   const servicePages = serviceSlugs.map(slug => ({
     url: `${baseUrl}/services/${slug}`,
     lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8, // Higher priority for service pages
   }))
 
+  // Hire pages - High priority for recruitment
   const hirePages = hireSlugs.map(slug => ({
     url: `${baseUrl}/hire/${slug}`,
     lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8, // Higher priority for hire pages
   }))
 
+  // Industry pages - High priority for industry targeting
   const industryPages = industrySlugs.map(slug => ({
     url: `${baseUrl}/industry/${slug}`,
     lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
+    changeFrequency: 'weekly' as const,
+    priority: 0.8, // Higher priority for industry pages
   }))
 
   const technologyPages = technologySlugs.map(slug => ({
@@ -117,14 +120,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9, // Higher priority for technology pages
   }))
 
+  // Project pages - Showcase portfolio
   const projectPages = projectSlugs.map(slug => ({
     url: `${baseUrl}/our-work/${slug}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
-    priority: 0.6,
+    priority: 0.7, // Increased priority for portfolio pages
   }))
   
-  return [
+  // Combine all pages for comprehensive sitemap
+  const allPages = [
     ...mainPages.map(page => ({
       url: page.url,
       lastModified: now,
@@ -137,4 +142,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...technologyPages,
     ...projectPages,
   ]
+
+  // Return sorted by priority (highest first) for better crawling
+  return allPages.sort((a, b) => (b.priority || 0) - (a.priority || 0))
 }
