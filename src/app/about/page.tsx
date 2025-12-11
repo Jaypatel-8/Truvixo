@@ -159,7 +159,7 @@ export default function About() {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-                Driven by innovation, powered by technology, and committed to excellence. Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. We deliver comprehensive solutions across multiple domains — not just digital marketing. We're your end-to-end growth partner, leveraging AI and cutting-edge technology to transform businesses from concept to market leader.
+                Driven by innovation, powered by technology, and committed to excellence. We serve clients worldwide. We deliver comprehensive solutions across multiple domains — not just digital marketing. We're your end-to-end growth partner, leveraging AI and cutting-edge technology to transform businesses from concept to market leader.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -494,7 +494,7 @@ export default function About() {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Global Reach, Local Expertise</h3>
               <p className="text-gray-600">
-                Based in Ahmedabad, Gujarat, India, serving clients across India, Dubai (UAE), USA, Australia, and worldwide. Local expertise with global standards.
+                Serving clients worldwide. Global expertise with international standards.
               </p>
             </div>
 

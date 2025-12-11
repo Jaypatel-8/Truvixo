@@ -41,6 +41,10 @@ const nextConfig = {
     removeConsole: process.env.NODE_ENV === 'production',
   },
   
+  // Additional performance optimizations
+  reactStrictMode: true,
+  compress: false, // Handled by hosting provider for static export
+  
   // Bundle analyzer (uncomment to analyze bundle)
   // bundleAnalyzer: {
   //   enabled: process.env.ANALYZE === 'true',

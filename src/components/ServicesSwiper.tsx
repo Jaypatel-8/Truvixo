@@ -1,5 +1,6 @@
 'use client'
 
+import { memo } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import { ArrowRight } from 'lucide-react'
@@ -23,23 +24,25 @@ interface ServicesSwiperProps {
   onServiceClick?: (serviceName: string) => void // Optional click handler
 }
 
-export default function ServicesSwiper({ servicesList, onServiceClick }: ServicesSwiperProps) {
-  // Service name to URL mapping
+// Service name to URL mapping - memoized outside component for performance
+const SERVICE_URL_MAP: { [key: string]: string } = {
+  'Custom Software Development': '/services/custom-software-development',
+  'AI & Machine Learning': '/services/ai-development-services',
+  'Web & Mobile Development': '/services/mobile-app-development',
+  'Cloud & DevOps': '/services/enterprise-software-development',
+  'Digital Marketing': '/services/seo',
+  'UI/UX Design': '/services/web-application-development',
+  'Data Engineering': '/services/ai-development-services',
+  'Enterprise Solutions': '/services/enterprise-software-development',
+  'Consulting & Strategy': '/services/custom-software-development',
+  'Maintenance & Support': '/services/maintenance-support',
+  'Legacy Modernization': '/services/legacy-app-modernization'
+}
+
+function ServicesSwiper({ servicesList, onServiceClick }: ServicesSwiperProps) {
+  // Service name to URL mapping - optimized function
   const getServiceUrl = (serviceName: string): string => {
-    const serviceMap: { [key: string]: string } = {
-      'Custom Software Development': '/services/custom-software-development',
-      'AI & Machine Learning': '/services/ai-development-services',
-      'Web & Mobile Development': '/services/mobile-app-development',
-      'Cloud & DevOps': '/services/maintenance-support',
-      'Digital Marketing': '/services/seo',
-      'UI/UX Design': '/services/custom-software-development',
-      'Data Engineering': '/services/ai-development-services',
-      'Enterprise Solutions': '/services/enterprise-software-development',
-      'Consulting & Strategy': '/services/custom-software-development',
-      'Maintenance & Support': '/services/maintenance-support',
-      'Legacy Modernization': '/services/legacy-app-modernization'
-    }
-    return serviceMap[serviceName] || '/services'
+    return SERVICE_URL_MAP[serviceName] || '/services'
   }
 
   // Removed handleCardClick - Link component handles navigation directly for faster redirects
@@ -75,6 +78,9 @@ export default function ServicesSwiper({ servicesList, onServiceClick }: Service
       >
         {servicesList.map((service, index) => {
           const serviceUrl = service.href || getServiceUrl(service.name)
+          const borderColor = service.color + '40'
+          const hoverBorderColor = service.color
+          const hoverShadow = `0 20px 40px -10px ${service.color}30`
           return (
           <SwiperSlide key={index}>
             <Link 
@@ -82,16 +88,18 @@ export default function ServicesSwiper({ servicesList, onServiceClick }: Service
               prefetch={true}
               className="service-card-link block bg-white rounded-2xl p-6 md:p-7 border-2 group relative overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl flex flex-col cursor-pointer no-underline"
               style={{ 
-                borderColor: service.color + '40',
-              }}
+                borderColor: borderColor,
+                '--hover-border-color': hoverBorderColor,
+                '--hover-shadow': hoverShadow,
+              } as React.CSSProperties & { '--hover-border-color': string; '--hover-shadow': string }}
               onMouseEnter={(e) => {
                 const target = e.currentTarget
-                target.style.borderColor = service.color
-                target.style.boxShadow = `0 20px 40px -10px ${service.color}30`
+                target.style.borderColor = hoverBorderColor
+                target.style.boxShadow = hoverShadow
               }}
               onMouseLeave={(e) => {
                 const target = e.currentTarget
-                target.style.borderColor = service.color + '40'
+                target.style.borderColor = borderColor
                 target.style.boxShadow = 'none'
               }}
             >
@@ -157,3 +165,5 @@ export default function ServicesSwiper({ servicesList, onServiceClick }: Service
     </div>
   )
 }
+
+export default memo(ServicesSwiper)

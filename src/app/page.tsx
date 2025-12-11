@@ -1,17 +1,19 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+// Import icons - Next.js will tree-shake unused ones in production
 import { ArrowRight, Calendar, Code, Brain, Smartphone, Cloud, Database, Server, Target, Settings, Wrench, Megaphone, Palette, Award, Rocket, Shield, MessageSquare, Phone, Mail, ChevronRight, Users, TrendingUp, Zap, BarChart3, Building2, Heart, ShoppingCart, Truck, Home as HomeIcon, GraduationCap, CheckCircle, Clock, DollarSign, Briefcase, Lightbulb } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+// Below-the-fold: Lazy load with intersection observer
 const Technologies = dynamic(() => import('../components/Technologies'), {
   ssr: false,
-  loading: () => <div className="min-h-[400px]"></div>,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
 })
 
 const FAQDropdown = dynamic(() => import('../components/FAQDropdown'), {
   ssr: false,
-  loading: () => <div className="min-h-[200px]"></div>,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
 })
 
 const NewsletterCTA = dynamic(() => import('../components/NewsletterCTA'), {
@@ -21,39 +23,41 @@ const NewsletterCTA = dynamic(() => import('../components/NewsletterCTA'), {
 
 const ContactSection = dynamic(() => import('../components/ContactSection'), {
   ssr: false,
-  loading: () => <div className="min-h-[300px]"></div>,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
 })
 
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
+// Modal components - only load when needed
 const ContactFormModal = dynamic(() => import('../components/ContactFormModal'), {
   ssr: false,
   loading: () => null,
 })
 
+// Below-the-fold carousels - lazy load
 const TestimonialCarousel = dynamic(() => import('../components/TestimonialCarousel'), {
   ssr: false,
-  loading: () => null,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
 })
 
 const ProcessDiagram = dynamic(
   () => import('../components/ProcessDiagram'),
   {
     ssr: false,
-    loading: () => <div className="min-h-[400px]"></div>,
+    loading: () => <div className="min-h-[400px] bg-white"></div>,
   }
 )
 
 const Clientele = dynamic(() => import('../components/Clientele'), {
   ssr: false,
-  loading: () => null,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
 })
 
 const SEOLocationSection = dynamic(() => import('../components/SEOLocationSection'), {
   ssr: false,
-  loading: () => null,
+  loading: () => <div className="min-h-[200px] bg-gray-50"></div>,
 })
 
 const ServicesSwiper = dynamic(() => import('../components/ServicesSwiper'), {
@@ -71,35 +75,37 @@ const ServicesSwiper = dynamic(() => import('../components/ServicesSwiper'), {
   )
 })
 
+// Static data moved outside component to prevent recreation on every render
+const FEATURED_PROJECTS = [
+  { 
+    title: 'Enterprise Platform', 
+    category: 'Software Development',
+    description: 'Scalable cloud infrastructure for enterprise operations',
+    href: '/our-work' 
+  },
+  { 
+    title: 'AI Analytics System', 
+    category: 'AI & Machine Learning',
+    description: 'Intelligent data processing and predictive analytics',
+    href: '/our-work' 
+  },
+  { 
+    title: 'Mobile Application', 
+    category: 'Mobile Development',
+    description: 'Cross-platform mobile solution with native performance',
+    href: '/our-work' 
+  },
+  { 
+    title: 'Digital Transformation', 
+    category: 'Consulting',
+    description: 'End-to-end modernization of legacy systems',
+    href: '/our-work' 
+  }
+]
+
 export default function Home() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
-  const [featuredProjects, setFeaturedProjects] = useState<any[]>([
-    { 
-      title: 'Enterprise Platform', 
-      category: 'Software Development',
-      description: 'Scalable cloud infrastructure for enterprise operations',
-      href: '/our-work' 
-    },
-    { 
-      title: 'AI Analytics System', 
-      category: 'AI & Machine Learning',
-      description: 'Intelligent data processing and predictive analytics',
-      href: '/our-work' 
-    },
-    { 
-      title: 'Mobile Application', 
-      category: 'Mobile Development',
-      description: 'Cross-platform mobile solution with native performance',
-      href: '/our-work' 
-    },
-    { 
-      title: 'Digital Transformation', 
-      category: 'Consulting',
-      description: 'End-to-end modernization of legacy systems',
-      href: '/our-work' 
-    }
-  ])
 
   useEffect(() => {
     setIsMounted(true)
@@ -471,7 +477,7 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredProjects.map((project, index) => (
+            {FEATURED_PROJECTS.map((project, index) => (
               <Link
                 key={index}
                 href={project.href}
@@ -683,10 +689,10 @@ export default function Home() {
                   'Full-Stack Development': '/services/custom-software-development',
                   'Custom Software Development': '/services/custom-software-development',
                   'AI & Machine Learning': '/services/ai-development-services',
-                  'Cloud & DevOps': '/services/maintenance-support',
+                  'Cloud & DevOps': '/services/enterprise-software-development',
                   'Mobile Development': '/services/mobile-app-development',
                   'Digital Marketing': '/services/seo',
-                  'UI/UX Design': '/services/custom-software-development'
+                  'UI/UX Design': '/services/web-application-development'
                 }
                 return urlMap[title] || '/services'
               }

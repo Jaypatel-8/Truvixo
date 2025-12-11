@@ -47,10 +47,8 @@ export const metadata: Metadata = {
     // Location-based keywords
     'best software development company in india',
     'best digital marketing agency in india',
-    'best software development company in gujarat',
-    'best digital marketing agency in gujarat',
-    'best software development company in ahmedabad',
-    'best digital marketing agency in ahmedabad',
+    'best software development company worldwide',
+    'best digital marketing agency worldwide',
     'best software development company in dubai',
     'best digital marketing agency in dubai',
     'best software development company in usa',
@@ -153,11 +151,13 @@ export default function RootLayout({
         {/* Font Preloading - Critical for FOUT prevention */}
         <link rel="preload" href="/fonts/LePetiteCocho-Regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/LePetiteCocho-Bold.otf" as="font" type="font/otf" crossOrigin="anonymous" />
-        {/* Route Prefetching - Non-blocking */}
-        <link rel="prefetch" href="/contact" />
-        <link rel="prefetch" href="/services" />
-        <link rel="prefetch" href="/our-work" />
-        <link rel="prefetch" href="/about" />
+        {/* Route Prefetching - Non-blocking, prioritized */}
+        <link rel="prefetch" href="/contact" as="document" />
+        <link rel="prefetch" href="/services" as="document" />
+        <link rel="prefetch" href="/our-work" as="document" />
+        <link rel="prefetch" href="/about" as="document" />
+        {/* Prefetch critical CSS chunks */}
+        <link rel="prefetch" href="/_next/static/css/app/layout.css" as="style" />
         <link rel="icon" href="/TruVixo logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/TruVixo logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
@@ -281,23 +281,12 @@ export default function RootLayout({
               ],
               "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Ahmedabad",
-                "addressRegion": "Gujarat",
-                "addressCountry": "IN",
-                "streetAddress": "Ahmedabad, Gujarat, India"
+                "addressCountry": "Global"
               },
               "areaServed": [
                 {
-                  "@type": "Country",
-                  "name": "India"
-                },
-                {
-                  "@type": "State",
-                  "name": "Gujarat"
-                },
-                {
-                  "@type": "City",
-                  "name": "Ahmedabad"
+                  "@type": "Place",
+                  "name": "Worldwide"
                 },
                 {
                   "@type": "Country",

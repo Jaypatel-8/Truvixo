@@ -83,3 +83,4 @@ Run Lighthouse before and after to see improvements:
 - Performance: Should improve by 10-20 points
 - Best Practices: Should reach 100
 
+

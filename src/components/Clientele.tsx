@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useMemo, memo } from 'react'
 import Image from 'next/image'
 
 interface ClientLogo {
@@ -27,7 +27,7 @@ interface ClienteleProps {
   className?: string
 }
 
-export default function Clientele({ 
+function Clientele({ 
   title,
   subtitle,
   className = '' 
@@ -79,7 +79,8 @@ export default function Clientele({
     }
   }, [isPaused])
 
-  const duplicatedLogos = [...clientLogos, ...clientLogos]
+  // Memoize duplicated logos array to prevent recreation on every render
+  const duplicatedLogos = useMemo(() => [...clientLogos, ...clientLogos], [])
 
   return (
     <section className={`py-8 bg-[#5e2cb6] relative overflow-hidden ${className}`}>
@@ -188,4 +189,6 @@ export default function Clientele({
     </section>
   )
 }
+
+export default memo(Clientele)
 

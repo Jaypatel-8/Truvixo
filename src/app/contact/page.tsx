@@ -131,7 +131,7 @@ export default function Contact() {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Address',
-      details: 'Ahmedabad, Gujarat, India',
+      details: 'Global Services',
       color: '#fecc4d'
     },
     {

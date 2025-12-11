@@ -73,7 +73,7 @@ export default function ServicePageClient({ slug }: { slug: string }) {
               Delivering Excellence and Innovation
             </h2>
             <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light">
-              We deliver exceptional {serviceName.toLowerCase()} services with proven expertise and innovative solutions tailored to your business needs. Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. Transform your vision into reality with cutting-edge technology and industry-leading practices.
+              We deliver exceptional {serviceName.toLowerCase()} services with proven expertise and innovative solutions tailored to your business needs. We serve clients worldwide. Transform your vision into reality with cutting-edge technology and industry-leading practices.
             </p>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function ServicePageClient({ slug }: { slug: string }) {
                 With a proven track record spanning multiple industries, we've established ourselves as a trusted partner for businesses seeking exceptional {serviceName.toLowerCase()} services. We understand the unique challenges and opportunities in your industry and provide tailored solutions that align with your business objectives.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. Whether you're a local business or a global enterprise, TruVixo provides {serviceName.toLowerCase()} services tailored to your specific needs, market requirements, and regulatory environment.
+                We serve clients worldwide. Whether you're a local business or a global enterprise, TruVixo provides {serviceName.toLowerCase()} services tailored to your specific needs, market requirements, and regulatory environment.
               </p>
             </div>
           </div>

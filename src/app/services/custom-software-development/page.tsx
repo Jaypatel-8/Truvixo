@@ -221,7 +221,7 @@ export default function CustomSoftwareDevelopment() {
                 Tailored to Your Business Needs
               </h2>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-                We build scalable, secure, and high-performance custom software tailored to your business needs. Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. Transform your ideas into powerful digital solutions that drive innovation and growth.
+                We build scalable, secure, and high-performance custom software tailored to your business needs. We serve clients worldwide. Transform your ideas into powerful digital solutions that drive innovation and growth.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 

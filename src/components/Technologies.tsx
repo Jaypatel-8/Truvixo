@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo, memo } from 'react'
 import { Code, Server, Cloud, Database, Smartphone, Globe, Layers, Cpu, ArrowRight, Brain } from 'lucide-react'
 
 // Separate component for technology item to manage its own error state
@@ -117,7 +117,7 @@ const categories = [
   }
 ]
 
-export default function Technologies({ 
+function Technologies({ 
   technologies, 
   title = "Technologies We Use",
   subtitle = "Modern tech stack for optimal performance",
@@ -125,24 +125,30 @@ export default function Technologies({
 }: TechnologiesProps) {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
-  // Group technologies by category
-  const technologiesByCategory = technologies.reduce((acc, tech) => {
-    if (!acc[tech.category]) {
-      acc[tech.category] = []
-    }
-    acc[tech.category].push(tech)
-    return acc
-  }, {} as Record<string, Technology[]>)
+  // Memoize: Group technologies by category (only recalculates when technologies change)
+  const technologiesByCategory = useMemo(() => {
+    return technologies.reduce((acc, tech) => {
+      if (!acc[tech.category]) {
+        acc[tech.category] = []
+      }
+      acc[tech.category].push(tech)
+      return acc
+    }, {} as Record<string, Technology[]>)
+  }, [technologies])
 
-  // Get technologies for selected category or all if none selected
-  const displayTechnologies = selectedCategory 
-    ? technologiesByCategory[selectedCategory] || []
-    : technologies
+  // Memoize: Get technologies for selected category or all if none selected
+  const displayTechnologies = useMemo(() => {
+    return selectedCategory 
+      ? technologiesByCategory[selectedCategory] || []
+      : technologies
+  }, [selectedCategory, technologiesByCategory, technologies])
 
-  // Get selected category name
-  const selectedCategoryName = selectedCategory 
-    ? categories.find(cat => cat.name.toLowerCase() === selectedCategory)?.name || selectedCategory
-    : null
+  // Memoize: Get selected category name
+  const selectedCategoryName = useMemo(() => {
+    return selectedCategory 
+      ? categories.find(cat => cat.name.toLowerCase() === selectedCategory)?.name || selectedCategory
+      : null
+  }, [selectedCategory])
 
   return (
     <section className={`py-16 bg-white ${className}`}>
@@ -250,4 +256,6 @@ export default function Technologies({
     </section>
   )
 }
+
+export default memo(Technologies)
 

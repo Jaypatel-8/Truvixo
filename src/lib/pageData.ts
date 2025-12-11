@@ -491,7 +491,7 @@ export const pageFAQs: Record<string, Array<{ question: string; answer: string }
   'about': [
     {
       question: 'Where is TruVixo located?',
-      answer: 'We are based in Ahmedabad, Gujarat, India, and serve clients across India, Dubai (UAE), USA, Australia, and worldwide.'
+      answer: 'We serve clients worldwide with global expertise and international standards.'
     },
     {
       question: 'How many projects has TruVixo completed?',

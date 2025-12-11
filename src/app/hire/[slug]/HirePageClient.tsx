@@ -49,7 +49,7 @@ export default function HirePageClient({ slug }: { slug: string }) {
               Connect with Top-Tier Talent
             </h2>
             <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light">
-              Connect with top-tier {pageName.toLowerCase()} talent for your development needs. Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. Our expert team brings years of experience and proven track record in delivering exceptional results.
+              Connect with top-tier {pageName.toLowerCase()} talent for your development needs. We serve clients worldwide. Our expert team brings years of experience and proven track record in delivering exceptional results.
             </p>
           </div>
         </div>
@@ -66,7 +66,7 @@ export default function HirePageClient({ slug }: { slug: string }) {
                 TruVixo is your trusted partner for hiring {pageName.toLowerCase()}. Our comprehensive talent network connects you with skilled professionals who understand your business needs and deliver exceptional results. We carefully vet all candidates to ensure they meet the highest standards of technical expertise and professional excellence.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. Whether you're a local business or a global enterprise, we connect you with top-tier {pageName.toLowerCase()} who understand your market dynamics and can contribute to your success from day one.
+                We serve clients worldwide. Whether you're a local business or a global enterprise, we connect you with top-tier {pageName.toLowerCase()} who understand your market dynamics and can contribute to your success from day one.
               </p>
             </div>
           </div>

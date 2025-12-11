@@ -49,7 +49,7 @@ export default function IndustryPageClient({ slug }: { slug: string }) {
               Industry-Specific Technology Expertise
             </h2>
             <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light">
-              We deliver comprehensive {pageName.toLowerCase()} software solutions with industry-specific technology expertise. Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. Transform your business operations with tailored technology that drives efficiency and growth.
+              We deliver comprehensive {pageName.toLowerCase()} software solutions with industry-specific technology expertise. We serve clients worldwide. Transform your business operations with tailored technology that drives efficiency and growth.
             </p>
           </div>
         </div>
@@ -66,7 +66,7 @@ export default function IndustryPageClient({ slug }: { slug: string }) {
                 TruVixo is the leading {pageName.toLowerCase()} software solutions company, delivering technology solutions that address the unique challenges and opportunities in your industry. Our deep industry expertise enables us to understand your business processes, compliance requirements, and market dynamics.
               </p>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Based in Ahmedabad, Gujarat, India, we serve clients across India, Dubai (UAE), USA, Australia, and worldwide. We provide software solutions that are tailored to your specific market requirements, regulatory environment, and business objectives, ensuring seamless integration with your existing operations.
+                We serve clients worldwide. We provide software solutions that are tailored to your specific market requirements, regulatory environment, and business objectives, ensuring seamless integration with your existing operations.
               </p>
             </div>
           </div>

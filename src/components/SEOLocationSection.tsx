@@ -12,7 +12,7 @@ export default function SEOLocationSection({
   className = '' 
 }: SEOLocationSectionProps) {
   const locations = [
-    { name: 'Ahmedabad, India', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#5e2cb6', description: 'Headquarters' },
+    { name: 'Global', icon: <Globe className="w-5 h-5" strokeWidth={2} />, color: '#5e2cb6', description: 'Worldwide Services' },
     { name: 'Dubai, UAE', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#c91a6f', description: 'Middle East' },
     { name: 'USA', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#fecc4d', description: 'North America' },
     { name: 'Australia', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#10b981', description: 'Asia-Pacific' },
@@ -28,7 +28,7 @@ export default function SEOLocationSection({
             Serving Clients Worldwide
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Based in Ahmedabad, Gujarat, India. Serving clients across India, Dubai (UAE), USA, Australia, and worldwide. We deliver exceptional {serviceName.toLowerCase()} services with local expertise and global standards.
+            Serving clients worldwide. We deliver exceptional {serviceName.toLowerCase()} services with global expertise and international standards.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ export default function SEOLocationSection({
             
             <div className="space-y-4 text-gray-700 leading-relaxed text-sm md:text-base">
               <p>
-                Based in Ahmedabad, Gujarat, India, TruVixo serves clients across India, Dubai (UAE), USA, Australia, and worldwide. We combine local market expertise with global best practices to deliver {serviceName.toLowerCase()} services that help businesses succeed regardless of their location. Our understanding of regional business dynamics, regulatory requirements, and market opportunities enables us to provide tailored solutions for each market.
+                TruVixo serves clients worldwide. We combine global market expertise with international best practices to deliver {serviceName.toLowerCase()} services that help businesses succeed regardless of their location. Our understanding of diverse business dynamics, regulatory requirements, and market opportunities enables us to provide tailored solutions for each market.
               </p>
             </div>
 

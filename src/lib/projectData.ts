@@ -36,7 +36,7 @@ export const projects: ProjectDetail[] = [
       '99.9% system uptime'
     ],
     teamSize: '8-10 members',
-    location: 'Ahmedabad, Gujarat, India',
+    location: 'USA',
     duration: '6 months',
     problem: 'Nova Logistics faced significant challenges with manual tracking systems, inefficient route planning, and lack of real-time visibility into their supply chain operations. This resulted in delayed deliveries, increased fuel costs, and poor customer satisfaction.',
     solution: 'We developed a comprehensive logistics management platform with real-time GPS tracking, AI-powered route optimization, automated dispatch systems, and integrated IoT sensors for cargo monitoring. The solution included mobile apps for drivers, web dashboards for managers, and APIs for third-party integrations.',
@@ -82,7 +82,7 @@ export const projects: ProjectDetail[] = [
       'Full HIPAA compliance achieved'
     ],
     teamSize: '12-15 members',
-    location: 'Ahmedabad, Gujarat, India',
+    location: 'USA',
     duration: '8 months',
     problem: 'Healthcare providers struggled with processing vast amounts of patient data manually, leading to delayed diagnoses, missed patterns, and inefficient resource allocation. The lack of predictive analytics made it difficult to identify at-risk patients early.',
     solution: 'We developed an AI-powered healthcare analytics platform that processes patient data in real-time, uses machine learning models for predictive analytics, and provides intuitive dashboards for healthcare professionals. The system includes automated risk scoring, treatment recommendations, and population health insights.',
@@ -128,7 +128,7 @@ export const projects: ProjectDetail[] = [
       'Real-time property valuation updates'
     ],
     teamSize: '10-12 members',
-    location: 'Ahmedabad, Gujarat, India',
+    location: 'Australia',
     duration: '7 months',
     problem: 'Real estate professionals struggled with fragmented tools, manual property tracking, and lack of comprehensive investment analytics. Managing multiple properties, tracking rental income, and analyzing investment performance required multiple disconnected systems.',
     solution: 'We developed a unified property management platform that consolidates property listings, rental management, investment tracking, financial analytics, and automated reporting. The platform includes mobile apps for on-the-go access and integrates with payment gateways for seamless transactions.',
@@ -174,7 +174,7 @@ export const projects: ProjectDetail[] = [
       'Better compliance and safety tracking'
     ],
     teamSize: '9-11 members',
-    location: 'Ahmedabad, Gujarat, India',
+    location: 'UK',
     duration: '5 months',
     problem: 'Construction projects suffered from poor coordination, delayed communication, inefficient resource allocation, and lack of real-time visibility into project progress. Manual tracking led to cost overruns, schedule delays, and quality issues.',
     solution: 'We created a comprehensive construction management platform with mobile apps for field workers, web dashboards for project managers, real-time progress tracking, resource allocation tools, and automated reporting. The system includes features for safety compliance, quality control, and financial tracking.',

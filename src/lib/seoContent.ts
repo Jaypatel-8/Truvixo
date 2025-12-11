@@ -120,13 +120,13 @@ export function generateServiceSEO(serviceName: string, serviceSlug: string): Se
     serviceName,
     serviceSlug,
     title: `${shortServiceName} Services | TruVixo™`,
-    description: `Expert ${serviceName.toLowerCase()} services in India, Dubai, USA, Australia. Get professional solutions with proven results. Contact TruVixo today.`,
-    h1: `Best ${serviceName} Company in India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide`,
-    content: `TruVixo stands out as the premier ${serviceName.toLowerCase()} company, serving clients across India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. Our comprehensive ${serviceName.toLowerCase()} services are designed to help businesses achieve their goals through innovative solutions and expert execution.
+    description: `Expert ${serviceName.toLowerCase()} services worldwide. Get professional solutions with proven results. Contact TruVixo today.`,
+    h1: `Best ${serviceName} Company | Global Services`,
+    content: `TruVixo stands out as the premier ${serviceName.toLowerCase()} company, serving clients worldwide. Our comprehensive ${serviceName.toLowerCase()} services are designed to help businesses achieve their goals through innovative solutions and expert execution.
 
 With a proven track record spanning multiple countries and industries, we've established ourselves as a trusted partner for businesses seeking exceptional ${serviceName.toLowerCase()} services. Our team combines deep technical expertise with strategic thinking to deliver results that drive growth and success.
 
-Whether you're located in India, operating from Gujarat or Ahmedabad, expanding to Dubai, serving the USA market, reaching customers in Australia, or running a global business, TruVixo provides ${serviceName.toLowerCase()} services tailored to your specific needs and market requirements.`,
+Whether you're a startup looking to build your first product or an established enterprise seeking to scale, TruVixo provides ${serviceName.toLowerCase()} services tailored to your specific needs and market requirements.`,
     keywords: [
       `best ${serviceName.toLowerCase()} company`,
       `${serviceName.toLowerCase()} services`,
@@ -134,12 +134,8 @@ Whether you're located in India, operating from Gujarat or Ahmedabad, expanding 
       `professional ${serviceName.toLowerCase()}`,
       `expert ${serviceName.toLowerCase()}`,
       `${serviceName.toLowerCase()} solutions`,
-      `${serviceName.toLowerCase()} company in india`,
-      `${serviceName.toLowerCase()} company in gujarat`,
-      `${serviceName.toLowerCase()} company in ahmedabad`,
-      `${serviceName.toLowerCase()} company in dubai`,
-      `${serviceName.toLowerCase()} company in usa`,
-      `${serviceName.toLowerCase()} company in australia`,
+      `global ${serviceName.toLowerCase()} company`,
+      `worldwide ${serviceName.toLowerCase()} services`,
     ],
     locations
   }
@@ -147,16 +143,14 @@ Whether you're located in India, operating from Gujarat or Ahmedabad, expanding 
 
 // Main company SEO with all locations
 export const companySEO = {
-  title: 'Best Software Development & Digital Marketing Agency | India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide | TruVixo™',
-  description: 'TruVixo is the best software development and digital marketing agency in India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. We provide comprehensive AI development, web development, mobile apps, SEO, PPC, and digital marketing services. Top-rated agency with proven results and global expertise.',
-  h1: 'Best Software Development & Digital Marketing Agency in India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide',
+  title: 'Best Software Development & Digital Marketing Agency | Global Services | TruVixo™',
+  description: 'TruVixo is the best software development and digital marketing agency worldwide. We provide comprehensive AI development, web development, mobile apps, SEO, PPC, and digital marketing services. Top-rated agency with proven results and global expertise.',
+  h1: 'Best Software Development & Digital Marketing Agency | Global Services',
   keywords: [
-    'best software development company in india',
-    'best digital marketing agency in india',
-    'best software development company in gujarat',
-    'best digital marketing agency in gujarat',
-    'best software development company in ahmedabad',
-    'best digital marketing agency in ahmedabad',
+    'best software development company',
+    'best digital marketing agency',
+    'global software development company',
+    'worldwide digital marketing agency',
     'best software development company in dubai',
     'best digital marketing agency in dubai',
     'best software development company in usa',
@@ -172,9 +166,9 @@ export const companySEO = {
     'SEO services company',
     'PPC services company',
   ],
-  content: `TruVixo has established itself as the leading software development and digital marketing agency, serving clients across India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. Our comprehensive suite of services combines cutting-edge technology with strategic marketing expertise to help businesses achieve exceptional growth and success.
+  content: `TruVixo has established itself as the leading software development and digital marketing agency, serving clients worldwide. Our comprehensive suite of services combines cutting-edge technology with strategic marketing expertise to help businesses achieve exceptional growth and success.
 
-With a strong presence in India, particularly in Gujarat and Ahmedabad, and expanding reach to Dubai, USA, Australia, and global markets, we bring together the best of both worlds - innovative software development and data-driven digital marketing strategies.
+With a global presence and expanding reach across international markets, we bring together the best of both worlds - innovative software development and data-driven digital marketing strategies.
 
 Our team of expert developers, designers, marketers, and strategists work collaboratively to deliver solutions that not only meet but exceed client expectations. Whether you're a startup looking to build your first product or an established enterprise seeking to scale, TruVixo provides the expertise and resources you need to succeed.
 
@@ -184,51 +178,39 @@ What sets us apart is our commitment to excellence, transparent communication, a
 // Technology-based SEO
 export const technologySEO = {
   'AI & Machine Learning': {
-    title: 'Best AI & Machine Learning Development Company | India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide',
-    description: 'TruVixo is the best AI and machine learning development company in India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. Expert AI solutions, ML models, LLM integration, and intelligent automation services.',
+    title: 'Best AI & Machine Learning Development Company | Global Services | TruVixo™',
+    description: 'TruVixo is the best AI and machine learning development company worldwide. Expert AI solutions, ML models, LLM integration, and intelligent automation services.',
     keywords: [
       'best AI development company',
       'machine learning development',
       'AI solutions company',
       'LLM integration services',
-      'AI development in india',
-      'AI development in gujarat',
-      'AI development in ahmedabad',
-      'AI development in dubai',
-      'AI development in usa',
-      'AI development in australia',
+      'global AI development',
+      'worldwide AI services',
     ]
   },
   'Web Technologies': {
-    title: 'Best Web Development Company | India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide',
-    description: 'TruVixo is the best web development company in India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. Expert React, Next.js, Vue, Angular development and modern web solutions.',
+    title: 'Best Web Development Company | Global Services | TruVixo™',
+    description: 'TruVixo is the best web development company worldwide. Expert React, Next.js, Vue, Angular development and modern web solutions.',
     keywords: [
       'best web development company',
       'React development company',
       'Next.js development',
       'web application development',
-      'web development in india',
-      'web development in gujarat',
-      'web development in ahmedabad',
-      'web development in dubai',
-      'web development in usa',
-      'web development in australia',
+      'global web development',
+      'worldwide web services',
     ]
   },
   'Mobile Technologies': {
-    title: 'Best Mobile App Development Company | India, Gujarat, Ahmedabad, Dubai, USA, Australia & Worldwide',
-    description: 'TruVixo is the best mobile app development company in India, Gujarat, Ahmedabad, Dubai, USA, Australia, and worldwide. Expert iOS, Android, React Native, and Flutter development.',
+    title: 'Best Mobile App Development Company | Global Services | TruVixo™',
+    description: 'TruVixo is the best mobile app development company worldwide. Expert iOS, Android, React Native, and Flutter development.',
     keywords: [
       'best mobile app development company',
       'iOS development company',
       'Android development company',
       'React Native development',
-      'mobile app development in india',
-      'mobile app development in gujarat',
-      'mobile app development in ahmedabad',
-      'mobile app development in dubai',
-      'mobile app development in usa',
-      'mobile app development in australia',
+      'global mobile app development',
+      'worldwide mobile services',
     ]
   }
 }

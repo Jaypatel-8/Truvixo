@@ -174,7 +174,7 @@ export default function WebApplicationDevelopment() {
                 Development Company
               </span>
               <span className="text-xl md:text-2xl font-semibold text-gray-600 block mt-4">
-                India • Gujarat • Ahmedabad • Dubai • USA • Australia • Worldwide
+                Global Services • Worldwide
               </span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">

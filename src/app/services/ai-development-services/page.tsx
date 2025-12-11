@@ -219,7 +219,7 @@ export default function AIDevelopmentServices() {
                   Services Company
                 </span>
                 <span className="text-2xl md:text-3xl font-semibold text-gray-600 block mt-4">
-                  India • Gujarat • Ahmedabad • Dubai • USA • Australia • Worldwide
+                  Global Services • Worldwide
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">

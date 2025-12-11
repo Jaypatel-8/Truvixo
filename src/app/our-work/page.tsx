@@ -457,12 +457,10 @@ const OurWork = () => {
             {featuredProjects.map((project, index) => (
               <div 
                 key={project.id} 
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center animate-fade-in-up ${
-                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-                }`}
+                className="animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
-                <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
+                <div>
                   <div className="bg-white rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-500 interactive-card">
                     <div className="flex items-center gap-3 mb-6">
                       <div className={`w-12 h-12 ${project.gradient} rounded-xl flex items-center justify-center`}>
@@ -506,17 +504,6 @@ const OurWork = () => {
                       <span>View Case Study</span>
                       <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
                     </Link>
-                  </div>
-                </div>
-
-                <div className={`${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
-                  <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl h-80 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className={`w-24 h-24 ${project.gradient} rounded-2xl flex items-center justify-center mx-auto mb-4`}>
-                        <Globe className="w-12 h-12 text-white" />
-                      </div>
-                      <p className="text-gray-600 font-medium">Project Preview</p>
-                    </div>
                   </div>
                 </div>
               </div>

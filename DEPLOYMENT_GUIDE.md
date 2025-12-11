@@ -82,3 +82,4 @@ After deployment, test these URLs:
 
 If the CSS URL returns 404, the `_next` folder wasn't uploaded correctly.
 
+
