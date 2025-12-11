@@ -101,3 +101,63 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+              test: /[\\/]node_modules[\\/]swiper[\\/]/,
+              name: 'swiper',
+              chunks: 'all',
+              priority: 30,
+              reuseExistingChunk: true,
+            },
+            lucide: {
+              test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+              name: 'lucide',
+              chunks: 'all',
+              priority: 25,
+              reuseExistingChunk: true,
+            },
+          },
+        },
+      };
+    }
+
+    // Tree shaking optimization (removed usedExports as it conflicts with Next.js cache)
+    // config.optimization.usedExports = true; // Conflicts with Next.js caching
+    config.optimization.sideEffects = false;
+
+    return config;
+  },
+
+  // Note: Headers are not supported with static export
+  // You can configure these in your hosting provider (Hostinger)
+};
+
+module.exports = nextConfig;
+              test: /[\\/]node_modules[\\/]swiper[\\/]/,
+              name: 'swiper',
+              chunks: 'all',
+              priority: 30,
+              reuseExistingChunk: true,
+            },
+            lucide: {
+              test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+              name: 'lucide',
+              chunks: 'all',
+              priority: 25,
+              reuseExistingChunk: true,
+            },
+          },
+        },
+      };
+    }
+
+    // Tree shaking optimization (removed usedExports as it conflicts with Next.js cache)
+    // config.optimization.usedExports = true; // Conflicts with Next.js caching
+    config.optimization.sideEffects = false;
+
+    return config;
+  },
+
+  // Note: Headers are not supported with static export
+  // You can configure these in your hosting provider (Hostinger)
+};
+
+module.exports = nextConfig;

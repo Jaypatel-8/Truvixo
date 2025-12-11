@@ -542,3 +542,35 @@ export default function Contact() {
     </main>
   )
 }
+
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-xl text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
+              >
+                Cancel
+              </button>
+              <button className="flex-1 bg-[#5e2cb6] text-white px-4 py-3 rounded-xl hover:bg-[#4a1f8f] hover:shadow-lg transition-all duration-300">
+                Confirm Booking
+              </button>
+            </div>
+          </div>
+    </div>
+      )}
+
+    </main>
+  )
+}
+
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-xl text-gray-700 bg-white hover:bg-gray-50 transition-colors duration-200"
+              >
+                Cancel
+              </button>
+              <button className="flex-1 bg-[#5e2cb6] text-white px-4 py-3 rounded-xl hover:bg-[#4a1f8f] hover:shadow-lg transition-all duration-300">
+                Confirm Booking
+              </button>
+            </div>
+          </div>
+    </div>
+      )}
+
+    </main>
+  )
+}

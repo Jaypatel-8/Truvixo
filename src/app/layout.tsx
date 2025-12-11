@@ -364,3 +364,345 @@ export default function RootLayout({
     </html>
   )
 }
+
+                      if (x._b) {
+                        if (x.onload) try { x.onload(); } catch(e) {}
+                        if (x.onreadystatechange) try { x.onreadystatechange(); } catch(e) {}
+                        return;
+                      }
+                      return s.apply(this, arguments);
+                    };
+                    return x;
+                  };
+                }
+                if (window.fetch) {
+                  var f = window.fetch;
+                  window.fetch = function() {
+                    var u = arguments[0];
+                    if (shouldBlock(u)) {
+                      return Promise.resolve(new Response('', { status: 200 }));
+                    }
+                    return f.apply(this, arguments).catch(function() {
+                      if (shouldBlock(u)) return Promise.resolve(new Response('', { status: 200 }));
+                      throw arguments[0];
+                    });
+                  };
+                }
+                var e = console.error;
+                console.error = function() {
+                  var m = Array.prototype.slice.call(arguments).join(' ');
+                  if (m.indexOf('localhost:3000') !== -1 || (m.indexOf('404') !== -1 && m.indexOf('localhost') !== -1)) return;
+                  e.apply(console, arguments);
+                };
+                var w = console.warn;
+                console.warn = function() {
+                  var m = Array.prototype.slice.call(arguments).join(' ');
+                  if (m.indexOf('localhost:3000') !== -1) return;
+                  w.apply(console, arguments);
+                };
+                window.addEventListener('error', function(e) {
+                  if (e.message && e.message.indexOf('localhost:3000') !== -1) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                    return false;
+                  }
+                }, true);
+                window.addEventListener('unhandledrejection', function(e) {
+                  if (e.reason && String(e.reason).indexOf('localhost:3000') !== -1) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                  }
+                }, true);
+              }();
+            `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          defer
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "TruVixo",
+              "alternateName": "TruVixo™",
+              "url": "https://truvixo.com",
+              "logo": "https://truvixo.com/TruVixo.png",
+              "description": "AI-powered branding, marketing, and technology company helping businesses scale from concept to market leader.",
+              "foundingDate": "2017",
+              "founders": [
+                {
+                  "@type": "Person",
+                  "name": "Jay Patel"
+                },
+                {
+                  "@type": "Person",
+                  "name": "Preet Patel"
+                }
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "Customer Service",
+                "email": "sales@truvixoo.com",
+                "telephone": "+916354326412"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/truvixo%E2%84%A2/posts/?feedView=all"
+              ],
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "Global"
+              },
+              "areaServed": [
+                {
+                  "@type": "Place",
+                  "name": "Worldwide"
+                },
+                {
+                  "@type": "Country",
+                  "name": "United Arab Emirates"
+                },
+                {
+                  "@type": "City",
+                  "name": "Dubai"
+                },
+                {
+                  "@type": "Country",
+                  "name": "United States"
+                },
+                {
+                  "@type": "Country",
+                  "name": "Australia"
+                },
+                {
+                  "@type": "Place",
+                  "name": "Worldwide"
+                }
+              ],
+              "serviceArea": {
+                "@type": "GeoCircle",
+                "geoMidpoint": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "23.0225",
+                  "longitude": "72.5714"
+                }
+              },
+              "serviceType": [
+                "Branding & Identity",
+                "Digital Marketing",
+                "UI/UX Design",
+                "Web & App Development",
+                "IT Consulting",
+                "AI & Automation",
+                "Cloud & DevOps",
+                "Startup Growth & Funding"
+              ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          defer
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "TruVixo",
+              "url": "https://truvixo.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://truvixo.com/search?q={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+      </head>
+      <body className={inter.className}>
+        {/* PageTransition temporarily removed */}
+        <Navbar />
+        <main>
+          {children}
+        </main>
+        <Footer />
+        <GoToTop />
+        {/* ContactPopup removed - no longer showing on page load */}
+      </body>
+    </html>
+  )
+}
+
+                      if (x._b) {
+                        if (x.onload) try { x.onload(); } catch(e) {}
+                        if (x.onreadystatechange) try { x.onreadystatechange(); } catch(e) {}
+                        return;
+                      }
+                      return s.apply(this, arguments);
+                    };
+                    return x;
+                  };
+                }
+                if (window.fetch) {
+                  var f = window.fetch;
+                  window.fetch = function() {
+                    var u = arguments[0];
+                    if (shouldBlock(u)) {
+                      return Promise.resolve(new Response('', { status: 200 }));
+                    }
+                    return f.apply(this, arguments).catch(function() {
+                      if (shouldBlock(u)) return Promise.resolve(new Response('', { status: 200 }));
+                      throw arguments[0];
+                    });
+                  };
+                }
+                var e = console.error;
+                console.error = function() {
+                  var m = Array.prototype.slice.call(arguments).join(' ');
+                  if (m.indexOf('localhost:3000') !== -1 || (m.indexOf('404') !== -1 && m.indexOf('localhost') !== -1)) return;
+                  e.apply(console, arguments);
+                };
+                var w = console.warn;
+                console.warn = function() {
+                  var m = Array.prototype.slice.call(arguments).join(' ');
+                  if (m.indexOf('localhost:3000') !== -1) return;
+                  w.apply(console, arguments);
+                };
+                window.addEventListener('error', function(e) {
+                  if (e.message && e.message.indexOf('localhost:3000') !== -1) {
+                    e.stopImmediatePropagation();
+                    e.preventDefault();
+                    return false;
+                  }
+                }, true);
+                window.addEventListener('unhandledrejection', function(e) {
+                  if (e.reason && String(e.reason).indexOf('localhost:3000') !== -1) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    return false;
+                  }
+                }, true);
+              }();
+            `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          defer
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "TruVixo",
+              "alternateName": "TruVixo™",
+              "url": "https://truvixo.com",
+              "logo": "https://truvixo.com/TruVixo.png",
+              "description": "AI-powered branding, marketing, and technology company helping businesses scale from concept to market leader.",
+              "foundingDate": "2017",
+              "founders": [
+                {
+                  "@type": "Person",
+                  "name": "Jay Patel"
+                },
+                {
+                  "@type": "Person",
+                  "name": "Preet Patel"
+                }
+              ],
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "Customer Service",
+                "email": "sales@truvixoo.com",
+                "telephone": "+916354326412"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/truvixo%E2%84%A2/posts/?feedView=all"
+              ],
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "Global"
+              },
+              "areaServed": [
+                {
+                  "@type": "Place",
+                  "name": "Worldwide"
+                },
+                {
+                  "@type": "Country",
+                  "name": "United Arab Emirates"
+                },
+                {
+                  "@type": "City",
+                  "name": "Dubai"
+                },
+                {
+                  "@type": "Country",
+                  "name": "United States"
+                },
+                {
+                  "@type": "Country",
+                  "name": "Australia"
+                },
+                {
+                  "@type": "Place",
+                  "name": "Worldwide"
+                }
+              ],
+              "serviceArea": {
+                "@type": "GeoCircle",
+                "geoMidpoint": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "23.0225",
+                  "longitude": "72.5714"
+                }
+              },
+              "serviceType": [
+                "Branding & Identity",
+                "Digital Marketing",
+                "UI/UX Design",
+                "Web & App Development",
+                "IT Consulting",
+                "AI & Automation",
+                "Cloud & DevOps",
+                "Startup Growth & Funding"
+              ]
+            })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          defer
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "TruVixo",
+              "url": "https://truvixo.com",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": {
+                  "@type": "EntryPoint",
+                  "urlTemplate": "https://truvixo.com/search?q={search_term_string}"
+                },
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+        />
+      </head>
+      <body className={inter.className}>
+        {/* PageTransition temporarily removed */}
+        <Navbar />
+        <main>
+          {children}
+        </main>
+        <Footer />
+        <GoToTop />
+        {/* ContactPopup removed - no longer showing on page load */}
+      </body>
+    </html>
+  )
+}
