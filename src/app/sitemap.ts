@@ -13,6 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/our-work`, priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${baseUrl}/ai`, priority: 0.8, changeFrequency: 'weekly' as const },
     { url: `${baseUrl}/hire`, priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/industry`, priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/technology`, priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/careers`, priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: `${baseUrl}/blog`, priority: 0.7, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/our-approach`, priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: `${baseUrl}/products`, priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: `${baseUrl}/work`, priority: 0.7, changeFrequency: 'weekly' as const },
   ]
 
   // Service pages
@@ -63,6 +70,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'travel-hospitality'
   ]
 
+  // Technology pages
+  const technologySlugs = [
+    'frontend',
+    'backend',
+    'mobile',
+    'ai-ml',
+    'cloud-devops',
+    'database',
+    'tools-integrations'
+  ]
+
+  // Project pages
+  const projectSlugs = [
+    'nova-logistics',
+    'brightedge-healthcare-analytics',
+    'urbanmint-property-platform',
+    'padmavat-construction-management'
+  ]
+
   const servicePages = serviceSlugs.map(slug => ({
     url: `${baseUrl}/services/${slug}`,
     lastModified: now,
@@ -83,6 +109,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
+
+  const technologyPages = technologySlugs.map(slug => ({
+    url: `${baseUrl}/technology/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
+
+  const projectPages = projectSlugs.map(slug => ({
+    url: `${baseUrl}/our-work/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly' as const,
+    priority: 0.6,
+  }))
   
   return [
     ...mainPages.map(page => ({
@@ -94,5 +134,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...servicePages,
     ...hirePages,
     ...industryPages,
+    ...technologyPages,
+    ...projectPages,
   ]
 }

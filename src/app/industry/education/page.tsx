@@ -125,7 +125,7 @@ export default function EducationDevelopment() {
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
     { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248', category: 'database' as const },
-    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'SCORM', logo: 'https://scorm.com/wp-content/uploads/2018/10/scorm-logo.png', color: '#4A90E2', category: 'backend' as const },
     { name: 'Zoom API', logo: 'https://zoom.us/favicon.ico', color: '#2D8CFF', category: 'backend' as const },
     { name: 'WebRTC', logo: 'https://webrtc.org/favicon.ico', color: '#333333', category: 'backend' as const },

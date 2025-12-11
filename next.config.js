@@ -34,6 +34,78 @@ const nextConfig = {
     minimumCacheTTL: 60,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.jsdelivr.net',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 's.w.org',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'strapi.io',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.sanity.io',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.contentful.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'scikit-learn.org',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pandas.pydata.org',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'numpy.org',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'keras.io',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'playwright.dev',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.postman.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'jmeter.apache.org',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'testng.org',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'appium.io',
+        pathname: '/**',
+      },
+    ],
   },
   
   // Compiler optimizations

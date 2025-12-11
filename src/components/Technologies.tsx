@@ -43,10 +43,25 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
     return technologiesByCategory[selectedCategory] || []
   }, [selectedCategory, technologies, technologiesByCategory])
 
+  // Category name mapping for better display
+  const getCategoryDisplayName = (category: string): string => {
+    const categoryMap: Record<string, string> = {
+      'all': 'All',
+      'frontend': 'Frontend',
+      'backend': 'Backend',
+      'database': 'Database',
+      'cloud': 'Cloud',
+      'devops': 'DevOps',
+      'mobile': 'Mobile',
+      'ai': 'AI/ML'
+    }
+    return categoryMap[category] || category.charAt(0).toUpperCase() + category.slice(1)
+  }
+
   // Memoize selected category name for display
   const selectedCategoryName = useMemo(() => {
     if (selectedCategory === 'all') return 'All Technologies'
-    return selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)
+    return getCategoryDisplayName(selectedCategory)
   }, [selectedCategory])
 
   return (
@@ -77,7 +92,7 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              {category === 'all' ? 'All' : category.charAt(0).toUpperCase() + category.slice(1)}
+              {getCategoryDisplayName(category)}
             </button>
           ))}
         </div>
