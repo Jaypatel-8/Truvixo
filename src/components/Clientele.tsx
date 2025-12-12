@@ -12,14 +12,14 @@ interface ClientLogo {
 
 // Client logos
 const clientLogos: ClientLogo[] = [
-  { name: 'Physiofi', logo: '/Physiofi Logo(1).png' },
-  { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-ar21.svg', url: 'https://aws.amazon.com' },
-  { name: 'Padmavati Construction', alternateText: 'Padmavati' },
-  { name: 'Client 2', logo: '/TruVixo.png' },
   { name: 'Client 3', logo: '/TruVixo.png' },
+  { name: 'Padmavati Construction', alternateText: 'Padmavati' },
   { name: 'Client 4', logo: '/TruVixo.png' },
+  { name: 'SP BAGS', logo: '/sp bags logo.png' },
   { name: 'Client 5', logo: '/TruVixo.png' },
+  { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-ar21.svg', url: 'https://aws.amazon.com' },
   { name: 'Client 6', logo: '/TruVixo.png' },
+  { name: 'Physiofi', logo: '/Physiofi Logo(1).png' },
   { name: 'Client 7', logo: '/TruVixo.png' },
 ]
 
