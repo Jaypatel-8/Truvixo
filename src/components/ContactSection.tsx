@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { Phone, Mail, Send, Loader2 } from 'lucide-react'
 import { sendContactEmail, type ContactFormData } from '@/lib/emailService'
 
@@ -15,6 +16,11 @@ export default function ContactSection({
   description = "Have a project in mind? Let's discuss how we can help transform your business.",
   className = ''
 }: ContactSectionProps) {
+  const pathname = usePathname()
+  // Render only on the contact page
+  if (pathname && pathname !== '/contact') {
+    return null
+  }
   const [formData, setFormData] = useState({
     name: '',
     email: '',

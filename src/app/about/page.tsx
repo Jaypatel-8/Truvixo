@@ -6,6 +6,7 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import SEOLocationSection from '@/components/SEOLocationSection'
 import ContactSection from '@/components/ContactSection'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import Clientele from '@/components/Clientele'
 import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
@@ -644,6 +645,20 @@ export default function About() {
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business with our comprehensive solutions."
+      />
+
+      <GetQuoteSection
+        title="Ready to Elevate"
+        hollowText="Your Brand?"
+        description="Let’s plan your next move—design, build, and grow with TruVixo’s team."
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
       />
 
       <ContactFormModal 

@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import Clientele from '@/components/Clientele'
 import ContactSection from '@/components/ContactSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -281,6 +282,14 @@ export default function OurApproach() {
       <ContactSection 
         title="Get in Touch"
         description="Have questions about our approach? Let's discuss how we can help."
+      />
+
+      <GetQuoteSection
+        title="Ready to Start"
+        hollowText="A Project?"
+        description="Partner with TruVixo to plan, build, and launch with confidence."
+        primaryCTA={{ text: 'Call Us', onClick: () => setIsContactModalOpen(true) }}
+        secondaryCTA={{ text: 'Schedule Consultation', onClick: () => setIsContactModalOpen(true) }}
       />
 
       <ContactFormModal 

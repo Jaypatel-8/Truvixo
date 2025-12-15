@@ -5,6 +5,7 @@ import { ArrowRight, Briefcase, Users, Zap, TrendingUp, Heart, Mail, MapPin, Clo
 import Link from 'next/link'
 import Clientele from '@/components/Clientele'
 import ContactSection from '@/components/ContactSection'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 // Removed dynamic job loading and admin features to prevent rendering issues
 
 export default function Careers() {
@@ -270,6 +271,14 @@ export default function Careers() {
       <ContactSection 
         title="Get in Touch"
         description="Have questions about working with us? Let's connect."
+      />
+
+      <GetQuoteSection
+        title="Join the"
+        hollowText="TruVixo Team"
+        description="Ready to grow your career with us? Let’s talk about roles that fit you."
+        primaryCTA={{ text: 'Call Us', onClick: () => setIsContactModalOpen(true) }}
+        secondaryCTA={{ text: 'Schedule Consultation', onClick: () => setIsContactModalOpen(true) }}
       />
 
       {/* Removed HiringFormModal - using contact page instead */}
