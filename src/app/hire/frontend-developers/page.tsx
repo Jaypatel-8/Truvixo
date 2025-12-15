@@ -22,13 +22,13 @@ export default function HireFrontendDevelopers() {
       title: 'Vue.js Development',
       description: 'Vue.js specialists for progressive web applications',
       icon: <Layers className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Angular Development',
       description: 'Angular experts for enterprise-grade applications',
       icon: <Zap className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'UI/UX Implementation',
@@ -61,21 +61,21 @@ export default function HireFrontendDevelopers() {
       icon: <FileCode className="w-7 h-7" strokeWidth={2} />, 
       title: 'Clean Code', 
       description: 'Well-structured, maintainable, and documented codebase',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Eye className="w-7 h-7" strokeWidth={2} />, 
       title: 'UI/UX Expertise', 
       description: 'Strong understanding of user-centered design principles',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
   const industries = [
     { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'E-Commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'E-Commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' }
   ]
 

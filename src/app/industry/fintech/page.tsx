@@ -62,13 +62,13 @@ export default function FintechDevelopment() {
       title: 'Loan Management Systems',
       description: 'Automated lending and credit management platforms',
       icon: <DollarSign className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Trading Platforms',
       description: 'Stock, crypto, and forex trading systems',
       icon: <TrendingUp className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Wealth Management',
@@ -101,21 +101,21 @@ export default function FintechDevelopment() {
       icon: <Zap className="w-7 h-7" strokeWidth={2} />, 
       title: 'High Performance', 
       description: '99.9% uptime and real-time transaction processing',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, 
       title: 'Scalable Solutions', 
       description: 'Cloud-native architecture that scales',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
   const industries = [
     { name: 'Banking', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Payments', icon: <CreditCard className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Lending', icon: <DollarSign className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Investments', icon: <BarChart className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Lending', icon: <DollarSign className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Investments', icon: <BarChart className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Insurance', icon: <Shield className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Cryptocurrency', icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -124,7 +124,7 @@ export default function FintechDevelopment() {
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'frontend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
-    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
     { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', color: '#326CE5', category: 'devops' as const },
     { name: 'Redis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg', color: '#DC382D', category: 'database' as const },
@@ -176,7 +176,7 @@ export default function FintechDevelopment() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#fecc4d]/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#d97706]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -396,7 +396,7 @@ export default function FintechDevelopment() {
       <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#d97706]/10 rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">

@@ -62,13 +62,13 @@ export default function EnterpriseSoftwareDevelopment() {
       title: 'Microservices Architecture',
       description: 'Scalable microservices-based enterprise applications',
       icon: <Network className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Cloud-Native Solutions',
       description: 'Enterprise applications built for cloud scalability and reliability',
       icon: <Cloud className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Business Intelligence',
@@ -86,13 +86,13 @@ export default function EnterpriseSoftwareDevelopment() {
       title: 'High Availability Systems',
       description: '99.9% uptime enterprise systems with failover and redundancy',
       icon: <Shield className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Legacy System Integration',
       description: 'Seamless integration with existing enterprise systems',
       icon: <Network className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
@@ -113,13 +113,13 @@ export default function EnterpriseSoftwareDevelopment() {
       icon: <Cloud className="w-7 h-7" strokeWidth={2} />, 
       title: 'Scalable Architecture', 
       description: 'Cloud-native solutions that scale with your business',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Zap className="w-7 h-7" strokeWidth={2} />, 
       title: 'High Performance', 
       description: 'Optimized for speed, reliability, and high availability',
-      color: '#10b981'
+      color: '#059669'
     },
     { 
       icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
@@ -139,7 +139,7 @@ export default function EnterpriseSoftwareDevelopment() {
     { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'frontend' as const },
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
-    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
     { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', color: '#326CE5', category: 'devops' as const },
     { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6', category: 'frontend' as const },
@@ -184,8 +184,8 @@ export default function EnterpriseSoftwareDevelopment() {
   const industries = [
     { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Manufacturing', icon: <Settings className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Manufacturing', icon: <Settings className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -470,8 +470,8 @@ export default function EnterpriseSoftwareDevelopment() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <Cloud className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <Cloud className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Scalable Infrastructure</h3>
               <p className="text-gray-600">
@@ -480,8 +480,8 @@ export default function EnterpriseSoftwareDevelopment() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <BarChart3 className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                <BarChart3 className="w-6 h-6 text-[#059669]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Data-Driven Decisions</h3>
               <p className="text-gray-600">
@@ -541,7 +541,7 @@ export default function EnterpriseSoftwareDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Enterprise CRM</h3>
               <p className="text-gray-600 mb-4">
                 Develop custom CRM systems for large sales teams. Manage customer relationships, track sales pipelines, automate follow-ups, and generate comprehensive reports.
@@ -554,7 +554,7 @@ export default function EnterpriseSoftwareDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Business Intelligence Platforms</h3>
               <p className="text-gray-600 mb-4">
                 Create BI platforms that aggregate data from multiple sources, provide real-time dashboards, and enable advanced analytics for strategic decision making.
@@ -567,7 +567,7 @@ export default function EnterpriseSoftwareDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Workflow Automation Systems</h3>
               <p className="text-gray-600 mb-4">
                 Build workflow automation platforms that streamline business processes, manage approvals, and automate repetitive tasks across departments.

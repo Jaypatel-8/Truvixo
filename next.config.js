@@ -12,14 +12,7 @@ const nextConfig = {
   experimental: {
     // optimizeCss: true, // Disabled - requires critters module
     optimizePackageImports: ['lucide-react', 'swiper'],
-    optimizeServerReact: true,
   },
-  
-  // Note: Headers are not supported with static export
-  // Configure these in your hosting provider (Hostinger) for:
-  // - /fonts/* -> Cache-Control: public, max-age=31536000, immutable
-  // - /_next/static/* -> Cache-Control: public, max-age=31536000, immutable
-  // - /images/* -> Cache-Control: public, max-age=31536000, immutable
   
   // Power optimizations
   poweredByHeader: false,

@@ -143,7 +143,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
         'Developed automated investment tracking and analytics features'
       ],
       duration: '7 months',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     'padmavat-construction-management': {
       title: 'Padmavat Construction Management',
@@ -170,7 +170,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
         'Ensured offline functionality for remote construction sites'
       ],
       duration: '5 months',
-      color: '#10b981'
+      color: '#059669'
     }
   }
 
@@ -193,8 +193,8 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
   const projectInfo = [
     { icon: <Users className="w-6 h-6" strokeWidth={2} />, label: 'Team Size', value: project.teamSize, color: '#5e2cb6' },
     { icon: <MapPin className="w-6 h-6" strokeWidth={2} />, label: 'Location', value: project.location, color: '#c91a6f' },
-    { icon: <Clock className="w-6 h-6" strokeWidth={2} />, label: 'Duration', value: project.duration, color: '#fecc4d' },
-    { icon: <Award className="w-6 h-6" strokeWidth={2} />, label: 'Category', value: project.category, color: '#10b981' }
+    { icon: <Clock className="w-6 h-6" strokeWidth={2} />, label: 'Duration', value: project.duration, color: '#d97706' },
+    { icon: <Award className="w-6 h-6" strokeWidth={2} />, label: 'Category', value: project.category, color: '#059669' }
   ]
 
   return (
@@ -244,8 +244,8 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
               {[
                 { icon: <Users className="w-8 h-8" strokeWidth={2} />, title: 'Team Size', desc: project.teamSize, color: '#5e2cb6' },
                 { icon: <MapPin className="w-8 h-8" strokeWidth={2} />, title: 'Location', desc: project.location, color: '#c91a6f' },
-                { icon: <Clock className="w-8 h-8" strokeWidth={2} />, title: 'Duration', desc: project.duration, color: '#fecc4d' },
-                { icon: <Award className="w-8 h-8" strokeWidth={2} />, title: 'Category', desc: project.category, color: '#10b981' }
+                { icon: <Clock className="w-8 h-8" strokeWidth={2} />, title: 'Duration', desc: project.duration, color: '#d97706' },
+                { icon: <Award className="w-8 h-8" strokeWidth={2} />, title: 'Category', desc: project.category, color: '#059669' }
               ].map((item, index) => (
                 <div
                   key={index}
@@ -365,12 +365,12 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
             <div className="hidden lg:block">
               <div className="relative">
                 {/* Main Timeline Line */}
-                <div className="absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-[#5e2cb6] via-[#c91a6f] via-[#fecc4d] to-[#10b981] rounded-full z-0"></div>
+                <div className="absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-[#5e2cb6] via-[#c91a6f] via-[#d97706] to-[#059669] rounded-full z-0"></div>
                 
                 {/* Process Steps Container */}
                 <div className="relative flex justify-between items-start pt-8 pb-16">
                   {project.approach.map((step, index) => {
-                    const stepColors = ['#5e2cb6', '#c91a6f', '#fecc4d', '#10b981', '#5e2cb6', '#c91a6f']
+                    const stepColors = ['#5e2cb6', '#c91a6f', '#d97706', '#059669', '#5e2cb6', '#c91a6f']
                     const stepColor = stepColors[index % stepColors.length]
                     const stepIcons = [
                       <Target className="w-6 h-6" strokeWidth={2} />,
@@ -442,7 +442,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
             {/* Mobile/Tablet Vertical Process Flow */}
             <div className="lg:hidden space-y-6">
               {project.approach.map((step, index) => {
-                const stepColors = ['#5e2cb6', '#c91a6f', '#fecc4d', '#10b981', '#5e2cb6', '#c91a6f']
+                const stepColors = ['#5e2cb6', '#c91a6f', '#d97706', '#059669', '#5e2cb6', '#c91a6f']
                 const stepColor = stepColors[index % stepColors.length]
                 const stepIcons = [
                   <Target className="w-6 h-6" strokeWidth={2} />,
@@ -523,10 +523,10 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {project.results.map((result, index) => (
-              <div key={index} className="bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-[#fecc4d] transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: '#fecc4d' }}></div>
+              <div key={index} className="bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-[#d97706] transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: '#d97706' }}></div>
                 <div className="relative z-10 flex items-start gap-4">
-                  <CheckCircle className="w-8 h-8 text-[#fecc4d] flex-shrink-0 mt-1" strokeWidth={1.5} />
+                  <CheckCircle className="w-8 h-8 text-[#d97706] flex-shrink-0 mt-1" strokeWidth={1.5} />
                   <p className="text-lg text-gray-700 leading-relaxed">{result}</p>
                 </div>
               </div>
@@ -569,8 +569,8 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <Cloud className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <Cloud className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Scalable Solution</h3>
               <p className="text-gray-600">
@@ -608,7 +608,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">
                 Technical Excellence
               </h3>

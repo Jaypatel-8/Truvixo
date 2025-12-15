@@ -132,13 +132,13 @@ export default function Contact() {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Address',
       details: 'Global Services',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       icon: <Clock className="w-6 h-6" />,
       title: 'Hours',
       details: 'Mon - Fri: 9:00 AM - 6:00 PM',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 

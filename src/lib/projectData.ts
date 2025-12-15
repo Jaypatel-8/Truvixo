@@ -155,7 +155,7 @@ export const projects: ProjectDetail[] = [
       'Enhanced investment decision-making through comprehensive analytics',
       'Improved tenant satisfaction through automated communication systems'
     ],
-    color: '#fecc4d'
+    color: '#d97706'
   },
   {
     slug: 'padmavat-construction-management',
@@ -201,7 +201,7 @@ export const projects: ProjectDetail[] = [
       'Better safety compliance and incident tracking',
       'Increased client satisfaction through transparent project visibility'
     ],
-    color: '#10b981'
+    color: '#059669'
   }
 ]
 

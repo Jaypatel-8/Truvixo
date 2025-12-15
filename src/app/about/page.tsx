@@ -71,13 +71,13 @@ export default function About() {
       title: 'Proven Results',
       description: '500+ successful projects with 98% client satisfaction rate',
       icon: <Award className="w-7 h-7" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Future-Ready Solutions',
       description: 'We build for tomorrow, ensuring your business stays ahead of the curve',
       icon: <Rocket className="w-7 h-7" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
@@ -119,8 +119,8 @@ export default function About() {
   const focusAreas = [
     { name: 'Branding', icon: <Palette className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Marketing', icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Tech', icon: <Code className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Cloud', icon: <Cloud className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Tech', icon: <Code className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Cloud', icon: <Cloud className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'AI', icon: <Brain className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Funding', icon: <DollarSign className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -128,12 +128,12 @@ export default function About() {
   const industries = [
     { name: 'FinTech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Users className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Retail', icon: <Globe className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'EdTech', icon: <Target className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Retail', icon: <Globe className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'EdTech', icon: <Target className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Manufacturing', icon: <Code className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Real Estate', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Logistics', icon: <Zap className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Construction', icon: <Rocket className="w-7 h-7" strokeWidth={2} />, color: '#10b981' }
+    { name: 'Logistics', icon: <Zap className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Construction', icon: <Rocket className="w-7 h-7" strokeWidth={2} />, color: '#059669' }
   ]
 
   return (
@@ -331,7 +331,7 @@ export default function About() {
                 <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: '#c91a6f' }}></div>
                 <div className="relative z-10">
                   <div className="text-center mb-6">
-                    <div className="w-32 h-32 bg-gradient-to-r from-[#c91a6f] to-[#fecc4d] rounded-full flex items-center justify-center text-white text-4xl font-bold mx-auto mb-6">
+                    <div className="w-32 h-32 bg-gradient-to-r from-[#c91a6f] to-[#d97706] rounded-full flex items-center justify-center text-white text-4xl font-bold mx-auto mb-6">
                       PP
                     </div>
                     <h3 className="text-3xl font-bold text-gray-900 mb-2">Preet Patel</h3>
@@ -424,8 +424,8 @@ export default function About() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <Award className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <Award className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Proven Track Record</h3>
               <p className="text-gray-600">
@@ -434,8 +434,8 @@ export default function About() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <Rocket className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                <Rocket className="w-6 h-6 text-[#059669]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Future-Ready Solutions</h3>
               <p className="text-gray-600">
@@ -495,7 +495,7 @@ export default function About() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">AI & Machine Learning</h3>
               <p className="text-gray-600 mb-4">
                 Leverage AI to automate processes, gain insights, and make data-driven decisions. From chatbots to predictive analytics, we build AI solutions that drive results.
@@ -508,7 +508,7 @@ export default function About() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Branding & Marketing</h3>
               <p className="text-gray-600 mb-4">
                 Build strong brand identity and execute data-driven marketing campaigns. From brand strategy to digital marketing, we help businesses connect with their audience.
@@ -521,7 +521,7 @@ export default function About() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Software Development</h3>
               <p className="text-gray-600 mb-4">
                 Build custom software solutions tailored to your business needs. From web and mobile apps to enterprise systems, we deliver scalable, secure solutions.
@@ -543,7 +543,7 @@ export default function About() {
         { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', color: '#000000', category: 'frontend' as const },
         { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
         { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
-        { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
+        { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
         { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
         { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg', color: '#FF6F00', category: 'backend' as const },
         { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },

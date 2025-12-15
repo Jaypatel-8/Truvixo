@@ -62,13 +62,13 @@ export default function EmailMarketing() {
       title: 'List Segmentation',
       description: 'Target the right audience with smart list segmentation',
       icon: <Users className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'A/B Testing',
       description: 'Test and optimize email campaigns for better performance',
       icon: <Target className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Analytics & Reporting',
@@ -101,13 +101,13 @@ export default function EmailMarketing() {
       icon: <Send className="w-7 h-7" strokeWidth={2} />, 
       title: 'Automation', 
       description: 'Automate your email marketing to save time and scale',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
       title: 'Proven Results', 
       description: 'Track record of improving email engagement and conversions',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
@@ -160,8 +160,8 @@ export default function EmailMarketing() {
   const industries = [
     { name: 'E-commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Education', icon: <GraduationCap className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -461,8 +461,8 @@ export default function EmailMarketing() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <Zap className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Marketing Automation</h3>
               <p className="text-gray-600">
@@ -471,8 +471,8 @@ export default function EmailMarketing() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <BarChart className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                <BarChart className="w-6 h-6 text-[#059669]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Measurable Results</h3>
               <p className="text-gray-600">
@@ -532,7 +532,7 @@ export default function EmailMarketing() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Lead Nurturing & Education</h3>
               <p className="text-gray-600 mb-4">
                 Nurture leads through the sales funnel with educational content, case studies, and thought leadership. Build trust and establish your brand as an industry expert before asking for the sale.
@@ -545,7 +545,7 @@ export default function EmailMarketing() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Customer Retention & Loyalty</h3>
               <p className="text-gray-600 mb-4">
                 Keep customers engaged and encourage repeat purchases with loyalty programs, exclusive offers, and valuable content. Increase customer lifetime value through strategic email communication.
@@ -558,7 +558,7 @@ export default function EmailMarketing() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Event Promotion & Webinars</h3>
               <p className="text-gray-600 mb-4">
                 Promote events, webinars, and workshops through targeted email campaigns. Send invitations, reminders, and follow-up content to maximize attendance and engagement.

@@ -31,17 +31,44 @@ import {
   Target,
   GraduationCap
 } from 'lucide-react'
-import ContactFormModal from '@/components/ContactFormModal'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import SEOLocationSection from '@/components/SEOLocationSection'
-import ContactSection from '@/components/ContactSection'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ProcessDiagram from '@/components/ProcessDiagram'
-import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { getFAQsForPage } from '@/lib/pageData'
+
+const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
+  ssr: false,
+  loading: () => null,
+})
+
+const SEOLocationSection = dynamic(() => import('@/components/SEOLocationSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-gray-50" />,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white" />,
+})
+
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]" />,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white" />,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white" />,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white" />,
+})
 
 const OurWork = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
@@ -753,13 +780,9 @@ const OurWork = () => {
       <ProcessDiagram title="Our Development Process" subtitle="From discovery to deployment, we ensure successful project delivery at every step" steps={processSteps} />
       <FAQDropdown faqs={faqs} />
       <SEOLocationSection serviceName="Project Development & Digital Solutions" />
-
-      <GetQuoteSection
-        title="Ready to Build"
-        hollowText="With TruVixo?"
-        description="Let’s plan your next project—design, develop, and launch with our expert team."
-        primaryCTA={{ text: 'Call Us', onClick: () => setIsContactModalOpen(true) }}
-        secondaryCTA={{ text: 'Schedule Consultation', onClick: () => setIsContactModalOpen(true) }}
+      <ContactSection 
+        title="Get in Touch"
+        description="Have a project in mind? Let's discuss how we can help transform your business."
       />
 
       {/* Contact Form Modal */}

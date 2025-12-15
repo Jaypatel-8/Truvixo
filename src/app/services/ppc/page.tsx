@@ -62,13 +62,13 @@ export default function PPC() {
       title: 'LinkedIn Advertising',
       description: 'B2B focused LinkedIn campaigns for lead generation and brand awareness',
       icon: <TrendingUp className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Display Advertising',
       description: 'Visual display ads across the web to increase brand visibility',
       icon: <BarChart className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Shopping Ads',
@@ -101,13 +101,13 @@ export default function PPC() {
       icon: <BarChart className="w-7 h-7" strokeWidth={2} />, 
       title: 'Real-Time Optimization', 
       description: 'Continuous monitoring and optimization of campaigns',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
       title: 'Quick Results', 
       description: 'See results within days, not months',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
@@ -159,8 +159,8 @@ export default function PPC() {
   const industries = [
     { name: 'E-commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Education', icon: <GraduationCap className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -232,8 +232,8 @@ export default function PPC() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#fecc4d]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <DollarSign className="w-4 h-4 text-[#fecc4d]" strokeWidth={2} />
+                  <div className="w-6 h-6 rounded-full bg-[#d97706]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <DollarSign className="w-4 h-4 text-[#d97706]" strokeWidth={2} />
                   </div>
                   <div>
                     <p className="text-gray-700 font-medium">Cost-Effective Campaigns</p>
@@ -489,8 +489,8 @@ export default function PPC() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <DollarSign className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <DollarSign className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Cost-Effective Scaling</h3>
               <p className="text-gray-600">
@@ -499,8 +499,8 @@ export default function PPC() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                <Zap className="w-6 h-6 text-[#059669]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Advanced Targeting</h3>
               <p className="text-gray-600">
@@ -559,7 +559,7 @@ export default function PPC() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Lead Generation for B2B</h3>
               <p className="text-gray-600 mb-4">
                 Generate high-quality leads for B2B businesses with LinkedIn and Google Ads campaigns. Target decision-makers with job titles, company sizes, and industry-specific keywords.
@@ -571,7 +571,7 @@ export default function PPC() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Local Business Promotion</h3>
               <p className="text-gray-600 mb-4">
                 Drive foot traffic and local sales with geo-targeted PPC campaigns. Reach customers in your service area with location-specific ads and local extensions.
@@ -583,7 +583,7 @@ export default function PPC() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Brand Awareness Campaigns</h3>
               <p className="text-gray-600 mb-4">
                 Build brand recognition and reach new audiences with display and video advertising. Expand your market presence and stay top-of-mind with potential customers.

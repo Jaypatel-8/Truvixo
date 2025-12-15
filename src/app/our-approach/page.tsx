@@ -60,13 +60,13 @@ export default function OurApproach() {
       title: 'Development & Execution',
       description: 'Agile development with regular updates and transparent communication throughout',
       icon: <Zap className="w-7 h-7" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Testing & Quality',
       description: 'Rigorous testing ensures quality, performance, and security before launch',
       icon: <Shield className="w-7 h-7" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Launch & Optimization',
@@ -99,13 +99,13 @@ export default function OurApproach() {
       title: 'Transparency',
       description: 'Clear communication and honest reporting at every step.',
       icon: <Shield className="w-6 h-6" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Excellence',
       description: 'We deliver quality solutions that exceed expectations.',
       icon: <CheckCircle className="w-6 h-6" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 

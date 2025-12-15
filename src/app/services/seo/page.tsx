@@ -62,13 +62,13 @@ export default function SEO() {
       title: 'Technical SEO',
       description: 'Optimize site speed, mobile responsiveness, and technical infrastructure',
       icon: <Zap className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Local SEO',
       description: 'Improve local search visibility and Google My Business optimization',
       icon: <Target className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Content SEO',
@@ -101,13 +101,13 @@ export default function SEO() {
       icon: <Target className="w-7 h-7" strokeWidth={2} />, 
       title: 'White-Hat Techniques', 
       description: 'Ethical SEO practices that deliver sustainable results',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
       title: 'Fast Results', 
       description: 'Quick wins while building long-term organic growth',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
@@ -159,8 +159,8 @@ export default function SEO() {
   const industries = [
     { name: 'E-commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Education', icon: <GraduationCap className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -439,8 +439,8 @@ export default function SEO() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <BarChart className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <BarChart className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Higher Conversion Rates</h3>
               <p className="text-gray-600">
@@ -449,8 +449,8 @@ export default function SEO() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                <Shield className="w-6 h-6 text-[#059669]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Brand Credibility</h3>
               <p className="text-gray-600">
@@ -510,7 +510,7 @@ export default function SEO() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Local Business Discovery</h3>
               <p className="text-gray-600 mb-4">
                 Help local businesses get found by customers in their area. Local SEO ensures your business appears in "near me" searches and Google Maps, driving foot traffic and local sales.
@@ -523,7 +523,7 @@ export default function SEO() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Content Marketing Amplification</h3>
               <p className="text-gray-600 mb-4">
                 Amplify content marketing efforts through SEO-optimized blog posts, guides, and resources. Rank for informational keywords to attract and educate potential customers throughout their buying journey.
@@ -536,7 +536,7 @@ export default function SEO() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">B2B Lead Generation</h3>
               <p className="text-gray-600 mb-4">
                 Generate high-quality B2B leads through targeted SEO strategies. Rank for industry-specific keywords and long-tail search terms that indicate strong purchase intent from decision-makers.

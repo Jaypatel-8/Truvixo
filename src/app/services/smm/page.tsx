@@ -62,13 +62,13 @@ export default function SMM() {
       title: 'Community Management',
       description: 'Active engagement and community building on social platforms',
       icon: <Users className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Influencer Marketing',
       description: 'Strategic partnerships with influencers to expand your reach',
       icon: <TrendingUp className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Social Media Advertising',
@@ -101,13 +101,13 @@ export default function SMM() {
       icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, 
       title: 'Growth-Driven', 
       description: 'Strategies designed to grow your following and engagement',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
       title: 'Consistent Brand Voice', 
       description: 'Maintain consistent brand messaging across all platforms',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
@@ -160,8 +160,8 @@ export default function SMM() {
   const industries = [
     { name: 'E-commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Education', icon: <GraduationCap className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -233,8 +233,8 @@ export default function SMM() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#fecc4d]/10 flex items-center justify-center flex-shrink-0 mt-1">
-                    <BarChart className="w-4 h-4 text-[#fecc4d]" strokeWidth={2} />
+                  <div className="w-6 h-6 rounded-full bg-[#d97706]/10 flex items-center justify-center flex-shrink-0 mt-1">
+                    <BarChart className="w-4 h-4 text-[#d97706]" strokeWidth={2} />
                   </div>
                   <div>
                     <p className="text-gray-700 font-medium">Performance Analytics</p>
@@ -409,8 +409,8 @@ export default function SMM() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <TrendingUp className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Lead Generation & Sales</h3>
               <p className="text-gray-600">
@@ -419,8 +419,8 @@ export default function SMM() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <BarChart className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                <BarChart className="w-6 h-6 text-[#059669]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Cost-Effective Marketing</h3>
               <p className="text-gray-600">
@@ -480,7 +480,7 @@ export default function SMM() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">B2B Lead Generation</h3>
               <p className="text-gray-600 mb-4">
                 Generate high-quality B2B leads through LinkedIn marketing, thought leadership content, and professional networking. Build authority in your industry and connect with decision-makers.
@@ -493,7 +493,7 @@ export default function SMM() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Local Business Promotion</h3>
               <p className="text-gray-600 mb-4">
                 Drive foot traffic and local sales with geo-targeted social media campaigns. Use location-based features, local hashtags, and community engagement to attract nearby customers.
@@ -506,7 +506,7 @@ export default function SMM() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Content Marketing & SEO</h3>
               <p className="text-gray-600 mb-4">
                 Amplify content marketing efforts and improve SEO through social media distribution. Share blog posts, videos, and resources to drive traffic and improve search rankings.

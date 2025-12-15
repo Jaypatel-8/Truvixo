@@ -62,13 +62,13 @@ export default function EcommerceDevelopment() {
       title: 'Multi-Vendor Marketplaces',
       description: 'Scalable marketplace platforms with vendor management systems',
       icon: <Globe className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Payment Gateway Integration',
       description: 'Seamless integration with Stripe, PayPal, Razorpay, and more',
       icon: <CreditCard className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Inventory Management',
@@ -86,13 +86,13 @@ export default function EcommerceDevelopment() {
       title: 'Analytics & Reporting',
       description: 'Real-time analytics and comprehensive sales reporting',
       icon: <TrendingUp className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Security & Compliance',
       description: 'PCI DSS compliance and enterprise-grade security',
       icon: <Shield className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
@@ -113,13 +113,13 @@ export default function EcommerceDevelopment() {
       icon: <Globe className="w-7 h-7" strokeWidth={2} />, 
       title: 'Multi-Vendor Support', 
       description: 'Build scalable marketplace platforms with vendor management',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Shield className="w-7 h-7" strokeWidth={2} />, 
       title: 'Secure Transactions', 
       description: 'PCI DSS compliant and enterprise-grade security',
-      color: '#10b981'
+      color: '#059669'
     },
     { 
       icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
@@ -140,7 +140,7 @@ export default function EcommerceDevelopment() {
     { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', color: '#000000', category: 'frontend' as const },
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
-    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Shopify', logo: 'https://www.shopify.com/favicon.ico', color: '#96BF48', category: 'backend' as const },
     { name: 'Stripe', logo: 'https://stripe.com/favicon.ico', color: '#635BFF', category: 'backend' as const },
     { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248', category: 'database' as const },
@@ -184,8 +184,8 @@ export default function EcommerceDevelopment() {
   const industries = [
     { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Fashion', icon: <Store className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Electronics', icon: <Package className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Food & Beverage', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Electronics', icon: <Package className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Food & Beverage', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -199,7 +199,7 @@ export default function EcommerceDevelopment() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#fecc4d]/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#d97706]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -431,8 +431,8 @@ export default function EcommerceDevelopment() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <CreditCard className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <CreditCard className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Multiple Payment Options</h3>
               <p className="text-gray-600">
@@ -441,8 +441,8 @@ export default function EcommerceDevelopment() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <Package className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                <Package className="w-6 h-6 text-[#059669]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Inventory Management</h3>
               <p className="text-gray-600">
@@ -502,7 +502,7 @@ export default function EcommerceDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Multi-Vendor Marketplaces</h3>
               <p className="text-gray-600 mb-4">
                 Create marketplace platforms where multiple vendors can sell products. Include vendor management, commission systems, and unified checkout.
@@ -515,7 +515,7 @@ export default function EcommerceDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">B2B E-commerce Platforms</h3>
               <p className="text-gray-600 mb-4">
                 Develop B2B e-commerce solutions with bulk ordering, custom pricing, and account management for business customers.
@@ -528,7 +528,7 @@ export default function EcommerceDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Subscription E-commerce</h3>
               <p className="text-gray-600 mb-4">
                 Build subscription-based e-commerce for recurring product deliveries. Manage subscriptions, billing, and customer preferences.
@@ -567,7 +567,7 @@ export default function EcommerceDevelopment() {
       <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#d97706]/10 rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">

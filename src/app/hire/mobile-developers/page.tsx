@@ -22,13 +22,13 @@ export default function HireMobileDevelopers() {
       title: 'React Native Development',
       description: 'Cross-platform apps with React Native',
       icon: <Layers className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Flutter Development',
       description: 'Cross-platform apps with Flutter',
       icon: <Zap className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'App Store Optimization',
@@ -61,21 +61,21 @@ export default function HireMobileDevelopers() {
       icon: <Target className="w-7 h-7" strokeWidth={2} />, 
       title: 'App Store Expertise', 
       description: 'Complete app store submission and optimization',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, 
       title: 'Performance Optimized', 
       description: 'Build fast, efficient mobile applications',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
   const industries = [
     { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'E-Commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'E-Commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' }
   ]
 

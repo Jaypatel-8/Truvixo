@@ -103,7 +103,7 @@ export default function WebApplicationDevelopment() {
     { name: 'Django', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg', color: '#092E20', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
     { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248', category: 'database' as const },
-    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const }
   ]
 
@@ -217,7 +217,7 @@ export default function WebApplicationDevelopment() {
                 </div>
               </div>
               <div className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
-                <TrendingUp className="w-5 h-5 text-[#fecc4d] flex-shrink-0 mt-1" strokeWidth={2} />
+                <TrendingUp className="w-5 h-5 text-[#d97706] flex-shrink-0 mt-1" strokeWidth={2} />
                 <div>
                   <p className="text-gray-900 font-semibold mb-1">SEO Optimized</p>
                   <p className="text-gray-600 text-sm">Built with SEO best practices to improve search engine visibility and rankings.</p>
@@ -388,8 +388,8 @@ export default function WebApplicationDevelopment() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <TrendingUp className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Cost-Effective Development</h3>
               <p className="text-gray-600">
@@ -398,8 +398,8 @@ export default function WebApplicationDevelopment() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                <Shield className="w-6 h-6 text-[#059669]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Enhanced Security</h3>
               <p className="text-gray-600">
@@ -459,7 +459,7 @@ export default function WebApplicationDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Business Management Systems</h3>
               <p className="text-gray-600 mb-4">
                 Develop custom CRM, ERP, and project management solutions tailored to your business workflows. Streamline operations, improve collaboration, and gain insights with integrated business applications.
@@ -472,7 +472,7 @@ export default function WebApplicationDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">SaaS Applications</h3>
               <p className="text-gray-600 mb-4">
                 Create software-as-a-service platforms with subscription management, multi-tenancy, and scalable architecture. Build recurring revenue businesses with cloud-based SaaS solutions.
@@ -485,7 +485,7 @@ export default function WebApplicationDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Content Management Systems</h3>
               <p className="text-gray-600 mb-4">
                 Build custom CMS platforms for content creation, publishing, and management. Create intuitive interfaces for content editors while maintaining powerful backend functionality.

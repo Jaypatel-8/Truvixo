@@ -1,7 +1,12 @@
 'use client'
 
-import InfiniteCarousel from './InfiniteCarousel'
+import dynamic from 'next/dynamic'
 import { Quote } from 'lucide-react'
+
+const InfiniteCarousel = dynamic(() => import('./InfiniteCarousel'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white" />,
+})
 
 interface Testimonial {
   quote: string
@@ -23,7 +28,7 @@ export default function TestimonialCarousel({
   className = ''
 }: TestimonialCarouselProps) {
   const items = testimonials.map((testimonial, index) => {
-    const colors = ['#5e2cb6', '#c91a6f', '#fecc4d', '#10b981', '#d42628', '#f59e0b']
+    const colors = ['#5e2cb6', '#c91a6f', '#d97706', '#059669', '#d42628', '#f59e0b']
     const color = colors[index % colors.length]
     
     return (
@@ -88,4 +93,3 @@ export default function TestimonialCarousel({
     </div>
   )
 }
-

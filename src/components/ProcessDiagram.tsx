@@ -62,8 +62,8 @@ export default function ProcessDiagram({
   const logoColors = [
     '#5e2cb6', // Blue
     '#c91a6f', // Purple/Pink
-    '#fecc4d', // Yellow
-    '#10b981', // Green
+    '#d97706', // Yellow
+    '#059669', // Green
     '#d42628', // Red
     '#f59e0b'  // Orange
   ]
@@ -111,13 +111,17 @@ export default function ProcessDiagram({
               <>
                 Our <span className="hollow-text-brand">Process</span>
               </>
-            ) : title.includes(' ') ? (
+            ) : title && title.includes(' ') ? (
               <>
                 {title.split(' ').slice(0, -1).join(' ')}{' '}
                 <span className="hollow-text-brand">{title.split(' ').slice(-1)[0]}</span>
               </>
-            ) : (
+            ) : title ? (
               <span className="hollow-text-brand">{title}</span>
+            ) : (
+              <>
+                Our <span className="hollow-text-brand">Process</span>
+              </>
             )}
           </h2>
           {subtitle && (

@@ -25,7 +25,7 @@ export default function NewsletterCTA({ onContactClick, className = '' }: Newsle
           {/* Decorative Elements */}
           <div className="absolute inset-0 overflow-hidden opacity-10">
             <div className="absolute top-10 right-10 w-64 h-64 bg-white rounded-full blur-3xl"></div>
-            <div className="absolute bottom-10 left-10 w-64 h-64 bg-[#fecc4d] rounded-full blur-3xl"></div>
+            <div className="absolute bottom-10 left-10 w-64 h-64 bg-[#d97706] rounded-full blur-3xl"></div>
           </div>
 
           <div className="relative z-10 text-center">
@@ -42,7 +42,7 @@ export default function NewsletterCTA({ onContactClick, className = '' }: Newsle
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <button
                 onClick={onContactClick}
-                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-lg hover:bg-[#fecc4d] hover:text-[#5e2cb6] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-lg hover:bg-[#d97706] hover:text-[#5e2cb6] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
               >
                 <Phone className="w-5 h-5" />
                 <span>Call Us</span>

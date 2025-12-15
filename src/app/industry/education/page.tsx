@@ -62,13 +62,13 @@ export default function EducationDevelopment() {
       title: 'Student Management',
       description: 'Complete student information and management systems',
       icon: <Users className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Assessment Tools',
       description: 'Online testing, quizzes, and assessment platforms',
       icon: <Target className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Virtual Classrooms',
@@ -101,21 +101,21 @@ export default function EducationDevelopment() {
       icon: <Video className="w-7 h-7" strokeWidth={2} />, 
       title: 'E-Learning Solutions', 
       description: 'Interactive e-learning platforms with SCORM support',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Users className="w-7 h-7" strokeWidth={2} />, 
       title: 'Student-Centric', 
       description: 'Solutions designed to enhance student learning',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
   const industries = [
     { name: 'Schools', icon: <GraduationCap className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Universities', icon: <Book className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Online Learning', icon: <Video className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Corporate Training', icon: <Users className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Online Learning', icon: <Video className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Corporate Training', icon: <Users className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Tutoring', icon: <Target className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Certification', icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -125,7 +125,7 @@ export default function EducationDevelopment() {
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
     { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248', category: 'database' as const },
-    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'SCORM', logo: 'https://scorm.com/wp-content/uploads/2018/10/scorm-logo.png', color: '#4A90E2', category: 'backend' as const },
     { name: 'Zoom API', logo: 'https://zoom.us/favicon.ico', color: '#2D8CFF', category: 'backend' as const },
     { name: 'WebRTC', logo: 'https://webrtc.org/favicon.ico', color: '#333333', category: 'backend' as const },
@@ -175,7 +175,7 @@ export default function EducationDevelopment() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#fecc4d]/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#d97706]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -395,7 +395,7 @@ export default function EducationDevelopment() {
       <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#d97706]/10 rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">

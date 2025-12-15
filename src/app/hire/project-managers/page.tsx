@@ -22,13 +22,13 @@ export default function HireProjectManagers() {
       title: 'Stakeholder Management',
       description: 'Manage client communication and stakeholder expectations',
       icon: <CheckCircle className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Resource Planning',
       description: 'Plan and allocate resources efficiently',
       icon: <Calendar className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Risk Management',
@@ -61,21 +61,21 @@ export default function HireProjectManagers() {
       icon: <CheckCircle className="w-7 h-7" strokeWidth={2} />, 
       title: 'Stakeholder Management', 
       description: 'Excellent communication and stakeholder management skills',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, 
       title: 'On-Time Delivery', 
       description: 'Track record of delivering projects on time and on budget',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
   const industries = [
     { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'E-Commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'E-Commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' }
   ]
 

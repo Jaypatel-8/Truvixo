@@ -22,13 +22,13 @@ export default function HireAIMLEngineers() {
       title: 'NLP Engineers',
       description: 'Natural language processing specialists',
       icon: <Target className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Computer Vision Engineers',
       description: 'Image recognition and visual analysis experts',
       icon: <TrendingUp className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Data Scientists',
@@ -61,21 +61,21 @@ export default function HireAIMLEngineers() {
       icon: <Database className="w-7 h-7" strokeWidth={2} />, 
       title: 'Data Pipeline Expertise', 
       description: 'Expertise in data processing and ML pipelines',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Zap className="w-7 h-7" strokeWidth={2} />, 
       title: 'Production Deployment', 
       description: 'Full ML lifecycle from training to production deployment',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
   const industries = [
     { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'E-Commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'E-Commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' }
   ]
 
@@ -83,7 +83,7 @@ export default function HireAIMLEngineers() {
     { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
     { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg', color: '#FF6F00', category: 'backend' as const },
     { name: 'PyTorch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg', color: '#EE4C2C', category: 'backend' as const },
-    { name: 'AWS SageMaker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS SageMaker', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Scikit-learn', logo: 'https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png', color: '#F7931E', category: 'backend' as const },
     { name: 'Jupyter', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg', color: '#F37626', category: 'backend' as const },
     { name: 'Pandas', logo: 'https://pandas.pydata.org/static/img/pandas_mark.svg', color: '#150458', category: 'backend' as const },

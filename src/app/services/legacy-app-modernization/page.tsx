@@ -62,13 +62,13 @@ export default function LegacyAppModernization() {
       title: 'Cloud Migration',
       description: 'Move legacy systems to cloud infrastructure',
       icon: <Cloud className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'UI/UX Modernization',
       description: 'Update user interfaces with modern design patterns',
       icon: <Zap className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Database Migration',
@@ -86,13 +86,13 @@ export default function LegacyAppModernization() {
       title: 'Security Enhancement',
       description: 'Upgrade security to meet modern standards',
       icon: <Shield className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Performance Optimization',
       description: 'Improve speed and efficiency of legacy systems',
       icon: <TrendingUp className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
@@ -113,13 +113,13 @@ export default function LegacyAppModernization() {
       icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, 
       title: 'Better Scalability', 
       description: 'Systems that grow with your business',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Cloud className="w-7 h-7" strokeWidth={2} />, 
       title: 'Cloud-Ready', 
       description: 'Modernize and migrate to cloud infrastructure',
-      color: '#10b981'
+      color: '#059669'
     },
     { 
       icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
@@ -138,7 +138,7 @@ export default function LegacyAppModernization() {
   const technologies = [
     { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'frontend' as const },
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
-    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
     { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', color: '#000000', category: 'frontend' as const },
     { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6', category: 'frontend' as const },
@@ -184,8 +184,8 @@ export default function LegacyAppModernization() {
   const industries = [
     { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Manufacturing', icon: <Settings className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Manufacturing', icon: <Settings className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Education', icon: <GraduationCap className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -470,8 +470,8 @@ export default function LegacyAppModernization() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <TrendingUp className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Better Scalability</h3>
               <p className="text-gray-600">
@@ -480,8 +480,8 @@ export default function LegacyAppModernization() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <Cloud className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                <Cloud className="w-6 h-6 text-[#059669]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Cloud Migration</h3>
               <p className="text-gray-600">
@@ -541,7 +541,7 @@ export default function LegacyAppModernization() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Desktop to Web Application</h3>
               <p className="text-gray-600 mb-4">
                 Convert desktop applications to modern web applications. Enable browser-based access, improve collaboration, and reduce deployment complexity.
@@ -554,7 +554,7 @@ export default function LegacyAppModernization() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Database Modernization</h3>
               <p className="text-gray-600 mb-4">
                 Migrate from legacy databases to modern SQL or NoSQL databases. Improve performance, enable new features, and reduce maintenance costs.
@@ -567,7 +567,7 @@ export default function LegacyAppModernization() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">UI/UX Modernization</h3>
               <p className="text-gray-600 mb-4">
                 Redesign user interfaces with modern design patterns. Improve usability, accessibility, and user experience while maintaining core functionality.

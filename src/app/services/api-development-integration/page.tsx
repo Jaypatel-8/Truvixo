@@ -62,13 +62,13 @@ export default function APIDevelopmentIntegration() {
       title: 'Payment Gateway Integration',
       description: 'Seamless integration with Stripe, PayPal, Razorpay, and more',
       icon: <Link2 className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Third-Party API Integration',
       description: 'Connect with external services and APIs',
       icon: <Zap className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'ERP/CRM Integration',
@@ -86,13 +86,13 @@ export default function APIDevelopmentIntegration() {
       title: 'API Documentation',
       description: 'Comprehensive API documentation with Swagger/OpenAPI',
       icon: <Settings className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'API Testing & Monitoring',
       description: 'Automated testing and performance monitoring for APIs',
       icon: <Rocket className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
@@ -113,13 +113,13 @@ export default function APIDevelopmentIntegration() {
       icon: <Zap className="w-7 h-7" strokeWidth={2} />, 
       title: 'Fast Integration', 
       description: 'Quick and seamless integration with existing systems',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Network className="w-7 h-7" strokeWidth={2} />, 
       title: 'Scalable Architecture', 
       description: 'APIs built to handle high traffic and scale',
-      color: '#10b981'
+      color: '#059669'
     },
     { 
       icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
@@ -140,7 +140,7 @@ export default function APIDevelopmentIntegration() {
     { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
     { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248', category: 'database' as const },
-    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'GraphQL', logo: 'https://graphql.org/favicon.ico', color: '#E10098', category: 'backend' as const },
     { name: 'REST API', logo: 'https://restfulapi.net/favicon.ico', color: '#5A5A5A', category: 'backend' as const },
     { name: 'Redis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg', color: '#DC382D', category: 'database' as const },
@@ -184,8 +184,8 @@ export default function APIDevelopmentIntegration() {
   const industries = [
     { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'E-commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Education', icon: <GraduationCap className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -470,8 +470,8 @@ export default function APIDevelopmentIntegration() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <Shield className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Secure Access</h3>
               <p className="text-gray-600">
@@ -480,8 +480,8 @@ export default function APIDevelopmentIntegration() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <Code className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                <Code className="w-6 h-6 text-[#059669]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Third-Party Services</h3>
               <p className="text-gray-600">
@@ -541,7 +541,7 @@ export default function APIDevelopmentIntegration() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">ERP/CRM Integration</h3>
               <p className="text-gray-600 mb-4">
                 Connect your applications with enterprise systems like Salesforce, SAP, Oracle, and Microsoft Dynamics. Sync data, automate workflows, and streamline operations.
@@ -554,7 +554,7 @@ export default function APIDevelopmentIntegration() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Microservices Architecture</h3>
               <p className="text-gray-600 mb-4">
                 Build microservices-based applications with RESTful or GraphQL APIs. Enable independent service development, deployment, and scaling.
@@ -567,7 +567,7 @@ export default function APIDevelopmentIntegration() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Mobile App Backend</h3>
               <p className="text-gray-600 mb-4">
                 Develop RESTful or GraphQL APIs to power mobile applications. Provide data access, authentication, and business logic through well-designed APIs.

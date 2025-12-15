@@ -62,13 +62,13 @@ export default function MachineLearningModelDevelopment() {
       title: 'Natural Language Processing',
       description: 'NLP models for text analysis, sentiment, and language understanding',
       icon: <Code className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Computer Vision',
       description: 'Image recognition, object detection, and visual analysis',
       icon: <Target className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'Model Training & Tuning',
@@ -86,13 +86,13 @@ export default function MachineLearningModelDevelopment() {
       title: 'Data Pipeline Automation',
       description: 'Automated data processing and model training pipelines',
       icon: <Database className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Model Monitoring',
       description: 'Continuous monitoring and retraining for model performance',
       icon: <BarChart className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
@@ -113,13 +113,13 @@ export default function MachineLearningModelDevelopment() {
       icon: <Zap className="w-7 h-7" strokeWidth={2} />, 
       title: 'Full Hyperparameter Tuning', 
       description: 'Optimized models for best performance and accuracy',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, 
       title: 'Data Pipeline Automation', 
       description: 'Automated data processing and model training workflows',
-      color: '#10b981'
+      color: '#059669'
     },
     { 
       icon: <Cloud className="w-7 h-7" strokeWidth={2} />, 
@@ -139,7 +139,7 @@ export default function MachineLearningModelDevelopment() {
     { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
     { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg', color: '#FF6F00', category: 'backend' as const },
     { name: 'PyTorch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg', color: '#EE4C2C', category: 'backend' as const },
-    { name: 'AWS SageMaker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS SageMaker', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Scikit-learn', logo: 'https://scikit-learn.org/favicon.ico', color: '#F7931E', category: 'backend' as const },
     { name: 'Pandas', logo: 'https://pandas.pydata.org/favicon.ico', color: '#150458', category: 'backend' as const },
     { name: 'NumPy', logo: 'https://numpy.org/favicon.ico', color: '#013243', category: 'backend' as const },
@@ -184,8 +184,8 @@ export default function MachineLearningModelDevelopment() {
   const industries = [
     { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Education', icon: <GraduationCap className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -470,8 +470,8 @@ export default function MachineLearningModelDevelopment() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <Target className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                <Target className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Pattern Recognition</h3>
               <p className="text-gray-600">
@@ -480,8 +480,8 @@ export default function MachineLearningModelDevelopment() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                <Zap className="w-6 h-6 text-[#059669]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Cost Reduction</h3>
               <p className="text-gray-600">
@@ -541,7 +541,7 @@ export default function MachineLearningModelDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
+            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Fraud Detection</h3>
               <p className="text-gray-600 mb-4">
                 Develop ML models to detect fraudulent transactions, activities, and behaviors in real-time. Protect against financial losses and security threats.
@@ -554,7 +554,7 @@ export default function MachineLearningModelDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
+            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Customer Churn Prediction</h3>
               <p className="text-gray-600 mb-4">
                 Predict which customers are likely to churn and take proactive measures. Identify at-risk customers and implement retention strategies.
@@ -567,7 +567,7 @@ export default function MachineLearningModelDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Image Classification</h3>
               <p className="text-gray-600 mb-4">
                 Build computer vision models for image recognition, object detection, and visual analysis. Applications in quality control, security, and automation.

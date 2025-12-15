@@ -22,13 +22,13 @@ export default function HireUIUXDesigners() {
       title: 'Design Systems',
       description: 'Build comprehensive design systems and component libraries',
       icon: <Layers className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Prototyping',
       description: 'Interactive prototypes and wireframes',
       icon: <Target className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'User Testing',
@@ -61,21 +61,21 @@ export default function HireUIUXDesigners() {
       icon: <Layers className="w-7 h-7" strokeWidth={2} />, 
       title: 'Design Systems', 
       description: 'Build scalable, consistent design systems',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     { 
       icon: <Eye className="w-7 h-7" strokeWidth={2} />, 
       title: 'UX Research', 
       description: 'Data-driven design decisions based on user research',
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 
   const industries = [
     { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'E-Commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'E-Commerce', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
+    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
     { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' }
   ]
 

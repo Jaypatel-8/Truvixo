@@ -44,7 +44,7 @@ export default function Careers() {
       description: 'Help us build and maintain scalable cloud infrastructure.',
       requirements: ['4+ years experience', 'AWS, Docker, Kubernetes'],
       isActive: true,
-      color: '#fecc4d'
+      color: '#d97706'
     }
   ]
 
@@ -93,13 +93,13 @@ export default function Careers() {
       title: 'Growth Opportunities',
       description: 'Career development and learning',
       icon: <Users className="w-6 h-6" strokeWidth={2} />,
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Great Culture',
       description: 'Collaborative and supportive team',
       icon: <Heart className="w-6 h-6" strokeWidth={2} />,
-      color: '#10b981'
+      color: '#059669'
     }
   ]
 

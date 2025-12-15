@@ -14,8 +14,8 @@ export default function SEOLocationSection({
   const locations = [
     { name: 'Global', icon: <Globe className="w-5 h-5" strokeWidth={2} />, color: '#5e2cb6', description: 'Worldwide Services' },
     { name: 'Dubai, UAE', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#c91a6f', description: 'Middle East' },
-    { name: 'USA', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#fecc4d', description: 'North America' },
-    { name: 'Australia', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#10b981', description: 'Asia-Pacific' },
+    { name: 'USA', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#d97706', description: 'North America' },
+    { name: 'Australia', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#059669', description: 'Asia-Pacific' },
     { name: 'Worldwide', icon: <Globe className="w-5 h-5" strokeWidth={2} />, color: '#5e2cb6', description: 'Global Reach' },
   ]
 
@@ -101,8 +101,8 @@ export default function SEOLocationSection({
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center">
-                  <Globe className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+                <div className="flex-shrink-0 w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center">
+                  <Globe className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
                 </div>
                 <div>
                   <h4 className="font-bold text-gray-900 mb-2">Global Reach</h4>

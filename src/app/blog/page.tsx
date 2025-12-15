@@ -60,7 +60,7 @@ export default function Blog() {
       author: 'TruVixo Team',
       category: 'Marketing',
       readTime: '6 min read',
-      color: '#fecc4d'
+      color: '#d97706'
     },
     {
       title: 'Why Mobile-First Design Matters',
@@ -69,7 +69,7 @@ export default function Blog() {
       author: 'TruVixo Team',
       category: 'Design',
       readTime: '4 min read',
-      color: '#10b981'
+      color: '#059669'
     },
     {
       title: 'SaaS Product Development: A Complete Guide',
