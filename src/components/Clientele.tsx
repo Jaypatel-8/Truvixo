@@ -12,13 +12,13 @@ interface ClientLogo {
 // Client logos
 const clientLogos: ClientLogo[] = [
   { name: 'Physiofi', logo: '/Physiofi Logo(1).png' },
-  { name: 'Client 1', logo: '/TruVixo.png' },
-  { name: 'Client 2', logo: '/TruVixo.png' },
-  { name: 'Client 3', logo: '/TruVixo.png' },
-  { name: 'Client 4', logo: '/TruVixo.png' },
-  { name: 'Client 5', logo: '/TruVixo.png' },
-  { name: 'Client 6', logo: '/TruVixo.png' },
-  { name: 'Client 7', logo: '/TruVixo.png' },
+  { name: 'SP Bags', logo: '/sp bags logo.png' },
+  { name: 'Padmavati Construction', logo: '/padmavati-construction-logo.png' },
+  { name: 'RadhEConcast', logo: '/radheconcast-logo.png' },
+  { name: 'TechVenture Solutions', logo: '/techventure-solutions-logo.png' },
+  { name: 'DigitalEdge Commerce', logo: '/digitaledge-commerce-logo.png' },
+  { name: 'CloudSync Systems', logo: '/cloudsync-systems-logo.png' },
+  { name: 'InnovateHub', logo: '/innovatehub-logo.png' },
 ]
 
 interface ClienteleProps {
