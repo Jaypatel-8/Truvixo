@@ -40,6 +40,7 @@ import Clientele from '@/components/Clientele'
 import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
 import ProcessDiagram from '@/components/ProcessDiagram'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { getFAQsForPage } from '@/lib/pageData'
 
 const OurWork = () => {
@@ -752,9 +753,13 @@ const OurWork = () => {
       <ProcessDiagram title="Our Development Process" subtitle="From discovery to deployment, we ensure successful project delivery at every step" steps={processSteps} />
       <FAQDropdown faqs={faqs} />
       <SEOLocationSection serviceName="Project Development & Digital Solutions" />
-      <ContactSection 
-        title="Get in Touch"
-        description="Have a project in mind? Let's discuss how we can help transform your business."
+
+      <GetQuoteSection
+        title="Ready to Build"
+        hollowText="With TruVixo?"
+        description="Let’s plan your next project—design, develop, and launch with our expert team."
+        primaryCTA={{ text: 'Call Us', onClick: () => setIsContactModalOpen(true) }}
+        secondaryCTA={{ text: 'Schedule Consultation', onClick: () => setIsContactModalOpen(true) }}
       />
 
       {/* Contact Form Modal */}
