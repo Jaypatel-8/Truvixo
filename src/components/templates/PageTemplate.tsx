@@ -238,6 +238,11 @@ export default function PageTemplate({
         </section>
       )}
 
+      {technologies.length > 0 && <Technologies technologies={technologies} />}
+      <ProcessDiagram title={processTitle} subtitle={processSubtitle} steps={processSteps} />
+      {faqs.length > 0 && <FAQDropdown faqs={faqs} />}
+      <ContactSection title={contactTitle} description={contactDescription} />
+
       <GetQuoteSection
         title={getQuoteTitle}
         hollowText={getQuoteHollowText}
@@ -251,11 +256,6 @@ export default function PageTemplate({
           onClick: () => setIsContactModalOpen(true)
         }}
       />
-
-      {technologies.length > 0 && <Technologies technologies={technologies} />}
-      <ProcessDiagram title={processTitle} subtitle={processSubtitle} steps={processSteps} />
-      {faqs.length > 0 && <FAQDropdown faqs={faqs} />}
-      <ContactSection title={contactTitle} description={contactDescription} />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

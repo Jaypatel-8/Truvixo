@@ -372,7 +372,26 @@ export default function HealthcareDevelopment() {
         </div>
       </section>
 
-      {/* 6. Get a Quote Section - Modern CTA */}
+      {/* 6. Technologies We Use */}
+      <Technologies technologies={technologies} />
+
+      {/* 7. Process Diagram */}
+      <ProcessDiagram
+        title="Healthcare Development Process"
+        subtitle="From discovery to deployment, we ensure HIPAA compliance, security, and clinical excellence at every step"
+        steps={processSteps}
+      />
+
+      {/* 8. FAQs */}
+      <FAQDropdown faqs={faqs} />
+
+      {/* 9. Contact Section */}
+      <ContactSection 
+        title="Get in Touch"
+        description="Have questions about healthcare development? Let's discuss your project."
+      />
+
+      {/* 10. Get a Quote Section - Modern CTA */}
       <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
@@ -380,7 +399,7 @@ export default function HealthcareDevelopment() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">
               Ready to Build{' '}
               <span className="hollow-text-white">
                 Healthcare Solutions?
@@ -418,25 +437,6 @@ export default function HealthcareDevelopment() {
           </div>
         </div>
       </section>
-
-      {/* 7. Technologies We Use */}
-      <Technologies technologies={technologies} />
-
-      {/* 8. Process Diagram */}
-      <ProcessDiagram
-        title="Healthcare Development Process"
-        subtitle="From discovery to deployment, we ensure HIPAA compliance, security, and clinical excellence at every step"
-        steps={processSteps}
-      />
-
-      {/* 9. FAQs */}
-      <FAQDropdown faqs={faqs} />
-
-      {/* 10. Contact Section */}
-      <ContactSection 
-        title="Get in Touch"
-        description="Have questions about healthcare development? Let's discuss your project."
-      />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 
