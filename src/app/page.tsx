@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-// Import icons - Next.js will tree-shake unused ones in production
+// Icons - lucide-react tree-shakes unused icons in production
 import { ArrowRight, Calendar, Code, Brain, Smartphone, Cloud, Database, Server, Target, Settings, Wrench, Megaphone, Palette, Award, Rocket, Shield, MessageSquare, Phone, Mail, ChevronRight, Users, TrendingUp, Zap, BarChart3, Building2, Heart, ShoppingCart, Truck, Home as HomeIcon, GraduationCap, CheckCircle, Clock, DollarSign, Briefcase, Lightbulb } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
@@ -25,10 +25,6 @@ const ContactSection = dynamic(() => import('../components/ContactSection'), {
   ssr: false,
   loading: () => <div className="min-h-[300px] bg-white"></div>,
 })
-
-import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
 
 // Modal components - only load when needed
 const ContactFormModal = dynamic(() => import('../components/ContactFormModal'), {
@@ -109,6 +105,10 @@ export default function Home() {
 
   useEffect(() => {
     setIsMounted(true)
+    // Defer Swiper CSS loading to reduce initial render blocking
+    import('swiper/css')
+    import('swiper/css/navigation')
+    import('swiper/css/pagination')
   }, [])
 
   // Removed dynamic project loading to prevent rendering issues
