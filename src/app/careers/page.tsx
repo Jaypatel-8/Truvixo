@@ -248,7 +248,7 @@ export default function Careers() {
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">
               Don't See a{' '}
               <span className="hollow-text-white">
                 Position?
@@ -267,19 +267,7 @@ export default function Careers() {
           </div>
         </div>
       </section>
-
-      <ContactSection 
-        title="Get in Touch"
-        description="Have questions about working with us? Let's connect."
-      />
-
-      <GetQuoteSection
-        title="Join the"
-        hollowText="TruVixo Team"
-        description="Ready to grow your career with us? Let’s talk about roles that fit you."
-        primaryCTA={{ text: 'Call Us', onClick: () => setIsContactModalOpen(true) }}
-        secondaryCTA={{ text: 'Schedule Consultation', onClick: () => setIsContactModalOpen(true) }}
-      />
+      
 
       {/* Removed HiringFormModal - using contact page instead */}
     </main>
