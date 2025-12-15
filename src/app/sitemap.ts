@@ -1,5 +1,9 @@
 import { MetadataRoute } from 'next'
 
+// Force static generation so the sitemap is emitted as XML (not HTML) in exports
+export const dynamic = 'force-static'
+export const revalidate = 60 * 60 * 24 // 24h
+
 export default function sitemap(): MetadataRoute.Sitemap {
   // Use env override to ensure sitemap host matches the deployed origin
   const site = (process.env.NEXT_PUBLIC_SITE_URL || 'https://truvixo.com').replace(/\/$/, '')
