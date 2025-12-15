@@ -62,13 +62,13 @@ export default function SaaSProductDevelopment() {
       title: 'Role-Based Access Control',
       description: 'Customized dashboards and permissions for different user roles',
       icon: <Users className="w-8 h-8" strokeWidth={2} />,
-      color: '#d97706'
+      color: '#fecc4d'
     },
     {
       title: 'Payment Gateway Integration',
       description: 'Seamless integration with Stripe, PayPal, and other payment providers',
       icon: <CreditCard className="w-8 h-8" strokeWidth={2} />,
-      color: '#059669'
+      color: '#10b981'
     },
     {
       title: 'Analytics & Reporting',
@@ -86,13 +86,13 @@ export default function SaaSProductDevelopment() {
       title: 'Cloud Deployment',
       description: 'Scalable cloud infrastructure on AWS, Azure, or GCP',
       icon: <Cloud className="w-8 h-8" strokeWidth={2} />,
-      color: '#d97706'
+      color: '#fecc4d'
     },
     {
       title: 'Security & Compliance',
       description: 'Enterprise-grade security and compliance standards',
       icon: <Shield className="w-8 h-8" strokeWidth={2} />,
-      color: '#059669'
+      color: '#10b981'
     }
   ]
 
@@ -113,13 +113,13 @@ export default function SaaSProductDevelopment() {
       icon: <Users className="w-7 h-7" strokeWidth={2} />, 
       title: 'User Management', 
       description: 'Advanced role-based access control and user management',
-      color: '#d97706'
+      color: '#fecc4d'
     },
     { 
       icon: <Shield className="w-7 h-7" strokeWidth={2} />, 
       title: 'Enterprise Security', 
       description: 'Bank-level security and compliance for SaaS platforms',
-      color: '#059669'
+      color: '#10b981'
     },
     { 
       icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
@@ -140,7 +140,7 @@ export default function SaaSProductDevelopment() {
     { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', color: '#000000', category: 'frontend' as const },
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
-    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
     { name: 'Stripe', logo: 'https://stripe.com/favicon.ico', color: '#635BFF', category: 'backend' as const },
     { name: 'Redis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg', color: '#DC382D', category: 'database' as const },
@@ -184,8 +184,8 @@ export default function SaaSProductDevelopment() {
   const industries = [
     { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
-    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
+    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
+    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
     { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Education', icon: <GraduationCap className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -199,7 +199,7 @@ export default function SaaSProductDevelopment() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#d97706]/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#fecc4d]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -394,7 +394,54 @@ export default function SaaSProductDevelopment() {
         </div>
       </section>
 
-      {/* 6. Additional Content - Benefits */}
+      {/* 6. Get a Quote Section */}
+      <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+              Ready to Launch Your{' '}
+              <span className="hollow-text-white">
+                SaaS Platform?
+              </span>
+            </h2>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
+              Get in touch and let's discuss how we can transform your business with SaaS solutions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+              >
+                <Phone className="w-5 h-5" strokeWidth={2} />
+                <span>Call Us</span>
+              </button>
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-xl hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
+              >
+                <Calendar className="w-5 h-5" strokeWidth={2} />
+                <span>Schedule Consultation</span>
+              </button>
+            </div>
+            <div className="flex flex-wrap justify-center gap-8 text-white/80">
+              <a href="mailto:sales@truvixoo.com" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Mail className="w-5 h-5" strokeWidth={2} />
+                <span>sales@truvixoo.com</span>
+              </a>
+              <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Phone className="w-5 h-5" strokeWidth={2} />
+                <span>+91 63543 26412</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Content - Benefits */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -431,8 +478,8 @@ export default function SaaSProductDevelopment() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
-                <CreditCard className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
+                <CreditCard className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Automated Billing</h3>
               <p className="text-gray-600">
@@ -441,8 +488,8 @@ export default function SaaSProductDevelopment() {
             </div>
 
             <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-[#059669]" strokeWidth={2} />
+              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
+                <Zap className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">Rapid Updates</h3>
               <p className="text-gray-600">
@@ -502,7 +549,7 @@ export default function SaaSProductDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#d97706]/5 to-[#059669]/5 rounded-xl p-8 border border-[#d97706]/20">
+            <div className="bg-gradient-to-br from-[#fecc4d]/5 to-[#10b981]/5 rounded-xl p-8 border border-[#fecc4d]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">CRM & Sales Platforms</h3>
               <p className="text-gray-600 mb-4">
                 Create customer relationship management SaaS for sales teams. Track leads, manage pipelines, automate follow-ups, and generate sales reports.
@@ -515,7 +562,7 @@ export default function SaaSProductDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#059669]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#059669]/20">
+            <div className="bg-gradient-to-br from-[#10b981]/5 to-[#5e2cb6]/5 rounded-xl p-8 border border-[#10b981]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">HR & People Management</h3>
               <p className="text-gray-600 mb-4">
                 Develop HR SaaS platforms for employee management, payroll, attendance, and performance tracking. Streamline HR operations for growing companies.
@@ -528,7 +575,7 @@ export default function SaaSProductDevelopment() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#d97706]/5 rounded-xl p-8 border border-[#c91a6f]/20">
+            <div className="bg-gradient-to-br from-[#c91a6f]/5 to-[#fecc4d]/5 rounded-xl p-8 border border-[#c91a6f]/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Analytics & Business Intelligence</h3>
               <p className="text-gray-600 mb-4">
                 Build analytics SaaS that aggregates data from multiple sources, provides dashboards, and generates insights for data-driven decision making.
@@ -562,53 +609,6 @@ export default function SaaSProductDevelopment() {
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business with SaaS solutions."
       />
-
-      {/* 11. Get a Quote Section */}
-      <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#d97706]/10 rounded-full blur-3xl"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">
-              Ready to Launch Your{' '}
-              <span className="hollow-text-white">
-                SaaS Platform?
-              </span>
-            </h2>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-              Get in touch and let's discuss how we can transform your business with SaaS solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-              >
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>Call Us</span>
-              </button>
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-xl hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
-              >
-                <Calendar className="w-5 h-5" strokeWidth={2} />
-                <span>Schedule Consultation</span>
-              </button>
-            </div>
-            <div className="flex flex-wrap justify-center gap-8 text-white/80">
-              <a href="mailto:sales@truvixoo.com" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Mail className="w-5 h-5" strokeWidth={2} />
-                <span>sales@truvixoo.com</span>
-              </a>
-              <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>+91 63543 26412</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

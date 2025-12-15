@@ -5,25 +5,20 @@ import Image from 'next/image'
 
 interface ClientLogo {
   name: string
-  logo?: string
+  logo: string
   url?: string
-  alternateText?: string
 }
 
 // Client logos
 const clientLogos: ClientLogo[] = [
   { name: 'Physiofi', logo: '/Physiofi Logo(1).png' },
-  { name: 'SP BAGS', logo: '/sp bags logo.png' },
-  { name: 'Padmavati Construction', alternateText: 'Padmavati' },
-  { name: 'Nova Logistics', alternateText: 'Nova' },
-  { name: 'BrightEdge Healthcare', alternateText: 'BrightEdge' },
-  { name: 'UrbanMint Properties', alternateText: 'UrbanMint' },
-  { name: 'TechFlow Solutions', alternateText: 'TechFlow' },
-  { name: 'DataSync Analytics', alternateText: 'DataSync' },
-  { name: 'CloudVault Systems', alternateText: 'CloudVault' },
-  { name: 'SecurePay Fintech', alternateText: 'SecurePay' },
-  { name: 'EduTech Innovations', alternateText: 'EduTech' },
-  { name: 'RetailMax Commerce', alternateText: 'RetailMax' },
+  { name: 'Client 1', logo: '/TruVixo.png' },
+  { name: 'Client 2', logo: '/TruVixo.png' },
+  { name: 'Client 3', logo: '/TruVixo.png' },
+  { name: 'Client 4', logo: '/TruVixo.png' },
+  { name: 'Client 5', logo: '/TruVixo.png' },
+  { name: 'Client 6', logo: '/TruVixo.png' },
+  { name: 'Client 7', logo: '/TruVixo.png' },
 ]
 
 interface ClienteleProps {
@@ -123,35 +118,30 @@ function Clientele({
                   className="flex-shrink-0 group cursor-pointer"
                 >
                   <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6">
-                    {client.logo ? (
-                      client.url ? (
-                        <a 
-                          href={client.url} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="w-full h-full flex items-center justify-center"
-                        >
-                          <Image
-                            src={client.logo}
-                            alt={client.name}
-                            width={120}
-                            height={60}
-                            className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                          />
-                        </a>
-                      ) : (
+                    {client.url ? (
+                      <a 
+                        href={client.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="w-full h-full flex items-center justify-center"
+                      >
                         <Image
                           src={client.logo}
                           alt={client.name}
                           width={120}
                           height={60}
                           className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                          unoptimized
                         />
-                      )
+                      </a>
                     ) : (
-                      <div className="text-white font-semibold text-sm md:text-base text-center opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                        {client.alternateText || client.name}
-                      </div>
+                      <Image
+                        src={client.logo}
+                        alt={client.name}
+                        width={120}
+                        height={60}
+                        className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                      />
                     )}
                   </div>
                 </div>
@@ -166,35 +156,30 @@ function Clientele({
                   className="flex-shrink-0 group cursor-pointer"
                 >
                   <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6">
-                    {client.logo ? (
-                      client.url ? (
-                        <a 
-                          href={client.url} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="w-full h-full flex items-center justify-center"
-                        >
-                          <Image
-                            src={client.logo}
-                            alt={client.name}
-                            width={120}
-                            height={60}
-                            className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                          />
-                        </a>
-                      ) : (
+                    {client.url ? (
+                      <a 
+                        href={client.url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="w-full h-full flex items-center justify-center"
+                      >
                         <Image
                           src={client.logo}
                           alt={client.name}
                           width={120}
                           height={60}
                           className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                          unoptimized
                         />
-                      )
+                      </a>
                     ) : (
-                      <div className="text-white font-semibold text-sm md:text-base text-center opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                        {client.alternateText || client.name}
-                      </div>
+                      <Image
+                        src={client.logo}
+                        alt={client.name}
+                        width={120}
+                        height={60}
+                        className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+                      />
                     )}
                   </div>
                 </div>

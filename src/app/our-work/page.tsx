@@ -31,44 +31,16 @@ import {
   Target,
   GraduationCap
 } from 'lucide-react'
+import ContactFormModal from '@/components/ContactFormModal'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import SEOLocationSection from '@/components/SEOLocationSection'
+import ContactSection from '@/components/ContactSection'
+import Clientele from '@/components/Clientele'
+import Technologies from '@/components/Technologies'
+import FAQDropdown from '@/components/FAQDropdown'
+import ProcessDiagram from '@/components/ProcessDiagram'
 import { getFAQsForPage } from '@/lib/pageData'
-
-const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
-  ssr: false,
-  loading: () => null,
-})
-
-const SEOLocationSection = dynamic(() => import('@/components/SEOLocationSection'), {
-  ssr: false,
-  loading: () => <div className="min-h-[200px] bg-gray-50" />,
-})
-
-const ContactSection = dynamic(() => import('@/components/ContactSection'), {
-  ssr: false,
-  loading: () => <div className="min-h-[300px] bg-white" />,
-})
-
-const Clientele = dynamic(() => import('@/components/Clientele'), {
-  ssr: false,
-  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]" />,
-})
-
-const Technologies = dynamic(() => import('@/components/Technologies'), {
-  ssr: false,
-  loading: () => <div className="min-h-[200px] bg-white" />,
-})
-
-const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
-  ssr: false,
-  loading: () => <div className="min-h-[200px] bg-white" />,
-})
-
-const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
-  ssr: false,
-  loading: () => <div className="min-h-[300px] bg-white" />,
-})
 
 const OurWork = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
@@ -250,13 +222,11 @@ const OurWork = () => {
   const technologies = [
     { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'frontend' as const },
     { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', color: '#000000', category: 'frontend' as const },
-    { name: 'Tailwind CSS', logo: 'https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg', color: '#06B6D4', category: 'frontend' as const },
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
-    { name: 'NestJS', logo: 'https://www.vectorlogo.zone/logos/nestjs/nestjs-icon.svg', color: '#E0234E', category: 'backend' as const },
     { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
     { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248', category: 'database' as const },
-    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
     { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6', category: 'frontend' as const },
     { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg', color: '#FF6F00', category: 'ai' as const }

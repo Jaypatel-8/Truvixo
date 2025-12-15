@@ -212,22 +212,25 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-        {/* Font Preloading - Critical for FOUT prevention - only regular weight */}
+        {/* Font Preloading - Critical for FOUT prevention */}
         <link rel="preload" href="/fonts/LePetiteCocho-Regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />
-        {/* Bold font - defer loading */}
-        <link rel="prefetch" href="/fonts/LePetiteCocho-Bold.otf" as="font" type="font/otf" crossOrigin="anonymous" />
-        {/* Route Prefetching - Non-blocking, deferred */}
+        <link rel="preload" href="/fonts/LePetiteCocho-Bold.otf" as="font" type="font/otf" crossOrigin="anonymous" />
+        {/* Route Prefetching - Non-blocking, prioritized */}
         <link rel="prefetch" href="/contact" as="document" />
         <link rel="prefetch" href="/services" as="document" />
+        <link rel="prefetch" href="/our-work" as="document" />
+        <link rel="prefetch" href="/about" as="document" />
+        {/* Prefetch critical CSS chunks */}
+        <link rel="prefetch" href="/_next/static/css/app/layout.css" as="style" />
         <link rel="icon" href="/TruVixo logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/TruVixo logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta httpEquiv="x-dns-prefetch-control" content="on" />
-        {/* Critical CSS - Inline for above-the-fold content - minimized */}
+        {/* Critical CSS - Inline for above-the-fold content */}
         <style dangerouslySetInnerHTML={{
-          __html: `html{scroll-behavior:smooth}body{margin:0;font-family:var(--font-inter),system-ui,-apple-system,sans-serif}nav{position:sticky;top:0;z-index:50;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1)}.hollow-text{font-family:'Le Petite Cocho',sans-serif;-webkit-text-stroke:3px #000;-webkit-text-fill-color:transparent;font-weight:700}h1,h2{font-weight:900;line-height:1.1;color:#111}button,a{cursor:pointer}img{max-width:100%;height:auto}`
+          __html: `html{scroll-behavior:smooth}body{margin:0;font-family:var(--font-inter),system-ui,-apple-system,sans-serif}nav{position:sticky;top:0;z-index:50;background:white;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.hollow-text{font-family:'Le Petite Cocho',sans-serif;-webkit-text-stroke:3px #000;-webkit-text-fill-color:transparent;font-weight:700}h1,h2{font-weight:900;line-height:1.1;color:#111}button{cursor:pointer}a{cursor:pointer}img{max-width:100%;height:auto}`
         }} />
-        {/* Aggressively block and suppress 404 errors - defer to non-blocking */}
+        {/* Aggressively block and suppress 404 errors - runs immediately */}
         <script
           defer
           dangerouslySetInnerHTML={{

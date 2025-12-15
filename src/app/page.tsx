@@ -115,9 +115,6 @@ export default function Home() {
   // Using static featured projects instead
 
   useEffect(() => {
-    // Only run on client after mount to prevent hydration issues
-    if (!isMounted || typeof window === 'undefined' || typeof document === 'undefined') return
-
     // Immediate IntersectionObserver initialization for faster rendering
     const observerOptions = {
       threshold: 0.01,
@@ -134,27 +131,22 @@ export default function Home() {
       })
     }, observerOptions)
 
-    // Use requestIdleCallback for non-critical animations - ensures DOM is ready
+    // Use requestIdleCallback for non-critical animations
     const initObserver = () => {
-      if (typeof document === 'undefined') return
       const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
       scrollElements.forEach((el) => observer.observe(el))
     }
 
-    // Delay initialization slightly to ensure DOM is fully hydrated
-    const timeoutId = setTimeout(() => {
-      if ('requestIdleCallback' in window) {
-        requestIdleCallback(initObserver, { timeout: 100 })
-      } else {
-        setTimeout(initObserver, 0)
-      }
-    }, 100)
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initObserver, { timeout: 100 })
+    } else {
+      setTimeout(initObserver, 0)
+    }
 
     return () => {
-      clearTimeout(timeoutId)
       observer.disconnect()
     }
-  }, [isMounted])
+  }, [])
 
   // Technologies data with categories and colored logos
   const technologies = [
@@ -163,17 +155,17 @@ export default function Home() {
     { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', color: '#000000', category: 'frontend' as const },
     { name: 'Vue.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg', color: '#4FC08D', category: 'frontend' as const },
     { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6', category: 'frontend' as const },
-    { name: 'Tailwind CSS', logo: 'https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg', color: '#06B6D4', category: 'frontend' as const },
+    { name: 'Tailwind CSS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg', color: '#06B6D4', category: 'frontend' as const },
     
     // Backend
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
     { name: 'Django', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg', color: '#092E20', category: 'backend' as const },
     { name: 'FastAPI', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg', color: '#009688', category: 'backend' as const },
-    { name: 'NestJS', logo: 'https://www.vectorlogo.zone/logos/nestjs/nestjs-icon.svg', color: '#E0234E', category: 'backend' as const },
+    { name: 'NestJS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nestjs/nestjs-plain.svg', color: '#E0234E', category: 'backend' as const },
     
     // Cloud
-    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Azure', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg', color: '#0078D4', category: 'cloud' as const },
     
     // Mobile
@@ -419,7 +411,7 @@ export default function Home() {
       </section>
 
       {/* 2. Our Client Section - Right after hero */}
-      {isMounted && <Clientele />}
+      <Clientele />
 
       {/* 3. Our Services */}
       <section id="services-section" className="py-12 bg-white">
@@ -749,10 +741,12 @@ export default function Home() {
       </section>
 
       {/* 7. Process of Work */}
-      <ProcessDiagram 
-        title="Our Process"
-        subtitle="Our proven software development methodology delivers exceptional results through systematic approach from initial concept and requirements analysis to deployment, maintenance, and continuous improvement. We follow agile principles and industry best practices to ensure timely delivery and superior quality."
-      />
+      <section className="py-16 bg-white">
+        <ProcessDiagram 
+          title="Our Process"
+          subtitle="Our proven software development methodology delivers exceptional results through systematic approach from initial concept and requirements analysis to deployment, maintenance, and continuous improvement. We follow agile principles and industry best practices to ensure timely delivery and superior quality."
+        />
+      </section>
 
       {/* 8. Testimonials - Redesigned */}
       <section className="py-16 bg-gray-50">

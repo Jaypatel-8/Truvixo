@@ -62,13 +62,13 @@ export default function TravelHospitalityDevelopment() {
       title: 'Travel Portals',
       description: 'Comprehensive travel and tourism platforms',
       icon: <Globe className="w-8 h-8" strokeWidth={2} />,
-      color: '#d97706'
+      color: '#fecc4d'
     },
     {
       title: 'CRM Systems',
       description: 'Customer relationship management for travel businesses',
       icon: <Users className="w-8 h-8" strokeWidth={2} />,
-      color: '#059669'
+      color: '#10b981'
     },
     {
       title: 'Loyalty Programs',
@@ -101,21 +101,21 @@ export default function TravelHospitalityDevelopment() {
       icon: <Globe className="w-7 h-7" strokeWidth={2} />, 
       title: 'Multi-Channel', 
       description: 'Support for multiple booking channels and platforms',
-      color: '#d97706'
+      color: '#fecc4d'
     },
     { 
       icon: <Users className="w-7 h-7" strokeWidth={2} />, 
       title: 'Customer Focus', 
       description: 'Solutions designed to enhance customer experience',
-      color: '#059669'
+      color: '#10b981'
     }
   ]
 
   const industries = [
     { name: 'Hotels', icon: <Hotel className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Airlines', icon: <Plane className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Travel Agencies', icon: <Globe className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
-    { name: 'Restaurants', icon: <Calendar className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
+    { name: 'Travel Agencies', icon: <Globe className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
+    { name: 'Restaurants', icon: <Calendar className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
     { name: 'Events', icon: <Award className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Tourism', icon: <Users className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -124,7 +124,7 @@ export default function TravelHospitalityDevelopment() {
     { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'frontend' as const },
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
-    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Amadeus API', logo: 'https://developers.amadeus.com/favicon.ico', color: '#FF6B35', category: 'backend' as const },
     { name: 'Sabre API', logo: 'https://www.sabre.com/favicon.ico', color: '#5A5A5A', category: 'backend' as const },
     { name: 'Redis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg', color: '#DC382D', category: 'database' as const },
@@ -175,7 +175,7 @@ export default function TravelHospitalityDevelopment() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#d97706]/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#fecc4d]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -372,34 +372,15 @@ export default function TravelHospitalityDevelopment() {
         </div>
       </section>
 
-      {/* 6. Technologies We Use */}
-      <Technologies technologies={technologies} />
-
-      {/* 7. Process Diagram */}
-      <ProcessDiagram
-        title="Travel & Hospitality Development Process"
-        subtitle="From discovery to launch, we ensure seamless bookings, GDS integration, and exceptional customer experiences at every step"
-        steps={processSteps}
-      />
-
-      {/* 8. FAQs */}
-      <FAQDropdown faqs={faqs} />
-
-      {/* 9. Contact Section */}
-      <ContactSection 
-        title="Get in Touch"
-        description="Have questions about travel and hospitality development? Let's discuss your project."
-      />
-
-      {/* 10. Get a Quote Section - Modern CTA */}
+      {/* 6. Get a Quote Section - Modern CTA */}
       <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#d97706]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
               Ready to Build{' '}
               <span className="hollow-text-white">
                 Travel Solutions?
@@ -437,6 +418,25 @@ export default function TravelHospitalityDevelopment() {
           </div>
         </div>
       </section>
+
+      {/* 7. Technologies We Use */}
+      <Technologies technologies={technologies} />
+
+      {/* 8. Process Diagram */}
+      <ProcessDiagram
+        title="Travel & Hospitality Development Process"
+        subtitle="From discovery to launch, we ensure seamless bookings, GDS integration, and exceptional customer experiences at every step"
+        steps={processSteps}
+      />
+
+      {/* 9. FAQs */}
+      <FAQDropdown faqs={faqs} />
+
+      {/* 10. Contact Section */}
+      <ContactSection 
+        title="Get in Touch"
+        description="Have questions about travel and hospitality development? Let's discuss your project."
+      />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

@@ -101,7 +101,7 @@ const ProductsPage = () => {
           <div className="text-center max-w-4xl mx-auto animate-fade-in-up">
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
               Smart Tools That Power Modern{' '}
-              <span className="hollow-text-blue">Businesses</span>
+              <span className="hollow-text-purple">Businesses</span>
             </h1>
             <p className="text-xl text-gray-600 mb-8 leading-relaxed">
               Explore Truvixo's suite of innovative digital products designed to simplify operations and scale success.
@@ -175,7 +175,7 @@ const ProductsPage = () => {
         <div className="container-expandi">
           <div className="text-center max-w-3xl mx-auto animate-fade-in-up">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">
-              Ready to <span className="hollow-text-blue">get started</span>?
+              Ready to <span className="hollow-text-purple">get started</span>?
             </h2>
             <p className="text-gray-600 mb-8">
               Let's discuss how our products can help you achieve your goals and create something extraordinary together.

@@ -63,13 +63,13 @@ export default function MobileAppDevelopment() {
       title: 'Cross-Platform Development',
       description: 'React Native and Flutter apps for iOS and Android from a single codebase',
       icon: <Code className="w-8 h-8" strokeWidth={2} />,
-      color: '#d97706'
+      color: '#fecc4d'
     },
     {
       title: 'Progressive Web Apps',
       description: 'PWAs that work seamlessly across all devices and platforms',
       icon: <Rocket className="w-8 h-8" strokeWidth={2} />,
-      color: '#059669'
+      color: '#10b981'
     },
     {
       title: 'App Store Optimization',
@@ -87,13 +87,13 @@ export default function MobileAppDevelopment() {
       title: 'UI/UX Design',
       description: 'Pixel-perfect, intuitive mobile interfaces that users love',
       icon: <Eye className="w-8 h-8" strokeWidth={2} />,
-      color: '#d97706'
+      color: '#fecc4d'
     },
     {
       title: 'Backend Integration',
       description: 'Seamless API integration and cloud services for your mobile apps',
       icon: <Code className="w-8 h-8" strokeWidth={2} />,
-      color: '#059669'
+      color: '#10b981'
     }
   ]
 
@@ -114,13 +114,13 @@ export default function MobileAppDevelopment() {
       icon: <Code className="w-7 h-7" strokeWidth={2} />, 
       title: 'Strong Backend Support', 
       description: 'Robust API integration and cloud services for seamless functionality',
-      color: '#d97706'
+      color: '#fecc4d'
     },
     { 
       icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
       title: 'App Store Deployment', 
       description: 'Complete deployment and publishing support for all platforms',
-      color: '#059669'
+      color: '#10b981'
     },
     { 
       icon: <Zap className="w-7 h-7" strokeWidth={2} />, 
@@ -142,7 +142,7 @@ export default function MobileAppDevelopment() {
     { name: 'Swift', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg', color: '#FA7343', category: 'mobile' as const },
     { name: 'Kotlin', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg', color: '#7F52FF', category: 'mobile' as const },
     { name: 'Firebase', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg', color: '#FFCA28', category: 'cloud' as const },
-    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Xamarin', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xamarin/xamarin-original.svg', color: '#3498DB', category: 'mobile' as const },
     { name: 'Ionic', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ionic/ionic-original.svg', color: '#3880FF', category: 'mobile' as const },
     { name: 'App Store Connect', logo: 'https://developer.apple.com/favicon.ico', color: '#007AFF', category: 'mobile' as const },
@@ -185,8 +185,8 @@ export default function MobileAppDevelopment() {
   const industries = [
     { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
-    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
+    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
+    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
     { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Education', icon: <GraduationCap className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -201,7 +201,7 @@ export default function MobileAppDevelopment() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#d97706]/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#fecc4d]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -399,34 +399,15 @@ export default function MobileAppDevelopment() {
         </div>
       </section>
 
-      {/* 6. Technologies We Use */}
-      <Technologies technologies={technologies} />
-
-      {/* 8. Process Diagram */}
-      <ProcessDiagram 
-        title="Mobile App Development Process"
-        subtitle="From concept to launch, we ensure exceptional mobile experiences at every step"
-        steps={processSteps}
-      />
-
-      {/* 9. FAQs */}
-      <FAQDropdown faqs={faqs} />
-
-      {/* 10. Contact Section */}
-      <ContactSection 
-        title="Get in Touch"
-        description="Have a project in mind? Let's discuss how we can help transform your business with mobile applications."
-      />
-
-      {/* 11. Get a Quote Section - Modern CTA */}
+      {/* 6. Get a Quote Section - Modern CTA */}
       <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#d97706]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
               Ready to Build Your{' '}
               <span className="hollow-text-white">
                 Mobile App?
@@ -464,6 +445,25 @@ export default function MobileAppDevelopment() {
           </div>
         </div>
       </section>
+
+      {/* 7. Technologies We Use */}
+      <Technologies technologies={technologies} />
+
+      {/* 8. Process Diagram */}
+      <ProcessDiagram 
+        title="Mobile App Development Process"
+        subtitle="From concept to launch, we ensure exceptional mobile experiences at every step"
+        steps={processSteps}
+      />
+
+      {/* 9. FAQs */}
+      <FAQDropdown faqs={faqs} />
+
+      {/* 10. Contact Section */}
+      <ContactSection 
+        title="Get in Touch"
+        description="Have a project in mind? Let's discuss how we can help transform your business with mobile applications."
+      />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

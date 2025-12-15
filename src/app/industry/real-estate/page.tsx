@@ -62,13 +62,13 @@ export default function RealEstateDevelopment() {
       title: 'Virtual Tours',
       description: '3D virtual tours and property visualization',
       icon: <MapPin className="w-8 h-8" strokeWidth={2} />,
-      color: '#d97706'
+      color: '#fecc4d'
     },
     {
       title: 'CRM for Real Estate',
       description: 'Customer relationship management for agents',
       icon: <Target className="w-8 h-8" strokeWidth={2} />,
-      color: '#059669'
+      color: '#10b981'
     },
     {
       title: 'Document Management',
@@ -101,21 +101,21 @@ export default function RealEstateDevelopment() {
       icon: <MapPin className="w-7 h-7" strokeWidth={2} />, 
       title: 'Virtual Tours', 
       description: '3D visualization and virtual property tours',
-      color: '#d97706'
+      color: '#fecc4d'
     },
     { 
       icon: <Target className="w-7 h-7" strokeWidth={2} />, 
       title: 'CRM Integration', 
       description: 'Seamless CRM integration for real estate agents',
-      color: '#059669'
+      color: '#10b981'
     }
   ]
 
   const industries = [
     { name: 'Residential', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Commercial', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Property Management', icon: <Target className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
-    { name: 'Real Estate Agents', icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
+    { name: 'Property Management', icon: <Target className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
+    { name: 'Real Estate Agents', icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
     { name: 'Developers', icon: <Zap className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Brokerages', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -125,7 +125,7 @@ export default function RealEstateDevelopment() {
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
     { name: 'Google Maps API', logo: 'https://www.google.com/maps/favicon.ico', color: '#4285F4', category: 'backend' as const },
-    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Three.js', logo: 'https://threejs.org/favicon.ico', color: '#000000', category: 'frontend' as const },
     { name: 'Matterport', logo: 'https://matterport.com/favicon.ico', color: '#5A5A5A', category: 'frontend' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
@@ -175,7 +175,7 @@ export default function RealEstateDevelopment() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#d97706]/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#fecc4d]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -372,34 +372,15 @@ export default function RealEstateDevelopment() {
         </div>
       </section>
 
-      {/* 6. Technologies We Use */}
-      <Technologies technologies={technologies} />
-
-      {/* 7. Process Diagram */}
-      <ProcessDiagram
-        title="Real Estate Development Process"
-        subtitle="From discovery to launch, we ensure property management excellence, virtual experiences, and transaction efficiency at every step"
-        steps={processSteps}
-      />
-
-      {/* 8. FAQs */}
-      <FAQDropdown faqs={faqs} />
-
-      {/* 9. Contact Section */}
-      <ContactSection 
-        title="Get in Touch"
-        description="Have questions about real estate development? Let's discuss your project."
-      />
-
-      {/* 10. Get a Quote Section - Modern CTA */}
+      {/* 6. Get a Quote Section - Modern CTA */}
       <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#d97706]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
               Ready to Build{' '}
               <span className="hollow-text-white">
                 Real Estate Solutions?
@@ -437,6 +418,25 @@ export default function RealEstateDevelopment() {
           </div>
         </div>
       </section>
+
+      {/* 7. Technologies We Use */}
+      <Technologies technologies={technologies} />
+
+      {/* 8. Process Diagram */}
+      <ProcessDiagram
+        title="Real Estate Development Process"
+        subtitle="From discovery to launch, we ensure property management excellence, virtual experiences, and transaction efficiency at every step"
+        steps={processSteps}
+      />
+
+      {/* 9. FAQs */}
+      <FAQDropdown faqs={faqs} />
+
+      {/* 10. Contact Section */}
+      <ContactSection 
+        title="Get in Touch"
+        description="Have questions about real estate development? Let's discuss your project."
+      />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

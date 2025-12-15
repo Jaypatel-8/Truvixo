@@ -62,13 +62,13 @@ export default function HealthcareDevelopment() {
       title: 'Patient Management',
       description: 'Complete patient care and management systems',
       icon: <Heart className="w-8 h-8" strokeWidth={2} />,
-      color: '#d97706'
+      color: '#fecc4d'
     },
     {
       title: 'Healthcare AI',
       description: 'AI-powered diagnostics and patient assistance',
       icon: <Brain className="w-8 h-8" strokeWidth={2} />,
-      color: '#059669'
+      color: '#10b981'
     },
     {
       title: 'Remote Monitoring',
@@ -101,21 +101,21 @@ export default function HealthcareDevelopment() {
       icon: <Brain className="w-7 h-7" strokeWidth={2} />, 
       title: 'AI-Powered Solutions', 
       description: 'AI-powered diagnostics and patient care tools',
-      color: '#d97706'
+      color: '#fecc4d'
     },
     { 
       icon: <Zap className="w-7 h-7" strokeWidth={2} />, 
       title: 'Secure & Scalable', 
       description: 'Enterprise-grade security and scalability',
-      color: '#059669'
+      color: '#10b981'
     }
   ]
 
   const industries = [
     { name: 'Hospitals', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Clinics', icon: <FileText className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Telemedicine', icon: <Video className="w-7 h-7" strokeWidth={2} />, color: '#d97706' },
-    { name: 'Pharmacy', icon: <FlaskConical className="w-7 h-7" strokeWidth={2} />, color: '#059669' },
+    { name: 'Telemedicine', icon: <Video className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
+    { name: 'Pharmacy', icon: <FlaskConical className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
     { name: 'Labs', icon: <Brain className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
     { name: 'Insurance', icon: <Shield className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
@@ -124,7 +124,7 @@ export default function HealthcareDevelopment() {
     { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'frontend' as const },
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
-    { name: 'AWS', logo: 'https://www.vectorlogo.zone/logos/amazon_aws/amazon_aws-icon.svg', color: '#FF9900', category: 'cloud' as const },
+    { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'HL7/FHIR', logo: 'https://www.hl7.org/fhir/assets/images/fhir-logo-www.png', color: '#4A90E2', category: 'backend' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
     { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', color: '#326CE5', category: 'devops' as const },
@@ -175,7 +175,7 @@ export default function HealthcareDevelopment() {
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#d97706]/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#fecc4d]/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -372,34 +372,15 @@ export default function HealthcareDevelopment() {
         </div>
       </section>
 
-      {/* 6. Technologies We Use */}
-      <Technologies technologies={technologies} />
-
-      {/* 7. Process Diagram */}
-      <ProcessDiagram
-        title="Healthcare Development Process"
-        subtitle="From discovery to deployment, we ensure HIPAA compliance, security, and clinical excellence at every step"
-        steps={processSteps}
-      />
-
-      {/* 8. FAQs */}
-      <FAQDropdown faqs={faqs} />
-
-      {/* 9. Contact Section */}
-      <ContactSection 
-        title="Get in Touch"
-        description="Have questions about healthcare development? Let's discuss your project."
-      />
-
-      {/* 10. Get a Quote Section - Modern CTA */}
+      {/* 6. Get a Quote Section - Modern CTA */}
       <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#d97706]/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
               Ready to Build{' '}
               <span className="hollow-text-white">
                 Healthcare Solutions?
@@ -437,6 +418,25 @@ export default function HealthcareDevelopment() {
           </div>
         </div>
       </section>
+
+      {/* 7. Technologies We Use */}
+      <Technologies technologies={technologies} />
+
+      {/* 8. Process Diagram */}
+      <ProcessDiagram
+        title="Healthcare Development Process"
+        subtitle="From discovery to deployment, we ensure HIPAA compliance, security, and clinical excellence at every step"
+        steps={processSteps}
+      />
+
+      {/* 9. FAQs */}
+      <FAQDropdown faqs={faqs} />
+
+      {/* 10. Contact Section */}
+      <ContactSection 
+        title="Get in Touch"
+        description="Have questions about healthcare development? Let's discuss your project."
+      />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

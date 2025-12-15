@@ -166,6 +166,7 @@ const nextConfig = {
     config.optimization.sideEffects = false;
 
     return config;
+
   },
 
   // Note: Headers are not supported with static export
