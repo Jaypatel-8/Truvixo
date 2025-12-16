@@ -11,7 +11,7 @@ const nextConfig = {
   // Performance optimizations
   experimental: {
     // optimizeCss: true, // Disabled - requires critters module
-    optimizePackageImports: ['lucide-react', 'swiper'],
+    optimizePackageImports: ['swiper'], // Removed lucide-react to fix import issues
   },
   
   // Power optimizations
@@ -124,6 +124,11 @@ const nextConfig = {
 
   // Webpack optimizations
   webpack: (config, { dev, isServer }) => {
+    // Fix for lucide-react barrel optimization issue
+    config.resolve.alias = {
+      ...config.resolve.alias,
+    };
+
     // Optimize for production
     if (!dev && !isServer) {
       config.optimization = {
@@ -147,13 +152,6 @@ const nextConfig = {
               name: 'swiper',
               chunks: 'all',
               priority: 30,
-              reuseExistingChunk: true,
-            },
-            lucide: {
-              test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
-              name: 'lucide',
-              chunks: 'all',
-              priority: 25,
               reuseExistingChunk: true,
             },
           },

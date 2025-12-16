@@ -344,7 +344,7 @@ export default function Home() {
   ]
 
   return (
-    <main className="min-h-screen bg-white overflow-hidden">
+    <div className="min-h-screen bg-white overflow-hidden">
       {/* 1. Hero Section - Sleek & Modern */}
       <section className="relative min-h-screen bg-white flex items-center justify-center overflow-hidden pt-20">
         {/* Minimal Grid Background */}
@@ -742,9 +742,22 @@ export default function Home() {
 
       {/* 7. Process of Work */}
       <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
+              Our{' '}
+              <span className="hollow-text-brand">
+                Process
+              </span>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              Our proven software development methodology delivers exceptional results through systematic approach from initial concept and requirements analysis to deployment, maintenance, and continuous improvement. We follow agile principles and industry best practices to ensure timely delivery and superior quality.
+            </p>
+          </div>
+        </div>
         <ProcessDiagram 
-          title="Our Process"
-          subtitle="Our proven software development methodology delivers exceptional results through systematic approach from initial concept and requirements analysis to deployment, maintenance, and continuous improvement. We follow agile principles and industry best practices to ensure timely delivery and superior quality."
+          title=""
+          subtitle=""
         />
       </section>
 
@@ -905,7 +918,7 @@ export default function Home() {
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 
       />
-    </main>
+    </div>
   )
 }
 

@@ -1,51 +1,20 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowRight, Briefcase, Users, Zap, TrendingUp, Heart, Mail, MapPin, Clock } from 'lucide-react'
-import Link from 'next/link'
-import Clientele from '@/components/Clientele'
+import { Briefcase, MapPin, Clock, ArrowRight, Users, Award, Zap, TrendingUp, Calendar, Mail, Phone } from 'lucide-react'
+import dynamic from 'next/dynamic'
 import ContactSection from '@/components/ContactSection'
-// Removed dynamic job loading and admin features to prevent rendering issues
+import SEOLocationSection from '@/components/SEOLocationSection'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
+
+const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
+  ssr: false,
+  loading: () => null,
+})
 
 export default function Careers() {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
-  
-  // Static job positions - removed dynamic loading
-  const openPositions = [
-    {
-      id: '1',
-      title: 'Senior Full-Stack Developer',
-      department: 'Engineering',
-      location: 'Remote',
-      type: 'Full-time',
-      description: 'We are looking for an experienced full-stack developer to join our team.',
-      requirements: ['5+ years experience', 'React, Node.js', 'TypeScript'],
-      isActive: true,
-      color: '#5e2cb6'
-    },
-    {
-      id: '2',
-      title: 'AI/ML Engineer',
-      department: 'AI & Machine Learning',
-      location: 'Remote',
-      type: 'Full-time',
-      description: 'Join our AI team to build cutting-edge machine learning solutions.',
-      requirements: ['3+ years experience', 'Python, TensorFlow', 'ML expertise'],
-      isActive: true,
-      color: '#c91a6f'
-    },
-    {
-      id: '3',
-      title: 'DevOps Engineer',
-      department: 'Infrastructure',
-      location: 'Remote',
-      type: 'Full-time',
-      description: 'Help us build and maintain scalable cloud infrastructure.',
-      requirements: ['4+ years experience', 'AWS, Docker, Kubernetes'],
-      isActive: true,
-      color: '#fecc4d'
-    }
-  ]
 
   useEffect(() => {
     setIsMounted(true)
@@ -73,7 +42,50 @@ export default function Careers() {
     }
   }, [])
 
-  // Removed HiringFormModal - using contact page instead
+  const openPositions = [
+    {
+      title: 'Senior Full-Stack Developer',
+      department: 'Engineering',
+      location: 'Remote / Dubai / India',
+      type: 'Full-time',
+      description: 'We are looking for an experienced full-stack developer to join our team. You will work on cutting-edge projects using React, Next.js, Node.js, and modern cloud technologies.'
+    },
+    {
+      title: 'AI/ML Engineer',
+      department: 'AI & Machine Learning',
+      location: 'Remote / USA',
+      type: 'Full-time',
+      description: 'Join our AI team to develop innovative machine learning solutions. Experience with TensorFlow, PyTorch, and LLM integration required.'
+    },
+    {
+      title: 'UI/UX Designer',
+      department: 'Design',
+      location: 'Remote / Australia',
+      type: 'Full-time',
+      description: 'Create beautiful and intuitive user experiences. We need a creative designer with strong portfolio and experience in modern design tools.'
+    },
+    {
+      title: 'DevOps Engineer',
+      department: 'Infrastructure',
+      location: 'Remote / Dubai',
+      type: 'Full-time',
+      description: 'Manage cloud infrastructure, CI/CD pipelines, and ensure system reliability. AWS, Docker, Kubernetes experience required.'
+    },
+    {
+      title: 'Digital Marketing Specialist',
+      department: 'Marketing',
+      location: 'Remote / India',
+      type: 'Full-time',
+      description: 'Drive growth through SEO, PPC, content marketing, and social media strategies. Data-driven approach and proven results required.'
+    },
+    {
+      title: 'Project Manager',
+      department: 'Operations',
+      location: 'Remote / Dubai',
+      type: 'Full-time',
+      description: 'Lead cross-functional teams and ensure successful project delivery. Agile/Scrum experience and strong communication skills required.'
+    }
+  ]
 
   const benefits = [
     {
@@ -83,153 +95,138 @@ export default function Careers() {
       color: '#5e2cb6'
     },
     {
-      title: 'Flexible Work',
-      description: 'Remote and hybrid work options',
-      icon: <Zap className="w-6 h-6" strokeWidth={2} />,
+      title: 'Remote Work',
+      description: 'Work from anywhere flexibility',
+      icon: <MapPin className="w-6 h-6" strokeWidth={2} />,
       color: '#c91a6f'
     },
     {
       title: 'Growth Opportunities',
       description: 'Career development and learning',
-      icon: <Users className="w-6 h-6" strokeWidth={2} />,
+      icon: <Zap className="w-6 h-6" strokeWidth={2} />,
       color: '#fecc4d'
     },
     {
-      title: 'Great Culture',
-      description: 'Collaborative and supportive team',
-      icon: <Heart className="w-6 h-6" strokeWidth={2} />,
+      title: 'Great Team',
+      description: 'Collaborative and supportive culture',
+      icon: <Users className="w-6 h-6" strokeWidth={2} />,
       color: '#10b981'
     }
   ]
 
   return (
-    <main className="min-h-screen bg-gray-50 overflow-hidden">
-      <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative min-h-[60vh] bg-gradient-to-br from-[#5e2cb6]/5 via-white to-[#c91a6f]/5 flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
           <div className="scroll-animate">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-              <Briefcase className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
-              <span className="text-sm font-semibold text-[#5e2cb6]">Careers</span>
-            </div>
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-              Join Our{' '}
-              <span className="hollow-text-brand">
-                Team
-              </span>
+              Build Your{' '}
+              <span className="hollow-text-brand">Career</span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Build your career with us. We're looking for talented individuals who are passionate about technology and innovation.
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed mb-8">
+              Join a team of innovators, creators, and problem-solvers. Work on cutting-edge projects, grow your skills, and make an impact with technology that transforms businesses.
             </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-[#5e2cb6] text-white font-semibold py-4 px-10 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg shadow-[#5e2cb6]/20"
+              >
+                <Briefcase className="w-5 h-5" strokeWidth={2} />
+                <span>View Open Positions</span>
+              </button>
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-10 rounded-lg hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg"
+              >
+                <Mail className="w-5 h-5" strokeWidth={2} />
+                <span>Send Your Resume</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
-      {isMounted && <div className="mt-12"><Clientele /></div>}
-
+      {/* Open Positions */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Open{' '}
-              <span className="hollow-text-brand">
-                Positions
-              </span>
+              <span className="hollow-text-brand">Positions</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Explore current job openings and find your next opportunity
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Explore exciting career opportunities and join our growing team
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {openPositions.map((position, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
-                style={{ 
-                  borderColor: position.color + '40'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = position.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = position.color + '40'
-                }}
+                className="bg-white rounded-xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: position.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-4">
-                    <span className="inline-block px-3 py-1 text-xs font-semibold rounded-full" style={{ backgroundColor: position.color + '20', color: position.color }}>
-                      {position.department}
-                    </span>
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {position.title}
+                    </h3>
+                    <p className="text-sm text-gray-500 font-medium">{position.department}</p>
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
-                    {position.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">
-                    {position.description}
-                  </p>
-                  <div className="flex flex-wrap gap-4 mb-4 text-sm text-gray-500">
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4" strokeWidth={2} />
-                      <span>{position.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-4 h-4" strokeWidth={2} />
-                      <span>{position.type}</span>
-                    </div>
-                  </div>
-                  <Link 
-                    href="/contact"
-                    className="inline-flex items-center gap-2 text-[#5e2cb6] font-semibold hover:gap-3 transition-all"
-                  >
-                    Apply Now
-                    <ArrowRight className="w-4 h-4" strokeWidth={2} />
-                  </Link>
+                  <Briefcase className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
                 </div>
+                <div className="flex flex-wrap gap-3 mb-4">
+                  <div className="flex items-center gap-1 text-sm text-gray-600">
+                    <MapPin className="w-4 h-4" strokeWidth={2} />
+                    <span>{position.location}</span>
+                  </div>
+                  <div className="flex items-center gap-1 text-sm text-gray-600">
+                    <Clock className="w-4 h-4" strokeWidth={2} />
+                    <span>{position.type}</span>
+                  </div>
+                </div>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  {position.description}
+                </p>
+                <button
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="text-[#5e2cb6] font-semibold text-sm flex items-center gap-2 hover:gap-3 transition-all"
+                >
+                  Apply Now
+                  <ArrowRight className="w-4 h-4" strokeWidth={2} />
+                </button>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* Benefits */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Why Work{' '}
-              <span className="hollow-text-brand">
-                With Us
-              </span>
+              <span className="hollow-text-brand">With Us</span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Benefits and perks that make TruVixo a great place to work
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We offer a great work environment and benefits to help you grow
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl text-center"
-                style={{ 
-                  borderColor: benefit.color + '40'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = benefit.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = benefit.color + '40'
-                }}
+                className="bg-white rounded-xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105 text-center"
               >
                 <div className="mb-6 flex justify-center" style={{ color: benefit.color }}>
                   {benefit.icon}
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
                   {benefit.title}
                 </h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -241,38 +238,34 @@ export default function Careers() {
         </div>
       </section>
 
-      <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-              Don't See a{' '}
-              <span className="hollow-text-white">
-                Position?
-              </span>
-            </h2>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-              We're always looking for talented people. Send us your resume and we'll keep you in mind for future opportunities.
-            </p>
-            <Link 
-              href="/contact"
-              className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-            >
-              <Mail className="w-5 h-5" strokeWidth={2} />
-              <span>Send Your Resume</span>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* SEO Location Section */}
+      <SEOLocationSection serviceName="Career Opportunities & Job Openings" />
 
-      <ContactSection 
-        title="Get in Touch"
-        description="Have questions about working with us? Let's connect."
+      {/* Get Quote Section */}
+      <GetQuoteSection
+        title="Join Our"
+        hollowText="Team"
+        description="Interested in joining our team? Get in touch to learn more about our opportunities, company culture, and how you can grow your career with us."
+        primaryCTA={{
+          text: 'Get a Quote',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule a Call',
+          onClick: () => setIsContactModalOpen(true)
+        }}
       />
 
-      {/* Removed HiringFormModal - using contact page instead */}
-    </main>
+      {/* Contact Section */}
+      <ContactSection 
+        title="Interested in Joining Us?"
+        description="Don't see a position that matches? Send us your resume and we'll keep you in mind for future opportunities."
+      />
+
+      <ContactFormModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
+    </div>
   )
 }
