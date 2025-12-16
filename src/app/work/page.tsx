@@ -432,32 +432,6 @@ export default function Work() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-500 to-pink-500 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to{' '}
-              <span className="hollow-text-yellow">
-                Start
-              </span>
-              {' '}Your Project?
-          </h2>
-            <p className="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
-              Let's create something amazing together. Get in touch to discuss your project.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-purple-600 font-bold py-4 px-8 rounded-full hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-              Start Your Project
-            </button>
-              <button className="border-2 border-white text-white font-bold py-4 px-8 rounded-full hover:bg-white hover:text-purple-600 transition-all duration-300">
-                View All Work
-            </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
     </main>
   )
 }

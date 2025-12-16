@@ -9,7 +9,6 @@ import ContactSection from '@/components/ContactSection'
 import Clientele from '@/components/Clientele'
 import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
-import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { getFAQsForPage } from '@/lib/pageData'
 
 const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
@@ -641,19 +640,10 @@ export default function About() {
       {/* SEO Location Section */}
       <SEOLocationSection serviceName="Digital Transformation & Business Growth" />
 
-      {/* Get Quote Section - At the end with white headline */}
-      <GetQuoteSection
-        title="Let's Work"
-        hollowText="Together"
-        description="Ready to transform your business? Let's discuss how we can help you achieve your goals with our comprehensive solutions. Get in touch for a free consultation."
-        primaryCTA={{
-          text: 'Get a Quote',
-          onClick: () => setIsContactModalOpen(true)
-        }}
-        secondaryCTA={{
-          text: 'Schedule a Call',
-          onClick: () => setIsContactModalOpen(true)
-        }}
+      {/* Contact Section */}
+      <ContactSection 
+        title="Get in Touch"
+        description="Have a project in mind? Let's discuss how we can help transform your business with our comprehensive solutions."
       />
 
       <ContactFormModal 

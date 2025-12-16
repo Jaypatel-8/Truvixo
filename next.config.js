@@ -11,7 +11,7 @@ const nextConfig = {
   // Performance optimizations
   experimental: {
     // optimizeCss: true, // Disabled - requires critters module
-    optimizePackageImports: ['swiper'], // Removed lucide-react to fix import issues
+    optimizePackageImports: ['lucide-react', 'swiper'],
   },
   
   // Power optimizations
@@ -122,18 +122,8 @@ const nextConfig = {
   //   enabled: process.env.ANALYZE === 'true',
   // },
 
-  // Webpack optimizations for faster builds
+  // Webpack optimizations
   webpack: (config, { dev, isServer }) => {
-    // Faster builds - cache modules
-    if (dev) {
-      config.cache = {
-        type: 'filesystem',
-        buildDependencies: {
-          config: [__filename],
-        },
-      };
-    }
-
     // Optimize for production
     if (!dev && !isServer) {
       config.optimization = {
@@ -159,15 +149,24 @@ const nextConfig = {
               priority: 30,
               reuseExistingChunk: true,
             },
+            lucide: {
+              test: /[\\/]node_modules[\\/]lucide-react[\\/]/,
+              name: 'lucide',
+              chunks: 'all',
+              priority: 25,
+              reuseExistingChunk: true,
+            },
           },
         },
       };
     }
 
-    // Tree shaking optimization
+    // Tree shaking optimization (removed usedExports as it conflicts with Next.js cache)
+    // config.optimization.usedExports = true; // Conflicts with Next.js caching
     config.optimization.sideEffects = false;
 
     return config;
+
   },
 
   // Note: Headers are not supported with static export

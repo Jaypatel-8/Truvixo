@@ -11,7 +11,6 @@ import ProcessDiagram from '@/components/ProcessDiagram'
 import HeroSection from '@/components/sections/HeroSection'
 import ServicesGrid from '@/components/sections/ServicesGrid'
 import WhyChooseSection from '@/components/sections/WhyChooseSection'
-import GetQuoteSection from '@/components/sections/GetQuoteSection'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -242,20 +241,6 @@ export default function PageTemplate({
       <ProcessDiagram title={processTitle} subtitle={processSubtitle} steps={processSteps} />
       {faqs.length > 0 && <FAQDropdown faqs={faqs} />}
       <ContactSection title={contactTitle} description={contactDescription} />
-
-      <GetQuoteSection
-        title={getQuoteTitle}
-        hollowText={getQuoteHollowText}
-        description={getQuoteDescription}
-        primaryCTA={{
-          text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
-        }}
-        secondaryCTA={{
-          text: 'Schedule Consultation',
-          onClick: () => setIsContactModalOpen(true)
-        }}
-      />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

@@ -47,12 +47,16 @@ export default function ServicesGrid({
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-8 border-2 border-gray-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden service-card"
+              className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
               style={{ 
-                '--service-color': service.color,
-                '--service-color-base': service.color + '40',
                 borderColor: service.color + '40'
-              } as React.CSSProperties & { '--service-color': string; '--service-color-base': string }}
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = service.color
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = service.color + '40'
+              }}
             >
               <div className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity" style={{ backgroundColor: service.color }}></div>
               <div className="relative z-10">

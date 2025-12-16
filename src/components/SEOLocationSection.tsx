@@ -1,3 +1,5 @@
+'use client'
+
 import { MapPin, Globe, Award, TrendingUp } from 'lucide-react'
 
 interface SEOLocationSectionProps {
@@ -35,12 +37,16 @@ export default function SEOLocationSection({
           {locations.map((location, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg p-4 text-center border border-gray-200 transition-all duration-300 transform hover:scale-105 hover:shadow-md group seo-location-card"
+              className="bg-white rounded-lg p-4 text-center border border-gray-200 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-md group"
               style={{ 
-                '--location-color': location.color,
-                '--location-color-base': location.color + '40',
                 borderColor: location.color + '40'
-              } as React.CSSProperties & { '--location-color': string; '--location-color-base': string }}
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = location.color
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = location.color + '40'
+              }}
             >
               <div className="mb-3 flex justify-center" style={{ color: location.color }}>
                 {location.icon}
