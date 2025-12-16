@@ -3610,3 +3610,31 @@ html {
   animation: scale-in 0.3s ease-out;
 }
 
+
+/* Service card hover effect - CSS-only replacement for onMouse handlers */
+.service-card {
+  border-color: var(--service-color-base, rgba(0, 0, 0, 0.1));
+}
+
+.service-card:hover {
+  border-color: var(--service-color, currentColor);
+}
+
+/* Why choose card hover effect */
+.why-choose-card {
+  border-color: var(--item-color-base, rgba(0, 0, 0, 0.1));
+}
+
+.why-choose-card:hover {
+  border-color: var(--item-color, currentColor);
+}
+
+/* SEO location card hover effect */
+.seo-location-card {
+  border-color: var(--location-color-base, rgba(0, 0, 0, 0.1));
+}
+
+.seo-location-card:hover {
+  border-color: var(--location-color, currentColor);
+}
+

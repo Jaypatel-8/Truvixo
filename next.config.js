@@ -122,12 +122,17 @@ const nextConfig = {
   //   enabled: process.env.ANALYZE === 'true',
   // },
 
-  // Webpack optimizations
+  // Webpack optimizations for faster builds
   webpack: (config, { dev, isServer }) => {
-    // Fix for lucide-react barrel optimization issue
-    config.resolve.alias = {
-      ...config.resolve.alias,
-    };
+    // Faster builds - cache modules
+    if (dev) {
+      config.cache = {
+        type: 'filesystem',
+        buildDependencies: {
+          config: [__filename],
+        },
+      };
+    }
 
     // Optimize for production
     if (!dev && !isServer) {
@@ -159,12 +164,10 @@ const nextConfig = {
       };
     }
 
-    // Tree shaking optimization (removed usedExports as it conflicts with Next.js cache)
-    // config.optimization.usedExports = true; // Conflicts with Next.js caching
+    // Tree shaking optimization
     config.optimization.sideEffects = false;
 
     return config;
-
   },
 
   // Note: Headers are not supported with static export

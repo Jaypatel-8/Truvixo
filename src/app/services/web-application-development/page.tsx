@@ -9,6 +9,7 @@ import Clientele from '@/components/Clientele'
 import ContactSection from '@/components/ContactSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
 import SEOLocationSection from '@/components/SEOLocationSection'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { getFAQsForPage } from '@/lib/pageData'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -50,45 +51,53 @@ export default function WebApplicationDevelopment() {
     {
       title: 'Progressive Web Apps',
       description: 'Fast, responsive web applications that work offline',
-      icon: <Globe className="w-6 h-6" strokeWidth={2} />
+      icon: <Globe className="w-8 h-8" strokeWidth={2} />,
+      color: '#5e2cb6'
     },
     {
       title: 'Single Page Applications',
       description: 'Modern SPAs built with React, Vue, or Angular',
-      icon: <Code className="w-6 h-6" strokeWidth={2} />
+      icon: <Code className="w-8 h-8" strokeWidth={2} />,
+      color: '#c91a6f'
     },
     {
       title: 'Full-Stack Web Apps',
       description: 'Complete web solutions with frontend and backend',
-      icon: <Layers className="w-6 h-6" strokeWidth={2} />
+      icon: <Layers className="w-8 h-8" strokeWidth={2} />,
+      color: '#fecc4d'
     },
     {
       title: 'E-commerce Platforms',
       description: 'Scalable online stores with payment integration',
-      icon: <ShoppingCart className="w-6 h-6" strokeWidth={2} />
+      icon: <ShoppingCart className="w-8 h-8" strokeWidth={2} />,
+      color: '#10b981'
     }
   ]
 
   const whyChooseUs = [
     { 
-      icon: <Zap className="w-6 h-6" strokeWidth={2} />, 
+      icon: <Zap className="w-7 h-7" strokeWidth={2} />, 
       title: 'Fast-Loading & SEO-Optimized', 
-      description: 'Built for speed and search engine visibility' 
+      description: 'Built for speed and search engine visibility',
+      color: '#5e2cb6'
     },
     { 
-      icon: <Shield className="w-6 h-6" strokeWidth={2} />, 
+      icon: <Shield className="w-7 h-7" strokeWidth={2} />, 
       title: 'Secure Architecture', 
-      description: 'Enterprise-grade security built-in' 
+      description: 'Enterprise-grade security built-in',
+      color: '#c91a6f'
     },
     { 
-      icon: <Code className="w-6 h-6" strokeWidth={2} />, 
+      icon: <Code className="w-7 h-7" strokeWidth={2} />, 
       title: 'Modern Frameworks', 
-      description: 'Next.js, React, Vue, and Angular expertise' 
+      description: 'Next.js, React, Vue, and Angular expertise',
+      color: '#fecc4d'
     },
     { 
-      icon: <TrendingUp className="w-6 h-6" strokeWidth={2} />, 
+      icon: <TrendingUp className="w-7 h-7" strokeWidth={2} />, 
       title: 'Scalable Cloud Deployment', 
-      description: 'Grows with your business needs' 
+      description: 'Grows with your business needs',
+      color: '#10b981'
     }
   ]
 
@@ -141,124 +150,98 @@ export default function WebApplicationDevelopment() {
   ]
 
   const industries = [
-    { name: 'Fintech', icon: <Building2 className="w-6 h-6" strokeWidth={2} /> },
-    { name: 'Healthcare', icon: <Heart className="w-6 h-6" strokeWidth={2} /> },
-    { name: 'Retail', icon: <ShoppingCart className="w-6 h-6" strokeWidth={2} /> },
-    { name: 'Logistics', icon: <Truck className="w-6 h-6" strokeWidth={2} /> },
-    { name: 'Real Estate', icon: <Home className="w-6 h-6" strokeWidth={2} /> },
-    { name: 'Education', icon: <GraduationCap className="w-6 h-6" strokeWidth={2} /> }
+    { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
+    { name: 'Healthcare', icon: <Heart className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
+    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
+    { name: 'Logistics', icon: <Truck className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Real Estate', icon: <Home className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
+    { name: 'Education', icon: <GraduationCap className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
   ]
 
   const faqs = getFAQsForPage('web-application-development')
 
   return (
     <main className="min-h-screen bg-white overflow-hidden">
-      {/* 1. Hero Section */}
-      <section className="relative min-h-[70vh] bg-white flex items-center justify-center overflow-hidden pt-20">
-        <div className="absolute inset-0 overflow-hidden opacity-[0.02]">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid-web" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-black"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid-web)" />
-          </svg>
+      {/* 1. Hero Section - Modern & Sleek */}
+      <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#fecc4d]/5 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
-          <div className="scroll-animate">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 mb-6 leading-tight">
-              Best Web Application{' '}
-              <span className="hollow-text-brand">
-                Development Company
-              </span>
-              <span className="text-xl md:text-2xl font-semibold text-gray-600 block mt-4">
-                Global Services • Worldwide
-              </span>
-            </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
-              We create modern, scalable, SEO-friendly web applications designed for user engagement and business performance. Our web applications are built with cutting-edge technologies, responsive design, and optimized performance to deliver exceptional user experiences. From single-page applications to complex enterprise web platforms, we transform your ideas into powerful digital solutions that drive business growth and user satisfaction.
-            </p>
-            <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 rounded-xl border border-[#5e2cb6]/20 max-w-4xl mx-auto">
-              <p className="text-gray-700 font-medium mb-3">Why Choose Our Web Application Development:</p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                <div className="flex items-start gap-2">
-                  <span className="text-[#5e2cb6] mt-1">✓</span>
-                  <span className="text-gray-600"><strong>Modern Tech Stack:</strong> Built with React, Next.js, Vue, Angular, and other cutting-edge frameworks</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-[#5e2cb6] mt-1">✓</span>
-                  <span className="text-gray-600"><strong>Responsive Design:</strong> Mobile-first approach ensuring perfect experience on all devices</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-[#5e2cb6] mt-1">✓</span>
-                  <span className="text-gray-600"><strong>SEO Optimized:</strong> Built with SEO best practices for better search engine rankings</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <span className="text-[#5e2cb6] mt-1">✓</span>
-                  <span className="text-gray-600"><strong>Scalable Architecture:</strong> Cloud-native solutions that grow with your business</span>
-                </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="scroll-animate">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
+                <Globe className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
+                <span className="text-sm font-semibold text-[#5e2cb6]">Web Development</span>
+              </div>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
+                Web Application <span className="hollow-text-brand">Development</span>{' '}
+                <span className="hollow-text-brand">Services</span>
+              </h1>
+              <h6 className="text-lg md:text-xl lg:text-2xl font-light text-gray-600 mb-8 leading-relaxed">
+                Modern, Scalable & SEO-Optimized
+              </h6>
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+                We create modern, scalable, SEO-friendly web applications designed for user engagement and business performance. Transform your ideas into powerful digital solutions that drive business growth and user satisfaction.
+              </p>
+              <div className="flex flex-col sm:flex-row items-start gap-4">
+                <button 
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
+                >
+                  <Calendar className="w-5 h-5" strokeWidth={2} />
+                  <span>Get a Quote</span>
+                </button>
+                <button 
+                  onClick={() => setIsContactModalOpen(true)}
+                  className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+                >
+                  <span>Contact Us</span>
+                  <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                </button>
               </div>
             </div>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              <div className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
-                <Zap className="w-5 h-5 text-[#5e2cb6] flex-shrink-0 mt-1" strokeWidth={2} />
-                <div>
-                  <p className="text-gray-900 font-semibold mb-1">Fast Performance</p>
-                  <p className="text-gray-600 text-sm">Lightning-fast load times and optimized performance for better user experience.</p>
+
+            {/* Right Visual - Service Cards Preview */}
+            <div className="hidden lg:grid grid-cols-2 gap-4 scroll-animate-scale">
+              {services.slice(0, 4).map((service, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  style={{ borderColor: '#5e2cb6' + '40' }}
+                >
+                  <div className="mb-4 text-gray-900">
+                    {service.icon}
+                  </div>
+                  <h3 className="font-bold text-gray-900 text-sm mb-2">{service.title}</h3>
+                  <p className="text-xs text-gray-600 line-clamp-2">{service.description}</p>
                 </div>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
-                <Shield className="w-5 h-5 text-[#c91a6f] flex-shrink-0 mt-1" strokeWidth={2} />
-                <div>
-                  <p className="text-gray-900 font-semibold mb-1">Secure & Scalable</p>
-                  <p className="text-gray-600 text-sm">Enterprise-grade security and architecture that scales with your business.</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
-                <TrendingUp className="w-5 h-5 text-[#fecc4d] flex-shrink-0 mt-1" strokeWidth={2} />
-                <div>
-                  <p className="text-gray-900 font-semibold mb-1">SEO Optimized</p>
-                  <p className="text-gray-600 text-sm">Built with SEO best practices to improve search engine visibility and rankings.</p>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-[#5e2cb6] text-white font-semibold py-4 px-10 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/20"
-              >
-                <Calendar className="w-5 h-5" strokeWidth={2} />
-                <span>Get a Quote</span>
-              </button>
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-10 rounded-lg hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-              >
-                <span>Contact Us</span>
-                <ArrowRight className="w-5 h-5" strokeWidth={2} />
-              </button>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       {/* 2. Our Client Section */}
-      {isMounted && <Clientele />}
+      {isMounted && <div className="mt-12"><Clientele /></div>}
 
-      {/* 3. Services */}
-      <section className="py-16 bg-white">
+      {/* 3. Services Section - Modern Grid with Colored Icons */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 scroll-animate">
+          <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Web Application{' '}
+              Our{' '}
               <span className="hollow-text-brand">
                 Services
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive web application development services tailored to your business needs. From responsive web apps to progressive web applications, we deliver solutions that drive engagement and growth.
+              Comprehensive web application development services tailored to your business needs
             </p>
           </div>
 
@@ -266,61 +249,86 @@ export default function WebApplicationDevelopment() {
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
+                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                style={{ 
+                  borderColor: service.color + '40',
+                  '--hover-border': service.color
+                } as React.CSSProperties}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = service.color
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = service.color + '40'
+                }}
               >
-                <div className="text-gray-900 mb-4 flex justify-center">
-                  {service.icon}
+                <div className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity" style={{ backgroundColor: service.color }}></div>
+                <div className="relative z-10">
+                  <div className="mb-6 flex justify-center" style={{ color: service.color }}>
+                    {service.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    {service.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  {service.description}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Why Choose */}
-      <section className="py-16 bg-gray-50">
+      {/* 4. Why Choose Section - Modern Grid Design */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 scroll-animate">
+          <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose{' '}
+              Why Choose Web Application{' '}
               <span className="hollow-text-brand">
-                Us
+                Development
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We combine technical expertise with business acumen to deliver web applications that not only look great but also drive real business results.
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              We deliver modern, scalable web applications that are built for performance, SEO, and user engagement, ensuring optimal results for your business.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
+                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                style={{ 
+                  borderColor: item.color + '40'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = item.color
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = item.color + '40'
+                }}
               >
-                <div className="text-gray-900 mb-4 flex justify-center">
-                  {item.icon}
+                <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: item.color }}></div>
+                <div className="relative z-10">
+                  <div className="mb-6 flex justify-center" style={{ color: item.color }}>
+                    {item.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 5. Industries */}
-      <section className="py-16 bg-white">
+      {/* 5. Industries Section - Compact Grid */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -330,17 +338,26 @@ export default function WebApplicationDevelopment() {
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              We have extensive experience building web applications for various industries, understanding unique requirements and delivering tailored solutions.
+              Serving diverse industries with tailored web application solutions
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-6 text-center border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg"
+                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                style={{ 
+                  borderColor: industry.color + '40'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = industry.color
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = industry.color + '40'
+                }}
               >
-                <div className="text-gray-900 mb-3 flex justify-center">
+                <div className="mb-3 flex justify-center" style={{ color: industry.color }}>
                   {industry.icon}
                 </div>
                 <h3 className="font-semibold text-gray-900 text-sm">{industry.name}</h3>
@@ -350,52 +367,12 @@ export default function WebApplicationDevelopment() {
         </div>
       </section>
 
-      {/* 6. Get a Quote Section */}
-      <section className="py-16 bg-[#5e2cb6] text-white relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-              Get a{' '}
-              <span className="hollow-text-white">
-                Quote
-              </span>
-            </h2>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-              Ready to build your web application? Get in touch and let's discuss your project requirements.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-              >
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>Call Us</span>
-              </button>
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-lg hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
-              >
-                <Calendar className="w-5 h-5" strokeWidth={2} />
-                <span>Schedule Consultation</span>
-              </button>
-            </div>
-            <div className="mt-12 flex flex-wrap justify-center gap-8 text-white/80">
-              <a href="mailto:sales@truvixoo.com" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Mail className="w-5 h-5" strokeWidth={2} />
-                <span>sales@truvixoo.com</span>
-              </a>
-              <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>+91 63543 26412</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* 7. Technologies We Use */}
+      {/* 6. Technologies We Use */}
+      <Technologies technologies={technologies} />
+
       {/* Additional Content - Web App Benefits */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -474,7 +451,7 @@ export default function WebApplicationDevelopment() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -544,8 +521,6 @@ export default function WebApplicationDevelopment() {
         </div>
       </section>
 
-      <Technologies technologies={technologies} />
-
       {/* 8. Process Diagram */}
       <ProcessDiagram 
         title="Web Development Process"
@@ -565,13 +540,21 @@ export default function WebApplicationDevelopment() {
         description="Have a project in mind? Let's discuss how we can help transform your business with web applications."
       />
 
-      {/* 11. Client Section at Bottom */}
-      {isMounted && (
-        <Clientele 
-          title="Trusted by Leading Companies"
-          subtitle="Join our growing list of satisfied clients"
-        />
-      )}
+      {/* 12. Get Quote Section - At the end with white background */}
+      <GetQuoteSection
+        title="Ready to Get"
+        hollowText="Started"
+        description="Ready to build your web application? Get in touch and let's discuss your project requirements."
+        primaryCTA={{
+          text: 'Get a Quote',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        variant="white"
+      />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

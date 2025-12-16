@@ -1,5 +1,3 @@
-'use client'
-
 import { ReactNode } from 'react'
 
 interface WhyChooseItem {
@@ -49,16 +47,12 @@ export default function WhyChooseSection({
           {items.map((item, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+              className="group bg-white rounded-2xl p-8 border-2 border-gray-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden why-choose-card"
               style={{ 
+                '--item-color': item.color,
+                '--item-color-base': item.color + '40',
                 borderColor: item.color + '40'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = item.color
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = item.color + '40'
-              }}
+              } as React.CSSProperties & { '--item-color': string; '--item-color-base': string }}
             >
               <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: item.color }}></div>
               <div className="relative z-10">
