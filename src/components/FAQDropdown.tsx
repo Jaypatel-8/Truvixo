@@ -26,7 +26,7 @@ export default function FAQDropdown({
   }
 
   return (
-    <div className={className}>
+    <div className={`py-16 ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {title && (
           <div className="text-center mb-16 scroll-animate">

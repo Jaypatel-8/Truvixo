@@ -22,7 +22,7 @@ export default function GetQuoteSection({
   secondaryCTA
 }: GetQuoteSectionProps) {
   return (
-    <section className="py-16 bg-[#5e2cb6] text-white relative overflow-hidden">
+    <section className="mt-16 py-16 bg-[#5e2cb6] text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="scroll-animate">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight text-white">
