@@ -4,3 +4,5 @@ export default function IndustryPage() {
   redirect('/industry/fintech')
 }
 
+
+

@@ -172,7 +172,6 @@ const Navbar = () => {
   const companyItems = [
     { name: 'About Us', href: '/about' },
     { name: 'Our Approach', href: '/our-approach' },
-    { name: 'Insights / Blog', href: '/blog' },
     { name: 'Careers', href: '/careers' },
     { name: 'Contact / Request Quote', href: '/contact' }
   ]
@@ -605,3 +604,4 @@ const Navbar = () => {
 }
 
 export default Navbar
+

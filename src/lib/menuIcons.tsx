@@ -51,7 +51,6 @@ export const menuIcons = {
   // Company
   'About Us': <Users className="w-4 h-4" strokeWidth={2} />,
   'Our Approach': <Target className="w-4 h-4" strokeWidth={2} />,
-  'Insights / Blog': <FileText className="w-4 h-4" strokeWidth={2} />,
   'Careers': <Briefcase className="w-4 h-4" strokeWidth={2} />,
   'Contact / Request Quote': <Mail className="w-4 h-4" strokeWidth={2} />,
   
@@ -62,5 +61,7 @@ export const menuIcons = {
 export function getMenuIcon(name: string) {
   return menuIcons[name as keyof typeof menuIcons] || null
 }
+
+
 
 

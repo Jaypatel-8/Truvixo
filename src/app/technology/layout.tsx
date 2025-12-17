@@ -53,3 +53,5 @@ export default function TechnologyLayout({
   return children
 }
 
+
+

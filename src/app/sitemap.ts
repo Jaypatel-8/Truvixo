@@ -25,7 +25,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: withTrailingSlash('/ai'), priority: 0.8, changeFrequency: 'weekly' as const },
     { url: withTrailingSlash('/about'), priority: 0.8, changeFrequency: 'monthly' as const },
     { url: withTrailingSlash('/contact'), priority: 0.8, changeFrequency: 'monthly' as const },
-    { url: withTrailingSlash('/blog'), priority: 0.7, changeFrequency: 'weekly' as const },
     { url: withTrailingSlash('/work'), priority: 0.7, changeFrequency: 'weekly' as const },
     { url: withTrailingSlash('/careers'), priority: 0.7, changeFrequency: 'monthly' as const },
     { url: withTrailingSlash('/our-approach'), priority: 0.7, changeFrequency: 'monthly' as const },

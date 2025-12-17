@@ -57,7 +57,6 @@ const Footer = () => {
     { name: 'About Us', href: '/about' },
     { name: 'Our Work', href: '/our-work' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Blog', href: '/blog' },
     { name: 'Careers', href: '/careers' }
   ]
 
@@ -273,6 +272,8 @@ const Footer = () => {
 }
 
 export default Footer
+
+
 
 
 

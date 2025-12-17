@@ -132,3 +132,5 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
 Technologies.displayName = 'Technologies'
 
 export default Technologies
+
+
