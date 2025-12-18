@@ -645,7 +645,6 @@ export default function About() {
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business with our comprehensive solutions."
       />
-
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 
@@ -653,4 +652,3 @@ export default function About() {
     </main>
   )
 }
-

@@ -55,7 +55,6 @@ export default function ProcessDiagram({
   steps = defaultSteps,
   className = ""
 }: ProcessDiagramProps) {
-  const [activeStep, setActiveStep] = useState(0)
   const [isVisible, setIsVisible] = useState(false)
 
   // Logo colors - using all brand colors
@@ -92,14 +91,6 @@ export default function ProcessDiagram({
     }
   }, [])
 
-  useEffect(() => {
-    if (isVisible) {
-      const interval = setInterval(() => {
-        setActiveStep((prev) => (prev + 1) % steps.length)
-      }, 2000)
-      return () => clearInterval(interval)
-    }
-  }, [isVisible, steps.length])
 
   return (
     <section className={`py-16 bg-white relative overflow-hidden ${className}`} id="process-diagram-section">
@@ -134,95 +125,58 @@ export default function ProcessDiagram({
         {/* Process Diagram - Desktop View */}
         <div className="hidden lg:block">
           <div className="relative">
-            {/* Connecting Line */}
-            <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gray-200 transform -translate-y-1/2 z-0">
-              <div 
-                className="absolute top-0 left-0 h-full transition-all duration-1000 ease-in-out"
-                style={{ 
-                  width: isVisible ? `${((activeStep + 1) / steps.length) * 100}%` : '0%',
-                  background: `linear-gradient(to right, ${logoColors.slice(0, steps.length).join(', ')})`
-                }}
-              ></div>
-            </div>
-
-            {/* Process Steps */}
-            <div className="relative flex justify-between items-center">
+            {/* Main Timeline Line */}
+            <div className="absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-[#5e2cb6] via-[#c91a6f] via-[#d97706] to-[#059669] rounded-full z-0"></div>
+            
+            {/* Process Steps Container */}
+            <div className="relative flex justify-between items-start pt-8 pb-16">
               {steps.map((step, index) => {
-                const isActive = index <= activeStep
-                const isCurrent = index === activeStep
                 const stepColor = logoColors[index % logoColors.length]
                 
                 return (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center flex-1 relative z-10"
-                    onMouseEnter={() => setActiveStep(index)}
-                  >
-                    {/* Step Circle */}
-                    <div
-                      className={`w-20 h-20 rounded-full flex items-center justify-center mb-4 transition-all duration-500 transform border-2 ${
-                        isActive
-                          ? 'scale-110 shadow-lg'
-                          : 'scale-100 shadow-md bg-white'
-                      } ${isCurrent ? 'ring-4 ring-offset-2' : ''}`}
-                      style={{
-                        backgroundColor: isActive ? stepColor : 'white',
-                        borderColor: stepColor,
-                        animationDelay: `${index * 0.2}s`,
-                        animation: isVisible ? 'fadeInUp 0.6s ease-out forwards' : 'none'
-                      }}
-                    >
+                  <div key={index} className="flex-1 flex flex-col items-center relative px-2">
+                    {/* Process Node on Timeline */}
+                    <div className="relative z-20 mb-6">
                       <div 
-                        className={`transition-all duration-500 ${isActive ? 'scale-110' : ''}`}
-                        style={{ color: isActive ? 'white' : stepColor }}
+                        className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl transform hover:scale-110 transition-transform duration-300 border-4 border-white"
+                        style={{ 
+                          backgroundColor: stepColor,
+                          color: 'white'
+                        }}
                       >
                         {step.icon}
                       </div>
-                    </div>
-
-                    {/* Step Number */}
-                    <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center mb-3 font-bold text-sm transition-all duration-500 border-2 ${
-                        isActive ? 'scale-110' : ''
-                      }`}
-                      style={{
-                        backgroundColor: isActive ? stepColor : 'white',
-                        borderColor: stepColor,
-                        color: isActive ? 'white' : stepColor
-                      }}
-                    >
-                      {index + 1}
-                    </div>
-
-                    {/* Step Content */}
-                    <div className="text-center max-w-[180px]">
-                      <h3
-                        className={`font-bold mb-2 transition-all duration-500 ${
-                          isActive ? 'text-gray-900 text-lg' : 'text-gray-500 text-base'
-                        }`}
+                      <div 
+                        className="mt-3 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm mx-auto border-3 border-white shadow-lg"
+                        style={{ 
+                          backgroundColor: stepColor,
+                          color: 'white',
+                          borderWidth: '3px'
+                        }}
                       >
-                        {step.title}
-                      </h3>
-                      <p
-                        className={`text-sm transition-all duration-500 ${
-                          isActive ? 'text-gray-600' : 'text-gray-400'
-                        }`}
-                      >
-                        {step.description}
-                      </p>
+                        {index + 1}
+                      </div>
                     </div>
 
-                    {/* Active Indicator */}
-                    {isCurrent && (
-                      <div className="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                        <div 
-                          className="w-3 h-3 rounded-full animate-ping"
-                          style={{ backgroundColor: stepColor }}
-                        ></div>
-                        <div 
-                          className="absolute top-0 left-0 w-3 h-3 rounded-full"
-                          style={{ backgroundColor: stepColor }}
-                        ></div>
+                    {/* Step Card */}
+                    <div className="w-full max-w-[200px]">
+                      <div className="bg-white rounded-xl p-5 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl relative overflow-hidden group min-h-[240px] flex flex-col">
+                        <div className="absolute top-0 right-0 w-16 h-16 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: stepColor }}></div>
+                        <div className="relative z-10 flex flex-col h-full">
+                          <h3 className="text-sm font-bold text-gray-900 mb-2 group-hover:text-[#5e2cb6] transition-colors line-clamp-2 min-h-[40px]">
+                            {step.title}
+                          </h3>
+                          <p className="text-xs text-gray-600 leading-relaxed flex-grow line-clamp-5">
+                            {step.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Connecting Arrow */}
+                    {index < steps.length - 1 && (
+                      <div className="absolute top-24 left-full transform -translate-x-1/2 -translate-y-1/2 z-10">
+                        <ArrowRight className="w-6 h-6 text-gray-600" strokeWidth={2.5} aria-hidden="true" />
                       </div>
                     )}
                   </div>
@@ -233,84 +187,59 @@ export default function ProcessDiagram({
         </div>
 
         {/* Process Diagram - Mobile/Tablet View */}
-        <div className="lg:hidden">
-          <div className="space-y-6">
-            {steps.map((step, index) => {
-              const isActive = index <= activeStep
-              const isCurrent = index === activeStep
-              const stepColor = logoColors[index % logoColors.length]
-              
-              return (
-                <div
-                  key={index}
-                  className={`relative flex items-start gap-4 p-6 rounded-xl transition-all duration-500 transform border-2 ${
-                    isActive
-                      ? 'bg-white shadow-xl scale-105'
-                      : 'bg-white/50 shadow-md'
-                  } ${isCurrent ? 'ring-2' : ''}`}
-                  style={{
-                    borderColor: isActive ? stepColor : '#e5e7eb'
-                  }}
-                  onMouseEnter={() => setActiveStep(index)}
-                >
-                  {/* Step Number & Icon */}
-                  <div className="flex-shrink-0">
-                    <div
-                      className={`w-16 h-16 rounded-xl flex items-center justify-center transition-all duration-500 border-2`}
-                      style={{
-                        backgroundColor: isActive ? stepColor : 'white',
-                        borderColor: stepColor
-                      }}
-                    >
-                      <div style={{ color: isActive ? 'white' : stepColor }}>
-                        {step.icon}
-                      </div>
-                    </div>
-                    <div
-                      className={`mt-2 w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs transition-all duration-500 border-2`}
-                      style={{
-                        backgroundColor: isActive ? stepColor : 'white',
-                        borderColor: stepColor,
-                        color: isActive ? 'white' : stepColor
-                      }}
-                    >
-                      {index + 1}
-                    </div>
+        <div className="lg:hidden space-y-6">
+          {steps.map((step, index) => {
+            const stepColor = logoColors[index % logoColors.length]
+            const stepColors = logoColors
+            
+            return (
+              <div
+                key={index}
+                className="relative flex items-start gap-4 p-6 bg-white rounded-xl border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl"
+                style={{
+                  borderColor: stepColor + '40'
+                }}
+              >
+                {/* Connecting Line */}
+                {index < steps.length - 1 && (
+                  <div className="absolute left-5 top-16 bottom-0 w-0.5 bg-gradient-to-b" style={{ background: `linear-gradient(to bottom, ${stepColor}, ${stepColors[(index + 1) % stepColors.length]})` }}></div>
+                )}
+                
+                {/* Step Node */}
+                <div className="flex-shrink-0 relative z-10">
+                  <div 
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-xl border-4 border-white"
+                    style={{ 
+                      backgroundColor: stepColor,
+                      color: 'white'
+                    }}
+                  >
+                    {step.icon}
                   </div>
-
-                  {/* Step Content */}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h3
-                        className={`font-bold transition-all duration-500 ${
-                          isActive ? 'text-gray-900 text-lg' : 'text-gray-600'
-                        }`}
-                      >
-                        {step.title}
-                      </h3>
-                      {isActive && (
-                        <CheckCircle className="w-5 h-5 animate-scale-in" style={{ color: stepColor }} strokeWidth={2} />
-                      )}
-                    </div>
-                    <p
-                      className={`text-sm transition-all duration-500 ${
-                        isActive ? 'text-gray-600' : 'text-gray-400'
-                      }`}
-                    >
-                      {step.description}
-                    </p>
+                  <div 
+                    className="mt-3 w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm border-3 border-white shadow-lg"
+                    style={{ 
+                      backgroundColor: stepColor,
+                      color: 'white',
+                      borderWidth: '3px'
+                    }}
+                  >
+                    {index + 1}
                   </div>
-
-                  {/* Arrow for mobile */}
-                  {index < steps.length - 1 && (
-                    <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
-                      <ArrowRight className="w-6 h-6 rotate-90" style={{ color: stepColor + '60' }} strokeWidth={2} />
-                    </div>
-                  )}
                 </div>
-              )
-            })}
-          </div>
+
+                {/* Step Content */}
+                <div className="flex-1">
+                  <h3 className="text-sm font-bold text-gray-900 mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
 

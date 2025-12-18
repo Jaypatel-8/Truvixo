@@ -84,11 +84,11 @@ export default function HireAIMLEngineers() {
     { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg', color: '#FF6F00', category: 'backend' as const },
     { name: 'PyTorch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg', color: '#EE4C2C', category: 'backend' as const },
     { name: 'AWS SageMaker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
-    { name: 'Scikit-learn', logo: 'https://scikit-learn.org/stable/_static/scikit-learn-logo-small.png', color: '#F7931E', category: 'backend' as const },
+    { name: 'Scikit-learn', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/scikitlearn.svg', color: '#F7931E', category: 'backend' as const },
     { name: 'Jupyter', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg', color: '#F37626', category: 'backend' as const },
-    { name: 'Pandas', logo: 'https://pandas.pydata.org/static/img/pandas_mark.svg', color: '#150458', category: 'backend' as const },
-    { name: 'NumPy', logo: 'https://numpy.org/images/logo.svg', color: '#013243', category: 'backend' as const },
-    { name: 'Keras', logo: 'https://keras.io/img/logo.png', color: '#D00000', category: 'backend' as const },
+    { name: 'Pandas', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/pandas.svg', color: '#150458', category: 'backend' as const },
+    { name: 'NumPy', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/numpy.svg', color: '#013243', category: 'backend' as const },
+    { name: 'Keras', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/keras.svg', color: '#D00000', category: 'backend' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const }
   ]
 
@@ -156,5 +156,3 @@ export default function HireAIMLEngineers() {
     />
   )
 }
-
-

@@ -218,10 +218,10 @@ export default function CustomSoftwareDevelopment() {
                 Custom <span className="hollow-text-brand">Software Development</span>{' '}
                 <span className="hollow-text-brand">Solutions</span>
               </h1>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 mb-6 leading-tight">
+              <h2 className="text-xl md:text-2xl font-light text-gray-700 mb-4 leading-tight">
                 Tailored to Your Business Needs
               </h2>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
                 We build scalable, secure, and high-performance custom software tailored to your business needs. We serve clients worldwide. Transform your ideas into powerful digital solutions that drive innovation and growth.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">

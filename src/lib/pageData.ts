@@ -488,6 +488,28 @@ export const pageFAQs: Record<string, Array<{ question: string; answer: string }
       answer: 'Yes, we build complete hotel management systems with room booking, check-in/out, and more.'
     }
   ],
+  'database': [
+    {
+      question: 'Which database technologies do you support?',
+      answer: 'We support both SQL and NoSQL databases including PostgreSQL, MySQL, MongoDB, Redis, DynamoDB, Cassandra, and more. We choose the best database based on your specific requirements.'
+    },
+    {
+      question: 'Can you help with database migration?',
+      answer: 'Yes, we specialize in database migration, schema design, data migration, and ensuring zero downtime during the migration process.'
+    },
+    {
+      question: 'Do you provide database optimization services?',
+      answer: 'Absolutely! We optimize database performance through query optimization, indexing, caching strategies, and database architecture improvements.'
+    },
+    {
+      question: 'How do you ensure database security?',
+      answer: 'We implement security best practices including encryption, access controls, regular backups, and compliance with data protection regulations.'
+    },
+    {
+      question: 'Can you design scalable database architectures?',
+      answer: 'Yes, we design scalable database architectures that can handle growing data volumes and user loads, including sharding, replication, and cloud database solutions.'
+    }
+  ],
   'about': [
     {
       question: 'Where is TruVixo located?',
@@ -512,6 +534,50 @@ export const pageFAQs: Record<string, Array<{ question: string; answer: string }
     {
       question: 'What makes TruVixo different?',
       answer: 'We combine AI-driven innovation, end-to-end partnership, proven results, and future-ready solutions. We\'re not just service providers – we\'re your partners in transformation.'
+    }
+  ],
+  'our-approach': [
+    {
+      question: 'What is your development methodology?',
+      answer: 'We follow agile methodology with iterative sprints, continuous feedback, and regular client communication to ensure transparency and alignment throughout the project.'
+    },
+    {
+      question: 'How do you ensure quality in your projects?',
+      answer: 'We implement comprehensive quality assurance practices including code reviews, automated testing, performance optimization, and security audits at every stage of development.'
+    },
+    {
+      question: 'What makes your approach different?',
+      answer: 'Our approach combines technical expertise with business acumen, focusing on delivering solutions that not only meet technical requirements but also drive real business value and ROI.'
+    },
+    {
+      question: 'How do you handle project communication?',
+      answer: 'We maintain transparent communication through regular updates, sprint reviews, and dedicated project management tools to keep you informed at every step.'
+    },
+    {
+      question: 'Do you provide documentation?',
+      answer: 'Yes, we provide comprehensive documentation including technical documentation, user guides, API documentation, and deployment guides for all projects.'
+    }
+  ],
+  'careers': [
+    {
+      question: 'What positions are you currently hiring for?',
+      answer: 'We are always looking for talented developers, designers, and engineers across various roles including frontend, backend, mobile, DevOps, AI/ML, and more.'
+    },
+    {
+      question: 'What is the work culture like?',
+      answer: 'We foster a collaborative, innovative, and inclusive work environment that encourages learning, growth, and work-life balance.'
+    },
+    {
+      question: 'Do you offer remote work opportunities?',
+      answer: 'Yes, we offer flexible remote and hybrid work options to accommodate different working preferences and lifestyles.'
+    },
+    {
+      question: 'What benefits do you offer?',
+      answer: 'We offer competitive salaries, health insurance, professional development opportunities, flexible working hours, and a supportive team environment.'
+    },
+    {
+      question: 'How can I apply?',
+      answer: 'You can apply through our careers page by submitting your resume and portfolio. We review all applications and reach out to qualified candidates.'
     }
   ],
   'default': [

@@ -69,10 +69,10 @@ export default function ServicePageClient({ slug }: { slug: string }) {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
               Expert <span className="hollow-text-brand">{serviceName}</span> Services
             </h1>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 mb-6 leading-tight">
+            <h2 className="text-xl md:text-2xl font-light text-gray-700 mb-4 leading-tight">
               Delivering Excellence and Innovation
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light">
+            <p className="text-base md:text-lg text-gray-600 mb-12 max-w-4xl mx-auto font-light">
               We deliver exceptional {serviceName.toLowerCase()} services with proven expertise and innovative solutions tailored to your business needs. We serve clients worldwide. Transform your vision into reality with cutting-edge technology and industry-leading practices.
             </p>
           </div>

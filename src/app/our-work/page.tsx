@@ -299,10 +299,10 @@ const OurWork = () => {
                   Work
                 </span>
               </h1>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 mb-6 leading-tight">
+              <h2 className="text-xl md:text-2xl font-light text-gray-700 mb-4 leading-tight">
                 Turning Vision into Impactful Digital Experiences
               </h2>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
                 Explore how TruVixo helps businesses innovate through technology and creativity. Discover our portfolio of successful projects that demonstrate our ability to deliver exceptional results across various industries.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -765,6 +765,4 @@ const OurWork = () => {
     </div>
   )
 }
-
 export default OurWork
-

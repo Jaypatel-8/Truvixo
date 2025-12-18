@@ -114,7 +114,11 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
                     height={48}
                     className="object-contain"
                     loading="lazy"
-                    unoptimized
+                    onError={(e) => {
+                      // Fallback to a placeholder if image fails to load
+                      const target = e.target as HTMLImageElement
+                      target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iOCIgZmlsbD0iI0YzRjRGNiIvPgo8cGF0aCBkPSJNMjQgMTJMMzYgMjRMMjQgMzZMMTIgMjRMMjQgMTJaIiBmaWxsPSIjOEU5MEE2Ii8+Cjwvc3ZnPgo='
+                    }}
                   />
                 </div>
                 <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors">

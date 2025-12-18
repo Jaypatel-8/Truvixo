@@ -127,7 +127,7 @@ export default function ManufacturingDevelopment() {
     { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
     { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', color: '#326CE5', category: 'devops' as const },
-    { name: 'IoT Platforms', logo: 'https://www.iot.org/favicon.ico', color: '#5A5A5A', category: 'backend' as const },
+    { name: 'IoT Platforms', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/arduino.svg', color: '#5A5A5A', category: 'backend' as const },
     { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
     { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248', category: 'database' as const }
   ]
@@ -192,7 +192,7 @@ export default function ManufacturingDevelopment() {
                   Development
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
                 We build comprehensive manufacturing solutions that optimize production. From ERP systems to IoT integration, we deliver manufacturing technology that drives efficiency.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -445,6 +445,4 @@ export default function ManufacturingDevelopment() {
     </main>
   )
 }
-
-
 

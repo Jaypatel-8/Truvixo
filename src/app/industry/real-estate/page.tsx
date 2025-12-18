@@ -124,10 +124,10 @@ export default function RealEstateDevelopment() {
     { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'frontend' as const },
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
-    { name: 'Google Maps API', logo: 'https://www.google.com/maps/favicon.ico', color: '#4285F4', category: 'backend' as const },
+    { name: 'Google Maps API', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/googlemaps.svg', color: '#4285F4', category: 'backend' as const },
     { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
-    { name: 'Three.js', logo: 'https://threejs.org/favicon.ico', color: '#000000', category: 'frontend' as const },
-    { name: 'Matterport', logo: 'https://matterport.com/favicon.ico', color: '#5A5A5A', category: 'frontend' as const },
+    { name: 'Three.js', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/threedotjs.svg', color: '#000000', category: 'frontend' as const },
+    { name: 'Matterport', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/matterport.svg', color: '#5A5A5A', category: 'frontend' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
     { name: 'Redis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg', color: '#DC382D', category: 'database' as const }
   ]
@@ -192,7 +192,7 @@ export default function RealEstateDevelopment() {
                   Development
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
                 We build comprehensive real estate solutions that streamline operations. From property management to virtual tours, we deliver real estate technology that transforms the industry.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -445,6 +445,4 @@ export default function RealEstateDevelopment() {
     </main>
   )
 }
-
-
 

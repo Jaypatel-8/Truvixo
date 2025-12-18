@@ -80,49 +80,36 @@ const Navbar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  // SERVICES - Organized by categories
+  // SERVICES - Organized by categories (no duplicates)
   const servicesCategories = [
     {
-      category: 'Digital Transformation',
+      category: 'Software Development',
       items: [
         { name: 'Custom Software Development', href: '/services/custom-software-development' },
-        { name: 'Enterprise Software Development', href: '/services/enterprise-software-development' },
-        { name: 'Legacy App Modernization', href: '/services/legacy-app-modernization' }
-      ]
-    },
-    {
-      category: 'Web Development',
-      items: [
         { name: 'Web Application Development', href: '/services/web-application-development' },
-        { name: 'Custom Software Development', href: '/services/custom-software-development' },
-        { name: 'CMS Development', href: '/services/cms-development' },
-        { name: 'API Development & Integration', href: '/services/api-development-integration' }
+        { name: 'Mobile App Development', href: '/services/mobile-app-development' },
+        { name: 'Enterprise Software Development', href: '/services/enterprise-software-development' },
+        { name: 'API Development & Integration', href: '/services/api-development-integration' },
+        { name: 'CMS Development', href: '/services/cms-development' }
       ]
     },
     {
-      category: 'Mobile App Development',
+      category: 'E-commerce & SaaS',
       items: [
-        { name: 'Mobile App Development', href: '/services/mobile-app-development' }
+        { name: 'E-commerce Development', href: '/services/ecommerce-development' },
+        { name: 'SaaS Product Development', href: '/services/saas-product-development' }
       ]
     },
     {
-      category: 'SaaS & Cloud',
-      items: [
-        { name: 'SaaS Product Development', href: '/services/saas-product-development' },
-        { name: 'Enterprise Software Development', href: '/services/enterprise-software-development' }
-      ]
-    },
-    {
-      category: 'AI & ML Development',
+      category: 'AI & Machine Learning',
       items: [
         { name: 'AI Development Services', href: '/services/ai-development-services' },
         { name: 'Machine Learning Model Development', href: '/services/machine-learning-model-development' }
       ]
     },
     {
-      category: 'Design & Development',
+      category: 'Modernization & Support',
       items: [
-        { name: 'E-commerce Development', href: '/services/ecommerce-development' },
         { name: 'Legacy App Modernization', href: '/services/legacy-app-modernization' },
         { name: 'Maintenance & Support', href: '/services/maintenance-support' }
       ]
@@ -172,6 +159,7 @@ const Navbar = () => {
   const companyItems = [
     { name: 'About Us', href: '/about' },
     { name: 'Our Approach', href: '/our-approach' },
+    { name: 'Insights / Blog', href: '/blog' },
     { name: 'Careers', href: '/careers' },
     { name: 'Contact / Request Quote', href: '/contact' }
   ]

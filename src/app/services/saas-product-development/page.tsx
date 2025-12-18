@@ -7,7 +7,6 @@ import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
 import Clientele from '@/components/Clientele'
 import ContactSection from '@/components/ContactSection'
-import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
 import { getFAQsForPage } from '@/lib/pageData'
 
@@ -143,7 +142,7 @@ export default function SaaSProductDevelopment() {
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
     { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
-    { name: 'Stripe', logo: 'https://stripe.com/favicon.ico', color: '#635BFF', category: 'backend' as const },
+    { name: 'Stripe', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/stripe/stripe-original.svg', color: '#635BFF', category: 'backend' as const },
     { name: 'Redis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg', color: '#DC382D', category: 'database' as const },
     { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', color: '#326CE5', category: 'devops' as const },
     { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6', category: 'frontend' as const }
@@ -216,7 +215,7 @@ export default function SaaSProductDevelopment() {
                   Development
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
                 We help companies build, scale, and launch successful SaaS products with modern cloud architecture and subscription management.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -395,6 +394,53 @@ export default function SaaSProductDevelopment() {
         </div>
       </section>
 
+      {/* 6. Get a Quote Section */}
+      <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+              Ready to Launch Your{' '}
+              <span className="hollow-text-white">
+                SaaS Platform?
+              </span>
+            </h2>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
+              Get in touch and let's discuss how we can transform your business with SaaS solutions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+              >
+                <Phone className="w-5 h-5" strokeWidth={2} />
+                <span>Call Us</span>
+              </button>
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-xl hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
+              >
+                <Calendar className="w-5 h-5" strokeWidth={2} />
+                <span>Schedule Consultation</span>
+              </button>
+            </div>
+            <div className="flex flex-wrap justify-center gap-8 text-white/80">
+              <a href="mailto:sales@truvixoo.com" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Mail className="w-5 h-5" strokeWidth={2} />
+                <span>sales@truvixoo.com</span>
+              </a>
+              <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Phone className="w-5 h-5" strokeWidth={2} />
+                <span>+91 63543 26412</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Additional Content - Benefits */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -564,21 +610,6 @@ export default function SaaSProductDevelopment() {
         description="Have a project in mind? Let's discuss how we can help transform your business with SaaS solutions."
       />
 
-      {/* Get Quote Section - Last section before footer */}
-      <GetQuoteSection
-        title="Ready to Launch Your"
-        hollowText="SaaS Platform?"
-        description="Get in touch and let's discuss how we can transform your business with SaaS solutions."
-        primaryCTA={{
-          text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
-        }}
-        secondaryCTA={{
-          text: 'Schedule Consultation',
-          onClick: () => setIsContactModalOpen(true)
-        }}
-      />
-
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 
@@ -586,6 +617,4 @@ export default function SaaSProductDevelopment() {
     </main>
   )
 }
-
-
 

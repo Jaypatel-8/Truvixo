@@ -127,8 +127,8 @@ export default function EducationDevelopment() {
     { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248', category: 'database' as const },
     { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'SCORM', logo: 'https://scorm.com/wp-content/uploads/2018/10/scorm-logo.png', color: '#4A90E2', category: 'backend' as const },
-    { name: 'Zoom API', logo: 'https://zoom.us/favicon.ico', color: '#2D8CFF', category: 'backend' as const },
-    { name: 'WebRTC', logo: 'https://webrtc.org/favicon.ico', color: '#333333', category: 'backend' as const },
+    { name: 'Zoom API', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/zoom.svg', color: '#2D8CFF', category: 'backend' as const },
+    { name: 'WebRTC', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/webrtc.svg', color: '#333333', category: 'backend' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const }
   ]
 
@@ -192,7 +192,7 @@ export default function EducationDevelopment() {
                   E-Learning
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
                 We build comprehensive education and e-learning solutions that enhance learning experiences. From LMS platforms to virtual classrooms, we deliver education technology that makes a difference.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -445,6 +445,4 @@ export default function EducationDevelopment() {
     </main>
   )
 }
-
-
 

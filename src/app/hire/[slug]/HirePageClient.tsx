@@ -45,10 +45,10 @@ export default function HirePageClient({ slug }: { slug: string }) {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
               Hire Expert <span className="hollow-text-brand">{pageName}</span>
             </h1>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 mb-6 leading-tight">
+            <h2 className="text-xl md:text-2xl font-light text-gray-700 mb-4 leading-tight">
               Connect with Top-Tier Talent
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light">
+            <p className="text-base md:text-lg text-gray-600 mb-12 max-w-4xl mx-auto font-light">
               Connect with top-tier {pageName.toLowerCase()} talent for your development needs. We serve clients worldwide. Our expert team brings years of experience and proven track record in delivering exceptional results.
             </p>
           </div>

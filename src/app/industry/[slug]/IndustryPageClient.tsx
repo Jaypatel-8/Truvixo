@@ -45,10 +45,10 @@ export default function IndustryPageClient({ slug }: { slug: string }) {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
               <span className="hollow-text-brand">{pageName}</span> Software Solutions
             </h1>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 mb-6 leading-tight">
+            <h2 className="text-xl md:text-2xl font-light text-gray-700 mb-4 leading-tight">
               Industry-Specific Technology Expertise
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light">
+            <p className="text-base md:text-lg text-gray-600 mb-12 max-w-4xl mx-auto font-light">
               We deliver comprehensive {pageName.toLowerCase()} software solutions with industry-specific technology expertise. We serve clients worldwide. Transform your business operations with tailored technology that drives efficiency and growth.
             </p>
           </div>

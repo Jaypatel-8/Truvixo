@@ -192,7 +192,7 @@ export default function HealthcareDevelopment() {
                   Development
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
                 We build secure, HIPAA-compliant healthcare solutions that improve patient care. From telemedicine to EMR systems, we deliver healthcare technology that makes a difference.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -445,6 +445,4 @@ export default function HealthcareDevelopment() {
     </main>
   )
 }
-
-
 

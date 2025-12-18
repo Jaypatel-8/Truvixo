@@ -216,7 +216,7 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
                 {project.title}
               </h1>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-light text-gray-700 mb-6 leading-tight">
+              <h2 className="text-xl md:text-2xl font-light text-gray-700 mb-4 leading-tight">
                 {project.client} <span className="hollow-text-brand">Case</span> Study
               </h2>
               <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">

@@ -105,16 +105,6 @@ const nextConfig = {
         hostname: 'appium.io',
         pathname: '/**',
       },
-      {
-        protocol: 'https',
-        hostname: 'upload.wikimedia.org',
-        pathname: '/**',
-      },
-      {
-        protocol: 'https',
-        hostname: 'cdn.jsdelivr.net',
-        pathname: '/**',
-      },
     ],
   },
   

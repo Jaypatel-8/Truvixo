@@ -1,37 +1,25 @@
 import { MetadataRoute } from 'next'
 
-// Force static generation so the sitemap is emitted as XML (not HTML) in exports
-export const dynamic = 'force-static'
-export const revalidate = 60 * 60 * 24 // 24h
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Use env override to ensure sitemap host matches the deployed origin
-  const site = (process.env.NEXT_PUBLIC_SITE_URL || 'https://truvixo.com').replace(/\/$/, '')
-  const withTrailingSlash = (path: string) => {
-    if (path === '') return `${site}/`
-    return `${site}${path.endsWith('/') ? path : `${path}/`}`
-  }
-
+  const baseUrl = 'https://truvixo.com'
   const now = new Date()
   
-  // Main pages - High priority for core pages (ensure trailing slash)
+  // Main pages - Highest priority for core pages
   const mainPages = [
-    { url: withTrailingSlash(''), priority: 1.0, changeFrequency: 'daily' as const },
-    { url: withTrailingSlash('/services'), priority: 0.9, changeFrequency: 'weekly' as const },
-    { url: withTrailingSlash('/technology'), priority: 0.9, changeFrequency: 'weekly' as const },
-    { url: withTrailingSlash('/hire'), priority: 0.9, changeFrequency: 'weekly' as const },
-    { url: withTrailingSlash('/industry'), priority: 0.9, changeFrequency: 'weekly' as const },
-    { url: withTrailingSlash('/our-work'), priority: 0.8, changeFrequency: 'weekly' as const },
-    { url: withTrailingSlash('/ai'), priority: 0.8, changeFrequency: 'weekly' as const },
-    { url: withTrailingSlash('/about'), priority: 0.8, changeFrequency: 'monthly' as const },
-    { url: withTrailingSlash('/contact'), priority: 0.8, changeFrequency: 'monthly' as const },
-    { url: withTrailingSlash('/work'), priority: 0.7, changeFrequency: 'weekly' as const },
-    { url: withTrailingSlash('/careers'), priority: 0.7, changeFrequency: 'monthly' as const },
-    { url: withTrailingSlash('/our-approach'), priority: 0.7, changeFrequency: 'monthly' as const },
-    { url: withTrailingSlash('/products'), priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: baseUrl, priority: 1.0, changeFrequency: 'daily' as const },
+    { url: `${baseUrl}/services`, priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/technology`, priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/hire`, priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/industry`, priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/our-work`, priority: 0.9, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/ai`, priority: 0.8, changeFrequency: 'weekly' as const },
+    { url: `${baseUrl}/about`, priority: 0.8, changeFrequency: 'monthly' as const },
+    { url: `${baseUrl}/contact`, priority: 0.8, changeFrequency: 'monthly' as const },
+    { url: `${baseUrl}/careers`, priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: `${baseUrl}/our-approach`, priority: 0.7, changeFrequency: 'monthly' as const },
   ]
 
-  // Service pages
+  // Service pages - All services with high priority for SEO
   const serviceSlugs = [
     'custom-software-development',
     'ai-development-services',
@@ -53,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'cro'
   ]
 
-  // Hire pages
+  // Hire pages - All hiring pages
   const hireSlugs = [
     'ai-ml-engineers',
     'full-stack-developers',
@@ -67,7 +55,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'dedicated-teams'
   ]
 
-  // Industry pages
+  // Industry pages - All industry-specific pages
   const industrySlugs = [
     'fintech',
     'healthcare',
@@ -79,7 +67,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'travel-hospitality'
   ]
 
-  // Technology pages
+  // Technology pages - All technology stack pages
   const technologySlugs = [
     'frontend',
     'backend',
@@ -90,7 +78,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'tools-integrations'
   ]
 
-  // Project pages
+  // Project/Portfolio pages - All case studies
   const projectSlugs = [
     'nova-logistics',
     'brightedge-healthcare-analytics',
@@ -98,43 +86,44 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'padmavat-construction-management'
   ]
 
-  // Service pages - High priority for SEO
+  // Generate service pages with proper metadata
   const servicePages = serviceSlugs.map(slug => ({
-    url: withTrailingSlash(`/services/${slug}`),
+    url: `${baseUrl}/services/${slug}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
-    priority: 0.8, // Higher priority for service pages
+    priority: 0.85, // High priority for service pages (important for SEO)
   }))
 
-  // Hire pages - High priority for recruitment
+  // Generate hire pages with proper metadata
   const hirePages = hireSlugs.map(slug => ({
-    url: withTrailingSlash(`/hire/${slug}`),
+    url: `${baseUrl}/hire/${slug}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
-    priority: 0.8, // Higher priority for hire pages
+    priority: 0.8, // High priority for recruitment pages
   }))
 
-  // Industry pages - High priority for industry targeting
+  // Generate industry pages with proper metadata
   const industryPages = industrySlugs.map(slug => ({
-    url: withTrailingSlash(`/industry/${slug}`),
+    url: `${baseUrl}/industry/${slug}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
-    priority: 0.8, // Higher priority for industry pages
+    priority: 0.85, // High priority for industry pages (important for targeting)
   }))
 
+  // Generate technology pages with proper metadata
   const technologyPages = technologySlugs.map(slug => ({
-    url: withTrailingSlash(`/technology/${slug}`),
+    url: `${baseUrl}/technology/${slug}`,
     lastModified: now,
     changeFrequency: 'weekly' as const,
-    priority: 0.9, // Higher priority for technology pages
+    priority: 0.8, // Good priority for technology pages
   }))
 
-  // Project pages - Showcase portfolio
+  // Generate project pages with proper metadata
   const projectPages = projectSlugs.map(slug => ({
-    url: withTrailingSlash(`/our-work/${slug}`),
+    url: `${baseUrl}/our-work/${slug}`,
     lastModified: now,
     changeFrequency: 'monthly' as const,
-    priority: 0.7, // Increased priority for portfolio pages
+    priority: 0.75, // Good priority for portfolio/case study pages
   }))
   
   // Combine all pages for comprehensive sitemap
@@ -152,6 +141,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...projectPages,
   ]
 
-  // Return sorted by priority (highest first) for better crawling
+  // Return sorted by priority (highest first) for better crawling efficiency
+  // This helps search engines prioritize important pages
   return allPages.sort((a, b) => (b.priority || 0) - (a.priority || 0))
 }

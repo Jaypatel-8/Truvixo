@@ -125,12 +125,12 @@ export default function LogisticsDevelopment() {
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
     { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
-    { name: 'Google Maps API', logo: 'https://www.google.com/maps/favicon.ico', color: '#4285F4', category: 'backend' as const },
+    { name: 'Google Maps API', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/googlemaps.svg', color: '#4285F4', category: 'backend' as const },
     { name: 'Redis', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg', color: '#DC382D', category: 'database' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
     { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', color: '#326CE5', category: 'devops' as const },
     { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
-    { name: 'IoT Integration', logo: 'https://www.iot.org/favicon.ico', color: '#5A5A5A', category: 'backend' as const }
+    { name: 'IoT Integration', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/arduino.svg', color: '#5A5A5A', category: 'backend' as const }
   ]
 
   const processSteps = [
@@ -193,7 +193,7 @@ export default function LogisticsDevelopment() {
                   Transportation
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
                 We build comprehensive logistics and transportation solutions that optimize operations. From fleet management to route optimization, we deliver logistics technology that drives efficiency.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -446,6 +446,4 @@ export default function LogisticsDevelopment() {
     </main>
   )
 }
-
-
 

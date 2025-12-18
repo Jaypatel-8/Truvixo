@@ -106,7 +106,10 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center mb-8">
-          <h3 className="text-3xl font-bold text-gray-900">Get Started with TruVixo</h3>
+          <h3 className="text-3xl font-bold text-gray-900">
+            Get Started with{' '}
+            <span className="hollow-text-brand">TruVixo</span>
+          </h3>
           <button
             onClick={handleClose}
             className="text-gray-400 hover:text-gray-600 transition-colors duration-200 p-2 hover:bg-gray-100 rounded-full"
