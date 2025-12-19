@@ -26,6 +26,11 @@ const ContactSection = dynamic(() => import('../components/ContactSection'), {
   loading: () => <div className="min-h-[300px] bg-white"></div>,
 })
 
+const GetQuoteSection = dynamic(() => import('../components/sections/GetQuoteSection'), {
+  ssr: false,
+  loading: () => null,
+})
+
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
@@ -895,6 +900,21 @@ export default function Home() {
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business."
+      />
+
+      {/* 15. Get Quote Section - Last section before footer */}
+      <GetQuoteSection
+        title="Ready to Transform"
+        hollowText="Your Business?"
+        description="Get in touch and let's discuss how we can help transform your business with intelligent technology solutions."
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
       />
 
       <ContactFormModal 

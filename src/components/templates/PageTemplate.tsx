@@ -7,6 +7,7 @@ import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
 import Clientele from '@/components/Clientele'
 import ContactSection from '@/components/ContactSection'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
 import HeroSection from '@/components/sections/HeroSection'
 import ServicesGrid from '@/components/sections/ServicesGrid'
@@ -241,6 +242,21 @@ export default function PageTemplate({
       <ProcessDiagram title={processTitle} subtitle={processSubtitle} steps={processSteps} />
       {faqs.length > 0 && <FAQDropdown faqs={faqs} />}
       <ContactSection title={contactTitle} description={contactDescription} />
+
+      {/* Get Quote Section - Last section before footer */}
+      <GetQuoteSection
+        title={getQuoteTitle}
+        hollowText={getQuoteHollowText}
+        description={getQuoteDescription}
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+      />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

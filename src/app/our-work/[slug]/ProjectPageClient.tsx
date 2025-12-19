@@ -6,6 +6,7 @@ import { ArrowRight, Users, MapPin, Code, Target, CheckCircle, Calendar, Phone, 
 import dynamic from 'next/dynamic'
 import SEOLocationSection from '@/components/SEOLocationSection'
 import ContactSection from '@/components/ContactSection'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import Clientele from '@/components/Clientele'
 import FAQDropdown from '@/components/FAQDropdown'
 import ProcessDiagram from '@/components/ProcessDiagram'
@@ -630,6 +631,21 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business."
+      />
+
+      {/* Get Quote Section - Last section before footer */}
+      <GetQuoteSection
+        title="Ready to Start"
+        hollowText="Your Project?"
+        description="Get in touch and let's discuss how we can help bring your vision to life."
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
       />
 
       <ContactFormModal 

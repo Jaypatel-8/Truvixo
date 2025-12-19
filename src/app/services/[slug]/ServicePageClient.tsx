@@ -2,15 +2,24 @@
 
 import { useEffect } from 'react'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Phone, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
+import { useState } from 'react'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { generateServiceSEO } from '@/lib/seoContent'
 
 const SEOLocationSection = dynamic(() => import('@/components/SEOLocationSection'), {
   ssr: false,
 })
 
+const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
+  ssr: false,
+  loading: () => null,
+})
+
 export default function ServicePageClient({ slug }: { slug: string }) {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+
   // Get service name from slug
   const serviceNameMap: Record<string, string> = {
     'custom-software-development': 'Custom Software Development',
@@ -104,26 +113,25 @@ export default function ServicePageClient({ slug }: { slug: string }) {
       {/* SEO Location Section */}
       <SEOLocationSection serviceName={serviceName} />
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-500 to-pink-500 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl text-purple-100 mb-8 max-w-3xl mx-auto">
-              Let's discuss how we can help with your {serviceName.toLowerCase()} needs
-            </p>
-            <Link
-              href="/contact"
-              className="bg-white text-purple-600 font-bold py-4 px-8 rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2"
-            >
-              Contact Us
-              <ArrowRight className="w-5 h-5" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Get Quote Section - Last section before footer */}
+      <GetQuoteSection
+        title="Ready to Get Started"
+        hollowText="with Us?"
+        description={`Let's discuss how we can help with your ${serviceName.toLowerCase()} needs.`}
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+      />
+
+      <ContactFormModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
     </main>
   )
 }

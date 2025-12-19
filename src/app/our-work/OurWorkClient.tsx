@@ -7,6 +7,7 @@ import Clientele from '@/components/Clientele'
 import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
 import { ourWorkData } from '@/lib/staticData/work/our-work'
 import { getIconComponent } from '@/lib/utils/iconMapper'
@@ -337,53 +338,6 @@ export default function OurWorkClient({ faqs }: OurWorkClientProps) {
         </div>
       </section>
 
-      {/* Custom CTA Section */}
-      <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-              {ourWorkData.cta.title}{' '}
-              <span className="hollow-text-white">
-                {ourWorkData.cta.hollowText}
-              </span>
-            </h2>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-              {ourWorkData.cta.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-              >
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>Call Us</span>
-              </button>
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-xl hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
-              >
-                <Calendar className="w-5 h-5" strokeWidth={2} />
-                <span>Schedule Consultation</span>
-              </button>
-            </div>
-            <div className="flex flex-wrap justify-center gap-8 text-white/80">
-              <a href={`mailto:${ourWorkData.cta.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
-                <Mail className="w-5 h-5" strokeWidth={2} />
-                <span>{ourWorkData.cta.email}</span>
-              </a>
-              <a href={`tel:${ourWorkData.cta.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-white transition-colors">
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>{ourWorkData.cta.phone}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <Technologies technologies={ourWorkData.technologies} />
       <ProcessDiagram 
         title={ourWorkData.processTitle}
@@ -394,6 +348,21 @@ export default function OurWorkClient({ faqs }: OurWorkClientProps) {
       <ContactSection 
         title={ourWorkData.contact.title}
         description={ourWorkData.contact.description}
+      />
+
+      {/* Get Quote Section - Last section before footer */}
+      <GetQuoteSection
+        title={ourWorkData.cta.title}
+        hollowText={ourWorkData.cta.hollowText}
+        description={ourWorkData.cta.description}
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
       />
       <ContactFormModal 
         isOpen={isContactModalOpen} 
