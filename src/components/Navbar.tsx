@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, ArrowRight, ChevronRight, ChevronLeft } from 'lucide-react'
 import Logo from './Logo'
 import { getMenuIcon } from '@/lib/menuIcons'
 
@@ -10,6 +10,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
+  const [servicesHoveredCategory, setServicesHoveredCategory] = useState<string | null>(null)
   const [aiOpen, setAiOpen] = useState(false)
   const [hireOpen, setHireOpen] = useState(false)
   const [industryOpen, setIndustryOpen] = useState(false)
@@ -34,6 +35,22 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close all menus function
+  const closeAllMenus = () => {
+    setServicesOpen(false)
+    setServicesHoveredCategory(null)
+    setAiOpen(false)
+    setHireOpen(false)
+    setIndustryOpen(false)
+    setCompanyOpen(false)
+    setIsOpen(false)
+    setMobileServicesOpen(false)
+    setMobileAiOpen(false)
+    setMobileHireOpen(false)
+    setMobileIndustryOpen(false)
+    setMobileCompanyOpen(false)
+  }
+
   // Handle dropdown toggle with double-click detection
   const handleDropdownToggle = (menu: 'services' | 'ai' | 'hire' | 'industry' | 'company') => {
     const now = Date.now()
@@ -43,11 +60,7 @@ const Navbar = () => {
     // Double-click detection (within 300ms)
     if (timeDiff < 300) {
       // Close the menu
-      setServicesOpen(false)
-      setAiOpen(false)
-      setHireOpen(false)
-      setIndustryOpen(false)
-      setCompanyOpen(false)
+      closeAllMenus()
       setLastClickTime({})
       return
     }
@@ -69,6 +82,7 @@ const Navbar = () => {
       const target = event.target as HTMLElement
       if (!target.closest('.dropdown-menu') && !target.closest('.dropdown-trigger')) {
         setServicesOpen(false)
+        setServicesHoveredCategory(null) // Reset expanded category
         setAiOpen(false)
         setHireOpen(false)
         setIndustryOpen(false)
@@ -196,31 +210,68 @@ const Navbar = () => {
                 </button>
                 
                 {servicesOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-[900px] bg-white rounded-lg shadow-xl border border-gray-200 py-6 z-50 max-h-[80vh] overflow-y-auto">
-                    <div className="grid grid-cols-3 gap-6 px-6">
-                      {servicesCategories.map((category, catIndex) => (
-                        <div key={catIndex} className="space-y-2">
-                          <h3 className="font-bold text-sm text-gray-900 mb-3 uppercase tracking-wide">
-                            {category.category}
-                          </h3>
+                  <div 
+                    className={`absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 py-4 z-50 overflow-hidden transition-all duration-300 ${
+                      servicesHoveredCategory ? 'w-[900px]' : 'w-[300px]'
+                    }`}
+                    onMouseLeave={() => setServicesHoveredCategory(null)}
+                    style={{ maxHeight: '600px' }}
+                  >
+                    <div className="flex h-full">
+                      {/* Left Column - Categories (Fixed width) */}
+                      <div className="w-64 border-r border-gray-200 px-4 py-2 overflow-y-auto" style={{ maxHeight: '600px' }}>
+                        {servicesCategories.map((category, catIndex) => {
+                          const isHovered = servicesHoveredCategory === category.category
+                          return (
+                            <div
+                              key={catIndex}
+                              onMouseEnter={() => setServicesHoveredCategory(category.category)}
+                              className={`px-4 py-3 rounded-lg transition-all duration-200 mb-1 ${
+                                isHovered 
+                                  ? 'bg-[#5e2cb6]/10 text-[#5e2cb6] font-semibold' 
+                                  : 'text-gray-700 hover:bg-gray-50'
+                              }`}
+                            >
+                              <div className="flex items-center justify-between">
+                                <span className="text-sm font-medium">{category.category}</span>
+                                <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${isHovered ? 'translate-x-1' : ''}`} />
+                              </div>
+                            </div>
+                          )
+                        })}
+                      </div>
+                      
+                      {/* Right Column - Items for Hovered Category (Only shown when category is hovered) */}
+                      {servicesHoveredCategory && (
+                        <div className="flex-1 px-6 py-2 overflow-y-auto transition-all duration-300 animate-in fade-in slide-in-from-right-4" style={{ maxHeight: '600px', minWidth: '400px' }}>
                           <div className="space-y-1">
-                            {category.items.map((item, itemIndex) => {
-                              const icon = getMenuIcon(item.name)
-                              return (
-                                <Link
-                                  key={itemIndex}
-                                  href={item.href}
-                                  prefetch={true}
-                                  className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-black rounded-lg transition-colors duration-200 cursor-pointer"
-                                >
-                                  {icon && <span className="text-[#5e2cb6]">{icon}</span>}
-                                  {item.name}
-                                </Link>
-                              )
-                            })}
+                            <div className="mb-4 pb-3 border-b border-gray-200">
+                              <div className="flex items-center gap-2 text-gray-900 text-sm uppercase tracking-wide font-bold">
+                                <ChevronLeft className="w-3 h-3" />
+                                <span>{servicesHoveredCategory}</span>
+                              </div>
+                            </div>
+                            {servicesCategories
+                              .find(cat => cat.category === servicesHoveredCategory)
+                              ?.items.map((item, itemIndex) => {
+                                const icon = getMenuIcon(item.name)
+                                return (
+                                  <Link
+                                    key={itemIndex}
+                                    href={item.href}
+                                    prefetch={true}
+                                    onClick={closeAllMenus}
+                                    className="flex items-center gap-3 px-3 py-2.5 text-sm text-gray-600 hover:bg-[#5e2cb6]/5 hover:text-[#5e2cb6] rounded-lg transition-all duration-200 cursor-pointer group"
+                                  >
+                                    {icon}
+                                    <span className="flex-1 font-medium">{item.name}</span>
+                                    <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity text-[#5e2cb6]" />
+                                  </Link>
+                                )
+                              })}
                           </div>
                         </div>
-                      ))}
+                      )}
                     </div>
                   </div>
                 )}
@@ -250,9 +301,10 @@ const Navbar = () => {
                           key={index}
                           href={item.href}
                           prefetch={true}
+                          onClick={closeAllMenus}
                           className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon}
                           {item.name}
                         </Link>
                       )
@@ -285,9 +337,10 @@ const Navbar = () => {
                           key={index}
                           href={item.href}
                           prefetch={true}
+                          onClick={closeAllMenus}
                           className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon}
                           {item.name}
                         </Link>
                       )
@@ -320,9 +373,10 @@ const Navbar = () => {
                           key={index}
                           href={item.href}
                           prefetch={true}
+                          onClick={closeAllMenus}
                           className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon}
                           {item.name}
                         </Link>
                       )
@@ -355,9 +409,10 @@ const Navbar = () => {
                           key={index}
                           href={item.href}
                           prefetch={true}
+                          onClick={closeAllMenus}
                           className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon}
                           {item.name}
                         </Link>
                       )
@@ -421,12 +476,9 @@ const Navbar = () => {
                                 href={item.href}
                                 prefetch={true}
                                 className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-1.5"
-                                onClick={() => {
-                                  setIsOpen(false)
-                                  setMobileServicesOpen(false)
-                                }}
+                                onClick={closeAllMenus}
                               >
-                                {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                                {icon}
                                 {item.name}
                               </Link>
                             )
@@ -459,12 +511,9 @@ const Navbar = () => {
                           href={item.href}
                           prefetch={true}
                           className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
-                          onClick={() => {
-                            setIsOpen(false)
-                            setMobileAiOpen(false)
-                          }}
+                          onClick={closeAllMenus}
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon}
                           {item.name}
                         </Link>
                       )
@@ -494,12 +543,9 @@ const Navbar = () => {
                           href={item.href}
                           prefetch={true}
                           className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
-                          onClick={() => {
-                            setIsOpen(false)
-                            setMobileHireOpen(false)
-                          }}
+                          onClick={closeAllMenus}
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon}
                           {item.name}
                         </Link>
                       )
@@ -529,10 +575,7 @@ const Navbar = () => {
                           href={item.href}
                           prefetch={true}
                           className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
-                          onClick={() => {
-                            setIsOpen(false)
-                            setMobileIndustryOpen(false)
-                          }}
+                          onClick={closeAllMenus}
                         >
                           {icon && <span className="text-[#5e2cb6]">{icon}</span>}
                           {item.name}
@@ -564,12 +607,9 @@ const Navbar = () => {
                           href={item.href}
                           prefetch={true}
                           className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
-                          onClick={() => {
-                            setIsOpen(false)
-                            setMobileCompanyOpen(false)
-                          }}
+                          onClick={closeAllMenus}
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon}
                           {item.name}
                         </Link>
                       )

@@ -95,7 +95,7 @@ const menuIconMap: Record<string, LucideIcon> = {
 }
 
 /**
- * Get an icon for a menu item by name
+ * Get an icon for a menu item by name with single brand color
  * @param name - The name of the menu item
  * @returns A React element with the icon, or null if not found
  */
@@ -104,5 +104,5 @@ export function getMenuIcon(name: string): ReactElement | null {
   if (!IconComponent) {
     return null
   }
-  return <IconComponent className="w-4 h-4" />
+  return <IconComponent className="w-4 h-4 text-[#5e2cb6]" />
 }
