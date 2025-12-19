@@ -269,11 +269,3 @@ export default function PageLoader() {
     </div>
   )
 }
-
-
-
-import { useEffect, useState, useRef } from 'react'
-import { usePathname } from 'next/navigation'
-
-}
-

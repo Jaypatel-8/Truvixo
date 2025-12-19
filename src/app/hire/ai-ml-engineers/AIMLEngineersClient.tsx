@@ -2,7 +2,7 @@
 
 import { Database, Code, Server, Zap, Shield, Network, Building2, Heart, ShoppingCart, Truck, Home, Users, CheckCircle, Rocket, Target, FileText } from 'lucide-react'
 import PageTemplate from '@/components/templates/PageTemplate'
-import { fullStackDevelopersData } from '@/lib/staticData/hire/full-stack-developers'
+import { aiMlEngineersData } from '@/lib/staticData/hire/ai-ml-engineers'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
 interface FullStackDevelopersClientProps {
@@ -11,10 +11,10 @@ interface FullStackDevelopersClientProps {
 
 export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersClientProps) {
   // Convert icon names to ReactNode icons
-  const BadgeIcon = getIconComponent(fullStackDevelopersData.hero.badge.iconName) || Code
+  const BadgeIcon = getIconComponent(aiMlEngineersData.hero.badge.iconName) || Code
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
-  const services = fullStackDevelopersData.services.map(service => {
+  const services = aiMlEngineersData.services.map(service => {
     const IconComponent = getIconComponent(service.iconName) || Code
     return {
       ...service,
@@ -22,7 +22,7 @@ export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersC
     }
   })
 
-  const whyChooseUs = fullStackDevelopersData.whyChooseUs.map(item => {
+  const whyChooseUs = aiMlEngineersData.whyChooseUs.map(item => {
     const IconComponent = getIconComponent(item.iconName) || Code
     return {
       ...item,
@@ -30,7 +30,7 @@ export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersC
     }
   })
 
-  const industries = fullStackDevelopersData.industries.map(industry => {
+  const industries = aiMlEngineersData.industries.map(industry => {
     const IconComponent = getIconComponent(industry.iconName) || Building2
     return {
       ...industry,
@@ -38,7 +38,7 @@ export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersC
     }
   })
 
-  const processSteps = fullStackDevelopersData.processSteps.map(step => {
+  const processSteps = aiMlEngineersData.processSteps.map(step => {
     const IconComponent = getIconComponent(step.iconName) || Target
     return {
       ...step,
@@ -50,27 +50,27 @@ export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersC
     <PageTemplate
       badge={{
         icon: badgeIcon,
-        text: fullStackDevelopersData.hero.badge.text
+        text: aiMlEngineersData.hero.badge.text
       }}
-      title={fullStackDevelopersData.hero.title}
-      hollowText={fullStackDevelopersData.hero.hollowText}
-      description={fullStackDevelopersData.hero.description}
+      title={aiMlEngineersData.hero.title}
+      hollowText={aiMlEngineersData.hero.hollowText}
+      description={aiMlEngineersData.hero.description}
       services={services}
-      servicesTitle={fullStackDevelopersData.servicesTitle}
-      servicesHollowText={fullStackDevelopersData.servicesHollowText}
+      servicesTitle={aiMlEngineersData.servicesTitle}
+      servicesHollowText={aiMlEngineersData.servicesHollowText}
       whyChoose={whyChooseUs}
-      whyChooseTitle={fullStackDevelopersData.whyChooseTitle}
-      whyChooseHollowText={fullStackDevelopersData.whyChooseHollowText}
+      whyChooseTitle={aiMlEngineersData.whyChooseTitle}
+      whyChooseHollowText={aiMlEngineersData.whyChooseHollowText}
       industries={industries}
-      technologies={fullStackDevelopersData.technologies}
-      getQuoteTitle={fullStackDevelopersData.getQuoteTitle}
-      getQuoteHollowText={fullStackDevelopersData.getQuoteHollowText}
-      getQuoteDescription={fullStackDevelopersData.getQuoteDescription}
+      technologies={[...aiMlEngineersData.technologies]}
+      getQuoteTitle={aiMlEngineersData.getQuoteTitle}
+      getQuoteHollowText={aiMlEngineersData.getQuoteHollowText}
+      getQuoteDescription={aiMlEngineersData.getQuoteDescription}
       faqs={faqs}
-      contactTitle={fullStackDevelopersData.contactTitle}
-      contactDescription={fullStackDevelopersData.contactDescription}
-      processTitle={fullStackDevelopersData.processTitle}
-      processSubtitle={fullStackDevelopersData.processSubtitle}
+      contactTitle={aiMlEngineersData.contactTitle}
+      contactDescription={aiMlEngineersData.contactDescription}
+      processTitle={aiMlEngineersData.processTitle}
+      processSubtitle={aiMlEngineersData.processSubtitle}
       processSteps={processSteps}
     />
   )

@@ -62,7 +62,7 @@ export default function BackendDevelopersClient({ faqs }: BackendDevelopersClien
       whyChooseTitle={backendDevelopersData.whyChooseTitle}
       whyChooseHollowText={backendDevelopersData.whyChooseHollowText}
       industries={industries}
-      technologies={backendDevelopersData.technologies}
+      technologies={[...backendDevelopersData.technologies]}
       getQuoteTitle={backendDevelopersData.getQuoteTitle}
       getQuoteHollowText={backendDevelopersData.getQuoteHollowText}
       getQuoteDescription={backendDevelopersData.getQuoteDescription}

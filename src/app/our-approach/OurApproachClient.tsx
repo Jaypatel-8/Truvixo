@@ -284,7 +284,7 @@ export default function OurApproachClient({ faqs }: OurApproachClientProps) {
       />
 
       {/* Technologies Section */}
-      <Technologies technologies={ourApproachData.technologies} />
+      <Technologies technologies={[...ourApproachData.technologies]} />
 
       {/* FAQs Section */}
       <FAQDropdown faqs={faqs} />

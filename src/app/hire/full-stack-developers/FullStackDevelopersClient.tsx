@@ -11,10 +11,10 @@ interface BackendDevelopersClientProps {
 
 export default function BackendDevelopersClient({ faqs }: BackendDevelopersClientProps) {
   // Convert icon names to ReactNode icons
-  const BadgeIcon = getIconComponent(backendDevelopersData.hero.badge.iconName) || Server
+  const BadgeIcon = getIconComponent(fullStackDevelopersData.hero.badge.iconName) || Server
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
-  const services = backendDevelopersData.services.map(service => {
+  const services = fullStackDevelopersData.services.map(service => {
     const IconComponent = getIconComponent(service.iconName) || Code
     return {
       ...service,
@@ -22,7 +22,7 @@ export default function BackendDevelopersClient({ faqs }: BackendDevelopersClien
     }
   })
 
-  const whyChooseUs = backendDevelopersData.whyChooseUs.map(item => {
+  const whyChooseUs = fullStackDevelopersData.whyChooseUs.map(item => {
     const IconComponent = getIconComponent(item.iconName) || Code
     return {
       ...item,
@@ -30,7 +30,7 @@ export default function BackendDevelopersClient({ faqs }: BackendDevelopersClien
     }
   })
 
-  const industries = backendDevelopersData.industries.map(industry => {
+  const industries = fullStackDevelopersData.industries.map(industry => {
     const IconComponent = getIconComponent(industry.iconName) || Building2
     return {
       ...industry,
@@ -38,7 +38,7 @@ export default function BackendDevelopersClient({ faqs }: BackendDevelopersClien
     }
   })
 
-  const processSteps = backendDevelopersData.processSteps.map(step => {
+  const processSteps = fullStackDevelopersData.processSteps.map(step => {
     const IconComponent = getIconComponent(step.iconName) || Target
     return {
       ...step,
@@ -50,27 +50,27 @@ export default function BackendDevelopersClient({ faqs }: BackendDevelopersClien
     <PageTemplate
       badge={{
         icon: badgeIcon,
-        text: backendDevelopersData.hero.badge.text
+        text: fullStackDevelopersData.hero.badge.text
       }}
-      title={backendDevelopersData.hero.title}
-      hollowText={backendDevelopersData.hero.hollowText}
-      description={backendDevelopersData.hero.description}
+      title={fullStackDevelopersData.hero.title}
+      hollowText={fullStackDevelopersData.hero.hollowText}
+      description={fullStackDevelopersData.hero.description}
       services={services}
-      servicesTitle={backendDevelopersData.servicesTitle}
-      servicesHollowText={backendDevelopersData.servicesHollowText}
+      servicesTitle={fullStackDevelopersData.servicesTitle}
+      servicesHollowText={fullStackDevelopersData.servicesHollowText}
       whyChoose={whyChooseUs}
-      whyChooseTitle={backendDevelopersData.whyChooseTitle}
-      whyChooseHollowText={backendDevelopersData.whyChooseHollowText}
+      whyChooseTitle={fullStackDevelopersData.whyChooseTitle}
+      whyChooseHollowText={fullStackDevelopersData.whyChooseHollowText}
       industries={industries}
-      technologies={backendDevelopersData.technologies}
-      getQuoteTitle={backendDevelopersData.getQuoteTitle}
-      getQuoteHollowText={backendDevelopersData.getQuoteHollowText}
-      getQuoteDescription={backendDevelopersData.getQuoteDescription}
+      technologies={[...fullStackDevelopersData.technologies]}
+      getQuoteTitle={fullStackDevelopersData.getQuoteTitle}
+      getQuoteHollowText={fullStackDevelopersData.getQuoteHollowText}
+      getQuoteDescription={fullStackDevelopersData.getQuoteDescription}
       faqs={faqs}
-      contactTitle={backendDevelopersData.contactTitle}
-      contactDescription={backendDevelopersData.contactDescription}
-      processTitle={backendDevelopersData.processTitle}
-      processSubtitle={backendDevelopersData.processSubtitle}
+      contactTitle={fullStackDevelopersData.contactTitle}
+      contactDescription={fullStackDevelopersData.contactDescription}
+      processTitle={fullStackDevelopersData.processTitle}
+      processSubtitle={fullStackDevelopersData.processSubtitle}
       processSteps={processSteps}
     />
   )

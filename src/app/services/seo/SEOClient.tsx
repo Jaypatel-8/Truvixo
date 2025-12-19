@@ -111,7 +111,7 @@ export default function SEOClient({ faqs }: SEOClientProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
+                {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
                 <span className="text-sm font-semibold text-[#5e2cb6]">{seoData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
@@ -120,7 +120,7 @@ export default function SEOClient({ faqs }: SEOClientProps) {
                   {seoData.hero.hollowText}
                 </span>
               </h1>
-              <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
                 {seoData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">

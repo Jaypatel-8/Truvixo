@@ -7,7 +7,7 @@ interface Technology {
   name: string
   logo: string
   color: string
-  category: 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai'
+  category: 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai' | 'tools'
 }
 
 interface TechnologiesProps {
@@ -53,7 +53,8 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
       'cloud': 'Cloud',
       'devops': 'DevOps',
       'mobile': 'Mobile',
-      'ai': 'AI/ML'
+      'ai': 'AI/ML',
+      'tools': 'Tools'
     }
     return categoryMap[category] || category.charAt(0).toUpperCase() + category.slice(1)
   }

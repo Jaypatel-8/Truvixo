@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight, Zap as Lightning } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import { frontendTechnologyData } from '@/lib/staticData/technology/frontend'
+import { toolsIntegrationsTechnologyData } from '@/lib/staticData/technology/tools-integrations'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { getFAQsForPage } from '@/lib/pageData'
 
@@ -45,7 +45,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   }, [])
 
-  const technologies = frontendTechnologyData.technologies.map(tech => {
+  const technologies = toolsIntegrationsTechnologyData.technologies.map(tech => {
     const IconComponent = getIcon(tech.iconName)
     return {
       ...tech,
@@ -53,7 +53,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   })
 
-  const whatWeBuild = frontendTechnologyData.whatWeBuild.map(item => {
+  const whatWeBuild = toolsIntegrationsTechnologyData.whatWeBuild.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -61,7 +61,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   })
 
-  const benefits = frontendTechnologyData.benefits.map(benefit => {
+  const benefits = toolsIntegrationsTechnologyData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -69,7 +69,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   })
 
-  const whyChooseUs = frontendTechnologyData.whyChooseUs.map(item => {
+  const whyChooseUs = toolsIntegrationsTechnologyData.whyChooseUs.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -83,13 +83,13 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
           <div className="scroll-animate">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
-              {frontendTechnologyData.hero.title}{' '}
+              {toolsIntegrationsTechnologyData.hero.title}{' '}
               <span className="hollow-text-teal">
-                {frontendTechnologyData.hero.hollowText}
+                {toolsIntegrationsTechnologyData.hero.hollowText}
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
-              {frontendTechnologyData.hero.description}
+              {toolsIntegrationsTechnologyData.hero.description}
             </p>
           </div>
         </div>
@@ -238,13 +238,13 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="scroll-animate">
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {frontendTechnologyData.cta.title}
+              {toolsIntegrationsTechnologyData.cta.title}
             </h2>
             <button
               onClick={() => setIsContactModalOpen(true)}
               className="bg-white text-purple-600 font-bold py-4 px-8 rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2"
             >
-              {frontendTechnologyData.cta.buttonText}
+              {toolsIntegrationsTechnologyData.cta.buttonText}
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>

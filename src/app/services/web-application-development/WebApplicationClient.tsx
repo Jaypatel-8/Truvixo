@@ -12,15 +12,13 @@ import ProcessDiagram from '@/components/ProcessDiagram'
 import SEOLocationSection from '@/components/SEOLocationSection'
 import { webApplicationDevelopmentData } from '@/lib/staticData/services/web-application-development'
 import { getIconComponent } from '@/lib/utils/iconMapper'
-import { LucideIcon } from 'lucide-react'
-import { ReactElement } from 'react'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
   loading: () => null,
 })
 
-function getIcon(iconName: string): LucideIcon | undefined {
+function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
@@ -58,23 +56,23 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
     }
   }, [])
 
-  const services = webApplicationDevelopmentData.services.map((service: { title: string; description: string; iconName: string; color: string }) => {
+  const services = webApplicationDevelopmentData.services.map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
     }
   })
 
-  const whyChooseUs = webApplicationDevelopmentData.whyChooseUs.map((item: { iconName: string; title: string; description: string; color: string }) => {
+  const whyChooseUs = webApplicationDevelopmentData.whyChooseUs.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
     }
   })
 
-  const processSteps = webApplicationDevelopmentData.processSteps.map((step: { title: string; description: string; iconName: string }) => {
+  const processSteps = webApplicationDevelopmentData.processSteps.map(step => {
     const IconComponent = getIcon(step.iconName)
     return {
       ...step,
@@ -82,15 +80,15 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
     }
   })
 
-  const industries = webApplicationDevelopmentData.industries.map((industry: { name: string; iconName: string; color: string }) => {
+  const industries = webApplicationDevelopmentData.industries.map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
     }
   })
 
-  const benefits = webApplicationDevelopmentData.benefits.map((benefit: { iconName: string; title: string; description: string; color: string }) => {
+  const benefits = webApplicationDevelopmentData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -98,85 +96,93 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
     }
   })
 
-  const previewServices = webApplicationDevelopmentData.services.slice(0, 4).map((service: { title: string; description: string; iconName: string; color: string }) => {
-    const IconComponent = getIcon(service.iconName)
+  const highlights = webApplicationDevelopmentData.hero.highlights.map(highlight => {
+    const IconComponent = getIcon(highlight.iconName)
     return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      ...highlight,
+      icon: IconComponent ? <IconComponent className="w-5 h-5" strokeWidth={2} /> : null
     }
   })
-
-  const BadgeIcon = getIcon(webApplicationDevelopmentData.hero.badge.iconName) || getIcon('Code')!
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#c91a6f]/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#fecc4d]/5 rounded-full blur-3xl"></div>
+      <section className="relative min-h-[70vh] bg-white flex items-center justify-center overflow-hidden pt-20">
+        <div className="absolute inset-0 overflow-hidden opacity-[0.02]">
+          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid-web" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-black"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid-web)" />
+          </svg>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="scroll-animate">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
-                <span className="text-sm font-semibold text-[#5e2cb6]">{webApplicationDevelopmentData.hero.badge.text}</span>
-              </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {webApplicationDevelopmentData.hero.title}{' '}
-                <span className="hollow-text-brand block mt-2">
-                  {webApplicationDevelopmentData.hero.hollowText}
-                </span>
-              </h1>
-              <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
-                {webApplicationDevelopmentData.hero.description}
-              </p>
-              <div className="flex flex-col sm:flex-row items-start gap-4">
-                <button 
-                  onClick={() => setIsContactModalOpen(true)}
-                  className="bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
-                >
-                  <Calendar className="w-5 h-5" strokeWidth={2} />
-                  <span>Get a Quote</span>
-                </button>
-                <button 
-                  onClick={() => setIsContactModalOpen(true)}
-                  className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-                >
-                  <span>Contact Us</span>
-                  <ArrowRight className="w-5 h-5" strokeWidth={2} />
-                </button>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
+          <div className="scroll-animate">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 mb-6 leading-tight">
+              {webApplicationDevelopmentData.hero.title}{' '}
+              <span className="hollow-text-brand">
+                {webApplicationDevelopmentData.hero.hollowText}
+              </span>
+              <span className="text-xl md:text-2xl font-semibold text-gray-600 block mt-4">
+                {webApplicationDevelopmentData.hero.subtitle}
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
+              {webApplicationDevelopmentData.hero.description}
+            </p>
+            <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 rounded-xl border border-[#5e2cb6]/20 max-w-4xl mx-auto">
+              <p className="text-gray-700 font-medium mb-3">Why Choose Our Web Application Development:</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                {webApplicationDevelopmentData.hero.features.map((feature, index) => (
+                  <div key={index} className="flex items-start gap-2">
+                    <span className="text-[#5e2cb6] mt-1">✓</span>
+                    <span className="text-gray-600"><strong>{feature.text.split(':')[0]}:</strong> {feature.text.split(':')[1]}</span>
+                  </div>
+                ))}
               </div>
             </div>
-
-            <div className="hidden lg:grid grid-cols-2 gap-4 scroll-animate-scale">
-              {previewServices.map((service: { title: string; description: string; iconName: string; color: string; icon: ReactElement | null }, index: number) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                  style={{ borderColor: service.color + '40' }}
-                >
-                  <div className="mb-4" style={{ color: service.color }}>
-                    {service.icon}
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              {highlights.map((highlight, index) => (
+                <div key={index} className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
+                  <div className="flex-shrink-0 mt-1" style={{ color: highlight.iconName === 'Zap' ? '#5e2cb6' : highlight.iconName === 'Shield' ? '#c91a6f' : '#fecc4d' }}>
+                    {highlight.icon}
                   </div>
-                  <h3 className="font-bold text-gray-900 text-sm mb-2">{service.title}</h3>
-                  <p className="text-xs text-gray-600 line-clamp-2">{service.description}</p>
+                  <div>
+                    <p className="text-gray-900 font-semibold mb-1">{highlight.title}</p>
+                    <p className="text-gray-600 text-sm">{highlight.description}</p>
+                  </div>
                 </div>
               ))}
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-[#5e2cb6] text-white font-semibold py-4 px-10 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/20"
+              >
+                <Calendar className="w-5 h-5" strokeWidth={2} />
+                <span>Get a Quote</span>
+              </button>
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-10 rounded-lg hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+              >
+                <span>Contact Us</span>
+                <ArrowRight className="w-5 h-5" strokeWidth={2} />
+              </button>
             </div>
           </div>
         </div>
       </section>
 
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      {isMounted && <Clientele />}
 
       {/* Services Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 scroll-animate">
+          <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Web Application{' '}
               <span className="hollow-text-brand">
@@ -189,32 +195,20 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {services.map((service: { title: string; description: string; iconName: string; color: string; icon: ReactElement | null }, index: number) => (
+            {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
-                style={{ 
-                  borderColor: service.color + '40'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = service.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = service.color + '40'
-                }}
+                className="bg-white rounded-lg p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity" style={{ backgroundColor: service.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: service.color }}>
-                    {service.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
-                    {service.description}
-                  </p>
+                <div className="text-gray-900 mb-4 flex justify-center">
+                  {service.icon}
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {service.description}
+                </p>
               </div>
             ))}
           </div>
@@ -222,47 +216,35 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
       </section>
 
       {/* Why Choose Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 scroll-animate">
+          <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose Web Application{' '}
+              Why Choose{' '}
               <span className="hollow-text-brand">
-                Development
+                Us
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               We combine technical expertise with business acumen to deliver web applications that not only look great but also drive real business results.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {whyChooseUs.map((item: { iconName: string; title: string; description: string; color: string; icon: ReactElement | null }, index: number) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
-                style={{ 
-                  borderColor: item.color + '40'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = item.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = item.color + '40'
-                }}
+                className="bg-white rounded-lg p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
               >
-                <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: item.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: item.color }}>
-                    {item.icon}
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {item.description}
-                  </p>
+                <div className="text-gray-900 mb-4 flex justify-center">
+                  {item.icon}
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {item.description}
+                </p>
               </div>
             ))}
           </div>
@@ -270,7 +252,7 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
       </section>
 
       {/* Industries Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -284,74 +266,18 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {industries.map((industry: { name: string; iconName: string; color: string; icon: ReactElement | null }, index: number) => (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
-                style={{ 
-                  borderColor: industry.color + '40'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = industry.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = industry.color + '40'
-                }}
+                className="bg-white rounded-lg p-6 text-center border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105 shadow-sm hover:shadow-lg"
               >
-                <div className="mb-3 flex justify-center" style={{ color: industry.color }}>
+                <div className="text-gray-900 mb-3 flex justify-center">
                   {industry.icon}
                 </div>
                 <h3 className="font-semibold text-gray-900 text-sm">{industry.name}</h3>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Get Quote Section (in middle) */}
-      <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-              {webApplicationDevelopmentData.getQuote.title}{' '}
-              <span className="hollow-text-white">
-                {webApplicationDevelopmentData.getQuote.hollowText}
-              </span>
-            </h2>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-              {webApplicationDevelopmentData.getQuote.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-              >
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>Call Us</span>
-              </button>
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-xl hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
-              >
-                <Calendar className="w-5 h-5" strokeWidth={2} />
-                <span>Schedule Consultation</span>
-              </button>
-            </div>
-            <div className="flex flex-wrap justify-center gap-8 text-white/80">
-              <a href="mailto:sales@truvixoo.com" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Mail className="w-5 h-5" strokeWidth={2} />
-                <span>sales@truvixoo.com</span>
-              </a>
-              <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>+91 63543 26412</span>
-              </a>
-            </div>
           </div>
         </div>
       </section>
@@ -372,7 +298,7 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit: { iconName: string; title: string; description: string; color: string; icon: ReactElement | null }, index: number) => (
+            {benefits.map((benefit, index) => (
               <div key={index} className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
                 <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: benefit.color + '10' }}>
                   <div style={{ color: benefit.color }}>
@@ -405,7 +331,7 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {webApplicationDevelopmentData.useCases.map((useCase, index: number) => (
+            {webApplicationDevelopmentData.useCases.map((useCase, index) => (
               <div
                 key={index}
                 className={`bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border`}
@@ -416,7 +342,7 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
                   {useCase.description}
                 </p>
                 <ul className="space-y-2 text-sm text-gray-600">
-                  {useCase.items.map((item: string, itemIndex: number) => (
+                  {useCase.items.map((item, itemIndex) => (
                     <li key={itemIndex}>• {item}</li>
                   ))}
                 </ul>
@@ -447,13 +373,28 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         description={webApplicationDevelopmentData.contact.description}
       />
 
-      {/* Client Section at Bottom */}
+      {/* Client Section */}
       {isMounted && (
         <Clientele 
           title="Trusted by Leading Companies"
           subtitle="Join our growing list of satisfied clients"
         />
       )}
+
+      {/* Get Quote Section - Last section before footer */}
+      <GetQuoteSection
+        title={webApplicationDevelopmentData.getQuote.title}
+        hollowText={webApplicationDevelopmentData.getQuote.hollowText}
+        description={webApplicationDevelopmentData.getQuote.description}
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+      />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

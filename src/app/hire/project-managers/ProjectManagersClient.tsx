@@ -2,7 +2,7 @@
 
 import { Database, Code, Server, Zap, Shield, Network, Building2, Heart, ShoppingCart, Truck, Home, Users, CheckCircle, Rocket, Target, FileText } from 'lucide-react'
 import PageTemplate from '@/components/templates/PageTemplate'
-import { fullStackDevelopersData } from '@/lib/staticData/hire/full-stack-developers'
+import { projectManagersData } from '@/lib/staticData/hire/project-managers'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
 interface FullStackDevelopersClientProps {
@@ -11,10 +11,10 @@ interface FullStackDevelopersClientProps {
 
 export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersClientProps) {
   // Convert icon names to ReactNode icons
-  const BadgeIcon = getIconComponent(fullStackDevelopersData.hero.badge.iconName) || Code
+  const BadgeIcon = getIconComponent(projectManagersData.hero.badge.iconName) || Code
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
-  const services = fullStackDevelopersData.services.map(service => {
+  const services = projectManagersData.services.map(service => {
     const IconComponent = getIconComponent(service.iconName) || Code
     return {
       ...service,
@@ -22,7 +22,7 @@ export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersC
     }
   })
 
-  const whyChooseUs = fullStackDevelopersData.whyChooseUs.map(item => {
+  const whyChooseUs = projectManagersData.whyChooseUs.map(item => {
     const IconComponent = getIconComponent(item.iconName) || Code
     return {
       ...item,
@@ -30,7 +30,7 @@ export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersC
     }
   })
 
-  const industries = fullStackDevelopersData.industries.map(industry => {
+  const industries = projectManagersData.industries.map(industry => {
     const IconComponent = getIconComponent(industry.iconName) || Building2
     return {
       ...industry,
@@ -38,7 +38,7 @@ export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersC
     }
   })
 
-  const processSteps = fullStackDevelopersData.processSteps.map(step => {
+  const processSteps = projectManagersData.processSteps.map(step => {
     const IconComponent = getIconComponent(step.iconName) || Target
     return {
       ...step,
@@ -50,27 +50,27 @@ export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersC
     <PageTemplate
       badge={{
         icon: badgeIcon,
-        text: fullStackDevelopersData.hero.badge.text
+        text: projectManagersData.hero.badge.text
       }}
-      title={fullStackDevelopersData.hero.title}
-      hollowText={fullStackDevelopersData.hero.hollowText}
-      description={fullStackDevelopersData.hero.description}
+      title={projectManagersData.hero.title}
+      hollowText={projectManagersData.hero.hollowText}
+      description={projectManagersData.hero.description}
       services={services}
-      servicesTitle={fullStackDevelopersData.servicesTitle}
-      servicesHollowText={fullStackDevelopersData.servicesHollowText}
+      servicesTitle={projectManagersData.servicesTitle}
+      servicesHollowText={projectManagersData.servicesHollowText}
       whyChoose={whyChooseUs}
-      whyChooseTitle={fullStackDevelopersData.whyChooseTitle}
-      whyChooseHollowText={fullStackDevelopersData.whyChooseHollowText}
+      whyChooseTitle={projectManagersData.whyChooseTitle}
+      whyChooseHollowText={projectManagersData.whyChooseHollowText}
       industries={industries}
-      technologies={fullStackDevelopersData.technologies}
-      getQuoteTitle={fullStackDevelopersData.getQuoteTitle}
-      getQuoteHollowText={fullStackDevelopersData.getQuoteHollowText}
-      getQuoteDescription={fullStackDevelopersData.getQuoteDescription}
+      technologies={[...projectManagersData.technologies]}
+      getQuoteTitle={projectManagersData.getQuoteTitle}
+      getQuoteHollowText={projectManagersData.getQuoteHollowText}
+      getQuoteDescription={projectManagersData.getQuoteDescription}
       faqs={faqs}
-      contactTitle={fullStackDevelopersData.contactTitle}
-      contactDescription={fullStackDevelopersData.contactDescription}
-      processTitle={fullStackDevelopersData.processTitle}
-      processSubtitle={fullStackDevelopersData.processSubtitle}
+      contactTitle={projectManagersData.contactTitle}
+      contactDescription={projectManagersData.contactDescription}
+      processTitle={projectManagersData.processTitle}
+      processSubtitle={projectManagersData.processSubtitle}
       processSteps={processSteps}
     />
   )

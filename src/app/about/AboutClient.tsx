@@ -10,7 +10,7 @@ import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
 import ProcessDiagram from '@/components/ProcessDiagram'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import { ourApproachData } from '@/lib/staticData/company/our-approach'
+import { aboutData } from '@/lib/staticData/company/about'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -22,11 +22,11 @@ function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface OurApproachClientProps {
+interface AboutClientProps {
   faqs: Array<{ question: string; answer: string }>
 }
 
-export default function OurApproachClient({ faqs }: OurApproachClientProps) {
+export default function AboutClient({ faqs }: AboutClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -56,10 +56,10 @@ export default function OurApproachClient({ faqs }: OurApproachClientProps) {
     }
   }, [])
 
-  const BadgeIcon = getIcon(ourApproachData.hero.badge.iconName) || Lightbulb
+  const BadgeIcon = getIcon(aboutData.hero.badge.iconName) || Lightbulb
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
-  const methodology = ourApproachData.methodology.map(item => {
+  const methodology = aboutData.methodology.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -67,7 +67,7 @@ export default function OurApproachClient({ faqs }: OurApproachClientProps) {
     }
   })
 
-  const insights = ourApproachData.insights.map(item => {
+  const insights = aboutData.insights.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -75,7 +75,7 @@ export default function OurApproachClient({ faqs }: OurApproachClientProps) {
     }
   })
 
-  const principles = ourApproachData.principles.map(item => {
+  const principles = aboutData.principles.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -83,7 +83,7 @@ export default function OurApproachClient({ faqs }: OurApproachClientProps) {
     }
   })
 
-  const processSteps = ourApproachData.processSteps.map(step => {
+  const processSteps = aboutData.processSteps.map(step => {
     const IconComponent = getIcon(step.iconName)
     return {
       ...step,
@@ -105,16 +105,16 @@ export default function OurApproachClient({ faqs }: OurApproachClientProps) {
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                 {badgeIcon}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{ourApproachData.hero.badge.text}</span>
+                <span className="text-sm font-semibold text-[#5e2cb6]">{aboutData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {ourApproachData.hero.title}{' '}
+                {aboutData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {ourApproachData.hero.hollowText}
+                  {aboutData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-                {ourApproachData.hero.description}
+                {aboutData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -278,31 +278,31 @@ export default function OurApproachClient({ faqs }: OurApproachClientProps) {
 
       {/* Process Diagram */}
       <ProcessDiagram 
-        title={ourApproachData.processTitle}
-        subtitle={ourApproachData.processSubtitle}
+        title={aboutData.processTitle}
+        subtitle={aboutData.processSubtitle}
         steps={processSteps}
       />
 
       {/* Technologies Section */}
-      <Technologies technologies={ourApproachData.technologies} />
+      <Technologies technologies={[...aboutData.technologies]} />
 
       {/* FAQs Section */}
       <FAQDropdown faqs={faqs} />
 
       {/* SEO Location Section */}
-      <SEOLocationSection serviceName={ourApproachData.seoServiceName} />
+      <SEOLocationSection serviceName={aboutData.seoServiceName} />
 
       {/* Contact Section */}
       <ContactSection 
-        title={ourApproachData.contact.title}
-        description={ourApproachData.contact.description}
+        title={aboutData.contact.title}
+        description={aboutData.contact.description}
       />
 
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection
-        title={ourApproachData.getQuote.title}
-        hollowText={ourApproachData.getQuote.hollowText}
-        description={ourApproachData.getQuote.description}
+        title={aboutData.getQuote.title}
+        hollowText={aboutData.getQuote.hollowText}
+        description={aboutData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)

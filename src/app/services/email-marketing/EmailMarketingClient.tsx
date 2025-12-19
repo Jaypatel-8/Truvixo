@@ -119,7 +119,7 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
+                {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
                 <span className="text-sm font-semibold text-[#5e2cb6]">{emailMarketingData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
@@ -128,7 +128,7 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
                   {emailMarketingData.hero.hollowText}
                 </span>
               </h1>
-              <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
                 {emailMarketingData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -175,13 +175,13 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Email Marketing{' '}
+              CRO{' '}
               <span className="hollow-text-brand">
                 Services
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive email marketing solutions
+              Comprehensive conversion rate optimization solutions
             </p>
           </div>
 
@@ -223,13 +223,13 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose Email Marketing{' '}
+              Why Choose CRO{' '}
               <span className="hollow-text-brand">
                 Services
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We deliver strategic email marketing campaigns that nurture leads and drive conversions.
+              We deliver data-driven conversion rate optimization that increases your website\'s conversion rates and revenue.
             </p>
           </div>
 
@@ -277,7 +277,7 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Serving diverse industries with email marketing solutions
+              Serving diverse industries with CRO solutions
             </p>
           </div>
 
@@ -311,13 +311,13 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Email Marketing{' '}
+              CRO{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover how email marketing can nurture leads and drive conversions
+              Discover how conversion rate optimization can increase your revenue
             </p>
           </div>
 
@@ -344,13 +344,13 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Email Marketing{' '}
+              CRO{' '}
               <span className="hollow-text-brand">
                 Use Cases
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore how businesses use email marketing to nurture leads and retain customers
+              Explore how businesses optimize conversions to increase revenue
             </p>
           </div>
 

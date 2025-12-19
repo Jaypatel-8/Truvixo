@@ -7,8 +7,9 @@ import Clientele from '@/components/Clientele'
 import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import { healthcareIndustryData } from '@/lib/staticData/industry/healthcare'
+import { educationIndustryData } from '@/lib/staticData/industry/education'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -54,7 +55,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   }, [])
 
-  const services = healthcareIndustryData.services.map(service => {
+  const services = educationIndustryData.services.map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -62,7 +63,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const whyChooseUs = healthcareIndustryData.whyChooseUs.map(item => {
+  const whyChooseUs = educationIndustryData.whyChooseUs.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -70,7 +71,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const processSteps = healthcareIndustryData.processSteps.map(step => {
+  const processSteps = educationIndustryData.processSteps.map(step => {
     const IconComponent = getIcon(step.iconName)
     return {
       ...step,
@@ -78,7 +79,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const industries = healthcareIndustryData.industries.map(industry => {
+  const industries = educationIndustryData.industries.map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -86,7 +87,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const benefits = healthcareIndustryData.benefits.map(benefit => {
+  const benefits = educationIndustryData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -94,7 +95,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const previewServices = healthcareIndustryData.services.slice(0, 4).map(service => {
+  const previewServices = educationIndustryData.services.slice(0, 4).map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -102,7 +103,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const BadgeIcon = getIcon(healthcareIndustryData.hero.badge.iconName)
+  const BadgeIcon = getIcon(educationIndustryData.hero.badge.iconName) || getIcon('Code')!
 
   return (
     <>
@@ -117,17 +118,17 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
-                <span className="text-sm font-semibold text-[#5e2cb6]">{healthcareIndustryData.hero.badge.text}</span>
+                {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
+                <span className="text-sm font-semibold text-[#5e2cb6]">{educationIndustryData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {healthcareIndustryData.hero.title}{' '}
+                {educationIndustryData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {healthcareIndustryData.hero.hollowText}
+                  {educationIndustryData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {healthcareIndustryData.hero.description}
+                {educationIndustryData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -346,13 +347,13 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-              {healthcareIndustryData.cta.title}{' '}
+              {educationIndustryData.cta.title}{' '}
               <span className="hollow-text-white">
-                {healthcareIndustryData.cta.hollowText}
+                {educationIndustryData.cta.hollowText}
               </span>
             </h2>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-              {healthcareIndustryData.cta.description}
+              {educationIndustryData.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <button 
@@ -371,29 +372,29 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
               </button>
             </div>
             <div className="flex flex-wrap justify-center gap-8 text-white/80">
-              <a href={`mailto:${healthcareIndustryData.cta.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href={`mailto:${educationIndustryData.cta.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
                 <Mail className="w-5 h-5" strokeWidth={2} />
-                <span>{healthcareIndustryData.cta.email}</span>
+                <span>{educationIndustryData.cta.email}</span>
               </a>
-              <a href={`tel:${healthcareIndustryData.cta.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href={`tel:${educationIndustryData.cta.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-white transition-colors">
                 <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>{healthcareIndustryData.cta.phone}</span>
+                <span>{educationIndustryData.cta.phone}</span>
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      <Technologies technologies={healthcareIndustryData.technologies} />
+      <Technologies technologies={[...educationIndustryData.technologies]} />
       <ProcessDiagram 
-        title={healthcareIndustryData.processTitle}
-        subtitle={healthcareIndustryData.processSubtitle}
+        title={educationIndustryData.processTitle}
+        subtitle={educationIndustryData.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
       <ContactSection 
-        title={healthcareIndustryData.contact.title}
-        description={healthcareIndustryData.contact.description}
+        title={educationIndustryData.contactTitle}
+        description={educationIndustryData.contactDescription}
       />
       <ContactFormModal 
         isOpen={isContactModalOpen} 

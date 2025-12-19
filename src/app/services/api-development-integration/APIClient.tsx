@@ -10,7 +10,7 @@ import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
 import SEOLocationSection from '@/components/SEOLocationSection'
-import { enterpriseSoftwareDevelopmentData } from '@/lib/staticData/services/enterprise-software-development'
+import { apiDevelopmentIntegrationData } from '@/lib/staticData/services/api-development-integration'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -22,11 +22,11 @@ function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface EnterpriseClientProps {
+interface APIClientProps {
   faqs: Array<{ question: string; answer: string }>
 }
 
-export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
+export default function APIClient({ faqs }: APIClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -56,7 +56,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   }, [])
 
-  const services = enterpriseSoftwareDevelopmentData.services.map(service => {
+  const services = apiDevelopmentIntegrationData.services.map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -64,7 +64,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const whyChooseUs = enterpriseSoftwareDevelopmentData.whyChooseUs.map(item => {
+  const whyChooseUs = apiDevelopmentIntegrationData.whyChooseUs.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -72,7 +72,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const processSteps = enterpriseSoftwareDevelopmentData.processSteps.map(step => {
+  const processSteps = apiDevelopmentIntegrationData.processSteps.map(step => {
     const IconComponent = getIcon(step.iconName)
     return {
       ...step,
@@ -80,7 +80,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const industries = enterpriseSoftwareDevelopmentData.industries.map(industry => {
+  const industries = apiDevelopmentIntegrationData.industries.map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -88,7 +88,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const benefits = enterpriseSoftwareDevelopmentData.benefits.map(benefit => {
+  const benefits = apiDevelopmentIntegrationData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -96,7 +96,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const previewServices = enterpriseSoftwareDevelopmentData.services.slice(0, 4).map(service => {
+  const previewServices = apiDevelopmentIntegrationData.services.slice(0, 4).map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -104,7 +104,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const BadgeIcon = getIcon(enterpriseSoftwareDevelopmentData.hero.badge.iconName)
+  const BadgeIcon = getIcon(apiDevelopmentIntegrationData.hero.badge.iconName)
 
   return (
     <>
@@ -119,17 +119,17 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
-                <span className="text-sm font-semibold text-[#5e2cb6]">{enterpriseSoftwareDevelopmentData.hero.badge.text}</span>
+                {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
+                <span className="text-sm font-semibold text-[#5e2cb6]">{apiDevelopmentIntegrationData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {enterpriseSoftwareDevelopmentData.hero.title}{' '}
+                {apiDevelopmentIntegrationData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {enterpriseSoftwareDevelopmentData.hero.hollowText}
+                  {apiDevelopmentIntegrationData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {enterpriseSoftwareDevelopmentData.hero.description}
+                {apiDevelopmentIntegrationData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -355,7 +355,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {enterpriseSoftwareDevelopmentData.useCases.map((useCase, index) => (
+            {apiDevelopmentIntegrationData.useCases.map((useCase, index) => (
               <div
                 key={index}
                 className={`bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border`}
@@ -376,22 +376,22 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={enterpriseSoftwareDevelopmentData.technologies} />
+      <Technologies technologies={[...apiDevelopmentIntegrationData.technologies]} />
       <ProcessDiagram 
-        title={enterpriseSoftwareDevelopmentData.processTitle}
-        subtitle={enterpriseSoftwareDevelopmentData.processSubtitle}
+        title={apiDevelopmentIntegrationData.processTitle}
+        subtitle={apiDevelopmentIntegrationData.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={enterpriseSoftwareDevelopmentData.seoServiceName} />
+      <SEOLocationSection serviceName={apiDevelopmentIntegrationData.seoServiceName} />
       <ContactSection 
-        title={enterpriseSoftwareDevelopmentData.contact.title}
-        description={enterpriseSoftwareDevelopmentData.contact.description}
+        title={apiDevelopmentIntegrationData.contact.title}
+        description={apiDevelopmentIntegrationData.contact.description}
       />
       <GetQuoteSection
-        title={enterpriseSoftwareDevelopmentData.getQuote.title}
-        hollowText={enterpriseSoftwareDevelopmentData.getQuote.hollowText}
-        description={enterpriseSoftwareDevelopmentData.getQuote.description}
+        title={apiDevelopmentIntegrationData.getQuote.title}
+        hollowText={apiDevelopmentIntegrationData.getQuote.hollowText}
+        description={apiDevelopmentIntegrationData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)

@@ -10,7 +10,7 @@ import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
 import SEOLocationSection from '@/components/SEOLocationSection'
-import { enterpriseSoftwareDevelopmentData } from '@/lib/staticData/services/enterprise-software-development'
+import { healthcareIndustryData } from '@/lib/staticData/industry/healthcare'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -22,11 +22,11 @@ function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface EnterpriseClientProps {
+interface HealthcareClientProps {
   faqs: Array<{ question: string; answer: string }>
 }
 
-export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
+export default function HealthcareClient({ faqs }: HealthcareClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -56,7 +56,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   }, [])
 
-  const services = enterpriseSoftwareDevelopmentData.services.map(service => {
+  const services = healthcareIndustryData.services.map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -64,7 +64,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const whyChooseUs = enterpriseSoftwareDevelopmentData.whyChooseUs.map(item => {
+  const whyChooseUs = healthcareIndustryData.whyChooseUs.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -72,7 +72,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const processSteps = enterpriseSoftwareDevelopmentData.processSteps.map(step => {
+  const processSteps = healthcareIndustryData.processSteps.map(step => {
     const IconComponent = getIcon(step.iconName)
     return {
       ...step,
@@ -80,7 +80,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const industries = enterpriseSoftwareDevelopmentData.industries.map(industry => {
+  const industries = healthcareIndustryData.industries.map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -88,7 +88,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const benefits = enterpriseSoftwareDevelopmentData.benefits.map(benefit => {
+  const benefits = healthcareIndustryData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -96,7 +96,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const previewServices = enterpriseSoftwareDevelopmentData.services.slice(0, 4).map(service => {
+  const previewServices = healthcareIndustryData.services.slice(0, 4).map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -104,7 +104,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const BadgeIcon = getIcon(enterpriseSoftwareDevelopmentData.hero.badge.iconName)
+  const BadgeIcon = getIcon(healthcareIndustryData.hero.badge.iconName)
 
   return (
     <>
@@ -119,17 +119,17 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
-                <span className="text-sm font-semibold text-[#5e2cb6]">{enterpriseSoftwareDevelopmentData.hero.badge.text}</span>
+                {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
+                <span className="text-sm font-semibold text-[#5e2cb6]">{healthcareIndustryData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {enterpriseSoftwareDevelopmentData.hero.title}{' '}
+                {healthcareIndustryData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {enterpriseSoftwareDevelopmentData.hero.hollowText}
+                  {healthcareIndustryData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {enterpriseSoftwareDevelopmentData.hero.description}
+                {healthcareIndustryData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -175,13 +175,13 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise{' '}
+              {healthcareIndustryData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {healthcareIndustryData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive enterprise software solutions
+              Comprehensive healthcare software solutions
             </p>
           </div>
 
@@ -223,13 +223,13 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose Enterprise{' '}
+              {healthcareIndustryData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                Software Development
+                {healthcareIndustryData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We deliver enterprise-grade software solutions that are built specifically for large organizations, ensuring optimal performance, scalability, and security.
+              We deliver healthcare-grade software solutions that are built specifically for healthcare organizations, ensuring optimal performance, scalability, and HIPAA compliance.
             </p>
           </div>
 
@@ -311,13 +311,13 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise Software{' '}
+              Healthcare Software{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover how enterprise software development can transform your organization and drive efficiency
+              Discover how healthcare software development can transform your organization and drive efficiency
             </p>
           </div>
 
@@ -339,59 +339,22 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         </div>
       </section>
 
-      {/* Use Cases Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise Software{' '}
-              <span className="hollow-text-brand">
-                Use Cases
-              </span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore how enterprises leverage custom software to streamline operations and drive growth
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {enterpriseSoftwareDevelopmentData.useCases.map((useCase, index) => (
-              <div
-                key={index}
-                className={`bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border`}
-                style={{ borderColor: useCase.borderColor + '20' }}
-              >
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{useCase.title}</h3>
-                <p className="text-gray-600 mb-4">
-                  {useCase.description}
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  {useCase.items.map((item, itemIndex) => (
-                    <li key={itemIndex}>• {item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <Technologies technologies={enterpriseSoftwareDevelopmentData.technologies} />
+      <Technologies technologies={[...healthcareIndustryData.technologies]} />
       <ProcessDiagram 
-        title={enterpriseSoftwareDevelopmentData.processTitle}
-        subtitle={enterpriseSoftwareDevelopmentData.processSubtitle}
+        title={healthcareIndustryData.processTitle}
+        subtitle={healthcareIndustryData.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={enterpriseSoftwareDevelopmentData.seoServiceName} />
+      <SEOLocationSection serviceName={healthcareIndustryData.seoServiceName} />
       <ContactSection 
-        title={enterpriseSoftwareDevelopmentData.contact.title}
-        description={enterpriseSoftwareDevelopmentData.contact.description}
+        title={healthcareIndustryData.contactTitle}
+        description={healthcareIndustryData.contactDescription}
       />
       <GetQuoteSection
-        title={enterpriseSoftwareDevelopmentData.getQuote.title}
-        hollowText={enterpriseSoftwareDevelopmentData.getQuote.hollowText}
-        description={enterpriseSoftwareDevelopmentData.getQuote.description}
+        title={healthcareIndustryData.getQuoteTitle}
+        hollowText={healthcareIndustryData.getQuoteHollowText}
+        description={healthcareIndustryData.getQuoteDescription}
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)
