@@ -107,7 +107,7 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <div className="flex flex-col items-center justify-center h-full">
-                <div className="relative w-12 h-12 mb-3 flex items-center justify-center">
+                <div className="relative w-12 h-12 mb-3 flex items-center justify-center" style={{ aspectRatio: '1/1' }}>
                   <Image
                     src={tech.logo}
                     alt={tech.name}
@@ -115,6 +115,7 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
                     height={48}
                     className="object-contain"
                     loading="lazy"
+                    style={{ aspectRatio: '1/1' }}
                     onError={(e) => {
                       // Fallback to a placeholder if image fails to load
                       const target = e.target as HTMLImageElement

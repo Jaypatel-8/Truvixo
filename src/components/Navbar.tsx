@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { Menu, X, ChevronDown, ArrowRight, ChevronRight, ChevronLeft } from 'lucide-react'
 import Logo from './Logo'
@@ -27,16 +27,23 @@ const Navbar = () => {
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false)
 
   useEffect(() => {
+    let ticking = false
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Close all menus function
-  const closeAllMenus = () => {
+  // Close all menus function - memoized to prevent re-renders
+  const closeAllMenus = useCallback(() => {
     setServicesOpen(false)
     setServicesHoveredCategory(null)
     setAiOpen(false)
@@ -49,7 +56,7 @@ const Navbar = () => {
     setMobileHireOpen(false)
     setMobileIndustryOpen(false)
     setMobileCompanyOpen(false)
-  }
+  }, [])
 
   // Handle dropdown toggle with double-click detection
   const handleDropdownToggle = (menu: 'services' | 'ai' | 'hire' | 'industry' | 'company') => {

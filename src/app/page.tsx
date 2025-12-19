@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { ArrowRight, Calendar, Code, Brain, Smartphone, Cloud, Database, Server, Target, Settings, Wrench, Megaphone, Palette, Award, Rocket, Shield, MessageSquare, Phone, Mail, ChevronRight, Users, TrendingUp, Zap, BarChart3, Building2, Heart, ShoppingCart, Truck, Home as HomeIcon, GraduationCap, CheckCircle, Clock, DollarSign, Briefcase, Lightbulb } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import Image from 'next/image'
 // Below-the-fold: Lazy load with intersection observer
 const Technologies = dynamic(() => import('../components/Technologies'), {
   ssr: false,
@@ -24,11 +25,6 @@ const NewsletterCTA = dynamic(() => import('../components/NewsletterCTA'), {
 const ContactSection = dynamic(() => import('../components/ContactSection'), {
   ssr: false,
   loading: () => <div className="min-h-[300px] bg-white"></div>,
-})
-
-const GetQuoteSection = dynamic(() => import('../components/sections/GetQuoteSection'), {
-  ssr: false,
-  loading: () => null,
 })
 
 import 'swiper/css'
@@ -120,35 +116,42 @@ export default function Home() {
   // Using static featured projects instead
 
   useEffect(() => {
-    // Immediate IntersectionObserver initialization for faster rendering
+    // Optimized IntersectionObserver with passive observation and debouncing
+    let rafId: number | null = null
     const observerOptions = {
       threshold: 0.01,
       rootMargin: '50px 0px'
     }
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate')
-          // Unobserve after animation to improve performance
-          observer.unobserve(entry.target)
-        }
+      // Use requestAnimationFrame to batch updates and reduce TBT
+      if (rafId) cancelAnimationFrame(rafId)
+      rafId = requestAnimationFrame(() => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate')
+            // Unobserve after animation to improve performance
+            observer.unobserve(entry.target)
+          }
+        })
       })
     }, observerOptions)
 
-    // Use requestIdleCallback for non-critical animations
+    // Use requestIdleCallback for non-critical animations with longer timeout
     const initObserver = () => {
       const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
       scrollElements.forEach((el) => observer.observe(el))
     }
 
+    // Delay initialization to reduce initial TBT
     if ('requestIdleCallback' in window) {
-      requestIdleCallback(initObserver, { timeout: 100 })
+      requestIdleCallback(initObserver, { timeout: 2000 })
     } else {
-      setTimeout(initObserver, 0)
+      setTimeout(initObserver, 100)
     }
 
     return () => {
+      if (rafId) cancelAnimationFrame(rafId)
       observer.disconnect()
     }
   }, [])
@@ -799,10 +802,14 @@ export default function Home() {
                 className="bg-white rounded-lg p-6 border-2 border-gray-200 flex items-center justify-center h-24 hover:border-gray-300 transition-all duration-300 group"
                 style={{ borderColor: partner.color + '40' }}
               >
-                <img
+                <Image
                   src={partner.logo}
                   alt={partner.name}
+                  width={48}
+                  height={48}
                   className="w-12 h-12 object-contain grayscale group-hover:grayscale-0 transition-all duration-300 opacity-60 group-hover:opacity-100"
+                  loading="lazy"
+                  unoptimized
                 />
               </div>
             ))}
@@ -900,21 +907,6 @@ export default function Home() {
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business."
-      />
-
-      {/* 15. Get Quote Section - Last section before footer */}
-      <GetQuoteSection
-        title="Ready to Transform"
-        hollowText="Your Business?"
-        description="Get in touch and let's discuss how we can help transform your business with intelligent technology solutions."
-        primaryCTA={{
-          text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
-        }}
-        secondaryCTA={{
-          text: 'Schedule Consultation',
-          onClick: () => setIsContactModalOpen(true)
-        }}
       />
 
       <ContactFormModal 

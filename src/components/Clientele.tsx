@@ -119,7 +119,7 @@ function Clientele({
                   key={`${client.name}-first-${index}`}
                   className="flex-shrink-0 group cursor-pointer"
                 >
-                  <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6">
+                  <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6" style={{ aspectRatio: '2/1' }}>
                     {client.url ? (
                       <a 
                         href={client.url} 
@@ -136,6 +136,7 @@ function Clientele({
                           unoptimized
                           loading="lazy"
                           priority={false}
+                          style={{ aspectRatio: '2/1' }}
                         />
                       </a>
                     ) : (
@@ -147,6 +148,7 @@ function Clientele({
                         className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                         loading="lazy"
                         priority={false}
+                        style={{ aspectRatio: '2/1' }}
                       />
                     )}
                   </div>
@@ -161,7 +163,7 @@ function Clientele({
                   key={`${client.name}-second-${index}`}
                   className="flex-shrink-0 group cursor-pointer"
                 >
-                  <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6">
+                  <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6" style={{ aspectRatio: '2/1' }}>
                     {client.url ? (
                       <a 
                         href={client.url} 
@@ -178,6 +180,7 @@ function Clientele({
                           unoptimized
                           loading="lazy"
                           priority={false}
+                          style={{ aspectRatio: '2/1' }}
                         />
                       </a>
                     ) : (
@@ -189,6 +192,7 @@ function Clientele({
                         className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                         loading="lazy"
                         priority={false}
+                        style={{ aspectRatio: '2/1' }}
                       />
                     )}
                   </div>
