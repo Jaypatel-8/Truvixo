@@ -7,37 +7,37 @@ export const devopsEngineersData = {
     },
     title: 'Hire DevOps',
     hollowText: 'Engineers',
-    description: 'Hire experienced DevOps engineers who build and maintain scalable cloud infrastructure. From CI/CD pipelines to container orchestration, we provide the DevOps expertise you need. Our engineers are experts in AWS, Azure, Docker, Kubernetes, and modern DevOps tools.'
+    description: 'Hire experienced DevOps engineers who automate infrastructure, streamline deployments, and ensure reliable operations. Our DevOps engineers are experts in AWS, Docker, Kubernetes, CI/CD, and cloud technologies.'
   },
   services: [
     {
-      title: 'Cloud Infrastructure',
-      description: 'Design and deploy scalable cloud infrastructure',
-      iconName: 'Cloud',
+      title: 'CI/CD Pipelines',
+      description: 'Build and maintain continuous integration and deployment',
+      iconName: 'Zap',
       color: '#5e2cb6'
     },
     {
-      title: 'CI/CD Pipelines',
-      description: 'Build automated deployment pipelines',
-      iconName: 'Zap',
+      title: 'Cloud Infrastructure',
+      description: 'Design and manage AWS, Azure, and GCP infrastructure',
+      iconName: 'Cloud',
       color: '#c91a6f'
     },
     {
-      title: 'Container Orchestration',
-      description: 'Kubernetes and Docker container management',
-      iconName: 'Server',
-      color: '#d97706'
+      title: 'Containerization',
+      description: 'Docker and Kubernetes orchestration',
+      iconName: 'Package',
+      color: '#fecc4d'
     },
     {
       title: 'Infrastructure as Code',
       description: 'Terraform, CloudFormation, and automation',
       iconName: 'Code',
-      color: '#059669'
+      color: '#10b981'
     },
     {
       title: 'Monitoring & Logging',
-      description: 'Set up monitoring and logging systems',
-      iconName: 'BarChart',
+      description: 'Set up monitoring, alerting, and logging systems',
+      iconName: 'Gauge',
       color: '#5e2cb6'
     },
     {
@@ -51,60 +51,62 @@ export const devopsEngineersData = {
     {
       iconName: 'Cloud',
       title: 'Cloud Expertise',
-      description: 'Deep expertise in AWS, Azure, GCP, and cloud-native technologies',
+      description: 'Expertise in AWS, Azure, GCP, and multi-cloud strategies',
       color: '#5e2cb6'
     },
     {
       iconName: 'Zap',
       title: 'Automation',
-      description: 'Build automated CI/CD pipelines and infrastructure',
+      description: 'Automate deployments and infrastructure management',
       color: '#c91a6f'
     },
     {
-      iconName: 'Server',
-      title: 'Containerization',
-      description: 'Expertise in Docker, Kubernetes, and container orchestration',
-      color: '#d97706'
+      iconName: 'Target',
+      title: 'Reliability',
+      description: 'Ensure high availability and system reliability',
+      color: '#fecc4d'
     },
     {
-      iconName: 'Shield',
-      title: 'Security First',
-      description: 'Implement security best practices and compliance',
-      color: '#059669'
+      iconName: 'TrendingUp',
+      title: 'Scalability',
+      description: 'Build scalable infrastructure that grows with your business',
+      color: '#10b981'
     }
   ],
   industries: [
-    { name: 'Fintech', iconName: 'Building2', color: '#5e2cb6' },
-    { name: 'Healthcare', iconName: 'Heart', color: '#c91a6f' },
-    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#d97706' },
-    { name: 'Logistics', iconName: 'Truck', color: '#059669' },
-    { name: 'Real Estate', iconName: 'Home', color: '#5e2cb6' }
+    { name: 'SaaS', iconName: 'Cloud', color: '#5e2cb6' },
+    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#c91a6f' },
+    { name: 'Fintech', iconName: 'DollarSign', color: '#fecc4d' },
+    { name: 'Healthcare', iconName: 'Heart', color: '#10b981' },
+    { name: 'Enterprise', iconName: 'Building2', color: '#5e2cb6' }
   ],
   technologies: [
     { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
     { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', color: '#326CE5', category: 'devops' as const },
     { name: 'Terraform', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg', color: '#7B42BC', category: 'devops' as const },
-    { name: 'Jenkins', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg', color: '#D24939', category: 'devops' as const },
-    { name: 'GitLab', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/gitlab/gitlab-original.svg', color: '#FC6D26', category: 'devops' as const },
-    { name: 'Ansible', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/ansible/ansible-original.svg', color: '#EE0000', category: 'devops' as const },
-    { name: 'Azure', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original.svg', color: '#0078D4', category: 'cloud' as const }
+    { name: 'Jenkins', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg', color: '#D24939', category: 'devops' as const }
   ],
   processSteps: [
     {
       title: 'Requirement Analysis',
-      description: 'We analyze your infrastructure needs and DevOps requirements',
+      description: 'We analyze your DevOps needs and infrastructure requirements',
       iconName: 'Target'
     },
     {
       title: 'Engineer Matching',
-      description: 'We match you with DevOps engineers skilled in your tech stack',
+      description: 'We match you with DevOps engineers skilled in your cloud platform',
       iconName: 'Users'
     },
     {
       title: 'Technical Assessment',
       description: 'Comprehensive interviews covering cloud, containers, and automation',
       iconName: 'FileText'
+    },
+    {
+      title: 'Portfolio Review',
+      description: 'Review engineer portfolios showcasing DevOps projects',
+      iconName: 'Cloud'
     },
     {
       title: 'Trial Period',
@@ -115,11 +117,6 @@ export const devopsEngineersData = {
       title: 'Team Integration',
       description: 'Seamless integration with your development and operations teams',
       iconName: 'Rocket'
-    },
-    {
-      title: 'Continuous Support',
-      description: 'Ongoing support, infrastructure monitoring, and optimization',
-      iconName: 'Zap'
     }
   ],
   servicesTitle: 'DevOps',

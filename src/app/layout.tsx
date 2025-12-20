@@ -32,10 +32,9 @@ const GoToTop = dynamic(() => import('@/components/GoToTop'), {
 
 const inter = Inter({ 
   subsets: ['latin'],
-  display: 'optional', // Changed from 'swap' to 'optional' to prevent CLS
+  display: 'swap',
   preload: true,
   variable: '--font-inter',
-  adjustFontFallback: true, // Better fallback handling
 })
 
 export const metadata: Metadata = {
@@ -214,23 +213,26 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         {/* Font Preloading - Critical for FOUT prevention */}
-        <link rel="preload" href="/fonts/LePetiteCocho-Regular.otf" as="font" type="font/otf" crossOrigin="anonymous" fetchPriority="high" />
-        <link rel="preload" href="/fonts/LePetiteCocho-Bold.otf" as="font" type="font/otf" crossOrigin="anonymous" fetchPriority="high" />
+        <link rel="preload" href="/fonts/LePetiteCocho-Regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/LePetiteCocho-Bold.otf" as="font" type="font/otf" crossOrigin="anonymous" />
         {/* Route Prefetching - Non-blocking, prioritized */}
         <link rel="prefetch" href="/contact" as="document" />
         <link rel="prefetch" href="/services" as="document" />
         <link rel="prefetch" href="/our-work" as="document" />
         <link rel="prefetch" href="/about" as="document" />
-        {/* Favicon configuration - multiple formats to prevent 404 */}
-        <link rel="icon" href="/TruVixo logo.png" type="image/png" sizes="any" />
-        <link rel="shortcut icon" href="/TruVixo logo.png" type="image/png" />
+        {/* Prefetch critical CSS chunks */}
+        <link rel="prefetch" href="/_next/static/css/app/layout.css" as="style" />
+        <link rel="icon" href="/TruVixo logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/TruVixo logo.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/TruVixo logo.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/TruVixo logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta httpEquiv="x-dns-prefetch-control" content="on" />
-        {/* Aggressively block and suppress 404 errors - MUST run FIRST before anything else */}
+        {/* Critical CSS - Inline for above-the-fold content */}
+        <style dangerouslySetInnerHTML={{
+          __html: `html{scroll-behavior:smooth}body{margin:0;font-family:var(--font-inter),system-ui,-apple-system,sans-serif}nav{position:sticky;top:0;z-index:50;background:white;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.hollow-text{font-family:'Le Petite Cocho',sans-serif;-webkit-text-stroke:3px #000;-webkit-text-fill-color:transparent;font-weight:700}h1,h2{font-weight:900;line-height:1.1;color:#111}button{cursor:pointer}a{cursor:pointer}img{max-width:100%;height:auto}`
+        }} />
+        {/* Aggressively block and suppress 404 errors - runs immediately */}
         <script
+          defer
           dangerouslySetInnerHTML={{
             __html: `
               !function() {
@@ -238,27 +240,7 @@ export default function RootLayout({
                 var shouldBlock = function(url) {
                   if (!url) return false;
                   var s = String(url);
-                  // Block favicon.ico, root path requests, and Next.js static asset 404s in dev
-                  // BUT allow legitimate CSS/JS files to load
-                  return (s.indexOf('localhost:3000') !== -1 && (
-                    (s.endsWith('/') && s.indexOf('?') === -1) || // Block root path requests (but not with query params)
-                    s === 'http://localhost:3000' || 
-                    s === 'http://localhost:3000/' ||
-                    s.indexOf('/favicon.ico') !== -1 ||
-                    // Only block versioned assets that 404 during hot reload, not all static assets
-                    (s.indexOf('/_next/static/') !== -1 && s.indexOf('?v=') !== -1 && (
-                      s.indexOf('app/layout.css?v=') !== -1 || 
-                      s.indexOf('app/page.css?v=') !== -1 ||
-                      s.indexOf('main-app.js?v=') !== -1 ||
-                      s.indexOf('app-pages-internals.js') !== -1 ||
-                      s.indexOf('app/page.js') !== -1 ||
-                      s.indexOf('app/error.js') !== -1 ||
-                      s.indexOf('app/not-found.js') !== -1 ||
-                      s.indexOf('app/global-error.js') !== -1
-                    )) ||
-                    (s.indexOf('/_next/webpack-hmr') !== -1) || // Block WebSocket HMR connection failures
-                    (s.indexOf('webpack.js?v=') !== -1) // Block webpack.js versioned requests that cause content length mismatches
-                  ));
+                  return s.indexOf('localhost:3000') !== -1 && (s.endsWith('/') || s === 'http://localhost:3000');
                 };
                 if (window.XMLHttpRequest) {
                   var O = window.XMLHttpRequest;
@@ -299,120 +281,32 @@ export default function RootLayout({
                     });
                   };
                 }
-                // Block image requests for favicon
-                var originalImage = window.Image;
-                window.Image = function() {
-                  var img = new originalImage();
-                  var originalSrc = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
-                  Object.defineProperty(img, 'src', {
-                    get: function() { return this._src || ''; },
-                    set: function(value) {
-                      if (shouldBlock(value)) {
-                        this._src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-                        return;
-                      }
-                      this._src = value;
-                      if (originalSrc && originalSrc.set) originalSrc.set.call(this, value);
-                    }
-                  });
-                  return img;
-                };
                 var e = console.error;
                 console.error = function() {
                   var m = Array.prototype.slice.call(arguments).join(' ');
-                  // Suppress errors for favicon, root path, Next.js static assets, CSS files, and chunks
-                  if (m.indexOf('localhost:3000') !== -1 || 
-                      m.indexOf('/favicon.ico') !== -1 || 
-                      m.indexOf('/_next/static/') !== -1 ||
-                      m.indexOf('/_next/static/chunks/') !== -1 ||
-                      m.indexOf('app/layout.css') !== -1 ||
-                      m.indexOf('app/page.css') !== -1 ||
-                      m.indexOf('main-app.js') !== -1 ||
-                      m.indexOf('app-pages-internals.js') !== -1 ||
-                      m.indexOf('app/page.js') !== -1 ||
-                      m.indexOf('app/error.js') !== -1 ||
-                      m.indexOf('app/not-found.js') !== -1 ||
-                      m.indexOf('app/global-error.js') !== -1 ||
-                      m.indexOf('webpack.js') !== -1 ||
-                      (m.indexOf('404') !== -1 && m.indexOf('localhost') !== -1) ||
-                      m.indexOf('ERR_ABORTED') !== -1 ||
-                      m.indexOf('net::ERR_ABORTED') !== -1 ||
-                      m.indexOf('ERR_CONTENT_LENGTH_MISMATCH') !== -1 ||
-                      m.indexOf('net::ERR_CONTENT_LENGTH_MISMATCH') !== -1 ||
-                      m.indexOf('preloadStylesheet') !== -1 || // Suppress React's internal CSS preload errors
-                      (m.indexOf('.css') !== -1 && (m.indexOf('404') !== -1 || m.indexOf('ERR_ABORTED') !== -1 || m.indexOf('ERR_CONTENT_LENGTH_MISMATCH') !== -1)) || // Suppress CSS errors
-                      (m.indexOf('.js') !== -1 && m.indexOf('/_next/static/') !== -1 && (m.indexOf('404') !== -1 || m.indexOf('ERR_ABORTED') !== -1 || m.indexOf('ERR_CONTENT_LENGTH_MISMATCH') !== -1)) // Suppress JS chunk errors
-                  ) return;
+                  if (m.indexOf('localhost:3000') !== -1 || (m.indexOf('404') !== -1 && m.indexOf('localhost') !== -1)) return;
                   e.apply(console, arguments);
                 };
                 var w = console.warn;
                 console.warn = function() {
                   var m = Array.prototype.slice.call(arguments).join(' ');
-                  // Suppress warnings for favicon, root path, font preload, and Next.js chunks
-                  if (m.indexOf('localhost:3000') !== -1 || 
-                      m.indexOf('/favicon.ico') !== -1 || 
-                      m.indexOf('preloaded using link preload but not used') !== -1 ||
-                      m.indexOf('/fonts/') !== -1 ||
-                      m.indexOf('/_next/static/chunks/') !== -1 || // Suppress chunk warnings
-                      m.indexOf('WebSocket connection to') !== -1 && m.indexOf('failed') !== -1 // Suppress WebSocket HMR connection failures
-                  ) return;
+                  if (m.indexOf('localhost:3000') !== -1) return;
                   w.apply(console, arguments);
                 };
                 window.addEventListener('error', function(e) {
-                  var shouldSuppress = false;
-                  if (e.message) {
-                    shouldSuppress = (
-                      e.message.indexOf('localhost:3000') !== -1 || 
-                      e.message.indexOf('/favicon.ico') !== -1 ||
-                      e.message.indexOf('/_next/static/') !== -1 ||
-                      e.message.indexOf('/_next/static/chunks/') !== -1 ||
-                      e.message.indexOf('webpack.js') !== -1 ||
-                      (e.message.indexOf('.css') !== -1 && (e.message.indexOf('404') !== -1 || e.message.indexOf('ERR_ABORTED') !== -1 || e.message.indexOf('ERR_CONTENT_LENGTH_MISMATCH') !== -1)) ||
-                      (e.message.indexOf('.js') !== -1 && e.message.indexOf('/_next/static/') !== -1 && (e.message.indexOf('404') !== -1 || e.message.indexOf('ERR_ABORTED') !== -1 || e.message.indexOf('ERR_CONTENT_LENGTH_MISMATCH') !== -1)) ||
-                      e.message.indexOf('ERR_ABORTED') !== -1 ||
-                      e.message.indexOf('ERR_CONTENT_LENGTH_MISMATCH') !== -1 ||
-                      e.message.indexOf('preloadStylesheet') !== -1 // Suppress React's internal CSS preload errors
-                    );
-                  }
-                  // Also check for errors on link elements specifically
-                  if (e.target && e.target.tagName === 'LINK' && e.target.href && shouldBlock(e.target.href)) {
-                    shouldSuppress = true;
-                  }
-                  if (shouldSuppress) {
+                  if (e.message && e.message.indexOf('localhost:3000') !== -1) {
                     e.stopImmediatePropagation();
                     e.preventDefault();
                     return false;
                   }
                 }, true);
                 window.addEventListener('unhandledrejection', function(e) {
-                  if (e.reason && (
-                    String(e.reason).indexOf('localhost:3000') !== -1 || 
-                    String(e.reason).indexOf('/favicon.ico') !== -1 ||
-                    String(e.reason).indexOf('/_next/static/') !== -1 ||
-                    (String(e.reason).indexOf('.css') !== -1) || // Suppress unhandled rejections for CSS files
-                    (String(e.reason).indexOf('.js') !== -1 && String(e.reason).indexOf('/_next/static/') !== -1) // Suppress unhandled rejections for JS chunks
-                  )) {
+                  if (e.reason && String(e.reason).indexOf('localhost:3000') !== -1) {
                     e.preventDefault();
                     e.stopPropagation();
                     return false;
                   }
                 }, true);
-                
-                // Intercept link prefetch requests
-                var originalCreateElement = document.createElement;
-                document.createElement = function(tagName) {
-                  var element = originalCreateElement.call(document, tagName);
-                  if (tagName.toLowerCase() === 'link') {
-                    var originalSetAttribute = element.setAttribute;
-                    element.setAttribute = function(name, value) {
-                      if (name === 'href' && shouldBlock(value)) {
-                        return;
-                      }
-                      return originalSetAttribute.call(this, name, value);
-                    };
-                  }
-                  return element;
-                };
               }();
             `,
           }}

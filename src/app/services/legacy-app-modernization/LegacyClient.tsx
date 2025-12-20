@@ -22,11 +22,11 @@ function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface LegacyClientProps {
+interface EnterpriseClientProps {
   faqs: Array<{ question: string; answer: string }>
 }
 
-export default function LegacyClient({ faqs }: LegacyClientProps) {
+export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -376,7 +376,7 @@ export default function LegacyClient({ faqs }: LegacyClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={legacyAppModernizationData.technologies} />
+      <Technologies technologies={[...legacyAppModernizationData.technologies]} />
       <ProcessDiagram 
         title={legacyAppModernizationData.processTitle}
         subtitle={legacyAppModernizationData.processSubtitle}

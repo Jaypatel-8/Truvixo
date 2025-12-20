@@ -7,7 +7,7 @@ export const qaEngineersData = {
     },
     title: 'Hire QA',
     hollowText: 'Engineers',
-    description: 'Hire experienced QA engineers who ensure software quality and reliability. From manual testing to automated test suites, we provide the QA expertise you need. Our engineers are experts in Selenium, Cypress, Jest, and modern testing frameworks.'
+    description: 'Hire experienced QA engineers who ensure software quality and reliability. Our QA engineers are experts in manual and automated testing, test planning, and quality assurance processes.'
   },
   services: [
     {
@@ -23,101 +23,100 @@ export const qaEngineersData = {
       color: '#c91a6f'
     },
     {
-      title: 'E2E Testing',
-      description: 'End-to-end testing for complete workflows',
-      iconName: 'Target',
-      color: '#d97706'
+      title: 'Test Planning',
+      description: 'Create test strategies and test plans',
+      iconName: 'FileText',
+      color: '#fecc4d'
+    },
+    {
+      title: 'API Testing',
+      description: 'Test REST APIs and microservices',
+      iconName: 'Network',
+      color: '#10b981'
     },
     {
       title: 'Performance Testing',
       description: 'Load testing and performance optimization',
-      iconName: 'BarChart',
-      color: '#059669'
-    },
-    {
-      title: 'Security Testing',
-      description: 'Security vulnerability testing and assessment',
-      iconName: 'Shield',
+      iconName: 'Gauge',
       color: '#5e2cb6'
     },
     {
-      title: 'Test Automation',
-      description: 'Set up CI/CD test automation pipelines',
-      iconName: 'Rocket',
+      title: 'Security Testing',
+      description: 'Identify security vulnerabilities and risks',
+      iconName: 'Shield',
       color: '#c91a6f'
     }
   ],
   whyChooseUs: [
     {
       iconName: 'CheckCircle',
-      title: 'QA Expertise',
-      description: 'Expert QA engineers with comprehensive testing knowledge',
+      title: 'Quality Assurance',
+      description: 'Ensure software reliability and bug-free releases',
       color: '#5e2cb6'
     },
     {
       iconName: 'Zap',
       title: 'Test Automation',
-      description: 'Build automated test suites for faster testing cycles',
+      description: 'Expertise in Selenium, Cypress, Jest, and more',
       color: '#c91a6f'
     },
     {
       iconName: 'Target',
-      title: 'Quality Focus',
-      description: 'Ensure software quality and reliability',
-      color: '#d97706'
+      title: 'Comprehensive Coverage',
+      description: 'Test all aspects from functionality to performance',
+      color: '#fecc4d'
     },
     {
       iconName: 'Shield',
-      title: 'Comprehensive Testing',
-      description: 'Manual, automated, performance, and security testing',
-      color: '#059669'
+      title: 'Security Focus',
+      description: 'Identify and prevent security vulnerabilities',
+      color: '#10b981'
     }
   ],
   industries: [
-    { name: 'Fintech', iconName: 'Building2', color: '#5e2cb6' },
-    { name: 'Healthcare', iconName: 'Heart', color: '#c91a6f' },
-    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#d97706' },
-    { name: 'Logistics', iconName: 'Truck', color: '#059669' },
-    { name: 'Real Estate', iconName: 'Home', color: '#5e2cb6' }
+    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#5e2cb6' },
+    { name: 'Fintech', iconName: 'DollarSign', color: '#c91a6f' },
+    { name: 'Healthcare', iconName: 'Heart', color: '#fecc4d' },
+    { name: 'SaaS', iconName: 'Cloud', color: '#10b981' },
+    { name: 'Mobile Apps', iconName: 'Smartphone', color: '#5e2cb6' }
   ],
   technologies: [
-    { name: 'Selenium', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg', color: '#43B02A', category: 'tools' as const },
-    { name: 'Cypress', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/cypress.svg', color: '#17202C', category: 'tools' as const },
-    { name: 'Jest', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg', color: '#C21325', category: 'tools' as const },
-    { name: 'Playwright', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/playwright.svg', color: '#2EAD33', category: 'tools' as const },
-    { name: 'Postman', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/postman.svg', color: '#FF6C37', category: 'tools' as const },
-    { name: 'JMeter', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jmeter/jmeter-original.svg', color: '#D22128', category: 'tools' as const }
+    { name: 'Selenium', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/selenium/selenium-original.svg', color: '#43B02A', category: 'testing' as const },
+    { name: 'Cypress', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cypressio/cypressio-original.svg', color: '#17202C', category: 'testing' as const },
+    { name: 'Jest', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jest/jest-plain.svg', color: '#C21325', category: 'testing' as const },
+    { name: 'Postman', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg', color: '#FF6C37', category: 'testing' as const },
+    { name: 'JIRA', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg', color: '#0052CC', category: 'testing' as const }
   ],
   processSteps: [
     {
       title: 'Requirement Analysis',
-      description: 'We analyze your testing needs and QA requirements',
+      description: 'We analyze your QA needs, testing requirements, and project scope',
       iconName: 'Target'
     },
     {
-      title: 'Engineer Matching',
-      description: 'We match you with QA engineers skilled in your tech stack',
+      title: 'QA Engineer Matching',
+      description: 'We match you with QA engineers skilled in your testing needs',
       iconName: 'Users'
     },
     {
       title: 'Technical Assessment',
-      description: 'Comprehensive interviews covering testing methodologies and tools',
+      description: 'Comprehensive interviews covering manual and automated testing',
       iconName: 'FileText'
     },
     {
-      title: 'Trial Period',
-      description: 'Optional trial period to evaluate engineer performance',
+      title: 'Portfolio Review',
+      description: 'Review QA engineer portfolios showcasing testing projects',
       iconName: 'CheckCircle'
     },
     {
-      title: 'Team Integration',
-      description: 'Seamless integration with your development team',
-      iconName: 'Rocket'
+      title: 'Trial Period',
+      description: 'Optional trial period to evaluate QA engineer performance',
+      iconName: 'Clock'
     },
     {
-      title: 'Continuous Support',
-      description: 'Ongoing support, test maintenance, and quality assurance',
-      iconName: 'Zap'
+      title: 'Team Integration',
+      description: 'Seamless integration with your development and QA teams',
+      iconName: 'Rocket'
     }
   ],
   servicesTitle: 'QA',

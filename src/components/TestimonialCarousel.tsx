@@ -1,14 +1,13 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
-import { Quote } from 'lucide-react'
+import InfiniteCarousel from './InfiniteCarousel'
 
 interface Testimonial {
   quote: string
   author: string
   role: string
   company: string
-  rating: number
+  rating?: number // Optional, not displayed
 }
 
 interface TestimonialCarouselProps {
@@ -17,150 +16,103 @@ interface TestimonialCarouselProps {
   className?: string
 }
 
-// Website brand colors matching services cards
+// Minimal color palette
 const testimonialColors = [
-  '#5e2cb6', // Purple
-  '#c91a6f', // Pink
-  '#fecc4d', // Yellow
-  '#10b981', // Green
+  { primary: '#5e2cb6', light: '#ede9fe' }, // Purple
+  { primary: '#c91a6f', light: '#fce7f3' }, // Pink
+  { primary: '#f59e0b', light: '#fffbeb' }, // Yellow
+  { primary: '#10b981', light: '#d1fae5' }, // Green
+  { primary: '#3b82f6', light: '#dbeafe' }, // Blue
+  { primary: '#ef4444', light: '#fee2e2' }, // Red
 ]
 
-export default function TestimonialCarousel({ 
-  testimonials, 
+export default function TestimonialCarousel({
+  testimonials,
   speed = 40,
-  className = '' 
+  className = ''
 }: TestimonialCarouselProps) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const contentRef = useRef<HTMLDivElement>(null)
+  const testimonialItems = testimonials.map((testimonial, index) => {
+    const colors = testimonialColors[index % testimonialColors.length]
+    
+    return (
+      <div
+        key={index}
+        className="bg-white rounded-xl p-6 border h-full flex flex-col transition-all duration-300 hover:shadow-md"
+        style={{ 
+          borderColor: `${colors.primary}20`
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.borderColor = colors.primary
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.borderColor = `${colors.primary}20`
+        }}
+      >
+        {/* Quote Icon - Minimal */}
+        <div 
+          className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+          style={{ backgroundColor: colors.light }}
+        >
+          <svg 
+            className="w-5 h-5" 
+            style={{ color: colors.primary }}
+            fill="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.984zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+        </div>
 
-  useEffect(() => {
-    if (!containerRef.current || !contentRef.current) return
+        {/* Quote - Minimal */}
+        <p className="text-gray-700 text-base leading-relaxed mb-6 flex-grow">
+          "{testimonial.quote}"
+        </p>
 
-    const container = containerRef.current
-    const content = contentRef.current
-    let animationFrameId: number
-    let position = 0
-
-    const animate = () => {
-      position -= speed * 0.01
-      
-      // Reset position when content has scrolled completely (single carousel, no duplication)
-      if (Math.abs(position) >= content.offsetWidth) {
-        position = 0
-      }
-      
-      content.style.transform = `translateX(${position}px)`
-      animationFrameId = requestAnimationFrame(animate)
-    }
-
-    animate()
-
-    return () => {
-      cancelAnimationFrame(animationFrameId)
-    }
-  }, [speed])
+        {/* Author Info - Minimal */}
+        <div 
+          className="border-t pt-4"
+          style={{ borderColor: `${colors.primary}15` }}
+        >
+          <div className="flex items-center gap-3">
+            {/* Avatar Circle - Minimal */}
+            <div 
+              className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+              style={{ backgroundColor: colors.primary }}
+            >
+              {testimonial.author.charAt(0).toUpperCase()}
+            </div>
+            <div className="flex-1 min-w-0">
+              <p 
+                className="font-bold text-base mb-1 truncate"
+                style={{ color: colors.primary }}
+              >
+                {testimonial.author}
+              </p>
+              {testimonial.role && (
+                <p className="text-gray-600 text-sm">
+                  {testimonial.role}
+                </p>
+              )}
+              {testimonial.company && (
+                <p className="text-gray-500 text-sm">
+                  {testimonial.company}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  })
 
   return (
-    <div className={`overflow-hidden ${className}`} ref={containerRef}>
-      <div 
-        className="flex gap-8"
-        ref={contentRef}
-        style={{ width: 'max-content' }}
-      >
-        {testimonials.map((testimonial, index) => {
-          const cardColor = testimonialColors[index % testimonialColors.length]
-          const borderColor = cardColor + '40' // 40% opacity
-          
-          return (
-            <div
-              key={index}
-              className="group flex-shrink-0 w-full md:w-[500px] bg-white rounded-3xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-500 transform hover:-translate-y-3 hover:shadow-2xl relative overflow-hidden"
-              style={{ 
-                borderColor: borderColor,
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = cardColor
-                e.currentTarget.style.boxShadow = `0 20px 60px ${cardColor}25`
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = borderColor
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.06)'
-              }}
-            >
-              {/* Colored Square in Right Upper Corner - Modern Gradient Effect */}
-              <div 
-                className="absolute top-0 right-0 w-40 h-40 opacity-5 group-hover:opacity-15 transition-all duration-500 rounded-bl-full"
-                style={{ 
-                  background: `linear-gradient(135deg, ${cardColor} 0%, ${cardColor}dd 100%)`
-                }}
-              />
-              
-              {/* Subtle Accent Line */}
-              <div 
-                className="absolute top-0 left-0 w-1 h-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                style={{ backgroundColor: cardColor }}
-              />
-
-              {/* Content */}
-              <div className="relative z-10">
-                {/* Modern Quote Icon */}
-                <div className="mb-6">
-                  <div 
-                    className="w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
-                    style={{ 
-                      backgroundColor: cardColor + '15',
-                      color: cardColor
-                    }}
-                  >
-                    <Quote className="w-7 h-7" strokeWidth={2} />
-                  </div>
-                </div>
-
-                {/* Quote Text - Enhanced Typography */}
-                <p className="text-gray-800 mb-8 leading-relaxed text-lg font-medium relative pl-2">
-                  <span 
-                    className="absolute -left-2 top-0 text-5xl font-serif leading-none opacity-10"
-                    style={{ color: cardColor }}
-                  >
-                    "
-                  </span>
-                  <span className="relative z-10">{testimonial.quote}</span>
-                </p>
-
-                {/* Author Info - Modern Layout */}
-                <div className="pt-6 border-t border-gray-100 flex items-center gap-4">
-                  <div 
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-white font-bold text-base shadow-lg transition-all duration-500 group-hover:scale-110"
-                    style={{ 
-                      background: `linear-gradient(135deg, ${cardColor} 0%, ${cardColor}dd 100%)`
-                    }}
-                  >
-                    {testimonial.author.charAt(0).toUpperCase()}
-                  </div>
-                  <div className="flex-1">
-                    <p 
-                      className="font-bold text-gray-900 text-base group-hover:translate-x-1 transition-transform duration-300"
-                      style={{ color: 'inherit' }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = cardColor
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = '#111827'
-                      }}
-                    >
-                      {testimonial.author}
-                    </p>
-                    <p className="text-sm text-gray-500 mt-0.5 font-medium">
-                      {testimonial.role} • {testimonial.company}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )
-        })}
-      </div>
+    <div className={`py-8 ${className}`}>
+      <InfiniteCarousel
+        items={testimonialItems}
+        speed={speed}
+        direction="left"
+        pauseOnHover={true}
+      />
     </div>
   )
 }

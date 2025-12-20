@@ -7,120 +7,119 @@ export const uiUxDesignersData = {
     },
     title: 'Hire UI/UX',
     hollowText: 'Designers',
-    description: 'Hire experienced UI/UX designers who create beautiful, user-friendly interfaces. From wireframes to high-fidelity designs, we provide the design expertise you need. Our designers are experts in Figma, Adobe XD, user research, and modern design systems.'
+    description: 'Hire talented UI/UX designers who create beautiful, intuitive, and user-centered designs. Our designers combine creativity with user research to deliver exceptional digital experiences that drive engagement and conversions.'
   },
   services: [
     {
-      title: 'User Research',
-      description: 'Conduct user research and usability testing',
-      iconName: 'Users',
+      title: 'User Interface Design',
+      description: 'Create visually appealing and functional interfaces',
+      iconName: 'Palette',
       color: '#5e2cb6'
     },
     {
-      title: 'Wireframing',
-      description: 'Create wireframes and information architecture',
-      iconName: 'Layout',
+      title: 'User Experience Design',
+      description: 'Design seamless user journeys and interactions',
+      iconName: 'Users',
       color: '#c91a6f'
     },
     {
-      title: 'UI Design',
-      description: 'Design beautiful, modern user interfaces',
-      iconName: 'Palette',
-      color: '#d97706'
-    },
-    {
-      title: 'UX Design',
-      description: 'Create intuitive user experiences',
-      iconName: 'Target',
-      color: '#059669'
+      title: 'Wireframing & Prototyping',
+      description: 'Create wireframes and interactive prototypes',
+      iconName: 'Layout',
+      color: '#fecc4d'
     },
     {
       title: 'Design Systems',
-      description: 'Build comprehensive design systems',
+      description: 'Build comprehensive design systems and style guides',
       iconName: 'Layers',
+      color: '#10b981'
+    },
+    {
+      title: 'User Research',
+      description: 'Conduct user research and usability testing',
+      iconName: 'Search',
       color: '#5e2cb6'
     },
     {
-      title: 'Prototyping',
-      description: 'Create interactive prototypes for testing',
-      iconName: 'Zap',
+      title: 'Mobile Design',
+      description: 'Design responsive mobile and tablet interfaces',
+      iconName: 'Smartphone',
       color: '#c91a6f'
     }
   ],
   whyChooseUs: [
     {
       iconName: 'Palette',
-      title: 'Design Expertise',
-      description: 'Expert designers with modern design skills and tools',
+      title: 'Creative Excellence',
+      description: 'Designers with strong visual design and creative skills',
       color: '#5e2cb6'
     },
     {
       iconName: 'Users',
-      title: 'User-Centered',
-      description: 'Focus on user needs and creating intuitive experiences',
+      title: 'User-Centered Approach',
+      description: 'Focus on user needs and data-driven design decisions',
       color: '#c91a6f'
     },
     {
-      iconName: 'Target',
-      title: 'Conversion Focused',
-      description: 'Designs that improve conversions and user engagement',
-      color: '#d97706'
+      iconName: 'Zap',
+      title: 'Modern Tools',
+      description: 'Proficient in Figma, Sketch, Adobe XD, and more',
+      color: '#fecc4d'
     },
     {
-      iconName: 'Layers',
-      title: 'Design Systems',
-      description: 'Build scalable design systems for consistency',
-      color: '#059669'
+      iconName: 'Target',
+      title: 'Conversion Focus',
+      description: 'Designs that improve user engagement and conversions',
+      color: '#10b981'
     }
   ],
   industries: [
-    { name: 'Fintech', iconName: 'Building2', color: '#5e2cb6' },
-    { name: 'Healthcare', iconName: 'Heart', color: '#c91a6f' },
-    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#d97706' },
-    { name: 'Logistics', iconName: 'Truck', color: '#059669' },
-    { name: 'Real Estate', iconName: 'Home', color: '#5e2cb6' }
+    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#5e2cb6' },
+    { name: 'SaaS', iconName: 'Cloud', color: '#c91a6f' },
+    { name: 'Healthcare', iconName: 'Heart', color: '#fecc4d' },
+    { name: 'Fintech', iconName: 'DollarSign', color: '#10b981' },
+    { name: 'Education', iconName: 'GraduationCap', color: '#5e2cb6' }
   ],
   technologies: [
-    { name: 'Figma', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/figma.svg', color: '#F24E1E', category: 'tools' as const },
-    { name: 'Adobe XD', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/adobexd.svg', color: '#FF61F6', category: 'tools' as const },
-    { name: 'Sketch', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/sketch.svg', color: '#F7B500', category: 'tools' as const },
-    { name: 'InVision', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/invision.svg', color: '#FF3366', category: 'tools' as const },
-    { name: 'Adobe Photoshop', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg', color: '#31A8FF', category: 'tools' as const },
-    { name: 'Adobe Illustrator', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg', color: '#FF9A00', category: 'tools' as const }
+    { name: 'Figma', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg', color: '#F24E1E', category: 'design' as const },
+    { name: 'Sketch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sketch/sketch-original.svg', color: '#F7B500', category: 'design' as const },
+    { name: 'Adobe XD', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-plain.svg', color: '#FF61F6', category: 'design' as const },
+    { name: 'Photoshop', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg', color: '#31A8FF', category: 'design' as const },
+    { name: 'Illustrator', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg', color: '#FF9A00', category: 'design' as const }
   ],
   processSteps: [
     {
       title: 'Requirement Analysis',
-      description: 'We analyze your design needs and project requirements',
+      description: 'We analyze your design needs, brand guidelines, and target audience',
       iconName: 'Target'
     },
     {
       title: 'Designer Matching',
-      description: 'We match you with designers skilled in your industry and style',
+      description: 'We match you with UI/UX designers skilled in your industry and tools',
       iconName: 'Users'
     },
     {
       title: 'Portfolio Review',
-      description: 'Review designer portfolios showcasing relevant work',
+      description: 'Review designer portfolios showcasing UI/UX projects and capabilities',
       iconName: 'FileText'
     },
     {
-      title: 'Design Test',
-      description: 'Optional design test to evaluate skills and style fit',
+      title: 'Design Assessment',
+      description: 'Evaluate design skills, creativity, and user-centered thinking',
+      iconName: 'Palette'
+    },
+    {
+      title: 'Trial Project',
+      description: 'Optional trial project to evaluate designer\'s work quality',
       iconName: 'CheckCircle'
     },
     {
       title: 'Team Integration',
-      description: 'Seamless integration with your development and product teams',
+      description: 'Seamless integration with your design and development teams',
       iconName: 'Rocket'
-    },
-    {
-      title: 'Continuous Collaboration',
-      description: 'Ongoing collaboration and design iteration',
-      iconName: 'Zap'
     }
   ],
-  servicesTitle: 'UI/UX',
+  servicesTitle: 'UI/UX Design',
   servicesHollowText: 'Services',
   whyChooseTitle: 'Why Hire Our',
   whyChooseHollowText: 'UI/UX Designers',

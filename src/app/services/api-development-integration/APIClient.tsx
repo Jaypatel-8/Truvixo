@@ -22,11 +22,11 @@ function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface APIClientProps {
+interface EnterpriseClientProps {
   faqs: Array<{ question: string; answer: string }>
 }
 
-export default function APIClient({ faqs }: APIClientProps) {
+export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 

@@ -36,6 +36,7 @@ import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import SEOLocationSection from '@/components/SEOLocationSection'
 import ContactSection from '@/components/ContactSection'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import Clientele from '@/components/Clientele'
 import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
@@ -755,6 +756,21 @@ const OurWork = () => {
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business."
+      />
+
+      {/* Get Quote Section - Last section before footer */}
+      <GetQuoteSection
+        title="Ready to start your"
+        hollowText="project?"
+        description="Get in touch and let's discuss how we can help transform your business with innovative technology solutions."
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
       />
 
       {/* Contact Form Modal */}

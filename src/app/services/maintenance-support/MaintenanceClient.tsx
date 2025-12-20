@@ -22,11 +22,11 @@ function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface MaintenanceClientProps {
+interface EnterpriseClientProps {
   faqs: Array<{ question: string; answer: string }>
 }
 
-export default function MaintenanceClient({ faqs }: MaintenanceClientProps) {
+export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -376,7 +376,7 @@ export default function MaintenanceClient({ faqs }: MaintenanceClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={maintenanceSupportData.technologies} />
+      <Technologies technologies={[...maintenanceSupportData.technologies]} />
       <ProcessDiagram 
         title={maintenanceSupportData.processTitle}
         subtitle={maintenanceSupportData.processSubtitle}

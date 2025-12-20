@@ -77,8 +77,8 @@ export const apiDevelopmentIntegrationData = {
     { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
     { name: 'Express', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', color: '#000000', category: 'backend' as const },
     { name: 'GraphQL', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/graphql.svg', color: '#E10098', category: 'backend' as const },
-    { name: 'Postman', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/postman.svg', color: '#FF6C37', category: 'tools' as const },
-    { name: 'Swagger', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/swagger.svg', color: '#85EA2D', category: 'tools' as const },
+    { name: 'Postman', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/postman.svg', color: '#FF6C37', category: 'devops' as const },
+    { name: 'Swagger', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/swagger.svg', color: '#85EA2D', category: 'devops' as const },
     { name: 'AWS API Gateway', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const }
   ],
   processSteps: [

@@ -12,13 +12,6 @@ const nextConfig = {
   experimental: {
     // optimizeCss: true, // Disabled - requires critters module
     optimizePackageImports: ['lucide-react', 'swiper'],
-    // Optimize route prefetching
-    optimizeCss: false, // Disabled for static export
-  },
-  
-  // Route optimization
-  async headers() {
-    return []
   },
   
   // Power optimizations

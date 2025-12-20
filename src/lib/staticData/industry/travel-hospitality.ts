@@ -7,43 +7,43 @@ export const travelHospitalityData = {
     },
     title: 'Travel & Hospitality',
     hollowText: 'Development',
-    description: 'We build innovative travel and hospitality solutions that enhance guest experiences and streamline operations. From booking engines to hotel management systems, we deliver technology that transforms the travel industry.'
+    description: 'We build innovative travel and hospitality solutions that enhance guest experiences and streamline operations. From booking platforms to property management systems, we deliver technology that transforms the travel industry.'
   },
   services: [
     {
-      title: 'Booking Engines',
-      description: 'Flight, hotel, and travel booking platforms',
+      title: 'Booking Platforms',
+      description: 'Complete reservation and booking management systems',
       iconName: 'Calendar',
       color: '#5e2cb6'
     },
     {
-      title: 'Hotel Management Systems',
-      description: 'Complete hotel operations and guest management',
+      title: 'Property Management',
+      description: 'Hotel and property management solutions',
       iconName: 'Building2',
       color: '#c91a6f'
     },
     {
       title: 'Travel Portals',
-      description: 'Comprehensive travel booking and management platforms',
+      description: 'Multi-vendor travel aggregation platforms',
       iconName: 'Globe',
       color: '#fecc4d'
     },
     {
-      title: 'GDS Integration',
-      description: 'Integration with global distribution systems',
-      iconName: 'Network',
+      title: 'Mobile Apps',
+      description: 'Native mobile apps for travelers and hosts',
+      iconName: 'Smartphone',
       color: '#10b981'
     },
     {
-      title: 'Mobile Travel Apps',
-      description: 'Native and cross-platform travel applications',
-      iconName: 'Smartphone',
+      title: 'Payment Integration',
+      description: 'Secure payment processing for bookings',
+      iconName: 'CreditCard',
       color: '#5e2cb6'
     },
     {
-      title: 'Revenue Management',
-      description: 'Dynamic pricing and revenue optimization systems',
-      iconName: 'TrendingUp',
+      title: 'Analytics & Reporting',
+      description: 'Business intelligence for travel operations',
+      iconName: 'BarChart',
       color: '#c91a6f'
     }
   ],
@@ -51,25 +51,25 @@ export const travelHospitalityData = {
     {
       iconName: 'Plane',
       title: 'Travel Industry Expertise',
-      description: 'Deep understanding of travel and hospitality operations',
+      description: 'Deep understanding of travel and hospitality workflows',
       color: '#5e2cb6'
     },
     {
       iconName: 'Users',
       title: 'Guest Experience Focus',
-      description: 'Solutions that enhance guest satisfaction and loyalty',
+      description: 'Solutions that enhance customer satisfaction',
       color: '#c91a6f'
     },
     {
       iconName: 'Zap',
-      title: 'GDS Integration',
-      description: 'Seamless integration with major GDS systems',
+      title: 'Real-Time Integration',
+      description: 'Seamless connectivity with booking systems and APIs',
       color: '#fecc4d'
     },
     {
       iconName: 'TrendingUp',
       title: 'Revenue Optimization',
-      description: 'Dynamic pricing and revenue management solutions',
+      description: 'Tools to maximize bookings and revenue',
       color: '#10b981'
     }
   ],
@@ -78,8 +78,8 @@ export const travelHospitalityData = {
     { name: 'Airlines', iconName: 'Plane', color: '#c91a6f' },
     { name: 'Travel Agencies', iconName: 'Globe', color: '#fecc4d' },
     { name: 'Restaurants', iconName: 'Utensils', color: '#10b981' },
-    { name: 'Cruise Lines', iconName: 'Ship', color: '#5e2cb6' },
-    { name: 'Tour Operators', iconName: 'MapPin', color: '#c91a6f' }
+    { name: 'Tour Operators', iconName: 'Map', color: '#5e2cb6' },
+    { name: 'Cruise Lines', iconName: 'Ship', color: '#c91a6f' }
   ],
   technologies: [
     { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'frontend' as const },
@@ -87,76 +87,77 @@ export const travelHospitalityData = {
     { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
     { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
-    { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6', category: 'frontend' as const },
-    { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const }
+    { name: 'Stripe', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/stripe/stripe-original.svg', color: '#635BFF', category: 'backend' as const },
+    { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248', category: 'database' as const },
+    { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6', category: 'frontend' as const }
   ],
   processSteps: [
     {
-      title: 'Discovery & Requirements',
-      description: 'We analyze your travel and hospitality needs and business goals',
+      title: 'Discovery & Planning',
+      description: 'We analyze your travel business needs and operational requirements',
       iconName: 'Target'
     },
     {
       title: 'System Design',
-      description: 'Architecture design for booking engines and management systems',
+      description: 'Architecture design for booking systems and integrations',
       iconName: 'Code'
     },
     {
-      title: 'GDS Integration',
-      description: 'Integration with global distribution systems and travel APIs',
-      iconName: 'Network'
-    },
-    {
       title: 'Development',
-      description: 'Agile development with booking and payment features',
+      description: 'Agile development with focus on user experience',
       iconName: 'Rocket'
     },
     {
-      title: 'Testing & Optimization',
-      description: 'Comprehensive testing including booking flow and payment processing',
+      title: 'Integration',
+      description: 'Connect with payment gateways, booking APIs, and third-party services',
+      iconName: 'Network'
+    },
+    {
+      title: 'Testing & QA',
+      description: 'Comprehensive testing including load testing for peak seasons',
       iconName: 'CheckCircle'
     },
     {
       title: 'Deployment & Support',
-      description: 'Deploy and provide ongoing support for travel operations',
+      description: 'Launch and ongoing support for travel operations',
       iconName: 'Zap'
     }
   ],
   benefits: [
     {
-      iconName: 'Calendar',
-      title: 'Booking Management',
-      description: 'Streamline booking processes with intuitive booking engines. Handle reservations, cancellations, and modifications seamlessly.',
+      iconName: 'Users',
+      title: 'Enhanced Guest Experience',
+      description: 'Create seamless booking and check-in experiences that delight travelers. Build intuitive interfaces that make travel planning effortless.',
       color: '#5e2cb6'
     },
     {
-      iconName: 'Users',
-      title: 'Guest Experience',
-      description: 'Enhance guest satisfaction with personalized experiences and mobile apps. Provide seamless check-in, services, and communication.',
-      color: '#c91a6f'
-    },
-    {
       iconName: 'TrendingUp',
-      title: 'Revenue Optimization',
-      description: 'Maximize revenue with dynamic pricing and revenue management systems. Optimize rates based on demand and market conditions.',
-      color: '#fecc4d'
+      title: 'Revenue Growth',
+      description: 'Optimize pricing strategies and increase bookings through data-driven insights. Maximize revenue with dynamic pricing and inventory management.',
+      color: '#c91a6f'
     },
     {
       iconName: 'Zap',
       title: 'Operational Efficiency',
-      description: 'Automate operations and reduce manual work. Streamline housekeeping, maintenance, and guest services.',
+      description: 'Automate reservations, check-ins, and administrative tasks. Streamline operations to reduce costs and improve service quality.',
+      color: '#fecc4d'
+    },
+    {
+      iconName: 'Globe',
+      title: 'Multi-Channel Distribution',
+      description: 'Manage bookings across multiple channels including direct, OTAs, and mobile apps. Centralize inventory and pricing management.',
       color: '#10b981'
     },
     {
-      iconName: 'Network',
-      title: 'GDS Integration',
-      description: 'Connect with major GDS systems and travel APIs. Expand distribution channels and reach more customers.',
+      iconName: 'BarChart',
+      title: 'Data Analytics',
+      description: 'Gain insights into booking patterns, guest preferences, and revenue performance. Make informed decisions with comprehensive analytics.',
       color: '#5e2cb6'
     },
     {
-      iconName: 'Rocket',
-      title: 'Mobile-First',
-      description: 'Build mobile apps that allow guests to book, check-in, and manage their travel on the go.',
+      iconName: 'Shield',
+      title: 'Secure Payments',
+      description: 'Implement PCI-compliant payment processing for secure transactions. Protect customer data with enterprise-grade security.',
       color: '#c91a6f'
     }
   ],
@@ -166,16 +167,16 @@ export const travelHospitalityData = {
   whyChooseHollowText: 'Us',
   getQuoteTitle: 'Ready to Build',
   getQuoteHollowText: 'Travel Solutions?',
-  getQuoteDescription: 'Get in touch and let\'s discuss how we can help you transform your travel and hospitality operations.',
+  getQuoteDescription: 'Get in touch and let\'s discuss how we can help you build innovative travel and hospitality technology.',
   contactTitle: 'Get in Touch',
-  contactDescription: 'Have questions about travel development? Let\'s discuss your needs.',
+  contactDescription: 'Have questions about travel & hospitality development? Let\'s discuss your needs.',
   processTitle: 'Our Travel & Hospitality',
   processSubtitle: 'Development Process',
   seoServiceName: 'Travel & Hospitality Software Development',
   cta: {
     title: 'Ready to Build',
     hollowText: 'Travel Solutions?',
-    description: 'Get in touch and let\'s discuss how we can help you transform your travel and hospitality operations.',
+    description: 'Get in touch and let\'s discuss how we can help you build innovative travel and hospitality technology.',
     buttonText: 'Get Started',
     email: 'sales@truvixo.com',
     phone: '+91-63543-26412'

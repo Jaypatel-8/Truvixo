@@ -97,10 +97,12 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
   })
 
   const highlights = webApplicationDevelopmentData.hero.highlights.map(highlight => {
-    const IconComponent = getIcon(highlight.iconName)
+    const iconName = 'icon' in highlight ? highlight.icon : highlight.iconName || 'Zap'
+    const IconComponent = getIcon(iconName)
     return {
       ...highlight,
-      icon: IconComponent ? <IconComponent className="w-5 h-5" strokeWidth={2} /> : null
+      icon: IconComponent ? <IconComponent className="w-5 h-5" strokeWidth={2} /> : null,
+      iconName: iconName
     }
   })
 
@@ -145,17 +147,21 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
               </div>
             </div>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-              {highlights.map((highlight, index) => (
-                <div key={index} className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
-                  <div className="flex-shrink-0 mt-1" style={{ color: highlight.iconName === 'Zap' ? '#5e2cb6' : highlight.iconName === 'Shield' ? '#c91a6f' : '#fecc4d' }}>
-                    {highlight.icon}
+              {highlights.map((highlight, index) => {
+                const originalHighlight = webApplicationDevelopmentData.hero.highlights[index]
+                const iconName = 'icon' in originalHighlight ? originalHighlight.icon : originalHighlight.iconName || 'Zap'
+                return (
+                  <div key={index} className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
+                    <div className="flex-shrink-0 mt-1" style={{ color: iconName === 'Zap' ? '#5e2cb6' : iconName === 'Shield' ? '#c91a6f' : '#fecc4d' }}>
+                      {highlight.icon}
+                    </div>
+                    <div>
+                      <p className="text-gray-900 font-semibold mb-1">{highlight.title}</p>
+                      <p className="text-gray-600 text-sm">{highlight.description}</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-gray-900 font-semibold mb-1">{highlight.title}</p>
-                    <p className="text-gray-600 text-sm">{highlight.description}</p>
-                  </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
               <button 
@@ -282,6 +288,49 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         </div>
       </section>
 
+      {/* Get Quote Section (in middle) */}
+      <section className="py-16 bg-[#5e2cb6] text-white relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+              {webApplicationDevelopmentData.getQuote.title}{' '}
+              <span className="hollow-text-white">
+                {webApplicationDevelopmentData.getQuote.hollowText}
+              </span>
+            </h2>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
+              {webApplicationDevelopmentData.getQuote.description}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+              >
+                <Phone className="w-5 h-5" strokeWidth={2} />
+                <span>Call Us</span>
+              </button>
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-lg hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
+              >
+                <Calendar className="w-5 h-5" strokeWidth={2} />
+                <span>Schedule Consultation</span>
+              </button>
+            </div>
+            <div className="mt-12 flex flex-wrap justify-center gap-8 text-white/80">
+              <a href="mailto:sales@truvixoo.com" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Mail className="w-5 h-5" strokeWidth={2} />
+                <span>sales@truvixoo.com</span>
+              </a>
+              <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Phone className="w-5 h-5" strokeWidth={2} />
+                <span>+91 63543 26412</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -352,7 +401,7 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         </div>
       </section>
 
-      <Technologies technologies={webApplicationDevelopmentData.technologies} />
+      <Technologies technologies={[...webApplicationDevelopmentData.technologies]} />
 
       {/* Process Diagram */}
       <ProcessDiagram

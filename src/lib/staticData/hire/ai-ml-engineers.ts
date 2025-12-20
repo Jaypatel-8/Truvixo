@@ -7,43 +7,43 @@ export const aiMlEngineersData = {
     },
     title: 'Hire AI/ML',
     hollowText: 'Engineers',
-    description: 'Hire experienced AI/ML engineers who build intelligent systems and machine learning models. From deep learning to NLP, we provide the AI expertise you need. Our engineers are experts in TensorFlow, PyTorch, computer vision, and modern AI technologies.'
+    description: 'Hire experienced AI and machine learning engineers who build intelligent solutions. Our AI/ML engineers are experts in TensorFlow, PyTorch, NLP, computer vision, and advanced machine learning technologies.'
   },
   services: [
     {
-      title: 'Machine Learning',
-      description: 'Build custom ML models for your use cases',
+      title: 'Machine Learning Models',
+      description: 'Build and deploy ML models for various use cases',
       iconName: 'Brain',
       color: '#5e2cb6'
     },
     {
       title: 'Deep Learning',
-      description: 'Neural networks and deep learning solutions',
+      description: 'Develop neural networks and deep learning solutions',
       iconName: 'Network',
       color: '#c91a6f'
     },
     {
       title: 'Natural Language Processing',
-      description: 'NLP solutions for text analysis and understanding',
+      description: 'NLP solutions for text analysis and language understanding',
       iconName: 'MessageSquare',
-      color: '#d97706'
+      color: '#fecc4d'
     },
     {
       title: 'Computer Vision',
-      description: 'Image recognition and visual analysis systems',
+      description: 'Image recognition and computer vision applications',
       iconName: 'Eye',
-      color: '#059669'
-    },
-    {
-      title: 'MLOps',
-      description: 'ML model deployment and infrastructure',
-      iconName: 'Rocket',
-      color: '#5e2cb6'
+      color: '#10b981'
     },
     {
       title: 'Data Science',
-      description: 'Data analysis and predictive modeling',
+      description: 'Data analysis, modeling, and predictive analytics',
       iconName: 'BarChart',
+      color: '#5e2cb6'
+    },
+    {
+      title: 'MLOps',
+      description: 'ML model deployment and production pipelines',
+      iconName: 'Zap',
       color: '#c91a6f'
     }
   ],
@@ -51,47 +51,46 @@ export const aiMlEngineersData = {
     {
       iconName: 'Brain',
       title: 'AI/ML Expertise',
-      description: 'Expert AI/ML engineers with deep learning knowledge',
+      description: 'Expertise in TensorFlow, PyTorch, and ML frameworks',
       color: '#5e2cb6'
     },
     {
-      iconName: 'Network',
-      title: 'Modern Frameworks',
-      description: 'Proficient in TensorFlow, PyTorch, and modern AI tools',
+      iconName: 'Target',
+      title: 'Domain Knowledge',
+      description: 'Experience across various industries and use cases',
       color: '#c91a6f'
     },
     {
-      iconName: 'Target',
-      title: 'Custom Models',
-      description: 'Build custom ML models tailored to your needs',
-      color: '#d97706'
+      iconName: 'Zap',
+      title: 'Production Ready',
+      description: 'Build ML solutions ready for production deployment',
+      color: '#fecc4d'
     },
     {
-      iconName: 'Rocket',
-      title: 'Production Ready',
-      description: 'Deploy ML models to production with MLOps',
-      color: '#059669'
+      iconName: 'TrendingUp',
+      title: 'Innovation',
+      description: 'Stay updated with latest AI/ML research and techniques',
+      color: '#10b981'
     }
   ],
   industries: [
-    { name: 'Fintech', iconName: 'Building2', color: '#5e2cb6' },
-    { name: 'Healthcare', iconName: 'Heart', color: '#c91a6f' },
-    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#d97706' },
-    { name: 'Logistics', iconName: 'Truck', color: '#059669' },
-    { name: 'Real Estate', iconName: 'Home', color: '#5e2cb6' }
+    { name: 'Healthcare', iconName: 'Heart', color: '#5e2cb6' },
+    { name: 'Fintech', iconName: 'DollarSign', color: '#c91a6f' },
+    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#fecc4d' },
+    { name: 'Manufacturing', iconName: 'Factory', color: '#10b981' },
+    { name: 'Automotive', iconName: 'Car', color: '#5e2cb6' }
   ],
   technologies: [
     { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg', color: '#FF6F00', category: 'ai' as const },
     { name: 'PyTorch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg', color: '#EE4C2C', category: 'ai' as const },
     { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
-    { name: 'Scikit-learn', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/scikitlearn.svg', color: '#F7931E', category: 'ai' as const },
-    { name: 'Keras', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/keras.svg', color: '#D00000', category: 'ai' as const },
-    { name: 'Jupyter', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jupyter/jupyter-original.svg', color: '#F37626', category: 'tools' as const }
+    { name: 'Scikit-learn', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg', color: '#F7931E', category: 'ai' as const },
+    { name: 'Pandas', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg', color: '#150458', category: 'ai' as const }
   ],
   processSteps: [
     {
       title: 'Requirement Analysis',
-      description: 'We analyze your AI/ML needs and project requirements',
+      description: 'We analyze your AI/ML needs and use case requirements',
       iconName: 'Target'
     },
     {
@@ -101,13 +100,13 @@ export const aiMlEngineersData = {
     },
     {
       title: 'Technical Assessment',
-      description: 'Comprehensive interviews covering ML, deep learning, and frameworks',
+      description: 'Comprehensive interviews covering ML algorithms and frameworks',
       iconName: 'FileText'
     },
     {
       title: 'Portfolio Review',
-      description: 'Review engineer portfolios showcasing ML projects',
-      iconName: 'MessageSquare'
+      description: 'Review engineer portfolios showcasing AI/ML projects',
+      iconName: 'Brain'
     },
     {
       title: 'Trial Period',
@@ -116,7 +115,7 @@ export const aiMlEngineersData = {
     },
     {
       title: 'Team Integration',
-      description: 'Seamless integration with your development and data teams',
+      description: 'Seamless integration with your data science and engineering teams',
       iconName: 'Rocket'
     }
   ],

@@ -32,19 +32,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Prevent layout shifts from images */
-img {
-  height: auto;
-  max-width: 100%;
-  display: block;
-}
-
-/* Reserve space for dynamic content to prevent CLS */
-[class*="scroll-animate"] {
-  min-height: 1px;
-  contain: layout style paint;
-}
-
 /* Prevent blur during page load */
 html, body {
   filter: none !important;
@@ -54,18 +41,13 @@ html, body {
 }
 
 /* Ensure headings are visible immediately - no delays */
-/* Optimized to prevent CLS */
 h1, h2, h3, h4, h5, h6 {
   content-visibility: auto;
   contain-intrinsic-size: auto 500px;
-  /* Reserve space to prevent layout shift */
-  min-height: 1.2em;
-  line-height: 1.2;
   /* Removed !important to allow page-specific styles */
 }
 
 /* Scroll animations - visible by default, animate on scroll */
-/* Use will-change and contain for better performance and prevent CLS */
 .scroll-animate,
 .scroll-animate-left,
 .scroll-animate-right,
@@ -74,10 +56,6 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
   transform: translateY(0);
   transition: opacity 0.3s ease, transform 0.3s ease;
-  will-change: opacity, transform;
-  contain: layout style paint;
-  /* Reserve space to prevent layout shift */
-  min-height: 1px;
 }
 
 /* Only apply animation when class is added */

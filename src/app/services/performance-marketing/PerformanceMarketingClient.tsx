@@ -376,7 +376,7 @@ export default function PerformanceMarketingClient({ faqs }: PerformanceMarketin
         </div>
       </section>
 
-      <Technologies technologies={performanceMarketingData.technologies} />
+      <Technologies technologies={[...performanceMarketingData.technologies]} />
       <ProcessDiagram 
         title={performanceMarketingData.processTitle}
         subtitle={performanceMarketingData.processSubtitle}

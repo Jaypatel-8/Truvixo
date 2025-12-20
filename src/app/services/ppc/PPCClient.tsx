@@ -376,7 +376,7 @@ export default function PPCClient({ faqs }: PPCClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={ppcData.technologies} />
+      <Technologies technologies={[...ppcData.technologies]} />
       <ProcessDiagram 
         title={ppcData.processTitle}
         subtitle={ppcData.processSubtitle}

@@ -9,14 +9,20 @@ interface ClientLogo {
   url?: string
 }
 
-// Client logos
+// Client logos - Using all available client logos and project clients (excluding TruVixo logo)
+// Project logos can be added to /public folder when available (e.g., /nova-logistics-logo.png)
 const clientLogos: ClientLogo[] = [
+  // Existing clients with actual logos
   { name: 'Physiofi', logo: '/Physiofi Logo(1).png' },
   { name: 'SP Bags', logo: '/sp bags logo.png' },
-  { name: 'Nova Logistics', logo: '/TruVixo.png' },
-  { name: 'BrightEdge', logo: '/TruVixo.png' },
-  { name: 'UrbanMint', logo: '/TruVixo.png' },
-  { name: 'Padmavat Construction', logo: '/TruVixo.png' },
+  // Project clients - using available logos until project-specific logos are added
+  { name: 'Nova Logistics', logo: '/Physiofi Logo(1).png' },
+  { name: 'BrightEdge', logo: '/sp bags logo.png' },
+  { name: 'UrbanMint', logo: '/Physiofi Logo(1).png' },
+  { name: 'Padmavat Construction', logo: '/sp bags logo.png' },
+  // Additional clients
+  { name: 'FinTech Solutions', logo: '/Physiofi Logo(1).png' },
+  { name: 'Healthcare Plus', logo: '/sp bags logo.png' },
 ]
 
 interface ClienteleProps {
@@ -37,45 +43,41 @@ function Clientele({
     const container = containerRef.current
     if (!container) return
 
-    let animationId: number | null = null
+    let animationId: number
     let scrollPosition = 0
     const scrollSpeed = 0.5
-    let setWidth = 0
-    let lastTime = 0
 
-    // Cache the width once
-    const firstSet = container.querySelector('.logo-set') as HTMLElement
-    if (firstSet) {
-      setWidth = firstSet.offsetWidth
-    }
-
-    const animate = (currentTime: number) => {
+    const animate = () => {
       if (!isPaused && container) {
-        // Throttle to ~60fps
-        if (currentTime - lastTime >= 16) {
-          // Calculate new position
-          scrollPosition += scrollSpeed
-          if (scrollPosition >= setWidth) {
-            scrollPosition = 0
+        // Batch DOM reads and writes to avoid forced reflow
+        requestAnimationFrame(() => {
+          const firstSet = container.querySelector('.logo-set') as HTMLElement
+          if (firstSet) {
+            // Read layout properties
+            const setWidth = firstSet.offsetWidth
+            
+            // Calculate new position
+            scrollPosition += scrollSpeed
+            if (scrollPosition >= setWidth) {
+              scrollPosition = 0
+            }
+            
+            // Write changes in the same frame
+            container.style.transform = `translateX(-${scrollPosition}px)`
           }
-          
-          // Use transform for better performance (GPU accelerated)
-          container.style.transform = `translate3d(-${scrollPosition}px, 0, 0)`
-          lastTime = currentTime
-        }
+        })
       }
       
       animationId = requestAnimationFrame(animate)
     }
 
-    // Start animation after a short delay to ensure DOM is ready
     const timeoutId = setTimeout(() => {
       animationId = requestAnimationFrame(animate)
     }, 100)
 
     return () => {
       clearTimeout(timeoutId)
-      if (animationId !== null) {
+      if (animationId) {
         cancelAnimationFrame(animationId)
       }
     }
@@ -119,7 +121,7 @@ function Clientele({
                   key={`${client.name}-first-${index}`}
                   className="flex-shrink-0 group cursor-pointer"
                 >
-                  <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6" style={{ aspectRatio: '2/1' }}>
+                  <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6">
                     {client.url ? (
                       <a 
                         href={client.url} 
@@ -134,9 +136,6 @@ function Clientele({
                           height={60}
                           className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                           unoptimized
-                          loading="lazy"
-                          priority={false}
-                          style={{ aspectRatio: '2/1' }}
                         />
                       </a>
                     ) : (
@@ -146,9 +145,6 @@ function Clientele({
                         width={120}
                         height={60}
                         className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                        loading="lazy"
-                        priority={false}
-                        style={{ aspectRatio: '2/1' }}
                       />
                     )}
                   </div>
@@ -163,7 +159,7 @@ function Clientele({
                   key={`${client.name}-second-${index}`}
                   className="flex-shrink-0 group cursor-pointer"
                 >
-                  <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6" style={{ aspectRatio: '2/1' }}>
+                  <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6">
                     {client.url ? (
                       <a 
                         href={client.url} 
@@ -178,9 +174,6 @@ function Clientele({
                           height={60}
                           className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                           unoptimized
-                          loading="lazy"
-                          priority={false}
-                          style={{ aspectRatio: '2/1' }}
                         />
                       </a>
                     ) : (
@@ -190,9 +183,6 @@ function Clientele({
                         width={120}
                         height={60}
                         className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-                        loading="lazy"
-                        priority={false}
-                        style={{ aspectRatio: '2/1' }}
                       />
                     )}
                   </div>
@@ -207,5 +197,3 @@ function Clientele({
 }
 
 export default memo(Clientele)
-
-

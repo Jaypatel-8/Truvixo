@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react'
 import { ArrowRight, Calendar, Code, Brain, Smartphone, Cloud, Database, Server, Target, Settings, Wrench, Megaphone, Palette, Award, Rocket, Shield, MessageSquare, Phone, Mail, ChevronRight, Users, TrendingUp, Zap, BarChart3, Building2, Heart, ShoppingCart, Truck, Home as HomeIcon, GraduationCap, CheckCircle, Clock, DollarSign, Briefcase, Lightbulb } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
-import Image from 'next/image'
 // Below-the-fold: Lazy load with intersection observer
 const Technologies = dynamic(() => import('../components/Technologies'), {
   ssr: false,
@@ -26,6 +25,7 @@ const ContactSection = dynamic(() => import('../components/ContactSection'), {
   ssr: false,
   loading: () => <div className="min-h-[300px] bg-white"></div>,
 })
+
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -116,42 +116,35 @@ export default function Home() {
   // Using static featured projects instead
 
   useEffect(() => {
-    // Optimized IntersectionObserver with passive observation and debouncing
-    let rafId: number | null = null
+    // Immediate IntersectionObserver initialization for faster rendering
     const observerOptions = {
       threshold: 0.01,
       rootMargin: '50px 0px'
     }
 
     const observer = new IntersectionObserver((entries) => {
-      // Use requestAnimationFrame to batch updates and reduce TBT
-      if (rafId) cancelAnimationFrame(rafId)
-      rafId = requestAnimationFrame(() => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('animate')
-            // Unobserve after animation to improve performance
-            observer.unobserve(entry.target)
-          }
-        })
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate')
+          // Unobserve after animation to improve performance
+          observer.unobserve(entry.target)
+        }
       })
     }, observerOptions)
 
-    // Use requestIdleCallback for non-critical animations with longer timeout
+    // Use requestIdleCallback for non-critical animations
     const initObserver = () => {
       const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
       scrollElements.forEach((el) => observer.observe(el))
     }
 
-    // Delay initialization to reduce initial TBT
     if ('requestIdleCallback' in window) {
-      requestIdleCallback(initObserver, { timeout: 2000 })
+      requestIdleCallback(initObserver, { timeout: 100 })
     } else {
-      setTimeout(initObserver, 100)
+      setTimeout(initObserver, 0)
     }
 
     return () => {
-      if (rafId) cancelAnimationFrame(rafId)
       observer.disconnect()
     }
   }, [])
@@ -313,6 +306,48 @@ export default function Home() {
       author: 'Lisa Thompson', 
       role: 'Head of Marketing',
       company: 'Retail Company',
+      rating: 5
+    },
+    {
+      quote: 'TruVixo transformed our business operations with their custom software solution. The team understood our requirements perfectly and delivered beyond expectations. Their technical expertise and commitment to quality is outstanding.',
+      author: 'Rajesh Kumar',
+      role: 'Founder & CEO',
+      company: 'Mumbai-based FinTech Startup',
+      rating: 5
+    },
+    {
+      quote: 'We partnered with TruVixo for our e-commerce platform development. They delivered a robust, scalable solution that handles our growing customer base seamlessly. Their support team is always available and responsive.',
+      author: 'Priya Sharma',
+      role: 'Director of Technology',
+      company: 'Delhi-based Retail Company',
+      rating: 5
+    },
+    {
+      quote: 'The AI-powered analytics system TruVixo built for us has revolutionized our decision-making process. Their team is highly skilled, professional, and always delivers on time. Highly recommended!',
+      author: 'Amit Patel',
+      role: 'CTO',
+      company: 'Bangalore Healthcare Solutions',
+      rating: 5
+    },
+    {
+      quote: 'TruVixo developed our mobile application with exceptional attention to detail. The app has received great feedback from our users. Their development process is transparent and their communication is excellent throughout.',
+      author: 'Neha Gupta',
+      role: 'Product Head',
+      company: 'Hyderabad EdTech Platform',
+      rating: 5
+    },
+    {
+      quote: 'Working with TruVixo has been a game-changer for our startup. They helped us build a scalable cloud infrastructure that supports our rapid growth. Their DevOps expertise is truly impressive.',
+      author: 'Vikram Singh',
+      role: 'Co-Founder',
+      company: 'Pune SaaS Company',
+      rating: 5
+    },
+    {
+      quote: 'TruVixo\'s team delivered our enterprise software solution ahead of schedule. The quality of code and documentation is excellent. They truly understand business requirements and translate them into technical solutions effectively.',
+      author: 'Anjali Mehta',
+      role: 'IT Director',
+      company: 'Chennai Manufacturing Company',
       rating: 5
     }
   ]
@@ -802,14 +837,10 @@ export default function Home() {
                 className="bg-white rounded-lg p-6 border-2 border-gray-200 flex items-center justify-center h-24 hover:border-gray-300 transition-all duration-300 group"
                 style={{ borderColor: partner.color + '40' }}
               >
-                <Image
+                <img
                   src={partner.logo}
                   alt={partner.name}
-                  width={48}
-                  height={48}
                   className="w-12 h-12 object-contain grayscale group-hover:grayscale-0 transition-all duration-300 opacity-60 group-hover:opacity-100"
-                  loading="lazy"
-                  unoptimized
                 />
               </div>
             ))}

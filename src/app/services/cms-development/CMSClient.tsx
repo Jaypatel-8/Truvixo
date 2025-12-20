@@ -22,11 +22,11 @@ function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface CMSClientProps {
+interface EnterpriseClientProps {
   faqs: Array<{ question: string; answer: string }>
 }
 
-export default function CMSClient({ faqs }: CMSClientProps) {
+export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -376,7 +376,7 @@ export default function CMSClient({ faqs }: CMSClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={cmsDevelopmentData.technologies} />
+      <Technologies technologies={[...cmsDevelopmentData.technologies]} />
       <ProcessDiagram 
         title={cmsDevelopmentData.processTitle}
         subtitle={cmsDevelopmentData.processSubtitle}

@@ -22,11 +22,11 @@ function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface SaaSClientProps {
+interface EnterpriseClientProps {
   faqs: Array<{ question: string; answer: string }>
 }
 
-export default function SaaSClient({ faqs }: SaaSClientProps) {
+export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -376,7 +376,7 @@ export default function SaaSClient({ faqs }: SaaSClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={saasProductDevelopmentData.technologies} />
+      <Technologies technologies={[...saasProductDevelopmentData.technologies]} />
       <ProcessDiagram 
         title={saasProductDevelopmentData.processTitle}
         subtitle={saasProductDevelopmentData.processSubtitle}

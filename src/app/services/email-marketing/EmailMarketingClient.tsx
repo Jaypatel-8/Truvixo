@@ -376,7 +376,7 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
         </div>
       </section>
 
-      <Technologies technologies={emailMarketingData.technologies} />
+      <Technologies technologies={[...emailMarketingData.technologies]} />
       <ProcessDiagram 
         title={emailMarketingData.processTitle}
         subtitle={emailMarketingData.processSubtitle}

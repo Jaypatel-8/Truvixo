@@ -376,7 +376,7 @@ export default function SMMClient({ faqs }: SMMClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={smmData.technologies} />
+      <Technologies technologies={[...smmData.technologies]} />
       <ProcessDiagram 
         title={smmData.processTitle}
         subtitle={smmData.processSubtitle}

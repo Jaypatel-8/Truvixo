@@ -370,7 +370,7 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={ecommerceDevelopmentData.technologies} />
+      <Technologies technologies={[...ecommerceDevelopmentData.technologies]} />
 
       {/* Process Diagram */}
       <ProcessDiagram

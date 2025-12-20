@@ -1,10 +1,10 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowRight, Zap as Lightning, Phone, Calendar } from 'lucide-react'
+import { ArrowRight, Zap as Lightning } from 'lucide-react'
 import dynamic from 'next/dynamic'
+import { frontendTechnologyData } from '@/lib/staticData/technology/frontend'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import { aiMlTechnologyData } from '@/lib/staticData/technology/ai-ml'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { getFAQsForPage } from '@/lib/pageData'
 
@@ -46,7 +46,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   }, [])
 
-  const technologies = aiMlTechnologyData.technologies.map(tech => {
+  const technologies = frontendTechnologyData.technologies.map(tech => {
     const IconComponent = getIcon(tech.iconName)
     return {
       ...tech,
@@ -54,7 +54,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   })
 
-  const whatWeBuild = aiMlTechnologyData.whatWeBuild.map(item => {
+  const whatWeBuild = frontendTechnologyData.whatWeBuild.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -62,7 +62,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   })
 
-  const benefits = aiMlTechnologyData.benefits.map(benefit => {
+  const benefits = frontendTechnologyData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -70,7 +70,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   })
 
-  const whyChooseUs = aiMlTechnologyData.whyChooseUs.map(item => {
+  const whyChooseUs = frontendTechnologyData.whyChooseUs.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -84,13 +84,13 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
           <div className="scroll-animate">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
-              {aiMlTechnologyData.hero.title}{' '}
+              {frontendTechnologyData.hero.title}{' '}
               <span className="hollow-text-teal">
-                {aiMlTechnologyData.hero.hollowText}
+                {frontendTechnologyData.hero.hollowText}
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
-              {aiMlTechnologyData.hero.description}
+              {frontendTechnologyData.hero.description}
             </p>
           </div>
         </div>
@@ -237,9 +237,9 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
 
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection
-        title="Ready to Build"
-        hollowText="AI/ML Solutions?"
-        description="Get in touch and let's discuss how we can help transform your business with AI and machine learning technologies."
+        title="Build AI/ML Solutions"
+        hollowText="with Us"
+        description="Get in touch and let's discuss how we can help you build intelligent AI and machine learning solutions."
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)

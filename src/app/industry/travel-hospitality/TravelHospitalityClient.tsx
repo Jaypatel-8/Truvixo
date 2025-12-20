@@ -8,6 +8,7 @@ import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { travelHospitalityData } from '@/lib/staticData/industry/travel-hospitality'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
@@ -394,6 +395,20 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
       <ContactSection 
         title={travelHospitalityData.contactTitle}
         description={travelHospitalityData.contactDescription}
+      />
+      {/* Get Quote Section - Last section before footer */}
+      <GetQuoteSection
+        title={travelHospitalityData.getQuoteTitle}
+        hollowText={travelHospitalityData.getQuoteHollowText}
+        description={travelHospitalityData.getQuoteDescription}
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
       />
       <ContactFormModal 
         isOpen={isContactModalOpen} 

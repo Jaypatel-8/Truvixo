@@ -8,14 +8,8 @@ export default function AIPage() {
   const router = useRouter()
 
   useEffect(() => {
-    // Optimized redirect - use push instead of replace for better performance
-    // Prefetch the target route before redirecting
-    router.prefetch('/services/ai-development-services/')
-    // Use setTimeout to allow prefetch to complete
-    const timer = setTimeout(() => {
-      router.replace('/services/ai-development-services/')
-    }, 0)
-    return () => clearTimeout(timer)
+    // Immediate redirect on client-side
+    router.replace('/services/ai-development-services/')
   }, [router])
 
   return (

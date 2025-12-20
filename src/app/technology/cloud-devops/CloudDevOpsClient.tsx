@@ -3,7 +3,8 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight, Zap as Lightning } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import { cloudDevOpsTechnologyData } from '@/lib/staticData/technology/cloud-devops'
+import { frontendTechnologyData } from '@/lib/staticData/technology/frontend'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { getFAQsForPage } from '@/lib/pageData'
 
@@ -45,7 +46,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   }, [])
 
-  const technologies = cloudDevOpsTechnologyData.technologies.map(tech => {
+  const technologies = frontendTechnologyData.technologies.map(tech => {
     const IconComponent = getIcon(tech.iconName)
     return {
       ...tech,
@@ -53,7 +54,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   })
 
-  const whatWeBuild = cloudDevOpsTechnologyData.whatWeBuild.map(item => {
+  const whatWeBuild = frontendTechnologyData.whatWeBuild.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -61,7 +62,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   })
 
-  const benefits = cloudDevOpsTechnologyData.benefits.map(benefit => {
+  const benefits = frontendTechnologyData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -69,7 +70,7 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     }
   })
 
-  const whyChooseUs = cloudDevOpsTechnologyData.whyChooseUs.map(item => {
+  const whyChooseUs = frontendTechnologyData.whyChooseUs.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -83,13 +84,13 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
           <div className="scroll-animate">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
-              {cloudDevOpsTechnologyData.hero.title}{' '}
+              {frontendTechnologyData.hero.title}{' '}
               <span className="hollow-text-teal">
-                {cloudDevOpsTechnologyData.hero.hollowText}
+                {frontendTechnologyData.hero.hollowText}
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
-              {cloudDevOpsTechnologyData.hero.description}
+              {frontendTechnologyData.hero.description}
             </p>
           </div>
         </div>
@@ -234,22 +235,20 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-r from-purple-500 to-pink-500 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              {cloudDevOpsTechnologyData.cta.title}
-            </h2>
-            <button
-              onClick={() => setIsContactModalOpen(true)}
-              className="bg-white text-purple-600 font-bold py-4 px-8 rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2"
-            >
-              {cloudDevOpsTechnologyData.cta.buttonText}
-              <ArrowRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      </section>
+      {/* Get Quote Section - Last section before footer */}
+      <GetQuoteSection
+        title="Build Cloud & DevOps"
+        hollowText="Solutions"
+        description="Get in touch and let's discuss how we can help you build scalable cloud infrastructure and DevOps solutions."
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+      />
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

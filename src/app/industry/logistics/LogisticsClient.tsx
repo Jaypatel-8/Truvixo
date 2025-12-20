@@ -8,7 +8,8 @@ import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import { logisticsIndustryData } from '@/lib/staticData/industry/logistics'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
+import { logisticsData } from '@/lib/staticData/industry/logistics'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -54,7 +55,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   }, [])
 
-  const services = logisticsIndustryData.services.map(service => {
+  const services = logisticsData.services.map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -62,7 +63,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const whyChooseUs = logisticsIndustryData.whyChooseUs.map(item => {
+  const whyChooseUs = logisticsData.whyChooseUs.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -70,7 +71,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const processSteps = logisticsIndustryData.processSteps.map(step => {
+  const processSteps = logisticsData.processSteps.map(step => {
     const IconComponent = getIcon(step.iconName)
     return {
       ...step,
@@ -78,7 +79,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const industries = logisticsIndustryData.industries.map(industry => {
+  const industries = logisticsData.industries.map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -86,7 +87,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const benefits = logisticsIndustryData.benefits.map(benefit => {
+  const benefits = logisticsData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -94,7 +95,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const previewServices = logisticsIndustryData.services.slice(0, 4).map(service => {
+  const previewServices = logisticsData.services.slice(0, 4).map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -102,7 +103,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const BadgeIcon = getIcon(logisticsIndustryData.hero.badge.iconName)
+  const BadgeIcon = getIcon(logisticsData.hero.badge.iconName)
 
   return (
     <>
@@ -118,16 +119,16 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                 {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{logisticsIndustryData.hero.badge.text}</span>
+                <span className="text-sm font-semibold text-[#5e2cb6]">{logisticsData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {logisticsIndustryData.hero.title}{' '}
+                {logisticsData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {logisticsIndustryData.hero.hollowText}
+                  {logisticsData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {logisticsIndustryData.hero.description}
+                {logisticsData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -346,13 +347,13 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-              {logisticsIndustryData.cta.title}{' '}
+              {logisticsData.cta.title}{' '}
               <span className="hollow-text-white">
-                {logisticsIndustryData.cta.hollowText}
+                {logisticsData.cta.hollowText}
               </span>
             </h2>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-              {logisticsIndustryData.cta.description}
+              {logisticsData.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <button 
@@ -371,29 +372,43 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
               </button>
             </div>
             <div className="flex flex-wrap justify-center gap-8 text-white/80">
-              <a href={`mailto:${logisticsIndustryData.cta.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href={`mailto:${logisticsData.cta.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
                 <Mail className="w-5 h-5" strokeWidth={2} />
-                <span>{logisticsIndustryData.cta.email}</span>
+                <span>{logisticsData.cta.email}</span>
               </a>
-              <a href={`tel:${logisticsIndustryData.cta.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href={`tel:${logisticsData.cta.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-white transition-colors">
                 <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>{logisticsIndustryData.cta.phone}</span>
+                <span>{logisticsData.cta.phone}</span>
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      <Technologies technologies={[...logisticsIndustryData.technologies]} />
+      <Technologies technologies={[...logisticsData.technologies]} />
       <ProcessDiagram 
-        title={logisticsIndustryData.processTitle}
-        subtitle={logisticsIndustryData.processSubtitle}
+        title={logisticsData.processTitle}
+        subtitle={logisticsData.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
       <ContactSection 
-        title={logisticsIndustryData.contactTitle}
-        description={logisticsIndustryData.contactDescription}
+        title={logisticsData.contactTitle}
+        description={logisticsData.contactDescription}
+      />
+      {/* Get Quote Section - Last section before footer */}
+      <GetQuoteSection
+        title={logisticsData.getQuoteTitle}
+        hollowText={logisticsData.getQuoteHollowText}
+        description={logisticsData.getQuoteDescription}
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
       />
       <ContactFormModal 
         isOpen={isContactModalOpen} 

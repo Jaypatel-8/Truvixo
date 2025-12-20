@@ -376,7 +376,7 @@ export default function MLClient({ faqs }: MLClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={machineLearningModelDevelopmentData.technologies} />
+      <Technologies technologies={[...machineLearningModelDevelopmentData.technologies]} />
       <ProcessDiagram 
         title={machineLearningModelDevelopmentData.processTitle}
         subtitle={machineLearningModelDevelopmentData.processSubtitle}

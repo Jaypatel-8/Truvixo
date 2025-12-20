@@ -77,9 +77,9 @@ export const maintenanceSupportData = {
     { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
     { name: 'Kubernetes', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg', color: '#326CE5', category: 'devops' as const },
     { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
-    { name: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', color: '#F05032', category: 'tools' as const },
+    { name: 'Git', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', color: '#F05032', category: 'devops' as const },
     { name: 'Jenkins', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg', color: '#D24939', category: 'devops' as const },
-    { name: 'Grafana', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/grafana.svg', color: '#F46800', category: 'tools' as const }
+    { name: 'Grafana', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/grafana.svg', color: '#F46800', category: 'devops' as const }
   ],
   processSteps: [
     {

@@ -74,11 +74,11 @@ export const machineLearningModelDevelopmentData = {
     }
   ],
   technologies: [
-    { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg', color: '#FF6F00', category: 'ai-ml' as const },
-    { name: 'PyTorch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg', color: '#EE4C2C', category: 'ai-ml' as const },
+    { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg', color: '#FF6F00', category: 'ai' as const },
+    { name: 'PyTorch', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg', color: '#EE4C2C', category: 'ai' as const },
     { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
-    { name: 'Scikit-learn', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/scikitlearn.svg', color: '#F7931E', category: 'ai-ml' as const },
-    { name: 'Pandas', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/pandas.svg', color: '#150458', category: 'ai-ml' as const },
+    { name: 'Scikit-learn', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/scikitlearn.svg', color: '#F7931E', category: 'ai' as const },
+    { name: 'Pandas', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/pandas.svg', color: '#150458', category: 'ai' as const },
     { name: 'AWS SageMaker', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/amazonaws.svg', color: '#FF9900', category: 'cloud' as const }
   ],
   processSteps: [

@@ -7,7 +7,7 @@ interface Technology {
   name: string
   logo: string
   color: string
-  category: 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai' | 'tools'
+  category: 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai' | 'management' | 'testing' | 'design'
 }
 
 interface TechnologiesProps {
@@ -53,8 +53,7 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
       'cloud': 'Cloud',
       'devops': 'DevOps',
       'mobile': 'Mobile',
-      'ai': 'AI/ML',
-      'tools': 'Tools'
+      'ai': 'AI/ML'
     }
     return categoryMap[category] || category.charAt(0).toUpperCase() + category.slice(1)
   }
@@ -107,7 +106,7 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
               style={{ animationDelay: `${index * 0.05}s` }}
             >
               <div className="flex flex-col items-center justify-center h-full">
-                <div className="relative w-12 h-12 mb-3 flex items-center justify-center" style={{ aspectRatio: '1/1' }}>
+                <div className="relative w-12 h-12 mb-3 flex items-center justify-center">
                   <Image
                     src={tech.logo}
                     alt={tech.name}
@@ -115,12 +114,7 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
                     height={48}
                     className="object-contain"
                     loading="lazy"
-                    style={{ aspectRatio: '1/1' }}
-                    onError={(e) => {
-                      // Fallback to a placeholder if image fails to load
-                      const target = e.target as HTMLImageElement
-                      target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDgiIGhlaWdodD0iNDgiIHZpZXdCb3g9IjAgMCA0OCA0OCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQ4IiBoZWlnaHQ9IjQ4IiByeD0iOCIgZmlsbD0iI0YzRjRGNiIvPgo8cGF0aCBkPSJNMjQgMTJMMzYgMjRMMjQgMzZMMTIgMjRMMjQgMTJaIiBmaWxsPSIjOEU5MEE2Ii8+Cjwvc3ZnPgo='
-                    }}
+                    unoptimized
                   />
                 </div>
                 <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors">

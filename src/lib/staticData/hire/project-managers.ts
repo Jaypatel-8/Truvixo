@@ -2,122 +2,121 @@
 export const projectManagersData = {
   hero: {
     badge: {
-      iconName: 'Target',
+      iconName: 'Briefcase',
       text: 'Hire Project Managers'
     },
     title: 'Hire Project',
     hollowText: 'Managers',
-    description: 'Hire experienced project managers who ensure successful project delivery. From Agile to Waterfall, we provide the project management expertise you need. Our managers are experts in Scrum, Kanban, stakeholder management, and modern project management tools.'
+    description: 'Hire experienced project managers who ensure successful project delivery. Our project managers are experts in Agile, Scrum, Kanban, and traditional project management methodologies.'
   },
   services: [
     {
       title: 'Agile Project Management',
-      description: 'Scrum and Kanban methodologies',
+      description: 'Lead Agile teams and manage sprints effectively',
       iconName: 'Zap',
       color: '#5e2cb6'
     },
     {
-      title: 'Stakeholder Management',
-      description: 'Effective communication and stakeholder alignment',
+      title: 'Scrum Master',
+      description: 'Facilitate Scrum ceremonies and remove blockers',
       iconName: 'Users',
       color: '#c91a6f'
+    },
+    {
+      title: 'Stakeholder Management',
+      description: 'Manage client relationships and expectations',
+      iconName: 'MessageSquare',
+      color: '#fecc4d'
+    },
+    {
+      title: 'Resource Planning',
+      description: 'Plan and allocate resources efficiently',
+      iconName: 'Calendar',
+      color: '#10b981'
     },
     {
       title: 'Risk Management',
       description: 'Identify and mitigate project risks',
       iconName: 'Shield',
-      color: '#d97706'
-    },
-    {
-      title: 'Resource Planning',
-      description: 'Plan and allocate resources effectively',
-      iconName: 'Calendar',
-      color: '#059669'
+      color: '#5e2cb6'
     },
     {
       title: 'Quality Assurance',
       description: 'Ensure project quality and deliverables',
       iconName: 'CheckCircle',
-      color: '#5e2cb6'
-    },
-    {
-      title: 'Team Leadership',
-      description: 'Lead and motivate development teams',
-      iconName: 'Rocket',
       color: '#c91a6f'
     }
   ],
   whyChooseUs: [
     {
-      iconName: 'Target',
+      iconName: 'Briefcase',
       title: 'Project Management Expertise',
-      description: 'Expert project managers with proven track records',
+      description: 'Experienced in Agile, Scrum, and traditional methodologies',
       color: '#5e2cb6'
     },
     {
-      iconName: 'Zap',
-      title: 'Agile Methodologies',
-      description: 'Proficient in Scrum, Kanban, and Agile practices',
+      iconName: 'Users',
+      title: 'Team Leadership',
+      description: 'Strong leadership and team coordination skills',
       color: '#c91a6f'
     },
     {
-      iconName: 'Users',
-      title: 'Stakeholder Management',
-      description: 'Effective communication and stakeholder alignment',
-      color: '#d97706'
+      iconName: 'Target',
+      title: 'Delivery Focus',
+      description: 'Ensure on-time and on-budget project delivery',
+      color: '#fecc4d'
     },
     {
-      iconName: 'Rocket',
-      title: 'Delivery Focus',
-      description: 'Ensure on-time, on-budget project delivery',
-      color: '#059669'
+      iconName: 'TrendingUp',
+      title: 'Process Improvement',
+      description: 'Continuously improve project processes and workflows',
+      color: '#10b981'
     }
   ],
   industries: [
-    { name: 'Fintech', iconName: 'Building2', color: '#5e2cb6' },
-    { name: 'Healthcare', iconName: 'Heart', color: '#c91a6f' },
-    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#d97706' },
-    { name: 'Logistics', iconName: 'Truck', color: '#059669' },
-    { name: 'Real Estate', iconName: 'Home', color: '#5e2cb6' }
+    { name: 'Software Development', iconName: 'Code', color: '#5e2cb6' },
+    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#c91a6f' },
+    { name: 'Healthcare', iconName: 'Heart', color: '#fecc4d' },
+    { name: 'Fintech', iconName: 'DollarSign', color: '#10b981' },
+    { name: 'SaaS', iconName: 'Cloud', color: '#5e2cb6' }
   ],
   technologies: [
-    { name: 'Jira', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/jira.svg', color: '#0052CC', category: 'tools' as const },
-    { name: 'Asana', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/asana.svg', color: '#F06A6A', category: 'tools' as const },
-    { name: 'Trello', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/trello.svg', color: '#0079BF', category: 'tools' as const },
-    { name: 'Monday.com', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/monday.svg', color: '#FF0080', category: 'tools' as const },
-    { name: 'Confluence', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/confluence.svg', color: '#172B4D', category: 'tools' as const },
-    { name: 'Slack', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/slack.svg', color: '#4A154B', category: 'tools' as const }
+    { name: 'JIRA', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg', color: '#0052CC', category: 'management' as const },
+    { name: 'Confluence', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/confluence/confluence-original.svg', color: '#172B4D', category: 'management' as const },
+    { name: 'Trello', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/trello/trello-plain.svg', color: '#0079BF', category: 'management' as const },
+    { name: 'Asana', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/asana/asana-original.svg', color: '#F06A6A', category: 'management' as const },
+    { name: 'Monday.com', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/monday/monday-original.svg', color: '#FF3D71', category: 'management' as const }
   ],
   processSteps: [
     {
       title: 'Requirement Analysis',
-      description: 'We analyze your project management needs and requirements',
+      description: 'We analyze your project management needs and team structure',
       iconName: 'Target'
     },
     {
-      title: 'Manager Matching',
+      title: 'PM Matching',
       description: 'We match you with project managers experienced in your industry',
       iconName: 'Users'
     },
     {
-      title: 'Interview Process',
-      description: 'Comprehensive interviews covering methodologies and experience',
+      title: 'Assessment',
+      description: 'Evaluate project management skills and methodology expertise',
       iconName: 'FileText'
     },
     {
-      title: 'Reference Check',
-      description: 'Verify experience and track record with previous clients',
+      title: 'Portfolio Review',
+      description: 'Review PM portfolios showcasing successful project deliveries',
+      iconName: 'Briefcase'
+    },
+    {
+      title: 'Trial Period',
+      description: 'Optional trial period to evaluate PM performance',
       iconName: 'CheckCircle'
     },
     {
       title: 'Team Integration',
-      description: 'Seamless integration with your development and business teams',
+      description: 'Seamless integration with your development and management teams',
       iconName: 'Rocket'
-    },
-    {
-      title: 'Continuous Support',
-      description: 'Ongoing support and project management excellence',
-      iconName: 'Zap'
     }
   ],
   servicesTitle: 'Project Management',

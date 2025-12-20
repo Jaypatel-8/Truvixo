@@ -171,7 +171,7 @@ export function getIconComponent(iconName: string): LucideIcon | undefined {
   
   // Then try to access from LucideIcons directly (safely)
   try {
-    const icon = (LucideIcons as Record<string, LucideIcon>)[iconName]
+    const icon = (LucideIcons as unknown as Record<string, LucideIcon>)[iconName]
     if (icon && typeof icon === 'function') {
       return icon
     }

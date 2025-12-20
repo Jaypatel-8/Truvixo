@@ -7,9 +7,9 @@ import Clientele from '@/components/Clientele'
 import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
-import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import { educationIndustryData } from '@/lib/staticData/industry/education'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
+import { educationData } from '@/lib/staticData/industry/education'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -55,7 +55,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   }, [])
 
-  const services = educationIndustryData.services.map(service => {
+  const services = educationData.services.map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -63,7 +63,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const whyChooseUs = educationIndustryData.whyChooseUs.map(item => {
+  const whyChooseUs = educationData.whyChooseUs.map(item => {
     const IconComponent = getIcon(item.iconName)
     return {
       ...item,
@@ -71,7 +71,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const processSteps = educationIndustryData.processSteps.map(step => {
+  const processSteps = educationData.processSteps.map(step => {
     const IconComponent = getIcon(step.iconName)
     return {
       ...step,
@@ -79,7 +79,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const industries = educationIndustryData.industries.map(industry => {
+  const industries = educationData.industries.map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -87,7 +87,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const benefits = educationIndustryData.benefits.map(benefit => {
+  const benefits = educationData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -95,7 +95,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const previewServices = educationIndustryData.services.slice(0, 4).map(service => {
+  const previewServices = educationData.services.slice(0, 4).map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -103,7 +103,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const BadgeIcon = getIcon(educationIndustryData.hero.badge.iconName) || getIcon('Code')!
+  const BadgeIcon = getIcon(educationData.hero.badge.iconName) || getIcon('Code')!
 
   return (
     <>
@@ -119,16 +119,16 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                 {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{educationIndustryData.hero.badge.text}</span>
+                <span className="text-sm font-semibold text-[#5e2cb6]">{educationData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {educationIndustryData.hero.title}{' '}
+                {educationData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {educationIndustryData.hero.hollowText}
+                  {educationData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {educationIndustryData.hero.description}
+                {educationData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -347,13 +347,13 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-              {educationIndustryData.cta.title}{' '}
+              {educationData.cta.title}{' '}
               <span className="hollow-text-white">
-                {educationIndustryData.cta.hollowText}
+                {educationData.cta.hollowText}
               </span>
             </h2>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-              {educationIndustryData.cta.description}
+              {educationData.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <button 
@@ -372,29 +372,43 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
               </button>
             </div>
             <div className="flex flex-wrap justify-center gap-8 text-white/80">
-              <a href={`mailto:${educationIndustryData.cta.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href={`mailto:${educationData.cta.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
                 <Mail className="w-5 h-5" strokeWidth={2} />
-                <span>{educationIndustryData.cta.email}</span>
+                <span>{educationData.cta.email}</span>
               </a>
-              <a href={`tel:${educationIndustryData.cta.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-white transition-colors">
+              <a href={`tel:${educationData.cta.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-white transition-colors">
                 <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>{educationIndustryData.cta.phone}</span>
+                <span>{educationData.cta.phone}</span>
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      <Technologies technologies={[...educationIndustryData.technologies]} />
+      <Technologies technologies={[...educationData.technologies]} />
       <ProcessDiagram 
-        title={educationIndustryData.processTitle}
-        subtitle={educationIndustryData.processSubtitle}
+        title={educationData.processTitle}
+        subtitle={educationData.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
       <ContactSection 
-        title={educationIndustryData.contactTitle}
-        description={educationIndustryData.contactDescription}
+        title={educationData.contactTitle}
+        description={educationData.contactDescription}
+      />
+      {/* Get Quote Section - Last section before footer */}
+      <GetQuoteSection
+        title={educationData.getQuoteTitle}
+        hollowText={educationData.getQuoteHollowText}
+        description={educationData.getQuoteDescription}
+        primaryCTA={{
+          text: 'Call Us',
+          onClick: () => setIsContactModalOpen(true)
+        }}
+        secondaryCTA={{
+          text: 'Schedule Consultation',
+          onClick: () => setIsContactModalOpen(true)
+        }}
       />
       <ContactFormModal 
         isOpen={isContactModalOpen} 

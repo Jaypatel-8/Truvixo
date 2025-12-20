@@ -22,11 +22,11 @@ function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface CROClientProps {
+interface EnterpriseClientProps {
   faqs: Array<{ question: string; answer: string }>
 }
 
-export default function CROClient({ faqs }: CROClientProps) {
+export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -175,13 +175,13 @@ export default function CROClient({ faqs }: CROClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              Enterprise{' '}
               <span className="hollow-text-brand">
                 Services
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive conversion rate optimization solutions
+              Comprehensive enterprise software solutions
             </p>
           </div>
 
@@ -223,13 +223,13 @@ export default function CROClient({ faqs }: CROClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose{' '}
+              Why Choose Enterprise{' '}
               <span className="hollow-text-brand">
-                CRO Services
+                Software Development
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              {croData.whyChooseUsDescription || 'We deliver data-driven conversion optimization solutions that help you turn more visitors into customers and maximize your ROI.'}
+              We deliver enterprise-grade software solutions that are built specifically for large organizations, ensuring optimal performance, scalability, and security.
             </p>
           </div>
 
@@ -311,13 +311,13 @@ export default function CROClient({ faqs }: CROClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              Enterprise Software{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover how conversion rate optimization can transform your website and drive more conversions
+              Discover how enterprise software development can transform your organization and drive efficiency
             </p>
           </div>
 
@@ -376,7 +376,7 @@ export default function CROClient({ faqs }: CROClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={croData.technologies} />
+      <Technologies technologies={[...croData.technologies]} />
       <ProcessDiagram 
         title={croData.processTitle}
         subtitle={croData.processSubtitle}

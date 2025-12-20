@@ -362,7 +362,7 @@ export default function SEOClient({ faqs }: SEOClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={seoData.technologies} />
+      <Technologies technologies={[...seoData.technologies]} />
 
       {/* Process Diagram */}
       <ProcessDiagram

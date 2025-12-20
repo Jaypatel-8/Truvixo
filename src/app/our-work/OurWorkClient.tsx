@@ -1,25 +1,19 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowRight, Calendar, Phone, Mail } from 'lucide-react'
+import { ArrowRight, Calendar, Phone, Mail, Code, Zap, Globe, Phone as PhoneIcon, ShoppingCart, Cloud, Building2, Rocket, Target, Network, Shield, Settings } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Clientele from '@/components/Clientele'
 import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
-import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import { ourWorkData } from '@/lib/staticData/work/our-work'
-import { getIconComponent } from '@/lib/utils/iconMapper'
+import GetQuoteSection from '@/components/sections/GetQuoteSection'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
   loading: () => null,
 })
-
-function getIcon(iconName: string) {
-  return getIconComponent(iconName) || getIconComponent('Code')
-}
 
 interface OurWorkClientProps {
   faqs: Array<{ question: string; answer: string }>
@@ -55,55 +49,179 @@ export default function OurWorkClient({ faqs }: OurWorkClientProps) {
     }
   }, [])
 
-  const services = ourWorkData.services.map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+  // Inline data for our-work page
+  const services = [
+    {
+      title: 'Custom Software Development',
+      description: 'Tailored software solutions built to meet your unique business requirements',
+      icon: <Code className="w-8 h-8" strokeWidth={2} />,
+      color: '#5e2cb6'
+    },
+    {
+      title: 'AI & Machine Learning',
+      description: 'Intelligent solutions powered by advanced AI and ML technologies',
+      icon: <Zap className="w-8 h-8" strokeWidth={2} />,
+      color: '#c91a6f'
+    },
+    {
+      title: 'Web Applications',
+      description: 'Modern, scalable web applications for businesses of all sizes',
+      icon: <Globe className="w-8 h-8" strokeWidth={2} />,
+      color: '#fecc4d'
+    },
+    {
+      title: 'Mobile Applications',
+      description: 'Native and cross-platform mobile apps for iOS and Android',
+      icon: <PhoneIcon className="w-8 h-8" strokeWidth={2} />,
+      color: '#10b981'
+    },
+    {
+      title: 'E-commerce Solutions',
+      description: 'Complete e-commerce platforms with payment integration and management',
+      icon: <ShoppingCart className="w-8 h-8" strokeWidth={2} />,
+      color: '#5e2cb6'
+    },
+    {
+      title: 'Cloud Infrastructure',
+      description: 'Scalable cloud solutions for modern business needs',
+      icon: <Cloud className="w-8 h-8" strokeWidth={2} />,
+      color: '#c91a6f'
+    },
+    {
+      title: 'Enterprise Solutions',
+      description: 'Large-scale enterprise software for complex business operations',
+      icon: <Building2 className="w-8 h-8" strokeWidth={2} />,
+      color: '#fecc4d'
+    },
+    {
+      title: 'Digital Transformation',
+      description: 'End-to-end digital transformation services for modern businesses',
+      icon: <Rocket className="w-8 h-8" strokeWidth={2} />,
+      color: '#10b981'
     }
-  })
+  ]
 
-  const whyChooseUs = ourWorkData.whyChooseUs.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+  const whyChooseUs = [
+    { 
+      icon: <Code className="w-7 h-7" strokeWidth={2} />, 
+      title: 'Proven Track Record', 
+      description: '500+ successful projects delivered across diverse industries with 98% client satisfaction',
+      color: '#5e2cb6'
+    },
+    { 
+      icon: <Globe className="w-7 h-7" strokeWidth={2} />, 
+      title: 'Expert Team', 
+      description: '50+ skilled professionals with expertise in cutting-edge technologies and methodologies',
+      color: '#c91a6f'
+    },
+    { 
+      icon: <Zap className="w-7 h-7" strokeWidth={2} />, 
+      title: 'Measurable Results', 
+      description: 'Data-driven approach ensuring measurable business outcomes and ROI',
+      color: '#fecc4d'
+    },
+    { 
+      icon: <Shield className="w-7 h-7" strokeWidth={2} />, 
+      title: 'Quality Assurance', 
+      description: 'Rigorous testing and quality control processes for reliable, bug-free solutions',
+      color: '#10b981'
+    },
+    { 
+      icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
+      title: 'Agile Methodology', 
+      description: 'Flexible, iterative development approach for faster time-to-market',
+      color: '#5e2cb6'
+    },
+    { 
+      icon: <Target className="w-7 h-7" strokeWidth={2} />, 
+      title: 'Innovation Focus', 
+      description: 'Cutting-edge technologies and innovative solutions for competitive advantage',
+      color: '#c91a6f'
     }
-  })
+  ]
 
-  const processSteps = ourWorkData.processSteps.map(step => {
-    const IconComponent = getIcon(step.iconName)
-    return {
-      ...step,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+  const processSteps = [
+    {
+      title: 'Discovery & Planning',
+      description: 'Understand your business needs, goals, and requirements through comprehensive analysis',
+      icon: <Target className="w-6 h-6" strokeWidth={2} />
+    },
+    {
+      title: 'Design & Architecture',
+      description: 'Create scalable architecture and intuitive user experience designs',
+      icon: <Network className="w-6 h-6" strokeWidth={2} />
+    },
+    {
+      title: 'Development & Integration',
+      description: 'Build robust solutions using modern technologies and best practices',
+      icon: <Code className="w-6 h-6" strokeWidth={2} />
+    },
+    {
+      title: 'Testing & Quality Assurance',
+      description: 'Comprehensive testing to ensure reliability, performance, and security',
+      icon: <Shield className="w-6 h-6" strokeWidth={2} />
+    },
+    {
+      title: 'Deployment & Launch',
+      description: 'Seamless deployment to production with zero-downtime strategies',
+      icon: <Rocket className="w-6 h-6" strokeWidth={2} />
+    },
+    {
+      title: 'Support & Maintenance',
+      description: 'Ongoing support, updates, and optimization for long-term success',
+      icon: <Settings className="w-6 h-6" strokeWidth={2} />
     }
-  })
+  ]
 
-  const industries = ourWorkData.industries.map(industry => {
-    const IconComponent = getIcon(industry.iconName)
-    return {
-      ...industry,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+  const industries = [
+    { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
+    { name: 'Healthcare', icon: <PhoneIcon className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
+    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
+    { name: 'Logistics', icon: <Globe className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
+    { name: 'Real Estate', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
+    { name: 'Education', icon: <Code className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
+  ]
+
+  const benefits = [
+    {
+      icon: <Zap className="w-6 h-6" strokeWidth={2} />,
+      title: 'Increased Efficiency',
+      description: 'Our solutions streamline operations, automate processes, and reduce manual work, leading to significant efficiency gains and cost savings.',
+      color: '#5e2cb6'
+    },
+    {
+      icon: <Target className="w-6 h-6" strokeWidth={2} />,
+      title: 'Data-Driven Insights',
+      description: 'Real-time analytics and reporting provide actionable insights for better decision-making and strategic planning.',
+      color: '#c91a6f'
+    },
+    {
+      icon: <Cloud className="w-6 h-6" strokeWidth={2} />,
+      title: 'Scalable Solutions',
+      description: 'Built with scalability in mind, our solutions grow with your business, handling increased load and users seamlessly.',
+      color: '#fecc4d'
+    },
+    {
+      icon: <Shield className="w-6 h-6" strokeWidth={2} />,
+      title: 'Enhanced Security',
+      description: 'Enterprise-grade security features protect your data and ensure compliance with industry standards and regulations.',
+      color: '#10b981'
+    },
+    {
+      icon: <Rocket className="w-6 h-6" strokeWidth={2} />,
+      title: 'Improved User Experience',
+      description: 'Intuitive interfaces and seamless user experiences increase engagement and satisfaction among your customers and employees.',
+      color: '#5e2cb6'
+    },
+    {
+      icon: <Code className="w-6 h-6" strokeWidth={2} />,
+      title: 'Competitive Advantage',
+      description: 'Innovative technology solutions give you a competitive edge, enabling faster time-to-market and better customer experiences.',
+      color: '#c91a6f'
     }
-  })
+  ]
 
-  const benefits = ourWorkData.benefits.map(benefit => {
-    const IconComponent = getIcon(benefit.iconName)
-    return {
-      ...benefit,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
-
-  const previewServices = ourWorkData.services.slice(0, 4).map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
-
-  const BadgeIcon = getIcon(ourWorkData.hero.badge.iconName)
+  const previewServices = services.slice(0, 4)
 
   return (
     <>
@@ -118,17 +236,17 @@ export default function OurWorkClient({ faqs }: OurWorkClientProps) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{ourWorkData.hero.badge.text}</span>
+                <Rocket className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />
+                <span className="text-sm font-semibold text-[#5e2cb6]">Our Portfolio</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {ourWorkData.hero.title}{' '}
+                Our{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {ourWorkData.hero.hollowText}
+                  Work
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-                {ourWorkData.hero.description}
+                Explore how TruVixo helps businesses innovate through technology and creativity. Discover our portfolio of successful projects that demonstrate our ability to deliver exceptional results across various industries.
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -174,13 +292,13 @@ export default function OurWorkClient({ faqs }: OurWorkClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Healthcare{' '}
+              Our{' '}
               <span className="hollow-text-brand">
-                Solutions
+                Services
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive healthcare technology solutions tailored to your needs
+              Comprehensive solutions across all technology domains
             </p>
           </div>
 
@@ -222,13 +340,13 @@ export default function OurWorkClient({ faqs }: OurWorkClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose Healthcare{' '}
+              Why Choose{' '}
               <span className="hollow-text-brand">
-                Development
+                TruVixo
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We deliver secure, HIPAA-compliant healthcare solutions that improve patient care and streamline operations.
+              We deliver exceptional results through expertise, innovation, and commitment to excellence
             </p>
           </div>
 
@@ -270,13 +388,13 @@ export default function OurWorkClient({ faqs }: OurWorkClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Healthcare{' '}
+              Industries We{' '}
               <span className="hollow-text-brand">
-                Segments
+                Specialize
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Serving diverse healthcare segments with tailored solutions
+              Serving diverse industries with tailored technology solutions
             </p>
           </div>
 
@@ -310,13 +428,13 @@ export default function OurWorkClient({ faqs }: OurWorkClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Healthcare{' '}
+              Project{' '}
               <span className="hollow-text-brand">
                 Benefits
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover how healthcare technology can improve patient care and streamline operations
+              Discover how our projects deliver measurable value and transform businesses
             </p>
           </div>
 
@@ -338,23 +456,79 @@ export default function OurWorkClient({ faqs }: OurWorkClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={ourWorkData.technologies} />
+      {/* CTA Section */}
+      <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <div className="scroll-animate">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
+              Ready to Start Your{' '}
+              <span className="hollow-text-white">
+                Project?
+              </span>
+            </h2>
+            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
+              Get in touch and let's discuss how we can help transform your business with innovative technology solutions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+              >
+                <Phone className="w-5 h-5" strokeWidth={2} />
+                <span>Call Us</span>
+              </button>
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-xl hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
+              >
+                <Calendar className="w-5 h-5" strokeWidth={2} />
+                <span>Schedule Consultation</span>
+              </button>
+            </div>
+            <div className="flex flex-wrap justify-center gap-8 text-white/80">
+              <a href="mailto:sales@truvixo.com" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Mail className="w-5 h-5" strokeWidth={2} />
+                <span>sales@truvixo.com</span>
+              </a>
+              <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
+                <Phone className="w-5 h-5" strokeWidth={2} />
+                <span>+91 63543 26412</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Technologies technologies={[
+        { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'frontend' as const },
+        { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', color: '#000000', category: 'frontend' as const },
+        { name: 'Node.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'backend' as const },
+        { name: 'Python', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'backend' as const },
+        { name: 'PostgreSQL', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#336791', category: 'database' as const },
+        { name: 'MongoDB', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg', color: '#47A248', category: 'database' as const },
+        { name: 'AWS', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain.svg', color: '#FF9900', category: 'cloud' as const },
+        { name: 'Docker', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'devops' as const },
+        { name: 'TypeScript', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6', category: 'frontend' as const },
+        { name: 'TensorFlow', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg', color: '#FF6F00', category: 'ai' as const }
+      ]} />
       <ProcessDiagram 
-        title={ourWorkData.processTitle}
-        subtitle={ourWorkData.processSubtitle}
+        title="Our Development Process"
+        subtitle="From discovery to deployment, we ensure successful project delivery at every step"
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
       <ContactSection 
-        title={ourWorkData.contact.title}
-        description={ourWorkData.contact.description}
+        title="Get in Touch"
+        description="Have a project in mind? Let's discuss how we can help transform your business."
       />
-
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection
-        title={ourWorkData.cta.title}
-        hollowText={ourWorkData.cta.hollowText}
-        description={ourWorkData.cta.description}
+        title="Ready to start your"
+        hollowText="project?"
+        description="Get in touch and let's discuss how we can help transform your business with innovative technology solutions."
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)
@@ -371,4 +545,3 @@ export default function OurWorkClient({ faqs }: OurWorkClientProps) {
     </>
   )
 }
-

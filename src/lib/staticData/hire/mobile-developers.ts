@@ -7,12 +7,12 @@ export const mobileDevelopersData = {
     },
     title: 'Hire Mobile',
     hollowText: 'Developers',
-    description: 'Hire experienced mobile developers who build native and cross-platform mobile applications. From iOS to Android, we provide the mobile expertise you need. Our developers are experts in React Native, Flutter, Swift, Kotlin, and modern mobile technologies.'
+    description: 'Hire experienced mobile developers who build native and cross-platform mobile applications. Our mobile developers are experts in iOS, Android, React Native, Flutter, and modern mobile technologies.'
   },
   services: [
     {
       title: 'iOS Development',
-      description: 'Native iOS apps with Swift and SwiftUI',
+      description: 'Native iOS apps with Swift and Objective-C',
       iconName: 'Smartphone',
       color: '#5e2cb6'
     },
@@ -26,24 +26,24 @@ export const mobileDevelopersData = {
       title: 'React Native',
       description: 'Cross-platform apps with React Native',
       iconName: 'Code',
-      color: '#d97706'
+      color: '#fecc4d'
     },
     {
       title: 'Flutter Development',
-      description: 'Cross-platform apps with Flutter',
-      iconName: 'Layers',
-      color: '#059669'
-    },
-    {
-      title: 'App Store Deployment',
-      description: 'App store submission and optimization',
-      iconName: 'Rocket',
-      color: '#5e2cb6'
+      description: 'Cross-platform apps with Flutter and Dart',
+      iconName: 'Zap',
+      color: '#10b981'
     },
     {
       title: 'Mobile UI/UX',
-      description: 'Beautiful, intuitive mobile interfaces',
+      description: 'Create intuitive and engaging mobile interfaces',
       iconName: 'Palette',
+      color: '#5e2cb6'
+    },
+    {
+      title: 'App Store Optimization',
+      description: 'Optimize apps for App Store and Play Store',
+      iconName: 'TrendingUp',
       color: '#c91a6f'
     }
   ],
@@ -51,42 +51,41 @@ export const mobileDevelopersData = {
     {
       iconName: 'Smartphone',
       title: 'Mobile Expertise',
-      description: 'Expert mobile developers for iOS, Android, and cross-platform',
+      description: 'Expertise in iOS, Android, React Native, and Flutter',
       color: '#5e2cb6'
     },
     {
-      iconName: 'Code',
+      iconName: 'Zap',
       title: 'Cross-Platform',
-      description: 'Build once, deploy to iOS and Android',
+      description: 'Build apps that work on both iOS and Android',
       color: '#c91a6f'
     },
     {
-      iconName: 'Rocket',
-      title: 'App Store Ready',
-      description: 'Handle app store submissions and compliance',
-      color: '#d97706'
+      iconName: 'Target',
+      title: 'Performance Focus',
+      description: 'Optimize apps for speed, battery, and user experience',
+      color: '#fecc4d'
     },
     {
-      iconName: 'Zap',
-      title: 'Performance',
-      description: 'Optimized mobile apps for speed and battery life',
-      color: '#059669'
+      iconName: 'Users',
+      title: 'User-Centered',
+      description: 'Create mobile experiences that users love',
+      color: '#10b981'
     }
   ],
   industries: [
-    { name: 'Fintech', iconName: 'Building2', color: '#5e2cb6' },
+    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#5e2cb6' },
     { name: 'Healthcare', iconName: 'Heart', color: '#c91a6f' },
-    { name: 'E-Commerce', iconName: 'ShoppingCart', color: '#d97706' },
-    { name: 'Logistics', iconName: 'Truck', color: '#059669' },
-    { name: 'Real Estate', iconName: 'Home', color: '#5e2cb6' }
+    { name: 'Fintech', iconName: 'DollarSign', color: '#fecc4d' },
+    { name: 'Social Media', iconName: 'Users', color: '#10b981' },
+    { name: 'Gaming', iconName: 'Gamepad', color: '#5e2cb6' }
   ],
   technologies: [
     { name: 'React Native', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'mobile' as const },
     { name: 'Flutter', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg', color: '#02569B', category: 'mobile' as const },
     { name: 'Swift', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/swift/swift-original.svg', color: '#FA7343', category: 'mobile' as const },
     { name: 'Kotlin', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kotlin/kotlin-original.svg', color: '#7F52FF', category: 'mobile' as const },
-    { name: 'iOS', logo: 'https://cdn.jsdelivr.net/gh/simple-icons/simple-icons@v9/icons/apple.svg', color: '#000000', category: 'mobile' as const },
-    { name: 'Android', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg', color: '#3DDC84', category: 'mobile' as const }
+    { name: 'Dart', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg', color: '#0175C2', category: 'mobile' as const }
   ],
   processSteps: [
     {
@@ -96,7 +95,7 @@ export const mobileDevelopersData = {
     },
     {
       title: 'Developer Matching',
-      description: 'We match you with mobile developers skilled in your preferred platforms',
+      description: 'We match you with mobile developers skilled in your preferred platform',
       iconName: 'Users'
     },
     {
@@ -106,8 +105,8 @@ export const mobileDevelopersData = {
     },
     {
       title: 'Portfolio Review',
-      description: 'Review developer portfolios showcasing mobile apps',
-      iconName: 'MessageSquare'
+      description: 'Review developer portfolios showcasing mobile apps and capabilities',
+      iconName: 'Smartphone'
     },
     {
       title: 'Trial Period',
@@ -116,7 +115,7 @@ export const mobileDevelopersData = {
     },
     {
       title: 'Team Integration',
-      description: 'Seamless integration with your development and design teams',
+      description: 'Seamless integration with your development team and workflows',
       iconName: 'Rocket'
     }
   ],
