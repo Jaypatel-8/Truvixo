@@ -42,7 +42,7 @@ interface Technology {
   name: string
   logo: string
   color: string
-  category: 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai'
+  category: 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai' | 'management' | 'testing' | 'design'
 }
 
 interface PageTemplateProps {

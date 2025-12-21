@@ -8,9 +8,6 @@ import { useState } from 'react'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { generateServiceSEO } from '@/lib/seoContent'
 
-const SEOLocationSection = dynamic(() => import('@/components/SEOLocationSection'), {
-  ssr: false,
-})
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -109,9 +106,6 @@ export default function ServicePageClient({ slug }: { slug: string }) {
           </div>
         </div>
       </section>
-
-      {/* SEO Location Section */}
-      <SEOLocationSection serviceName={serviceName} />
 
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection

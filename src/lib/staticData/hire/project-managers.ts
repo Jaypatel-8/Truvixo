@@ -132,3 +132,4 @@ export const projectManagersData = {
   processSubtitle: 'From requirement analysis to ongoing support, we ensure a seamless hiring experience'
 } as const
 
+

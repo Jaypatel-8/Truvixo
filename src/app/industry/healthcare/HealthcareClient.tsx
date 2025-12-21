@@ -9,7 +9,6 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { healthcareIndustryData } from '@/lib/staticData/industry/healthcare'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
@@ -346,7 +345,6 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={healthcareIndustryData.seoServiceName} />
       <ContactSection 
         title={healthcareIndustryData.contactTitle}
         description={healthcareIndustryData.contactDescription}

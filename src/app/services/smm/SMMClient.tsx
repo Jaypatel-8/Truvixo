@@ -9,7 +9,6 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { smmData } from '@/lib/staticData/services/smm'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
@@ -175,13 +174,13 @@ export default function SMMClient({ faqs }: SMMClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {smmData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {smmData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive conversion rate optimization solutions
+              Comprehensive social media marketing solutions
             </p>
           </div>
 
@@ -223,13 +222,13 @@ export default function SMMClient({ faqs }: SMMClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose CRO{' '}
+              {smmData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {smmData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We deliver data-driven conversion rate optimization that increases your website\'s conversion rates and revenue.
+              We build your brand presence and engage with your audience through strategic social media marketing that grows your following and drives conversions.
             </p>
           </div>
 
@@ -311,13 +310,13 @@ export default function SMMClient({ faqs }: SMMClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {smmData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                Benefits
+                {smmData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover how conversion rate optimization can increase your revenue
+              Discover how social media marketing can grow your brand and engage your audience
             </p>
           </div>
 
@@ -344,13 +343,13 @@ export default function SMMClient({ faqs }: SMMClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {smmData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                Use Cases
+                {smmData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore how businesses optimize conversions to increase revenue
+              Explore how businesses leverage social media marketing to grow their brand and engage audiences
             </p>
           </div>
 
@@ -383,7 +382,6 @@ export default function SMMClient({ faqs }: SMMClientProps) {
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={smmData.seoServiceName} />
       <ContactSection 
         title={smmData.contact.title}
         description={smmData.contact.description}

@@ -7,9 +7,6 @@ import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 
-const SEOLocationSection = dynamic(() => import('@/components/SEOLocationSection'), {
-  ssr: false,
-})
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -83,8 +80,6 @@ export default function HirePageClient({ slug }: { slug: string }) {
       </section>
 
       {/* SEO Location Section */}
-      <SEOLocationSection serviceName={`Hire ${pageName}`} />
-
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection
         title="Ready to Hire"

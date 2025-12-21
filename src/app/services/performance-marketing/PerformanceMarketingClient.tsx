@@ -9,7 +9,6 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { performanceMarketingData } from '@/lib/staticData/services/performance-marketing'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
@@ -175,13 +174,13 @@ export default function PerformanceMarketingClient({ faqs }: PerformanceMarketin
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {performanceMarketingData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {performanceMarketingData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive conversion rate optimization solutions
+              Comprehensive performance marketing solutions
             </p>
           </div>
 
@@ -223,13 +222,13 @@ export default function PerformanceMarketingClient({ faqs }: PerformanceMarketin
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose CRO{' '}
+              {performanceMarketingData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {performanceMarketingData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We deliver data-driven conversion rate optimization that increases your website\'s conversion rates and revenue.
+              We deliver measurable results with performance-based marketing strategies that maximize ROI and drive quantifiable business outcomes.
             </p>
           </div>
 
@@ -311,13 +310,13 @@ export default function PerformanceMarketingClient({ faqs }: PerformanceMarketin
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {performanceMarketingData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                Benefits
+                {performanceMarketingData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover how conversion rate optimization can increase your revenue
+              Discover how performance marketing can drive measurable results and maximize ROI
             </p>
           </div>
 
@@ -344,13 +343,13 @@ export default function PerformanceMarketingClient({ faqs }: PerformanceMarketin
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {performanceMarketingData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                Use Cases
+                {performanceMarketingData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore how businesses optimize conversions to increase revenue
+              Explore how businesses leverage performance marketing to drive measurable results
             </p>
           </div>
 
@@ -383,7 +382,6 @@ export default function PerformanceMarketingClient({ faqs }: PerformanceMarketin
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={performanceMarketingData.seoServiceName} />
       <ContactSection 
         title={performanceMarketingData.contact.title}
         description={performanceMarketingData.contact.description}

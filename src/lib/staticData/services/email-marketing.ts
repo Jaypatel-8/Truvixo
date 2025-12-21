@@ -9,6 +9,8 @@ export const emailMarketingData = {
     hollowText: 'Marketing',
     description: 'Build lasting relationships and drive conversions with strategic email marketing campaigns. Reach customers directly in their inbox with personalized, engaging content that drives action. Our email marketing services help you nurture leads, retain customers, and maximize revenue through automated, data-driven email campaigns.'
   },
+  servicesTitle: 'Email Marketing',
+  servicesHollowText: 'Services',
   services: [
     {
       title: 'Email Campaign Design',
@@ -47,6 +49,8 @@ export const emailMarketingData = {
       color: '#c91a6f'
     }
   ],
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'Email Marketing',
   whyChooseUs: [
     {
       iconName: 'Mail',
@@ -118,6 +122,8 @@ export const emailMarketingData = {
     { name: 'Education', iconName: 'GraduationCap', color: '#5e2cb6' },
     { name: 'Fintech', iconName: 'Building2', color: '#c91a6f' }
   ],
+  benefitsTitle: 'Email Marketing',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'TrendingUp',
@@ -156,6 +162,8 @@ export const emailMarketingData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'Email Marketing',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'Lead Nurturing',

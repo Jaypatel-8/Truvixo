@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight, Calendar, Phone, Mail, MapPin, Clock, Briefcase, CheckCircle } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import ContactSection from '@/components/ContactSection'
 import Clientele from '@/components/Clientele'
 import FAQDropdown from '@/components/FAQDropdown'
@@ -309,8 +308,6 @@ export default function CareersClient({ faqs }: CareersClientProps) {
       <FAQDropdown faqs={faqs} />
 
       {/* SEO Location Section */}
-      <SEOLocationSection serviceName={careersData.seoServiceName} />
-
       {/* Contact Section */}
       <ContactSection 
         title={careersData.contact.title}

@@ -59,6 +59,10 @@ export const ecommerceDevelopmentData = {
       color: '#10b981'
     }
   ],
+  servicesTitle: 'E-commerce',
+  servicesHollowText: 'Services',
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'E-commerce Development',
   whyChooseUs: [
     {
       iconName: 'ShoppingCart',
@@ -149,6 +153,8 @@ export const ecommerceDevelopmentData = {
     { name: 'Healthcare', iconName: 'Heart', color: '#5e2cb6' },
     { name: 'Logistics', iconName: 'Truck', color: '#c91a6f' }
   ],
+  benefitsTitle: 'E-commerce',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'ShoppingCart',
@@ -187,6 +193,8 @@ export const ecommerceDevelopmentData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'E-commerce',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'B2C Retail Stores',

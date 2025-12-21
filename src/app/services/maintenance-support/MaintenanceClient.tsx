@@ -9,7 +9,6 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { maintenanceSupportData } from '@/lib/staticData/services/maintenance-support'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
@@ -175,9 +174,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise{' '}
+              {maintenanceSupportData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {maintenanceSupportData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -223,9 +222,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose Enterprise{' '}
+              {maintenanceSupportData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                Software Development
+                {maintenanceSupportData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -311,13 +310,13 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise Software{' '}
+              {maintenanceSupportData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                Benefits
+                {maintenanceSupportData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover how enterprise software development can transform your organization and drive efficiency
+              Discover how maintenance and support services can keep your applications running smoothly
             </p>
           </div>
 
@@ -344,13 +343,13 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise Software{' '}
+              {maintenanceSupportData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                Use Cases
+                {maintenanceSupportData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore how enterprises leverage custom software to streamline operations and drive growth
+              Explore how businesses leverage maintenance and support services to keep applications running smoothly
             </p>
           </div>
 
@@ -383,7 +382,6 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={maintenanceSupportData.seoServiceName} />
       <ContactSection 
         title={maintenanceSupportData.contact.title}
         description={maintenanceSupportData.contact.description}

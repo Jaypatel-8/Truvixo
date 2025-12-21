@@ -168,9 +168,9 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              E-commerce{' '}
+              {ecommerceDevelopmentData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {ecommerceDevelopmentData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -217,9 +217,9 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose E-commerce{' '}
+              {ecommerceDevelopmentData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                Development
+                {ecommerceDevelopmentData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -305,9 +305,9 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              E-commerce{' '}
+              {ecommerceDevelopmentData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                Benefits
+                {ecommerceDevelopmentData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -338,9 +338,9 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              E-commerce{' '}
+              {ecommerceDevelopmentData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                Use Cases
+                {ecommerceDevelopmentData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">

@@ -9,7 +9,6 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { saasProductDevelopmentData } from '@/lib/staticData/services/saas-product-development'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
@@ -175,9 +174,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise{' '}
+              {saasProductDevelopmentData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {saasProductDevelopmentData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -223,9 +222,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose Enterprise{' '}
+              {saasProductDevelopmentData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                Software Development
+                {saasProductDevelopmentData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -311,13 +310,13 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise Software{' '}
+              {saasProductDevelopmentData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                Benefits
+                {saasProductDevelopmentData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover how enterprise software development can transform your organization and drive efficiency
+              Discover how SaaS product development can create scalable, recurring revenue streams
             </p>
           </div>
 
@@ -344,13 +343,13 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise Software{' '}
+              {saasProductDevelopmentData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                Use Cases
+                {saasProductDevelopmentData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore how enterprises leverage custom software to streamline operations and drive growth
+              Explore how businesses leverage SaaS product development to create scalable solutions
             </p>
           </div>
 
@@ -383,7 +382,6 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={saasProductDevelopmentData.seoServiceName} />
       <ContactSection 
         title={saasProductDevelopmentData.contact.title}
         description={saasProductDevelopmentData.contact.description}

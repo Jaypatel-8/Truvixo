@@ -34,7 +34,6 @@ import {
 import ContactFormModal from '@/components/ContactFormModal'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import Clientele from '@/components/Clientele'
@@ -752,7 +751,6 @@ const OurWork = () => {
       <Technologies technologies={technologies} />
       <ProcessDiagram title="Our Development Process" subtitle="From discovery to deployment, we ensure successful project delivery at every step" steps={processSteps} />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName="Project Development & Digital Solutions" />
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business."

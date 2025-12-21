@@ -9,6 +9,8 @@ export const ppcData = {
     hollowText: 'Services',
     description: 'Drive immediate, targeted traffic to your website with strategic pay-per-click advertising campaigns. Maximize ROI with data-driven PPC management that delivers qualified leads and measurable results. Our PPC services help you reach the right audience at the right time with optimized ad campaigns across Google, Bing, and social media platforms.'
   },
+  servicesTitle: 'PPC',
+  servicesHollowText: 'Services',
   services: [
     {
       title: 'Google Ads Management',
@@ -47,6 +49,8 @@ export const ppcData = {
       color: '#c91a6f'
     }
   ],
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'PPC Services',
   whyChooseUs: [
     {
       iconName: 'TrendingUp',
@@ -119,6 +123,8 @@ export const ppcData = {
     { name: 'Education', iconName: 'GraduationCap', color: '#5e2cb6' },
     { name: 'Fintech', iconName: 'Building2', color: '#c91a6f' }
   ],
+  benefitsTitle: 'PPC',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'Zap',
@@ -157,6 +163,8 @@ export const ppcData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'PPC',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'E-Commerce Product Promotion',

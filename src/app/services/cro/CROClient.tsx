@@ -9,7 +9,6 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { croData } from '@/lib/staticData/services/cro'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
@@ -175,13 +174,13 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise{' '}
+              {croData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {croData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive enterprise software solutions
+              Comprehensive conversion rate optimization solutions
             </p>
           </div>
 
@@ -223,13 +222,13 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose Enterprise{' '}
+              {croData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                Software Development
+                {croData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We deliver enterprise-grade software solutions that are built specifically for large organizations, ensuring optimal performance, scalability, and security.
+              We deliver data-driven conversion rate optimization that increases your website's conversion rates and revenue.
             </p>
           </div>
 
@@ -311,13 +310,13 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise Software{' '}
+              {croData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                Benefits
+                {croData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover how enterprise software development can transform your organization and drive efficiency
+              Discover how conversion rate optimization can increase your revenue
             </p>
           </div>
 
@@ -344,13 +343,13 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Enterprise Software{' '}
+              {croData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                Use Cases
+                {croData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore how enterprises leverage custom software to streamline operations and drive growth
+              Explore how businesses leverage CRO to optimize conversions and increase revenue
             </p>
           </div>
 
@@ -383,7 +382,6 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={croData.seoServiceName} />
       <ContactSection 
         title={croData.contact.title}
         description={croData.contact.description}

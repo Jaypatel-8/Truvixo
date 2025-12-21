@@ -47,6 +47,10 @@ export const maintenanceSupportData = {
       color: '#c91a6f'
     }
   ],
+  servicesTitle: 'Maintenance',
+  servicesHollowText: '& Support',
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'Maintenance & Support',
   whyChooseUs: [
     {
       iconName: 'Clock',
@@ -121,6 +125,8 @@ export const maintenanceSupportData = {
     { name: 'Education', iconName: 'GraduationCap', color: '#5e2cb6' },
     { name: 'Manufacturing', iconName: 'Factory', color: '#c91a6f' }
   ],
+  benefitsTitle: 'Maintenance',
+  benefitsHollowText: '& Support Benefits',
   benefits: [
     {
       iconName: 'Shield',
@@ -159,6 +165,8 @@ export const maintenanceSupportData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'Maintenance',
+  useCasesHollowText: '& Support Use Cases',
   useCases: [
     {
       title: 'Production Support',

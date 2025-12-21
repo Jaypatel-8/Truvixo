@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import { ArrowRight, CheckCircle, Star, Users, Target, Zap, BarChart3, Globe, Building2, Linkedin, Mail, MessageSquare, Palette, Sparkles, Rocket, TrendingUp, Award, MousePointer, ChevronLeft, ChevronRight, Brain, Cloud, Code, DollarSign, Calendar, Phone, Shield } from 'lucide-react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import ContactSection from '@/components/ContactSection'
 import Clientele from '@/components/Clientele'
 import Technologies from '@/components/Technologies'
@@ -638,8 +637,6 @@ export default function About() {
       <FAQDropdown faqs={getFAQsForPage('about')} />
 
       {/* SEO Location Section */}
-      <SEOLocationSection serviceName="Digital Transformation & Business Growth" />
-
       {/* Contact Section */}
       <ContactSection 
         title="Get in Touch"

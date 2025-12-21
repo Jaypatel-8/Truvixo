@@ -47,6 +47,10 @@ export const legacyAppModernizationData = {
       color: '#c91a6f'
     }
   ],
+  servicesTitle: 'Legacy App',
+  servicesHollowText: 'Modernization',
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'Legacy App Modernization',
   whyChooseUs: [
     {
       iconName: 'Wrench',
@@ -121,6 +125,8 @@ export const legacyAppModernizationData = {
     { name: 'Government', iconName: 'Building2', color: '#5e2cb6' },
     { name: 'Education', iconName: 'GraduationCap', color: '#c91a6f' }
   ],
+  benefitsTitle: 'Legacy App',
+  benefitsHollowText: 'Modernization Benefits',
   benefits: [
     {
       iconName: 'Zap',
@@ -159,6 +165,8 @@ export const legacyAppModernizationData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'Legacy App',
+  useCasesHollowText: 'Modernization Use Cases',
   useCases: [
     {
       title: 'Monolith to Microservices',

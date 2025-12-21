@@ -9,6 +9,8 @@ export const croData = {
     hollowText: 'Services',
     description: 'Maximize your website\'s conversion potential with data-driven optimization strategies. Turn more visitors into customers and increase revenue through systematic testing and improvement. Our CRO services help you identify barriers, test solutions, and implement changes that drive measurable results.'
   },
+  servicesTitle: 'CRO',
+  servicesHollowText: 'Services',
   services: [
     {
       title: 'Conversion Audits',
@@ -47,6 +49,8 @@ export const croData = {
       color: '#c91a6f'
     }
   ],
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'CRO Services',
   whyChooseUs: [
     {
       iconName: 'Target',
@@ -121,6 +125,8 @@ export const croData = {
     { name: 'Education', iconName: 'GraduationCap', color: '#5e2cb6' },
     { name: 'Real Estate', iconName: 'Home', color: '#c91a6f' }
   ],
+  benefitsTitle: 'CRO',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'TrendingUp',
@@ -159,6 +165,8 @@ export const croData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'CRO',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'E-Commerce Checkout Optimization',

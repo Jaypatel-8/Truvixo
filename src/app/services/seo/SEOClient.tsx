@@ -167,9 +167,9 @@ export default function SEOClient({ faqs }: SEOClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              SEO{' '}
+              {seoData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {seoData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -215,9 +215,9 @@ export default function SEOClient({ faqs }: SEOClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose Our{' '}
+              {seoData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                SEO Services
+                {seoData.whyChooseHollowText}
               </span>
             </h2>
           </div>
@@ -297,9 +297,9 @@ export default function SEOClient({ faqs }: SEOClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              SEO{' '}
+              {seoData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                Benefits
+                {seoData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -330,9 +330,9 @@ export default function SEOClient({ faqs }: SEOClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              SEO{' '}
+              {seoData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                Use Cases
+                {seoData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">

@@ -47,6 +47,10 @@ export const saasProductDevelopmentData = {
       color: '#c91a6f'
     }
   ],
+  servicesTitle: 'SaaS Product',
+  servicesHollowText: 'Services',
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'SaaS Product Development',
   whyChooseUs: [
     {
       iconName: 'Cloud',
@@ -121,6 +125,8 @@ export const saasProductDevelopmentData = {
     { name: 'Real Estate', iconName: 'Home', color: '#5e2cb6' },
     { name: 'E-commerce', iconName: 'ShoppingCart', color: '#c91a6f' }
   ],
+  benefitsTitle: 'SaaS Product',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'TrendingUp',
@@ -159,6 +165,8 @@ export const saasProductDevelopmentData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'SaaS Product',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'Business Management SaaS',

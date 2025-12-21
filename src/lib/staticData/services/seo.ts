@@ -9,6 +9,8 @@ export const seoData = {
     hollowText: 'Services',
     description: 'Improve your search engine rankings and drive organic traffic with our comprehensive SEO services. Get found by your target audience. Our proven SEO strategies help businesses increase visibility, attract qualified leads, and grow revenue through search engine optimization.'
   },
+  servicesTitle: 'SEO',
+  servicesHollowText: 'Services',
   services: [
     {
       title: 'On-Page SEO',
@@ -47,6 +49,8 @@ export const seoData = {
       color: '#c91a6f'
     }
   ],
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'SEO Services',
   whyChooseUs: [
     {
       iconName: 'Search',
@@ -124,6 +128,8 @@ export const seoData = {
     { name: 'Education', iconName: 'GraduationCap', color: '#5e2cb6' },
     { name: 'Logistics', iconName: 'Truck', color: '#c91a6f' }
   ],
+  benefitsTitle: 'SEO',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'TrendingUp',
@@ -162,6 +168,8 @@ export const seoData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'SEO',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'E-Commerce Product Visibility',

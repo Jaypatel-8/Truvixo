@@ -9,7 +9,6 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { fintechData } from '@/lib/staticData/industry/fintech'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
@@ -383,7 +382,6 @@ export default function FintechClient({ faqs }: FintechClientProps) {
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={fintechData.seoIndustryName} />
       <ContactSection 
         title={fintechData.contact.title}
         description={fintechData.contact.description}

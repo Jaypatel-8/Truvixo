@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react'
 import { ArrowRight, Calendar, Lightbulb } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import ContactSection from '@/components/ContactSection'
 import Clientele from '@/components/Clientele'
 import Technologies from '@/components/Technologies'
@@ -290,8 +289,6 @@ export default function OurApproachClient({ faqs }: OurApproachClientProps) {
       <FAQDropdown faqs={faqs} />
 
       {/* SEO Location Section */}
-      <SEOLocationSection serviceName={ourApproachData.seoServiceName} />
-
       {/* Contact Section */}
       <ContactSection 
         title={ourApproachData.contact.title}

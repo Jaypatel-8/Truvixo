@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, Users, MapPin, Code, Target, CheckCircle, Calendar, Phone, Mail, Rocket, TrendingUp, Shield, Zap, Clock, Award, Lightbulb, Building2, Cloud, BarChart3, Settings, Network } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import Clientele from '@/components/Clientele'
@@ -627,7 +626,6 @@ export default function ProjectPageClient({ slug }: { slug: string }) {
       </section>
 
       <FAQDropdown faqs={getFAQsForPage('default')} />
-      <SEOLocationSection serviceName={`${project.title} Project`} />
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business."

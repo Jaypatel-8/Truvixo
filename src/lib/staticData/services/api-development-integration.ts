@@ -47,6 +47,10 @@ export const apiDevelopmentIntegrationData = {
       color: '#c91a6f'
     }
   ],
+  servicesTitle: 'API Development',
+  servicesHollowText: 'Services',
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'API Development & Integration',
   whyChooseUs: [
     {
       iconName: 'Network',
@@ -121,6 +125,8 @@ export const apiDevelopmentIntegrationData = {
     { name: 'SaaS', iconName: 'Cloud', color: '#5e2cb6' },
     { name: 'Manufacturing', iconName: 'Factory', color: '#c91a6f' }
   ],
+  benefitsTitle: 'API Development',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'Network',
@@ -159,6 +165,8 @@ export const apiDevelopmentIntegrationData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'API Development',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'Microservices Architecture',

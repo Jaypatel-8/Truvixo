@@ -9,7 +9,6 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { ppcData } from '@/lib/staticData/services/ppc'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
@@ -175,13 +174,13 @@ export default function PPCClient({ faqs }: PPCClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {ppcData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {ppcData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive conversion rate optimization solutions
+              Comprehensive pay-per-click advertising solutions
             </p>
           </div>
 
@@ -223,13 +222,13 @@ export default function PPCClient({ faqs }: PPCClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose CRO{' '}
+              {ppcData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {ppcData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We deliver data-driven conversion rate optimization that increases your website\'s conversion rates and revenue.
+              We drive immediate, targeted traffic to your website with strategic pay-per-click advertising campaigns that maximize ROI and deliver qualified leads.
             </p>
           </div>
 
@@ -311,13 +310,13 @@ export default function PPCClient({ faqs }: PPCClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {ppcData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                Benefits
+                {ppcData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover how conversion rate optimization can increase your revenue
+              Discover how pay-per-click advertising can drive immediate, targeted traffic
             </p>
           </div>
 
@@ -344,13 +343,13 @@ export default function PPCClient({ faqs }: PPCClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {ppcData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                Use Cases
+                {ppcData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore how businesses optimize conversions to increase revenue
+              Explore how businesses leverage PPC advertising to drive immediate, targeted traffic
             </p>
           </div>
 
@@ -383,7 +382,6 @@ export default function PPCClient({ faqs }: PPCClientProps) {
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={ppcData.seoServiceName} />
       <ContactSection 
         title={ppcData.contact.title}
         description={ppcData.contact.description}

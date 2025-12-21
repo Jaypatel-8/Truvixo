@@ -9,6 +9,8 @@ export const performanceMarketingData = {
     hollowText: 'Marketing',
     description: 'Drive measurable results with performance-based marketing strategies. Pay only for results that matter - leads, sales, and conversions. Our performance marketing services combine data-driven strategies with advanced tracking to maximize ROI and deliver quantifiable business outcomes.'
   },
+  servicesTitle: 'Performance Marketing',
+  servicesHollowText: 'Services',
   services: [
     {
       title: 'Performance Campaigns',
@@ -47,6 +49,8 @@ export const performanceMarketingData = {
       color: '#c91a6f'
     }
   ],
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'Performance Marketing',
   whyChooseUs: [
     {
       iconName: 'Target',
@@ -118,6 +122,8 @@ export const performanceMarketingData = {
     { name: 'Education', iconName: 'GraduationCap', color: '#5e2cb6' },
     { name: 'Real Estate', iconName: 'Home', color: '#c91a6f' }
   ],
+  benefitsTitle: 'Performance Marketing',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'Target',
@@ -156,6 +162,8 @@ export const performanceMarketingData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'Performance Marketing',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'E-Commerce Sales',

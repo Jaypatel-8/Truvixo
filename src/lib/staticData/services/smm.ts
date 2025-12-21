@@ -9,6 +9,8 @@ export const smmData = {
     hollowText: 'Services',
     description: 'Build your brand presence and engage with your audience through strategic social media marketing. Grow your following, increase engagement, and drive conversions with content that resonates. Our SMM services help you connect with customers, build community, and achieve your social media goals across all major platforms.'
   },
+  servicesTitle: 'Social Media Marketing',
+  servicesHollowText: 'Services',
   services: [
     {
       title: 'Social Media Strategy',
@@ -47,6 +49,8 @@ export const smmData = {
       color: '#c91a6f'
     }
   ],
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'Social Media Marketing',
   whyChooseUs: [
     {
       iconName: 'Users',
@@ -119,6 +123,8 @@ export const smmData = {
     { name: 'Education', iconName: 'GraduationCap', color: '#5e2cb6' },
     { name: 'Fintech', iconName: 'Building2', color: '#c91a6f' }
   ],
+  benefitsTitle: 'Social Media Marketing',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'Users',
@@ -157,6 +163,8 @@ export const smmData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'Social Media Marketing',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'Brand Awareness Campaigns',

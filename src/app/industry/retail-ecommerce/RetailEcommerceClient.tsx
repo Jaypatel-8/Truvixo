@@ -9,7 +9,6 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { retailEcommerceData } from '@/lib/staticData/industry/retail-ecommerce'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { LucideIcon } from 'lucide-react'
@@ -385,7 +384,6 @@ export default function RetailEcommerceClient({ faqs }: RetailEcommerceClientPro
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={retailEcommerceData.seoIndustryName} />
       <ContactSection 
         title={retailEcommerceData.contact.title}
         description={retailEcommerceData.contact.description}

@@ -132,3 +132,4 @@ export const qaEngineersData = {
   processSubtitle: 'From requirement analysis to ongoing support, we ensure a seamless hiring experience'
 } as const
 
+

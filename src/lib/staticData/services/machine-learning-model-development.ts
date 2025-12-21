@@ -47,6 +47,10 @@ export const machineLearningModelDevelopmentData = {
       color: '#c91a6f'
     }
   ],
+  servicesTitle: 'Machine Learning',
+  servicesHollowText: 'Services',
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'Machine Learning Model Development',
   whyChooseUs: [
     {
       iconName: 'Brain',
@@ -121,6 +125,8 @@ export const machineLearningModelDevelopmentData = {
     { name: 'Retail', iconName: 'ShoppingCart', color: '#5e2cb6' },
     { name: 'Transportation', iconName: 'Truck', color: '#c91a6f' }
   ],
+  benefitsTitle: 'Machine Learning',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'Brain',
@@ -159,6 +165,8 @@ export const machineLearningModelDevelopmentData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'Machine Learning',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'Predictive Analytics',

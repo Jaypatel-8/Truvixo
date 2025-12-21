@@ -9,7 +9,6 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { webApplicationDevelopmentData } from '@/lib/staticData/services/web-application-development'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
@@ -190,9 +189,9 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Web Application{' '}
+              {webApplicationDevelopmentData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {webApplicationDevelopmentData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -226,9 +225,9 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose{' '}
+              {webApplicationDevelopmentData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                Us
+                {webApplicationDevelopmentData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -336,9 +335,9 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Web Application{' '}
+              {webApplicationDevelopmentData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                Benefits
+                {webApplicationDevelopmentData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -369,9 +368,9 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Web Application{' '}
+              {webApplicationDevelopmentData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                Use Cases
+                {webApplicationDevelopmentData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -412,9 +411,6 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
 
       {/* FAQs */}
       <FAQDropdown faqs={faqs} />
-
-      {/* SEO Location Section */}
-      <SEOLocationSection serviceName={webApplicationDevelopmentData.seoServiceName} />
 
       {/* Contact Section */}
       <ContactSection 

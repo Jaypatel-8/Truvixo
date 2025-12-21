@@ -9,7 +9,6 @@ import Clientele from '@/components/Clientele'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { getFAQsForPage } from '@/lib/pageData'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -567,10 +566,7 @@ export default function AIDevelopmentServices() {
       {/* 9. FAQs */}
       <FAQDropdown faqs={faqs} />
 
-      {/* 10. SEO Location Section */}
-      <SEOLocationSection serviceName="AI Development Services" />
-
-      {/* 11. Contact Section */}
+      {/* 10. Contact Section */}
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business with AI solutions."

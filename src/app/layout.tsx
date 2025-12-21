@@ -3,14 +3,10 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import dynamic from 'next/dynamic'
 
-// Lazy load components for better performance
-// CustomCursor removed - using default browser cursor
-const Navbar = dynamic(() => import('@/components/Navbar'), {
-  ssr: true,
-})
-const Footer = dynamic(() => import('@/components/Footer'), {
-  ssr: true,
-})
+// Import components directly to avoid chunk loading issues
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+// Lazy load non-critical components
 const Clientele = dynamic(() => import('@/components/Clientele'), {
   ssr: false,
 })

@@ -47,6 +47,10 @@ export const webApplicationDevelopmentData = {
       color: '#10b981'
     }
   ],
+  servicesTitle: 'Web Application',
+  servicesHollowText: 'Services',
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'Web Application Development',
   whyChooseUs: [
     {
       iconName: 'Zap',
@@ -127,6 +131,8 @@ export const webApplicationDevelopmentData = {
     { name: 'Real Estate', iconName: 'Home', color: '#5e2cb6' },
     { name: 'Education', iconName: 'GraduationCap', color: '#c91a6f' }
   ],
+  benefitsTitle: 'Web Application',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'Globe',
@@ -165,6 +171,8 @@ export const webApplicationDevelopmentData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'Web Application',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'E-Commerce Platforms',

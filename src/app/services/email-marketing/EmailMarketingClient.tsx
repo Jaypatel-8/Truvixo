@@ -9,7 +9,6 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import SEOLocationSection from '@/components/SEOLocationSection'
 import { emailMarketingData } from '@/lib/staticData/services/email-marketing'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
@@ -175,13 +174,13 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {emailMarketingData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {emailMarketingData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Comprehensive conversion rate optimization solutions
+              Comprehensive email marketing solutions
             </p>
           </div>
 
@@ -223,13 +222,13 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose CRO{' '}
+              {emailMarketingData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                Services
+                {emailMarketingData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We deliver data-driven conversion rate optimization that increases your website\'s conversion rates and revenue.
+              We build lasting relationships and drive conversions with strategic email marketing campaigns that nurture leads and maximize revenue.
             </p>
           </div>
 
@@ -311,13 +310,13 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {emailMarketingData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                Benefits
+                {emailMarketingData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Discover how conversion rate optimization can increase your revenue
+              Discover how email marketing can build relationships and drive conversions
             </p>
           </div>
 
@@ -344,13 +343,13 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              CRO{' '}
+              {emailMarketingData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                Use Cases
+                {emailMarketingData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Explore how businesses optimize conversions to increase revenue
+              Explore how businesses leverage email marketing to nurture leads and drive conversions
             </p>
           </div>
 
@@ -383,7 +382,6 @@ export default function EmailMarketingClient({ faqs }: EmailMarketingClientProps
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <SEOLocationSection serviceName={emailMarketingData.seoServiceName} />
       <ContactSection 
         title={emailMarketingData.contact.title}
         description={emailMarketingData.contact.description}

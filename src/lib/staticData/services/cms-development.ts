@@ -47,6 +47,10 @@ export const cmsDevelopmentData = {
       color: '#c91a6f'
     }
   ],
+  servicesTitle: 'CMS Development',
+  servicesHollowText: 'Services',
+  whyChooseTitle: 'Why Choose Our',
+  whyChooseHollowText: 'CMS Development',
   whyChooseUs: [
     {
       iconName: 'FileText',
@@ -121,6 +125,8 @@ export const cmsDevelopmentData = {
     { name: 'Real Estate', iconName: 'Home', color: '#5e2cb6' },
     { name: 'Media', iconName: 'Users', color: '#c91a6f' }
   ],
+  benefitsTitle: 'CMS Development',
+  benefitsHollowText: 'Benefits',
   benefits: [
     {
       iconName: 'FileText',
@@ -159,6 +165,8 @@ export const cmsDevelopmentData = {
       color: '#c91a6f'
     }
   ],
+  useCasesTitle: 'CMS Development',
+  useCasesHollowText: 'Use Cases',
   useCases: [
     {
       title: 'Corporate Websites',
