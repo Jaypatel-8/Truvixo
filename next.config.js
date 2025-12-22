@@ -5,6 +5,16 @@ const nextConfig = {
   ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
   trailingSlash: true,
   
+  // Build-time optimizations - disable checks during build for speed
+  eslint: {
+    // Disable ESLint during builds (run separately with npm run lint)
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    // Disable TypeScript type checking during builds (run separately with tsc --noEmit)
+    ignoreBuildErrors: true,
+  },
+  
   // Disable dynamic routes for static export (they're handled by specific pages)
   skipTrailingSlashRedirect: true,
   

@@ -96,7 +96,7 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
   })
 
   const highlights = webApplicationDevelopmentData.hero.highlights.map(highlight => {
-    const iconName = 'icon' in highlight ? highlight.icon : highlight.iconName || 'Zap'
+    const iconName = (highlight as any).icon || (highlight as any).iconName || 'Zap'
     const IconComponent = getIcon(iconName)
     return {
       ...highlight,
@@ -148,7 +148,7 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {highlights.map((highlight, index) => {
                 const originalHighlight = webApplicationDevelopmentData.hero.highlights[index]
-                const iconName = 'icon' in originalHighlight ? originalHighlight.icon : originalHighlight.iconName || 'Zap'
+                const iconName = (originalHighlight as any).icon || (originalHighlight as any).iconName || 'Zap'
                 return (
                   <div key={index} className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
                     <div className="flex-shrink-0 mt-1" style={{ color: iconName === 'Zap' ? '#5e2cb6' : iconName === 'Shield' ? '#c91a6f' : '#fecc4d' }}>

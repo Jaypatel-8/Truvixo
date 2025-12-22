@@ -200,7 +200,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* Critical Resources - Preload for faster LCP */}
         <link rel="preload" href="/TruVixo.png" as="image" type="image/png" fetchPriority="high" />
