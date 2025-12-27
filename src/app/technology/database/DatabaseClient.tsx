@@ -9,6 +9,7 @@ import { getIconComponent } from '@/lib/utils/iconMapper'
 import { getFAQsForPage } from '@/lib/pageData'
 import { LucideIcon } from 'lucide-react'
 import { ReactElement } from 'react'
+import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -26,27 +27,14 @@ interface DatabaseClientProps {
 export default function DatabaseClient({ faqs }: DatabaseClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate')
-        }
-      })
-    }, observerOptions)
-
-    const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
-    scrollElements.forEach((el) => observer.observe(el))
-
-    return () => {
-      scrollElements.forEach((el) => observer.unobserve(el))
-    }
-  }, [])
+  // Use custom hook for IntersectionObserver-based scroll animations
+  useIntersectionObserver({
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    unobserveAfterIntersect: false,
+    useIdleCallback: false,
+  })
 
   const technologies = databaseTechnologyData.technologies.map((tech: { name: string; iconName: string; description: string; number: string }) => {
     const IconComponent = getIcon(tech.iconName)

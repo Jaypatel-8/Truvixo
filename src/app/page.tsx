@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react'
 // Import icons - Next.js will tree-shake unused ones in production
-import { ArrowRight, Calendar, Code, Brain, Smartphone, Cloud, Database, Server, Target, Settings, Wrench, Megaphone, Palette, Award, Rocket, Shield, MessageSquare, Phone, Mail, ChevronRight, Users, TrendingUp, Zap, BarChart3, Building2, Heart, ShoppingCart, Truck, Home as HomeIcon, GraduationCap, CheckCircle, Clock, DollarSign, Briefcase, Lightbulb } from 'lucide-react'
+import { ArrowRight, Calendar, Code, Brain, Smartphone, Cloud, Database, Server, Target, Settings, Wrench, Megaphone, Palette, Award, Rocket, Shield, MessageSquare, ChevronRight, Users, Building2, Heart, ShoppingCart, Truck, Home as HomeIcon, GraduationCap, CheckCircle, Clock, DollarSign, Briefcase, Lightbulb } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Link from 'next/link'
+import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 // Below-the-fold: Lazy load with intersection observer
 const Technologies = dynamic(() => import('../components/Technologies'), {
   ssr: false,
@@ -115,39 +116,14 @@ export default function Home() {
   // Removed dynamic project loading to prevent rendering issues
   // Using static featured projects instead
 
-  useEffect(() => {
-    // Immediate IntersectionObserver initialization for faster rendering
-    const observerOptions = {
-      threshold: 0.01,
-      rootMargin: '50px 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate')
-          // Unobserve after animation to improve performance
-          observer.unobserve(entry.target)
-        }
-      })
-    }, observerOptions)
-
-    // Use requestIdleCallback for non-critical animations
-    const initObserver = () => {
-      const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
-      scrollElements.forEach((el) => observer.observe(el))
-    }
-
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(initObserver, { timeout: 100 })
-    } else {
-      setTimeout(initObserver, 0)
-    }
-
-    return () => {
-      observer.disconnect()
-    }
-  }, [])
+  // Use custom hook for IntersectionObserver-based scroll animations
+  useIntersectionObserver({
+    threshold: 0.01,
+    rootMargin: '50px 0px',
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    unobserveAfterIntersect: true,
+    useIdleCallback: true,
+  })
 
   // Technologies data with categories and colored logos
   const technologies = [

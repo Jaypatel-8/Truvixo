@@ -4,9 +4,9 @@ import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, CheckCircle, Star, Users, Target, Zap, BarChart3, Globe, Building2, Linkedin, Mail, MessageSquare, Palette, Sparkles, Rocket, TrendingUp, Award, MousePointer, ChevronLeft, ChevronRight, Phone, MapPin, Clock, Send, Calendar, Loader2, X } from 'lucide-react'
 import Link from 'next/link'
 import { sendContactEmail, type ContactFormData } from '@/lib/emailService'
+import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
 export default function Contact() {
-  const [activeSection, setActiveSection] = useState('contact')
   const [isCalendarOpen, setIsCalendarOpen] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
@@ -20,33 +20,14 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
 
-  // Scroll animation hook
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate')
-          const sectionId = entry.target.getAttribute('data-section')
-          if (sectionId) {
-            setActiveSection(sectionId)
-          }
-        }
-      })
-    }, observerOptions)
-
-    // Observe all scroll animation elements
-    const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale, .scroll-animate-rotate')
-    scrollElements.forEach((el) => observer.observe(el))
-
-    return () => {
-      scrollElements.forEach((el) => observer.unobserve(el))
-    }
-  }, [])
+  // Use custom hook for IntersectionObserver-based scroll animations
+  useIntersectionObserver({
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],
+    unobserveAfterIntersect: false,
+    useIdleCallback: false,
+  })
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target

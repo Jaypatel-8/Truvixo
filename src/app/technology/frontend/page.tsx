@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { ArrowRight, CheckCircle, Code, FileCode, Layers, Zap, Eye, Target, Globe, ShoppingCart, Users, Palette, TrendingUp, Zap as Lightning, Phone, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
+import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -13,27 +14,14 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
 export default function FrontendTechnologies() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate')
-        }
-      })
-    }, observerOptions)
-
-    const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
-    scrollElements.forEach((el) => observer.observe(el))
-
-    return () => {
-      scrollElements.forEach((el) => observer.unobserve(el))
-    }
-  }, [])
+  // Use custom hook for IntersectionObserver-based scroll animations
+  useIntersectionObserver({
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    unobserveAfterIntersect: false,
+    useIdleCallback: false,
+  })
 
   const technologies = [
     { 

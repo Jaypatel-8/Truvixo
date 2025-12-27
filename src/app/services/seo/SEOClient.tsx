@@ -9,8 +9,8 @@ import FAQDropdown from '@/components/FAQDropdown'
 import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import ProcessDiagram from '@/components/ProcessDiagram'
-import { seoData } from '@/lib/staticData/services/seo'
 import { getIconComponent } from '@/lib/utils/iconMapper'
+import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -23,9 +23,10 @@ function getIcon(iconName: string) {
 
 interface SEOClientProps {
   faqs: Array<{ question: string; answer: string }>
+  seoData: typeof import('@/lib/staticData/services/seo').seoData
 }
 
-export default function SEOClient({ faqs }: SEOClientProps) {
+export default function SEOClient({ faqs, seoData }: SEOClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -33,27 +34,14 @@ export default function SEOClient({ faqs }: SEOClientProps) {
     setIsMounted(true)
   }, [])
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate')
-        }
-      })
-    }, observerOptions)
-
-    const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
-    scrollElements.forEach((el) => observer.observe(el))
-
-    return () => {
-      scrollElements.forEach((el) => observer.unobserve(el))
-    }
-  }, [])
+  // Use custom hook for IntersectionObserver-based scroll animations
+  useIntersectionObserver({
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    unobserveAfterIntersect: false,
+    useIdleCallback: false,
+  })
 
   const services = seoData.services.map(service => {
     const IconComponent = getIcon(service.iconName)

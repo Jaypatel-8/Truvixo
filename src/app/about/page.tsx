@@ -9,6 +9,7 @@ import Clientele from '@/components/Clientele'
 import Technologies from '@/components/Technologies'
 import FAQDropdown from '@/components/FAQDropdown'
 import { getFAQsForPage } from '@/lib/pageData'
+import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
 const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
   ssr: false,
@@ -28,29 +29,14 @@ export default function About() {
     setIsMounted(true)
   }, [])
 
-  // Scroll animation hook
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate')
-        }
-      })
-    }, observerOptions)
-
-    // Observe all scroll animation elements
-    const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale, .scroll-animate-rotate')
-    scrollElements.forEach((el) => observer.observe(el))
-
-    return () => {
-      scrollElements.forEach((el) => observer.unobserve(el))
-    }
-  }, [])
+  // Use custom hook for IntersectionObserver-based scroll animations
+  useIntersectionObserver({
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],
+    unobserveAfterIntersect: false,
+    useIdleCallback: false,
+  })
 
   const whyChooseUs = [
     {

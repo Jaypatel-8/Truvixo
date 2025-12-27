@@ -9,6 +9,7 @@ import FAQDropdown from '@/components/FAQDropdown'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { careersData } from '@/lib/staticData/company/careers'
 import { getIconComponent } from '@/lib/utils/iconMapper'
+import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -31,27 +32,14 @@ export default function CareersClient({ faqs }: CareersClientProps) {
     setIsMounted(true)
   }, [])
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate')
-        }
-      })
-    }, observerOptions)
-
-    const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale, .scroll-animate-rotate')
-    scrollElements.forEach((el) => observer.observe(el))
-
-    return () => {
-      scrollElements.forEach((el) => observer.unobserve(el))
-    }
-  }, [])
+  // Use custom hook for IntersectionObserver-based scroll animations
+  useIntersectionObserver({
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px',
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],
+    unobserveAfterIntersect: false,
+    useIdleCallback: false,
+  })
 
   const BadgeIcon = getIcon(careersData.hero.badge.iconName) || Briefcase
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
