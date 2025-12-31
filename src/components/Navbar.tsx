@@ -1,12 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, memo } from 'react'
 import Link from 'next/link'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import Logo from './Logo'
 import { getMenuIcon } from '@/lib/menuIcons'
 
-const Navbar = () => {
+const Navbar = memo(() => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [servicesOpen, setServicesOpen] = useState(false)
@@ -31,7 +31,8 @@ const Navbar = () => {
       setScrolled(window.scrollY > 50)
     }
 
-    window.addEventListener('scroll', handleScroll)
+    // Use passive listener for better scroll performance
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -631,7 +632,9 @@ const Navbar = () => {
       )}
     </>
   )
-}
+})
+
+Navbar.displayName = 'Navbar'
 
 export default Navbar
 

@@ -1,13 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar, Phone, Mail, MapPin, Clock, Briefcase, CheckCircle } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import ContactSection from '@/components/ContactSection'
-import Clientele from '@/components/Clientele'
-import FAQDropdown from '@/components/FAQDropdown'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import { careersData } from '@/lib/staticData/company/careers'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
@@ -16,15 +13,31 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
   loading: () => null,
 })
 
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
 function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
 interface CareersClientProps {
   faqs: Array<{ question: string; answer: string }>
+  careersData: BasePageData
 }
 
-export default function CareersClient({ faqs }: CareersClientProps) {
+export default function CareersClient({ faqs, careersData }: CareersClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -44,29 +57,35 @@ export default function CareersClient({ faqs }: CareersClientProps) {
   const BadgeIcon = getIcon(careersData.hero.badge.iconName) || Briefcase
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
-  const benefits = careersData.benefits.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const benefits = useMemo(() => 
+    careersData.benefits.map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [careersData.benefits]
+  )
 
-  const openPositions = careersData.openPositions.map(position => {
-    const IconComponent = getIcon(position.iconName)
-    return {
-      ...position,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const openPositions = useMemo(() => 
+    careersData.openPositions.map(position => {
+      const IconComponent = getIcon(position.iconName)
+      return {
+        ...position,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [careersData.openPositions]
+  )
 
-  const cultureValues = careersData.cultureValues.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const cultureValues = useMemo(() => 
+    careersData.cultureValues.map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [careersData.cultureValues]
+  )
 
   return (
     <main className="min-h-screen bg-gray-50 overflow-hidden">

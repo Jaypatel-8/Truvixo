@@ -1,15 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import ProcessDiagram from '@/components/ProcessDiagram'
-import { ppcData } from '@/lib/staticData/services/ppc'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
@@ -18,15 +13,41 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
   loading: () => null,
 })
 
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
 function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
 interface PPCClientProps {
   faqs: Array<{ question: string; answer: string }>
+  ppcData: BasePageData
 }
 
-export default function PPCClient({ faqs }: PPCClientProps) {
+export default function PPCClient({ faqs, ppcData }: PPCClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -43,29 +64,35 @@ export default function PPCClient({ faqs }: PPCClientProps) {
     useIdleCallback: false,
   })
 
-  const services = ppcData.services.map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const services = useMemo(() => 
+    ppcData.services.map(service => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [ppcData.services]
+  )
 
-  const whyChooseUs = ppcData.whyChooseUs.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    ppcData.whyChooseUs.map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [ppcData.whyChooseUs]
+  )
 
-  const processSteps = ppcData.processSteps.map(step => {
-    const IconComponent = getIcon(step.iconName)
-    return {
-      ...step,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const processSteps = useMemo(() => 
+    ppcData.processSteps.map(step => {
+      const IconComponent = getIcon(step.iconName)
+      return {
+        ...step,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [ppcData.processSteps]
+  )
 
   const industries = ppcData.industries.map(industry => {
     const IconComponent = getIcon(industry.iconName)

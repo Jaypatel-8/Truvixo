@@ -1,26 +1,49 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { ArrowRight, Calendar, Phone, Mail, Code, Zap, Globe, Phone as PhoneIcon, ShoppingCart, Cloud, Building2, Rocket, Target, Network, Shield, Settings } from 'lucide-react'
+import { useEffect, useState, useMemo } from 'react'
+import { ArrowRight, Calendar, Phone, Mail, Rocket } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ContactSection from '@/components/ContactSection'
-import ProcessDiagram from '@/components/ProcessDiagram'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
+import type { BasePageData } from '@/lib/types/staticData'
+import { getIconComponent } from '@/lib/utils/iconMapper'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
   loading: () => null,
 })
 
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
 interface OurWorkClientProps {
   faqs: Array<{ question: string; answer: string }>
+  ourWorkData: BasePageData
 }
 
-export default function OurWorkClient({ faqs }: OurWorkClientProps) {
+export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -37,177 +60,56 @@ export default function OurWorkClient({ faqs }: OurWorkClientProps) {
     useIdleCallback: false,
   })
 
-  // Inline data for our-work page
-  const services = [
-    {
-      title: 'Custom Software Development',
-      description: 'Tailored software solutions built to meet your unique business requirements',
-      icon: <Code className="w-8 h-8" strokeWidth={2} />,
-      color: '#5e2cb6'
-    },
-    {
-      title: 'AI & Machine Learning',
-      description: 'Intelligent solutions powered by advanced AI and ML technologies',
-      icon: <Zap className="w-8 h-8" strokeWidth={2} />,
-      color: '#c91a6f'
-    },
-    {
-      title: 'Web Applications',
-      description: 'Modern, scalable web applications for businesses of all sizes',
-      icon: <Globe className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
-    },
-    {
-      title: 'Mobile Applications',
-      description: 'Native and cross-platform mobile apps for iOS and Android',
-      icon: <PhoneIcon className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
-    },
-    {
-      title: 'E-commerce Solutions',
-      description: 'Complete e-commerce platforms with payment integration and management',
-      icon: <ShoppingCart className="w-8 h-8" strokeWidth={2} />,
-      color: '#5e2cb6'
-    },
-    {
-      title: 'Cloud Infrastructure',
-      description: 'Scalable cloud solutions for modern business needs',
-      icon: <Cloud className="w-8 h-8" strokeWidth={2} />,
-      color: '#c91a6f'
-    },
-    {
-      title: 'Enterprise Solutions',
-      description: 'Large-scale enterprise software for complex business operations',
-      icon: <Building2 className="w-8 h-8" strokeWidth={2} />,
-      color: '#fecc4d'
-    },
-    {
-      title: 'Digital Transformation',
-      description: 'End-to-end digital transformation services for modern businesses',
-      icon: <Rocket className="w-8 h-8" strokeWidth={2} />,
-      color: '#10b981'
-    }
-  ]
+  // Memoized data transformations - only recalculate when data changes
+  const services = useMemo(() => 
+    ourWorkData.services.map(service => {
+      const IconComponent = getIconComponent(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [ourWorkData.services]
+  )
 
-  const whyChooseUs = [
-    { 
-      icon: <Code className="w-7 h-7" strokeWidth={2} />, 
-      title: 'Proven Track Record', 
-      description: '500+ successful projects delivered across diverse industries with 98% client satisfaction',
-      color: '#5e2cb6'
-    },
-    { 
-      icon: <Globe className="w-7 h-7" strokeWidth={2} />, 
-      title: 'Expert Team', 
-      description: '50+ skilled professionals with expertise in cutting-edge technologies and methodologies',
-      color: '#c91a6f'
-    },
-    { 
-      icon: <Zap className="w-7 h-7" strokeWidth={2} />, 
-      title: 'Measurable Results', 
-      description: 'Data-driven approach ensuring measurable business outcomes and ROI',
-      color: '#fecc4d'
-    },
-    { 
-      icon: <Shield className="w-7 h-7" strokeWidth={2} />, 
-      title: 'Quality Assurance', 
-      description: 'Rigorous testing and quality control processes for reliable, bug-free solutions',
-      color: '#10b981'
-    },
-    { 
-      icon: <Rocket className="w-7 h-7" strokeWidth={2} />, 
-      title: 'Agile Methodology', 
-      description: 'Flexible, iterative development approach for faster time-to-market',
-      color: '#5e2cb6'
-    },
-    { 
-      icon: <Target className="w-7 h-7" strokeWidth={2} />, 
-      title: 'Innovation Focus', 
-      description: 'Cutting-edge technologies and innovative solutions for competitive advantage',
-      color: '#c91a6f'
-    }
-  ]
+  const whyChooseUs = useMemo(() => 
+    ourWorkData.whyChooseUs.map(item => {
+      const IconComponent = getIconComponent(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [ourWorkData.whyChooseUs]
+  )
 
-  const processSteps = [
-    {
-      title: 'Discovery & Planning',
-      description: 'Understand your business needs, goals, and requirements through comprehensive analysis',
-      icon: <Target className="w-6 h-6" strokeWidth={2} />
-    },
-    {
-      title: 'Design & Architecture',
-      description: 'Create scalable architecture and intuitive user experience designs',
-      icon: <Network className="w-6 h-6" strokeWidth={2} />
-    },
-    {
-      title: 'Development & Integration',
-      description: 'Build robust solutions using modern technologies and best practices',
-      icon: <Code className="w-6 h-6" strokeWidth={2} />
-    },
-    {
-      title: 'Testing & Quality Assurance',
-      description: 'Comprehensive testing to ensure reliability, performance, and security',
-      icon: <Shield className="w-6 h-6" strokeWidth={2} />
-    },
-    {
-      title: 'Deployment & Launch',
-      description: 'Seamless deployment to production with zero-downtime strategies',
-      icon: <Rocket className="w-6 h-6" strokeWidth={2} />
-    },
-    {
-      title: 'Support & Maintenance',
-      description: 'Ongoing support, updates, and optimization for long-term success',
-      icon: <Settings className="w-6 h-6" strokeWidth={2} />
-    }
-  ]
+  const processSteps = useMemo(() => 
+    ourWorkData.processSteps.map(step => {
+      const IconComponent = getIconComponent(step.iconName)
+      return {
+        ...step,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [ourWorkData.processSteps]
+  )
 
-  const industries = [
-    { name: 'Fintech', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
-    { name: 'Healthcare', icon: <PhoneIcon className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' },
-    { name: 'Retail', icon: <ShoppingCart className="w-7 h-7" strokeWidth={2} />, color: '#fecc4d' },
-    { name: 'Logistics', icon: <Globe className="w-7 h-7" strokeWidth={2} />, color: '#10b981' },
-    { name: 'Real Estate', icon: <Building2 className="w-7 h-7" strokeWidth={2} />, color: '#5e2cb6' },
-    { name: 'Education', icon: <Code className="w-7 h-7" strokeWidth={2} />, color: '#c91a6f' }
-  ]
+  const industries = useMemo(() => 
+    ourWorkData.industries.map(industry => {
+      const IconComponent = getIconComponent(industry.iconName)
+      return {
+        ...industry,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [ourWorkData.industries]
+  )
 
-  const benefits = [
-    {
-      icon: <Zap className="w-6 h-6" strokeWidth={2} />,
-      title: 'Increased Efficiency',
-      description: 'Our solutions streamline operations, automate processes, and reduce manual work, leading to significant efficiency gains and cost savings.',
-      color: '#5e2cb6'
-    },
-    {
-      icon: <Target className="w-6 h-6" strokeWidth={2} />,
-      title: 'Data-Driven Insights',
-      description: 'Real-time analytics and reporting provide actionable insights for better decision-making and strategic planning.',
-      color: '#c91a6f'
-    },
-    {
-      icon: <Cloud className="w-6 h-6" strokeWidth={2} />,
-      title: 'Scalable Solutions',
-      description: 'Built with scalability in mind, our solutions grow with your business, handling increased load and users seamlessly.',
-      color: '#fecc4d'
-    },
-    {
-      icon: <Shield className="w-6 h-6" strokeWidth={2} />,
-      title: 'Enhanced Security',
-      description: 'Enterprise-grade security features protect your data and ensure compliance with industry standards and regulations.',
-      color: '#10b981'
-    },
-    {
-      icon: <Rocket className="w-6 h-6" strokeWidth={2} />,
-      title: 'Improved User Experience',
-      description: 'Intuitive interfaces and seamless user experiences increase engagement and satisfaction among your customers and employees.',
-      color: '#5e2cb6'
-    },
-    {
-      icon: <Code className="w-6 h-6" strokeWidth={2} />,
-      title: 'Competitive Advantage',
-      description: 'Innovative technology solutions give you a competitive edge, enabling faster time-to-market and better customer experiences.',
-      color: '#c91a6f'
-    }
-  ]
+  const benefits = useMemo(() => 
+    ourWorkData.benefits.map(benefit => {
+      const IconComponent = getIconComponent(benefit.iconName)
+      return {
+        ...benefit,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [ourWorkData.benefits]
+  )
 
   const previewServices = services.slice(0, 4)
 

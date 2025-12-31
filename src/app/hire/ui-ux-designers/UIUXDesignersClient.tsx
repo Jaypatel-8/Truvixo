@@ -1,50 +1,60 @@
 'use client'
 
+import { useMemo } from 'react'
 import { Database, Code, Server, Zap, Shield, Network, Building2, Heart, ShoppingCart, Truck, Home, Users, CheckCircle, Rocket, Target, FileText } from 'lucide-react'
 import PageTemplate from '@/components/templates/PageTemplate'
-import { uiUxDesignersData } from '@/lib/staticData/hire/ui-ux-designers'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
-interface FullStackDevelopersClientProps {
+interface UIUXDesignersClientProps {
   faqs: Array<{ question: string; answer: string }>
+  uiUxDesignersData: BasePageData
 }
 
-export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersClientProps) {
+export default function UIUXDesignersClient({ faqs, uiUxDesignersData }: UIUXDesignersClientProps) {
   // Convert icon names to ReactNode icons
   const BadgeIcon = getIconComponent(uiUxDesignersData.hero.badge.iconName) || Code
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
-  const services = uiUxDesignersData.services.map(service => {
-    const IconComponent = getIconComponent(service.iconName) || Code
-    return {
-      ...service,
-      icon: <IconComponent className="w-8 h-8" strokeWidth={2} />
-    }
-  })
+  const services = useMemo(() => 
+    uiUxDesignersData.services.map(service => {
+      const IconComponent = getIconComponent(service.iconName) || Code
+      return {
+        ...service,
+        icon: <IconComponent className="w-8 h-8" strokeWidth={2} />
+      }
+    }), [uiUxDesignersData.services]
+  )
 
-  const whyChooseUs = uiUxDesignersData.whyChooseUs.map(item => {
-    const IconComponent = getIconComponent(item.iconName) || Code
-    return {
-      ...item,
-      icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    uiUxDesignersData.whyChooseUs.map(item => {
+      const IconComponent = getIconComponent(item.iconName) || Code
+      return {
+        ...item,
+        icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
+      }
+    }), [uiUxDesignersData.whyChooseUs]
+  )
 
-  const industries = uiUxDesignersData.industries.map(industry => {
-    const IconComponent = getIconComponent(industry.iconName) || Building2
-    return {
-      ...industry,
-      icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
-    }
-  })
+  const industries = useMemo(() => 
+    uiUxDesignersData.industries.map(industry => {
+      const IconComponent = getIconComponent(industry.iconName) || Building2
+      return {
+        ...industry,
+        icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
+      }
+    }), [uiUxDesignersData.industries]
+  )
 
-  const processSteps = uiUxDesignersData.processSteps.map(step => {
-    const IconComponent = getIconComponent(step.iconName) || Target
-    return {
-      ...step,
-      icon: <IconComponent className="w-6 h-6" strokeWidth={2} />
-    }
-  })
+  const processSteps = useMemo(() => 
+    uiUxDesignersData.processSteps.map(step => {
+      const IconComponent = getIconComponent(step.iconName) || Target
+      return {
+        ...step,
+        icon: <IconComponent className="w-6 h-6" strokeWidth={2} />
+      }
+    }), [uiUxDesignersData.processSteps]
+  )
 
   return (
     <PageTemplate

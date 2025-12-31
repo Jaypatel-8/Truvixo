@@ -1,50 +1,60 @@
 'use client'
 
+import { useMemo } from 'react'
 import { Database, Code, Server, Zap, Shield, Network, Building2, Heart, ShoppingCart, Truck, Home, Users, CheckCircle, Rocket, Target, FileText } from 'lucide-react'
 import PageTemplate from '@/components/templates/PageTemplate'
-import { frontendDevelopersData } from '@/lib/staticData/hire/frontend-developers'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
-interface FullStackDevelopersClientProps {
+interface FrontendDevelopersClientProps {
   faqs: Array<{ question: string; answer: string }>
+  frontendDevelopersData: BasePageData
 }
 
-export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersClientProps) {
+export default function FrontendDevelopersClient({ faqs, frontendDevelopersData }: FrontendDevelopersClientProps) {
   // Convert icon names to ReactNode icons
   const BadgeIcon = getIconComponent(frontendDevelopersData.hero.badge.iconName) || Code
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
-  const services = frontendDevelopersData.services.map(service => {
-    const IconComponent = getIconComponent(service.iconName) || Code
-    return {
-      ...service,
-      icon: <IconComponent className="w-8 h-8" strokeWidth={2} />
-    }
-  })
+  const services = useMemo(() => 
+    frontendDevelopersData.services.map(service => {
+      const IconComponent = getIconComponent(service.iconName) || Code
+      return {
+        ...service,
+        icon: <IconComponent className="w-8 h-8" strokeWidth={2} />
+      }
+    }), [frontendDevelopersData.services]
+  )
 
-  const whyChooseUs = frontendDevelopersData.whyChooseUs.map(item => {
-    const IconComponent = getIconComponent(item.iconName) || Code
-    return {
-      ...item,
-      icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    frontendDevelopersData.whyChooseUs.map(item => {
+      const IconComponent = getIconComponent(item.iconName) || Code
+      return {
+        ...item,
+        icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
+      }
+    }), [frontendDevelopersData.whyChooseUs]
+  )
 
-  const industries = frontendDevelopersData.industries.map(industry => {
-    const IconComponent = getIconComponent(industry.iconName) || Building2
-    return {
-      ...industry,
-      icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
-    }
-  })
+  const industries = useMemo(() => 
+    frontendDevelopersData.industries.map(industry => {
+      const IconComponent = getIconComponent(industry.iconName) || Building2
+      return {
+        ...industry,
+        icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
+      }
+    }), [frontendDevelopersData.industries]
+  )
 
-  const processSteps = frontendDevelopersData.processSteps.map(step => {
-    const IconComponent = getIconComponent(step.iconName) || Target
-    return {
-      ...step,
-      icon: <IconComponent className="w-6 h-6" strokeWidth={2} />
-    }
-  })
+  const processSteps = useMemo(() => 
+    frontendDevelopersData.processSteps.map(step => {
+      const IconComponent = getIconComponent(step.iconName) || Target
+      return {
+        ...step,
+        icon: <IconComponent className="w-6 h-6" strokeWidth={2} />
+      }
+    }), [frontendDevelopersData.processSteps]
+  )
 
   return (
     <PageTemplate

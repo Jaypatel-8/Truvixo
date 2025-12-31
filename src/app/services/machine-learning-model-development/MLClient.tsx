@@ -1,15 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import ProcessDiagram from '@/components/ProcessDiagram'
-import { machineLearningModelDevelopmentData } from '@/lib/staticData/services/machine-learning-model-development'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
@@ -18,15 +13,41 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
   loading: () => null,
 })
 
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
 function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
 interface MLClientProps {
   faqs: Array<{ question: string; answer: string }>
+  mlData: BasePageData
 }
 
-export default function MLClient({ faqs }: MLClientProps) {
+export default function MLClient({ faqs, mlData }: MLClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -43,31 +64,37 @@ export default function MLClient({ faqs }: MLClientProps) {
     useIdleCallback: false,
   })
 
-  const services = machineLearningModelDevelopmentData.services.map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const services = useMemo(() => 
+    (mlData.services || []).map(service => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [mlData.services]
+  )
 
-  const whyChooseUs = machineLearningModelDevelopmentData.whyChooseUs.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    (mlData.whyChooseUs || []).map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [mlData.whyChooseUs]
+  )
 
-  const processSteps = machineLearningModelDevelopmentData.processSteps.map(step => {
-    const IconComponent = getIcon(step.iconName)
-    return {
-      ...step,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const processSteps = useMemo(() => 
+    (mlData.processSteps || []).map(step => {
+      const IconComponent = getIcon(step.iconName)
+      return {
+        ...step,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [mlData.processSteps]
+  )
 
-  const industries = machineLearningModelDevelopmentData.industries.map(industry => {
+  const industries = (mlData.industries || []).map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -75,7 +102,7 @@ export default function MLClient({ faqs }: MLClientProps) {
     }
   })
 
-  const benefits = machineLearningModelDevelopmentData.benefits.map(benefit => {
+  const benefits = (mlData.benefits || []).map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -83,7 +110,7 @@ export default function MLClient({ faqs }: MLClientProps) {
     }
   })
 
-  const previewServices = machineLearningModelDevelopmentData.services.slice(0, 4).map(service => {
+  const previewServices = (mlData.services || []).slice(0, 4).map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -91,7 +118,7 @@ export default function MLClient({ faqs }: MLClientProps) {
     }
   })
 
-  const BadgeIcon = getIcon(machineLearningModelDevelopmentData.hero.badge.iconName)
+  const BadgeIcon = mlData.hero.badge?.iconName ? getIcon(mlData.hero.badge.iconName) : null
 
   return (
     <>
@@ -105,18 +132,20 @@ export default function MLClient({ faqs }: MLClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{machineLearningModelDevelopmentData.hero.badge.text}</span>
-              </div>
+              {mlData.hero.badge && (
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
+                  {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
+                  <span className="text-sm font-semibold text-[#5e2cb6]">{mlData.hero.badge.text}</span>
+                </div>
+              )}
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {machineLearningModelDevelopmentData.hero.title}{' '}
+                {mlData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {machineLearningModelDevelopmentData.hero.hollowText}
+                  {mlData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {machineLearningModelDevelopmentData.hero.description}
+                {mlData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -162,9 +191,9 @@ export default function MLClient({ faqs }: MLClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {machineLearningModelDevelopmentData.servicesTitle}{' '}
+              {mlData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                {machineLearningModelDevelopmentData.servicesHollowText}
+                {mlData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -210,9 +239,9 @@ export default function MLClient({ faqs }: MLClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {machineLearningModelDevelopmentData.whyChooseTitle}{' '}
+              {mlData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                {machineLearningModelDevelopmentData.whyChooseHollowText}
+                {mlData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -298,9 +327,9 @@ export default function MLClient({ faqs }: MLClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {machineLearningModelDevelopmentData.benefitsTitle}{' '}
+              {mlData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                {machineLearningModelDevelopmentData.benefitsHollowText}
+                {mlData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -331,9 +360,9 @@ export default function MLClient({ faqs }: MLClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {machineLearningModelDevelopmentData.useCasesTitle}{' '}
+              {mlData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                {machineLearningModelDevelopmentData.useCasesHollowText}
+                {mlData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -342,7 +371,7 @@ export default function MLClient({ faqs }: MLClientProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {machineLearningModelDevelopmentData.useCases.map((useCase, index) => (
+            {(mlData.useCases || []).map((useCase, index) => (
               <div
                 key={index}
                 className={`bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border`}
@@ -363,21 +392,21 @@ export default function MLClient({ faqs }: MLClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={[...machineLearningModelDevelopmentData.technologies]} />
+      {mlData.technologies && <Technologies technologies={[...mlData.technologies]} />}
       <ProcessDiagram 
-        title={machineLearningModelDevelopmentData.processTitle}
-        subtitle={machineLearningModelDevelopmentData.processSubtitle}
+        title={mlData.processTitle}
+        subtitle={mlData.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <ContactSection 
-        title={machineLearningModelDevelopmentData.contact.title}
-        description={machineLearningModelDevelopmentData.contact.description}
-      />
-      <GetQuoteSection
-        title={machineLearningModelDevelopmentData.getQuote.title}
-        hollowText={machineLearningModelDevelopmentData.getQuote.hollowText}
-        description={machineLearningModelDevelopmentData.getQuote.description}
+      {mlData.contact && <ContactSection 
+        title={mlData.contact.title}
+        description={mlData.contact.description}
+      />}
+      {mlData.getQuote && <GetQuoteSection
+        title={mlData.getQuote.title}
+        hollowText={mlData.getQuote.hollowText}
+        description={mlData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)

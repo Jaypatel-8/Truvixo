@@ -211,11 +211,14 @@ export default function RootLayout({
         {/* Font Preloading - Critical for FOUT prevention */}
         <link rel="preload" href="/fonts/LePetiteCocho-Regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/LePetiteCocho-Bold.otf" as="font" type="font/otf" crossOrigin="anonymous" />
-        {/* Route Prefetching - Non-blocking, prioritized */}
-        <link rel="prefetch" href="/contact" as="document" />
-        <link rel="prefetch" href="/services" as="document" />
-        <link rel="prefetch" href="/our-work" as="document" />
-        <link rel="prefetch" href="/about" as="document" />
+        {/* Route Prefetching - Non-blocking, prioritized for faster navigation */}
+        <link rel="prefetch" href="/contact/" as="document" />
+        <link rel="prefetch" href="/services/" as="document" />
+        <link rel="prefetch" href="/our-work/" as="document" />
+        <link rel="prefetch" href="/about/" as="document" />
+        <link rel="prefetch" href="/hire/" as="document" />
+        <link rel="prefetch" href="/technology/" as="document" />
+        <link rel="prefetch" href="/industry/" as="document" />
         {/* Prefetch critical CSS chunks */}
         <link rel="prefetch" href="/_next/static/css/app/layout.css" as="style" />
         <link rel="icon" href="/TruVixo logo.png" type="image/png" />

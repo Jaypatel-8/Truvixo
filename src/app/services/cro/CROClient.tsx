@@ -1,15 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import ProcessDiagram from '@/components/ProcessDiagram'
-import { croData } from '@/lib/staticData/services/cro'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
@@ -18,15 +13,41 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
   loading: () => null,
 })
 
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
 function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface EnterpriseClientProps {
+interface CROClientProps {
   faqs: Array<{ question: string; answer: string }>
+  croData: BasePageData
 }
 
-export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
+export default function CROClient({ faqs, croData }: CROClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -43,31 +64,37 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     useIdleCallback: false,
   })
 
-  const services = croData.services.map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const services = useMemo(() => 
+    (croData.services || []).map(service => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [croData.services]
+  )
 
-  const whyChooseUs = croData.whyChooseUs.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    (croData.whyChooseUs || []).map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [croData.whyChooseUs]
+  )
 
-  const processSteps = croData.processSteps.map(step => {
-    const IconComponent = getIcon(step.iconName)
-    return {
-      ...step,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const processSteps = useMemo(() => 
+    (croData.processSteps || []).map(step => {
+      const IconComponent = getIcon(step.iconName)
+      return {
+        ...step,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [croData.processSteps]
+  )
 
-  const industries = croData.industries.map(industry => {
+  const industries = (croData.industries || []).map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -75,7 +102,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const benefits = croData.benefits.map(benefit => {
+  const benefits = (croData.benefits || []).map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -83,7 +110,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const previewServices = croData.services.slice(0, 4).map(service => {
+  const previewServices = (croData.services || []).slice(0, 4).map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -91,7 +118,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const BadgeIcon = getIcon(croData.hero.badge.iconName)
+  const BadgeIcon = croData.hero.badge?.iconName ? getIcon(croData.hero.badge.iconName) : null
 
   return (
     <>
@@ -105,10 +132,12 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{croData.hero.badge.text}</span>
-              </div>
+              {croData.hero.badge && (
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
+                  {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
+                  <span className="text-sm font-semibold text-[#5e2cb6]">{croData.hero.badge.text}</span>
+                </div>
+              )}
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
                 {croData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
@@ -342,7 +371,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {croData.useCases.map((useCase, index) => (
+            {(croData.useCases || []).map((useCase, index) => (
               <div
                 key={index}
                 className={`bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border`}
@@ -363,18 +392,18 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={[...croData.technologies]} />
+      {croData.technologies && <Technologies technologies={[...croData.technologies]} />}
       <ProcessDiagram 
         title={croData.processTitle}
         subtitle={croData.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <ContactSection 
+      {croData.contact && <ContactSection 
         title={croData.contact.title}
         description={croData.contact.description}
-      />
-      <GetQuoteSection
+      />}
+      {croData.getQuote && <GetQuoteSection
         title={croData.getQuote.title}
         hollowText={croData.getQuote.hollowText}
         description={croData.getQuote.description}

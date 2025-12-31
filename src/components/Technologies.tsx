@@ -5,9 +5,9 @@ import Image from 'next/image'
 
 interface Technology {
   name: string
-  logo: string
-  color: string
-  category: 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai' | 'management' | 'testing' | 'design'
+  logo?: string
+  color?: string
+  category: 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai' | 'management' | 'testing' | 'design' | 'other'
 }
 
 interface TechnologiesProps {

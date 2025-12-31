@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Zap as Lightning, Phone, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import { databaseTechnologyData } from '@/lib/staticData/technology/database'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { getFAQsForPage } from '@/lib/pageData'
 import { LucideIcon } from 'lucide-react'
@@ -22,9 +22,10 @@ function getIcon(iconName: string): LucideIcon | undefined {
 
 interface DatabaseClientProps {
   faqs: Array<{ question: string; answer: string }>
+  databaseTechnologyData: BasePageData
 }
 
-export default function DatabaseClient({ faqs }: DatabaseClientProps) {
+export default function DatabaseClient({ faqs, databaseTechnologyData }: DatabaseClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   // Use custom hook for IntersectionObserver-based scroll animations
@@ -36,37 +37,45 @@ export default function DatabaseClient({ faqs }: DatabaseClientProps) {
     useIdleCallback: false,
   })
 
-  const technologies = databaseTechnologyData.technologies.map((tech: { name: string; iconName: string; description: string; number: string }) => {
-    const IconComponent = getIcon(tech.iconName)
-    return {
-      ...tech,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
-    }
-  })
+  const technologies = useMemo(() => 
+    (databaseTechnologyData.technologies || []).map((tech) => {
+      const IconComponent = getIcon(tech.iconName || 'Code')
+      return {
+        ...tech,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
+      }
+    }), [databaseTechnologyData.technologies]
+  )
 
-  const whatWeBuild = databaseTechnologyData.whatWeBuild.map((item: { iconName: string; title: string }) => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
-    }
-  })
+  const whatWeBuild = useMemo(() => 
+    (databaseTechnologyData.whatWeBuild || []).map((item) => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
+      }
+    }), [databaseTechnologyData.whatWeBuild]
+  )
 
-  const benefits = databaseTechnologyData.benefits.map((benefit: { iconName: string; title: string; description: string }) => {
-    const IconComponent = getIcon(benefit.iconName)
-    return {
-      ...benefit,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
-    }
-  })
+  const benefits = useMemo(() => 
+    (databaseTechnologyData.benefits || []).map((benefit) => {
+      const IconComponent = getIcon(benefit.iconName)
+      return {
+        ...benefit,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
+      }
+    }), [databaseTechnologyData.benefits]
+  )
 
-  const whyChooseUs = databaseTechnologyData.whyChooseUs.map((item: { iconName: string; title: string; description: string }) => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    (databaseTechnologyData.whyChooseUs || []).map((item) => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
+      }
+    }), [databaseTechnologyData.whyChooseUs]
+  )
 
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
@@ -98,20 +107,20 @@ export default function DatabaseClient({ faqs }: DatabaseClientProps) {
           </div>
 
           <div className="space-y-6">
-            {technologies.map((tech: { name: string; iconName: string; description: string; number: string; icon: ReactElement | null }, index: number) => (
+            {technologies.map((tech, index) => (
               <div
                 key={index}
                 className="flex items-start gap-6 p-8 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl hover:shadow-lg transition-all duration-300 scroll-animate-left border border-gray-100"
               >
                 <div className="flex-shrink-0 w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-xl">
-                  {tech.number}
+                  {tech.number || index + 1}
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-4 mb-3">
                     <div className="text-purple-600">{tech.icon}</div>
                     <h3 className="text-2xl font-bold text-gray-900">{tech.name}</h3>
                   </div>
-                  <p className="text-gray-600 text-lg">{tech.description}</p>
+                  <p className="text-gray-600 text-lg">{tech.description || ''}</p>
                 </div>
               </div>
             ))}
@@ -131,7 +140,7 @@ export default function DatabaseClient({ faqs }: DatabaseClientProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {whatWeBuild.map((item: { iconName: string; title: string; icon: ReactElement | null }, index: number) => (
+            {whatWeBuild.map((item, index) => (
               <div
                 key={index}
                 className="bg-white rounded-xl p-6 text-center shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 scroll-animate-scale border border-gray-100"
@@ -153,7 +162,7 @@ export default function DatabaseClient({ faqs }: DatabaseClientProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-            {benefits.map((benefit: { iconName: string; title: string; description: string; icon: ReactElement | null }, index: number) => (
+            {benefits.map((benefit, index) => (
               <div
                 key={index}
                 className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 scroll-animate-scale border border-gray-100"
@@ -181,7 +190,7 @@ export default function DatabaseClient({ faqs }: DatabaseClientProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyChooseUs.map((item: { iconName: string; title: string; description: string; icon: ReactElement | null }, index: number) => (
+            {whyChooseUs.map((item, index) => (
               <div
                 key={index}
                 className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 scroll-animate-scale border border-gray-100"

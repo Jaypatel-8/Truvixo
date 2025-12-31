@@ -1,15 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import ProcessDiagram from '@/components/ProcessDiagram'
-import { ecommerceDevelopmentData } from '@/lib/staticData/services/ecommerce-development'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
@@ -18,15 +13,41 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
   loading: () => null,
 })
 
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
 function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
 interface EcommerceClientProps {
   faqs: Array<{ question: string; answer: string }>
+  ecommerceData: BasePageData
 }
 
-export default function EcommerceClient({ faqs }: EcommerceClientProps) {
+export default function EcommerceClient({ faqs, ecommerceData }: EcommerceClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -43,31 +64,37 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
     useIdleCallback: false,
   })
 
-  const services = ecommerceDevelopmentData.services.map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const services = useMemo(() => 
+    ecommerceData.services.map(service => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [ecommerceData.services]
+  )
 
-  const whyChooseUs = ecommerceDevelopmentData.whyChooseUs.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    ecommerceData.whyChooseUs.map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [ecommerceData.whyChooseUs]
+  )
 
-  const processSteps = ecommerceDevelopmentData.processSteps.map(step => {
-    const IconComponent = getIcon(step.iconName)
-    return {
-      ...step,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const processSteps = useMemo(() => 
+    ecommerceData.processSteps.map(step => {
+      const IconComponent = getIcon(step.iconName)
+      return {
+        ...step,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [ecommerceData.processSteps]
+  )
 
-  const industries = ecommerceDevelopmentData.industries.map(industry => {
+  const industries = ecommerceData.industries.map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -75,7 +102,7 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
     }
   })
 
-  const benefits = ecommerceDevelopmentData.benefits.map(benefit => {
+  const benefits = ecommerceData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -84,7 +111,7 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
   })
 
   const previewServices = services.slice(0, 4)
-  const BadgeIcon = getIcon(ecommerceDevelopmentData.hero.badge.iconName)
+  const BadgeIcon = getIcon(ecommerceData.hero.badge.iconName)
 
   return (
     <>
@@ -101,16 +128,16 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                 {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{ecommerceDevelopmentData.hero.badge.text}</span>
+                <span className="text-sm font-semibold text-[#5e2cb6]">{ecommerceData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {ecommerceDevelopmentData.hero.title}{' '}
+                {ecommerceData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {ecommerceDevelopmentData.hero.hollowText}
+                  {ecommerceData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {ecommerceDevelopmentData.hero.description}
+                {ecommerceData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -156,9 +183,9 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {ecommerceDevelopmentData.servicesTitle}{' '}
+              {ecommerceData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                {ecommerceDevelopmentData.servicesHollowText}
+                {ecommerceData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -205,9 +232,9 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {ecommerceDevelopmentData.whyChooseTitle}{' '}
+              {ecommerceData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                {ecommerceDevelopmentData.whyChooseHollowText}
+                {ecommerceData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -293,9 +320,9 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {ecommerceDevelopmentData.benefitsTitle}{' '}
+              {ecommerceData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                {ecommerceDevelopmentData.benefitsHollowText}
+                {ecommerceData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -326,9 +353,9 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {ecommerceDevelopmentData.useCasesTitle}{' '}
+              {ecommerceData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                {ecommerceDevelopmentData.useCasesHollowText}
+                {ecommerceData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -337,7 +364,7 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {ecommerceDevelopmentData.useCases.map((useCase, index) => (
+            {ecommerceData.useCases.map((useCase, index) => (
               <div
                 key={index}
                 className={`bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border`}
@@ -358,12 +385,12 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={[...ecommerceDevelopmentData.technologies]} />
+      <Technologies technologies={[...ecommerceData.technologies]} />
 
       {/* Process Diagram */}
       <ProcessDiagram
-        title={ecommerceDevelopmentData.processTitle}
-        subtitle={ecommerceDevelopmentData.processSubtitle}
+        title={ecommerceData.processTitle}
+        subtitle={ecommerceData.processSubtitle}
         steps={processSteps}
       />
 
@@ -372,15 +399,15 @@ export default function EcommerceClient({ faqs }: EcommerceClientProps) {
 
       {/* Contact Section */}
       <ContactSection 
-        title={ecommerceDevelopmentData.contact.title}
-        description={ecommerceDevelopmentData.contact.description}
+        title={ecommerceData.contact.title}
+        description={ecommerceData.contact.description}
       />
 
       {/* Get Quote Section */}
       <GetQuoteSection
-        title={ecommerceDevelopmentData.getQuote.title}
-        hollowText={ecommerceDevelopmentData.getQuote.hollowText}
-        description={ecommerceDevelopmentData.getQuote.description}
+        title={ecommerceData.getQuote.title}
+        hollowText={ecommerceData.getQuote.hollowText}
+        description={ecommerceData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)

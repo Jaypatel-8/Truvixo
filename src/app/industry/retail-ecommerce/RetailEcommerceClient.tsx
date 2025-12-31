@@ -1,15 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import ProcessDiagram from '@/components/ProcessDiagram'
-import { retailEcommerceData } from '@/lib/staticData/industry/retail-ecommerce'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { LucideIcon } from 'lucide-react'
 import { ReactElement } from 'react'
@@ -20,15 +15,41 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
   loading: () => null,
 })
 
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
 function getIcon(iconName: string): LucideIcon | undefined {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
 interface RetailEcommerceClientProps {
   faqs: Array<{ question: string; answer: string }>
+  retailEcommerceData: BasePageData
 }
 
-export default function RetailEcommerceClient({ faqs }: RetailEcommerceClientProps) {
+export default function RetailEcommerceClient({ faqs, retailEcommerceData }: RetailEcommerceClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -45,29 +66,35 @@ export default function RetailEcommerceClient({ faqs }: RetailEcommerceClientPro
     useIdleCallback: false,
   })
 
-  const services = retailEcommerceData.services.map((service: { title: string; description: string; iconName: string; color: string }) => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const services = useMemo(() => 
+    retailEcommerceData.services.map((service: { title: string; description: string; iconName: string; color: string }) => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [retailEcommerceData.services]
+  )
 
-  const whyChooseUs = retailEcommerceData.whyChooseUs.map((item: { iconName: string; title: string; description: string; color: string }) => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    retailEcommerceData.whyChooseUs.map((item: { iconName: string; title: string; description: string; color: string }) => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [retailEcommerceData.whyChooseUs]
+  )
 
-  const processSteps = retailEcommerceData.processSteps.map((step: { title: string; description: string; iconName: string }) => {
-    const IconComponent = getIcon(step.iconName)
-    return {
-      ...step,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const processSteps = useMemo(() => 
+    retailEcommerceData.processSteps.map((step: { title: string; description: string; iconName: string }) => {
+      const IconComponent = getIcon(step.iconName)
+      return {
+        ...step,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [retailEcommerceData.processSteps]
+  )
 
   const industries = retailEcommerceData.industries.map((industry: { name: string; iconName: string; color: string }) => {
     const IconComponent = getIcon(industry.iconName)

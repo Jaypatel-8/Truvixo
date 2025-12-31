@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import { X, Send, Loader2 } from 'lucide-react'
 import { sendContactEmail, type ContactFormData } from '@/lib/emailService'
 
@@ -81,7 +82,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
     }
   }
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setFormData({
       name: '',
       email: '',
@@ -91,19 +92,76 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
       service: ''
     })
     setIsSubmitted(false)
+    setSubmitMessage('')
     onClose()
-  }
+  }, [onClose])
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
+
+  // Handle backdrop click - only close if clicking directly on backdrop, not on modal content
+  const handleBackdropClick = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    // Only close if clicking directly on the backdrop (not on child elements)
+    if (e.target === e.currentTarget) {
+      handleClose()
+    }
+  }, [handleClose])
+
+  // Handle ESC key to close modal
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        handleClose()
+      }
+    }
+    if (isOpen) {
+      document.addEventListener('keydown', handleEscape)
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEscape)
+    }
+  }, [isOpen, handleClose])
+
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    return () => setMounted(false)
+  }, [])
 
   if (!isOpen) return null
 
-  return (
+  if (!mounted || typeof document === 'undefined') return null
+
+  const modalContent = (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4 animate-fade-in"
-      onClick={handleClose}
+      className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
+      onClick={handleBackdropClick}
+      style={{ 
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 9999
+      }}
     >
       <div 
-        className="bg-white rounded-3xl max-w-2xl w-full p-8 md:p-12 shadow-2xl transform animate-scale-in max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-3xl max-w-2xl w-full p-8 md:p-12 shadow-2xl max-h-[90vh] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
+        style={{ 
+          position: 'relative',
+          zIndex: 10000
+        }}
       >
         <div className="flex justify-between items-center mb-8">
           <h3 className="text-3xl font-bold text-gray-900">
@@ -262,6 +320,8 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
       </div>
     </div>
   )
+
+  return createPortal(modalContent, document.body)
 }
 
 

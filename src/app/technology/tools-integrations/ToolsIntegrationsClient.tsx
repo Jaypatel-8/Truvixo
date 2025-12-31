@@ -1,9 +1,9 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Zap as Lightning } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import { frontendTechnologyData } from '@/lib/staticData/technology/frontend'
+import type { BasePageData } from '@/lib/types/staticData'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { getFAQsForPage } from '@/lib/pageData'
@@ -18,11 +18,12 @@ function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface FrontendClientProps {
+interface ToolsIntegrationsClientProps {
   faqs: Array<{ question: string; answer: string }>
+  toolsIntegrationsTechnologyData: BasePageData
 }
 
-export default function FrontendClient({ faqs }: FrontendClientProps) {
+export default function ToolsIntegrationsClient({ faqs, toolsIntegrationsTechnologyData }: ToolsIntegrationsClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   // Use custom hook for IntersectionObserver-based scroll animations
@@ -34,37 +35,45 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
     useIdleCallback: false,
   })
 
-  const technologies = frontendTechnologyData.technologies.map(tech => {
-    const IconComponent = getIcon(tech.iconName)
-    return {
-      ...tech,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
-    }
-  })
+  const technologies = useMemo(() => 
+    toolsIntegrationsTechnologyData.technologies.map(tech => {
+      const IconComponent = getIcon(tech.iconName)
+      return {
+        ...tech,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
+      }
+    }), [toolsIntegrationsTechnologyData.technologies]
+  )
 
-  const whatWeBuild = frontendTechnologyData.whatWeBuild.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
-    }
-  })
+  const whatWeBuild = useMemo(() => 
+    toolsIntegrationsTechnologyData.whatWeBuild.map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
+      }
+    }), [toolsIntegrationsTechnologyData.whatWeBuild]
+  )
 
-  const benefits = frontendTechnologyData.benefits.map(benefit => {
-    const IconComponent = getIcon(benefit.iconName)
-    return {
-      ...benefit,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
-    }
-  })
+  const benefits = useMemo(() => 
+    toolsIntegrationsTechnologyData.benefits.map(benefit => {
+      const IconComponent = getIcon(benefit.iconName)
+      return {
+        ...benefit,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
+      }
+    }), [toolsIntegrationsTechnologyData.benefits]
+  )
 
-  const whyChooseUs = frontendTechnologyData.whyChooseUs.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    toolsIntegrationsTechnologyData.whyChooseUs.map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" /> : null
+      }
+    }), [toolsIntegrationsTechnologyData.whyChooseUs]
+  )
 
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
@@ -72,13 +81,13 @@ export default function FrontendClient({ faqs }: FrontendClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20">
           <div className="scroll-animate">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
-              {frontendTechnologyData.hero.title}{' '}
+              {toolsIntegrationsTechnologyData.hero.title}{' '}
               <span className="hollow-text-teal">
-                {frontendTechnologyData.hero.hollowText}
+                {toolsIntegrationsTechnologyData.hero.hollowText}
               </span>
             </h1>
             <p className="text-lg md:text-xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
-              {frontendTechnologyData.hero.description}
+              {toolsIntegrationsTechnologyData.hero.description}
             </p>
           </div>
         </div>

@@ -1,50 +1,60 @@
 'use client'
 
+import { useMemo } from 'react'
 import { Database, Code, Server, Zap, Shield, Network, Building2, Heart, ShoppingCart, Truck, Home, Users, CheckCircle, Rocket, Target, FileText } from 'lucide-react'
 import PageTemplate from '@/components/templates/PageTemplate'
-import { aiMlEngineersData } from '@/lib/staticData/hire/ai-ml-engineers'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 
-interface FullStackDevelopersClientProps {
+interface AIMLEngineersClientProps {
   faqs: Array<{ question: string; answer: string }>
+  aiMlEngineersData: BasePageData
 }
 
-export default function FullStackDevelopersClient({ faqs }: FullStackDevelopersClientProps) {
+export default function AIMLEngineersClient({ faqs, aiMlEngineersData }: AIMLEngineersClientProps) {
   // Convert icon names to ReactNode icons
   const BadgeIcon = getIconComponent(aiMlEngineersData.hero.badge.iconName) || Code
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
-  const services = aiMlEngineersData.services.map(service => {
-    const IconComponent = getIconComponent(service.iconName) || Code
-    return {
-      ...service,
-      icon: <IconComponent className="w-8 h-8" strokeWidth={2} />
-    }
-  })
+  const services = useMemo(() => 
+    aiMlEngineersData.services.map(service => {
+      const IconComponent = getIconComponent(service.iconName) || Code
+      return {
+        ...service,
+        icon: <IconComponent className="w-8 h-8" strokeWidth={2} />
+      }
+    }), [aiMlEngineersData.services]
+  )
 
-  const whyChooseUs = aiMlEngineersData.whyChooseUs.map(item => {
-    const IconComponent = getIconComponent(item.iconName) || Code
-    return {
-      ...item,
-      icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    aiMlEngineersData.whyChooseUs.map(item => {
+      const IconComponent = getIconComponent(item.iconName) || Code
+      return {
+        ...item,
+        icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
+      }
+    }), [aiMlEngineersData.whyChooseUs]
+  )
 
-  const industries = aiMlEngineersData.industries.map(industry => {
-    const IconComponent = getIconComponent(industry.iconName) || Building2
-    return {
-      ...industry,
-      icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
-    }
-  })
+  const industries = useMemo(() => 
+    aiMlEngineersData.industries.map(industry => {
+      const IconComponent = getIconComponent(industry.iconName) || Building2
+      return {
+        ...industry,
+        icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
+      }
+    }), [aiMlEngineersData.industries]
+  )
 
-  const processSteps = aiMlEngineersData.processSteps.map(step => {
-    const IconComponent = getIconComponent(step.iconName) || Target
-    return {
-      ...step,
-      icon: <IconComponent className="w-6 h-6" strokeWidth={2} />
-    }
-  })
+  const processSteps = useMemo(() => 
+    aiMlEngineersData.processSteps.map(step => {
+      const IconComponent = getIconComponent(step.iconName) || Target
+      return {
+        ...step,
+        icon: <IconComponent className="w-6 h-6" strokeWidth={2} />
+      }
+    }), [aiMlEngineersData.processSteps]
+  )
 
   return (
     <PageTemplate

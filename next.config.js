@@ -22,7 +22,19 @@ const nextConfig = {
   experimental: {
     // optimizeCss: true, // Disabled - requires critters module
     optimizePackageImports: ['lucide-react', 'swiper'],
+    // Optimize route loading
+    optimizeCss: false, // Disabled for static export
   },
+  
+  // Route optimization - enable faster navigation (dev mode only)
+  ...(process.env.NODE_ENV === 'development' && {
+    onDemandEntries: {
+      // Period (in ms) where the server will keep pages in the buffer
+      maxInactiveAge: 25 * 1000,
+      // Number of pages that should be kept simultaneously without being disposed
+      pagesBufferLength: 2,
+    },
+  }),
   
   // Power optimizations
   poweredByHeader: false,

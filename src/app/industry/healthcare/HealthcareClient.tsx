@@ -1,15 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import ProcessDiagram from '@/components/ProcessDiagram'
-import { healthcareIndustryData } from '@/lib/staticData/industry/healthcare'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
@@ -18,15 +13,41 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
   loading: () => null,
 })
 
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
 function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
 interface HealthcareClientProps {
   faqs: Array<{ question: string; answer: string }>
+  healthcareData: BasePageData
 }
 
-export default function HealthcareClient({ faqs }: HealthcareClientProps) {
+export default function HealthcareClient({ faqs, healthcareData }: HealthcareClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -43,31 +64,37 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     useIdleCallback: false,
   })
 
-  const services = healthcareIndustryData.services.map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const services = useMemo(() => 
+    (healthcareData.services || []).map(service => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [healthcareData.services]
+  )
 
-  const whyChooseUs = healthcareIndustryData.whyChooseUs.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    (healthcareData.whyChooseUs || []).map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [healthcareData.whyChooseUs]
+  )
 
-  const processSteps = healthcareIndustryData.processSteps.map(step => {
-    const IconComponent = getIcon(step.iconName)
-    return {
-      ...step,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const processSteps = useMemo(() => 
+    (healthcareData.processSteps || []).map(step => {
+      const IconComponent = getIcon(step.iconName)
+      return {
+        ...step,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [healthcareData.processSteps]
+  )
 
-  const industries = healthcareIndustryData.industries.map(industry => {
+  const industries = (healthcareData.industries || []).map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -75,7 +102,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const benefits = healthcareIndustryData.benefits.map(benefit => {
+  const benefits = (healthcareData.benefits || []).map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -83,7 +110,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const previewServices = healthcareIndustryData.services.slice(0, 4).map(service => {
+  const previewServices = (healthcareData.services || []).slice(0, 4).map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -91,7 +118,7 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
     }
   })
 
-  const BadgeIcon = getIcon(healthcareIndustryData.hero.badge.iconName)
+  const BadgeIcon = healthcareData.hero.badge?.iconName ? getIcon(healthcareData.hero.badge.iconName) : null
 
   return (
     <>
@@ -105,18 +132,20 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{healthcareIndustryData.hero.badge.text}</span>
-              </div>
+              {healthcareData.hero.badge && (
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
+                  {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
+                  <span className="text-sm font-semibold text-[#5e2cb6]">{healthcareData.hero.badge.text}</span>
+                </div>
+              )}
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {healthcareIndustryData.hero.title}{' '}
+                {healthcareData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {healthcareIndustryData.hero.hollowText}
+                  {healthcareData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {healthcareIndustryData.hero.description}
+                {healthcareData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -162,9 +191,9 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {healthcareIndustryData.servicesTitle}{' '}
+              {healthcareData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                {healthcareIndustryData.servicesHollowText}
+                {healthcareData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -210,9 +239,9 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {healthcareIndustryData.whyChooseTitle}{' '}
+              {healthcareData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                {healthcareIndustryData.whyChooseHollowText}
+                {healthcareData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -326,21 +355,21 @@ export default function HealthcareClient({ faqs }: HealthcareClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={[...healthcareIndustryData.technologies]} />
+      {healthcareData.technologies && <Technologies technologies={[...healthcareData.technologies]} />}
       <ProcessDiagram 
-        title={healthcareIndustryData.processTitle}
-        subtitle={healthcareIndustryData.processSubtitle}
+        title={healthcareData.processTitle}
+        subtitle={healthcareData.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <ContactSection 
-        title={healthcareIndustryData.contactTitle}
-        description={healthcareIndustryData.contactDescription}
-      />
-      <GetQuoteSection
-        title={healthcareIndustryData.getQuoteTitle}
-        hollowText={healthcareIndustryData.getQuoteHollowText}
-        description={healthcareIndustryData.getQuoteDescription}
+      {healthcareData.contactTitle && healthcareData.contactDescription && <ContactSection 
+        title={healthcareData.contactTitle}
+        description={healthcareData.contactDescription}
+      />}
+      {healthcareData.getQuoteTitle && healthcareData.getQuoteHollowText && healthcareData.getQuoteDescription && <GetQuoteSection
+        title={healthcareData.getQuoteTitle}
+        hollowText={healthcareData.getQuoteHollowText}
+        description={healthcareData.getQuoteDescription}
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)

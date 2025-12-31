@@ -169,7 +169,8 @@ const Footer = () => {
                   {services['AI & Machine Learning'].map((service, index) => (
                     <li key={index}>
                       <Link 
-                        href={service.href} 
+                        href={service.href}
+                        prefetch={true}
                         className="text-sm text-gray-600 hover:text-purple-600 transition-colors duration-300 block"
                       >
                         {service.name}
@@ -184,7 +185,8 @@ const Footer = () => {
                   {services['Digital Marketing'].map((service, index) => (
                     <li key={index}>
                       <Link 
-                        href={service.href} 
+                        href={service.href}
+                        prefetch={true}
                         className="text-sm text-gray-600 hover:text-purple-600 transition-colors duration-300 block"
                       >
                         {service.name}

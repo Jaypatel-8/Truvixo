@@ -1,15 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import ProcessDiagram from '@/components/ProcessDiagram'
-import { maintenanceSupportData } from '@/lib/staticData/services/maintenance-support'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
@@ -18,15 +13,41 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
   loading: () => null,
 })
 
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
 function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface EnterpriseClientProps {
+interface MaintenanceClientProps {
   faqs: Array<{ question: string; answer: string }>
+  maintenanceData: BasePageData
 }
 
-export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
+export default function MaintenanceClient({ faqs, maintenanceData }: MaintenanceClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -43,31 +64,37 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     useIdleCallback: false,
   })
 
-  const services = maintenanceSupportData.services.map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const services = useMemo(() => 
+    maintenanceData.services.map(service => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [maintenanceData.services]
+  )
 
-  const whyChooseUs = maintenanceSupportData.whyChooseUs.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    maintenanceData.whyChooseUs.map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [maintenanceData.whyChooseUs]
+  )
 
-  const processSteps = maintenanceSupportData.processSteps.map(step => {
-    const IconComponent = getIcon(step.iconName)
-    return {
-      ...step,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const processSteps = useMemo(() => 
+    maintenanceData.processSteps.map(step => {
+      const IconComponent = getIcon(step.iconName)
+      return {
+        ...step,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [maintenanceData.processSteps]
+  )
 
-  const industries = maintenanceSupportData.industries.map(industry => {
+  const industries = maintenanceData.industries.map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -75,7 +102,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const benefits = maintenanceSupportData.benefits.map(benefit => {
+  const benefits = maintenanceData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -83,7 +110,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const previewServices = maintenanceSupportData.services.slice(0, 4).map(service => {
+  const previewServices = maintenanceData.services.slice(0, 4).map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -91,7 +118,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const BadgeIcon = getIcon(maintenanceSupportData.hero.badge.iconName)
+  const BadgeIcon = getIcon(maintenanceData.hero.badge.iconName)
 
   return (
     <>
@@ -107,16 +134,16 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                 {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{maintenanceSupportData.hero.badge.text}</span>
+                <span className="text-sm font-semibold text-[#5e2cb6]">{maintenanceData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {maintenanceSupportData.hero.title}{' '}
+                {maintenanceData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {maintenanceSupportData.hero.hollowText}
+                  {maintenanceData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {maintenanceSupportData.hero.description}
+                {maintenanceData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -162,9 +189,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {maintenanceSupportData.servicesTitle}{' '}
+              {maintenanceData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                {maintenanceSupportData.servicesHollowText}
+                {maintenanceData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -210,9 +237,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {maintenanceSupportData.whyChooseTitle}{' '}
+              {maintenanceData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                {maintenanceSupportData.whyChooseHollowText}
+                {maintenanceData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -298,9 +325,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {maintenanceSupportData.benefitsTitle}{' '}
+              {maintenanceData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                {maintenanceSupportData.benefitsHollowText}
+                {maintenanceData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -331,9 +358,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {maintenanceSupportData.useCasesTitle}{' '}
+              {maintenanceData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                {maintenanceSupportData.useCasesHollowText}
+                {maintenanceData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -342,7 +369,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {maintenanceSupportData.useCases.map((useCase, index) => (
+            {maintenanceData.useCases.map((useCase, index) => (
               <div
                 key={index}
                 className={`bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border`}
@@ -363,21 +390,21 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={[...maintenanceSupportData.technologies]} />
+      <Technologies technologies={[...maintenanceData.technologies]} />
       <ProcessDiagram 
-        title={maintenanceSupportData.processTitle}
-        subtitle={maintenanceSupportData.processSubtitle}
+        title={maintenanceData.processTitle}
+        subtitle={maintenanceData.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
       <ContactSection 
-        title={maintenanceSupportData.contact.title}
-        description={maintenanceSupportData.contact.description}
+        title={maintenanceData.contact.title}
+        description={maintenanceData.contact.description}
       />
       <GetQuoteSection
-        title={maintenanceSupportData.getQuote.title}
-        hollowText={maintenanceSupportData.getQuote.hollowText}
-        description={maintenanceSupportData.getQuote.description}
+        title={maintenanceData.getQuote.title}
+        hollowText={maintenanceData.getQuote.hollowText}
+        description={maintenanceData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)

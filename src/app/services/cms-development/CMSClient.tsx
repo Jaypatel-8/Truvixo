@@ -1,32 +1,53 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import ProcessDiagram from '@/components/ProcessDiagram'
-import { cmsDevelopmentData } from '@/lib/staticData/services/cms-development'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
+import type { BasePageData } from '@/lib/types/staticData'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
   loading: () => null,
 })
 
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
 function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-interface EnterpriseClientProps {
+interface CMSClientProps {
   faqs: Array<{ question: string; answer: string }>
+  cmsData: BasePageData
 }
 
-export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
+export default function CMSClient({ faqs, cmsData }: CMSClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -43,31 +64,37 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     useIdleCallback: false,
   })
 
-  const services = cmsDevelopmentData.services.map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const services = useMemo(() => 
+    (cmsData.services || []).map(service => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [cmsData.services]
+  )
 
-  const whyChooseUs = cmsDevelopmentData.whyChooseUs.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    (cmsData.whyChooseUs || []).map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [cmsData.whyChooseUs]
+  )
 
-  const processSteps = cmsDevelopmentData.processSteps.map(step => {
-    const IconComponent = getIcon(step.iconName)
-    return {
-      ...step,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const processSteps = useMemo(() => 
+    (cmsData.processSteps || []).map(step => {
+      const IconComponent = getIcon(step.iconName)
+      return {
+        ...step,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [cmsData.processSteps]
+  )
 
-  const industries = cmsDevelopmentData.industries.map(industry => {
+  const industries = (cmsData.industries || []).map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -75,7 +102,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const benefits = cmsDevelopmentData.benefits.map(benefit => {
+  const benefits = (cmsData.benefits || []).map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -83,7 +110,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const previewServices = cmsDevelopmentData.services.slice(0, 4).map(service => {
+  const previewServices = (cmsData.services || []).slice(0, 4).map(service => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -91,7 +118,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
     }
   })
 
-  const BadgeIcon = getIcon(cmsDevelopmentData.hero.badge.iconName)
+  const BadgeIcon = getIcon(cmsData.hero.badge.iconName)
 
   return (
     <>
@@ -107,16 +134,16 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                 {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{cmsDevelopmentData.hero.badge.text}</span>
+                <span className="text-sm font-semibold text-[#5e2cb6]">{cmsData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {cmsDevelopmentData.hero.title}{' '}
+                {cmsData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {cmsDevelopmentData.hero.hollowText}
+                  {cmsData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {cmsDevelopmentData.hero.description}
+                {cmsData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -162,9 +189,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {cmsDevelopmentData.servicesTitle}{' '}
+              {cmsData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                {cmsDevelopmentData.servicesHollowText}
+                {cmsData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -210,9 +237,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {cmsDevelopmentData.whyChooseTitle}{' '}
+              {cmsData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                {cmsDevelopmentData.whyChooseHollowText}
+                {cmsData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -298,9 +325,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {cmsDevelopmentData.benefitsTitle}{' '}
+              {cmsData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                {cmsDevelopmentData.benefitsHollowText}
+                {cmsData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -331,9 +358,9 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {cmsDevelopmentData.useCasesTitle}{' '}
+              {cmsData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                {cmsDevelopmentData.useCasesHollowText}
+                {cmsData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -342,7 +369,7 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {cmsDevelopmentData.useCases.map((useCase, index) => (
+            {(cmsData.useCases || []).map((useCase, index) => (
               <div
                 key={index}
                 className={`bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border`}
@@ -363,21 +390,24 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={[...cmsDevelopmentData.technologies]} />
+      {cmsData.technologies && <Technologies technologies={[...cmsData.technologies]} />}
       <ProcessDiagram 
-        title={cmsDevelopmentData.processTitle}
-        subtitle={cmsDevelopmentData.processSubtitle}
+        title={cmsData.processTitle}
+        subtitle={cmsData.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <ContactSection 
-        title={cmsDevelopmentData.contact.title}
-        description={cmsDevelopmentData.contact.description}
-      />
-      <GetQuoteSection
-        title={cmsDevelopmentData.getQuote.title}
-        hollowText={cmsDevelopmentData.getQuote.hollowText}
-        description={cmsDevelopmentData.getQuote.description}
+      {cmsData.contact && (
+        <ContactSection 
+          title={cmsData.contact.title}
+          description={cmsData.contact.description}
+        />
+      )}
+      {cmsData.getQuote && (
+        <GetQuoteSection
+          title={cmsData.getQuote.title}
+          hollowText={cmsData.getQuote.hollowText}
+          description={cmsData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)
@@ -386,7 +416,8 @@ export default function EnterpriseClient({ faqs }: EnterpriseClientProps) {
           text: 'Schedule Consultation',
           onClick: () => setIsContactModalOpen(true)
         }}
-      />
+        />
+      )}
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 

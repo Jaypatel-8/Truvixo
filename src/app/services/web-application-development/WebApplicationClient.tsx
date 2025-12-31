@@ -1,15 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar, Phone, Mail } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import ProcessDiagram from '@/components/ProcessDiagram'
-import { webApplicationDevelopmentData } from '@/lib/staticData/services/web-application-development'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
@@ -18,15 +13,41 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
   loading: () => null,
 })
 
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
 function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
 interface WebApplicationClientProps {
   faqs: Array<{ question: string; answer: string }>
+  webAppData: BasePageData
 }
 
-export default function WebApplicationClient({ faqs }: WebApplicationClientProps) {
+export default function WebApplicationClient({ faqs, webAppData }: WebApplicationClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -43,31 +64,37 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
     useIdleCallback: false,
   })
 
-  const services = webApplicationDevelopmentData.services.map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const services = useMemo(() => 
+    webAppData.services.map(service => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [webAppData.services]
+  )
 
-  const whyChooseUs = webApplicationDevelopmentData.whyChooseUs.map(item => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    webAppData.whyChooseUs.map(item => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [webAppData.whyChooseUs]
+  )
 
-  const processSteps = webApplicationDevelopmentData.processSteps.map(step => {
-    const IconComponent = getIcon(step.iconName)
-    return {
-      ...step,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const processSteps = useMemo(() => 
+    webAppData.processSteps.map(step => {
+      const IconComponent = getIcon(step.iconName)
+      return {
+        ...step,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [webAppData.processSteps]
+  )
 
-  const industries = webApplicationDevelopmentData.industries.map(industry => {
+  const industries = webAppData.industries.map(industry => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -75,7 +102,7 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
     }
   })
 
-  const benefits = webApplicationDevelopmentData.benefits.map(benefit => {
+  const benefits = webAppData.benefits.map(benefit => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -83,7 +110,7 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
     }
   })
 
-  const highlights = webApplicationDevelopmentData.hero.highlights.map(highlight => {
+  const highlights = webAppData.hero.highlights.map(highlight => {
     const iconName = (highlight as any).icon || (highlight as any).iconName || 'Zap'
     const IconComponent = getIcon(iconName)
     return {
@@ -111,21 +138,21 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
           <div className="scroll-animate">
             <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 mb-6 leading-tight">
-              {webApplicationDevelopmentData.hero.title}{' '}
+              {webAppData.hero.title}{' '}
               <span className="hollow-text-brand">
-                {webApplicationDevelopmentData.hero.hollowText}
+                {webAppData.hero.hollowText}
               </span>
               <span className="text-xl md:text-2xl font-semibold text-gray-600 block mt-4">
-                {webApplicationDevelopmentData.hero.subtitle}
+                {webAppData.hero.subtitle}
               </span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
-              {webApplicationDevelopmentData.hero.description}
+              {webAppData.hero.description}
             </p>
             <div className="mb-8 p-6 bg-gradient-to-r from-[#5e2cb6]/10 to-[#c91a6f]/10 rounded-xl border border-[#5e2cb6]/20 max-w-4xl mx-auto">
               <p className="text-gray-700 font-medium mb-3">Why Choose Our Web Application Development:</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                {webApplicationDevelopmentData.hero.features.map((feature, index) => (
+                {webAppData.hero.features.map((feature, index) => (
                   <div key={index} className="flex items-start gap-2">
                     <span className="text-[#5e2cb6] mt-1">✓</span>
                     <span className="text-gray-600"><strong>{feature.text.split(':')[0]}:</strong> {feature.text.split(':')[1]}</span>
@@ -135,7 +162,7 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
             </div>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
               {highlights.map((highlight, index) => {
-                const originalHighlight = webApplicationDevelopmentData.hero.highlights[index]
+                const originalHighlight = webAppData.hero.highlights[index]
                 const iconName = (originalHighlight as any).icon || (originalHighlight as any).iconName || 'Zap'
                 return (
                   <div key={index} className="flex items-start gap-3 p-4 bg-white/50 rounded-lg">
@@ -177,9 +204,9 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {webApplicationDevelopmentData.servicesTitle}{' '}
+              {webAppData.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                {webApplicationDevelopmentData.servicesHollowText}
+                {webAppData.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -213,9 +240,9 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {webApplicationDevelopmentData.whyChooseTitle}{' '}
+              {webAppData.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                {webApplicationDevelopmentData.whyChooseHollowText}
+                {webAppData.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -280,13 +307,13 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-              {webApplicationDevelopmentData.getQuote.title}{' '}
+              {webAppData.getQuote.title}{' '}
               <span className="hollow-text-white">
-                {webApplicationDevelopmentData.getQuote.hollowText}
+                {webAppData.getQuote.hollowText}
               </span>
             </h2>
             <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-              {webApplicationDevelopmentData.getQuote.description}
+              {webAppData.getQuote.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button 
@@ -323,9 +350,9 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {webApplicationDevelopmentData.benefitsTitle}{' '}
+              {webAppData.benefitsTitle}{' '}
               <span className="hollow-text-brand">
-                {webApplicationDevelopmentData.benefitsHollowText}
+                {webAppData.benefitsHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -356,9 +383,9 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {webApplicationDevelopmentData.useCasesTitle}{' '}
+              {webAppData.useCasesTitle}{' '}
               <span className="hollow-text-brand">
-                {webApplicationDevelopmentData.useCasesHollowText}
+                {webAppData.useCasesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -367,7 +394,7 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {webApplicationDevelopmentData.useCases.map((useCase, index) => (
+            {webAppData.useCases.map((useCase, index) => (
               <div
                 key={index}
                 className={`bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border`}
@@ -388,12 +415,12 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
         </div>
       </section>
 
-      <Technologies technologies={[...webApplicationDevelopmentData.technologies]} />
+      <Technologies technologies={[...webAppData.technologies]} />
 
       {/* Process Diagram */}
       <ProcessDiagram
-        title={webApplicationDevelopmentData.processTitle}
-        subtitle={webApplicationDevelopmentData.processSubtitle}
+        title={webAppData.processTitle}
+        subtitle={webAppData.processSubtitle}
         steps={processSteps}
       />
 
@@ -402,8 +429,8 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
 
       {/* Contact Section */}
       <ContactSection 
-        title={webApplicationDevelopmentData.contact.title}
-        description={webApplicationDevelopmentData.contact.description}
+        title={webAppData.contact.title}
+        description={webAppData.contact.description}
       />
 
       {/* Client Section */}
@@ -416,9 +443,9 @@ export default function WebApplicationClient({ faqs }: WebApplicationClientProps
 
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection
-        title={webApplicationDevelopmentData.getQuote.title}
-        hollowText={webApplicationDevelopmentData.getQuote.hollowText}
-        description={webApplicationDevelopmentData.getQuote.description}
+        title={webAppData.getQuote.title}
+        hollowText={webAppData.getQuote.hollowText}
+        description={webAppData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)

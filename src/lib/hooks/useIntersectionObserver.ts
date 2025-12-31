@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 interface UseIntersectionObserverOptions {
   threshold?: number | number[]
@@ -12,7 +12,7 @@ interface UseIntersectionObserverOptions {
 
 /**
  * Custom hook for IntersectionObserver-based scroll animations
- * Replaces duplicated IntersectionObserver logic across components
+ * Optimized with debouncing and cached DOM queries for better performance
  */
 export function useIntersectionObserver({
   threshold = 0.1,
@@ -21,7 +21,18 @@ export function useIntersectionObserver({
   unobserveAfterIntersect = false,
   useIdleCallback = false,
 }: UseIntersectionObserverOptions = {}) {
+  const observerRef = useRef<IntersectionObserver | null>(null)
+  const elementsRef = useRef<NodeListOf<Element> | null>(null)
+  const selectorsKey = selectors.join(',')
+
   useEffect(() => {
+    // Skip if not in browser
+    if (typeof window === 'undefined') return
+
+    // Debounce function to avoid multiple rapid queries
+    let timeoutId: NodeJS.Timeout | null = null
+    let rafId: number | null = null
+    
     const observerOptions = {
       threshold,
       rootMargin,
@@ -39,11 +50,51 @@ export function useIntersectionObserver({
       })
     }, observerOptions)
 
-    // Initialize observer
+    observerRef.current = observer
+
+    // Initialize observer with debouncing and caching
     const initObserver = () => {
-      const selectorString = selectors.join(', ')
-      const scrollElements = document.querySelectorAll(selectorString)
-      scrollElements.forEach((el) => observer.observe(el))
+      // Clear any pending timeout/RAF
+      if (timeoutId) {
+        clearTimeout(timeoutId)
+        timeoutId = null
+      }
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
+        rafId = null
+      }
+
+      // Use cached elements if available and selectors haven't changed
+      if (!elementsRef.current) {
+        const selectorString = selectors.join(', ')
+        // Use requestAnimationFrame for DOM queries to avoid blocking
+        rafId = requestAnimationFrame(() => {
+          elementsRef.current = document.querySelectorAll(selectorString)
+          
+          // Debounce observer attachment to avoid performance issues
+          timeoutId = setTimeout(() => {
+            if (elementsRef.current) {
+              elementsRef.current.forEach((el) => {
+                // Only observe if not already animated (unless unobserveAfterIntersect is false)
+                if (!unobserveAfterIntersect || !el.classList.contains('animate')) {
+                  observer.observe(el)
+                }
+              })
+            }
+          }, 50) // 50ms debounce
+        })
+      } else {
+        // Elements already cached, attach observer immediately
+        timeoutId = setTimeout(() => {
+          if (elementsRef.current) {
+            elementsRef.current.forEach((el) => {
+              if (!unobserveAfterIntersect || !el.classList.contains('animate')) {
+                observer.observe(el)
+              }
+            })
+          }
+        }, 50)
+      }
     }
 
     // Use requestIdleCallback for non-critical animations (if enabled)
@@ -55,8 +106,17 @@ export function useIntersectionObserver({
     }
 
     return () => {
-      observer.disconnect()
+      if (timeoutId) {
+        clearTimeout(timeoutId)
+      }
+      if (rafId !== null) {
+        cancelAnimationFrame(rafId)
+      }
+      if (observerRef.current) {
+        observerRef.current.disconnect()
+      }
+      elementsRef.current = null
     }
-  }, [threshold, rootMargin, selectors.join(','), unobserveAfterIntersect, useIdleCallback])
+  }, [threshold, rootMargin, selectorsKey, unobserveAfterIntersect, useIdleCallback])
 }
 

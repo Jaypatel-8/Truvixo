@@ -1,15 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar, Phone, Mail } from 'lucide-react'
 import dynamic from 'next/dynamic'
-import Clientele from '@/components/Clientele'
-import Technologies from '@/components/Technologies'
-import FAQDropdown from '@/components/FAQDropdown'
-import ContactSection from '@/components/ContactSection'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
-import ProcessDiagram from '@/components/ProcessDiagram'
-import { realEstateIndustryData } from '@/lib/staticData/industry/real-estate'
+import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { LucideIcon } from 'lucide-react'
 import { ReactElement } from 'react'
@@ -20,15 +15,41 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
   loading: () => null,
 })
 
+const Clientele = dynamic(() => import('@/components/Clientele'), {
+  ssr: false,
+  loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
+})
+
+const Technologies = dynamic(() => import('@/components/Technologies'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
+const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
+  ssr: false,
+  loading: () => <div className="min-h-[200px] bg-white"></div>,
+})
+
+const ContactSection = dynamic(() => import('@/components/ContactSection'), {
+  ssr: false,
+  loading: () => <div className="min-h-[300px] bg-white"></div>,
+})
+
+const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
+  ssr: false,
+  loading: () => <div className="min-h-[400px] bg-white"></div>,
+})
+
 function getIcon(iconName: string): LucideIcon | undefined {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
 interface RealEstateClientProps {
   faqs: Array<{ question: string; answer: string }>
+  realEstateData: BasePageData
 }
 
-export default function RealEstateClient({ faqs }: RealEstateClientProps) {
+export default function RealEstateClient({ faqs, realEstateData }: RealEstateClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
@@ -45,31 +66,37 @@ export default function RealEstateClient({ faqs }: RealEstateClientProps) {
     useIdleCallback: false,
   })
 
-  const services = realEstateIndustryData.services.map((service: { title: string; description: string; iconName: string; color: string }) => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const services = useMemo(() => 
+    realEstateData.services.map((service: { title: string; description: string; iconName: string; color: string }) => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [realEstateData.services]
+  )
 
-  const whyChooseUs = realEstateIndustryData.whyChooseUs.map((item: { iconName: string; title: string; description: string; color: string }) => {
-    const IconComponent = getIcon(item.iconName)
-    return {
-      ...item,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const whyChooseUs = useMemo(() => 
+    realEstateData.whyChooseUs.map((item: { iconName: string; title: string; description: string; color: string }) => {
+      const IconComponent = getIcon(item.iconName)
+      return {
+        ...item,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [realEstateData.whyChooseUs]
+  )
 
-  const processSteps = realEstateIndustryData.processSteps.map((step: { title: string; description: string; iconName: string }) => {
-    const IconComponent = getIcon(step.iconName)
-    return {
-      ...step,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const processSteps = useMemo(() => 
+    realEstateData.processSteps.map((step: { title: string; description: string; iconName: string }) => {
+      const IconComponent = getIcon(step.iconName)
+      return {
+        ...step,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [realEstateData.processSteps]
+  )
 
-  const industries = realEstateIndustryData.industries.map((industry: { name: string; iconName: string; color: string }) => {
+  const industries = realEstateData.industries.map((industry: { name: string; iconName: string; color: string }) => {
     const IconComponent = getIcon(industry.iconName)
     return {
       ...industry,
@@ -77,7 +104,7 @@ export default function RealEstateClient({ faqs }: RealEstateClientProps) {
     }
   })
 
-  const benefits = realEstateIndustryData.benefits.map((benefit: { iconName: string; title: string; description: string; color: string }) => {
+  const benefits = realEstateData.benefits.map((benefit: { iconName: string; title: string; description: string; color: string }) => {
     const IconComponent = getIcon(benefit.iconName)
     return {
       ...benefit,
@@ -85,7 +112,7 @@ export default function RealEstateClient({ faqs }: RealEstateClientProps) {
     }
   })
 
-  const previewServices = realEstateIndustryData.services.slice(0, 4).map((service: { title: string; description: string; iconName: string; color: string }) => {
+  const previewServices = realEstateData.services.slice(0, 4).map((service: { title: string; description: string; iconName: string; color: string }) => {
     const IconComponent = getIcon(service.iconName)
     return {
       ...service,
@@ -93,7 +120,7 @@ export default function RealEstateClient({ faqs }: RealEstateClientProps) {
     }
   })
 
-  const BadgeIcon = getIcon(realEstateIndustryData.hero.badge.iconName) || getIcon('Code')!
+  const BadgeIcon = getIcon(realEstateData.hero.badge.iconName) || getIcon('Code')!
 
   return (
     <>
@@ -109,16 +136,16 @@ export default function RealEstateClient({ faqs }: RealEstateClientProps) {
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                 {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{realEstateIndustryData.hero.badge.text}</span>
+                <span className="text-sm font-semibold text-[#5e2cb6]">{realEstateData.hero.badge.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {realEstateIndustryData.hero.title}{' '}
+                {realEstateData.hero.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {realEstateIndustryData.hero.hollowText}
+                  {realEstateData.hero.hollowText}
                 </span>
               </h1>
               <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
-                {realEstateIndustryData.hero.description}
+                {realEstateData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -328,23 +355,23 @@ export default function RealEstateClient({ faqs }: RealEstateClientProps) {
         </div>
       </section>
 
-      <Technologies technologies={[...realEstateIndustryData.technologies]} />
+      <Technologies technologies={[...realEstateData.technologies]} />
       <ProcessDiagram 
-        title={realEstateIndustryData.processTitle}
-        subtitle={realEstateIndustryData.processSubtitle}
+        title={realEstateData.processTitle}
+        subtitle={realEstateData.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
       <ContactSection 
-        title={realEstateIndustryData.contact.title}
-        description={realEstateIndustryData.contact.description}
+        title={realEstateData.contact.title}
+        description={realEstateData.contact.description}
       />
 
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection
-        title={realEstateIndustryData.cta.title}
-        hollowText={realEstateIndustryData.cta.hollowText}
-        description={realEstateIndustryData.cta.description}
+        title={realEstateData.cta.title}
+        hollowText={realEstateData.cta.hollowText}
+        description={realEstateData.cta.description}
         primaryCTA={{
           text: 'Call Us',
           onClick: () => setIsContactModalOpen(true)
