@@ -6,7 +6,8 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 
-// Import Swiper styles
+// Swiper CSS - required for Swiper to function
+// These are scoped to .swiper classes and won't conflict
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'

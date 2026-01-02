@@ -55,13 +55,12 @@ export default function EducationClient({ faqs, educationData }: EducationClient
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   const services = useMemo(() => 
@@ -94,35 +93,40 @@ export default function EducationClient({ faqs, educationData }: EducationClient
     }), [educationData.processSteps]
   )
 
-  const industries = educationData.industries.map(industry => {
-    const IconComponent = getIcon(industry.iconName)
-    return {
-      ...industry,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const industries = useMemo(() => 
+    educationData.industries.map(industry => {
+      const IconComponent = getIcon(industry.iconName)
+      return {
+        ...industry,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [educationData.industries]
+  )
 
-  const benefits = educationData.benefits.map(benefit => {
-    const IconComponent = getIcon(benefit.iconName)
-    return {
-      ...benefit,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const benefits = useMemo(() => 
+    educationData.benefits.map(benefit => {
+      const IconComponent = getIcon(benefit.iconName)
+      return {
+        ...benefit,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [educationData.benefits]
+  )
 
-  const previewServices = educationData.services.slice(0, 4).map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const previewServices = useMemo(() => 
+    educationData.services.slice(0, 4).map(service => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [educationData.services]
+  )
 
   const BadgeIcon = getIcon(educationData.hero.badge.iconName) || getIcon('Code')!
 
   return (
     <>
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -184,7 +188,6 @@ export default function EducationClient({ faqs, educationData }: EducationClient
 
       {isMounted && <div className="mt-12"><Clientele /></div>}
 
-      {/* Services Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -232,7 +235,6 @@ export default function EducationClient({ faqs, educationData }: EducationClient
         </div>
       </section>
 
-      {/* Why Choose Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -280,7 +282,6 @@ export default function EducationClient({ faqs, educationData }: EducationClient
         </div>
       </section>
 
-      {/* Industries Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -320,7 +321,6 @@ export default function EducationClient({ faqs, educationData }: EducationClient
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -371,13 +371,13 @@ export default function EducationClient({ faqs, educationData }: EducationClient
               {educationData.cta.description}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
+              <a
+                href="tel:+916354326412"
                 className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
               >
                 <Phone className="w-5 h-5" strokeWidth={2} />
                 <span>Call Us</span>
-              </button>
+              </a>
               <button 
                 onClick={() => setIsContactModalOpen(true)}
                 className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-xl hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
@@ -418,7 +418,8 @@ export default function EducationClient({ faqs, educationData }: EducationClient
         description={educationData.getQuoteDescription}
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',

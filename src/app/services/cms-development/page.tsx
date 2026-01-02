@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import CMSClient from './CMSClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { cmsDevelopmentData } from '@/lib/staticData/services/cms-development'

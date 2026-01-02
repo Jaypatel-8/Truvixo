@@ -55,13 +55,12 @@ export default function OurApproachClient({ faqs, ourApproachData }: OurApproach
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   const BadgeIcon = getIcon(ourApproachData.hero.badge.iconName) || Lightbulb
@@ -109,7 +108,6 @@ export default function OurApproachClient({ faqs, ourApproachData }: OurApproach
 
   return (
     <main className="min-h-screen bg-gray-50 overflow-hidden">
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -299,14 +297,11 @@ export default function OurApproachClient({ faqs, ourApproachData }: OurApproach
         steps={processSteps}
       />
 
-      {/* Technologies Section */}
       <Technologies technologies={[...ourApproachData.technologies]} />
 
-      {/* FAQs Section */}
       <FAQDropdown faqs={faqs} />
 
       {/* SEO Location Section */}
-      {/* Contact Section */}
       <ContactSection 
         title={ourApproachData.contact.title}
         description={ourApproachData.contact.description}
@@ -319,7 +314,8 @@ export default function OurApproachClient({ faqs, ourApproachData }: OurApproach
         description={ourApproachData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',

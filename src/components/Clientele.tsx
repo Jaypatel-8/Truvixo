@@ -87,7 +87,7 @@ function Clientele({
   const duplicatedLogos = useMemo(() => [...clientLogos, ...clientLogos], [])
 
   return (
-    <section className={`py-8 bg-[#5e2cb6] relative overflow-hidden ${className}`}>
+    <section className={`py-6 bg-[#5e2cb6] relative overflow-hidden ${className}`}>
       <div className="w-full">
         {/* Section Header - Only show if title provided */}
         {title && (
@@ -121,7 +121,7 @@ function Clientele({
                   key={`${client.name}-first-${index}`}
                   className="flex-shrink-0 group cursor-pointer"
                 >
-                  <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6">
+                  <div className="w-32 h-12 md:w-40 md:h-16 flex items-center justify-center px-4 md:px-6">
                     {client.url ? (
                       <a 
                         href={client.url} 
@@ -133,7 +133,7 @@ function Clientele({
                           src={client.logo}
                           alt={client.name}
                           width={120}
-                          height={60}
+                          height={48}
                           className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                           unoptimized
                         />
@@ -159,7 +159,7 @@ function Clientele({
                   key={`${client.name}-second-${index}`}
                   className="flex-shrink-0 group cursor-pointer"
                 >
-                  <div className="w-32 h-16 md:w-40 md:h-20 flex items-center justify-center px-4 md:px-6">
+                  <div className="w-32 h-12 md:w-40 md:h-16 flex items-center justify-center px-4 md:px-6">
                     {client.url ? (
                       <a 
                         href={client.url} 
@@ -171,7 +171,7 @@ function Clientele({
                           src={client.logo}
                           alt={client.name}
                           width={120}
-                          height={60}
+                          height={48}
                           className="max-w-full max-h-full object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                           unoptimized
                         />

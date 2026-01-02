@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import CloudDevOpsClient from './CloudDevOpsClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { frontendTechnologyData } from '@/lib/staticData/technology/frontend'

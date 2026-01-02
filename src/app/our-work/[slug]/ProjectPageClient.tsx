@@ -46,7 +46,6 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
   useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
@@ -54,8 +53,6 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
-
-  // Project data imported from static data file for better build performance
 
   const project = projectDataMap[slug] || {
     title: 'Project',
@@ -82,7 +79,6 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
 
   return (
     <main className="min-h-screen bg-gray-50 overflow-hidden">
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -147,10 +143,7 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
         </div>
       </section>
 
-      {/* Our Client Section */}
       {isMounted && <div className="mt-12"><Clientele /></div>}
-
-      {/* Project Info Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -190,7 +183,6 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
         </div>
       </section>
 
-      {/* Problem & Solution Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -521,7 +513,8 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
         description="Get in touch and let's discuss how we can help bring your vision to life."
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',

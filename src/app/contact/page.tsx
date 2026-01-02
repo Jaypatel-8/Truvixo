@@ -35,8 +35,7 @@ export default function Contact() {
   const [formErrors, setFormErrors] = useState<Record<string, string>>({})
   const [bookingErrors, setBookingErrors] = useState<Record<string, string>>({})
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],

@@ -48,19 +48,14 @@ interface SEOClientProps {
 
 export default function SEOClient({ faqs, seoData }: SEOClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
-  const [isMounted, setIsMounted] = useState(false)
 
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
-
-  // Use custom hook for IntersectionObserver-based scroll animations
+    // Defer to idle callback for better navigation performance
   useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   const services = useMemo(() => 
@@ -93,28 +88,32 @@ export default function SEOClient({ faqs, seoData }: SEOClientProps) {
     }), [seoData.processSteps]
   )
 
-  const industries = seoData.industries.map(industry => {
-    const IconComponent = getIcon(industry.iconName)
-    return {
-      ...industry,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const industries = useMemo(() => 
+    seoData.industries.map(industry => {
+      const IconComponent = getIcon(industry.iconName)
+      return {
+        ...industry,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [seoData.industries]
+  )
 
-  const benefits = seoData.benefits.map(benefit => {
-    const IconComponent = getIcon(benefit.iconName)
-    return {
-      ...benefit,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const benefits = useMemo(() => 
+    seoData.benefits.map(benefit => {
+      const IconComponent = getIcon(benefit.iconName)
+      return {
+        ...benefit,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [seoData.benefits]
+  )
 
-  const previewServices = services.slice(0, 4)
-  const BadgeIcon = getIcon(seoData.hero.badge.iconName)
+  // Memoize previewServices to avoid recalculation
+  const previewServices = useMemo(() => services.slice(0, 4), [services])
+  const BadgeIcon = useMemo(() => getIcon(seoData.hero.badge.iconName), [seoData.hero.badge.iconName])
 
   return (
     <>
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -138,20 +137,13 @@ export default function SEOClient({ faqs, seoData }: SEOClientProps) {
                 {seoData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
-                <button 
-                  onClick={() => setIsContactModalOpen(true)}
+                <a
+                  href="/contact?service=seo"
                   className="bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
                 >
                   <Calendar className="w-5 h-5" strokeWidth={2} />
                   <span>Get a Quote</span>
-                </button>
-                <button 
-                  onClick={() => setIsContactModalOpen(true)}
-                  className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-                >
-                  <span>Contact Us</span>
-                  <ArrowRight className="w-5 h-5" strokeWidth={2} />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -174,9 +166,9 @@ export default function SEOClient({ faqs, seoData }: SEOClientProps) {
         </div>
       </section>
 
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12"><Clientele /></div>
 
-      {/* Services Section */}
+      
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -224,7 +216,7 @@ export default function SEOClient({ faqs, seoData }: SEOClientProps) {
         </div>
       </section>
 
-      {/* Why Choose Section */}
+      
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -269,7 +261,7 @@ export default function SEOClient({ faqs, seoData }: SEOClientProps) {
         </div>
       </section>
 
-      {/* Industries Section */}
+      
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -306,7 +298,7 @@ export default function SEOClient({ faqs, seoData }: SEOClientProps) {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -378,34 +370,36 @@ export default function SEOClient({ faqs, seoData }: SEOClientProps) {
 
       <Technologies technologies={[...seoData.technologies]} />
 
-      {/* Process Diagram */}
+      
       <ProcessDiagram
         title={seoData.processTitle}
         subtitle={seoData.processSubtitle}
         steps={processSteps}
       />
 
-      {/* FAQs */}
+      
       <FAQDropdown faqs={faqs} />
 
-      {/* Contact Section */}
+      
       <ContactSection 
         title={seoData.contact.title}
         description={seoData.contact.description}
       />
 
-      {/* Get Quote Section */}
+      
       <GetQuoteSection
         title={seoData.getQuote.title}
         hollowText={seoData.getQuote.hollowText}
         description={seoData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
-          text: 'Schedule Consultation',
-          onClick: () => setIsContactModalOpen(true)
+          text: 'Get a Quote',
+          type: 'link',
+          href: '/contact?service=seo'
         }}
       />
 

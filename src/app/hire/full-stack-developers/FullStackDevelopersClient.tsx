@@ -13,11 +13,11 @@ interface FullStackDevelopersClientProps {
 
 export default function FullStackDevelopersClient({ faqs, fullStackDevelopersData }: FullStackDevelopersClientProps) {
   // Convert icon names to ReactNode icons
-  const BadgeIcon = getIconComponent(fullStackDevelopersData.hero.badge.iconName) || Server
+  const BadgeIcon = getIconComponent(fullStackDevelopersData.hero.badge?.iconName || 'Server') || Server
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
   const services = useMemo(() => 
-    fullStackDevelopersData.services.map(service => {
+    (fullStackDevelopersData.services || []).map(service => {
       const IconComponent = getIconComponent(service.iconName) || Code
       return {
         ...service,
@@ -27,7 +27,7 @@ export default function FullStackDevelopersClient({ faqs, fullStackDevelopersDat
   )
 
   const whyChooseUs = useMemo(() => 
-    fullStackDevelopersData.whyChooseUs.map(item => {
+    (fullStackDevelopersData.whyChooseUs || []).map(item => {
       const IconComponent = getIconComponent(item.iconName) || Code
       return {
         ...item,
@@ -37,7 +37,7 @@ export default function FullStackDevelopersClient({ faqs, fullStackDevelopersDat
   )
 
   const industries = useMemo(() => 
-    fullStackDevelopersData.industries.map(industry => {
+    (fullStackDevelopersData.industries || []).map(industry => {
       const IconComponent = getIconComponent(industry.iconName) || Building2
       return {
         ...industry,
@@ -47,7 +47,7 @@ export default function FullStackDevelopersClient({ faqs, fullStackDevelopersDat
   )
 
   const processSteps = useMemo(() => 
-    fullStackDevelopersData.processSteps.map(step => {
+    (fullStackDevelopersData.processSteps || []).map(step => {
       const IconComponent = getIconComponent(step.iconName) || Target
       return {
         ...step,
@@ -60,7 +60,7 @@ export default function FullStackDevelopersClient({ faqs, fullStackDevelopersDat
     <PageTemplate
       badge={{
         icon: badgeIcon,
-        text: fullStackDevelopersData.hero.badge.text
+        text: fullStackDevelopersData.hero.badge?.text || ''
       }}
       title={fullStackDevelopersData.hero.title}
       hollowText={fullStackDevelopersData.hero.hollowText}
@@ -72,7 +72,12 @@ export default function FullStackDevelopersClient({ faqs, fullStackDevelopersDat
       whyChooseTitle={fullStackDevelopersData.whyChooseTitle}
       whyChooseHollowText={fullStackDevelopersData.whyChooseHollowText}
       industries={industries}
-      technologies={[...fullStackDevelopersData.technologies]}
+      technologies={Array.isArray(fullStackDevelopersData.technologies) ? fullStackDevelopersData.technologies.filter(tech => tech.logo && tech.color && tech.category !== 'other').map(tech => ({ 
+        name: tech.name,
+        logo: tech.logo!,
+        color: tech.color!,
+        category: tech.category as 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai' | 'management' | 'testing' | 'design'
+      })) : []}
       getQuoteTitle={fullStackDevelopersData.getQuoteTitle}
       getQuoteHollowText={fullStackDevelopersData.getQuoteHollowText}
       getQuoteDescription={fullStackDevelopersData.getQuoteDescription}

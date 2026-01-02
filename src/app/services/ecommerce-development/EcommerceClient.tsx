@@ -55,17 +55,16 @@ export default function EcommerceClient({ faqs, ecommerceData }: EcommerceClient
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   const services = useMemo(() => 
-    ecommerceData.services.map(service => {
+    (ecommerceData.services || []).map(service => {
       const IconComponent = getIcon(service.iconName)
       return {
         ...service,
@@ -75,7 +74,7 @@ export default function EcommerceClient({ faqs, ecommerceData }: EcommerceClient
   )
 
   const whyChooseUs = useMemo(() => 
-    ecommerceData.whyChooseUs.map(item => {
+    (ecommerceData.whyChooseUs || []).map(item => {
       const IconComponent = getIcon(item.iconName)
       return {
         ...item,
@@ -85,7 +84,7 @@ export default function EcommerceClient({ faqs, ecommerceData }: EcommerceClient
   )
 
   const processSteps = useMemo(() => 
-    ecommerceData.processSteps.map(step => {
+    (ecommerceData.processSteps || []).map(step => {
       const IconComponent = getIcon(step.iconName)
       return {
         ...step,
@@ -94,28 +93,31 @@ export default function EcommerceClient({ faqs, ecommerceData }: EcommerceClient
     }), [ecommerceData.processSteps]
   )
 
-  const industries = ecommerceData.industries.map(industry => {
-    const IconComponent = getIcon(industry.iconName)
-    return {
-      ...industry,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const industries = useMemo(() => 
+    (ecommerceData.industries || []).map(industry => {
+      const IconComponent = getIcon(industry.iconName)
+      return {
+        ...industry,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [ecommerceData.industries]
+  )
 
-  const benefits = ecommerceData.benefits.map(benefit => {
-    const IconComponent = getIcon(benefit.iconName)
-    return {
-      ...benefit,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const benefits = useMemo(() => 
+    ecommerceData.benefits.map(benefit => {
+      const IconComponent = getIcon(benefit.iconName)
+      return {
+        ...benefit,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [ecommerceData.benefits]
+  )
 
-  const previewServices = services.slice(0, 4)
+  const previewServices = useMemo(() => services.slice(0, 4), [services])
   const BadgeIcon = getIcon(ecommerceData.hero.badge.iconName)
 
   return (
     <>
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -178,7 +180,6 @@ export default function EcommerceClient({ faqs, ecommerceData }: EcommerceClient
 
       {isMounted && <div className="mt-12"><Clientele /></div>}
 
-      {/* Services Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -227,7 +228,6 @@ export default function EcommerceClient({ faqs, ecommerceData }: EcommerceClient
         </div>
       </section>
 
-      {/* Why Choose Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -275,7 +275,6 @@ export default function EcommerceClient({ faqs, ecommerceData }: EcommerceClient
         </div>
       </section>
 
-      {/* Industries Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -315,7 +314,6 @@ export default function EcommerceClient({ faqs, ecommerceData }: EcommerceClient
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -397,13 +395,11 @@ export default function EcommerceClient({ faqs, ecommerceData }: EcommerceClient
       {/* FAQs */}
       <FAQDropdown faqs={faqs} />
 
-      {/* Contact Section */}
       <ContactSection 
         title={ecommerceData.contact.title}
         description={ecommerceData.contact.description}
       />
 
-      {/* Get Quote Section */}
       <GetQuoteSection
         title={ecommerceData.getQuote.title}
         hollowText={ecommerceData.getQuote.hollowText}

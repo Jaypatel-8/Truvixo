@@ -47,13 +47,12 @@ export default function MobileAppClient({ faqs }: MobileAppClientProps) {
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   // Mobile App Development Services with colored icons

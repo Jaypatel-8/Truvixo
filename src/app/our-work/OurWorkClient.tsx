@@ -51,18 +51,16 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
-  // Memoized data transformations - only recalculate when data changes
-  const services = useMemo(() => 
-    ourWorkData.services.map(service => {
+    const services = useMemo(() => 
+    (ourWorkData.services || []).map(service => {
       const IconComponent = getIconComponent(service.iconName)
       return {
         ...service,
@@ -72,7 +70,7 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
   )
 
   const whyChooseUs = useMemo(() => 
-    ourWorkData.whyChooseUs.map(item => {
+    (ourWorkData.whyChooseUs || []).map(item => {
       const IconComponent = getIconComponent(item.iconName)
       return {
         ...item,
@@ -82,7 +80,7 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
   )
 
   const processSteps = useMemo(() => 
-    ourWorkData.processSteps.map(step => {
+    (ourWorkData.processSteps || []).map(step => {
       const IconComponent = getIconComponent(step.iconName)
       return {
         ...step,
@@ -92,7 +90,7 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
   )
 
   const industries = useMemo(() => 
-    ourWorkData.industries.map(industry => {
+    (ourWorkData.industries || []).map(industry => {
       const IconComponent = getIconComponent(industry.iconName)
       return {
         ...industry,
@@ -102,7 +100,7 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
   )
 
   const benefits = useMemo(() => 
-    ourWorkData.benefits.map(benefit => {
+    (ourWorkData.benefits || []).map(benefit => {
       const IconComponent = getIconComponent(benefit.iconName)
       return {
         ...benefit,
@@ -115,7 +113,6 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
 
   return (
     <>
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -177,7 +174,6 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
 
       {isMounted && <div className="mt-12"><Clientele /></div>}
 
-      {/* Services Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -225,7 +221,6 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
         </div>
       </section>
 
-      {/* Why Choose Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -273,7 +268,6 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
         </div>
       </section>
 
-      {/* Industries Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -313,7 +307,6 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -421,7 +414,8 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
         description="Get in touch and let's discuss how we can help transform your business with innovative technology solutions."
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',

@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import SMMClient from './SMMClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { smmData } from '@/lib/staticData/services/smm'

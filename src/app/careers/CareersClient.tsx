@@ -45,20 +45,19 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
-  const BadgeIcon = getIcon(careersData.hero.badge.iconName) || Briefcase
+  const BadgeIcon = getIcon(careersData.hero.badge?.iconName || 'Briefcase') || Briefcase
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
   const benefits = useMemo(() => 
-    careersData.benefits.map(item => {
+    (careersData.benefits || []).map((item: { iconName: string; title: string; description: string; color: string }) => {
       const IconComponent = getIcon(item.iconName)
       return {
         ...item,
@@ -68,28 +67,27 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
   )
 
   const openPositions = useMemo(() => 
-    careersData.openPositions.map(position => {
+    ((careersData as any).openPositions || []).map((position: { iconName: string; title: string; department: string; type: string; location: string; description: string; requirements: string[]; color: string }) => {
       const IconComponent = getIcon(position.iconName)
       return {
         ...position,
         icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
       }
-    }), [careersData.openPositions]
+    }), [(careersData as any).openPositions]
   )
 
   const cultureValues = useMemo(() => 
-    careersData.cultureValues.map(item => {
+    ((careersData as any).cultureValues || []).map((item: { iconName: string; title: string; description: string }) => {
       const IconComponent = getIcon(item.iconName)
       return {
         ...item,
         icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
       }
-    }), [careersData.cultureValues]
+    }), [(careersData as any).cultureValues]
   )
 
   return (
     <main className="min-h-screen bg-gray-50 overflow-hidden">
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -98,10 +96,12 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center scroll-animate">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-              {badgeIcon}
-              <span className="text-sm font-semibold text-[#5e2cb6]">{careersData.hero.badge.text}</span>
-            </div>
+            {careersData.hero.badge && (
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
+                {badgeIcon}
+                <span className="text-sm font-semibold text-[#5e2cb6]">{careersData.hero.badge.text}</span>
+              </div>
+            )}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
               {careersData.hero.title}{' '}
               <span className="hollow-text-brand block mt-2">
@@ -112,20 +112,20 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
               {careersData.hero.description}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
+              <a
+                href="#open-positions"
                 className="bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
               >
                 <Briefcase className="w-5 h-5" strokeWidth={2} />
                 <span>View Open Positions</span>
-              </button>
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
+              </a>
+              <a
+                href="/contact?subject=Career Inquiry"
                 className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
               >
                 <Mail className="w-5 h-5" strokeWidth={2} />
-                <span>Send Your Resume</span>
-              </button>
+                <span>Contact Us</span>
+              </a>
             </div>
           </div>
         </div>
@@ -198,7 +198,7 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {cultureValues.map((item, index) => (
+            {cultureValues.map((item: { icon: React.ReactNode | null; title: string; description: string }, index: number) => (
               <div
                 key={index}
                 className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all"
@@ -221,7 +221,7 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
       </section>
 
       {/* Open Positions Section */}
-      <section className="py-20 bg-white">
+      <section id="open-positions" className="py-20 bg-white scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -236,7 +236,7 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
-            {openPositions.map((position, index) => (
+            {openPositions.map((position: { icon: React.ReactNode | null; title: string; department: string; type: string; location: string; description: string; requirements: string[]; color: string }, index: number) => (
               <div
                 key={index}
                 className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
@@ -278,7 +278,7 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
                   <div className="mb-4">
                     <h4 className="font-semibold text-gray-900 mb-2 text-sm">Key Requirements:</h4>
                     <ul className="space-y-1">
-                      {position.requirements.slice(0, 3).map((req, reqIndex) => (
+                      {position.requirements.slice(0, 3).map((req: string, reqIndex: number) => (
                         <li key={reqIndex} className="flex items-start gap-2 text-xs text-gray-600">
                           <CheckCircle className="w-3 h-3 text-[#10b981] mt-0.5 flex-shrink-0" strokeWidth={2} />
                           <span>{req}</span>
@@ -286,13 +286,13 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
                       ))}
                     </ul>
                   </div>
-                  <button
-                    onClick={() => setIsContactModalOpen(true)}
+                  <a
+                    href="/careers#apply"
                     className="w-full bg-[#5e2cb6] text-white font-semibold py-3 px-6 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
                   >
                     <span>Apply Now</span>
                     <ArrowRight className="w-4 h-4" strokeWidth={2} />
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}
@@ -300,41 +300,45 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
 
           <div className="text-center">
             <p className="text-gray-600 mb-4">Don't see a position that matches your skills?</p>
-            <button
-              onClick={() => setIsContactModalOpen(true)}
+            <a
+              href="/contact?subject=Resume Submission"
               className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-3 px-6 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 inline-flex items-center gap-2"
             >
               <Mail className="w-4 h-4" strokeWidth={2} />
               <span>Send Us Your Resume</span>
-            </button>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* FAQs Section */}
       <FAQDropdown faqs={faqs} />
 
       {/* SEO Location Section */}
-      {/* Contact Section */}
-      <ContactSection 
-        title={careersData.contact.title}
-        description={careersData.contact.description}
-      />
+      {careersData.contact && (
+        <ContactSection 
+          title={careersData.contact.title}
+          description={careersData.contact.description}
+        />
+      )}
 
       {/* Get Quote Section - Last section before footer */}
-      <GetQuoteSection
-        title={careersData.getQuote.title}
-        hollowText={careersData.getQuote.hollowText}
-        description={careersData.getQuote.description}
+      {careersData.getQuote && (
+        <GetQuoteSection
+          title={careersData.getQuote.title}
+          hollowText={careersData.getQuote.hollowText}
+          description={careersData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
-          text: 'Schedule Consultation',
-          onClick: () => setIsContactModalOpen(true)
+          text: 'View Open Positions',
+          type: 'link',
+          href: '/careers#positions'
         }}
-      />
+        />
+      )}
 
       <ContactFormModal 
         isOpen={isContactModalOpen} 

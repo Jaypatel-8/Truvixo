@@ -57,13 +57,12 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   const services = useMemo(() => 
@@ -96,21 +95,25 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
     }), [realEstateData.processSteps]
   )
 
-  const industries = realEstateData.industries.map((industry: { name: string; iconName: string; color: string }) => {
-    const IconComponent = getIcon(industry.iconName)
-    return {
-      ...industry,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const industries = useMemo(() => 
+    realEstateData.industries.map((industry: { name: string; iconName: string; color: string }) => {
+      const IconComponent = getIcon(industry.iconName)
+      return {
+        ...industry,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [realEstateData.industries]
+  )
 
-  const benefits = realEstateData.benefits.map((benefit: { iconName: string; title: string; description: string; color: string }) => {
-    const IconComponent = getIcon(benefit.iconName)
-    return {
-      ...benefit,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const benefits = useMemo(() => 
+    realEstateData.benefits.map((benefit: { iconName: string; title: string; description: string; color: string }) => {
+      const IconComponent = getIcon(benefit.iconName)
+      return {
+        ...benefit,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [realEstateData.benefits]
+  )
 
   const previewServices = realEstateData.services.slice(0, 4).map((service: { title: string; description: string; iconName: string; color: string }) => {
     const IconComponent = getIcon(service.iconName)
@@ -124,7 +127,6 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
 
   return (
     <>
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -186,7 +188,6 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
 
       {isMounted && <div className="mt-12"><Clientele /></div>}
 
-      {/* Services Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -234,7 +235,6 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
         </div>
       </section>
 
-      {/* Why Choose Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -282,7 +282,6 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
         </div>
       </section>
 
-      {/* Industries Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -322,7 +321,6 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -374,7 +372,8 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
         description={realEstateData.cta.description}
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',

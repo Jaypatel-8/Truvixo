@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import CROClient from './CROClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { croData } from '@/lib/staticData/services/cro'

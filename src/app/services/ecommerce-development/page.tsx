@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import EcommerceClient from './EcommerceClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { ecommerceDevelopmentData } from '@/lib/staticData/services/ecommerce-development'

@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import LegacyClient from './LegacyClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { legacyAppModernizationData } from '@/lib/staticData/services/legacy-app-modernization'

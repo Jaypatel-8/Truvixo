@@ -55,13 +55,12 @@ export default function WebApplicationClient({ faqs, webAppData }: WebApplicatio
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   const services = useMemo(() => 
@@ -94,35 +93,40 @@ export default function WebApplicationClient({ faqs, webAppData }: WebApplicatio
     }), [webAppData.processSteps]
   )
 
-  const industries = webAppData.industries.map(industry => {
-    const IconComponent = getIcon(industry.iconName)
-    return {
-      ...industry,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const industries = useMemo(() => 
+    webAppData.industries.map(industry => {
+      const IconComponent = getIcon(industry.iconName)
+      return {
+        ...industry,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [webAppData.industries]
+  )
 
-  const benefits = webAppData.benefits.map(benefit => {
-    const IconComponent = getIcon(benefit.iconName)
-    return {
-      ...benefit,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const benefits = useMemo(() => 
+    webAppData.benefits.map(benefit => {
+      const IconComponent = getIcon(benefit.iconName)
+      return {
+        ...benefit,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [webAppData.benefits]
+  )
 
-  const highlights = webAppData.hero.highlights.map(highlight => {
-    const iconName = (highlight as any).icon || (highlight as any).iconName || 'Zap'
-    const IconComponent = getIcon(iconName)
-    return {
-      ...highlight,
-      icon: IconComponent ? <IconComponent className="w-5 h-5" strokeWidth={2} /> : null,
-      iconName: iconName
-    }
-  })
+  const highlights = useMemo(() => 
+    webAppData.hero.highlights.map(highlight => {
+      const iconName = (highlight as any).icon || (highlight as any).iconName || 'Zap'
+      const IconComponent = getIcon(iconName)
+      return {
+        ...highlight,
+        icon: IconComponent ? <IconComponent className="w-5 h-5" strokeWidth={2} /> : null,
+        iconName: iconName
+      }
+    }), [webAppData.hero.highlights]
+  )
 
   return (
     <>
-      {/* Hero Section */}
       <section className="relative min-h-[70vh] bg-white flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 overflow-hidden opacity-[0.02]">
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -178,20 +182,13 @@ export default function WebApplicationClient({ faqs, webAppData }: WebApplicatio
               })}
             </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
+              <a
+                href="/contact?service=web-application-development"
                 className="bg-[#5e2cb6] text-white font-semibold py-4 px-10 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/20"
               >
                 <Calendar className="w-5 h-5" strokeWidth={2} />
                 <span>Get a Quote</span>
-              </button>
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-10 rounded-lg hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-              >
-                <span>Contact Us</span>
-                <ArrowRight className="w-5 h-5" strokeWidth={2} />
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -199,7 +196,6 @@ export default function WebApplicationClient({ faqs, webAppData }: WebApplicatio
 
       {isMounted && <Clientele />}
 
-      {/* Services Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -235,7 +231,6 @@ export default function WebApplicationClient({ faqs, webAppData }: WebApplicatio
         </div>
       </section>
 
-      {/* Why Choose Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -271,7 +266,6 @@ export default function WebApplicationClient({ faqs, webAppData }: WebApplicatio
         </div>
       </section>
 
-      {/* Industries Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -345,7 +339,6 @@ export default function WebApplicationClient({ faqs, webAppData }: WebApplicatio
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -427,7 +420,6 @@ export default function WebApplicationClient({ faqs, webAppData }: WebApplicatio
       {/* FAQs */}
       <FAQDropdown faqs={faqs} />
 
-      {/* Contact Section */}
       <ContactSection 
         title={webAppData.contact.title}
         description={webAppData.contact.description}
@@ -448,11 +440,13 @@ export default function WebApplicationClient({ faqs, webAppData }: WebApplicatio
         description={webAppData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
-          text: 'Schedule Consultation',
-          onClick: () => setIsContactModalOpen(true)
+          text: 'Get a Quote',
+          type: 'link',
+          href: '/contact?service=web-application-development'
         }}
       />
 

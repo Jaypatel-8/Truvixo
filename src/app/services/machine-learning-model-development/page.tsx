@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import MLClient from './MLClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { machineLearningModelDevelopmentData } from '@/lib/staticData/services/machine-learning-model-development'

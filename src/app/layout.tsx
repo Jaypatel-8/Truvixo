@@ -3,28 +3,12 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import dynamic from 'next/dynamic'
 
-// Import components directly to avoid chunk loading issues
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-// Lazy load non-critical components
-const Clientele = dynamic(() => import('@/components/Clientele'), {
-  ssr: false,
-})
+
 const GoToTop = dynamic(() => import('@/components/GoToTop'), {
   ssr: false,
 })
-// ContactPopup removed - no longer showing on page load
-// const ContactPopup = dynamic(() => import('@/components/ContactPopup'), {
-//   ssr: false,
-// })
-// PageLoader removed - pages now load directly without loader
-// const PageLoader = dynamic(() => import('@/components/PageLoader'), {
-//   ssr: false,
-// })
-// PageTransition temporarily removed to fix error component issue
-// const PageTransition = dynamic(() => import('@/components/PageTransition'), {
-//   ssr: false,
-// })
 
 const inter = Inter({ 
   subsets: ['latin'],

@@ -119,8 +119,7 @@ export default function HomeClient({
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
       threshold: 0.01,
     rootMargin: '50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
@@ -128,8 +127,7 @@ export default function HomeClient({
     useIdleCallback: true,
   })
 
-  // Memoized data transformations - only recalculate when data changes
-  const servicesList = useMemo(() => 
+    const servicesList = useMemo(() => 
     homeServicesList.map(service => {
       const IconComponent = getIconComponent(service.iconName)
       return {

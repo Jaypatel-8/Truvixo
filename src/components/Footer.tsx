@@ -1,3 +1,4 @@
+// Server Component - No client-side interactivity needed
 import { Linkedin, Mail, MessageSquare, Phone } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'

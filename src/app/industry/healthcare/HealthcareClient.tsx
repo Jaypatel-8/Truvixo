@@ -55,13 +55,12 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   const services = useMemo(() => 
@@ -94,35 +93,45 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
     }), [healthcareData.processSteps]
   )
 
-  const industries = (healthcareData.industries || []).map(industry => {
-    const IconComponent = getIcon(industry.iconName)
-    return {
-      ...industry,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const industries = useMemo(() => 
+    (healthcareData.industries || []).map(industry => {
+      const IconComponent = getIcon(industry.iconName)
+      return {
+        ...industry,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [healthcareData.industries]
+  )
 
-  const benefits = (healthcareData.benefits || []).map(benefit => {
-    const IconComponent = getIcon(benefit.iconName)
-    return {
-      ...benefit,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const benefits = useMemo(() => 
+    (healthcareData.benefits || []).map(benefit => {
+      const IconComponent = getIcon(benefit.iconName)
+      return {
+        ...benefit,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [healthcareData.benefits]
+  )
 
-  const previewServices = (healthcareData.services || []).slice(0, 4).map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const previewServices = useMemo(() => 
+    (healthcareData.services || []).slice(0, 4).map(service => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [healthcareData.services]
+  )
 
-  const BadgeIcon = healthcareData.hero.badge?.iconName ? getIcon(healthcareData.hero.badge.iconName) : null
+  const BadgeIcon = useMemo(() => {
+    if (healthcareData.hero.badge?.iconName) {
+      return getIcon(healthcareData.hero.badge.iconName)
+    }
+    return null
+  }, [healthcareData.hero.badge])
 
   return (
     <>
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -186,7 +195,6 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
 
       {isMounted && <div className="mt-12"><Clientele /></div>}
 
-      {/* Services Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -234,7 +242,6 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
         </div>
       </section>
 
-      {/* Why Choose Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -282,7 +289,6 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
         </div>
       </section>
 
-      {/* Industries Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -322,7 +328,6 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -362,23 +367,28 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      {healthcareData.contactTitle && healthcareData.contactDescription && <ContactSection 
-        title={healthcareData.contactTitle}
-        description={healthcareData.contactDescription}
-      />}
-      {healthcareData.getQuoteTitle && healthcareData.getQuoteHollowText && healthcareData.getQuoteDescription && <GetQuoteSection
-        title={healthcareData.getQuoteTitle}
-        hollowText={healthcareData.getQuoteHollowText}
-        description={healthcareData.getQuoteDescription}
-        primaryCTA={{
-          text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
-        }}
-        secondaryCTA={{
-          text: 'Schedule Consultation',
-          onClick: () => setIsContactModalOpen(true)
-        }}
-      />
+      {healthcareData.contactTitle && healthcareData.contactDescription && (
+        <ContactSection 
+          title={healthcareData.contactTitle}
+          description={healthcareData.contactDescription}
+        />
+      )}
+      {healthcareData.getQuoteTitle && healthcareData.getQuoteHollowText && healthcareData.getQuoteDescription && (
+        <GetQuoteSection
+          title={healthcareData.getQuoteTitle}
+          hollowText={healthcareData.getQuoteHollowText}
+          description={healthcareData.getQuoteDescription}
+          primaryCTA={{
+            text: 'Call Us',
+            type: 'tel',
+            href: '+916354326412'
+          }}
+          secondaryCTA={{
+            text: 'Schedule Consultation',
+            onClick: () => setIsContactModalOpen(true)
+          }}
+        />
+      )}
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 

@@ -14,8 +14,7 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
 export default function FrontendTechnologies() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
@@ -272,7 +271,8 @@ export default function FrontendTechnologies() {
         description="Get in touch and let's discuss how we can help transform your business with modern frontend technologies."
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',

@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import RealEstateClient from './RealEstateClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { realEstateIndustryData } from '@/lib/staticData/industry/real-estate'

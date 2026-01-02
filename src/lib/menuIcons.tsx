@@ -1,5 +1,4 @@
-'use client'
-
+// Server-safe menu icons - no client-side code needed
 import { ReactNode } from 'react'
 import { getIconComponent } from './utils/iconMapper'
 import { ArrowRight } from 'lucide-react'

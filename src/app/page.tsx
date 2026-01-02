@@ -1,4 +1,3 @@
-// Server Component - imports static data and passes to Client Component
 import HomeClient from './HomeClient'
 import { homeTechnologies, homeServicesList, homeWhyChooseUs, homeTestimonials, homeFAQs, homeFeaturedProjects } from '@/lib/staticData/home'
 

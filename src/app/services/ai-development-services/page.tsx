@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and passes to Client Component
 import AIDevelopmentClient from './AIDevelopmentClient'
 import { getFAQsForPage } from '@/lib/pageData'
 

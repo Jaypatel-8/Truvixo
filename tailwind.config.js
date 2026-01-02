@@ -2,9 +2,9 @@
 module.exports = {
   darkMode: 'class',
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    // Exclude pages directory if not used (Next.js 14 uses app directory)
   ],
   theme: {
     extend: {

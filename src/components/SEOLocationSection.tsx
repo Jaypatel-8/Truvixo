@@ -1,5 +1,4 @@
-'use client'
-
+// Server Component - Static content only
 import { MapPin, Globe, Award, TrendingUp } from 'lucide-react'
 
 interface SEOLocationSectionProps {

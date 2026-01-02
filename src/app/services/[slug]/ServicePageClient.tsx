@@ -18,7 +18,6 @@ const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), 
 export default function ServicePageClient({ slug }: { slug: string }) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
-  // Get service name from slug
   const serviceNameMap: Record<string, string> = {
     'custom-software-development': 'Custom Software Development',
     'ai-development-services': 'AI Development Services',
@@ -45,7 +44,6 @@ export default function ServicePageClient({ slug }: { slug: string }) {
     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ')
 
-  // Use custom hook for IntersectionObserver-based scroll animations
   useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',

@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import EmailMarketingClient from './EmailMarketingClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { emailMarketingData } from '@/lib/staticData/services/email-marketing'

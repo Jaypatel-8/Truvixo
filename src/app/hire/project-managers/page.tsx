@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import ProjectManagersClient from './ProjectManagersClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { projectManagersData } from '@/lib/staticData/hire/project-managers'

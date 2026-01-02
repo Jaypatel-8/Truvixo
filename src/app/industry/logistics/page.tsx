@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import LogisticsClient from './LogisticsClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { logisticsData } from '@/lib/staticData/industry/logistics'

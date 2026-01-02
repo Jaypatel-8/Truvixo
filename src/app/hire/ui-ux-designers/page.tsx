@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import UIUXDesignersClient from './UIUXDesignersClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { uiUxDesignersData } from '@/lib/staticData/hire/ui-ux-designers'

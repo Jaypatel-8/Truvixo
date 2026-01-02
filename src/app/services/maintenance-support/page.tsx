@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import MaintenanceClient from './MaintenanceClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { maintenanceSupportData } from '@/lib/staticData/services/maintenance-support'

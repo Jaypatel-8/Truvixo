@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import PPCClient from './PPCClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { ppcData } from '@/lib/staticData/services/ppc'

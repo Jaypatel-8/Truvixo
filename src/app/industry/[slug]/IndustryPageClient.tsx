@@ -75,7 +75,8 @@ export default function IndustryPageClient({ slug }: { slug: string }) {
         description="Get in touch and let's discuss how we can help transform your business with industry-specific software solutions."
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',

@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import AIMLEngineersClient from './AIMLEngineersClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { aiMlEngineersData } from '@/lib/staticData/hire/ai-ml-engineers'

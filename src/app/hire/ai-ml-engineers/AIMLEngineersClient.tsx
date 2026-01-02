@@ -13,11 +13,11 @@ interface AIMLEngineersClientProps {
 
 export default function AIMLEngineersClient({ faqs, aiMlEngineersData }: AIMLEngineersClientProps) {
   // Convert icon names to ReactNode icons
-  const BadgeIcon = getIconComponent(aiMlEngineersData.hero.badge.iconName) || Code
+  const BadgeIcon = getIconComponent(aiMlEngineersData.hero.badge?.iconName || 'Code') || Code
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
   const services = useMemo(() => 
-    aiMlEngineersData.services.map(service => {
+    (aiMlEngineersData.services || []).map((service: { iconName: string; title: string; description: string; color: string }) => {
       const IconComponent = getIconComponent(service.iconName) || Code
       return {
         ...service,
@@ -27,7 +27,7 @@ export default function AIMLEngineersClient({ faqs, aiMlEngineersData }: AIMLEng
   )
 
   const whyChooseUs = useMemo(() => 
-    aiMlEngineersData.whyChooseUs.map(item => {
+    (aiMlEngineersData.whyChooseUs || []).map((item: { iconName: string; title: string; description: string; color: string }) => {
       const IconComponent = getIconComponent(item.iconName) || Code
       return {
         ...item,
@@ -37,7 +37,7 @@ export default function AIMLEngineersClient({ faqs, aiMlEngineersData }: AIMLEng
   )
 
   const industries = useMemo(() => 
-    aiMlEngineersData.industries.map(industry => {
+    (aiMlEngineersData.industries || []).map((industry: { iconName: string; name: string; color: string }) => {
       const IconComponent = getIconComponent(industry.iconName) || Building2
       return {
         ...industry,
@@ -47,7 +47,7 @@ export default function AIMLEngineersClient({ faqs, aiMlEngineersData }: AIMLEng
   )
 
   const processSteps = useMemo(() => 
-    aiMlEngineersData.processSteps.map(step => {
+    (aiMlEngineersData.processSteps || []).map((step: { iconName: string; title: string; description: string }) => {
       const IconComponent = getIconComponent(step.iconName) || Target
       return {
         ...step,
@@ -58,10 +58,10 @@ export default function AIMLEngineersClient({ faqs, aiMlEngineersData }: AIMLEng
 
   return (
     <PageTemplate
-      badge={{
+      badge={aiMlEngineersData.hero.badge ? {
         icon: badgeIcon,
         text: aiMlEngineersData.hero.badge.text
-      }}
+      } : undefined}
       title={aiMlEngineersData.hero.title}
       hollowText={aiMlEngineersData.hero.hollowText}
       description={aiMlEngineersData.hero.description}
@@ -72,7 +72,7 @@ export default function AIMLEngineersClient({ faqs, aiMlEngineersData }: AIMLEng
       whyChooseTitle={aiMlEngineersData.whyChooseTitle}
       whyChooseHollowText={aiMlEngineersData.whyChooseHollowText}
       industries={industries}
-      technologies={[...aiMlEngineersData.technologies]}
+      technologies={aiMlEngineersData.technologies ? (aiMlEngineersData.technologies as any) : []}
       getQuoteTitle={aiMlEngineersData.getQuoteTitle}
       getQuoteHollowText={aiMlEngineersData.getQuoteHollowText}
       getQuoteDescription={aiMlEngineersData.getQuoteDescription}

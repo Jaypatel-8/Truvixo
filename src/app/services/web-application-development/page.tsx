@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import WebApplicationClient from './WebApplicationClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { webApplicationDevelopmentData } from '@/lib/staticData/services/web-application-development'

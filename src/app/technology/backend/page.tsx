@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import BackendClient from './BackendClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { frontendTechnologyData } from '@/lib/staticData/technology/frontend'

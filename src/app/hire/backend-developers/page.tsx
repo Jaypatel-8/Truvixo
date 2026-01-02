@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import BackendDevelopersClient from './BackendDevelopersClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { backendDevelopersData } from '@/lib/staticData/hire/backend-developers'

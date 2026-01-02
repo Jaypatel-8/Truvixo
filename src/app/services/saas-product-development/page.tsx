@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import SaaSClient from './SaaSClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { saasProductDevelopmentData } from '@/lib/staticData/services/saas-product-development'

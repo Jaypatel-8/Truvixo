@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import APIClient from './APIClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { apiDevelopmentIntegrationData } from '@/lib/staticData/services/api-development-integration'

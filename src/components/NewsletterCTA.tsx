@@ -40,13 +40,13 @@ export default function NewsletterCTA({ onContactClick, className = '' }: Newsle
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <button
-                onClick={onContactClick}
+              <a
+                href="tel:+916354326412"
                 className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-lg hover:bg-[#d97706] hover:text-[#5e2cb6] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
               >
                 <Phone className="w-5 h-5" />
                 <span>Call Us</span>
-              </button>
+              </a>
               <button
                 onClick={onContactClick}
                 className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-lg hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"

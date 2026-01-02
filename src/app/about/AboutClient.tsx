@@ -53,13 +53,12 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   // Transform data with icons
@@ -92,7 +91,6 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
   return (
     <main className="min-h-screen bg-gray-50 overflow-hidden">
 
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -300,7 +298,6 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
         </div>
       </section>
 
-      {/* Industries Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -357,13 +354,13 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
               Get in touch and let's discuss how we can help transform your business with our comprehensive solutions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
+              <a
+                href="tel:+916354326412"
                 className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
               >
                 <Phone className="w-5 h-5" strokeWidth={2} />
                 <span>Call Us</span>
-              </button>
+              </a>
               <button 
                 onClick={() => setIsContactModalOpen(true)}
                 className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-xl hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
@@ -386,7 +383,6 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -536,7 +532,6 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
         </div>
       </section>
 
-      {/* Technologies Section */}
       <Technologies technologies={[
         { name: 'React', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'frontend' as const },
         { name: 'Next.js', logo: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg', color: '#000000', category: 'frontend' as const },
@@ -588,11 +583,9 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
         ]}
       />
 
-      {/* FAQs Section */}
       <FAQDropdown faqs={faqs} />
 
       {/* SEO Location Section */}
-      {/* Contact Section */}
       <ContactSection 
         title="Get in Touch"
         description="Have a project in mind? Let's discuss how we can help transform your business with our comprehensive solutions."

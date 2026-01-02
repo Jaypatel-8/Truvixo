@@ -55,13 +55,12 @@ export default function CROClient({ faqs, croData }: CROClientProps) {
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   const services = useMemo(() => 
@@ -94,35 +93,45 @@ export default function CROClient({ faqs, croData }: CROClientProps) {
     }), [croData.processSteps]
   )
 
-  const industries = (croData.industries || []).map(industry => {
-    const IconComponent = getIcon(industry.iconName)
-    return {
-      ...industry,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const industries = useMemo(() => 
+    (croData.industries || []).map(industry => {
+      const IconComponent = getIcon(industry.iconName)
+      return {
+        ...industry,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [croData.industries]
+  )
 
-  const benefits = (croData.benefits || []).map(benefit => {
-    const IconComponent = getIcon(benefit.iconName)
-    return {
-      ...benefit,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const benefits = useMemo(() => 
+    (croData.benefits || []).map(benefit => {
+      const IconComponent = getIcon(benefit.iconName)
+      return {
+        ...benefit,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [croData.benefits]
+  )
 
-  const previewServices = (croData.services || []).slice(0, 4).map(service => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const previewServices = useMemo(() => 
+    (croData.services || []).slice(0, 4).map(service => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [croData.services]
+  )
 
-  const BadgeIcon = croData.hero.badge?.iconName ? getIcon(croData.hero.badge.iconName) : null
+  const BadgeIcon = useMemo(() => {
+    if (croData.hero.badge?.iconName) {
+      return getIcon(croData.hero.badge.iconName)
+    }
+    return null
+  }, [croData.hero.badge])
 
   return (
     <>
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -148,20 +157,13 @@ export default function CROClient({ faqs, croData }: CROClientProps) {
                 {croData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
-                <button 
-                  onClick={() => setIsContactModalOpen(true)}
+                <a
+                  href="/contact?service=cro"
                   className="bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
                 >
                   <Calendar className="w-5 h-5" strokeWidth={2} />
                   <span>Get a Quote</span>
-                </button>
-                <button 
-                  onClick={() => setIsContactModalOpen(true)}
-                  className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-                >
-                  <span>Contact Us</span>
-                  <ArrowRight className="w-5 h-5" strokeWidth={2} />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -186,7 +188,6 @@ export default function CROClient({ faqs, croData }: CROClientProps) {
 
       {isMounted && <div className="mt-12"><Clientele /></div>}
 
-      {/* Services Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -234,7 +235,6 @@ export default function CROClient({ faqs, croData }: CROClientProps) {
         </div>
       </section>
 
-      {/* Why Choose Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -282,7 +282,6 @@ export default function CROClient({ faqs, croData }: CROClientProps) {
         </div>
       </section>
 
-      {/* Industries Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -322,7 +321,6 @@ export default function CROClient({ faqs, croData }: CROClientProps) {
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -399,23 +397,29 @@ export default function CROClient({ faqs, croData }: CROClientProps) {
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      {croData.contact && <ContactSection 
-        title={croData.contact.title}
-        description={croData.contact.description}
-      />}
-      {croData.getQuote && <GetQuoteSection
-        title={croData.getQuote.title}
-        hollowText={croData.getQuote.hollowText}
-        description={croData.getQuote.description}
-        primaryCTA={{
-          text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
-        }}
-        secondaryCTA={{
-          text: 'Schedule Consultation',
-          onClick: () => setIsContactModalOpen(true)
-        }}
-      />
+      {croData.contact && (
+        <ContactSection 
+          title={croData.contact.title}
+          description={croData.contact.description}
+        />
+      )}
+      {croData.getQuote && (
+        <GetQuoteSection
+          title={croData.getQuote.title}
+          hollowText={croData.getQuote.hollowText}
+          description={croData.getQuote.description}
+          primaryCTA={{
+            text: 'Call Us',
+            type: 'tel',
+            href: '+916354326412'
+          }}
+          secondaryCTA={{
+            text: 'Get a Quote',
+            type: 'link',
+            href: '/contact?service=cro'
+          }}
+        />
+      )}
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 

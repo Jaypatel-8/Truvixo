@@ -57,13 +57,12 @@ export default function PerformanceMarketingClient({ faqs, performanceMarketingD
     setIsMounted(true)
   }, [])
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   const services = useMemo(() => 
@@ -96,21 +95,25 @@ export default function PerformanceMarketingClient({ faqs, performanceMarketingD
     }), [performanceMarketingData.processSteps]
   )
 
-  const industries = performanceMarketingData.industries.map(industry => {
-    const IconComponent = getIcon(industry.iconName)
-    return {
-      ...industry,
-      icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
-    }
-  })
+  const industries = useMemo(() => 
+    performanceMarketingData.industries.map(industry => {
+      const IconComponent = getIcon(industry.iconName)
+      return {
+        ...industry,
+        icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
+      }
+    }), [performanceMarketingData.industries]
+  )
 
-  const benefits = performanceMarketingData.benefits.map(benefit => {
-    const IconComponent = getIcon(benefit.iconName)
-    return {
-      ...benefit,
-      icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
-    }
-  })
+  const benefits = useMemo(() => 
+    performanceMarketingData.benefits.map(benefit => {
+      const IconComponent = getIcon(benefit.iconName)
+      return {
+        ...benefit,
+        icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
+      }
+    }), [performanceMarketingData.benefits]
+  )
 
   const previewServices = performanceMarketingData.services.slice(0, 4).map(service => {
     const IconComponent = getIcon(service.iconName)
@@ -124,7 +127,6 @@ export default function PerformanceMarketingClient({ faqs, performanceMarketingD
 
   return (
     <>
-      {/* Hero Section */}
       <section className="relative min-h-[85vh] bg-white flex items-center justify-center overflow-hidden pt-24">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#5e2cb6]/5 rounded-full blur-3xl"></div>
@@ -148,20 +150,13 @@ export default function PerformanceMarketingClient({ faqs, performanceMarketingD
                 {performanceMarketingData.hero.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
-                <button 
-                  onClick={() => setIsContactModalOpen(true)}
+                <a
+                  href="/contact?service=performance-marketing"
                   className="bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
                 >
                   <Calendar className="w-5 h-5" strokeWidth={2} />
                   <span>Get a Quote</span>
-                </button>
-                <button 
-                  onClick={() => setIsContactModalOpen(true)}
-                  className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-                >
-                  <span>Contact Us</span>
-                  <ArrowRight className="w-5 h-5" strokeWidth={2} />
-                </button>
+                </a>
               </div>
             </div>
 
@@ -186,7 +181,6 @@ export default function PerformanceMarketingClient({ faqs, performanceMarketingD
 
       {isMounted && <div className="mt-12"><Clientele /></div>}
 
-      {/* Services Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -234,7 +228,6 @@ export default function PerformanceMarketingClient({ faqs, performanceMarketingD
         </div>
       </section>
 
-      {/* Why Choose Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -282,7 +275,6 @@ export default function PerformanceMarketingClient({ faqs, performanceMarketingD
         </div>
       </section>
 
-      {/* Industries Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -322,7 +314,6 @@ export default function PerformanceMarketingClient({ faqs, performanceMarketingD
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -409,11 +400,13 @@ export default function PerformanceMarketingClient({ faqs, performanceMarketingD
         description={performanceMarketingData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
-          text: 'Schedule Consultation',
-          onClick: () => setIsContactModalOpen(true)
+          text: 'Get a Quote',
+          type: 'link',
+          href: '/contact?service=performance-marketing'
         }}
       />
       <ContactFormModal 

@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and passes to Client Component
 import EnterpriseSoftwareClient from './EnterpriseSoftwareClient'
 import { getFAQsForPage } from '@/lib/pageData'
 

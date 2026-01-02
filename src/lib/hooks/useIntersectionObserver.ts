@@ -19,7 +19,7 @@ export function useIntersectionObserver({
   rootMargin = '0px 0px -50px 0px',
   selectors = ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
   unobserveAfterIntersect = false,
-  useIdleCallback = false,
+  useIdleCallback = true, // Default to true for better navigation performance
 }: UseIntersectionObserverOptions = {}) {
   const observerRef = useRef<IntersectionObserver | null>(null)
   const elementsRef = useRef<NodeListOf<Element> | null>(null)
@@ -98,11 +98,15 @@ export function useIntersectionObserver({
     }
 
     // Use requestIdleCallback for non-critical animations (if enabled)
-    if (useIdleCallback && 'requestIdleCallback' in window) {
-      requestIdleCallback(initObserver, { timeout: 100 })
+    // Default to using idle callback for better performance
+    if (useIdleCallback !== false && 'requestIdleCallback' in window) {
+      requestIdleCallback(initObserver, { timeout: 200 })
+    } else if ('requestIdleCallback' in window) {
+      // Even if not explicitly enabled, use idle callback for better performance
+      requestIdleCallback(initObserver, { timeout: 300 })
     } else {
-      // Use setTimeout for immediate initialization or fallback
-      setTimeout(initObserver, 0)
+      // Use setTimeout with delay to avoid blocking initial render
+      setTimeout(initObserver, 100)
     }
 
     return () => {

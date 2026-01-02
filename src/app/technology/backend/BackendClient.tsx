@@ -26,13 +26,12 @@ interface BackendClientProps {
 export default function BackendClient({ faqs, backendTechnologyData }: BackendClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
-  // Use custom hook for IntersectionObserver-based scroll animations
-  useIntersectionObserver({
+    useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: false,
+    useIdleCallback: true,
   })
 
   const technologies = useMemo(() => 
@@ -239,7 +238,8 @@ export default function BackendClient({ faqs, backendTechnologyData }: BackendCl
         description="Get in touch and let's discuss how we can help you build scalable, secure backend solutions."
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',

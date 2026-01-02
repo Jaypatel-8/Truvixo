@@ -24,15 +24,28 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'swiper'],
     // Optimize route loading
     optimizeCss: false, // Disabled for static export
+    // Reduce module graph size
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
+    // Enable partial prerendering for faster navigation
+    ppr: false, // Disabled for static export
+  },
+  
+  // Compiler optimizations
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
   },
   
   // Route optimization - enable faster navigation (dev mode only)
   ...(process.env.NODE_ENV === 'development' && {
     onDemandEntries: {
       // Period (in ms) where the server will keep pages in the buffer
-      maxInactiveAge: 25 * 1000,
+      maxInactiveAge: 60 * 1000, // Increased to 60s for better prefetching
       // Number of pages that should be kept simultaneously without being disposed
-      pagesBufferLength: 2,
+      pagesBufferLength: 5, // Increased to 5 for better navigation performance
     },
   }),
   

@@ -1,4 +1,3 @@
-// Server Component - imports FAQs and static data, passes to Client Component
 import FintechClient from './FintechClient'
 import { getFAQsForPage } from '@/lib/pageData'
 import { fintechData } from '@/lib/staticData/industry/fintech'
