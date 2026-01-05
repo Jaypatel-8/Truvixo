@@ -146,6 +146,9 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
     <div 
       className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
       onClick={handleBackdropClick}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
       style={{ 
         position: 'fixed',
         top: 0,
@@ -158,21 +161,23 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
       <div 
         className="bg-white rounded-3xl max-w-2xl w-full p-8 md:p-12 shadow-2xl max-h-[90vh] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
+        role="document"
         style={{ 
           position: 'relative',
           zIndex: 10000
         }}
       >
         <div className="flex justify-between items-center mb-8">
-          <h3 className="text-3xl font-bold text-gray-900">
+          <h3 id="modal-title" className="text-3xl font-bold text-gray-900">
             Get Started with{' '}
             <span className="hollow-text-brand">TruVixo</span>
           </h3>
           <button
             onClick={handleClose}
             className="text-gray-400 hover:text-gray-600 transition-colors duration-200 p-2 hover:bg-gray-100 rounded-full"
+            aria-label="Close contact form"
           >
-            <X className="w-6 h-6" />
+            <X className="w-6 h-6" aria-hidden="true" />
           </button>
         </div>
         
@@ -295,6 +300,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
               type="button"
               onClick={handleClose}
               className="flex-1 px-4 py-3 border border-gray-300 rounded-xl text-gray-700 hover:bg-gray-50 transition-colors duration-200 font-medium"
+              aria-label="Close form"
             >
               Close
             </button>
@@ -302,16 +308,18 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
               type="submit"
               disabled={isSubmitting}
               className="flex-1 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-8 rounded-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+              aria-label={isSubmitting ? "Sending message" : "Send message"}
+              aria-busy={isSubmitting}
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
-                  Sending...
+                  <Loader2 className="w-5 h-5 animate-spin" aria-hidden="true" />
+                  <span>Sending...</span>
                 </>
               ) : (
                 <>
-                  <Send className="w-5 h-5" />
-                  Send Message
+                  <Send className="w-5 h-5" aria-hidden="true" />
+                  <span>Send Message</span>
                 </>
               )}
             </button>

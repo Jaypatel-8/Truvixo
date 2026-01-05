@@ -35,9 +35,10 @@ export default function PageLoader() {
     // Function to check if we can hide the loader
     const checkAndHide = () => {
       if (progressRef.current >= 100 && document.readyState === 'complete' && !isCompleteRef.current) {
+        // Reduced delay for faster navigation
         setTimeout(() => {
         stopLoading()
-      }, 300)
+      }, 100)
     }
   }
 

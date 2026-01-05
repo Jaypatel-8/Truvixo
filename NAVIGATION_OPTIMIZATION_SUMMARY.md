@@ -72,3 +72,4 @@ Use Next.js route groups to share common code between similar pages.
 - Subsequent navigations should be faster (warm cache)
 - Consider using `next build` and `next start` for accurate performance testing
 
+

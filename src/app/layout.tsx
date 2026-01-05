@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ErrorBoundary from '@/components/ErrorBoundary'
 
 const GoToTop = dynamic(() => import('@/components/GoToTop'), {
   ssr: false,
@@ -198,11 +199,17 @@ export default function RootLayout({
         {/* Route Prefetching - Non-blocking, prioritized for faster navigation */}
         <link rel="prefetch" href="/contact/" as="document" />
         <link rel="prefetch" href="/services/" as="document" />
+        <link rel="prefetch" href="/services/seo/" as="document" />
+        <link rel="prefetch" href="/services/ppc/" as="document" />
+        <link rel="prefetch" href="/services/smm/" as="document" />
         <link rel="prefetch" href="/our-work/" as="document" />
         <link rel="prefetch" href="/about/" as="document" />
+        <link rel="prefetch" href="/careers/" as="document" />
         <link rel="prefetch" href="/hire/" as="document" />
         <link rel="prefetch" href="/technology/" as="document" />
         <link rel="prefetch" href="/industry/" as="document" />
+        <link rel="prefetch" href="/industry/healthcare/" as="document" />
+        <link rel="prefetch" href="/industry/fintech/" as="document" />
         {/* Prefetch critical CSS chunks */}
         <link rel="prefetch" href="/_next/static/css/app/layout.css" as="style" />
         <link rel="icon" href="/TruVixo logo.png" type="image/png" />
@@ -417,13 +424,14 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        {/* PageTransition temporarily removed */}
-        <Navbar />
-        <main>
-          {children}
-        </main>
-        <Footer />
-        <GoToTop />
+        <ErrorBoundary>
+          <Navbar />
+          <main>
+            {children}
+          </main>
+          <Footer />
+          <GoToTop />
+        </ErrorBoundary>
         {/* ContactPopup removed - no longer showing on page load */}
         {/* Global Structured Data for SEO */}
         <script

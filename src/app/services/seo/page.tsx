@@ -11,7 +11,7 @@ const SEOClient = dynamic(() => import('./SEOClient'), {
       </div>
     </main>
   ),
-  ssr: true,
+  ssr: false,
 })
 
 export default function SEO() {

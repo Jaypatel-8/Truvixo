@@ -202,9 +202,16 @@ const Navbar = memo(() => {
                     e.preventDefault()
                     handleDropdownToggle('services')
                   }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      handleDropdownToggle('services')
+                    }
+                  }}
                   className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
                   aria-label="Services menu"
                   aria-expanded={servicesOpen}
+                  aria-haspopup="true"
                 >
                   SERVICES
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -276,9 +283,16 @@ const Navbar = memo(() => {
                     e.preventDefault()
                     handleDropdownToggle('ai')
                   }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      handleDropdownToggle('ai')
+                    }
+                  }}
                   className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
                   aria-label="AI services menu"
                   aria-expanded={aiOpen}
+                  aria-haspopup="true"
                 >
                   AI
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${aiOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -311,9 +325,16 @@ const Navbar = memo(() => {
                     e.preventDefault()
                     handleDropdownToggle('hire')
                   }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      handleDropdownToggle('hire')
+                    }
+                  }}
                   className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
                   aria-label="Hire developers menu"
                   aria-expanded={hireOpen}
+                  aria-haspopup="true"
                 >
                   HIRE
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${hireOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -346,9 +367,16 @@ const Navbar = memo(() => {
                     e.preventDefault()
                     handleDropdownToggle('industry')
                   }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      handleDropdownToggle('industry')
+                    }
+                  }}
                   className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
                   aria-label="Industry solutions menu"
                   aria-expanded={industryOpen}
+                  aria-haspopup="true"
                 >
                   INDUSTRY
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${industryOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -381,9 +409,16 @@ const Navbar = memo(() => {
                     e.preventDefault()
                     handleDropdownToggle('company')
                   }}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      handleDropdownToggle('company')
+                    }
+                  }}
                   className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
                   aria-label="Company information menu"
                   aria-expanded={companyOpen}
+                  aria-haspopup="true"
                 >
                   COMPANY
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${companyOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -420,9 +455,16 @@ const Navbar = memo(() => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setIsOpen(!isOpen)
+                }
+              }}
               className="lg:hidden p-2 text-gray-900 hover:text-black transition-colors duration-300"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -433,7 +475,10 @@ const Navbar = memo(() => {
       {/* Mobile Menu */}
       {isOpen && (
         <div
+          id="mobile-menu"
           className="lg:hidden fixed inset-0 top-20 z-40 bg-white overflow-y-auto"
+          role="menu"
+          aria-label="Mobile navigation menu"
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
             <div className="space-y-4">
@@ -441,9 +486,16 @@ const Navbar = memo(() => {
               <div className="border-b border-gray-200 pb-4">
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      setMobileServicesOpen(!mobileServicesOpen)
+                    }
+                  }}
                   className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
                   aria-label="Services menu"
                   aria-expanded={mobileServicesOpen}
+                  aria-haspopup="true"
                 >
                   SERVICES
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -485,9 +537,16 @@ const Navbar = memo(() => {
               <div className="border-b border-gray-200 pb-4">
                 <button
                   onClick={() => setMobileAiOpen(!mobileAiOpen)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      setMobileAiOpen(!mobileAiOpen)
+                    }
+                  }}
                   className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
                   aria-label="AI services menu"
                   aria-expanded={mobileAiOpen}
+                  aria-haspopup="true"
                 >
                   AI
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileAiOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -555,9 +614,16 @@ const Navbar = memo(() => {
               <div className="border-b border-gray-200 pb-4">
                 <button
                   onClick={() => setMobileIndustryOpen(!mobileIndustryOpen)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      setMobileIndustryOpen(!mobileIndustryOpen)
+                    }
+                  }}
                   className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
                   aria-label="Industry solutions menu"
                   aria-expanded={mobileIndustryOpen}
+                  aria-haspopup="true"
                 >
                   INDUSTRY
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileIndustryOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -590,9 +656,16 @@ const Navbar = memo(() => {
               <div className="border-b border-gray-200 pb-4">
                 <button
                   onClick={() => setMobileCompanyOpen(!mobileCompanyOpen)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      setMobileCompanyOpen(!mobileCompanyOpen)
+                    }
+                  }}
                   className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
                   aria-label="Company information menu"
                   aria-expanded={mobileCompanyOpen}
+                  aria-haspopup="true"
                 >
                   COMPANY
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileCompanyOpen ? 'rotate-180' : ''}`} aria-hidden="true" />

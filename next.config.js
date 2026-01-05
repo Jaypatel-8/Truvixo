@@ -30,6 +30,8 @@ const nextConfig = {
     },
     // Enable partial prerendering for faster navigation
     ppr: false, // Disabled for static export
+    // Optimize client component loading
+    optimizeServerReact: true,
   },
   
   // Compiler optimizations
@@ -43,9 +45,9 @@ const nextConfig = {
   ...(process.env.NODE_ENV === 'development' && {
     onDemandEntries: {
       // Period (in ms) where the server will keep pages in the buffer
-      maxInactiveAge: 60 * 1000, // Increased to 60s for better prefetching
+      maxInactiveAge: 120 * 1000, // Increased to 120s for better prefetching
       // Number of pages that should be kept simultaneously without being disposed
-      pagesBufferLength: 5, // Increased to 5 for better navigation performance
+      pagesBufferLength: 10, // Increased to 10 for better navigation performance
     },
   }),
   

@@ -109,7 +109,9 @@ export const sendContactEmail = async (data: ContactFormData): Promise<{ success
 
     // Validate configuration
     if (!EMAILJS_SERVICE_ID || !EMAILJS_PUBLIC_KEY) {
-      console.error('EmailJS configuration missing. Please set NEXT_PUBLIC_EMAILJS_PUBLIC_KEY or add PUBLIC_KEY in emailService.ts')
+      if (process.env.NODE_ENV === 'development') {
+        console.error('EmailJS configuration missing. Please set NEXT_PUBLIC_EMAILJS_PUBLIC_KEY or add PUBLIC_KEY in emailService.ts')
+      }
       return { 
         success: false, 
         message: 'Email service configuration is missing. Please contact us directly at sales@truvixoo.com or call +91 63543 26412' 
@@ -142,7 +144,9 @@ export const sendContactEmail = async (data: ContactFormData): Promise<{ success
       return { success: false, message: 'Failed to send message. Please try again.' }
     }
   } catch (error: any) {
-    console.error('EmailJS Error:', error)
+    if (process.env.NODE_ENV === 'development') {
+      console.error('EmailJS Error:', error)
+    }
     // Email sending failed - return user-friendly error message
     return { 
       success: false, 
@@ -173,7 +177,9 @@ export const sendHiringEmail = async (data: HiringFormData): Promise<{ success: 
 
     // Validate configuration
     if (!EMAILJS_SERVICE_ID || !EMAILJS_PUBLIC_KEY) {
-      console.error('EmailJS configuration missing. Please set NEXT_PUBLIC_EMAILJS_PUBLIC_KEY or add PUBLIC_KEY in emailService.ts')
+      if (process.env.NODE_ENV === 'development') {
+        console.error('EmailJS configuration missing. Please set NEXT_PUBLIC_EMAILJS_PUBLIC_KEY or add PUBLIC_KEY in emailService.ts')
+      }
       return { 
         success: false, 
         message: 'Email service configuration is missing. Please contact us directly at hr@truvixoo.com or call +91 63543 26412' 
@@ -210,7 +216,9 @@ export const sendHiringEmail = async (data: HiringFormData): Promise<{ success: 
       return { success: false, message: 'Failed to send application. Please try again.' }
     }
   } catch (error: any) {
-    console.error('EmailJS Error:', error)
+    if (process.env.NODE_ENV === 'development') {
+      console.error('EmailJS Error:', error)
+    }
     // Email sending failed - return user-friendly error message
     return { 
       success: false, 

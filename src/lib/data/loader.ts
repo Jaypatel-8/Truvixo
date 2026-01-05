@@ -27,3 +27,4 @@ export {
 // Note: Individual service/industry/hire data files are imported directly in page.tsx
 // This is optimal as they're only loaded when needed per route
 
+
