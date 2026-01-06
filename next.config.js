@@ -1,8 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export for Hostinger (only in production build)
-  // Disable in development mode to allow proper rendering
-  ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
+  // For Vercel deployment, we don't use static export
+  // For static hosting (Hostinger), set output: 'export'
   trailingSlash: true,
   
   // Build-time optimizations - disable checks during build for speed
