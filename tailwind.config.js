@@ -1,0 +1,95 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'class',
+  content: [
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    // Exclude pages directory if not used (Next.js 14 uses app directory)
+  ],
+  theme: {
+    extend: {
+      colors: {
+        truvixo: {
+          blue: '#5e2cb6',
+          purple: '#c91a6f',
+          red: '#d42628',
+          yellow: '#fecc4d',
+          green: '#10b981',
+          orange: '#f59e0b',
+          pink: '#ec4899',
+          indigo: '#6366f1',
+          teal: '#14b8a6',
+          cyan: '#06b6d4',
+          white: '#FFFFFF',
+          black: '#111827',
+        },
+        // Pastel Colors
+        'purple-50': '#faf5ff',
+        'purple-100': '#f3e8ff',
+        'purple-200': '#e9d5ff',
+        'pink-50': '#fdf2f8',
+        'pink-100': '#fce7f3',
+        'pink-200': '#fbcfe8',
+        'yellow-50': '#fefce8',
+        'yellow-100': '#fef3c7',
+        'yellow-200': '#fde68a',
+        'red-50': '#fef2f2',
+        'red-100': '#fee2e2',
+        'red-200': '#fecaca',
+        'orange-50': '#fff7ed',
+        'orange-100': '#ffedd5',
+        'orange-200': '#fed7aa',
+        'blue-50': '#eff6ff',
+        'blue-100': '#dbeafe',
+        'blue-200': '#bfdbfe',
+        'green-50': '#f0fdf4',
+        'green-100': '#dcfce7',
+        'green-200': '#bbf7d0',
+      },
+      fontFamily: {
+        primary: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['Playfair Display', 'Poppins', 'system-ui', 'serif'],
+        mono: ['JetBrains Mono', 'Fira Code', 'Monaco', 'monospace'],
+        sans: ['Poppins', 'Inter', 'system-ui', 'sans-serif'],
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.5s ease-in-out',
+        'slide-up': 'slideUp 0.5s ease-out',
+        'slide-down': 'slideDown 0.5s ease-out',
+        'scale-in': 'scaleIn 0.3s ease-out',
+        'float': 'float 6s ease-in-out infinite',
+        'color-shift': 'colorShift 8s ease infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        slideDown: {
+          '0%': { transform: 'translateY(-20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        scaleIn: {
+          '0%': { transform: 'scale(0.9)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        colorShift: {
+          '0%': { 'background-color': '#5e2cb6' },
+          '25%': { 'background-color': '#c91a6f' },
+          '50%': { 'background-color': '#d42628' },
+          '75%': { 'background-color': '#fecc4d' },
+          '100%': { 'background-color': '#5e2cb6' },
+        },
+      },
+    },
+  },
+  plugins: [],
+}
