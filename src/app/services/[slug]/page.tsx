@@ -1,12 +1,12 @@
 import { notFound } from 'next/navigation'
 import ServicePageClient from './ServicePageClient'
+import { mainServices } from '@/lib/seoContent'
 
 export const dynamicParams = true
 
 export async function generateStaticParams() {
-  // Return empty array for dev mode - routes will be generated on-demand
-  // For production static export, add all possible slugs here
-  return []
+  // Extract slugs from mainServices and return them as params
+  return mainServices.map((service) => ({ slug: service.slug }))
 }
 
 interface PageProps {
