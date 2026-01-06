@@ -1,12 +1,24 @@
 import { notFound } from 'next/navigation'
 import IndustryPageClient from './IndustryPageClient'
+import { educationData } from '@/lib/staticData/industry/education'
+import { retailEcommerceData } from '@/lib/staticData/industry/retail-ecommerce'
 
 export const dynamicParams = true
 
 export async function generateStaticParams() {
-  // Return empty array for dev mode - routes will be generated on-demand
-  // For production static export, add all possible slugs here
-  return []
+  // Define slugs for all industries
+  const industrySlugs = [
+    'education',
+    'retail-ecommerce',
+    'real-estate',
+    'manufacturing',
+    'logistics',
+    'healthcare',
+    'fintech',
+    'travel-hospitality',
+  ]
+
+  return industrySlugs.map((slug) => ({ slug }))
 }
 
 interface PageProps {
