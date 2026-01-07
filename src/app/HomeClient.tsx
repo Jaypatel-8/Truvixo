@@ -124,7 +124,7 @@ export default function HomeClient({
     rootMargin: '50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: true,
-    useIdleCallback: true,
+    useIdleCallback: false,
   })
 
     const servicesList = useMemo(() => 

@@ -35,12 +35,10 @@ export default function PageLoader() {
     // Function to check if we can hide the loader
     const checkAndHide = () => {
       if (progressRef.current >= 100 && document.readyState === 'complete' && !isCompleteRef.current) {
-        // Reduced delay for faster navigation
-        setTimeout(() => {
+        // Instant hide for fastest navigation - no delay
         stopLoading()
-      }, 100)
+      }
     }
-  }
 
   // Handle route changes - ONLY when pathname actually changes
   useEffect(() => {
@@ -78,14 +76,14 @@ export default function PageLoader() {
         return
       }
       
-      progressRef.current += Math.random() * 20 + 15 // Faster progress
+      progressRef.current += Math.random() * 25 + 20 // Even faster progress for quicker navigation
       if (progressRef.current >= 100) {
         progressRef.current = 100
         clearInterval(progressInterval)
       }
       setProgress(Math.min(progressRef.current, 100))
       checkAndHide()
-    }, 60)
+    }, 40) // Reduced interval for faster updates
 
     // Listen for page load event
     const handleLoad = () => {

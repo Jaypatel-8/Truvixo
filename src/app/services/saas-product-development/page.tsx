@@ -4,7 +4,7 @@ import { saasProductDevelopmentData } from '@/lib/staticData/services/saas-produ
 
 export default function SaaSProductDevelopment() {
   const faqs = getFAQsForPage('saas-product-development')
-  
+
   return (
     <main className="min-h-screen bg-gray-50 overflow-hidden">
       <SaaSClient faqs={faqs} saasData={saasProductDevelopmentData} />

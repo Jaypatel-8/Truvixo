@@ -4,7 +4,7 @@ import { maintenanceSupportData } from '@/lib/staticData/services/maintenance-su
 
 export default function MaintenanceSupport() {
   const faqs = getFAQsForPage('maintenance-support')
-  
+
   return (
     <main className="min-h-screen bg-gray-50 overflow-hidden">
       <MaintenanceClient faqs={faqs} maintenanceData={maintenanceSupportData} />

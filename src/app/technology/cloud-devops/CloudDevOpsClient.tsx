@@ -31,7 +31,7 @@ export default function CloudDevOpsClient({ faqs, cloudDevOpsTechnologyData }: C
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: true,
+    useIdleCallback: false,
   })
 
   const technologies = useMemo(() => 

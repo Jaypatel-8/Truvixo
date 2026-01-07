@@ -220,84 +220,90 @@ export default function RootLayout({
         <style dangerouslySetInnerHTML={{
           __html: `html{scroll-behavior:smooth}body{margin:0;font-family:var(--font-inter),system-ui,-apple-system,sans-serif}nav{position:sticky;top:0;z-index:50;background:white;box-shadow:0 1px 3px rgba(0,0,0,0.1)}.hollow-text{font-family:'Le Petite Cocho',sans-serif;-webkit-text-stroke:3px #000;-webkit-text-fill-color:transparent;font-weight:700}h1,h2{font-weight:900;line-height:1.1;color:#111}button{cursor:pointer}a{cursor:pointer}img{max-width:100%;height:auto}`
         }} />
-        {/* Aggressively block and suppress 404 errors - runs immediately */}
+        {/* Error blocking script - deferred to avoid blocking initial render */}
         <script
-          defer
           dangerouslySetInnerHTML={{
             __html: `
-              !function() {
+              (function() {
                 'use strict';
-                var shouldBlock = function(url) {
-                  if (!url) return false;
-                  var s = String(url);
-                  return s.indexOf('localhost:3000') !== -1 && (s.endsWith('/') || s === 'http://localhost:3000');
-                };
-                if (window.XMLHttpRequest) {
-                  var O = window.XMLHttpRequest;
-                  window.XMLHttpRequest = function() {
-                    var x = new O();
-                    var o = x.open;
-                    x.open = function(m, u) {
+                if (document.readyState === 'loading') {
+                  document.addEventListener('DOMContentLoaded', init);
+                } else {
+                  setTimeout(init, 0);
+                }
+                function init() {
+                  var shouldBlock = function(url) {
+                    if (!url) return false;
+                    var s = String(url);
+                    return s.indexOf('localhost:3000') !== -1 && (s.endsWith('/') || s === 'http://localhost:3000');
+                  };
+                  if (window.XMLHttpRequest) {
+                    var O = window.XMLHttpRequest;
+                    window.XMLHttpRequest = function() {
+                      var x = new O();
+                      var o = x.open;
+                      x.open = function(m, u) {
+                        if (shouldBlock(u)) {
+                          x._b = true;
+                          x.status = 200;
+                          x.readyState = 4;
+                          return;
+                        }
+                        return o.apply(this, arguments);
+                      };
+                      var s = x.send;
+                      x.send = function() {
+                        if (x._b) {
+                          if (x.onload) try { x.onload(); } catch(e) {}
+                          if (x.onreadystatechange) try { x.onreadystatechange(); } catch(e) {}
+                          return;
+                        }
+                        return s.apply(this, arguments);
+                      };
+                      return x;
+                    };
+                  }
+                  if (window.fetch) {
+                    var f = window.fetch;
+                    window.fetch = function() {
+                      var u = arguments[0];
                       if (shouldBlock(u)) {
-                        x._b = true;
-                        x.status = 200;
-                        x.readyState = 4;
-                        return;
+                        return Promise.resolve(new Response('', { status: 200 }));
                       }
-                      return o.apply(this, arguments);
+                      return f.apply(this, arguments).catch(function() {
+                        if (shouldBlock(u)) return Promise.resolve(new Response('', { status: 200 }));
+                        throw arguments[0];
+                      });
                     };
-                    var s = x.send;
-                    x.send = function() {
-                      if (x._b) {
-                        if (x.onload) try { x.onload(); } catch(e) {}
-                        if (x.onreadystatechange) try { x.onreadystatechange(); } catch(e) {}
-                        return;
-                      }
-                      return s.apply(this, arguments);
-                    };
-                    return x;
+                  }
+                  var e = console.error;
+                  console.error = function() {
+                    var m = Array.prototype.slice.call(arguments).join(' ');
+                    if (m.indexOf('localhost:3000') !== -1 || (m.indexOf('404') !== -1 && m.indexOf('localhost') !== -1)) return;
+                    e.apply(console, arguments);
                   };
-                }
-                if (window.fetch) {
-                  var f = window.fetch;
-                  window.fetch = function() {
-                    var u = arguments[0];
-                    if (shouldBlock(u)) {
-                      return Promise.resolve(new Response('', { status: 200 }));
+                  var w = console.warn;
+                  console.warn = function() {
+                    var m = Array.prototype.slice.call(arguments).join(' ');
+                    if (m.indexOf('localhost:3000') !== -1) return;
+                    w.apply(console, arguments);
+                  };
+                  window.addEventListener('error', function(e) {
+                    if (e.message && e.message.indexOf('localhost:3000') !== -1) {
+                      e.stopImmediatePropagation();
+                      e.preventDefault();
+                      return false;
                     }
-                    return f.apply(this, arguments).catch(function() {
-                      if (shouldBlock(u)) return Promise.resolve(new Response('', { status: 200 }));
-                      throw arguments[0];
-                    });
-                  };
+                  }, true);
+                  window.addEventListener('unhandledrejection', function(e) {
+                    if (e.reason && String(e.reason).indexOf('localhost:3000') !== -1) {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      return false;
+                    }
+                  }, true);
                 }
-                var e = console.error;
-                console.error = function() {
-                  var m = Array.prototype.slice.call(arguments).join(' ');
-                  if (m.indexOf('localhost:3000') !== -1 || (m.indexOf('404') !== -1 && m.indexOf('localhost') !== -1)) return;
-                  e.apply(console, arguments);
-                };
-                var w = console.warn;
-                console.warn = function() {
-                  var m = Array.prototype.slice.call(arguments).join(' ');
-                  if (m.indexOf('localhost:3000') !== -1) return;
-                  w.apply(console, arguments);
-                };
-                window.addEventListener('error', function(e) {
-                  if (e.message && e.message.indexOf('localhost:3000') !== -1) {
-                    e.stopImmediatePropagation();
-                    e.preventDefault();
-                    return false;
-                  }
-                }, true);
-                window.addEventListener('unhandledrejection', function(e) {
-                  if (e.reason && String(e.reason).indexOf('localhost:3000') !== -1) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    return false;
-                  }
-                }, true);
-              }();
+              })();
             `,
           }}
         />
@@ -404,7 +410,6 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          defer
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -433,7 +438,7 @@ export default function RootLayout({
           <GoToTop />
         </ErrorBoundary>
         {/* ContactPopup removed - no longer showing on page load */}
-        {/* Global Structured Data for SEO */}
+        {/* Global Structured Data for SEO - Deferred to avoid blocking */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

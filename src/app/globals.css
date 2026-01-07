@@ -56,6 +56,15 @@ h1, h2, h3, h4, h5, h6 {
   visibility: visible;
   transform: translateY(0);
   transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, transform; /* Optimize for animations */
+}
+
+/* Only apply will-change when animating */
+.scroll-animate.animate,
+.scroll-animate-left.animate,
+.scroll-animate-right.animate,
+.scroll-animate-scale.animate {
+  will-change: opacity, transform;
 }
 
 /* Only apply animation when class is added */

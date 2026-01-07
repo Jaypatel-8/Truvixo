@@ -50,7 +50,7 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],
     unobserveAfterIntersect: false,
-    useIdleCallback: true,
+    useIdleCallback: false,
   })
 
   const BadgeIcon = getIcon(careersData.hero.badge?.iconName || 'Briefcase') || Briefcase

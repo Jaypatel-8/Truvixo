@@ -243,7 +243,7 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
                 
                 {/* Process Steps Container */}
                 <div className="relative flex justify-between items-start pt-8 pb-16">
-                  {project.approach.map((step, index) => {
+                  {project.approach.map((step: any, index: number) => {
                     const stepColors = ['#5e2cb6', '#c91a6f', '#d97706', '#059669', '#5e2cb6', '#c91a6f']
                     const stepColor = stepColors[index % stepColors.length]
                     const stepIcons = [
@@ -315,7 +315,7 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
 
             {/* Mobile/Tablet Vertical Process Flow */}
             <div className="lg:hidden space-y-6">
-              {project.approach.map((step, index) => {
+              {project.approach.map((step: any, index: number) => {
                 const stepColors = ['#5e2cb6', '#c91a6f', '#d97706', '#059669', '#5e2cb6', '#c91a6f']
                 const stepColor = stepColors[index % stepColors.length]
                 const stepIcons = [
@@ -396,7 +396,7 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {project.results.map((result, index) => (
+            {project.results.map((result: any, index: number) => (
               <div key={index} className="bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-[#d97706] transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden group">
                 <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: '#d97706' }}></div>
                 <div className="relative z-10 flex items-start gap-4">
@@ -476,7 +476,7 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
                 This solution transformed how {project.client} operates, delivering measurable improvements in key business metrics.
               </p>
               <ul className="space-y-2 text-sm text-gray-600">
-                {project.results.slice(0, 4).map((result, idx) => (
+                {project.results.slice(0, 4).map((result: any, idx: number) => (
                   <li key={idx}>• {result}</li>
                 ))}
               </ul>
@@ -490,7 +490,7 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
                 Built with modern technologies and best practices, ensuring reliability, performance, and maintainability.
               </p>
               <ul className="space-y-2 text-sm text-gray-600">
-                {project.technologies.slice(0, 4).map((tech, idx) => (
+                {project.technologies.slice(0, 4).map((tech: any, idx: number) => (
                   <li key={idx}>• {tech}</li>
                 ))}
               </ul>

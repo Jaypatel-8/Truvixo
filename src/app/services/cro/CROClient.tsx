@@ -60,7 +60,7 @@ export default function CROClient({ faqs, croData }: CROClientProps) {
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
     unobserveAfterIntersect: false,
-    useIdleCallback: true,
+    useIdleCallback: false,
   })
 
   const services = useMemo(() => 
@@ -427,4 +427,3 @@ export default function CROClient({ faqs, croData }: CROClientProps) {
     </>
   )
 }
-

@@ -3,7 +3,7 @@ import { getFAQsForPage } from '@/lib/pageData'
 
 export default function EnterpriseSoftwareDevelopment() {
   const faqs = getFAQsForPage('enterprise-software-development')
-  
+
   return (
     <main className="min-h-screen bg-gray-50 overflow-hidden">
       <EnterpriseSoftwareClient faqs={faqs} />

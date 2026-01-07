@@ -71,7 +71,7 @@ export function useIntersectionObserver({
         rafId = requestAnimationFrame(() => {
           elementsRef.current = document.querySelectorAll(selectorString)
           
-          // Debounce observer attachment to avoid performance issues
+          // Minimal debounce for faster initialization
           timeoutId = setTimeout(() => {
             if (elementsRef.current) {
               elementsRef.current.forEach((el) => {
@@ -81,7 +81,7 @@ export function useIntersectionObserver({
                 }
               })
             }
-          }, 50) // 50ms debounce
+          }, 10) // Reduced to 10ms for faster initialization
         })
       } else {
         // Elements already cached, attach observer immediately
@@ -93,20 +93,19 @@ export function useIntersectionObserver({
               }
             })
           }
-        }, 50)
+        }, 10) // Reduced to 10ms for faster initialization
       }
     }
 
-    // Use requestIdleCallback for non-critical animations (if enabled)
-    // Default to using idle callback for better performance
-    if (useIdleCallback !== false && 'requestIdleCallback' in window) {
-      requestIdleCallback(initObserver, { timeout: 200 })
-    } else if ('requestIdleCallback' in window) {
-      // Even if not explicitly enabled, use idle callback for better performance
-      requestIdleCallback(initObserver, { timeout: 300 })
+    // Initialize immediately for faster page load - no delays
+    // Use requestAnimationFrame for smooth initialization without blocking
+    if (useIdleCallback === true && 'requestIdleCallback' in window) {
+      requestIdleCallback(initObserver, { timeout: 100 })
     } else {
-      // Use setTimeout with delay to avoid blocking initial render
-      setTimeout(initObserver, 100)
+      // Initialize immediately using requestAnimationFrame for non-blocking execution
+      requestAnimationFrame(() => {
+        initObserver()
+      })
     }
 
     return () => {

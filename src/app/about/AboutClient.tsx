@@ -58,7 +58,7 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
     rootMargin: '0px 0px -50px 0px',
     selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],
     unobserveAfterIntersect: false,
-    useIdleCallback: true,
+    useIdleCallback: false,
   })
 
   // Transform data with icons
