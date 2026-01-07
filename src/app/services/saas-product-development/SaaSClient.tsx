@@ -7,6 +7,8 @@ import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
+import RelatedLinks from '@/components/RelatedLinks'
+import { getServiceRelatedLinks } from '@/lib/utils/relatedLinks'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -414,6 +416,7 @@ export default function SaaSClient({ faqs, saasData }: SaaSClientProps) {
           onClick: () => setIsContactModalOpen(true)
         }}
       />
+      <RelatedLinks title="Related Services" links={getServiceRelatedLinks('saas-product-development')} columns={3} />
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 

@@ -5,6 +5,7 @@ import { Database, Code, Server, Zap, Shield, Network, Building2, Heart, Shoppin
 import PageTemplate from '@/components/templates/PageTemplate'
 import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
+import { getHireRelatedLinks } from '@/lib/utils/relatedLinks'
 
 interface BackendDevelopersClientProps {
   faqs: Array<{ question: string; answer: string }>
@@ -58,6 +59,8 @@ export default function BackendDevelopersClient({ faqs, backendDevelopersData }:
 
   return (
     <PageTemplate
+      relatedLinks={getHireRelatedLinks('backend-developers')}
+      relatedLinksTitle={"Related Hiring Options"}
       badge={{
         icon: badgeIcon,
         text: backendDevelopersData.hero.badge.text

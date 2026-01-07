@@ -6,6 +6,8 @@ import dynamic from 'next/dynamic'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
+import RelatedLinks from '@/components/RelatedLinks'
+import { getServiceRelatedLinks } from '@/lib/utils/relatedLinks'
 import type { BasePageData } from '@/lib/types/staticData'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
@@ -413,6 +415,7 @@ export default function CMSClient({ faqs, cmsData }: CMSClientProps) {
         }}
         />
       )}
+      <RelatedLinks title="Related Services" links={getServiceRelatedLinks('cms-development')} columns={3} />
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 

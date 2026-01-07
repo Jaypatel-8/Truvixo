@@ -5,6 +5,7 @@ import { Database, Code, Server, Zap, Shield, Network, Building2, Heart, Shoppin
 import PageTemplate from '@/components/templates/PageTemplate'
 import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
+import { getHireRelatedLinks } from '@/lib/utils/relatedLinks'
 
 interface DedicatedTeamsClientProps {
   faqs: Array<{ question: string; answer: string }>
@@ -58,6 +59,8 @@ export default function DedicatedTeamsClient({ faqs, dedicatedTeamsData }: Dedic
 
   return (
     <PageTemplate
+      relatedLinks={getHireRelatedLinks('dedicated-teams')}
+      relatedLinksTitle={"Related Hiring Options"}
       badge={{
         icon: badgeIcon,
         text: dedicatedTeamsData.hero.badge.text

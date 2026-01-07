@@ -9,6 +9,8 @@ import { getIconComponent } from '@/lib/utils/iconMapper'
 import { LucideIcon } from 'lucide-react'
 import { ReactElement } from 'react'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
+import RelatedLinks from '@/components/RelatedLinks'
+import { getIndustryRelatedLinks } from '@/lib/utils/relatedLinks'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -380,6 +382,7 @@ export default function ManufacturingClient({ faqs, manufacturingData }: Manufac
           onClick: () => setIsContactModalOpen(true)
         }}
       />
+      <RelatedLinks title="Related Industries & Services" links={getIndustryRelatedLinks('manufacturing')} columns={3} />
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 

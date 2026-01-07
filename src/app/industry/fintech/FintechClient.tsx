@@ -7,6 +7,8 @@ import GetQuoteSection from '@/components/sections/GetQuoteSection'
 import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
+import RelatedLinks from '@/components/RelatedLinks'
+import { getIndustryRelatedLinks } from '@/lib/utils/relatedLinks'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -415,6 +417,7 @@ export default function FintechClient({ faqs, fintechData }: FintechClientProps)
           onClick: () => setIsContactModalOpen(true)
         }}
       />
+      <RelatedLinks title="Related Industries & Services" links={getIndustryRelatedLinks('fintech')} columns={3} />
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 

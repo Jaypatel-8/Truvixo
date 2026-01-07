@@ -4,9 +4,11 @@ import { useEffect, useState, useMemo } from 'react'
 import { ArrowRight, Calendar } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import GetQuoteSection from '@/components/sections/GetQuoteSection'
+import RelatedLinks from '@/components/RelatedLinks'
 import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
+import { getServiceRelatedLinks } from '@/lib/utils/relatedLinks'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -433,7 +435,11 @@ export default function WebApplicationClient({ faqs, webAppData }: WebApplicatio
           }}
         />
       )}
-
+      <RelatedLinks 
+        title="Related Services" 
+        links={getServiceRelatedLinks('web-application-development')} 
+        columns={3}
+      />
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 

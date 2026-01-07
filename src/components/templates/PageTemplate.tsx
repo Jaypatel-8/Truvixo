@@ -12,6 +12,7 @@ import ProcessDiagram from '@/components/ProcessDiagram'
 import HeroSection from '@/components/sections/HeroSection'
 import ServicesGrid from '@/components/sections/ServicesGrid'
 import WhyChooseSection from '@/components/sections/WhyChooseSection'
+import RelatedLinks from '@/components/RelatedLinks'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -95,6 +96,14 @@ interface PageTemplateProps {
     description: string
     icon: ReactNode
   }>
+  
+  // Related Links
+  relatedLinks?: Array<{
+    title: string
+    href: string
+    description?: string
+  }>
+  relatedLinksTitle?: string
 }
 
 export default function PageTemplate({
@@ -122,7 +131,9 @@ export default function PageTemplate({
   contactDescription = 'Have a project in mind? Let\'s discuss how we can help.',
   processTitle = 'Our Process',
   processSubtitle = 'A proven methodology that delivers results',
-  processSteps
+  processSteps,
+  relatedLinks,
+  relatedLinksTitle = 'Related Options'
 }: PageTemplateProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
@@ -258,7 +269,13 @@ export default function PageTemplate({
           onClick: () => setIsContactModalOpen(true)
         }}
       />
-
+      {relatedLinks && relatedLinks.length > 0 && (
+        <RelatedLinks 
+          title={relatedLinksTitle} 
+          links={relatedLinks} 
+          columns={3}
+        />
+      )}
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 

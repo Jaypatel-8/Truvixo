@@ -5,6 +5,7 @@ import { Database, Code, Server, Zap, Shield, Network, Building2, Heart, Shoppin
 import PageTemplate from '@/components/templates/PageTemplate'
 import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
+import { getHireRelatedLinks } from '@/lib/utils/relatedLinks'
 
 interface MobileDevelopersClientProps {
   faqs: Array<{ question: string; answer: string }>
@@ -58,6 +59,8 @@ export default function MobileDevelopersClient({ faqs, mobileDevelopersData }: M
 
   return (
     <PageTemplate
+      relatedLinks={getHireRelatedLinks('mobile-developers')}
+      relatedLinksTitle={"Related Hiring Options"}
       badge={{
         icon: badgeIcon,
         text: mobileDevelopersData.hero.badge.text

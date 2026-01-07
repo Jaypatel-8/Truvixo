@@ -15,7 +15,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   
-  // Disable dynamic routes for static export (they're handled by specific pages)
+  // Static export - all routes are pre-generated at build time
+  // Dynamic routes removed - using only static routes for faster builds
   skipTrailingSlashRedirect: true,
   
   // Performance optimizations

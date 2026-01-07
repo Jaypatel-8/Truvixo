@@ -5,6 +5,7 @@ import { Database, Code, Server, Zap, Shield, Network, Building2, Heart, Shoppin
 import PageTemplate from '@/components/templates/PageTemplate'
 import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
+import { getHireRelatedLinks } from '@/lib/utils/relatedLinks'
 
 interface QAEngineersClientProps {
   faqs: Array<{ question: string; answer: string }>
@@ -58,6 +59,8 @@ export default function QAEngineersClient({ faqs, qaEngineersData }: QAEngineers
 
   return (
     <PageTemplate
+      relatedLinks={getHireRelatedLinks('qa-engineers')}
+      relatedLinksTitle={"Related Hiring Options"}
       badge={{
         icon: badgeIcon,
         text: qaEngineersData.hero.badge.text

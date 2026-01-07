@@ -264,6 +264,9 @@ const Footer = () => {
               <Link href="/terms" prefetch={true} className="text-gray-600 hover:text-black transition-colors duration-300">
                 Terms of Service
               </Link>
+              <Link href="/cancellation-refund" prefetch={true} className="text-gray-600 hover:text-black transition-colors duration-300">
+                Cancellation & Refund
+              </Link>
               <Link href="/contact" prefetch={true} className="text-gray-600 hover:text-black transition-colors duration-300">
                 Contact Us
               </Link>

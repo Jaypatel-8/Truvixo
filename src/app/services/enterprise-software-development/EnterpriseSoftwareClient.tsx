@@ -8,6 +8,8 @@ interface EnterpriseSoftwareClientProps {
   faqs: Array<{ question: string; answer: string }>
 }
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
+import RelatedLinks from '@/components/RelatedLinks'
+import { getServiceRelatedLinks } from '@/lib/utils/relatedLinks'
 
 const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
   ssr: false,
@@ -567,6 +569,7 @@ export default function EnterpriseSoftwareClient({ faqs }: EnterpriseSoftwareCli
         }}
       />
 
+      <RelatedLinks title="Related Services" links={getServiceRelatedLinks('enterprise-software-development')} columns={3} />
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 

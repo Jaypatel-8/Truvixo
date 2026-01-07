@@ -5,6 +5,7 @@ import { Database, Code, Server, Zap, Shield, Network, Building2, Heart, Shoppin
 import PageTemplate from '@/components/templates/PageTemplate'
 import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
+import { getHireRelatedLinks } from '@/lib/utils/relatedLinks'
 
 interface AIMLEngineersClientProps {
   faqs: Array<{ question: string; answer: string }>
@@ -58,6 +59,8 @@ export default function AIMLEngineersClient({ faqs, aiMlEngineersData }: AIMLEng
 
   return (
     <PageTemplate
+      relatedLinks={getHireRelatedLinks('ai-ml-engineers')}
+      relatedLinksTitle={"Related Hiring Options"}
       badge={aiMlEngineersData.hero.badge ? {
         icon: badgeIcon,
         text: aiMlEngineersData.hero.badge.text

@@ -5,6 +5,7 @@ import { Database, Code, Server, Zap, Shield, Network, Building2, Heart, Shoppin
 import PageTemplate from '@/components/templates/PageTemplate'
 import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
+import { getHireRelatedLinks } from '@/lib/utils/relatedLinks'
 
 interface DevOpsEngineersClientProps {
   faqs: Array<{ question: string; answer: string }>
@@ -58,6 +59,8 @@ export default function DevOpsEngineersClient({ faqs, devopsEngineersData }: Dev
 
   return (
     <PageTemplate
+      relatedLinks={getHireRelatedLinks('devops-engineers')}
+      relatedLinksTitle={"Related Hiring Options"}
       badge={{
         icon: badgeIcon,
         text: devopsEngineersData.hero.badge.text

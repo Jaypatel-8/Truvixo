@@ -17,6 +17,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/contact`, priority: 0.8, changeFrequency: 'monthly' as const },
     { url: `${baseUrl}/careers`, priority: 0.7, changeFrequency: 'monthly' as const },
     { url: `${baseUrl}/our-approach`, priority: 0.7, changeFrequency: 'monthly' as const },
+    { url: `${baseUrl}/privacy`, priority: 0.5, changeFrequency: 'yearly' as const },
+    { url: `${baseUrl}/terms`, priority: 0.5, changeFrequency: 'yearly' as const },
+    { url: `${baseUrl}/cancellation-refund`, priority: 0.5, changeFrequency: 'yearly' as const },
   ]
 
   // Service pages - All services with high priority for SEO
