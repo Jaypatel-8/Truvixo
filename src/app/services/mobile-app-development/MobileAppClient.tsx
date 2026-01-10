@@ -436,7 +436,8 @@ export default function MobileAppClient({ faqs }: MobileAppClientProps) {
         description="Get in touch and let's discuss how we can transform your business with mobile applications."
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',

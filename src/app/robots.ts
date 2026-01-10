@@ -13,10 +13,17 @@ export default function robots(): MetadataRoute.Robots {
           // '/admin',
           // '/api',
         ],
+        crawlDelay: 0, // No delay for faster crawling
       },
       // Explicitly allow major search engines
       {
         userAgent: 'Googlebot',
+        allow: '/',
+        disallow: [],
+        crawlDelay: 0,
+      },
+      {
+        userAgent: 'Googlebot-Image',
         allow: '/',
         disallow: [],
       },
@@ -24,13 +31,31 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: 'Bingbot',
         allow: '/',
         disallow: [],
+        crawlDelay: 0,
       },
       {
         userAgent: 'Slurp', // Yahoo
         allow: '/',
         disallow: [],
+        crawlDelay: 0,
+      },
+      {
+        userAgent: 'DuckDuckBot',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'Baiduspider',
+        allow: '/',
+        disallow: [],
+      },
+      {
+        userAgent: 'Yandex',
+        allow: '/',
+        disallow: [],
       },
     ],
     sitemap: `${site}/sitemap.xml`,
+    host: site,
   }
 }

@@ -561,7 +561,8 @@ export default function EnterpriseSoftwareClient({ faqs }: EnterpriseSoftwareCli
         description="Get in touch and let's discuss how we can help transform your enterprise with custom software solutions."
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',

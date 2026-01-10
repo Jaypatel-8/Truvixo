@@ -46,10 +46,11 @@ export default function ContactSection({
     setSubmitMessage('')
 
     const emailData: ContactFormData = {
-      name: formData.name,
-      email: formData.email,
-      company: formData.company,
-      message: formData.message,
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      company: formData.company?.trim() || '',
+      phone: formData.phone?.trim() || '',
+      message: formData.message.trim(),
       industry: '',
       service: '',
       subject: 'New Contact Form Submission from TruVixo Website'

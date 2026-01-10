@@ -8,7 +8,7 @@ import type { BasePageData } from '@/lib/types/staticData'
 import { getIconComponent } from '@/lib/utils/iconMapper'
 import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
-const ContactFormModal = dynamic(() => import('@/components/ContactFormModal'), {
+const HiringFormModal = dynamic(() => import('@/components/HiringFormModal'), {
   ssr: false,
   loading: () => null,
 })
@@ -39,6 +39,7 @@ interface CareersClientProps {
 
 export default function CareersClient({ faqs, careersData }: CareersClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
+  const [selectedPosition, setSelectedPosition] = useState<string>('')
   const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
@@ -249,9 +250,13 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
                 onMouseLeave={(e) => {
                   e.currentTarget.style.borderColor = position.color + '40'
                 }}
+                onClick={(e) => {
+                  // Prevent any parent click handlers from interfering
+                  e.stopPropagation()
+                }}
               >
                 <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: position.color }}></div>
-                <div className="relative z-10">
+                <div className="relative z-10" onClick={(e) => e.stopPropagation()}>
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: position.color + '10', color: position.color }}>
                       {position.icon}
@@ -286,13 +291,24 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
                       ))}
                     </ul>
                   </div>
-                  <a
-                    href="/careers#apply"
-                    className="w-full bg-[#5e2cb6] text-white font-semibold py-3 px-6 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      e.stopPropagation()
+                      e.nativeEvent.stopImmediatePropagation()
+                      setSelectedPosition(position.title)
+                      setIsContactModalOpen(true)
+                    }}
+                    onMouseDown={(e) => {
+                      e.stopPropagation()
+                    }}
+                    className="w-full bg-[#5e2cb6] text-white font-semibold py-3 px-6 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center justify-center gap-2 shadow-lg shadow-[#5e2cb6]/30 cursor-pointer relative z-20"
+                    style={{ position: 'relative', zIndex: 20 }}
                   >
                     <span>Apply Now</span>
                     <ArrowRight className="w-4 h-4" strokeWidth={2} />
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
@@ -340,10 +356,16 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
         />
       )}
 
-      <ContactFormModal 
-        isOpen={isContactModalOpen} 
-        onClose={() => setIsContactModalOpen(false)} 
-      />
+      {isMounted && (
+        <HiringFormModal 
+          isOpen={isContactModalOpen} 
+          onClose={() => {
+            setIsContactModalOpen(false)
+            setSelectedPosition('')
+          }}
+          initialPosition={selectedPosition}
+        />
+      )}
     </main>
   )
 }

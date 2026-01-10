@@ -409,7 +409,8 @@ export default function MaintenanceClient({ faqs, maintenanceData }: Maintenance
         description={maintenanceData.getQuote.description}
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',

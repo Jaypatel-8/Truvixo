@@ -118,8 +118,13 @@ export const sendContactEmail = async (data: ContactFormData): Promise<{ success
       }
     }
 
-    // Initialize EmailJS
-    emailjs.init(EMAILJS_PUBLIC_KEY)
+    // Initialize EmailJS (only if not already initialized)
+    if (typeof window !== 'undefined' && !(window as any).emailjsInitialized) {
+      emailjs.init(EMAILJS_PUBLIC_KEY)
+      ;(window as any).emailjsInitialized = true
+    } else if (typeof window !== 'undefined') {
+      emailjs.init(EMAILJS_PUBLIC_KEY)
+    }
 
     // Map all fields exactly as required by EmailJS template template_7ezfh6w
     const templateParams = {
@@ -135,22 +140,47 @@ export const sendContactEmail = async (data: ContactFormData): Promise<{ success
       reply_to: data.email.trim(),
     }
 
-    // Send email via EmailJS
-    const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-    
-    if (response.status === 200) {
-      return { success: true, message: 'Thank you for your message! Our team will get back to you soon.' }
-    } else {
-      return { success: false, message: 'Failed to send message. Please try again.' }
+    // Send email via EmailJS with better error handling
+    try {
+      const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+      
+      if (response && response.status === 200) {
+        return { success: true, message: 'Thank you for your message! Our team will get back to you soon.' }
+      } else {
+        return { success: false, message: 'Failed to send message. Please try again or contact us directly at sales@truvixoo.com' }
+      }
+    } catch (sendError: any) {
+      throw sendError // Re-throw to be caught by outer catch
     }
   } catch (error: any) {
     if (process.env.NODE_ENV === 'development') {
-      console.error('EmailJS Error:', error)
+      console.error('EmailJS Error Details:', {
+        error,
+        message: error?.message,
+        text: error?.text,
+        status: error?.status,
+        statusText: error?.statusText
+      })
     }
-    // Email sending failed - return user-friendly error message
+    
+    // Provide more specific error messages
+    let errorMessage = 'Failed to send message. Please try again.'
+    
+    if (error?.text) {
+      errorMessage = `Email service error: ${error.text}. Please contact us directly at sales@truvixoo.com or call +91 63543 26412`
+    } else if (error?.message) {
+      if (error.message.includes('Invalid') || error.message.includes('template')) {
+        errorMessage = 'Email service configuration error. Please contact us directly at sales@truvixoo.com'
+      } else if (error.message.includes('network') || error.message.includes('fetch')) {
+        errorMessage = 'Network error. Please check your connection and try again.'
+      } else {
+        errorMessage = `Error: ${error.message}. Please contact us directly at sales@truvixoo.com`
+      }
+    }
+    
     return { 
       success: false, 
-      message: error?.text || error?.message || 'Failed to send message. Please try again or contact us directly at sales@truvixoo.com' 
+      message: errorMessage
     }
   }
 }
@@ -186,8 +216,13 @@ export const sendHiringEmail = async (data: HiringFormData): Promise<{ success: 
       }
     }
 
-    // Initialize EmailJS
-    emailjs.init(EMAILJS_PUBLIC_KEY)
+    // Initialize EmailJS (only if not already initialized)
+    if (typeof window !== 'undefined' && !(window as any).emailjsInitialized) {
+      emailjs.init(EMAILJS_PUBLIC_KEY)
+      ;(window as any).emailjsInitialized = true
+    } else if (typeof window !== 'undefined') {
+      emailjs.init(EMAILJS_PUBLIC_KEY)
+    }
 
     // Map all fields exactly as required by EmailJS template template_zxfomo7
     const templateParams = {
@@ -207,28 +242,61 @@ export const sendHiringEmail = async (data: HiringFormData): Promise<{ success: 
       reply_to: data.email.trim(),
     }
 
-    // Send email via EmailJS
-    const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-    
-    if (response.status === 200) {
-      return { success: true, message: 'Thank you for your application! Our HR team will review it and get back to you soon.' }
-    } else {
-      return { success: false, message: 'Failed to send application. Please try again.' }
+    // Send email via EmailJS with better error handling
+    try {
+      const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+      
+      if (response && response.status === 200) {
+        return { success: true, message: 'Thank you for your application! Our HR team will review it and get back to you soon.' }
+      } else {
+        return { success: false, message: 'Failed to send application. Please try again or contact us directly at hr@truvixoo.com' }
+      }
+    } catch (sendError: any) {
+      throw sendError // Re-throw to be caught by outer catch
     }
   } catch (error: any) {
     if (process.env.NODE_ENV === 'development') {
-      console.error('EmailJS Error:', error)
+      console.error('EmailJS Error Details:', {
+        error,
+        message: error?.message,
+        text: error?.text,
+        status: error?.status,
+        statusText: error?.statusText
+      })
     }
-    // Email sending failed - return user-friendly error message
+    
+    // Provide more specific error messages
+    let errorMessage = 'Failed to send application. Please try again.'
+    
+    if (error?.text) {
+      errorMessage = `Email service error: ${error.text}. Please contact us directly at hr@truvixoo.com or call +91 63543 26412`
+    } else if (error?.message) {
+      if (error.message.includes('Invalid') || error.message.includes('template')) {
+        errorMessage = 'Email service configuration error. Please contact us directly at hr@truvixoo.com'
+      } else if (error.message.includes('network') || error.message.includes('fetch')) {
+        errorMessage = 'Network error. Please check your connection and try again.'
+      } else {
+        errorMessage = `Error: ${error.message}. Please contact us directly at hr@truvixoo.com`
+      }
+    }
+    
     return { 
       success: false, 
-      message: error?.text || error?.message || 'Failed to send application. Please try again or contact us directly at hr@truvixoo.com' 
+      message: errorMessage
     }
   }
 }
 
 export const sendScheduleDemoEmail = async (data: ScheduleDemoData): Promise<{ success: boolean; message: string }> => {
   try {
+    // Validate required fields
+    if (!data.name || !data.email || !data.selectedDate || !data.selectedTime) {
+      return { 
+        success: false, 
+        message: 'Please fill in all required fields (name, email, date, and time).' 
+      }
+    }
+
     // Dynamic import to avoid SSR issues
     const emailjs = (await import('@emailjs/browser')).default
     
@@ -237,31 +305,80 @@ export const sendScheduleDemoEmail = async (data: ScheduleDemoData): Promise<{ s
     const EMAILJS_TEMPLATE_ID = EMAILJS_CONFIG.CONTACT_TEMPLATE_ID
     const EMAILJS_PUBLIC_KEY = EMAILJS_CONFIG.PUBLIC_KEY
 
-    // Initialize EmailJS
-    emailjs.init(EMAILJS_PUBLIC_KEY)
-
-    const templateParams = {
-      from_name: data.name,
-      from_email: data.email,
-      company: data.company || 'Not provided',
-      phone: data.phone || 'Not provided',
-      selected_date: data.selectedDate,
-      selected_time: data.selectedTime,
-      industry: data.industry || 'Not provided',
-      service: data.service || 'Not provided',
-      subject: 'New Demo Scheduling Request from TruVixo Website',
-      to_email: 'sales@truvixoo.com',
-      reply_to: data.email,
+    // Validate configuration
+    if (!EMAILJS_SERVICE_ID || !EMAILJS_PUBLIC_KEY) {
+      if (process.env.NODE_ENV === 'development') {
+        console.error('EmailJS configuration missing. Please set NEXT_PUBLIC_EMAILJS_PUBLIC_KEY or add PUBLIC_KEY in emailService.ts')
+      }
+      return { 
+        success: false, 
+        message: 'Email service configuration is missing. Please contact us directly at sales@truvixoo.com or call +91 63543 26412' 
+      }
     }
 
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-    
-    return { success: true, message: 'Thank you for showing interest! Our team will get back to you soon.' }
+    // Initialize EmailJS (only if not already initialized)
+    if (typeof window !== 'undefined' && !(window as any).emailjsInitialized) {
+      emailjs.init(EMAILJS_PUBLIC_KEY)
+      ;(window as any).emailjsInitialized = true
+    } else if (typeof window !== 'undefined') {
+      emailjs.init(EMAILJS_PUBLIC_KEY)
+    }
+
+    const templateParams = {
+      from_name: data.name.trim(),
+      from_email: data.email.trim(),
+      company: data.company?.trim() || 'Not provided',
+      phone: data.phone?.trim() || 'Not provided',
+      selected_date: data.selectedDate,
+      selected_time: data.selectedTime,
+      industry: data.industry?.trim() || 'Not provided',
+      service: data.service?.trim() || 'Not provided',
+      subject: 'New Demo Scheduling Request from TruVixo Website',
+      to_email: 'sales@truvixoo.com',
+      reply_to: data.email.trim(),
+    }
+
+    // Send email via EmailJS with better error handling
+    try {
+      const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+      
+      if (response && response.status === 200) {
+        return { success: true, message: 'Thank you for showing interest! Our team will get back to you soon.' }
+      } else {
+        return { success: false, message: 'Failed to schedule demo. Please try again or contact us directly at sales@truvixoo.com' }
+      }
+    } catch (sendError: any) {
+      throw sendError // Re-throw to be caught by outer catch
+    }
   } catch (error: any) {
-    // Email sending failed - return user-friendly error message
+    if (process.env.NODE_ENV === 'development') {
+      console.error('EmailJS Error Details:', {
+        error,
+        message: error?.message,
+        text: error?.text,
+        status: error?.status,
+        statusText: error?.statusText
+      })
+    }
+    
+    // Provide more specific error messages
+    let errorMessage = 'Failed to schedule demo. Please try again.'
+    
+    if (error?.text) {
+      errorMessage = `Email service error: ${error.text}. Please contact us directly at sales@truvixoo.com or call +91 63543 26412`
+    } else if (error?.message) {
+      if (error.message.includes('Invalid') || error.message.includes('template')) {
+        errorMessage = 'Email service configuration error. Please contact us directly at sales@truvixoo.com'
+      } else if (error.message.includes('network') || error.message.includes('fetch')) {
+        errorMessage = 'Network error. Please check your connection and try again.'
+      } else {
+        errorMessage = `Error: ${error.message}. Please contact us directly at sales@truvixoo.com`
+      }
+    }
+    
     return { 
       success: false, 
-      message: error?.text || 'Failed to schedule demo. Please try again or contact us directly at sales@truvixoo.com' 
+      message: errorMessage
     }
   }
 }

@@ -589,7 +589,8 @@ export default function AIDevelopmentClient({ faqs }: AIDevelopmentClientProps) 
         description="Get in touch and let's discuss how we can transform your business with AI solutions."
         primaryCTA={{
           text: 'Call Us',
-          onClick: () => setIsContactModalOpen(true)
+          type: 'tel',
+          href: '+916354326412'
         }}
         secondaryCTA={{
           text: 'Schedule Consultation',
