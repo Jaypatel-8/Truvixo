@@ -46,21 +46,24 @@ export default function WhyChooseSection({
             </p>
           )}
         </div>
-        <div className={`grid ${gridCols} gap-6`}>
+        <div className={`grid ${gridCols} gap-6 card-grid-direction`}>
           {items.map((item, index) => {
             const color = item.color || logoColors[index % logoColors.length]
             return (
               <div 
                 key={index} 
-                className="bg-white rounded-lg p-6 text-center border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105"
+                className="scroll-animate-scale card-hover card-hover-border bg-white rounded-lg p-6 text-center border border-gray-200 relative overflow-hidden"
+                style={{ ['--card-accent' as string]: color }}
               >
-                <div className="mb-3 flex justify-center" style={{ color: color }}>
-                  {item.icon}
+                <div className="card-inner-reveal">
+                  <div className="card-icon mb-3 flex justify-center" style={{ color: color }}>
+                    {item.icon}
+                  </div>
+                  <h3 className="card-title font-semibold text-gray-900 text-sm">{item.title}</h3>
+                  {item.description && (
+                    <p className="card-desc text-gray-600 text-xs mt-2">{item.description}</p>
+                  )}
                 </div>
-                <h3 className="font-semibold text-gray-900 text-sm">{item.title}</h3>
-                {item.description && (
-                  <p className="text-gray-600 text-xs mt-2">{item.description}</p>
-                )}
               </div>
             )
           })}

@@ -71,9 +71,9 @@ export default function ProcessDiagram({
 }: ProcessDiagramProps) {
   return (
     <section className={`py-16 bg-white ${className}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
         {(title || subtitle) && (
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 scroll-animate">
             {title && (
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
                 {title.split(' ').map((word, index, array) => {
@@ -97,7 +97,7 @@ export default function ProcessDiagram({
               </h2>
             )}
             {subtitle && (
-              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="section-desc-reveal text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
                 {subtitle}
               </p>
             )}
@@ -105,15 +105,14 @@ export default function ProcessDiagram({
         )}
 
         {/* Horizontal Process Flow */}
-        <div className="relative">
+        <div className="relative scroll-stagger">
           {/* Desktop: Horizontal Layout */}
           <div className="hidden lg:flex items-start justify-between">
             {steps.map((step, index) => {
               const colors = stepColors[index % stepColors.length]
               const IconComponent = step.icon ? null : defaultIcons[index % defaultIcons.length]
-              
               return (
-                <div key={index} className="flex-1 flex flex-col items-center relative">
+                <div key={index} className="scroll-stagger-item flex-1 flex flex-col items-center relative">
                   {/* Step Content */}
                   <div className="w-full text-center">
                     {/* Icon in Round Container with Step Number */}
@@ -189,9 +188,8 @@ export default function ProcessDiagram({
             {steps.map((step, index) => {
               const colors = stepColors[index % stepColors.length]
               const IconComponent = step.icon ? null : defaultIcons[index % defaultIcons.length]
-              
               return (
-                <div key={index} className="flex items-start gap-4">
+                <div key={index} className="scroll-stagger-item flex items-start gap-4">
                   {/* Icon in Round Container with Step Number */}
                   <div className="flex-shrink-0 relative">
                     {step.icon ? (

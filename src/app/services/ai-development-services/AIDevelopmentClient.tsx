@@ -52,7 +52,7 @@ export default function AIDevelopmentClient({ faqs }: AIDevelopmentClientProps) 
     useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.section-desc-reveal', '.heading-reveal'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
@@ -274,7 +274,7 @@ export default function AIDevelopmentClient({ faqs }: AIDevelopmentClientProps) 
       </section>
 
       {/* 2. Our Client Section */}
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
       {/* 3. Services Section - Modern Grid with Colored Icons */}
       <section className="py-20 bg-white">
@@ -291,7 +291,7 @@ export default function AIDevelopmentClient({ faqs }: AIDevelopmentClientProps) 
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 card-grid-direction">
             {services.map((service, index) => (
               <div
                 key={index}
@@ -326,7 +326,7 @@ export default function AIDevelopmentClient({ faqs }: AIDevelopmentClientProps) 
       </section>
 
       {/* 4. Why Choose Section - Modern Grid Design */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -335,35 +335,29 @@ export default function AIDevelopmentClient({ faqs }: AIDevelopmentClientProps) 
                 Development Services
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto section-desc-reveal">
               We deliver enterprise-grade AI solutions that are built specifically for your business, ensuring optimal performance, scalability, and security.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 card-grid-direction">
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale card-hover group bg-white rounded-2xl p-8 border-2 border-gray-100 relative overflow-hidden"
                 style={{ 
+                  ['--card-accent' as string]: item.color,
                   borderColor: item.color + '40'
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = item.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = item.color + '40'
-                }}
               >
-                <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: item.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: item.color }}>
+                <div className="relative z-10 card-inner-reveal">
+                  <div className="card-icon mb-6 flex justify-center" style={{ color: item.color }}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="card-desc text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -388,7 +382,7 @@ export default function AIDevelopmentClient({ faqs }: AIDevelopmentClientProps) 
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 card-grid-direction">
             {industries.map((industry, index) => (
               <div
                 key={index}
@@ -417,7 +411,7 @@ export default function AIDevelopmentClient({ faqs }: AIDevelopmentClientProps) 
       <Technologies technologies={technologies} />
 
       {/* Additional Content - Benefits */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -426,70 +420,82 @@ export default function AIDevelopmentClient({ faqs }: AIDevelopmentClientProps) 
                 Benefits
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto section-desc-reveal">
               Discover how AI development can transform your business and unlock new possibilities
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
-                <Brain className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-grid-direction">
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#5e2cb6' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Brain className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Intelligent Automation</h3>
+                <p className="card-desc text-gray-600">
+                  Automate complex tasks and decision-making processes with AI. Reduce manual work, improve accuracy, and free up your team to focus on strategic initiatives.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Intelligent Automation</h3>
-              <p className="text-gray-600">
-                Automate complex tasks and decision-making processes with AI. Reduce manual work, improve accuracy, and free up your team to focus on strategic initiatives.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#c91a6f' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
+                  <TrendingUp className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Data-Driven Insights</h3>
+                <p className="card-desc text-gray-600">
+                  Extract valuable insights from your data with AI-powered analytics. Make better decisions, identify patterns, and predict trends to stay ahead of the competition.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Data-Driven Insights</h3>
-              <p className="text-gray-600">
-                Extract valuable insights from your data with AI-powered analytics. Make better decisions, identify patterns, and predict trends to stay ahead of the competition.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <Users className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#fecc4d' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Enhanced Customer Experience</h3>
+                <p className="card-desc text-gray-600">
+                  Deliver personalized experiences with AI-powered chatbots, recommendation engines, and customer service automation that understands and responds to customer needs.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Enhanced Customer Experience</h3>
-              <p className="text-gray-600">
-                Deliver personalized experiences with AI-powered chatbots, recommendation engines, and customer service automation that understands and responds to customer needs.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#10b981' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Zap className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Competitive Advantage</h3>
+                <p className="card-desc text-gray-600">
+                  Gain a competitive edge with AI capabilities that your competitors may not have. Leverage cutting-edge technology to innovate and differentiate your business.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Competitive Advantage</h3>
-              <p className="text-gray-600">
-                Gain a competitive edge with AI capabilities that your competitors may not have. Leverage cutting-edge technology to innovate and differentiate your business.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
-                <Target className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#5e2cb6' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Target className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Cost Reduction</h3>
+                <p className="card-desc text-gray-600">
+                  Reduce operational costs by automating repetitive tasks and optimizing processes. AI can handle tasks 24/7 without breaks, reducing the need for additional staff.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Cost Reduction</h3>
-              <p className="text-gray-600">
-                Reduce operational costs by automating repetitive tasks and optimizing processes. AI can handle tasks 24/7 without breaks, reducing the need for additional staff.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
-                <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#c91a6f' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Scalable Solutions</h3>
+                <p className="card-desc text-gray-600">
+                  Build AI systems that scale with your business. Cloud-based AI infrastructure can handle growing data volumes and user demands without major rework.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Scalable Solutions</h3>
-              <p className="text-gray-600">
-                Build AI systems that scale with your business. Cloud-based AI infrastructure can handle growing data volumes and user demands without major rework.
-              </p>
             </div>
           </div>
         </div>

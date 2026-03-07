@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import LegalPageWrapper from '@/components/LegalPageWrapper'
 
 export const metadata: Metadata = {
   title: 'Terms and Conditions | TruVixo™',
@@ -16,13 +17,14 @@ export default function TermsAndConditions() {
   const lastUpdated = 'January 2024'
 
   return (
-    <main className="min-h-screen bg-white overflow-hidden pt-20">
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
-            Terms and <span className="hollow-text-brand">Conditions</span>
-          </h1>
+    <LegalPageWrapper>
+      <main className="min-h-screen bg-white overflow-hidden pt-20">
+        {/* Hero Section */}
+        <section className="relative py-20 bg-gradient-to-b from-gray-50 to-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 scroll-animate">
+            <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
+              Terms and <span className="hollow-text-brand">Conditions</span>
+            </h1>
           <p className="text-lg text-gray-600 mb-4">
             Last Updated: {lastUpdated}
           </p>
@@ -32,10 +34,10 @@ export default function TermsAndConditions() {
         </div>
       </section>
 
-      {/* Content Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="prose prose-lg max-w-none">
+        {/* Content Section */}
+        <section className="py-16 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="prose prose-lg max-w-none scroll-animate">
             
             {/* Acceptance of Terms */}
             <div className="mb-12">
@@ -205,10 +207,11 @@ export default function TermsAndConditions() {
               </div>
             </div>
 
+            </div>
           </div>
-        </div>
-      </section>
-    </main>
+        </section>
+      </main>
+    </LegalPageWrapper>
   )
 }
 

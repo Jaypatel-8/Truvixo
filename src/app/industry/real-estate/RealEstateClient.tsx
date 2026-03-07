@@ -54,6 +54,8 @@ interface RealEstateClientProps {
 export default function RealEstateClient({ faqs, realEstateData }: RealEstateClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const hero = realEstateData?.hero
+  const badge = hero?.badge
 
   useEffect(() => {
     setIsMounted(true)
@@ -62,70 +64,72 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
     useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
 
   const services = useMemo(() => 
-    realEstateData.services.map((service: { title: string; description: string; iconName: string; color: string }) => {
+    (realEstateData?.services ?? []).map((service: { title: string; description: string; iconName: string; color: string }) => {
       const IconComponent = getIcon(service.iconName)
       return {
         ...service,
         icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
       }
-    }), [realEstateData.services]
+    }), [realEstateData?.services]
   )
 
   const whyChooseUs = useMemo(() => 
-    realEstateData.whyChooseUs.map((item: { iconName: string; title: string; description: string; color: string }) => {
+    (realEstateData?.whyChooseUs ?? []).map((item: { iconName: string; title: string; description: string; color: string }) => {
       const IconComponent = getIcon(item.iconName)
       return {
         ...item,
         icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
       }
-    }), [realEstateData.whyChooseUs]
+    }), [realEstateData?.whyChooseUs]
   )
 
   const processSteps = useMemo(() => 
-    realEstateData.processSteps.map((step: { title: string; description: string; iconName: string }) => {
+    (realEstateData?.processSteps ?? []).map((step: { title: string; description: string; iconName: string }) => {
       const IconComponent = getIcon(step.iconName)
       return {
         ...step,
         icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
       }
-    }), [realEstateData.processSteps]
+    }), [realEstateData?.processSteps]
   )
 
   const industries = useMemo(() => 
-    realEstateData.industries.map((industry: { name: string; iconName: string; color: string }) => {
+    (realEstateData?.industries ?? []).map((industry: { name: string; iconName: string; color: string }) => {
       const IconComponent = getIcon(industry.iconName)
       return {
         ...industry,
         icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
       }
-    }), [realEstateData.industries]
+    }), [realEstateData?.industries]
   )
 
   const benefits = useMemo(() => 
-    realEstateData.benefits.map((benefit: { iconName: string; title: string; description: string; color: string }) => {
+    (realEstateData?.benefits ?? []).map((benefit: { iconName: string; title: string; description: string; color: string }) => {
       const IconComponent = getIcon(benefit.iconName)
       return {
         ...benefit,
         icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
       }
-    }), [realEstateData.benefits]
+    }), [realEstateData?.benefits]
   )
 
-  const previewServices = realEstateData.services.slice(0, 4).map((service: { title: string; description: string; iconName: string; color: string }) => {
-    const IconComponent = getIcon(service.iconName)
-    return {
-      ...service,
-      icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
-    }
-  })
+  const previewServices = useMemo(() => 
+    (realEstateData?.services ?? []).slice(0, 4).map((service: { title: string; description: string; iconName: string; color: string }) => {
+      const IconComponent = getIcon(service.iconName)
+      return {
+        ...service,
+        icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
+      }
+    }), [realEstateData?.services]
+  )
 
-  const BadgeIcon = getIcon(realEstateData.hero.badge.iconName) || getIcon('Code')!
+  const BadgeIcon = getIcon(badge?.iconName ?? 'Code') || getIcon('Code')!
 
   return (
     <>
@@ -138,18 +142,20 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{realEstateData.hero.badge.text}</span>
-              </div>
+              {badge && (
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
+                  {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
+                  <span className="text-sm font-semibold text-[#5e2cb6]">{badge.text}</span>
+                </div>
+              )}
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {realEstateData.hero.title}{' '}
+                {hero?.title ?? ''}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {realEstateData.hero.hollowText}
+                  {hero?.hollowText ?? ''}
                 </span>
               </h1>
               <p className="text-base md:text-lg text-gray-600 mb-8 leading-relaxed">
-                {realEstateData.hero.description}
+                {hero?.description ?? ''}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -188,7 +194,7 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
         </div>
       </section>
 
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -337,41 +343,39 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-grid-direction">
             {benefits.map((benefit: { iconName: string; title: string; description: string; color: string; icon: ReactElement | null }, index: number) => (
-              <div key={index} className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: benefit.color + '10' }}>
-                  <div style={{ color: benefit.color }}>
-                    {benefit.icon}
+              <div key={index} className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: benefit.color }}>
+                <div className="card-inner-reveal">
+                  <div className="card-icon w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: benefit.color + '10' }}>
+                    <div style={{ color: benefit.color }}>{benefit.icon}</div>
                   </div>
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                  <p className="card-desc text-gray-600">{benefit.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600">
-                  {benefit.description}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <Technologies technologies={[...realEstateData.technologies]} />
+      <Technologies technologies={Array.isArray(realEstateData?.technologies) ? [...realEstateData.technologies] : []} />
       <ProcessDiagram 
-        title={realEstateData.processTitle}
-        subtitle={realEstateData.processSubtitle}
+        title={realEstateData?.processTitle}
+        subtitle={realEstateData?.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
       <ContactSection 
-        title={realEstateData.contact.title}
-        description={realEstateData.contact.description}
+        title={realEstateData?.contact?.title}
+        description={realEstateData?.contact?.description}
       />
 
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection
-        title={realEstateData.cta.title}
-        hollowText={realEstateData.cta.hollowText}
-        description={realEstateData.cta.description}
+        title={realEstateData?.cta?.title}
+        hollowText={realEstateData?.cta?.hollowText}
+        description={realEstateData?.cta?.description}
         primaryCTA={{
           text: 'Call Us',
           type: 'tel',

@@ -2,8 +2,17 @@
 
 import Link from 'next/link'
 import { ArrowRight, Brain, Server, Cloud, Smartphone, Database, Wrench } from 'lucide-react'
+import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
 export default function TechnologyPageClient() {
+  useIntersectionObserver({
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px',
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal'],
+    unobserveAfterIntersect: true,
+    useIdleCallback: true,
+  })
+
   const technologies = [
     {
       title: 'Frontend',
@@ -59,7 +68,7 @@ export default function TechnologyPageClient() {
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <section className="relative min-h-[60vh] bg-gradient-to-br from-purple-50 via-pink-50 to-yellow-50 flex items-center justify-center overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 scroll-animate">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
             Technologies We{' '}
             <span className="hollow-text-brand">Use</span>
@@ -80,7 +89,8 @@ export default function TechnologyPageClient() {
               <Link
                 key={index}
                 href={tech.href}
-                className="group bg-white rounded-xl p-8 border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg"
+                className="group bg-white rounded-xl p-8 border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg scroll-animate-scale"
+                style={{ animationDelay: `${index * 0.06}s` } as React.CSSProperties}
               >
                 <div className="mb-4 flex items-center gap-4">
                   <div className="w-16 h-16 rounded-xl flex items-center justify-center border-2" style={{ borderColor: tech.color, backgroundColor: tech.color + '10' }}>

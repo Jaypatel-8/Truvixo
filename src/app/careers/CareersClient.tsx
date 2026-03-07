@@ -49,7 +49,7 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
     useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal', '.scroll-animate-rotate'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
@@ -133,7 +133,7 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
       </section>
 
       {/* Our Client Section */}
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
       {/* Why Join Us Section */}
       <section className="py-20 bg-white">
@@ -198,19 +198,20 @@ export default function CareersClient({ faqs, careersData }: CareersClientProps)
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto card-grid-direction">
             {cultureValues.map((item: { icon: React.ReactNode | null; title: string; description: string }, index: number) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all"
+                className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden"
+                style={{ ['--card-accent' as string]: '#5e2cb6' }}
               >
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ color: '#5e2cb6' }}>
+                <div className="card-inner-reveal flex items-start gap-4">
+                  <div className="card-icon w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center flex-shrink-0" style={{ color: '#5e2cb6' }}>
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-gray-600">
+                    <h3 className="card-title text-xl font-bold text-gray-900 mb-2">{item.title}</h3>
+                    <p className="card-desc text-gray-600">
                       {item.description}
                     </p>
                   </div>

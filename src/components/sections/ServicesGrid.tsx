@@ -47,10 +47,11 @@ export default function ServicesGrid({
           {services.map((service, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+              className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 relative overflow-hidden scroll-animate-scale card-hover card-hover-border"
               style={{ 
-                borderColor: service.color + '40'
-              }}
+                borderColor: service.color + '40',
+                animationDelay: `${index * 0.06}s`
+              } as React.CSSProperties}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = service.color
               }}

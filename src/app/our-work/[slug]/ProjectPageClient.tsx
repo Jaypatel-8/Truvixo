@@ -49,7 +49,7 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
   useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
@@ -143,7 +143,7 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
         </div>
       </section>
 
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
@@ -421,35 +421,41 @@ export default function ProjectPageClient({ slug, projectDataMap }: ProjectPageC
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-grid-direction">
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#5e2cb6' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                  <TrendingUp className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Improved Efficiency</h3>
+                <p className="card-desc text-gray-600">
+                  Streamlined operations and automated processes leading to significant efficiency gains and cost savings.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Improved Efficiency</h3>
-              <p className="text-gray-600">
-                Streamlined operations and automated processes leading to significant efficiency gains and cost savings.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
-                <BarChart3 className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#c91a6f' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
+                  <BarChart3 className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Data-Driven Insights</h3>
+                <p className="card-desc text-gray-600">
+                  Real-time analytics and reporting provide actionable insights for better decision-making.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Data-Driven Insights</h3>
-              <p className="text-gray-600">
-                Real-time analytics and reporting provide actionable insights for better decision-making.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
-                <Cloud className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#d97706' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Cloud className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Scalable Solution</h3>
+                <p className="card-desc text-gray-600">
+                  Built with scalability in mind, the solution grows with business needs seamlessly.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Scalable Solution</h3>
-              <p className="text-gray-600">
-                Built with scalability in mind, the solution grows with business needs seamlessly.
-              </p>
             </div>
           </div>
         </div>

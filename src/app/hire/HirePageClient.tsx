@@ -2,8 +2,17 @@
 
 import Link from 'next/link'
 import { ArrowRight, Code, Brain, Smartphone, Server, Users, Target, CheckCircle, Palette, Wrench } from 'lucide-react'
+import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 
 export default function HirePageClient() {
+  useIntersectionObserver({
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px',
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal'],
+    unobserveAfterIntersect: true,
+    useIdleCallback: true,
+  })
+
   const hireOptions = [
     {
       title: 'Frontend Developers',
@@ -80,7 +89,7 @@ export default function HirePageClient() {
   return (
     <main className="min-h-screen bg-white overflow-hidden pt-20">
       <section className="relative min-h-[60vh] bg-gradient-to-br from-purple-50 via-pink-50 to-yellow-50 flex items-center justify-center overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 scroll-animate">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-6 leading-tight">
             Hire Expert <span className="hollow-text-brand">Developers</span>
           </h1>
@@ -95,29 +104,32 @@ export default function HirePageClient() {
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 card-grid-direction">
             {hireOptions.map((option, index) => (
               <Link
                 key={index}
                 href={option.href}
-                className="group bg-white rounded-xl p-8 border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg"
+                className="scroll-animate-scale card-hover card-hover-dark group bg-white rounded-xl p-8 border-2 border-gray-200 relative overflow-hidden block"
+                style={{ ['--card-accent' as string]: option.color }}
               >
-                <div className="mb-4 flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-xl flex items-center justify-center border-2" style={{ borderColor: option.color, backgroundColor: option.color + '10' }}>
-                    <div style={{ color: option.color }}>
-                      {option.icon}
+                <div className="card-inner-reveal">
+                  <div className="mb-4 flex items-center gap-4">
+                    <div className="card-icon w-16 h-16 rounded-xl flex items-center justify-center border-2" style={{ borderColor: option.color, backgroundColor: option.color + '10' }}>
+                      <div style={{ color: option.color }}>
+                        {option.icon}
+                      </div>
                     </div>
+                    <h3 className="card-title text-xl font-bold text-gray-900 flex-1 group-hover:text-[#5e2cb6] transition-colors">
+                      {option.title}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 flex-1 group-hover:text-[#5e2cb6] transition-colors">
-                    {option.title}
-                  </h3>
-                </div>
-                <p className="text-gray-600 mb-4 leading-relaxed">
-                  {option.description}
-                </p>
-                <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: option.color }}>
-                  <span>Learn More</span>
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" strokeWidth={2} />
+                  <p className="card-desc text-gray-600 mb-4 leading-relaxed">
+                    {option.description}
+                  </p>
+                  <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: option.color }}>
+                    <span>Learn More</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" strokeWidth={2} />
+                  </div>
                 </div>
               </Link>
             ))}

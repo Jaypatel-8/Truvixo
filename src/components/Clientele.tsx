@@ -87,7 +87,7 @@ function Clientele({
   const duplicatedLogos = useMemo(() => [...clientLogos, ...clientLogos], [])
 
   return (
-    <section className={`py-6 bg-[#5e2cb6] relative overflow-hidden ${className}`}>
+    <section className={`py-6 bg-[#5e2cb6] relative overflow-hidden section-reveal ${className}`}>
       <div className="w-full">
         {/* Section Header - Only show if title provided */}
         {title && (

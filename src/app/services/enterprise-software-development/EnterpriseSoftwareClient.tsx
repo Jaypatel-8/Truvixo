@@ -52,7 +52,7 @@ export default function EnterpriseSoftwareClient({ faqs }: EnterpriseSoftwareCli
     useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.section-desc-reveal', '.heading-reveal'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
@@ -264,9 +264,9 @@ export default function EnterpriseSoftwareClient({ faqs }: EnterpriseSoftwareCli
         </div>
       </section>
 
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -275,35 +275,29 @@ export default function EnterpriseSoftwareClient({ faqs }: EnterpriseSoftwareCli
                 Services
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto section-desc-reveal">
               Comprehensive enterprise software solutions
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 card-grid-direction">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale card-hover group bg-white rounded-2xl p-8 border-2 border-gray-100 relative overflow-hidden"
                 style={{ 
+                  ['--card-accent' as string]: service.color,
                   borderColor: service.color + '40'
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = service.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = service.color + '40'
-                }}
               >
-                <div className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity" style={{ backgroundColor: service.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: service.color }}>
+                <div className="relative z-10 card-inner-reveal">
+                  <div className="card-icon mb-6 flex justify-center" style={{ color: service.color }}>
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="card-desc text-gray-600 text-sm leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -313,7 +307,7 @@ export default function EnterpriseSoftwareClient({ faqs }: EnterpriseSoftwareCli
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -322,35 +316,29 @@ export default function EnterpriseSoftwareClient({ faqs }: EnterpriseSoftwareCli
                 Software Development
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto section-desc-reveal">
               We deliver enterprise-grade software solutions that are built specifically for large organizations, ensuring optimal performance, scalability, and security.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 card-grid-direction">
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale card-hover group bg-white rounded-2xl p-8 border-2 border-gray-100 relative overflow-hidden"
                 style={{ 
+                  ['--card-accent' as string]: item.color,
                   borderColor: item.color + '40'
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = item.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = item.color + '40'
-                }}
               >
-                <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: item.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: item.color }}>
+                <div className="relative z-10 card-inner-reveal">
+                  <div className="card-icon mb-6 flex justify-center" style={{ color: item.color }}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="card-desc text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -360,7 +348,7 @@ export default function EnterpriseSoftwareClient({ faqs }: EnterpriseSoftwareCli
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -369,30 +357,27 @@ export default function EnterpriseSoftwareClient({ faqs }: EnterpriseSoftwareCli
                 Specialize
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto section-desc-reveal">
               Serving diverse industries with tailored enterprise solutions
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 card-grid-direction">
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                className="scroll-animate-scale card-hover bg-white rounded-xl p-6 text-center border-2 border-gray-100 relative overflow-hidden"
                 style={{ 
+                  ['--card-accent' as string]: industry.color,
                   borderColor: industry.color + '40'
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = industry.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = industry.color + '40'
-                }}
               >
-                <div className="mb-3 flex justify-center" style={{ color: industry.color }}>
-                  {industry.icon}
+                <div className="card-inner-reveal">
+                  <div className="card-icon mb-3 flex justify-center" style={{ color: industry.color }}>
+                    {industry.icon}
+                  </div>
+                  <h3 className="card-title font-semibold text-gray-900 text-sm">{industry.name}</h3>
                 </div>
-                <h3 className="font-semibold text-gray-900 text-sm">{industry.name}</h3>
               </div>
             ))}
           </div>
@@ -400,7 +385,7 @@ export default function EnterpriseSoftwareClient({ faqs }: EnterpriseSoftwareCli
       </section>
 
       {/* Additional Content - Benefits */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -409,70 +394,82 @@ export default function EnterpriseSoftwareClient({ faqs }: EnterpriseSoftwareCli
                 Benefits
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto section-desc-reveal">
               Discover how enterprise software development can transform your organization and drive efficiency
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
-                <Building2 className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-grid-direction">
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#5e2cb6' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Building2 className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Unified Operations</h3>
+                <p className="card-desc text-gray-600">
+                  Integrate all business functions into a single platform. Enterprise software eliminates data silos, improves collaboration, and provides a unified view of operations across departments.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Unified Operations</h3>
-              <p className="text-gray-600">
-                Integrate all business functions into a single platform. Enterprise software eliminates data silos, improves collaboration, and provides a unified view of operations across departments.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#c91a6f' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Shield className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Enterprise Security</h3>
+                <p className="card-desc text-gray-600">
+                  Built-in security features including encryption, access controls, audit trails, and compliance with industry standards like SOC 2, HIPAA, and GDPR.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Enterprise Security</h3>
-              <p className="text-gray-600">
-                Built-in security features including encryption, access controls, audit trails, and compliance with industry standards like SOC 2, HIPAA, and GDPR.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
-                <Cloud className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#d97706' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#d97706]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Cloud className="w-6 h-6 text-[#d97706]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Scalable Infrastructure</h3>
+                <p className="card-desc text-gray-600">
+                  Cloud-native architecture scales automatically with your business growth. Handle increasing users, data, and transactions without performance degradation.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Scalable Infrastructure</h3>
-              <p className="text-gray-600">
-                Cloud-native architecture scales automatically with your business growth. Handle increasing users, data, and transactions without performance degradation.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
-                <BarChart3 className="w-6 h-6 text-[#059669]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#059669' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#059669]/10 rounded-lg flex items-center justify-center mb-4">
+                  <BarChart3 className="w-6 h-6 text-[#059669]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Data-Driven Decisions</h3>
+                <p className="card-desc text-gray-600">
+                  Real-time analytics and reporting dashboards provide insights for data-driven decision making. Track KPIs, monitor performance, and identify opportunities.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Data-Driven Decisions</h3>
-              <p className="text-gray-600">
-                Real-time analytics and reporting dashboards provide insights for data-driven decision making. Track KPIs, monitor performance, and identify opportunities.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#5e2cb6' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Zap className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Process Automation</h3>
+                <p className="card-desc text-gray-600">
+                  Automate repetitive tasks and workflows to increase efficiency. Reduce manual errors, save time, and allow employees to focus on strategic work.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Process Automation</h3>
-              <p className="text-gray-600">
-                Automate repetitive tasks and workflows to increase efficiency. Reduce manual errors, save time, and allow employees to focus on strategic work.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
-                <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#c91a6f' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">High Availability</h3>
+                <p className="card-desc text-gray-600">
+                  99.9% uptime with redundant systems, failover mechanisms, and disaster recovery. Ensure business continuity even during infrastructure failures.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">High Availability</h3>
-              <p className="text-gray-600">
-                99.9% uptime with redundant systems, failover mechanisms, and disaster recovery. Ensure business continuity even during infrastructure failures.
-              </p>
             </div>
           </div>
         </div>

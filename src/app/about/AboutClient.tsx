@@ -25,11 +25,6 @@ const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
   loading: () => <div className="min-h-[400px] bg-white"></div>,
 })
 
-const ContactSection = dynamic(() => import('@/components/ContactSection'), {
-  ssr: false,
-  loading: () => <div className="min-h-[300px] bg-white"></div>,
-})
-
 const Clientele = dynamic(() => import('@/components/Clientele'), {
   ssr: false,
   loading: () => <div className="min-h-[100px] bg-[#5e2cb6]"></div>,
@@ -56,7 +51,7 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
     useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal', '.scroll-animate-rotate'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
@@ -131,18 +126,20 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
               </div>
             </div>
 
-            <div className="hidden lg:grid grid-cols-2 gap-4 scroll-animate-scale">
+            <div className="hidden lg:grid grid-cols-2 gap-4 scroll-animate-scale card-grid-direction">
               {whyChooseUs.slice(0, 4).map((item, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-                  style={{ borderColor: item.color + '40' }}
+                  className="card-hover card-hover-dark bg-white rounded-2xl p-6 border-2 relative overflow-hidden"
+                  style={{ borderColor: item.color + '40', ['--card-accent' as string]: item.color }}
                 >
-                  <div className="mb-4" style={{ color: item.color }}>
-                    {item.icon}
+                  <div className="card-inner-reveal">
+                    <div className="card-icon mb-4" style={{ color: item.color }}>
+                      {item.icon}
+                    </div>
+                    <h3 className="card-title font-bold text-gray-900 text-sm mb-2">{item.title}</h3>
+                    <p className="card-desc text-xs text-gray-600 line-clamp-2">{item.description}</p>
                   </div>
-                  <h3 className="font-bold text-gray-900 text-sm mb-2">{item.title}</h3>
-                  <p className="text-xs text-gray-600 line-clamp-2">{item.description}</p>
                 </div>
               ))}
             </div>
@@ -151,7 +148,7 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
       </section>
 
       {/* Our Client Section */}
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
       {/* What We Do Section */}
       <section className="py-20 bg-white">
@@ -168,30 +165,22 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 card-grid-direction">
             {focusAreas.map((area, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
-                style={{ 
-                  borderColor: area.color + '40'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = area.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = area.color + '40'
-                }}
+                className="scroll-animate-scale card-hover card-hover-dark group bg-white rounded-2xl p-8 border-2 border-gray-100 relative overflow-hidden"
+                style={{ borderColor: area.color + '40', ['--card-accent' as string]: area.color }}
               >
                 <div className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity" style={{ backgroundColor: area.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: area.color }}>
+                <div className="card-inner-reveal relative z-10">
+                  <div className="card-icon mb-6 flex justify-center" style={{ color: area.color }}>
                     {area.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {area.name}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="card-desc text-gray-600 text-sm leading-relaxed">
                     Comprehensive {area.name.toLowerCase()} solutions tailored to your business needs
                   </p>
                 </div>
@@ -216,30 +205,22 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 card-grid-direction">
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
-                style={{ 
-                  borderColor: item.color + '40'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = item.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = item.color + '40'
-                }}
+                className="scroll-animate-scale card-hover card-hover-dark group bg-white rounded-2xl p-8 border-2 border-gray-100 relative overflow-hidden"
+                style={{ borderColor: item.color + '40', ['--card-accent' as string]: item.color }}
               >
                 <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: item.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: item.color }}>
+                <div className="card-inner-reveal relative z-10">
+                  <div className="card-icon mb-6 flex justify-center" style={{ color: item.color }}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="card-desc text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -337,52 +318,6 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-              Ready to Transform Your{' '}
-              <span className="hollow-text-white">
-                Business?
-              </span>
-            </h2>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-              Get in touch and let's discuss how we can help transform your business with our comprehensive solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <a
-                href="tel:+916354326412"
-                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-              >
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>Call Us</span>
-              </a>
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-xl hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
-              >
-                <Calendar className="w-5 h-5" strokeWidth={2} />
-                <span>Schedule Consultation</span>
-              </button>
-            </div>
-            <div className="flex flex-wrap justify-center gap-8 text-white/80">
-              <a href="mailto:sales@truvixoo.com" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Mail className="w-5 h-5" strokeWidth={2} />
-                <span>sales@truvixoo.com</span>
-              </a>
-              <a href="tel:+916354326412" className="flex items-center gap-2 hover:text-white transition-colors">
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>+91 63543 26412</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
@@ -397,65 +332,77 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
-                <Brain className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-grid-direction">
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#5e2cb6' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Brain className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">AI-Driven Innovation</h3>
+                <p className="card-desc text-gray-600">
+                  Leverage cutting-edge AI and machine learning to automate processes, gain insights, and stay ahead of the competition. Our AI solutions adapt and evolve with your business needs.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">AI-Driven Innovation</h3>
-              <p className="text-gray-600">
-                Leverage cutting-edge AI and machine learning to automate processes, gain insights, and stay ahead of the competition. Our AI solutions adapt and evolve with your business needs.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
-                <Target className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#c91a6f' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Target className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">End-to-End Partnership</h3>
+                <p className="card-desc text-gray-600">
+                  From branding and marketing to software development and funding, we're your complete growth partner. One team, multiple services, seamless execution.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">End-to-End Partnership</h3>
-              <p className="text-gray-600">
-                From branding and marketing to software development and funding, we're your complete growth partner. One team, multiple services, seamless execution.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <Award className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#fecc4d' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Award className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Proven Track Record</h3>
+                <p className="card-desc text-gray-600">
+                  500+ successful projects with 98% client satisfaction rate. We've helped businesses across industries achieve remarkable growth and transformation.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Proven Track Record</h3>
-              <p className="text-gray-600">
-                500+ successful projects with 98% client satisfaction rate. We've helped businesses across industries achieve remarkable growth and transformation.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <Rocket className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#10b981' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Rocket className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Future-Ready Solutions</h3>
+                <p className="card-desc text-gray-600">
+                  We build for tomorrow, ensuring your business stays ahead of the curve. Scalable, adaptable solutions that grow with your business and evolve with technology.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Future-Ready Solutions</h3>
-              <p className="text-gray-600">
-                We build for tomorrow, ensuring your business stays ahead of the curve. Scalable, adaptable solutions that grow with your business and evolve with technology.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
-                <Globe className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#5e2cb6' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Globe className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Global Reach, Local Expertise</h3>
+                <p className="card-desc text-gray-600">
+                  Serving clients worldwide. Global expertise with international standards.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Global Reach, Local Expertise</h3>
-              <p className="text-gray-600">
-                Serving clients worldwide. Global expertise with international standards.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
-                <Users className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#c91a6f' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Expert Team</h3>
+                <p className="card-desc text-gray-600">
+                  Skilled professionals with deep expertise in AI, software development, digital marketing, and business strategy. Your success is our mission.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Expert Team</h3>
-              <p className="text-gray-600">
-                Skilled professionals with deep expertise in AI, software development, digital marketing, and business strategy. Your success is our mission.
-              </p>
             </div>
           </div>
         </div>
@@ -585,11 +532,6 @@ export default function AboutClient({ faqs, whyChooseUs: whyChooseUsData, teamMe
 
       <FAQDropdown faqs={faqs} />
 
-      {/* SEO Location Section */}
-      <ContactSection 
-        title="Get in Touch"
-        description="Have a project in mind? Let's discuss how we can help transform your business with our comprehensive solutions."
-      />
       <ContactFormModal 
         isOpen={isContactModalOpen} 
         onClose={() => setIsContactModalOpen(false)} 

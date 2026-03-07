@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Canonical brand domain – use truvixo (not truvixoo) for all sitemap URLs
   const baseUrl = 'https://truvixo.com'
   const now = new Date()
   

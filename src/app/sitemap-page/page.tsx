@@ -4,7 +4,8 @@ import { ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Sitemap | TruVixo™',
-  description: 'Complete sitemap of all pages on TruVixo website. Find all services, industries, hiring options, and company pages.',
+  description: 'Complete sitemap of all pages on TruVixo (Truvixo / TruVixoo) website. Find all services, industries, hiring options, and company pages.',
+  keywords: ['sitemap', 'TruVixo', 'Truvixo', 'TruVixoo', 'truvixo', 'truvixoo', 'TruVixo sitemap'],
   robots: {
     index: true,
     follow: true,
@@ -89,7 +90,7 @@ export default function SitemapPage() {
             Site <span className="hollow-text-brand">Map</span>
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Complete list of all pages on TruVixo website. Easily navigate to any service, industry, or page.
+            Complete list of all pages on the TruVixo website. Easily navigate to any service, industry, or page.
           </p>
         </div>
 

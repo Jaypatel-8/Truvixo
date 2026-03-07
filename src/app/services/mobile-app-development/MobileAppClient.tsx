@@ -50,12 +50,12 @@ export default function MobileAppClient({ faqs }: MobileAppClientProps) {
   }, [])
 
     useIntersectionObserver({
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
-    unobserveAfterIntersect: false,
-    useIdleCallback: false,
-  })
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px',
+      selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.section-desc-reveal', '.heading-reveal'],
+      unobserveAfterIntersect: false,
+      useIdleCallback: false,
+    })
 
   // Mobile App Development Services with colored icons
   const services = [
@@ -271,11 +271,11 @@ export default function MobileAppClient({ faqs }: MobileAppClientProps) {
       </section>
 
       {/* 2. Our Client Section */}
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
       {/* 3. Services Section - Modern Grid with Colored Icons */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Mobile App{' '}
@@ -283,19 +283,19 @@ export default function MobileAppClient({ faqs }: MobileAppClientProps) {
                 Services
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="section-desc-reveal text-lg text-gray-600 max-w-2xl mx-auto">
               Comprehensive mobile app solutions for iOS, Android, and cross-platform
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 card-grid-direction">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale card-hover group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: service.color + '40',
-                  '--hover-border': service.color
+                  ['--card-accent' as string]: service.color
                 } as React.CSSProperties}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = service.color
@@ -305,14 +305,14 @@ export default function MobileAppClient({ faqs }: MobileAppClientProps) {
                 }}
               >
                 <div className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity" style={{ backgroundColor: service.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: service.color }}>
+                <div className="relative z-10 card-inner-reveal">
+                  <div className="card-icon mb-6 flex justify-center" style={{ color: service.color }}>
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="card-desc text-gray-600 text-sm leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -324,7 +324,7 @@ export default function MobileAppClient({ faqs }: MobileAppClientProps) {
 
       {/* 4. Why Choose Section - Modern Grid Design */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Why Choose Mobile App{' '}
@@ -337,11 +337,11 @@ export default function MobileAppClient({ faqs }: MobileAppClientProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 card-grid-direction">
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: item.color + '40'
                 }}
@@ -372,7 +372,7 @@ export default function MobileAppClient({ faqs }: MobileAppClientProps) {
 
       {/* 5. Industries Section - Compact Grid */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Industries We{' '}
@@ -380,19 +380,20 @@ export default function MobileAppClient({ faqs }: MobileAppClientProps) {
                 Specialize
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="section-desc-reveal text-lg text-gray-600 max-w-2xl mx-auto">
               Serving diverse industries with tailored mobile app solutions
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 card-grid-direction">
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                className="scroll-animate-scale card-hover bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
                 style={{ 
-                  borderColor: industry.color + '40'
-                }}
+                  borderColor: industry.color + '40',
+                  ['--card-accent' as string]: industry.color
+                } as React.CSSProperties}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = industry.color
                 }}
@@ -400,10 +401,12 @@ export default function MobileAppClient({ faqs }: MobileAppClientProps) {
                   e.currentTarget.style.borderColor = industry.color + '40'
                 }}
               >
-                <div className="mb-3 flex justify-center" style={{ color: industry.color }}>
-                  {industry.icon}
+                <div className="card-inner-reveal">
+                  <div className="card-icon mb-3 flex justify-center" style={{ color: industry.color }}>
+                    {industry.icon}
+                  </div>
+                  <h3 className="card-title font-semibold text-gray-900 text-sm">{industry.name}</h3>
                 </div>
-                <h3 className="font-semibold text-gray-900 text-sm">{industry.name}</h3>
               </div>
             ))}
           </div>

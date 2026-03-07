@@ -13,77 +13,77 @@ interface DevOpsEngineersClientProps {
 }
 
 export default function DevOpsEngineersClient({ faqs, devopsEngineersData }: DevOpsEngineersClientProps) {
-  // Convert icon names to ReactNode icons
-  const BadgeIcon = getIconComponent(devopsEngineersData.hero.badge.iconName) || Code
+  const hero = devopsEngineersData?.hero
+  const badge = hero?.badge
+  const BadgeIcon = getIconComponent(badge?.iconName) || Code
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
   const services = useMemo(() => 
-    devopsEngineersData.services.map(service => {
+    (devopsEngineersData?.services ?? []).map(service => {
       const IconComponent = getIconComponent(service.iconName) || Code
       return {
         ...service,
         icon: <IconComponent className="w-8 h-8" strokeWidth={2} />
       }
-    }), [devopsEngineersData.services]
+    }), [devopsEngineersData?.services]
   )
 
   const whyChooseUs = useMemo(() => 
-    devopsEngineersData.whyChooseUs.map(item => {
+    (devopsEngineersData?.whyChooseUs ?? []).map(item => {
       const IconComponent = getIconComponent(item.iconName) || Code
       return {
         ...item,
         icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
       }
-    }), [devopsEngineersData.whyChooseUs]
+    }), [devopsEngineersData?.whyChooseUs]
   )
 
   const industries = useMemo(() => 
-    devopsEngineersData.industries.map(industry => {
+    (devopsEngineersData?.industries ?? []).map(industry => {
       const IconComponent = getIconComponent(industry.iconName) || Building2
       return {
         ...industry,
         icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
       }
-    }), [devopsEngineersData.industries]
+    }), [devopsEngineersData?.industries]
   )
 
   const processSteps = useMemo(() => 
-    devopsEngineersData.processSteps.map(step => {
+    (devopsEngineersData?.processSteps ?? []).map(step => {
       const IconComponent = getIconComponent(step.iconName) || Target
       return {
         ...step,
         icon: <IconComponent className="w-6 h-6" strokeWidth={2} />
       }
-    }), [devopsEngineersData.processSteps]
+    }), [devopsEngineersData?.processSteps]
   )
+
+  const technologiesList = Array.isArray(devopsEngineersData?.technologies) ? [...devopsEngineersData.technologies] : []
 
   return (
     <PageTemplate
       relatedLinks={getHireRelatedLinks('devops-engineers')}
       relatedLinksTitle={"Related Hiring Options"}
-      badge={{
-        icon: badgeIcon,
-        text: devopsEngineersData.hero.badge.text
-      }}
-      title={devopsEngineersData.hero.title}
-      hollowText={devopsEngineersData.hero.hollowText}
-      description={devopsEngineersData.hero.description}
+      badge={badge ? { icon: badgeIcon, text: badge.text } : undefined}
+      title={hero?.title ?? ''}
+      hollowText={hero?.hollowText ?? ''}
+      description={hero?.description ?? ''}
       services={services}
-      servicesTitle={devopsEngineersData.servicesTitle}
-      servicesHollowText={devopsEngineersData.servicesHollowText}
+      servicesTitle={devopsEngineersData?.servicesTitle}
+      servicesHollowText={devopsEngineersData?.servicesHollowText}
       whyChoose={whyChooseUs}
-      whyChooseTitle={devopsEngineersData.whyChooseTitle}
-      whyChooseHollowText={devopsEngineersData.whyChooseHollowText}
+      whyChooseTitle={devopsEngineersData?.whyChooseTitle}
+      whyChooseHollowText={devopsEngineersData?.whyChooseHollowText}
       industries={industries}
-      technologies={[...devopsEngineersData.technologies]}
-      getQuoteTitle={devopsEngineersData.getQuoteTitle}
-      getQuoteHollowText={devopsEngineersData.getQuoteHollowText}
-      getQuoteDescription={devopsEngineersData.getQuoteDescription}
+      technologies={technologiesList}
+      getQuoteTitle={devopsEngineersData?.getQuoteTitle}
+      getQuoteHollowText={devopsEngineersData?.getQuoteHollowText}
+      getQuoteDescription={devopsEngineersData?.getQuoteDescription}
       faqs={faqs}
-      contactTitle={devopsEngineersData.contactTitle}
-      contactDescription={devopsEngineersData.contactDescription}
-      processTitle={devopsEngineersData.processTitle}
-      processSubtitle={devopsEngineersData.processSubtitle}
+      contactTitle={devopsEngineersData?.contactTitle}
+      contactDescription={devopsEngineersData?.contactDescription}
+      processTitle={devopsEngineersData?.processTitle}
+      processSubtitle={devopsEngineersData?.processSubtitle}
       processSteps={processSteps}
     />
   )

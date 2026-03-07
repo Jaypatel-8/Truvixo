@@ -13,82 +13,84 @@ interface FullStackDevelopersClientProps {
 }
 
 export default function FullStackDevelopersClient({ faqs, fullStackDevelopersData }: FullStackDevelopersClientProps) {
-  // Convert icon names to ReactNode icons
-  const BadgeIcon = getIconComponent(fullStackDevelopersData.hero.badge?.iconName || 'Server') || Server
+  const hero = fullStackDevelopersData?.hero
+  const badge = hero?.badge
+  const BadgeIcon = getIconComponent(badge?.iconName || 'Server') || Server
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
   const services = useMemo(() => 
-    (fullStackDevelopersData.services || []).map(service => {
+    (fullStackDevelopersData?.services ?? []).map(service => {
       const IconComponent = getIconComponent(service.iconName) || Code
       return {
         ...service,
         icon: <IconComponent className="w-8 h-8" strokeWidth={2} />
       }
-    }), [fullStackDevelopersData.services]
+    }), [fullStackDevelopersData?.services]
   )
 
   const whyChooseUs = useMemo(() => 
-    (fullStackDevelopersData.whyChooseUs || []).map(item => {
+    (fullStackDevelopersData?.whyChooseUs ?? []).map(item => {
       const IconComponent = getIconComponent(item.iconName) || Code
       return {
         ...item,
         icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
       }
-    }), [fullStackDevelopersData.whyChooseUs]
+    }), [fullStackDevelopersData?.whyChooseUs]
   )
 
   const industries = useMemo(() => 
-    (fullStackDevelopersData.industries || []).map(industry => {
+    (fullStackDevelopersData?.industries ?? []).map(industry => {
       const IconComponent = getIconComponent(industry.iconName) || Building2
       return {
         ...industry,
         icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
       }
-    }), [fullStackDevelopersData.industries]
+    }), [fullStackDevelopersData?.industries]
   )
 
   const processSteps = useMemo(() => 
-    (fullStackDevelopersData.processSteps || []).map(step => {
+    (fullStackDevelopersData?.processSteps ?? []).map(step => {
       const IconComponent = getIconComponent(step.iconName) || Target
       return {
         ...step,
         icon: <IconComponent className="w-6 h-6" strokeWidth={2} />
       }
-    }), [fullStackDevelopersData.processSteps]
+    }), [fullStackDevelopersData?.processSteps]
   )
+
+  const technologiesList = Array.isArray(fullStackDevelopersData?.technologies)
+    ? fullStackDevelopersData.technologies.filter(tech => tech.logo && tech.color && tech.category !== 'other').map(tech => ({
+        name: tech.name,
+        logo: tech.logo!,
+        color: tech.color!,
+        category: tech.category as 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai' | 'management' | 'testing' | 'design'
+      }))
+    : []
 
   return (
     <PageTemplate
       relatedLinks={getHireRelatedLinks('full-stack-developers')}
       relatedLinksTitle={"Related Hiring Options"}
-      badge={{
-        icon: badgeIcon,
-        text: fullStackDevelopersData.hero.badge?.text || ''
-      }}
-      title={fullStackDevelopersData.hero.title}
-      hollowText={fullStackDevelopersData.hero.hollowText}
-      description={fullStackDevelopersData.hero.description}
+      badge={badge ? { icon: badgeIcon, text: badge.text ?? '' } : undefined}
+      title={hero?.title ?? ''}
+      hollowText={hero?.hollowText ?? ''}
+      description={hero?.description ?? ''}
       services={services}
-      servicesTitle={fullStackDevelopersData.servicesTitle}
-      servicesHollowText={fullStackDevelopersData.servicesHollowText}
+      servicesTitle={fullStackDevelopersData?.servicesTitle}
+      servicesHollowText={fullStackDevelopersData?.servicesHollowText}
       whyChoose={whyChooseUs}
-      whyChooseTitle={fullStackDevelopersData.whyChooseTitle}
-      whyChooseHollowText={fullStackDevelopersData.whyChooseHollowText}
+      whyChooseTitle={fullStackDevelopersData?.whyChooseTitle}
+      whyChooseHollowText={fullStackDevelopersData?.whyChooseHollowText}
       industries={industries}
-      technologies={Array.isArray(fullStackDevelopersData.technologies) ? fullStackDevelopersData.technologies.filter(tech => tech.logo && tech.color && tech.category !== 'other').map(tech => ({ 
-        name: tech.name,
-        logo: tech.logo!,
-        color: tech.color!,
-        category: tech.category as 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai' | 'management' | 'testing' | 'design'
-      })) : []}
-      getQuoteTitle={fullStackDevelopersData.getQuoteTitle}
-      getQuoteHollowText={fullStackDevelopersData.getQuoteHollowText}
-      getQuoteDescription={fullStackDevelopersData.getQuoteDescription}
+      technologies={technologiesList}
+      getQuoteTitle={fullStackDevelopersData?.getQuoteTitle}
+      getQuoteHollowText={fullStackDevelopersData?.getQuoteHollowText}
+      getQuoteDescription={fullStackDevelopersData?.getQuoteDescription}
       faqs={faqs}
-      contactTitle={fullStackDevelopersData.contactTitle}
-      contactDescription={fullStackDevelopersData.contactDescription}
-      processTitle={fullStackDevelopersData.processTitle}
-      processSubtitle={fullStackDevelopersData.processSubtitle}
+      contactTitle={fullStackDevelopersData?.contactTitle}
+      contactDescription={fullStackDevelopersData?.contactDescription}
+      processTitle={fullStackDevelopersData?.processTitle}
+      processSubtitle={fullStackDevelopersData?.processSubtitle}
       processSteps={processSteps}
     />
   )

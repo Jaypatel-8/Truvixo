@@ -80,7 +80,7 @@ export default function ContactSection({
   }
 
   return (
-    <section className={`py-16 bg-gray-50 ${className}`} id="contact-section">
+    <section className={`py-16 bg-gray-50 section-reveal ${className}`} id="contact-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 scroll-animate">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -94,7 +94,7 @@ export default function ContactSection({
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Contact Details */}
-          <div className="space-y-4">
+          <div className="space-y-4 scroll-animate-left">
             <div className="flex items-center gap-4 p-5 bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-md">
               <div className="w-12 h-12 rounded-lg flex items-center justify-center border-2 flex-shrink-0" style={{ backgroundColor: '#5e2cb6' + '15', borderColor: '#5e2cb6' }}>
                 <Phone className="w-6 h-6" style={{ color: '#5e2cb6' }} strokeWidth={2} />
@@ -119,7 +119,7 @@ export default function ContactSection({
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm">
+          <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm scroll-animate-right">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>

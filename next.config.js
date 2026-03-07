@@ -35,7 +35,7 @@ const nextConfig = {
     optimizeServerReact: true,
   },
   
-  // Compiler optimizations
+  // Compiler optimizations (single block - duplicate removed below)
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? {
       exclude: ['error', 'warn'],
@@ -146,13 +146,7 @@ const nextConfig = {
     ],
   },
   
-  // Compiler optimizations
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
-  
-  // Additional performance optimizations
-  reactStrictMode: true,
+  // Additional performance optimizations (reactStrictMode already set above)
   compress: false, // Handled by hosting provider for static export
   
   // Bundle analyzer (uncomment to analyze bundle)
@@ -198,10 +192,6 @@ const nextConfig = {
         },
       };
     }
-
-    // Tree shaking optimization (removed usedExports as it conflicts with Next.js cache)
-    // config.optimization.usedExports = true; // Conflicts with Next.js caching
-    config.optimization.sideEffects = false;
 
     return config;
 

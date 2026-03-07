@@ -43,7 +43,7 @@ export default function HeroSection({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="scroll-animate">
+          <div className="scroll-animate above-fold">
             {badge && (
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                 {badge.icon}
@@ -64,7 +64,7 @@ export default function HeroSection({
                 {primaryCTA && (
                   <button 
                     onClick={primaryCTA.onClick}
-                    className="bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
+                    className="btn-press bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
                   >
                     <Calendar className="w-5 h-5" strokeWidth={2} />
                     <span>{primaryCTA.text}</span>
@@ -73,7 +73,7 @@ export default function HeroSection({
                 {secondaryCTA && (
                   <button 
                     onClick={secondaryCTA.onClick}
-                    className="bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+                    className="btn-press bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
                   >
                     <span>{secondaryCTA.text}</span>
                     <ArrowRight className="w-5 h-5" strokeWidth={2} />
@@ -84,11 +84,11 @@ export default function HeroSection({
           </div>
 
           {previewCards && previewCards.length > 0 && (
-            <div className="hidden lg:grid grid-cols-2 gap-4 scroll-animate-scale">
+            <div className="hidden lg:grid grid-cols-2 gap-4 scroll-animate-scale above-fold">
               {previewCards.slice(0, 4).map((card, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl p-6 border-2 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                  className="bg-white rounded-2xl p-6 border-2 hover:border-opacity-100 shadow-lg card-hover card-hover-border"
                   style={{ borderColor: card.color + '40' }}
                 >
                   <div className="mb-4" style={{ color: card.color }}>

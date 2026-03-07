@@ -51,7 +51,6 @@ export default function FAQDropdown({
               <div
                 key={index}
                 className="bg-white rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-300 overflow-hidden scroll-animate-scale"
-                style={{ animationDelay: `${index * 0.05}s` }}
               >
                 <button
                   onClick={() => toggle(index)}

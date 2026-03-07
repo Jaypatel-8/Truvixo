@@ -60,77 +60,80 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
     useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
 
+  const hero = healthcareData?.hero
+  const badge = hero?.badge
+
   const services = useMemo(() => 
-    (healthcareData.services || []).map(service => {
+    (healthcareData?.services ?? []).map(service => {
       const IconComponent = getIcon(service.iconName)
       return {
         ...service,
         icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
       }
-    }), [healthcareData.services]
+    }), [healthcareData?.services]
   )
 
   const whyChooseUs = useMemo(() => 
-    (healthcareData.whyChooseUs || []).map(item => {
+    (healthcareData?.whyChooseUs ?? []).map(item => {
       const IconComponent = getIcon(item.iconName)
       return {
         ...item,
         icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
       }
-    }), [healthcareData.whyChooseUs]
+    }), [healthcareData?.whyChooseUs]
   )
 
   const processSteps = useMemo(() => 
-    (healthcareData.processSteps || []).map(step => {
+    (healthcareData?.processSteps ?? []).map(step => {
       const IconComponent = getIcon(step.iconName)
       return {
         ...step,
         icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
       }
-    }), [healthcareData.processSteps]
+    }), [healthcareData?.processSteps]
   )
 
   const industries = useMemo(() => 
-    (healthcareData.industries || []).map(industry => {
+    (healthcareData?.industries ?? []).map(industry => {
       const IconComponent = getIcon(industry.iconName)
       return {
         ...industry,
         icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
       }
-    }), [healthcareData.industries]
+    }), [healthcareData?.industries]
   )
 
   const benefits = useMemo(() => 
-    (healthcareData.benefits || []).map(benefit => {
+    (healthcareData?.benefits ?? []).map(benefit => {
       const IconComponent = getIcon(benefit.iconName)
       return {
         ...benefit,
         icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
       }
-    }), [healthcareData.benefits]
+    }), [healthcareData?.benefits]
   )
 
   const previewServices = useMemo(() => 
-    (healthcareData.services || []).slice(0, 4).map(service => {
+    (healthcareData?.services ?? []).slice(0, 4).map(service => {
       const IconComponent = getIcon(service.iconName)
       return {
         ...service,
         icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
       }
-    }), [healthcareData.services]
+    }), [healthcareData?.services]
   )
 
   const BadgeIcon = useMemo(() => {
-    if (healthcareData.hero.badge?.iconName) {
-      return getIcon(healthcareData.hero.badge.iconName)
+    if (badge?.iconName) {
+      return getIcon(badge.iconName)
     }
     return null
-  }, [healthcareData.hero.badge])
+  }, [badge?.iconName])
 
   return (
     <>
@@ -143,20 +146,20 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
-              {healthcareData.hero.badge && (
+              {badge && (
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                   {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                  <span className="text-sm font-semibold text-[#5e2cb6]">{healthcareData.hero.badge.text}</span>
+                  <span className="text-sm font-semibold text-[#5e2cb6]">{badge.text}</span>
                 </div>
               )}
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {healthcareData.hero.title}{' '}
+                {hero?.title ?? ''}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {healthcareData.hero.hollowText}
+                  {hero?.hollowText ?? ''}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {healthcareData.hero.description}
+                {hero?.description ?? ''}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -195,15 +198,15 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
         </div>
       </section>
 
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {healthcareData.servicesTitle}{' '}
+              {healthcareData?.servicesTitle}{' '}
               <span className="hollow-text-brand">
-                {healthcareData.servicesHollowText}
+                {healthcareData?.servicesHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -248,9 +251,9 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              {healthcareData.whyChooseTitle}{' '}
+              {healthcareData?.whyChooseTitle}{' '}
               <span className="hollow-text-brand">
-                {healthcareData.whyChooseHollowText}
+                {healthcareData?.whyChooseHollowText}
               </span>
             </h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -344,38 +347,36 @@ export default function HealthcareClient({ faqs, healthcareData }: HealthcareCli
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-grid-direction">
             {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: benefit.color + '10' }}>
-                  <div style={{ color: benefit.color }}>
-                    {benefit.icon}
+              <div key={index} className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: benefit.color }}>
+                <div className="card-inner-reveal">
+                  <div className="card-icon w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: benefit.color + '10' }}>
+                    <div style={{ color: benefit.color }}>{benefit.icon}</div>
                   </div>
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                  <p className="card-desc text-gray-600">{benefit.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600">
-                  {benefit.description}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {healthcareData.technologies && <Technologies technologies={[...healthcareData.technologies]} />}
+      {Array.isArray(healthcareData?.technologies) && healthcareData.technologies.length > 0 && <Technologies technologies={[...healthcareData.technologies]} />}
       <ProcessDiagram 
-        title={healthcareData.processTitle}
-        subtitle={healthcareData.processSubtitle}
+        title={healthcareData?.processTitle}
+        subtitle={healthcareData?.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      {healthcareData.contactTitle && healthcareData.contactDescription && (
+      {healthcareData?.contactTitle && healthcareData?.contactDescription && (
         <ContactSection 
           title={healthcareData.contactTitle}
           description={healthcareData.contactDescription}
         />
       )}
-      {healthcareData.getQuoteTitle && healthcareData.getQuoteHollowText && healthcareData.getQuoteDescription && (
+      {healthcareData?.getQuoteTitle && healthcareData?.getQuoteHollowText && healthcareData?.getQuoteDescription && (
         <GetQuoteSection
           title={healthcareData.getQuoteTitle}
           hollowText={healthcareData.getQuoteHollowText}

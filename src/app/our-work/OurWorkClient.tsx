@@ -54,7 +54,7 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
     useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
@@ -172,7 +172,7 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
         </div>
       </section>
 
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -321,18 +321,16 @@ export default function OurWorkClient({ faqs, ourWorkData }: OurWorkClientProps)
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-grid-direction">
             {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: benefit.color + '10' }}>
-                  <div style={{ color: benefit.color }}>
-                    {benefit.icon}
+              <div key={index} className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: benefit.color }}>
+                <div className="card-inner-reveal">
+                  <div className="card-icon w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: benefit.color + '10' }}>
+                    <div style={{ color: benefit.color }}>{benefit.icon}</div>
                   </div>
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                  <p className="card-desc text-gray-600">{benefit.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600">
-                  {benefit.description}
-                </p>
               </div>
             ))}
           </div>

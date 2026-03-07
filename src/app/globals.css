@@ -26,6 +26,21 @@
   unicode-range: U+0020-007F, U+00A0-00FF;
 }
 
+/* Premium animation easing (NeuroHire-style) */
+:root {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --scroll-duration: 0.7s;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
 /* Performance optimizations */
 * {
   -webkit-font-smoothing: antialiased;
@@ -47,41 +62,439 @@ h1, h2, h3, h4, h5, h6 {
   /* Removed !important to allow page-specific styles */
 }
 
-/* Scroll animations - visible by default, animate on scroll */
-.scroll-animate,
-.scroll-animate-left,
-.scroll-animate-right,
-.scroll-animate-scale {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-  will-change: opacity, transform; /* Optimize for animations */
+/* Site-wide: reduced heading/subheading/description size and heading boldness */
+.font-black {
+  font-weight: 700; /* was 900 - reduced boldness */
+}
+/* Slightly smaller headings (text-4xl to text-6xl) and subheadings/descriptions (text-lg, text-xl, text-2xl) */
+.text-6xl { font-size: 2.25rem; line-height: 2.5rem; }
+.text-5xl { font-size: 2rem; line-height: 2.25rem; }
+.text-4xl { font-size: 1.875rem; line-height: 2.25rem; }
+.text-3xl { font-size: 1.5rem; line-height: 2rem; }
+.text-2xl { font-size: 1.125rem; line-height: 1.625rem; }
+.text-xl { font-size: 1.0625rem; line-height: 1.5rem; }
+.text-lg { font-size: 0.9375rem; line-height: 1.5rem; }
+@media (min-width: 768px) {
+  .text-6xl { font-size: 2.5rem; line-height: 2.75rem; }
+  .text-5xl { font-size: 2.25rem; line-height: 2.5rem; }
+  .text-4xl { font-size: 2rem; line-height: 2.5rem; }
+  .text-3xl { font-size: 1.625rem; line-height: 2rem; }
+}
+@media (min-width: 1024px) {
+  .text-6xl { font-size: 2.75rem; line-height: 3rem; }
+  .text-5xl { font-size: 2.5rem; line-height: 2.75rem; }
+  .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
 }
 
-/* Only apply will-change when animating */
+/* Above-the-fold: visible on first paint (no blink, no CLS) */
+.above-fold.scroll-animate,
+.above-fold.scroll-animate-left,
+.above-fold.scroll-animate-right,
+.above-fold.scroll-animate-scale {
+  opacity: 1;
+  transform: none;
+}
+.above-fold.scroll-animate.animate,
+.above-fold.scroll-animate-left.animate,
+.above-fold.scroll-animate-right.animate,
+.above-fold.scroll-animate-scale.animate {
+  animation: none;
+}
+
+/* Scroll animations - only visible when in viewport (NeuroHire-style: longer, smoother) */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+}
+.scroll-animate-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+}
+.scroll-animate-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+}
+.scroll-animate-scale {
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 0.5s var(--ease-out-expo), transform 0.5s var(--ease-out-expo);
+}
+
+/* Only animate when in viewport (class added by IntersectionObserver) */
 .scroll-animate.animate,
 .scroll-animate-left.animate,
 .scroll-animate-right.animate,
 .scroll-animate-scale.animate {
   will-change: opacity, transform;
 }
-
-/* Only apply animation when class is added */
 .scroll-animate.animate {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp var(--scroll-duration) var(--ease-out-expo) forwards;
 }
-
 .scroll-animate-left.animate {
-  animation: slideInLeft 0.6s ease-out forwards;
+  animation: slideInLeft var(--scroll-duration) var(--ease-out-expo) forwards;
 }
-
 .scroll-animate-right.animate {
-  animation: slideInRight 0.6s ease-out forwards;
+  animation: slideInRight var(--scroll-duration) var(--ease-out-expo) forwards;
+}
+.scroll-animate-scale.animate {
+  animation: scaleIn var(--scroll-duration) var(--ease-out-expo) forwards;
 }
 
-.scroll-animate-scale.animate {
-  animation: scaleIn 0.6s ease-out forwards;
+/* Respect reduced motion - show immediately */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-animate,
+  .scroll-animate-left,
+  .scroll-animate-right,
+  .scroll-animate-scale {
+    opacity: 1;
+    transform: none;
+  }
+  .scroll-animate.animate,
+  .scroll-animate-left.animate,
+  .scroll-animate-right.animate,
+  .scroll-animate-scale.animate {
+    animation: none;
+  }
+  .nav-entrance {
+    animation: none;
+  }
+}
+
+/* Stagger container: children animate in sequence when container enters viewport */
+.scroll-stagger {
+  /* Container itself is just a trigger; no initial hidden state */
+}
+.scroll-stagger .scroll-stagger-item {
+  opacity: 0;
+  transform: translateY(36px);
+  animation: fadeInUp 0.65s var(--ease-out-expo) forwards;
+}
+.scroll-stagger.animate .scroll-stagger-item {
+  will-change: opacity, transform;
+}
+.scroll-stagger.animate .scroll-stagger-item:nth-child(1) { animation-delay: 0ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(2) { animation-delay: 70ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(3) { animation-delay: 140ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(4) { animation-delay: 210ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(5) { animation-delay: 280ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(6) { animation-delay: 350ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(7) { animation-delay: 420ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(8) { animation-delay: 490ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(9) { animation-delay: 560ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(10) { animation-delay: 630ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(11) { animation-delay: 700ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(12) { animation-delay: 770ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(13) { animation-delay: 840ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(14) { animation-delay: 910ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(15) { animation-delay: 980ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(16) { animation-delay: 1050ms; }
+.scroll-stagger.animate .scroll-stagger-item:nth-child(n+17) { animation-delay: 1120ms; }
+@media (prefers-reduced-motion: reduce) {
+  .scroll-stagger .scroll-stagger-item {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+/* Grid card: animate each card individually when THAT card enters viewport (not the whole section).
+   Add scroll-animate-scale (or scroll-animate / scroll-animate-left / scroll-animate-right) to each
+   card; do NOT wrap the grid in scroll-stagger. Observer will add .animate to each card when visible. */
+.grid-card-reveal {
+  /* Alias: use scroll-animate-scale on each card for scale-in, or scroll-animate for fade-up */
+}
+
+/* Section wrapper: entire section content fades/slides in when in view (NeuroHire-style) */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s var(--ease-out-expo), transform 0.65s var(--ease-out-expo);
+  content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
+}
+.section-reveal.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-reveal { opacity: 1; transform: none; }
+  .section-reveal.animate { transition: none; }
+}
+
+/* Heading line reveal - each line slides up with stagger (NeuroHire-style) */
+.heading-reveal {
+  overflow: hidden;
+}
+.heading-reveal .heading-reveal-line {
+  display: block;
+  overflow: hidden;
+  line-height: 1.2;
+}
+.heading-reveal .heading-reveal-line span {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.7s var(--ease-out-expo), opacity 0.6s var(--ease-out-expo);
+}
+.heading-reveal.animate .heading-reveal-line span {
+  transform: translateY(0);
+  opacity: 1;
+}
+.heading-reveal.animate .heading-reveal-line:nth-child(1) span { transition-delay: 0ms; }
+.heading-reveal.animate .heading-reveal-line:nth-child(2) span { transition-delay: 80ms; }
+.heading-reveal.animate .heading-reveal-line:nth-child(3) span { transition-delay: 160ms; }
+.heading-reveal.animate .heading-reveal-line:nth-child(4) span { transition-delay: 240ms; }
+.heading-reveal.animate .heading-reveal-line:nth-child(5) span { transition-delay: 320ms; }
+.heading-reveal.animate .heading-reveal-line:nth-child(6) span { transition-delay: 400ms; }
+@media (prefers-reduced-motion: reduce) {
+  .heading-reveal .heading-reveal-line span {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Navbar entrance - subtle slide down + fade (runs once on load) */
+.nav-entrance {
+  animation: navEntrance 0.4s ease-out forwards;
+}
+@keyframes navEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button active press - premium feedback (opt-in via .btn-press) */
+.btn-press:active {
+  transform: scale(0.98);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-press:active {
+    transform: none;
+  }
+}
+
+/* Card hover: lift + scale + running border (GPU-only, no layout) */
+.card-hover {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transform-origin: center;
+}
+.card-hover:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(94, 44, 182, 0.08);
+}
+.card-hover-border {
+  position: relative;
+  overflow: hidden;
+}
+.card-hover-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(90deg, #5e2cb6, #c91a6f, #10b981, #5e2cb6);
+  background-size: 300% 100%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.card-hover-border:hover::before {
+  opacity: 1;
+  animation: cardBorderRun 1.5s linear infinite;
+}
+@keyframes cardBorderRun {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-hover:hover { transform: none; }
+  .card-hover-border:hover::before { animation: none; opacity: 0.6; }
+}
+
+/* Card inner entrance: icon, title, description animate when card enters view */
+.card-inner-reveal .card-icon,
+.card-inner-reveal .card-title,
+.card-inner-reveal .card-desc {
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+.scroll-animate-scale.animate .card-inner-reveal .card-icon {
+  animation: cardIconReveal 0.5s var(--ease-out-expo) forwards;
+}
+.scroll-animate-scale.animate .card-inner-reveal .card-title {
+  animation: cardTitleRevealLeft 0.5s var(--ease-out-expo) 0.12s forwards;
+}
+.scroll-animate-scale.animate .card-inner-reveal .card-desc {
+  animation: cardDescRevealRight 0.5s var(--ease-out-expo) 0.24s forwards;
+}
+@keyframes cardIconReveal {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes cardTitleRevealLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes cardDescRevealRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-inner-reveal .card-icon,
+  .card-inner-reveal .card-title,
+  .card-inner-reveal .card-desc {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+/* Section description: different entrance from heading (slide from right) */
+.section-desc-reveal {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.6s var(--ease-out-expo), transform 0.6s var(--ease-out-expo);
+}
+.section-desc-reveal.animate {
+  opacity: 1;
+  transform: translateX(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-desc-reveal { opacity: 1; transform: none; }
+}
+
+/* Paragraph entrance: all p inside section-reveal animate when section is in view */
+.section-reveal p:not(.section-desc-reveal) {
+  opacity: 0;
+}
+.section-reveal.animate p:not(.section-desc-reveal) {
+  animation: pRevealFade 0.5s var(--ease-out-expo) forwards;
+}
+@keyframes pRevealFade {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* Standalone p-reveal for use outside sections */
+.p-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.p-reveal.animate {
+  animation: pRevealFade 0.5s var(--ease-out-expo) forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .section-reveal.animate p { opacity: 1; animation: none; }
+  .p-reveal { opacity: 1; transform: none; }
+  .p-reveal.animate { animation: none; }
+}
+
+/* Button entrance: icon then text */
+.btn-entrance .btn-icon,
+.btn-entrance .btn-text {
+  opacity: 0;
+  transform: translateY(6px);
+}
+.btn-entrance.animate .btn-icon {
+  animation: btnIconReveal 0.35s var(--ease-out-expo) forwards;
+}
+.btn-entrance.animate .btn-text {
+  animation: btnTextReveal 0.35s var(--ease-out-expo) 0.1s forwards;
+}
+@keyframes btnIconReveal {
+  from { opacity: 0; transform: translateY(6px) scale(0.9); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes btnTextReveal {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-entrance .btn-icon,
+  .btn-entrance .btn-text { opacity: 1; transform: none; }
+  .btn-entrance.animate .btn-icon,
+  .btn-entrance.animate .btn-text { animation: none; }
+}
+
+/* Card grid: left cards slide from left, right from right, every 3rd bounces */
+.card-grid-direction .scroll-animate-scale {
+  opacity: 0;
+  transform: translateX(-28px);
+  transition: none;
+}
+.card-grid-direction .scroll-animate-scale:nth-child(even) {
+  transform: translateX(28px);
+}
+.card-grid-direction .scroll-animate-scale:nth-child(odd).animate {
+  animation: cardSlideInLeft 0.55s var(--ease-out-expo) forwards;
+}
+.card-grid-direction .scroll-animate-scale:nth-child(even).animate {
+  animation: cardSlideInRight 0.55s var(--ease-out-expo) forwards;
+}
+.card-grid-direction .scroll-animate-scale:nth-child(3n).animate {
+  animation: cardBounceIn 0.6s var(--ease-out-expo) forwards;
+}
+@keyframes cardSlideInLeft {
+  from { opacity: 0; transform: translateX(-28px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes cardSlideInRight {
+  from { opacity: 0; transform: translateX(28px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes cardBounceIn {
+  from { opacity: 0; transform: scale(0.92); }
+  60% { opacity: 1; transform: scale(1.04); }
+  to { opacity: 1; transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-grid-direction .scroll-animate-scale {
+    opacity: 1;
+    transform: none;
+  }
+  .card-grid-direction .scroll-animate-scale.animate { animation: none; }
+}
+
+/* Card hover: border matches icon color (--card-accent) site-wide */
+.card-hover-dark,
+.scroll-animate-scale.card-hover {
+  --card-accent: #5e2cb6; /* default if not set on card */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover-dark:hover,
+.scroll-animate-scale.card-hover:hover {
+  border-color: var(--card-accent) !important;
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12);
+}
+
+/* Highlight underline animation for section emphasis */
+.underline-reveal {
+  position: relative;
+}
+.underline-reveal::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 3px;
+  background: linear-gradient(90deg, #5e2cb6, #c91a6f);
+  border-radius: 2px;
+  width: 0;
+  transition: width 0.5s var(--ease-out-expo);
+}
+.underline-reveal.animate::after,
+.underline-reveal:hover::after {
+  width: 100%;
 }
 
 /* Hollow Font Effect - Modern Monochromatic with Le Petite Cocho */
@@ -752,6 +1165,28 @@ body {
   }
 }
 
+/* Hero blob float - subtle, slow (NeuroHire-style) */
+@keyframes heroBlobFloat {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  33% {
+    transform: translate(3%, -2%) scale(1.02);
+    opacity: 0.7;
+  }
+  66% {
+    transform: translate(-2%, 2%) scale(0.98);
+    opacity: 0.5;
+  }
+}
+.hero-blob {
+  animation: heroBlobFloat 12s var(--ease-out-smooth) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-blob { animation: none; }
+}
+
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -1061,58 +1496,17 @@ html {
   will-change: transform;
 }
 
-/* Scroll Animations - Headings visible immediately */
-.scroll-animate {
+/* Scroll animations: visibility controlled by first block; headings inherit when .animate */
+.scroll-animate.animate h1,
+.scroll-animate.animate h2,
+.scroll-animate.animate h3,
+.scroll-animate.animate h4,
+.scroll-animate.animate h5,
+.scroll-animate.animate h6,
+.scroll-animate.animate p {
   opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-/* Headings are always visible */
-.scroll-animate h1,
-.scroll-animate h2,
-.scroll-animate h3,
-.scroll-animate h4,
-.scroll-animate h5,
-.scroll-animate h6,
-.scroll-animate p {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transform: none !important;
-}
-
-.scroll-animate.animate {
-  animation: fadeInUp 0.4s ease-out;
-}
-
-.scroll-animate-left {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.scroll-animate-left.animate {
-  animation: slideInLeft 0.4s ease-out;
-}
-
-.scroll-animate-right {
-  opacity: 1;
-  transform: translateX(0);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.scroll-animate-right.animate {
-  animation: slideInRight 0.4s ease-out;
-}
-
-.scroll-animate-scale {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.scroll-animate-scale.animate {
-  animation: scaleIn 0.4s ease-out;
+  visibility: visible;
+  transform: none;
 }
 
 .scroll-animate-rotate {

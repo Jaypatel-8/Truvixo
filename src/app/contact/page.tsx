@@ -38,7 +38,7 @@ export default function Contact() {
     useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-animate-rotate'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal', '.scroll-animate-rotate'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
@@ -645,19 +645,21 @@ export default function Contact() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 card-grid-direction">
             {contactFAQs.map((faq, index) => (
               <div
                 key={index}
-                className="bg-white rounded-2xl p-6 border border-gray-200 hover:shadow-xl hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 scroll-animate-scale"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-2xl p-6 border border-gray-200 relative overflow-hidden"
+                style={{ ['--card-accent' as string]: '#5e2cb6' }}
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {faq.question}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {faq.answer}
-                </p>
+                <div className="card-inner-reveal">
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-4">
+                    {faq.question}
+                  </h3>
+                  <p className="card-desc text-gray-600 leading-relaxed">
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
             ))}
           </div>

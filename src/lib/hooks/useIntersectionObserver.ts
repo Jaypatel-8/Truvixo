@@ -17,7 +17,7 @@ interface UseIntersectionObserverOptions {
 export function useIntersectionObserver({
   threshold = 0.1,
   rootMargin = '0px 0px -50px 0px',
-  selectors = ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+  selectors = ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal', '.section-desc-reveal', '.p-reveal', '.btn-entrance', '.underline-reveal'],
   unobserveAfterIntersect = false,
   useIdleCallback = true, // Default to true for better navigation performance
 }: UseIntersectionObserverOptions = {}) {
@@ -67,25 +67,8 @@ export function useIntersectionObserver({
       // Use cached elements if available and selectors haven't changed
       if (!elementsRef.current) {
         const selectorString = selectors.join(', ')
-        // Use requestAnimationFrame for DOM queries to avoid blocking
         rafId = requestAnimationFrame(() => {
           elementsRef.current = document.querySelectorAll(selectorString)
-          
-          // Minimal debounce for faster initialization
-          timeoutId = setTimeout(() => {
-            if (elementsRef.current) {
-              elementsRef.current.forEach((el) => {
-                // Only observe if not already animated (unless unobserveAfterIntersect is false)
-                if (!unobserveAfterIntersect || !el.classList.contains('animate')) {
-                  observer.observe(el)
-                }
-              })
-            }
-          }, 10) // Reduced to 10ms for faster initialization
-        })
-      } else {
-        // Elements already cached, attach observer immediately
-        timeoutId = setTimeout(() => {
           if (elementsRef.current) {
             elementsRef.current.forEach((el) => {
               if (!unobserveAfterIntersect || !el.classList.contains('animate')) {
@@ -93,22 +76,32 @@ export function useIntersectionObserver({
               }
             })
           }
-        }, 10) // Reduced to 10ms for faster initialization
+        })
+      } else {
+        if (elementsRef.current) {
+          elementsRef.current.forEach((el) => {
+            if (!unobserveAfterIntersect || !el.classList.contains('animate')) {
+              observer.observe(el)
+            }
+          })
+        }
       }
     }
 
-    // Initialize immediately for faster page load - no delays
-    // Use requestAnimationFrame for smooth initialization without blocking
+    // Run after first paint to avoid blocking; short timeout so animations start soon
     if (useIdleCallback === true && 'requestIdleCallback' in window) {
-      requestIdleCallback(initObserver, { timeout: 100 })
+      requestIdleCallback(initObserver, { timeout: 50 })
     } else {
-      // Initialize immediately using requestAnimationFrame for non-blocking execution
-      requestAnimationFrame(() => {
-        initObserver()
-      })
+      requestAnimationFrame(() => initObserver())
     }
+    // Re-query after dynamic/lazy content mounts (e.g. below-fold sections)
+    const lateId = setTimeout(() => {
+      elementsRef.current = null
+      initObserver()
+    }, 600)
 
     return () => {
+      clearTimeout(lateId)
       if (timeoutId) {
         clearTimeout(timeoutId)
       }

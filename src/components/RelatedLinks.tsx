@@ -29,9 +29,9 @@ export default function RelatedLinks({
   }
 
   return (
-    <section className="py-12 bg-gray-50">
+    <section className="py-12 bg-gray-50 section-reveal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 scroll-animate">
           <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-2">
             {title}
           </h2>
@@ -46,7 +46,7 @@ export default function RelatedLinks({
               key={index}
               href={link.href}
               prefetch={true}
-              className="group bg-white rounded-xl p-6 border-2 border-gray-100 hover:border-[#5e2cb6] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+              className="scroll-animate-scale group bg-white rounded-xl p-6 border-2 border-gray-100 hover:border-[#5e2cb6] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">

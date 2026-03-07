@@ -30,11 +30,6 @@ const FAQDropdown = dynamic(() => import('@/components/FAQDropdown'), {
   loading: () => <div className="min-h-[200px] bg-white"></div>,
 })
 
-const ContactSection = dynamic(() => import('@/components/ContactSection'), {
-  ssr: false,
-  loading: () => <div className="min-h-[300px] bg-white"></div>,
-})
-
 const ProcessDiagram = dynamic(() => import('@/components/ProcessDiagram'), {
   ssr: false,
   loading: () => <div className="min-h-[400px] bg-white"></div>,
@@ -52,6 +47,8 @@ interface LogisticsClientProps {
 export default function LogisticsClient({ faqs, logisticsData }: LogisticsClientProps) {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
+  const hero = logisticsData?.hero
+  const badge = hero?.badge
 
   useEffect(() => {
     setIsMounted(true)
@@ -60,72 +57,72 @@ export default function LogisticsClient({ faqs, logisticsData }: LogisticsClient
     useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
 
   const services = useMemo(() => 
-    logisticsData.services.map(service => {
+    (logisticsData?.services ?? []).map(service => {
       const IconComponent = getIcon(service.iconName)
       return {
         ...service,
         icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
       }
-    }), [logisticsData.services]
+    }), [logisticsData?.services]
   )
 
   const whyChooseUs = useMemo(() => 
-    logisticsData.whyChooseUs.map(item => {
+    (logisticsData?.whyChooseUs ?? []).map(item => {
       const IconComponent = getIcon(item.iconName)
       return {
         ...item,
         icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
       }
-    }), [logisticsData.whyChooseUs]
+    }), [logisticsData?.whyChooseUs]
   )
 
   const processSteps = useMemo(() => 
-    logisticsData.processSteps.map(step => {
+    (logisticsData?.processSteps ?? []).map(step => {
       const IconComponent = getIcon(step.iconName)
       return {
         ...step,
         icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
       }
-    }), [logisticsData.processSteps]
+    }), [logisticsData?.processSteps]
   )
 
   const industries = useMemo(() => 
-    logisticsData.industries.map(industry => {
+    (logisticsData?.industries ?? []).map(industry => {
       const IconComponent = getIcon(industry.iconName)
       return {
         ...industry,
         icon: IconComponent ? <IconComponent className="w-7 h-7" strokeWidth={2} /> : null
       }
-    }), [logisticsData.industries]
+    }), [logisticsData?.industries]
   )
 
   const benefits = useMemo(() => 
-    logisticsData.benefits.map(benefit => {
+    (logisticsData?.benefits ?? []).map(benefit => {
       const IconComponent = getIcon(benefit.iconName)
       return {
         ...benefit,
         icon: IconComponent ? <IconComponent className="w-6 h-6" strokeWidth={2} /> : null
       }
-    }), [logisticsData.benefits]
+    }), [logisticsData?.benefits]
   )
 
   const previewServices = useMemo(() => 
-    logisticsData.services.slice(0, 4).map(service => {
+    (logisticsData?.services ?? []).slice(0, 4).map(service => {
       const IconComponent = getIcon(service.iconName)
       return {
         ...service,
         icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
       }
-    }), [logisticsData.services]
+    }), [logisticsData?.services]
   )
 
-  const BadgeIcon = getIcon(logisticsData.hero.badge.iconName)
+  const BadgeIcon = getIcon(badge?.iconName ?? 'Code')
 
   return (
     <>
@@ -138,18 +135,20 @@ export default function LogisticsClient({ faqs, logisticsData }: LogisticsClient
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="scroll-animate">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
-                {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{logisticsData.hero.badge.text}</span>
-              </div>
+              {badge && (
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
+                  {BadgeIcon && <BadgeIcon className="w-4 h-4 text-[#5e2cb6]" strokeWidth={2} />}
+                  <span className="text-sm font-semibold text-[#5e2cb6]">{badge.text}</span>
+                </div>
+              )}
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {logisticsData.hero.title}{' '}
+                {hero?.title ?? ''}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {logisticsData.hero.hollowText}
+                  {hero?.hollowText ?? ''}
                 </span>
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
-                {logisticsData.hero.description}
+                {hero?.description ?? ''}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -188,7 +187,7 @@ export default function LogisticsClient({ faqs, logisticsData }: LogisticsClient
         </div>
       </section>
 
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -337,87 +336,34 @@ export default function LogisticsClient({ faqs, logisticsData }: LogisticsClient
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-grid-direction">
             {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: benefit.color + '10' }}>
-                  <div style={{ color: benefit.color }}>
-                    {benefit.icon}
+              <div key={index} className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: benefit.color }}>
+                <div className="card-inner-reveal">
+                  <div className="card-icon w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: benefit.color + '10' }}>
+                    <div style={{ color: benefit.color }}>{benefit.icon}</div>
                   </div>
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                  <p className="card-desc text-gray-600">{benefit.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600">
-                  {benefit.description}
-                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Custom CTA Section */}
-      <section className="py-20 bg-[#5e2cb6] text-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#fecc4d]/10 rounded-full blur-3xl"></div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
-              {logisticsData.cta.title}{' '}
-              <span className="hollow-text-white">
-                {logisticsData.cta.hollowText}
-              </span>
-            </h2>
-            <p className="text-xl md:text-2xl text-white/90 max-w-3xl mx-auto mb-10 font-light">
-              {logisticsData.cta.description}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-white text-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
-              >
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>Call Us</span>
-              </button>
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
-                className="bg-transparent text-white border-2 border-white font-semibold py-4 px-8 rounded-xl hover:bg-white/20 transition-all duration-300 inline-flex items-center gap-2"
-              >
-                <Calendar className="w-5 h-5" strokeWidth={2} />
-                <span>Schedule Consultation</span>
-              </button>
-            </div>
-            <div className="flex flex-wrap justify-center gap-8 text-white/80">
-              <a href={`mailto:${logisticsData.cta.email}`} className="flex items-center gap-2 hover:text-white transition-colors">
-                <Mail className="w-5 h-5" strokeWidth={2} />
-                <span>{logisticsData.cta.email}</span>
-              </a>
-              <a href={`tel:${logisticsData.cta.phone.replace(/\s/g, '')}`} className="flex items-center gap-2 hover:text-white transition-colors">
-                <Phone className="w-5 h-5" strokeWidth={2} />
-                <span>{logisticsData.cta.phone}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Technologies technologies={[...logisticsData.technologies]} />
+      <Technologies technologies={Array.isArray(logisticsData?.technologies) ? [...logisticsData.technologies] : []} />
       <ProcessDiagram 
-        title={logisticsData.processTitle}
-        subtitle={logisticsData.processSubtitle}
+        title={logisticsData?.processTitle}
+        subtitle={logisticsData?.processSubtitle}
         steps={processSteps}
       />
       <FAQDropdown faqs={faqs} />
-      <ContactSection 
-        title={logisticsData.contactTitle}
-        description={logisticsData.contactDescription}
-      />
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection
-        title={logisticsData.getQuoteTitle}
-        hollowText={logisticsData.getQuoteHollowText}
-        description={logisticsData.getQuoteDescription}
+        title={logisticsData?.getQuoteTitle}
+        hollowText={logisticsData?.getQuoteHollowText}
+        description={logisticsData?.getQuoteDescription}
         primaryCTA={{
           text: 'Call Us',
           type: 'tel',

@@ -13,77 +13,77 @@ interface ProjectManagersClientProps {
 }
 
 export default function ProjectManagersClient({ faqs, projectManagersData }: ProjectManagersClientProps) {
-  // Convert icon names to ReactNode icons
-  const BadgeIcon = getIconComponent(projectManagersData.hero.badge.iconName) || Code
+  const hero = projectManagersData?.hero
+  const badge = hero?.badge
+  const BadgeIcon = getIconComponent(badge?.iconName) || Code
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
   const services = useMemo(() => 
-    projectManagersData.services.map(service => {
+    (projectManagersData?.services ?? []).map(service => {
       const IconComponent = getIconComponent(service.iconName) || Code
       return {
         ...service,
         icon: <IconComponent className="w-8 h-8" strokeWidth={2} />
       }
-    }), [projectManagersData.services]
+    }), [projectManagersData?.services]
   )
 
   const whyChooseUs = useMemo(() => 
-    projectManagersData.whyChooseUs.map(item => {
+    (projectManagersData?.whyChooseUs ?? []).map(item => {
       const IconComponent = getIconComponent(item.iconName) || Code
       return {
         ...item,
         icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
       }
-    }), [projectManagersData.whyChooseUs]
+    }), [projectManagersData?.whyChooseUs]
   )
 
   const industries = useMemo(() => 
-    projectManagersData.industries.map(industry => {
+    (projectManagersData?.industries ?? []).map(industry => {
       const IconComponent = getIconComponent(industry.iconName) || Building2
       return {
         ...industry,
         icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
       }
-    }), [projectManagersData.industries]
+    }), [projectManagersData?.industries]
   )
 
   const processSteps = useMemo(() => 
-    projectManagersData.processSteps.map(step => {
+    (projectManagersData?.processSteps ?? []).map(step => {
       const IconComponent = getIconComponent(step.iconName) || Target
       return {
         ...step,
         icon: <IconComponent className="w-6 h-6" strokeWidth={2} />
       }
-    }), [projectManagersData.processSteps]
+    }), [projectManagersData?.processSteps]
   )
+
+  const technologiesList = Array.isArray(projectManagersData?.technologies) ? [...projectManagersData.technologies] : []
 
   return (
     <PageTemplate
       relatedLinks={getHireRelatedLinks('project-managers')}
       relatedLinksTitle={"Related Hiring Options"}
-      badge={{
-        icon: badgeIcon,
-        text: projectManagersData.hero.badge.text
-      }}
-      title={projectManagersData.hero.title}
-      hollowText={projectManagersData.hero.hollowText}
-      description={projectManagersData.hero.description}
+      badge={badge ? { icon: badgeIcon, text: badge.text } : undefined}
+      title={hero?.title ?? ''}
+      hollowText={hero?.hollowText ?? ''}
+      description={hero?.description ?? ''}
       services={services}
-      servicesTitle={projectManagersData.servicesTitle}
-      servicesHollowText={projectManagersData.servicesHollowText}
+      servicesTitle={projectManagersData?.servicesTitle}
+      servicesHollowText={projectManagersData?.servicesHollowText}
       whyChoose={whyChooseUs}
-      whyChooseTitle={projectManagersData.whyChooseTitle}
-      whyChooseHollowText={projectManagersData.whyChooseHollowText}
+      whyChooseTitle={projectManagersData?.whyChooseTitle}
+      whyChooseHollowText={projectManagersData?.whyChooseHollowText}
       industries={industries}
-      technologies={[...projectManagersData.technologies]}
-      getQuoteTitle={projectManagersData.getQuoteTitle}
-      getQuoteHollowText={projectManagersData.getQuoteHollowText}
-      getQuoteDescription={projectManagersData.getQuoteDescription}
+      technologies={technologiesList}
+      getQuoteTitle={projectManagersData?.getQuoteTitle}
+      getQuoteHollowText={projectManagersData?.getQuoteHollowText}
+      getQuoteDescription={projectManagersData?.getQuoteDescription}
       faqs={faqs}
-      contactTitle={projectManagersData.contactTitle}
-      contactDescription={projectManagersData.contactDescription}
-      processTitle={projectManagersData.processTitle}
-      processSubtitle={projectManagersData.processSubtitle}
+      contactTitle={projectManagersData?.contactTitle}
+      contactDescription={projectManagersData?.contactDescription}
+      processTitle={projectManagersData?.processTitle}
+      processSubtitle={projectManagersData?.processSubtitle}
       processSteps={processSteps}
     />
   )

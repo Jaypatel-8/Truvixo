@@ -66,7 +66,7 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
 
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
         <div className="text-center mb-12 scroll-animate">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
             Technologies We{' '}
@@ -80,7 +80,7 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
         </div>
 
         {/* Category Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-12 scroll-animate">
           {categories.map((category) => (
             <button
               key={category}
@@ -98,12 +98,11 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
         </div>
 
         {/* Technologies Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 scroll-stagger">
           {displayTechnologies.map((tech, index) => (
             <div
               key={`${tech.name}-${index}`}
-              className="group bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 text-center scroll-animate-scale"
-              style={{ animationDelay: `${index * 0.05}s` }}
+              className="scroll-stagger-item group bg-white rounded-xl p-6 border border-gray-200 text-center card-hover"
             >
               <div className="flex flex-col items-center justify-center h-full">
                 <div className="relative w-12 h-12 mb-3 flex items-center justify-center">

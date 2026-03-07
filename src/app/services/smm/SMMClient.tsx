@@ -60,7 +60,7 @@ export default function SMMClient({ faqs, smmData }: SMMClientProps) {
     useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.section-desc-reveal', '.heading-reveal'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
@@ -181,9 +181,9 @@ export default function SMMClient({ faqs, smmData }: SMMClientProps) {
         </div>
       </section>
 
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -192,35 +192,29 @@ export default function SMMClient({ faqs, smmData }: SMMClientProps) {
                 {smmData.servicesHollowText}
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto section-desc-reveal">
               Comprehensive social media marketing solutions
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 card-grid-direction">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale card-hover group bg-white rounded-2xl p-8 border-2 border-gray-100 relative overflow-hidden"
                 style={{ 
+                  ['--card-accent' as string]: service.color,
                   borderColor: service.color + '40'
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = service.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = service.color + '40'
-                }}
               >
-                <div className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity" style={{ backgroundColor: service.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: service.color }}>
+                <div className="relative z-10 card-inner-reveal">
+                  <div className="card-icon mb-6 flex justify-center" style={{ color: service.color }}>
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="card-desc text-gray-600 text-sm leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -230,7 +224,7 @@ export default function SMMClient({ faqs, smmData }: SMMClientProps) {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -239,35 +233,29 @@ export default function SMMClient({ faqs, smmData }: SMMClientProps) {
                 {smmData.whyChooseHollowText}
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto section-desc-reveal">
               We build your brand presence and engage with your audience through strategic social media marketing that grows your following and drives conversions.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 card-grid-direction">
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale card-hover group bg-white rounded-2xl p-8 border-2 border-gray-100 relative overflow-hidden"
                 style={{ 
+                  ['--card-accent' as string]: item.color,
                   borderColor: item.color + '40'
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = item.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = item.color + '40'
-                }}
               >
-                <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: item.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: item.color }}>
+                <div className="relative z-10 card-inner-reveal">
+                  <div className="card-icon mb-6 flex justify-center" style={{ color: item.color }}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="card-desc text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -277,7 +265,7 @@ export default function SMMClient({ faqs, smmData }: SMMClientProps) {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white section-reveal">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
@@ -286,30 +274,27 @@ export default function SMMClient({ faqs, smmData }: SMMClientProps) {
                 Specialize
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Serving diverse industries with CRO solutions
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto section-desc-reveal">
+              Serving diverse industries with SMM solutions
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 card-grid-direction">
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                className="scroll-animate-scale card-hover bg-white rounded-xl p-6 text-center border-2 border-gray-100 relative overflow-hidden"
                 style={{ 
+                  ['--card-accent' as string]: industry.color,
                   borderColor: industry.color + '40'
                 }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = industry.color
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = industry.color + '40'
-                }}
               >
-                <div className="mb-3 flex justify-center" style={{ color: industry.color }}>
-                  {industry.icon}
+                <div className="card-inner-reveal">
+                  <div className="card-icon mb-3 flex justify-center" style={{ color: industry.color }}>
+                    {industry.icon}
+                  </div>
+                  <h3 className="card-title font-semibold text-gray-900 text-sm">{industry.name}</h3>
                 </div>
-                <h3 className="font-semibold text-gray-900 text-sm">{industry.name}</h3>
               </div>
             ))}
           </div>
@@ -330,18 +315,16 @@ export default function SMMClient({ faqs, smmData }: SMMClientProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-grid-direction">
             {benefits.map((benefit, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-                <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: benefit.color + '10' }}>
-                  <div style={{ color: benefit.color }}>
-                    {benefit.icon}
+              <div key={index} className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: benefit.color }}>
+                <div className="card-inner-reveal">
+                  <div className="card-icon w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: benefit.color + '10' }}>
+                    <div style={{ color: benefit.color }}>{benefit.icon}</div>
                   </div>
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
+                  <p className="card-desc text-gray-600">{benefit.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{benefit.title}</h3>
-                <p className="text-gray-600">
-                  {benefit.description}
-                </p>
               </div>
             ))}
           </div>
@@ -363,22 +346,24 @@ export default function SMMClient({ faqs, smmData }: SMMClientProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 card-grid-direction">
             {smmData.useCases.map((useCase, index) => (
               <div
                 key={index}
-                className={`bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border`}
-                style={{ borderColor: useCase.borderColor + '20' }}
+                className={`scroll-animate-scale card-hover card-hover-dark bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border relative overflow-hidden`}
+                style={{ ['--card-accent' as string]: useCase.borderColor, borderColor: useCase.borderColor + '30' }}
               >
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{useCase.title}</h3>
-                <p className="text-gray-600 mb-4">
-                  {useCase.description}
-                </p>
-                <ul className="space-y-2 text-sm text-gray-600">
-                  {useCase.items.map((item, itemIndex) => (
-                    <li key={itemIndex}>• {item}</li>
-                  ))}
-                </ul>
+                <div className="card-inner-reveal">
+                  <h3 className="card-title text-2xl font-bold text-gray-900 mb-4">{useCase.title}</h3>
+                  <p className="card-desc text-gray-600 mb-4">
+                    {useCase.description}
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    {useCase.items.map((item, itemIndex) => (
+                      <li key={itemIndex}>• {item}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>

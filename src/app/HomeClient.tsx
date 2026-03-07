@@ -73,19 +73,14 @@ const SEOLocationSection = dynamic(() => import('../components/SEOLocationSectio
   loading: () => <div className="min-h-[200px] bg-gray-50"></div>,
 })
 
+const StatsCounter = dynamic(() => import('../components/StatsCounter'), {
+  ssr: false,
+  loading: () => <div className="text-center p-4"><div className="h-10 bg-gray-100 rounded animate-pulse mb-1" /><div className="h-4 bg-gray-100 rounded w-16 mx-auto" /></div>,
+})
+
 const ServicesSwiper = dynamic(() => import('../components/ServicesSwiper'), {
   ssr: false,
-  loading: () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {Array.from({ length: 11 }).map((_, index) => (
-        <div key={index} className="h-full bg-white rounded-lg p-8 border border-gray-200 animate-pulse">
-          <div className="w-16 h-16 bg-gray-200 rounded-lg mb-4"></div>
-          <div className="h-6 bg-gray-200 rounded mb-3"></div>
-          <div className="h-4 bg-gray-200 rounded"></div>
-        </div>
-      ))}
-    </div>
-  )
+  loading: () => <div className="min-h-[320px] bg-white" aria-hidden />,
 })
 
 interface FeaturedProject {
@@ -119,19 +114,31 @@ export default function HomeClient({
     setIsMounted(true)
   }, [])
 
+  // Hero heading + CTA + paragraph: run once on load for entrance
+  useEffect(() => {
+    const run = () => {
+      const heading = document.getElementById('hero-heading')
+      if (heading) heading.classList.add('animate')
+      document.querySelectorAll('.above-fold .btn-entrance, .above-fold .p-reveal').forEach(el => el.classList.add('animate'))
+    }
+    const t = setTimeout(run, 80)
+    return () => clearTimeout(t)
+  }, [])
+
     useIntersectionObserver({
-      threshold: 0.01,
-    rootMargin: '50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
-    unobserveAfterIntersect: true,
-    useIdleCallback: false,
-  })
+      threshold: 0.05,
+      rootMargin: '0px 0px -40px 0px',
+      selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal', '.section-desc-reveal'],
+      unobserveAfterIntersect: true,
+      useIdleCallback: true,
+    })
 
     const servicesList = useMemo(() => 
     homeServicesList.map(service => {
       const IconComponent = getIconComponent(service.iconName)
       return {
         ...service,
+        name: service.title,
         icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
       }
     }), [homeServicesList]
@@ -149,8 +156,14 @@ export default function HomeClient({
 
   return (
     <main className="min-h-screen bg-white overflow-hidden">
-      {/* 1. Hero Section - Sleek & Modern */}
+      {/* 1. Hero Section - Sleek & Modern (NeuroHire-style motion) */}
       <section className="relative min-h-screen bg-white flex items-center justify-center overflow-hidden pt-20">
+        {/* Floating gradient blobs - subtle motion */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
+          <div className="hero-blob absolute top-[15%] left-[10%] w-[400px] h-[400px] rounded-full bg-[#5e2cb6]/8 blur-[80px]" />
+          <div className="hero-blob absolute bottom-[20%] right-[8%] w-[500px] h-[500px] rounded-full bg-[#c91a6f]/6 blur-[100px]" style={{ animationDelay: '-4s' }} />
+          <div className="hero-blob absolute top-1/2 left-1/2 w-[300px] h-[300px] rounded-full bg-[#10b981]/5 blur-[60px]" style={{ animationDelay: '-8s' }} />
+        </div>
         {/* Minimal Grid Background */}
         <div className="absolute inset-0 overflow-hidden opacity-[0.03]">
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -164,16 +177,13 @@ export default function HomeClient({
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-16">
-          <div className="scroll-animate">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 mb-6 leading-[0.9] tracking-tight">
-              Building the{' '}
-              <span className="hollow-text-brand">Future</span>
-              </h1>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-700 mb-4 leading-tight">
-              with Intelligent Technology
-            </h2>
+          <div className="scroll-animate above-fold">
+            <h1 className="heading-reveal text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 mb-6 leading-[0.9] tracking-tight" id="hero-heading">
+              <span className="heading-reveal-line block"><span>Building the <span className="hollow-text-brand">Future</span></span></span>
+              <span className="heading-reveal-line block mt-2 font-light text-gray-700"><span>with Intelligent Technology</span></span>
+            </h1>
 
-            <p className="text-base md:text-lg text-gray-600 max-w-4xl mx-auto font-light leading-relaxed mb-8 px-4">
+            <p className="p-reveal text-base md:text-lg text-gray-600 max-w-4xl mx-auto font-light leading-relaxed mb-8 px-4">
               We design, build, and scale custom software, AI solutions, and digital platforms that transform businesses from concept to market leader.
             </p>
 
@@ -181,34 +191,35 @@ export default function HomeClient({
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 px-4 mb-12">
               <button 
                 onClick={() => setIsContactModalOpen(true)}
-                className="bg-[#5e2cb6] text-white font-semibold py-4 px-10 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg shadow-[#5e2cb6]/20"
+                className="btn-entrance btn-press bg-[#5e2cb6] text-white font-semibold py-4 px-10 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg shadow-[#5e2cb6]/20"
               >
-                <Calendar className="w-5 h-5" strokeWidth={2} />
-                <span>Book a Call</span>
+                <span className="btn-icon"><Calendar className="w-5 h-5" strokeWidth={2} /></span>
+                <span className="btn-text">Book a Call</span>
               </button>
               <Link 
                 href="/services"
                 prefetch={true}
-                className="bg-white text-[#10b981] border-2 border-[#10b981] font-semibold py-4 px-10 rounded-lg hover:bg-[#10b981]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg"
+                className="btn-entrance bg-white text-[#10b981] border-2 border-[#10b981] font-semibold py-4 px-10 rounded-lg hover:bg-[#10b981]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 text-base md:text-lg shadow-lg"
               >
-                <span>Explore Services</span>
-                <ArrowRight className="w-5 h-5" strokeWidth={2} />
+                <span className="btn-text">Explore Services</span>
+                <span className="btn-icon"><ArrowRight className="w-5 h-5" strokeWidth={2} /></span>
               </Link>
             </div>
 
-            {/* Stats Section - With Logo Colors */}
+            {/* Stats Section - With counting animation */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              {[
-                { value: '20+', label: 'Projects', color: '#5e2cb6' },
-                { value: '7+', label: 'Clients', color: '#c91a6f' },
-                { value: '98%', label: 'Satisfaction', color: '#fecc4d' },
-                { value: '24/7', label: 'Support', color: '#10b981' }
-              ].map((stat, index) => (
-                <div key={index} className="text-center bg-white rounded-lg p-4 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gray-300">
-                  <div className="text-3xl md:text-4xl font-black mb-1" style={{ color: stat.color }}>{stat.value}</div>
-                  <div className="text-gray-600 font-medium text-sm">{stat.label}</div>
-                </div>
-              ))}
+              <div className="text-center bg-white rounded-lg p-4 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gray-300">
+                <StatsCounter end={20} suffix="+" label="Projects" color="#5e2cb6" />
+              </div>
+              <div className="text-center bg-white rounded-lg p-4 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gray-300">
+                <StatsCounter end={7} suffix="+" label="Clients" color="#c91a6f" />
+              </div>
+              <div className="text-center bg-white rounded-lg p-4 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gray-300">
+                <StatsCounter end={98} suffix="%" label="Satisfaction" color="#fecc4d" />
+              </div>
+              <div className="text-center bg-white rounded-lg p-4 border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 hover:border-gray-300">
+                <StatsCounter end={24} suffix="/7" label="Support" color="#10b981" />
+              </div>
             </div>
           </div>
         </div>
@@ -219,18 +230,15 @@ export default function HomeClient({
 
       {/* 3. Our Services */}
       <section id="services-section" className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Our{' '}
-              <span className="hollow-text-brand">
-                Services
-              </span>
+            <h2 className="heading-reveal text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
+              <span className="heading-reveal-line block"><span>Our <span className="hollow-text-brand">Services</span></span></span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-2">
+            <p className="section-desc-reveal text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-2">
               Comprehensive technology solutions to transform your business
             </p>
-            <p className="text-base text-gray-500 max-w-2xl mx-auto mb-8">
+            <p className="section-desc-reveal text-base text-gray-500 max-w-2xl mx-auto mb-8">
               From custom software development to AI solutions, digital marketing, and cloud infrastructure - we deliver end-to-end technology services that drive innovation, efficiency, and growth for businesses across industries. Our proven methodology combines cutting-edge technology with strategic business insights to deliver measurable results.
             </p>
             
@@ -239,7 +247,7 @@ export default function HomeClient({
               <Link
                 href="/services"
                 prefetch={true}
-                className="inline-flex items-center gap-2 bg-[#5e2cb6] text-white font-semibold py-3 px-8 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 shadow-lg shadow-[#5e2cb6]/20 group"
+                className="btn-press inline-flex items-center gap-2 bg-[#5e2cb6] text-white font-semibold py-3 px-8 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 shadow-lg shadow-[#5e2cb6]/20 group"
               >
                 <span>View All Services</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" strokeWidth={2} />
@@ -272,7 +280,7 @@ export default function HomeClient({
 
       {/* 4. Our Works */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Our{' '}
@@ -280,7 +288,7 @@ export default function HomeClient({
                 Works
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="section-desc-reveal text-lg text-gray-600 max-w-2xl mx-auto">
               Showcasing excellence in software development, AI solutions, and digital innovation across diverse industries and use cases
             </p>
           </div>
@@ -290,7 +298,7 @@ export default function HomeClient({
                 key={index}
                 href={project.href}
                 prefetch={true}
-                className="group bg-white rounded-lg p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1 shadow-sm hover:shadow-lg"
+                className="scroll-animate-scale group bg-white rounded-lg p-8 border border-gray-200 shadow-sm card-hover card-hover-border"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">
                   {project.title}
@@ -311,32 +319,32 @@ export default function HomeClient({
 
       {/* 6. Why Choose TruVixo */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Why Choose{' '}
-              <span className="hollow-text-brand">
-                TruVixo
-              </span>
+            <h2 className="heading-reveal text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
+              <span className="heading-reveal-line block"><span>Why Choose <span className="hollow-text-brand">TruVixo</span></span></span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="section-desc-reveal text-lg text-gray-600 max-w-3xl mx-auto">
               We combine technical expertise with business acumen to deliver software solutions that drive real results. Our approach integrates industry best practices, modern technology stacks, and strategic thinking to create solutions that not only meet current needs but scale with your business growth.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 card-grid-direction">
             {whyChooseUs.map((item, index) => {
               const logoColors = ['#5e2cb6', '#c91a6f', '#fecc4d', '#10b981', '#d42628', '#f59e0b']
               const color = logoColors[index % logoColors.length]
               return (
               <div 
                 key={index} 
-                  className="bg-white rounded-lg p-6 text-center border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105"
-                >
-                  <div className="mb-3 flex justify-center" style={{ color: color }}>
+                className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-lg p-6 text-center border border-gray-200"
+                style={{ ['--card-accent' as string]: color }}
+              >
+                <div className="card-inner-reveal">
+                  <div className="card-icon mb-3 flex justify-center" style={{ color: color }}>
                     {item.icon}
                   </div>
-                  <h3 className="font-semibold text-gray-900 text-sm">{item.title}</h3>
+                  <h3 className="card-title font-semibold text-gray-900 text-sm">{item.title}</h3>
                 </div>
+              </div>
               )
             })}
           </div>
@@ -345,7 +353,7 @@ export default function HomeClient({
 
       {/* 6.5. Industries We Serve */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Industries We{' '}
@@ -353,11 +361,11 @@ export default function HomeClient({
                 Serve
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="section-desc-reveal text-lg text-gray-600 max-w-3xl mx-auto">
               Specialized software solutions tailored to your industry's unique challenges. Expert custom development for FinTech, Healthcare, E-commerce, Logistics, Real Estate, Education, Manufacturing, and Retail sectors. We understand industry-specific requirements and deliver solutions that comply with regulations while driving business value.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 card-grid-direction">
             {[
               { name: 'FinTech', href: '/industry/fintech', icon: <DollarSign className="w-8 h-8" strokeWidth={2} />, color: '#5e2cb6', description: 'Secure financial platforms' },
               { name: 'Healthcare', href: '/industry/healthcare', icon: <Heart className="w-8 h-8" strokeWidth={2} />, color: '#c91a6f', description: 'HIPAA-compliant systems' },
@@ -372,17 +380,20 @@ export default function HomeClient({
                 key={index}
                 href={industry.href}
                 prefetch={true}
-                className="group bg-white rounded-xl p-6 border-2 border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-lg text-center"
+                className="scroll-animate-scale card-hover card-hover-dark group bg-white rounded-xl p-6 border-2 border-gray-200 text-center"
+                style={{ ['--card-accent' as string]: industry.color }}
               >
-                <div className="mb-4 flex justify-center" style={{ color: industry.color }}>
-                  {industry.icon}
+                <div className="card-inner-reveal">
+                  <div className="card-icon mb-4 flex justify-center" style={{ color: industry.color }}>
+                    {industry.icon}
+                  </div>
+                  <h3 className="card-title font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">
+                    {industry.name}
+                  </h3>
+                  <p className="card-desc text-sm text-gray-600 leading-relaxed">
+                    {industry.description}
+                  </p>
                 </div>
-                <h3 className="font-bold text-gray-900 mb-2 group-hover:text-gray-800 transition-colors">
-                  {industry.name}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {industry.description}
-                </p>
               </Link>
             ))}
           </div>
@@ -391,7 +402,7 @@ export default function HomeClient({
 
       {/* 6.6. Company Achievements & Stats */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Our{' '}
@@ -399,7 +410,7 @@ export default function HomeClient({
                 Achievements
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="section-desc-reveal text-lg text-gray-600 max-w-3xl mx-auto">
               Numbers that reflect our commitment to excellence and client success
             </p>
           </div>
@@ -412,7 +423,7 @@ export default function HomeClient({
             ].map((stat, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center"
+                className="scroll-animate-scale bg-white rounded-xl p-8 border border-gray-200 text-center card-hover"
               >
                 <div className="mb-4 flex justify-center" style={{ color: stat.color }}>
                   {stat.icon}
@@ -434,7 +445,7 @@ export default function HomeClient({
 
       {/* 6.7. Our Expertise & Capabilities */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Our{' '}
@@ -510,7 +521,7 @@ export default function HomeClient({
                 key={index}
                 href={getExpertiseUrl(expertise.title)}
                 prefetch={true}
-                className="bg-white rounded-xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl block group"
+                className="scroll-animate-scale bg-white rounded-xl p-8 border border-gray-200 block group card-hover card-hover-border"
               >
                 <div className="mb-6 flex items-center gap-4">
                   <div className="w-16 h-16 rounded-xl flex items-center justify-center border-2" style={{ borderColor: expertise.color, backgroundColor: expertise.color + '10' }}>
@@ -554,14 +565,10 @@ export default function HomeClient({
 
       {/* 8. Testimonials - Redesigned */}
       <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-12 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              What Our{' '}
-              <span className="hollow-text-brand">
-                Clients
-              </span>
-              {' '}Say
+            <h2 className="heading-reveal text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
+              <span className="heading-reveal-line block"><span>What Our <span className="hollow-text-brand">Clients</span> Say</span></span>
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Don't just take our word for it — hear from businesses we've helped transform through innovative software solutions, digital marketing strategies, and technology consulting. Our clients span various industries and have achieved significant growth and operational improvements.
@@ -576,7 +583,7 @@ export default function HomeClient({
 
       {/* 9. Partnership & Trust */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Trusted{' '}
@@ -598,7 +605,7 @@ export default function HomeClient({
             ].map((partner, index) => (
               <div
                 key={index}
-                className="bg-white rounded-lg p-6 border-2 border-gray-200 flex items-center justify-center h-24 hover:border-gray-300 transition-all duration-300 group"
+                className="scroll-animate-scale bg-white rounded-lg p-6 border-2 border-gray-200 flex items-center justify-center h-24 group card-hover"
                 style={{ borderColor: partner.color + '40' }}
               >
                 <img
@@ -614,7 +621,7 @@ export default function HomeClient({
 
       {/* 10. Company Values */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Our{' '}
@@ -655,7 +662,7 @@ export default function HomeClient({
             ].map((value, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-8 border border-gray-200 hover:border-gray-300 transition-all duration-300 transform hover:scale-105 text-center"
+                className="scroll-animate-scale bg-white rounded-xl p-8 border border-gray-200 text-center card-hover"
               >
                 <div className="mb-6 flex justify-center" style={{ color: value.color }}>
                   {value.icon}
@@ -674,7 +681,7 @@ export default function HomeClient({
 
       {/* 11. FAQs Section */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Frequently Asked{' '}

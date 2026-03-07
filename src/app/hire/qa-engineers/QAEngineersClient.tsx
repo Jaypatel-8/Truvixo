@@ -13,77 +13,77 @@ interface QAEngineersClientProps {
 }
 
 export default function QAEngineersClient({ faqs, qaEngineersData }: QAEngineersClientProps) {
-  // Convert icon names to ReactNode icons
-  const BadgeIcon = getIconComponent(qaEngineersData.hero.badge.iconName) || Code
+  const hero = qaEngineersData?.hero
+  const badge = hero?.badge
+  const BadgeIcon = getIconComponent(badge?.iconName) || Code
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
   const services = useMemo(() => 
-    qaEngineersData.services.map(service => {
+    (qaEngineersData?.services ?? []).map(service => {
       const IconComponent = getIconComponent(service.iconName) || Code
       return {
         ...service,
         icon: <IconComponent className="w-8 h-8" strokeWidth={2} />
       }
-    }), [qaEngineersData.services]
+    }), [qaEngineersData?.services]
   )
 
   const whyChooseUs = useMemo(() => 
-    qaEngineersData.whyChooseUs.map(item => {
+    (qaEngineersData?.whyChooseUs ?? []).map(item => {
       const IconComponent = getIconComponent(item.iconName) || Code
       return {
         ...item,
         icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
       }
-    }), [qaEngineersData.whyChooseUs]
+    }), [qaEngineersData?.whyChooseUs]
   )
 
   const industries = useMemo(() => 
-    qaEngineersData.industries.map(industry => {
+    (qaEngineersData?.industries ?? []).map(industry => {
       const IconComponent = getIconComponent(industry.iconName) || Building2
       return {
         ...industry,
         icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
       }
-    }), [qaEngineersData.industries]
+    }), [qaEngineersData?.industries]
   )
 
   const processSteps = useMemo(() => 
-    qaEngineersData.processSteps.map(step => {
+    (qaEngineersData?.processSteps ?? []).map(step => {
       const IconComponent = getIconComponent(step.iconName) || Target
       return {
         ...step,
         icon: <IconComponent className="w-6 h-6" strokeWidth={2} />
       }
-    }), [qaEngineersData.processSteps]
+    }), [qaEngineersData?.processSteps]
   )
+
+  const technologiesList = Array.isArray(qaEngineersData?.technologies) ? [...qaEngineersData.technologies] : []
 
   return (
     <PageTemplate
       relatedLinks={getHireRelatedLinks('qa-engineers')}
       relatedLinksTitle={"Related Hiring Options"}
-      badge={{
-        icon: badgeIcon,
-        text: qaEngineersData.hero.badge.text
-      }}
-      title={qaEngineersData.hero.title}
-      hollowText={qaEngineersData.hero.hollowText}
-      description={qaEngineersData.hero.description}
+      badge={badge ? { icon: badgeIcon, text: badge.text } : undefined}
+      title={hero?.title ?? ''}
+      hollowText={hero?.hollowText ?? ''}
+      description={hero?.description ?? ''}
       services={services}
-      servicesTitle={qaEngineersData.servicesTitle}
-      servicesHollowText={qaEngineersData.servicesHollowText}
+      servicesTitle={qaEngineersData?.servicesTitle}
+      servicesHollowText={qaEngineersData?.servicesHollowText}
       whyChoose={whyChooseUs}
-      whyChooseTitle={qaEngineersData.whyChooseTitle}
-      whyChooseHollowText={qaEngineersData.whyChooseHollowText}
+      whyChooseTitle={qaEngineersData?.whyChooseTitle}
+      whyChooseHollowText={qaEngineersData?.whyChooseHollowText}
       industries={industries}
-      technologies={[...qaEngineersData.technologies]}
-      getQuoteTitle={qaEngineersData.getQuoteTitle}
-      getQuoteHollowText={qaEngineersData.getQuoteHollowText}
-      getQuoteDescription={qaEngineersData.getQuoteDescription}
+      technologies={technologiesList}
+      getQuoteTitle={qaEngineersData?.getQuoteTitle}
+      getQuoteHollowText={qaEngineersData?.getQuoteHollowText}
+      getQuoteDescription={qaEngineersData?.getQuoteDescription}
       faqs={faqs}
-      contactTitle={qaEngineersData.contactTitle}
-      contactDescription={qaEngineersData.contactDescription}
-      processTitle={qaEngineersData.processTitle}
-      processSubtitle={qaEngineersData.processSubtitle}
+      contactTitle={qaEngineersData?.contactTitle}
+      contactDescription={qaEngineersData?.contactDescription}
+      processTitle={qaEngineersData?.processTitle}
+      processSubtitle={qaEngineersData?.processSubtitle}
       processSteps={processSteps}
     />
   )

@@ -52,7 +52,7 @@ export default function CustomSoftwareClient({ faqs }: CustomSoftwareClientProps
     useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale'],
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.section-desc-reveal', '.heading-reveal'],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
   })
@@ -272,11 +272,11 @@ export default function CustomSoftwareClient({ faqs }: CustomSoftwareClientProps
       </section>
 
       {/* 2. Our Client Section */}
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
       {/* 3. Services Section - Modern Grid with Colored Icons */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Our{' '}
@@ -284,19 +284,19 @@ export default function CustomSoftwareClient({ faqs }: CustomSoftwareClientProps
                 Services
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="section-desc-reveal text-lg text-gray-600 max-w-2xl mx-auto">
               Comprehensive custom software solutions tailored to your business needs
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 card-grid-direction">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale card-hover group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: service.color + '40',
-                  '--hover-border': service.color
+                  ['--card-accent' as string]: service.color
                 } as React.CSSProperties}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = service.color
@@ -306,14 +306,14 @@ export default function CustomSoftwareClient({ faqs }: CustomSoftwareClientProps
                 }}
               >
                 <div className="absolute top-0 right-0 w-32 h-32 opacity-5 group-hover:opacity-10 transition-opacity" style={{ backgroundColor: service.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: service.color }}>
+                <div className="relative z-10 card-inner-reveal">
+                  <div className="card-icon mb-6 flex justify-center" style={{ color: service.color }}>
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="card-desc text-gray-600 text-sm leading-relaxed">
                     {service.description}
                   </p>
                 </div>
@@ -325,7 +325,7 @@ export default function CustomSoftwareClient({ faqs }: CustomSoftwareClientProps
 
       {/* 4. Why Choose Section - Modern Grid Design */}
       <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Why Choose Custom Software{' '}
@@ -333,19 +333,20 @@ export default function CustomSoftwareClient({ faqs }: CustomSoftwareClientProps
                 Development
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            <p className="section-desc-reveal text-lg text-gray-600 max-w-3xl mx-auto">
               We deliver enterprise-grade custom software solutions that are built specifically for your business, ensuring optimal performance, scalability, and security.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 card-grid-direction">
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
-                style={{ 
-                  borderColor: item.color + '40'
-                }}
+                className="scroll-animate-scale card-hover group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                style={{
+                  borderColor: item.color + '40',
+                  ['--card-accent' as string]: item.color
+                } as React.CSSProperties}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = item.color
                 }}
@@ -354,14 +355,14 @@ export default function CustomSoftwareClient({ faqs }: CustomSoftwareClientProps
                 }}
               >
                 <div className="absolute top-0 right-0 w-24 h-24 opacity-5 group-hover:opacity-10 transition-opacity rounded-bl-full" style={{ backgroundColor: item.color }}></div>
-                <div className="relative z-10">
-                  <div className="mb-6 flex justify-center" style={{ color: item.color }}>
+                <div className="relative z-10 card-inner-reveal">
+                  <div className="card-icon mb-6 flex justify-center" style={{ color: item.color }}>
                     {item.icon}
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
+                  <h3 className="card-title text-xl font-bold text-gray-900 mb-3 group-hover:text-[#5e2cb6] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="card-desc text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -373,7 +374,7 @@ export default function CustomSoftwareClient({ faqs }: CustomSoftwareClientProps
 
       {/* 5. Industries Section - Compact Grid */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
           <div className="text-center mb-12 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
               Industries We{' '}
@@ -381,19 +382,20 @@ export default function CustomSoftwareClient({ faqs }: CustomSoftwareClientProps
                 Specialize
               </span>
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="section-desc-reveal text-lg text-gray-600 max-w-2xl mx-auto">
               Serving diverse industries with tailored software solutions
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 card-grid-direction">
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
-                style={{ 
-                  borderColor: industry.color + '40'
-                }}
+                className="scroll-animate-scale card-hover bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                style={{
+                  borderColor: industry.color + '40',
+                  ['--card-accent' as string]: industry.color
+                } as React.CSSProperties}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.borderColor = industry.color
                 }}
@@ -401,10 +403,12 @@ export default function CustomSoftwareClient({ faqs }: CustomSoftwareClientProps
                   e.currentTarget.style.borderColor = industry.color + '40'
                 }}
               >
-                <div className="mb-3 flex justify-center" style={{ color: industry.color }}>
-                  {industry.icon}
+                <div className="card-inner-reveal">
+                  <div className="card-icon mb-3 flex justify-center" style={{ color: industry.color }}>
+                    {industry.icon}
+                  </div>
+                  <h3 className="card-title font-semibold text-gray-900 text-sm">{industry.name}</h3>
                 </div>
-                <h3 className="font-semibold text-gray-900 text-sm">{industry.name}</h3>
               </div>
             ))}
           </div>
@@ -429,65 +433,77 @@ export default function CustomSoftwareClient({ faqs }: CustomSoftwareClientProps
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
-                <Code className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 card-grid-direction">
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#5e2cb6' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Code className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Tailored to Your Needs</h3>
+                <p className="card-desc text-gray-600">
+                  Custom software is built specifically for your business processes, eliminating the need to adapt your workflow to off-the-shelf solutions. Every feature is designed to solve your unique challenges and support your business goals.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Tailored to Your Needs</h3>
-              <p className="text-gray-600">
-                Custom software is built specifically for your business processes, eliminating the need to adapt your workflow to off-the-shelf solutions. Every feature is designed to solve your unique challenges and support your business goals.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
-                <TrendingUp className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#c91a6f' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
+                  <TrendingUp className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Scalable Architecture</h3>
+                <p className="card-desc text-gray-600">
+                  Built with scalability in mind, custom software grows with your business. Whether you're adding users, processing more data, or expanding to new markets, your software can scale seamlessly without major rewrites.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Scalable Architecture</h3>
-              <p className="text-gray-600">
-                Built with scalability in mind, custom software grows with your business. Whether you're adding users, processing more data, or expanding to new markets, your software can scale seamlessly without major rewrites.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#fecc4d' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#fecc4d]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Shield className="w-6 h-6 text-[#fecc4d]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Enhanced Security</h3>
+                <p className="card-desc text-gray-600">
+                  Custom software provides better security control. You can implement security measures specific to your industry requirements and data sensitivity, reducing the risk of breaches and ensuring compliance.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Enhanced Security</h3>
-              <p className="text-gray-600">
-                Custom software provides better security control. You can implement security measures specific to your industry requirements and data sensitivity, reducing the risk of breaches and ensuring compliance.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#10b981' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#10b981]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Zap className="w-6 h-6 text-[#10b981]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Competitive Advantage</h3>
+                <p className="card-desc text-gray-600">
+                  Custom software gives you unique capabilities that competitors using generic solutions don't have. This differentiation can be a significant competitive advantage in your market.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Competitive Advantage</h3>
-              <p className="text-gray-600">
-                Custom software gives you unique capabilities that competitors using generic solutions don't have. This differentiation can be a significant competitive advantage in your market.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
-                <Users className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#5e2cb6' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Improved Efficiency</h3>
+                <p className="card-desc text-gray-600">
+                  Streamline operations and automate repetitive tasks with custom workflows. Reduce manual errors, save time, and increase productivity across your organization with software designed for your specific processes.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Improved Efficiency</h3>
-              <p className="text-gray-600">
-                Streamline operations and automate repetitive tasks with custom workflows. Reduce manual errors, save time, and increase productivity across your organization with software designed for your specific processes.
-              </p>
             </div>
 
-            <div className="bg-white rounded-xl p-8 border border-gray-200 hover:shadow-lg transition-all">
-              <div className="w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
-                <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+            <div className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-xl p-8 border border-gray-200 relative overflow-hidden" style={{ ['--card-accent' as string]: '#c91a6f' }}>
+              <div className="card-inner-reveal">
+                <div className="card-icon w-12 h-12 bg-[#c91a6f]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Rocket className="w-6 h-6 text-[#c91a6f]" strokeWidth={2} />
+                </div>
+                <h3 className="card-title text-xl font-bold text-gray-900 mb-3">Full Ownership</h3>
+                <p className="card-desc text-gray-600">
+                  You own the source code and have complete control over your software. No vendor lock-in, no subscription fees, and the freedom to modify, extend, or integrate as your business evolves.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">Full Ownership</h3>
-              <p className="text-gray-600">
-                You own the source code and have complete control over your software. No vendor lock-in, no subscription fees, and the freedom to modify, extend, or integrate as your business evolves.
-              </p>
             </div>
           </div>
         </div>

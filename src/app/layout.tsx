@@ -7,6 +7,10 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ErrorBoundary from '@/components/ErrorBoundary'
 
+const LayoutScrollObserver = dynamic(() => import('@/components/LayoutScrollObserver'), {
+  ssr: false,
+})
+
 const GoToTop = dynamic(() => import('@/components/GoToTop'), {
   ssr: false,
 })
@@ -23,8 +27,22 @@ export const metadata: Metadata = {
     default: 'TruVixo™ - Software & Digital Marketing Agency',
     template: '%s | TruVixo™'
   },
-  description: 'Top software development & digital marketing agency in India, Dubai, USA, Australia. AI development, web apps, mobile apps, SEO, PPC services. Get expert solutions.',
+  description: 'TruVixo (Truvixo / TruVixoo) – top software development & digital marketing agency in India, Dubai, USA, Australia. AI development, web apps, mobile apps, SEO, PPC services. Get expert solutions.',
   keywords: [
+    // Brand spellings – TruVixo and common misspelling TruVixoo (capture all search variants)
+    'truvixo',
+    'TruVixo',
+    'TruVixo™',
+    'TRUVIXO',
+    'truvixoo',
+    'TruVixoo',
+    'TRUVIXOO',
+    'truvixo agency',
+    'truvixoo agency',
+    'truvixo company',
+    'truvixoo company',
+    'truvixo software',
+    'truvixoo software',
     // Location-based keywords
     'best software development company in india',
     'best digital marketing agency in india',
@@ -142,7 +160,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'TruVixo™ - Software & Digital Marketing Agency',
-    description: 'Top software development & digital marketing agency in India, Dubai, USA, Australia. AI development, web apps, mobile apps, SEO, PPC services.',
+    description: 'TruVixo (Truvixo / TruVixoo) – top software development & digital marketing agency in India, Dubai, USA, Australia. AI development, web apps, mobile apps, SEO, PPC services.',
     url: 'https://truvixo.com',
     siteName: 'TruVixo',
     locale: 'en_US',
@@ -159,7 +177,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'TruVixo™ - Software & Digital Marketing Agency',
-    description: 'Top software development & digital marketing agency in India, Dubai, USA, Australia. AI development, web apps, mobile apps, SEO, PPC services.',
+    description: 'TruVixo (Truvixo / TruVixoo) – top software development & digital marketing agency in India, Dubai, USA, Australia. AI development, web apps, mobile apps, SEO, PPC services.',
     images: ['/TruVixo.png'],
   },
   robots: {
@@ -197,21 +215,9 @@ export default function RootLayout({
         <link rel="preload" href="/fonts/LePetiteCocho-Regular.otf" as="font" type="font/otf" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/LePetiteCocho-Bold.otf" as="font" type="font/otf" crossOrigin="anonymous" />
         {/* Route Prefetching - Non-blocking, prioritized for faster navigation */}
+        {/* Prefetch only 2–3 key routes to avoid competing with initial load */}
         <link rel="prefetch" href="/contact/" as="document" />
         <link rel="prefetch" href="/services/" as="document" />
-        <link rel="prefetch" href="/services/seo/" as="document" />
-        <link rel="prefetch" href="/services/ppc/" as="document" />
-        <link rel="prefetch" href="/services/smm/" as="document" />
-        <link rel="prefetch" href="/our-work/" as="document" />
-        <link rel="prefetch" href="/about/" as="document" />
-        <link rel="prefetch" href="/careers/" as="document" />
-        <link rel="prefetch" href="/hire/" as="document" />
-        <link rel="prefetch" href="/technology/" as="document" />
-        <link rel="prefetch" href="/industry/" as="document" />
-        <link rel="prefetch" href="/industry/healthcare/" as="document" />
-        <link rel="prefetch" href="/industry/fintech/" as="document" />
-        {/* Prefetch critical CSS chunks */}
-        <link rel="prefetch" href="/_next/static/css/app/layout.css" as="style" />
         <link rel="icon" href="/TruVixo logo.png" type="image/png" />
         <link rel="apple-touch-icon" href="/TruVixo logo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
@@ -429,6 +435,7 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        <LayoutScrollObserver />
         <ErrorBoundary>
           <Navbar />
           <main>

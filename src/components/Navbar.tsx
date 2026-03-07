@@ -1,10 +1,12 @@
 'use client'
 
-import { useState, useEffect, memo } from 'react'
+import { useState, useEffect, useRef, memo } from 'react'
 import Link from 'next/link'
 import { Menu, X, ChevronDown } from 'lucide-react'
 import Logo from './Logo'
 import { getMenuIcon } from '@/lib/menuIcons'
+
+type DropdownMenu = 'services' | 'ai' | 'hire' | 'industry' | 'company'
 
 const Navbar = memo(() => {
   const [isOpen, setIsOpen] = useState(false)
@@ -15,6 +17,9 @@ const Navbar = memo(() => {
   const [hireOpen, setHireOpen] = useState(false)
   const [industryOpen, setIndustryOpen] = useState(false)
   const [companyOpen, setCompanyOpen] = useState(false)
+  
+  // Hover: delay before closing so moving between dropdowns works
+  const hoverCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   
   // Track last click time for double-click detection
   const [lastClickTime, setLastClickTime] = useState<{ [key: string]: number }>({})
@@ -65,6 +70,34 @@ const Navbar = memo(() => {
     setLastClickTime({ ...lastClickTime, [menu]: now })
   }
 
+  // Desktop: open dropdown on hover, close after mouse leaves (with delay)
+  const openDropdown = (menu: DropdownMenu) => {
+    setServicesOpen(menu === 'services')
+    setAiOpen(menu === 'ai')
+    setHireOpen(menu === 'hire')
+    setIndustryOpen(menu === 'industry')
+    setCompanyOpen(menu === 'company')
+    if (menu === 'services') setHoveredCategory(null)
+  }
+  const handleDropdownMouseEnter = (menu: DropdownMenu) => {
+    if (hoverCloseTimeoutRef.current) {
+      clearTimeout(hoverCloseTimeoutRef.current)
+      hoverCloseTimeoutRef.current = null
+    }
+    openDropdown(menu)
+  }
+  const handleDropdownMouseLeave = () => {
+    hoverCloseTimeoutRef.current = setTimeout(() => {
+      setServicesOpen(false)
+      setAiOpen(false)
+      setHireOpen(false)
+      setIndustryOpen(false)
+      setCompanyOpen(false)
+      setHoveredCategory(null)
+      hoverCloseTimeoutRef.current = null
+    }, 200)
+  }
+
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -80,6 +113,12 @@ const Navbar = memo(() => {
 
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      if (hoverCloseTimeoutRef.current) clearTimeout(hoverCloseTimeoutRef.current)
+    }
   }, [])
 
   // SERVICES - Organized by categories
@@ -182,7 +221,7 @@ const Navbar = memo(() => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 nav-entrance ${
           scrolled
             ? 'bg-white shadow-sm border-b border-gray-100'
             : 'bg-white'
@@ -196,7 +235,11 @@ const Navbar = memo(() => {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center space-x-6">
               {/* Services Mega Menu */}
-              <div className="relative dropdown-menu">
+              <div
+                className="relative dropdown-menu"
+                onMouseEnter={() => handleDropdownMouseEnter('services')}
+                onMouseLeave={handleDropdownMouseLeave}
+              >
                 <button
                   onClick={(e) => {
                     e.preventDefault()
@@ -218,10 +261,13 @@ const Navbar = memo(() => {
                 </button>
                 
                 {servicesOpen && (
-                  <div 
-                    className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 py-6 z-50"
-                    onMouseLeave={() => setHoveredCategory(null)}
-                  >
+                  <>
+                    {/* Invisible bridge so mouse can move from trigger to panel without leaving dropdown */}
+                    <div className="absolute top-full left-0 w-full h-2" aria-hidden="true" />
+                    <div 
+                      className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 py-6 z-50"
+                      onMouseLeave={() => setHoveredCategory(null)}
+                    >
                     <div className="flex">
                       {/* Left Column - Categories Only */}
                       <div className="w-1/2 border-r border-gray-200 px-4">
@@ -272,12 +318,17 @@ const Navbar = memo(() => {
                         )}
                       </div>
                     </div>
-                  </div>
+                    </div>
+                  </>
                 )}
               </div>
 
               {/* AI Dropdown */}
-              <div className="relative dropdown-menu">
+              <div
+                className="relative dropdown-menu"
+                onMouseEnter={() => handleDropdownMouseEnter('ai')}
+                onMouseLeave={handleDropdownMouseLeave}
+              >
                 <button
                   onClick={(e) => {
                     e.preventDefault()
@@ -319,7 +370,11 @@ const Navbar = memo(() => {
               </div>
 
               {/* HIRE Dropdown */}
-              <div className="relative dropdown-menu">
+              <div
+                className="relative dropdown-menu"
+                onMouseEnter={() => handleDropdownMouseEnter('hire')}
+                onMouseLeave={handleDropdownMouseLeave}
+              >
                 <button
                   onClick={(e) => {
                     e.preventDefault()
@@ -361,7 +416,11 @@ const Navbar = memo(() => {
               </div>
 
               {/* INDUSTRY Dropdown */}
-              <div className="relative dropdown-menu">
+              <div
+                className="relative dropdown-menu"
+                onMouseEnter={() => handleDropdownMouseEnter('industry')}
+                onMouseLeave={handleDropdownMouseLeave}
+              >
                 <button
                   onClick={(e) => {
                     e.preventDefault()
@@ -403,7 +462,11 @@ const Navbar = memo(() => {
               </div>
 
               {/* COMPANY Dropdown */}
-              <div className="relative dropdown-menu">
+              <div
+                className="relative dropdown-menu"
+                onMouseEnter={() => handleDropdownMouseEnter('company')}
+                onMouseLeave={handleDropdownMouseLeave}
+              >
                 <button
                   onClick={(e) => {
                     e.preventDefault()

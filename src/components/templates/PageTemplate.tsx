@@ -189,7 +189,7 @@ export default function PageTemplate({
         previewCards={previewCards}
       />
 
-      {isMounted && <div className="mt-12"><Clientele /></div>}
+      <div className="mt-12 min-h-[100px]" style={{ visibility: isMounted ? 'visible' : 'hidden' }}><Clientele /></div>
 
       {services.length > 0 && (
         <ServicesGrid

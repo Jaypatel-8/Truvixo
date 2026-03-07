@@ -13,77 +13,76 @@ interface MobileDevelopersClientProps {
 }
 
 export default function MobileDevelopersClient({ faqs, mobileDevelopersData }: MobileDevelopersClientProps) {
-  // Convert icon names to ReactNode icons
-  const BadgeIcon = getIconComponent(mobileDevelopersData.hero.badge.iconName) || Code
+  const hero = mobileDevelopersData?.hero
+  const badge = hero?.badge
+  const BadgeIcon = getIconComponent(badge?.iconName) || Code
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
   const services = useMemo(() => 
-    mobileDevelopersData.services.map(service => {
+    (mobileDevelopersData?.services ?? []).map(service => {
       const IconComponent = getIconComponent(service.iconName) || Code
       return {
         ...service,
         icon: <IconComponent className="w-8 h-8" strokeWidth={2} />
       }
-    }), [mobileDevelopersData.services]
+    }), [mobileDevelopersData?.services]
   )
 
   const whyChooseUs = useMemo(() => 
-    mobileDevelopersData.whyChooseUs.map(item => {
+    (mobileDevelopersData?.whyChooseUs ?? []).map(item => {
       const IconComponent = getIconComponent(item.iconName) || Code
       return {
         ...item,
         icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
       }
-    }), [mobileDevelopersData.whyChooseUs]
+    }), [mobileDevelopersData?.whyChooseUs]
   )
 
   const industries = useMemo(() => 
-    mobileDevelopersData.industries.map(industry => {
+    (mobileDevelopersData?.industries ?? []).map(industry => {
       const IconComponent = getIconComponent(industry.iconName) || Building2
       return {
         ...industry,
         icon: <IconComponent className="w-7 h-7" strokeWidth={2} />
       }
-    }), [mobileDevelopersData.industries]
+    }), [mobileDevelopersData?.industries]
   )
 
   const processSteps = useMemo(() => 
-    mobileDevelopersData.processSteps.map(step => {
+    (mobileDevelopersData?.processSteps ?? []).map(step => {
       const IconComponent = getIconComponent(step.iconName) || Target
       return {
         ...step,
         icon: <IconComponent className="w-6 h-6" strokeWidth={2} />
       }
-    }), [mobileDevelopersData.processSteps]
+    }), [mobileDevelopersData?.processSteps]
   )
 
+  const technologiesList = Array.isArray(mobileDevelopersData?.technologies) ? [...mobileDevelopersData.technologies] : []
   return (
     <PageTemplate
       relatedLinks={getHireRelatedLinks('mobile-developers')}
       relatedLinksTitle={"Related Hiring Options"}
-      badge={{
-        icon: badgeIcon,
-        text: mobileDevelopersData.hero.badge.text
-      }}
-      title={mobileDevelopersData.hero.title}
-      hollowText={mobileDevelopersData.hero.hollowText}
-      description={mobileDevelopersData.hero.description}
+      badge={badge ? { icon: badgeIcon, text: badge.text } : undefined}
+      title={hero?.title ?? ''}
+      hollowText={hero?.hollowText ?? ''}
+      description={hero?.description ?? ''}
       services={services}
-      servicesTitle={mobileDevelopersData.servicesTitle}
-      servicesHollowText={mobileDevelopersData.servicesHollowText}
+      servicesTitle={mobileDevelopersData?.servicesTitle}
+      servicesHollowText={mobileDevelopersData?.servicesHollowText}
       whyChoose={whyChooseUs}
-      whyChooseTitle={mobileDevelopersData.whyChooseTitle}
-      whyChooseHollowText={mobileDevelopersData.whyChooseHollowText}
+      whyChooseTitle={mobileDevelopersData?.whyChooseTitle}
+      whyChooseHollowText={mobileDevelopersData?.whyChooseHollowText}
       industries={industries}
-      technologies={[...mobileDevelopersData.technologies]}
-      getQuoteTitle={mobileDevelopersData.getQuoteTitle}
-      getQuoteHollowText={mobileDevelopersData.getQuoteHollowText}
-      getQuoteDescription={mobileDevelopersData.getQuoteDescription}
+      technologies={technologiesList}
+      getQuoteTitle={mobileDevelopersData?.getQuoteTitle}
+      getQuoteHollowText={mobileDevelopersData?.getQuoteHollowText}
+      getQuoteDescription={mobileDevelopersData?.getQuoteDescription}
       faqs={faqs}
-      contactTitle={mobileDevelopersData.contactTitle}
-      contactDescription={mobileDevelopersData.contactDescription}
-      processTitle={mobileDevelopersData.processTitle}
-      processSubtitle={mobileDevelopersData.processSubtitle}
+      contactTitle={mobileDevelopersData?.contactTitle}
+      contactDescription={mobileDevelopersData?.contactDescription}
+      processTitle={mobileDevelopersData?.processTitle}
+      processSubtitle={mobileDevelopersData?.processSubtitle}
       processSteps={processSteps}
     />
   )
