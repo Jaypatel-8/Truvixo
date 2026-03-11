@@ -63,11 +63,11 @@ export default function OurApproachClient({ faqs, ourApproachData }: OurApproach
     useIdleCallback: false,
   })
 
-  const BadgeIcon = getIcon(ourApproachData.hero.badge.iconName) || Lightbulb
+  const BadgeIcon = getIcon(ourApproachData.hero?.badge?.iconName) || Lightbulb
   const badgeIcon = <BadgeIcon className="w-4 h-4" strokeWidth={2} />
 
   const methodology = useMemo(() => 
-    ourApproachData.methodology.map(item => {
+    (ourApproachData.methodology ?? []).map((item: { title: string; description: string; iconName: string; color: string }) => {
       const IconComponent = getIcon(item.iconName)
       return {
         ...item,
@@ -77,7 +77,7 @@ export default function OurApproachClient({ faqs, ourApproachData }: OurApproach
   )
 
   const insights = useMemo(() => 
-    ourApproachData.insights.map(item => {
+    (ourApproachData.insights ?? []).map((item: { title: string; description: string; iconName: string; color: string }) => {
       const IconComponent = getIcon(item.iconName)
       return {
         ...item,
@@ -87,7 +87,7 @@ export default function OurApproachClient({ faqs, ourApproachData }: OurApproach
   )
 
   const principles = useMemo(() => 
-    ourApproachData.principles.map(item => {
+    (ourApproachData.principles ?? []).map((item: { title: string; description: string; iconName: string; color: string }) => {
       const IconComponent = getIcon(item.iconName)
       return {
         ...item,
@@ -119,16 +119,16 @@ export default function OurApproachClient({ faqs, ourApproachData }: OurApproach
             <div className="scroll-animate">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                 {badgeIcon}
-                <span className="text-sm font-semibold text-[#5e2cb6]">{ourApproachData.hero.badge.text}</span>
+                <span className="text-sm font-semibold text-[#5e2cb6]">{ourApproachData.hero?.badge?.text}</span>
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-                {ourApproachData.hero.title}{' '}
+                {ourApproachData.hero?.title}{' '}
                 <span className="hollow-text-brand block mt-2">
-                  {ourApproachData.hero.hollowText}
+                  {ourApproachData.hero?.hollowText}
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
-                {ourApproachData.hero.description}
+                {ourApproachData.hero?.description}
               </p>
               <div className="flex flex-col sm:flex-row items-start gap-4">
                 <button 
@@ -301,21 +301,21 @@ export default function OurApproachClient({ faqs, ourApproachData }: OurApproach
         steps={processSteps}
       />
 
-      <Technologies technologies={[...ourApproachData.technologies]} />
+      <Technologies technologies={Array.from(ourApproachData.technologies ?? [])} />
 
       <FAQDropdown faqs={faqs} />
 
       {/* SEO Location Section */}
       <ContactSection 
-        title={ourApproachData.contact.title}
-        description={ourApproachData.contact.description}
+        title={ourApproachData.contact?.title}
+        description={ourApproachData.contact?.description}
       />
 
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection
-        title={ourApproachData.getQuote.title}
-        hollowText={ourApproachData.getQuote.hollowText}
-        description={ourApproachData.getQuote.description}
+        title={ourApproachData.getQuote?.title}
+        hollowText={ourApproachData.getQuote?.hollowText}
+        description={ourApproachData.getQuote?.description}
         primaryCTA={{
           text: 'Call Us',
           type: 'tel',

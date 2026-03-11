@@ -2,6 +2,11 @@
 // Moved from inline component data to improve build performance and bundle size
 
 export const ourWorkData = {
+  hero: {
+    title: 'Our',
+    hollowText: 'Work',
+    description: 'Explore our portfolio of successful projects and see how we help businesses transform through technology.',
+  },
   services: [
     {
       title: 'Custom Software Development',

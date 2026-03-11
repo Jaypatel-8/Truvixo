@@ -52,7 +52,7 @@ const iconMap: Record<string, LucideIcon> = {
  * @param iconName - The name of the icon (e.g., 'Code', 'Database')
  * @returns The icon component or undefined if not found
  */
-export function getIconComponent(iconName: string): LucideIcon | undefined {
-  return iconMap[iconName]
+export function getIconComponent(iconName: string | undefined): LucideIcon | undefined {
+  return iconName ? iconMap[iconName] : undefined
 }
 

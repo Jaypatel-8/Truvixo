@@ -4,12 +4,11 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const WHATSAPP_LINK = 'https://wa.me/916354326412'
-const FOOTER_LINK_CLASS = 'text-sm text-gray-600 hover:bg-[#5e2cb6]/10 hover:text-[#5e2cb6] transition-colors duration-300 block rounded px-1 py-0.5 -mx-1'
+const FOOTER_LINK_CLASS = 'text-sm text-gray-600 dark:text-white hover:bg-[#5e2cb6]/10 hover:text-[#5e2cb6] dark:hover:bg-transparent dark:hover:text-white transition-colors duration-300 block rounded px-1 py-0.5 -mx-1 capitalize'
 
-function toCamelCase(str: string): string {
-  return str.split(/\s+/).map((word, i) =>
-    i === 0 ? word.toLowerCase() : word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
-  ).join('')
+/** Title Case: first letter of each word uppercase */
+function toTitleCase(str: string): string {
+  return str.replace(/\w\S*/g, (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
 }
 
 const Footer = () => {
@@ -72,23 +71,23 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-white border-t border-gray-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 scroll-animate">
+    <footer className="bg-white dark:bg-[var(--dark-bg)] border-t border-gray-200 dark:border-[var(--dark-border)] transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 dark:py-10 scroll-animate">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 lg:gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 dark:gap-6 lg:gap-12 dark:lg:gap-8 mb-10 dark:mb-8">
           {/* Company Info & Contact */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-6">
+            <Link href="/" className="inline-block mb-5 dark:mb-4">
               <Image
                 src="/TruVixo.png"
                 alt="TruVixo Logo"
-                width={140}
-                height={50}
-                className="h-12 w-auto transition-all duration-300"
+                width={112}
+                height={40}
+                className="h-9 dark:h-8 w-auto transition-all duration-300 dark:brightness-0 dark:invert"
                 priority
               />
             </Link>
-            <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+            <p className="text-gray-600 dark:text-white mb-6 text-sm leading-relaxed">
               AI-powered branding, marketing, and technology company helping businesses scale from concept to market leader.
             </p>
             
@@ -96,7 +95,7 @@ const Footer = () => {
             <div className="space-y-3 mb-6">
               <a 
                 href="tel:+916354326412" 
-                className="flex items-center gap-3 text-gray-700 hover:text-[#16a34a] transition-colors duration-300 group"
+                className="flex items-center gap-3 text-gray-700 dark:text-white hover:text-[#16a34a] dark:hover:text-white transition-colors duration-300 group"
               >
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors" style={{ backgroundColor: 'rgba(22, 163, 74, 0.12)' }}>
                   <Phone className="w-5 h-5" style={{ color: '#16a34a' }} />
@@ -105,7 +104,7 @@ const Footer = () => {
               </a>
               <a 
                 href="tel:+917990631490" 
-                className="flex items-center gap-3 text-gray-700 hover:text-[#16a34a] transition-colors duration-300 group"
+                className="flex items-center gap-3 text-gray-700 dark:text-white hover:text-[#16a34a] dark:hover:text-white transition-colors duration-300 group"
               >
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors" style={{ backgroundColor: 'rgba(22, 163, 74, 0.12)' }}>
                   <Phone className="w-5 h-5" style={{ color: '#16a34a' }} />
@@ -114,7 +113,7 @@ const Footer = () => {
               </a>
               <a 
                 href="mailto:sales@truvixoo.com" 
-                className="flex items-center gap-3 text-gray-700 hover:text-[#ea4335] transition-colors duration-300 group"
+                className="flex items-center gap-3 text-gray-700 dark:text-white hover:text-[#ea4335] dark:hover:text-white transition-colors duration-300 group"
               >
                 <div className="w-10 h-10 rounded-lg flex items-center justify-center transition-colors" style={{ backgroundColor: 'rgba(234, 67, 53, 0.12)' }}>
                   <Mail className="w-5 h-5" style={{ color: '#ea4335' }} />
@@ -162,12 +161,12 @@ const Footer = () => {
 
           {/* Services - Software Development */}
           <div>
-            <h3 className="text-base font-bold text-gray-900 mb-4 uppercase tracking-wide">Software Development</h3>
+            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Software Development</h3>
             <ul className="space-y-2.5">
               {services['Software Development'].map((service, index) => (
                 <li key={index}>
-                  <Link href={service.href} prefetch={true} className={FOOTER_LINK_CLASS}>
-                    {toCamelCase(service.name)}
+<Link href={service.href} prefetch={true} className={FOOTER_LINK_CLASS}>
+                        {toTitleCase(service.name)}
                   </Link>
                 </li>
               ))}
@@ -176,10 +175,10 @@ const Footer = () => {
 
           {/* Services - AI & Digital Marketing */}
           <div>
-            <h3 className="text-base font-bold text-gray-900 mb-4 uppercase tracking-wide">AI & Marketing</h3>
+            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">AI & Marketing</h3>
             <div className="space-y-4">
               <div>
-                <h4 className="text-xs font-semibold text-gray-700 mb-2.5 uppercase">AI & Machine Learning</h4>
+                <h4 className="text-xs font-semibold text-gray-700 dark:text-white mb-2.5 uppercase">AI & Machine Learning</h4>
                 <ul className="space-y-2.5">
                   {services['AI & Machine Learning'].map((service, index) => (
                     <li key={index}>
@@ -191,7 +190,7 @@ const Footer = () => {
                 </ul>
               </div>
               <div>
-                <h4 className="text-xs font-semibold text-gray-700 mb-2.5 uppercase">Digital Marketing</h4>
+                <h4 className="text-base font-bold text-gray-900 dark:text-white mb-2.5 uppercase tracking-wide">Digital Marketing</h4>
                 <ul className="space-y-2.5">
                   {services['Digital Marketing'].map((service, index) => (
                     <li key={index}>
@@ -207,12 +206,12 @@ const Footer = () => {
 
           {/* Hire Developers */}
           <div>
-            <h3 className="text-base font-bold text-gray-900 mb-4 uppercase tracking-wide">Hire Developers</h3>
+            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Hire Developers</h3>
             <ul className="space-y-2.5">
               {services['Hire Developers'].map((service, index) => (
                 <li key={index}>
                   <Link href={service.href} prefetch={true} className={FOOTER_LINK_CLASS}>
-                    {toCamelCase(service.name)}
+                    {toTitleCase(service.name)}
                   </Link>
                 </li>
               ))}
@@ -221,23 +220,23 @@ const Footer = () => {
 
           {/* Industries & Company */}
           <div>
-            <h3 className="text-base font-bold text-gray-900 mb-4 uppercase tracking-wide">Industries</h3>
+            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Industries</h3>
             <ul className="space-y-2.5 mb-6">
               {industries.map((industry, index) => (
                 <li key={index}>
                   <Link href={industry.href} prefetch={true} className={FOOTER_LINK_CLASS}>
-                    {toCamelCase(industry.name)}
+                    {toTitleCase(industry.name)}
                   </Link>
                 </li>
               ))}
             </ul>
 
-            <h3 className="text-base font-bold text-gray-900 mb-4 uppercase tracking-wide">Company</h3>
+            <h3 className="text-base font-bold text-gray-900 dark:text-white mb-4 uppercase tracking-wide">Company</h3>
             <ul className="space-y-2.5">
               {company.map((item, index) => (
                 <li key={index}>
                   <Link href={item.href} prefetch={true} className={FOOTER_LINK_CLASS}>
-                    {toCamelCase(item.name)}
+                    {toTitleCase(item.name)}
                   </Link>
                 </li>
               ))}
@@ -246,22 +245,22 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-200 pt-8">
+        <div className="border-t border-gray-200 dark:border-[var(--dark-border)] pt-6 dark:pt-5">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 dark:text-white">
               © {new Date().getFullYear()} TruVixo. All rights reserved.
             </p>
             <div className="flex flex-wrap gap-6 text-sm">
-              <Link href="/privacy" prefetch={true} className="text-gray-600 hover:text-black transition-colors duration-300">
+              <Link href="/privacy" prefetch={true} className="text-gray-600 dark:text-white hover:text-black dark:hover:text-white transition-colors duration-300">
                 Privacy Policy
               </Link>
-              <Link href="/terms" prefetch={true} className="text-gray-600 hover:text-black transition-colors duration-300">
+              <Link href="/terms" prefetch={true} className="text-gray-600 dark:text-white hover:text-black dark:hover:text-white transition-colors duration-300">
                 Terms of Service
               </Link>
-              <Link href="/cancellation-refund" prefetch={true} className="text-gray-600 hover:text-black transition-colors duration-300">
+              <Link href="/cancellation-refund" prefetch={true} className="text-gray-600 dark:text-white hover:text-black dark:hover:text-white transition-colors duration-300">
                 Cancellation & Refund
               </Link>
-              <Link href="/contact" prefetch={true} className="text-gray-600 hover:text-black transition-colors duration-300">
+              <Link href="/contact" prefetch={true} className="text-gray-600 dark:text-white hover:text-black dark:hover:text-white transition-colors duration-300">
                 Contact Us
               </Link>
             </div>

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState, ReactNode } from 'react'
+import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
 import { ArrowRight, Calendar, Phone, Mail } from 'lucide-react'
 import dynamic from 'next/dynamic'
 import Technologies from '@/components/Technologies'
@@ -41,9 +42,9 @@ interface Industry {
 
 interface Technology {
   name: string
-  logo: string
-  color: string
-  category: 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai' | 'management' | 'testing' | 'design'
+  logo?: string
+  color?: string
+  category: 'frontend' | 'backend' | 'database' | 'cloud' | 'devops' | 'mobile' | 'ai' | 'management' | 'testing' | 'design' | 'other'
 }
 
 interface PageTemplateProps {
@@ -142,27 +143,13 @@ export default function PageTemplate({
     setIsMounted(true)
   }, [])
 
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate')
-        }
-      })
-    }, observerOptions)
-
-    const scrollElements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale')
-    scrollElements.forEach((el) => observer.observe(el))
-
-    return () => {
-      scrollElements.forEach((el) => observer.unobserve(el))
-    }
-  }, [])
+  useIntersectionObserver({
+    threshold: 0.05,
+    rootMargin: '0px 0px -40px 0px',
+    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal', '.section-desc-reveal', '.p-reveal', '.btn-entrance', '.underline-reveal'],
+    unobserveAfterIntersect: true,
+    useIdleCallback: true,
+  })
 
   const previewCards = services.slice(0, 4).map(service => ({
     icon: service.icon,
@@ -212,22 +199,22 @@ export default function PageTemplate({
       )}
 
       {industries.length > 0 && (
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white section-reveal">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 scroll-animate">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-                {industriesTitle}{' '}
-                <span className="hollow-text-brand">
-                  {industriesHollowText}
+            <div className="text-center mb-12">
+              <h2 className="heading-reveal text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
+                <span className="heading-reveal-line block">{industriesTitle}{' '}</span>
+                <span className="heading-reveal-line block">
+                  <span className="hollow-text-brand">{industriesHollowText}</span>
                 </span>
               </h2>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 scroll-stagger">
               {industries.map((industry, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                  className="scroll-stagger-item bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group scroll-animate-scale"
                   style={{ 
                     borderColor: industry.color + '40'
                   }}

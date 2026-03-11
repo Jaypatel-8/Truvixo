@@ -136,9 +136,10 @@ export default function HomeClient({
     const servicesList = useMemo(() => 
     homeServicesList.map(service => {
       const IconComponent = getIconComponent(service.iconName)
+      const item = service as { title?: string; name?: string; description: string; iconName: string; color: string }
       return {
         ...service,
-        name: service.title,
+        name: item.title ?? item.name ?? '',
         icon: IconComponent ? <IconComponent className="w-8 h-8" strokeWidth={2} /> : null
       }
     }), [homeServicesList]
@@ -164,8 +165,18 @@ export default function HomeClient({
           <div className="hero-blob absolute bottom-[20%] right-[8%] w-[500px] h-[500px] rounded-full bg-[#c91a6f]/6 blur-[100px]" style={{ animationDelay: '-4s' }} />
           <div className="hero-blob absolute top-1/2 left-1/2 w-[300px] h-[300px] rounded-full bg-[#10b981]/5 blur-[60px]" style={{ animationDelay: '-8s' }} />
         </div>
+        {/* Bouncing balls background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden>
+          <div className="hero-ball w-3 h-3 md:w-4 md:h-4 top-[18%] left-[15%] bg-[#5e2cb6]/40" style={{ animationDelay: '0s' }} />
+          <div className="hero-ball w-2 h-2 md:w-3 md:h-3 top-[25%] right-[20%] bg-[#c91a6f]/40" style={{ animationDelay: '0.4s' }} />
+          <div className="hero-ball w-4 h-4 md:w-5 md:h-5 bottom-[30%] left-[12%] bg-[#10b981]/35" style={{ animationDelay: '0.8s' }} />
+          <div className="hero-ball w-2 h-2 md:w-3 md:h-3 bottom-[25%] right-[18%] bg-[#5e2cb6]/30" style={{ animationDelay: '0.2s' }} />
+          <div className="hero-ball w-3 h-3 md:w-4 md:h-4 top-[40%] right-[12%] bg-[#c91a6f]/35" style={{ animationDelay: '0.6s' }} />
+          <div className="hero-ball w-2 h-2 md:w-3 md:h-3 top-[55%] left-[20%] bg-[#fecc4d]/40" style={{ animationDelay: '0.3s' }} />
+          <div className="hero-ball w-3 h-3 md:w-4 md:h-4 bottom-[40%] right-[25%] bg-[#10b981]/30" style={{ animationDelay: '0.5s' }} />
+        </div>
         {/* Minimal Grid Background */}
-        <div className="absolute inset-0 overflow-hidden opacity-[0.03]">
+        <div className="hero-grid-overlay absolute inset-0 overflow-hidden opacity-[0.03]">
           <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -180,7 +191,7 @@ export default function HomeClient({
           <div className="scroll-animate above-fold">
             <h1 className="heading-reveal text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 mb-6 leading-[0.9] tracking-tight" id="hero-heading">
               <span className="heading-reveal-line block"><span>Building the <span className="hollow-text-brand">Future</span></span></span>
-              <span className="heading-reveal-line block mt-2 font-light text-gray-700"><span>with Intelligent Technology</span></span>
+              <span className="heading-reveal-line block mt-2 text-2xl md:text-3xl lg:text-4xl font-medium text-gray-600"><span>with Intelligent Technology</span></span>
             </h1>
 
             <p className="p-reveal text-base md:text-lg text-gray-600 max-w-4xl mx-auto font-light leading-relaxed mb-8 px-4">
@@ -416,10 +427,10 @@ export default function HomeClient({
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { value: '20+', label: 'Projects Completed', icon: <Briefcase className="w-8 h-8" strokeWidth={2} />, color: '#5e2cb6', description: 'Delivered across industries' },
-              { value: '7+', label: 'Clients', icon: <Users className="w-8 h-8" strokeWidth={2} />, color: '#c91a6f', description: 'Trust us with their business' },
-              { value: '98%', label: 'Client Satisfaction', icon: <Award className="w-8 h-8" strokeWidth={2} />, color: '#fecc4d', description: 'Consistently high ratings' },
-              { value: '24/7', label: 'Support Available', icon: <Clock className="w-8 h-8" strokeWidth={2} />, color: '#10b981', description: 'Round-the-clock assistance' }
+              { end: 20, suffix: '+', label: 'Projects Completed', icon: <Briefcase className="w-8 h-8" strokeWidth={2} />, color: '#5e2cb6', description: 'Delivered across industries' },
+              { end: 7, suffix: '+', label: 'Clients', icon: <Users className="w-8 h-8" strokeWidth={2} />, color: '#c91a6f', description: 'Trust us with their business' },
+              { end: 98, suffix: '%', label: 'Client Satisfaction', icon: <Award className="w-8 h-8" strokeWidth={2} />, color: '#fecc4d', description: 'Consistently high ratings' },
+              { end: 24, suffix: '/7', label: 'Support Available', icon: <Clock className="w-8 h-8" strokeWidth={2} />, color: '#10b981', description: 'Round-the-clock assistance' }
             ].map((stat, index) => (
               <div
                 key={index}
@@ -428,13 +439,10 @@ export default function HomeClient({
                 <div className="mb-4 flex justify-center" style={{ color: stat.color }}>
                   {stat.icon}
                 </div>
-                <div className="text-4xl md:text-5xl font-black mb-2" style={{ color: stat.color }}>
-                  {stat.value}
+                <div className="mb-2">
+                  <StatsCounter end={stat.end} suffix={stat.suffix} label={stat.label} color={stat.color} duration={2200} />
                 </div>
-                <h3 className="font-bold text-gray-900 mb-2 text-lg">
-                  {stat.label}
-                </h3>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 mt-1">
                   {stat.description}
                 </p>
               </div>

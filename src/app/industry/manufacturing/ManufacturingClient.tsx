@@ -214,7 +214,7 @@ export default function ManufacturingClient({ faqs, manufacturingData }: Manufac
             {services.map((service: { title: string; description: string; iconName: string; color: string; icon: ReactElement | null }, index: number) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: service.color + '40'
                 }}
@@ -261,7 +261,7 @@ export default function ManufacturingClient({ faqs, manufacturingData }: Manufac
             {whyChooseUs.map((item: { iconName: string; title: string; description: string; color: string; icon: ReactElement | null }, index: number) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: item.color + '40'
                 }}
@@ -308,7 +308,7 @@ export default function ManufacturingClient({ faqs, manufacturingData }: Manufac
             {industries.map((industry: { name: string; iconName: string; color: string; icon: ReactElement | null }, index: number) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                className="scroll-animate-scale bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
                 style={{ 
                   borderColor: industry.color + '40'
                 }}
@@ -373,9 +373,9 @@ export default function ManufacturingClient({ faqs, manufacturingData }: Manufac
 
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection
-        title={manufacturingData?.cta?.title}
-        hollowText={manufacturingData?.cta?.hollowText}
-        description={manufacturingData?.cta?.description}
+        title={manufacturingData?.cta?.title ?? manufacturingData?.getQuoteTitle ?? ''}
+        hollowText={manufacturingData?.cta?.hollowText ?? manufacturingData?.getQuoteHollowText ?? ''}
+        description={manufacturingData?.cta?.description ?? manufacturingData?.getQuoteDescription ?? ''}
         primaryCTA={{
           text: 'Call Us',
           type: 'tel',

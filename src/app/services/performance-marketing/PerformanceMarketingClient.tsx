@@ -44,8 +44,6 @@ function getIcon(iconName: string) {
   return getIconComponent(iconName) || getIconComponent('Code')
 }
 
-import type { BasePageData } from '@/lib/types/staticData'
-
 interface PerformanceMarketingClientProps {
   faqs: Array<{ question: string; answer: string }>
   performanceMarketingData: BasePageData

@@ -45,18 +45,18 @@ export default function HeroSection({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="scroll-animate above-fold">
             {badge && (
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
+              <div className="scroll-animate inline-flex items-center gap-2 px-4 py-2 bg-[#5e2cb6]/10 rounded-full mb-6">
                 {badge.icon}
                 <span className="text-sm font-semibold text-[#5e2cb6]">{badge.text}</span>
               </div>
             )}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
-              {title}{' '}
-              <span className="hollow-text-brand block mt-2">
-                {hollowText}
+            <h1 className="heading-reveal text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 mb-6 leading-tight">
+              <span className="heading-reveal-line block">{title} </span>
+              <span className="heading-reveal-line block mt-2">
+                <span className="hollow-text-brand">{hollowText}</span>
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
+            <p className="section-desc-reveal text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed">
               {description}
             </p>
             {(primaryCTA || secondaryCTA) && (
@@ -64,7 +64,7 @@ export default function HeroSection({
                 {primaryCTA && (
                   <button 
                     onClick={primaryCTA.onClick}
-                    className="btn-press bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
+                    className="btn-entrance btn-press bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg shadow-[#5e2cb6]/30"
                   >
                     <Calendar className="w-5 h-5" strokeWidth={2} />
                     <span>{primaryCTA.text}</span>
@@ -73,7 +73,7 @@ export default function HeroSection({
                 {secondaryCTA && (
                   <button 
                     onClick={secondaryCTA.onClick}
-                    className="btn-press bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+                    className="btn-entrance btn-press bg-white text-[#5e2cb6] border-2 border-[#5e2cb6] font-semibold py-4 px-8 rounded-xl hover:bg-[#5e2cb6]/5 transition-all duration-300 transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
                   >
                     <span>{secondaryCTA.text}</span>
                     <ArrowRight className="w-5 h-5" strokeWidth={2} />

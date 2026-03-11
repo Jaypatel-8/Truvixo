@@ -1,10 +1,10 @@
 'use client'
 
-import { memo } from 'react'
+import { memo, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
 import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
 
 // Swiper CSS - required for Swiper to function
 // These are scoped to .swiper classes and won't conflict
@@ -41,12 +41,23 @@ const SERVICE_URL_MAP: { [key: string]: string } = {
 }
 
 function ServicesSwiper({ servicesList, onServiceClick }: ServicesSwiperProps) {
-  // Service name to URL mapping - optimized function
+  const router = useRouter()
+
   const getServiceUrl = (serviceName: string): string => {
     return SERVICE_URL_MAP[serviceName] || '/services'
   }
 
-  // Removed handleCardClick - Link component handles navigation directly for faster redirects
+  const handleCardClick = useCallback((href: string, serviceName: string) => {
+    onServiceClick?.(serviceName)
+    router.push(href)
+  }, [onServiceClick])
+
+  const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLDivElement>, href: string, serviceName: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault()
+      handleCardClick(href, serviceName)
+    }
+  }, [handleCardClick])
 
   return (
     <div className="services-swiper-wrapper">
@@ -84,10 +95,10 @@ function ServicesSwiper({ servicesList, onServiceClick }: ServicesSwiperProps) {
           const hoverShadow = `0 20px 40px -10px ${service.color}30`
           return (
           <SwiperSlide key={index}>
-            <Link 
-              href={serviceUrl}
-              prefetch={true}
-              className="service-card-link block bg-white rounded-2xl p-6 md:p-7 border-2 group relative overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl flex flex-col cursor-pointer no-underline"
+            <div
+              role="link"
+              tabIndex={0}
+              className="service-card-link block bg-white rounded-2xl p-6 md:p-7 border-2 group relative overflow-hidden transition-all duration-300 transform hover:-translate-y-2 hover:shadow-xl flex flex-col cursor-pointer"
               style={{ 
                 borderColor: borderColor,
                 '--hover-border-color': hoverBorderColor,
@@ -103,6 +114,8 @@ function ServicesSwiper({ servicesList, onServiceClick }: ServicesSwiperProps) {
                 target.style.borderColor = borderColor
                 target.style.boxShadow = 'none'
               }}
+              onClick={() => handleCardClick(serviceUrl, service.name)}
+              onKeyDown={(e) => handleKeyDown(e, serviceUrl, service.name)}
             >
               {/* Decorative background element */}
               <div 
@@ -125,20 +138,21 @@ function ServicesSwiper({ servicesList, onServiceClick }: ServicesSwiperProps) {
                   </div>
                 </div>
                 
-                {/* Content */}
+                {/* Content - service name */}
                 <div className="flex-grow flex flex-col min-h-0 mb-4 overflow-hidden">
-                  <h3 
-                    className="text-lg md:text-xl font-bold text-gray-900 mb-3 transition-colors duration-300 line-clamp-2"
-                    style={{ minHeight: '3.5rem', maxHeight: '3.5rem' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.color = service.color
+                  <div
+                    className="service-card-title service-name-label text-lg md:text-xl font-bold mb-3 line-clamp-2"
+                    style={{
+                      minHeight: '3.5rem',
+                      maxHeight: '3.5rem',
+                      color: '#111827',
+                      WebkitTextFillColor: '#111827',
                     }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.color = ''
-                    }}
+                    role="heading"
+                    aria-level={3}
                   >
-                    {service.name}
-                  </h3>
+                    <span className="service-name-label" style={{ color: '#111827' }}>{service.name}</span>
+                  </div>
                   <p className="text-sm md:text-base text-gray-600 leading-relaxed line-clamp-3 flex-grow overflow-hidden">
                     {service.description}
                   </p>
@@ -158,7 +172,7 @@ function ServicesSwiper({ servicesList, onServiceClick }: ServicesSwiperProps) {
                   </div>
                 </div>
               </div>
-            </Link>
+            </div>
           </SwiperSlide>
           )
         })}

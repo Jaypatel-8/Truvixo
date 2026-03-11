@@ -67,14 +67,14 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
-        <div className="text-center mb-12 scroll-animate">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-            Technologies We{' '}
-            <span className="hollow-text-brand">
-              Use
+        <div className="text-center mb-12">
+          <h2 className="heading-reveal text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
+            <span className="heading-reveal-line block">Technologies We{' '}</span>
+            <span className="heading-reveal-line block">
+              <span className="hollow-text-brand">Use</span>
             </span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="section-desc-reveal text-lg text-gray-600 max-w-3xl mx-auto">
             Cutting-edge technologies and frameworks that power our innovative solutions
           </p>
         </div>
@@ -102,19 +102,28 @@ const Technologies = memo(function Technologies({ technologies }: TechnologiesPr
           {displayTechnologies.map((tech, index) => (
             <div
               key={`${tech.name}-${index}`}
-              className="scroll-stagger-item group bg-white rounded-xl p-6 border border-gray-200 text-center card-hover"
+              className="scroll-stagger-item scroll-animate-scale group bg-white rounded-xl p-6 border border-gray-200 text-center card-hover"
             >
               <div className="flex flex-col items-center justify-center h-full">
                 <div className="relative w-12 h-12 mb-3 flex items-center justify-center">
-                  <Image
-                    src={tech.logo}
-                    alt={tech.name}
-                    width={48}
-                    height={48}
-                    className="object-contain"
-                    loading="lazy"
-                    unoptimized
-                  />
+                  {tech.logo ? (
+                    <Image
+                      src={tech.logo}
+                      alt={tech.name}
+                      width={48}
+                      height={48}
+                      className="object-contain"
+                      loading="lazy"
+                      unoptimized
+                    />
+                  ) : (
+                    <span
+                      className="text-lg font-bold text-gray-400 flex items-center justify-center w-full h-full rounded bg-gray-100"
+                      aria-hidden
+                    >
+                      {tech.name.charAt(0)}
+                    </span>
+                  )}
                 </div>
                 <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors">
                   {tech.name}

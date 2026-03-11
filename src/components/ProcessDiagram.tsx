@@ -70,13 +70,14 @@ export default function ProcessDiagram({
   className = '',
 }: ProcessDiagramProps) {
   return (
-    <section className={`py-16 bg-white ${className}`}>
+    <section className={`py-16 bg-white dark:bg-[var(--dark-surface)] ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 section-reveal">
         {(title || subtitle) && (
-          <div className="text-center mb-16 scroll-animate">
+          <div className="text-center mb-16">
             {title && (
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-                {title.split(' ').map((word, index, array) => {
+              <h2 className="heading-reveal text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 dark:text-[var(--dark-text)] mb-4">
+                <span className="heading-reveal-line block">
+                  {title.split(' ').map((word, index, array) => {
                   const isLast = index === array.length - 1
                   if (word.toLowerCase() === 'process' || word.toLowerCase() === 'development') {
                     return (
@@ -94,10 +95,11 @@ export default function ProcessDiagram({
                     </span>
                   )
                 })}
+                </span>
               </h2>
             )}
             {subtitle && (
-              <p className="section-desc-reveal text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+              <p className="section-desc-reveal text-lg md:text-xl text-gray-600 dark:text-[var(--dark-text-muted)] max-w-3xl mx-auto">
                 {subtitle}
               </p>
             )}
@@ -105,7 +107,7 @@ export default function ProcessDiagram({
         )}
 
         {/* Horizontal Process Flow */}
-        <div className="relative scroll-stagger">
+        <div className="relative scroll-stagger section-reveal">
           {/* Desktop: Horizontal Layout */}
           <div className="hidden lg:flex items-start justify-between">
             {steps.map((step, index) => {
@@ -158,12 +160,12 @@ export default function ProcessDiagram({
                     </div>
 
                     {/* Title - Minimal */}
-                    <h3 className="text-lg font-bold mb-3 text-gray-900">
+                    <h3 className="text-lg font-bold mb-3 text-gray-900 dark:text-[var(--dark-text)]">
                       {step.title}
                     </h3>
 
                     {/* Description - Minimal */}
-                    <p className="text-sm text-gray-600 leading-relaxed px-2">
+                    <p className="text-sm text-gray-600 dark:text-[var(--dark-text-muted)] leading-relaxed px-2">
                       {step.description}
                     </p>
                   </div>
@@ -241,10 +243,10 @@ export default function ProcessDiagram({
 
                   {/* Content */}
                   <div className="flex-1 pt-1">
-                    <h3 className="text-lg font-bold mb-2 text-gray-900">
+                    <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-[var(--dark-text)]">
                       {step.title}
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
+                    <p className="text-sm text-gray-600 dark:text-[var(--dark-text-muted)] leading-relaxed">
                       {step.description}
                     </p>
                   </div>

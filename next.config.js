@@ -4,6 +4,11 @@ const nextConfig = {
   // Disable in development mode to allow proper rendering
   ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
   trailingSlash: true,
+
+  // Asset paths: root-relative so CSS/JS load when site is at domain root.
+  // If you deploy to a subdirectory (e.g. example.com/site/), set both to that path, e.g. basePath: '/site', assetPrefix: '/site'
+  basePath: '',
+  assetPrefix: '',
   
   // Build-time optimizations - disable checks during build for speed
   eslint: {

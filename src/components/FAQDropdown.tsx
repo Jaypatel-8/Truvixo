@@ -29,28 +29,30 @@ export default function FAQDropdown({
     <div className={`py-16 ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {title && (
-          <div className="text-center mb-16 scroll-animate">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
+          <div className="text-center mb-16 section-reveal">
+            <h2 className="heading-reveal text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
+              <span className="heading-reveal-line block">
               {title.split(' ').map((word, index, arr) => {
                 if (index === arr.length - 1) {
                   return <span key={index} className="hollow-text-brand">{word}</span>
                 }
                 return <span key={index}>{word} </span>
               })}
+              </span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="section-desc-reveal text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
               Got questions? We’ve got answers. Here are some common questions we receive.
             </p>
           </div>
         )}
 
-        <div className="space-y-4">
+        <div className="space-y-4 scroll-stagger">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index
             return (
               <div
                 key={index}
-                className="bg-white rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-300 overflow-hidden scroll-animate-scale"
+                className="scroll-stagger-item bg-white rounded-2xl border border-gray-200 hover:border-gray-300 transition-all duration-300 overflow-hidden scroll-animate-scale"
               >
                 <button
                   onClick={() => toggle(index)}

@@ -214,7 +214,7 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
             {services.map((service: { title: string; description: string; iconName: string; color: string; icon: ReactElement | null }, index: number) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: service.color + '40'
                 }}
@@ -261,7 +261,7 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
             {whyChooseUs.map((item: { iconName: string; title: string; description: string; color: string; icon: ReactElement | null }, index: number) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: item.color + '40'
                 }}
@@ -308,7 +308,7 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
             {industries.map((industry: { name: string; iconName: string; color: string; icon: ReactElement | null }, index: number) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                className="scroll-animate-scale bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
                 style={{ 
                   borderColor: industry.color + '40'
                 }}
@@ -373,9 +373,9 @@ export default function RealEstateClient({ faqs, realEstateData }: RealEstateCli
 
       {/* Get Quote Section - Last section before footer */}
       <GetQuoteSection
-        title={realEstateData?.cta?.title}
-        hollowText={realEstateData?.cta?.hollowText}
-        description={realEstateData?.cta?.description}
+        title={realEstateData?.cta?.title ?? realEstateData?.getQuoteTitle ?? ''}
+        hollowText={realEstateData?.cta?.hollowText ?? realEstateData?.getQuoteHollowText ?? ''}
+        description={realEstateData?.cta?.description ?? realEstateData?.getQuoteDescription ?? ''}
         primaryCTA={{
           text: 'Call Us',
           type: 'tel',

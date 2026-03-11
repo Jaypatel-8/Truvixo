@@ -62,13 +62,15 @@ export interface UseCase {
   description: string
   gradient: string
   borderColor: string
-  items: string[]
+  items: readonly string[] | string[]
 }
 
 export interface GetQuote {
   title: string
   hollowText: string
   description: string
+  email?: string
+  phone?: string
 }
 
 export interface Contact {
@@ -78,7 +80,7 @@ export interface Contact {
 
 // Base structure for service/industry/hire pages
 export interface BasePageData {
-  hero: Hero
+  hero?: Hero
   servicesTitle?: string
   servicesHollowText?: string
   services?: ServiceItem[] | readonly ServiceItem[]
@@ -97,15 +99,21 @@ export interface BasePageData {
   processTitle?: string
   processSubtitle?: string
   getQuote?: GetQuote
+  /** CTA / Get Quote section (some industry pages use cta instead of getQuote) */
+  cta?: GetQuote
   contact?: Contact
   seoServiceName?: string
   // Technology page specific
-  whatWeBuild?: Array<{ iconName: string; title: string }> | readonly Array<{ iconName: string; title: string }>
+  whatWeBuild?: Array<{ iconName: string; title: string }> | ReadonlyArray<{ iconName: string; title: string }>
   // Alternative property names used in some pages
   getQuoteTitle?: string
   getQuoteHollowText?: string
   getQuoteDescription?: string
   contactTitle?: string
   contactDescription?: string
+  // Our Approach page specific
+  methodology?: Array<{ title: string; description: string; iconName: string; color: string }>
+  insights?: Array<{ title: string; description: string; iconName: string; color: string }>
+  principles?: Array<{ title: string; description: string; iconName: string; color: string }>
 }
 

@@ -80,14 +80,14 @@ export default function ContactSection({
   }
 
   return (
-    <section className={`py-16 bg-gray-50 section-reveal ${className}`} id="contact-section">
+    <section className={`py-16 bg-gray-50 dark:bg-[var(--dark-surface)] section-reveal ${className}`} id="contact-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 scroll-animate">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-[var(--dark-text)] mb-3">
             {title.split(' ').slice(0, -1).join(' ')}{' '}
-            <span className="hollow-text-brand">{title.split(' ').slice(-1)[0]}</span>
+            <span className="hollow-text-brand font-semibold">{title.split(' ').slice(-1)[0]}</span>
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-gray-600 dark:text-[var(--dark-text-muted)] max-w-2xl mx-auto font-normal">
             {description}
           </p>
         </div>
@@ -95,31 +95,31 @@ export default function ContactSection({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {/* Contact Details */}
           <div className="space-y-4 scroll-animate-left">
-            <div className="flex items-center gap-4 p-5 bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-md">
+            <div className="flex items-center gap-4 p-5 bg-white dark:bg-[var(--dark-bg)] rounded-lg border border-gray-200 dark:border-[var(--dark-border)] hover:border-gray-300 dark:hover:border-neutral-600 transition-all duration-300 hover:shadow-md">
               <div className="w-12 h-12 rounded-lg flex items-center justify-center border-2 flex-shrink-0" style={{ backgroundColor: '#5e2cb6' + '15', borderColor: '#5e2cb6' }}>
                 <Phone className="w-6 h-6" style={{ color: '#5e2cb6' }} strokeWidth={2} />
               </div>
               <div>
-                <p className="text-sm text-gray-500 mb-1">Phone</p>
+                <p className="text-sm text-gray-500 dark:text-[var(--dark-text-muted)] mb-1">Phone</p>
                 <div className="space-y-1">
-                  <a href="tel:+916354326412" className="block text-gray-900 font-semibold hover:text-[#5e2cb6] transition-colors">+91 63543 26412</a>
-                  <a href="tel:+917990631490" className="block text-gray-900 font-semibold hover:text-[#5e2cb6] transition-colors">+91 79906 31490</a>
+                  <a href="tel:+916354326412" className="block text-gray-900 dark:text-[var(--dark-text)] font-semibold hover:text-[#5e2cb6] dark:hover:text-[#a78bfa] transition-colors">+91 63543 26412</a>
+                  <a href="tel:+917990631490" className="block text-gray-900 dark:text-[var(--dark-text)] font-semibold hover:text-[#5e2cb6] dark:hover:text-[#a78bfa] transition-colors">+91 79906 31490</a>
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-4 p-5 bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-all duration-300 hover:shadow-md">
+            <div className="flex items-center gap-4 p-5 bg-white dark:bg-[var(--dark-bg)] rounded-lg border border-gray-200 dark:border-[var(--dark-border)] hover:border-gray-300 dark:hover:border-neutral-600 transition-all duration-300 hover:shadow-md">
               <div className="w-12 h-12 rounded-lg flex items-center justify-center border-2 flex-shrink-0" style={{ backgroundColor: '#c91a6f' + '15', borderColor: '#c91a6f' }}>
                 <Mail className="w-6 h-6" style={{ color: '#c91a6f' }} strokeWidth={2} />
               </div>
               <div>
-                <p className="text-sm text-gray-500 mb-1">Email</p>
-                <a href="mailto:sales@truvixoo.com" className="text-gray-900 font-semibold hover:text-[#c91a6f] transition-colors">sales@truvixoo.com</a>
+                <p className="text-sm text-gray-500 dark:text-[var(--dark-text-muted)] mb-1">Email</p>
+                <a href="mailto:sales@truvixoo.com" className="text-gray-900 dark:text-[var(--dark-text)] font-semibold hover:text-[#c91a6f] transition-colors">sales@truvixoo.com</a>
               </div>
             </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-lg p-6 border border-gray-200 shadow-sm scroll-animate-right">
+          <div className="bg-white dark:bg-[var(--dark-bg)] rounded-lg p-6 border border-gray-200 dark:border-[var(--dark-border)] shadow-sm scroll-animate-right">
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>

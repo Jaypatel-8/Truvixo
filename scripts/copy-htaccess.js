@@ -30,13 +30,27 @@ try {
   outPublicFiles.forEach(file => {
     const publicFile = path.join(publicDir, file);
     const outFile = path.join(outDir, file);
-    
+
     if (fs.existsSync(publicFile)) {
       fs.copyFileSync(publicFile, outFile);
       console.log(`✅ ${file} copied to out folder`);
     }
   });
-  
+
+  // Write DEPLOY-README so uploaders know correct structure (CSS/JS need _next at root)
+  const deployReadme = path.join(outDir, 'DEPLOY-README.txt');
+  fs.writeFileSync(deployReadme, [
+    'TRUVIXO STATIC EXPORT - DEPLOYMENT',
+    '',
+    'For CSS and JavaScript to load:',
+    '1. Upload ALL contents of this folder to your WEB ROOT (e.g. public_html).',
+    '2. index.html and the _next folder must be at the SAME level (both at root).',
+    '3. Do NOT open index.html from disk (file://) - use a web server or deploy to hosting.',
+    '',
+    'See project root DEPLOY.md for full instructions.',
+  ].join('\n'), 'utf8');
+  console.log('✅ DEPLOY-README.txt written to out folder');
+
 } catch (error) {
   console.error('❌ Error copying .htaccess:', error.message);
   process.exit(1);

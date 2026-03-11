@@ -223,17 +223,17 @@ const Navbar = memo(() => {
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 nav-entrance ${
           scrolled
-            ? 'bg-white shadow-sm border-b border-gray-100'
-            : 'bg-white'
+            ? 'bg-white/95 dark:bg-[var(--dark-surface)]/98 backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-black/20 border-b border-gray-100 dark:border-[var(--dark-border)]'
+            : 'bg-white/98 dark:bg-[var(--dark-surface)]/95 backdrop-blur-sm dark:border-b dark:border-[var(--dark-border)]/50'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+        <div className="max-w-7xl mx-auto px-4 lg:px-6">
+          <div className="flex justify-between items-center h-14 lg:h-16">
             {/* Logo */}
             <Logo />
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-6">
+            <div className="hidden lg:flex items-center gap-1 space-x-8">
               {/* Services Mega Menu */}
               <div
                 className="relative dropdown-menu"
@@ -251,7 +251,7 @@ const Navbar = memo(() => {
                       handleDropdownToggle('services')
                     }
                   }}
-                  className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  className="dropdown-trigger text-gray-700 dark:text-[var(--dark-text)] hover:text-[#5e2cb6] dark:hover:text-[#a78bfa] font-medium transition-colors duration-300 flex items-center gap-1.5 text-[13px] tracking-widest uppercase"
                   aria-label="Services menu"
                   aria-expanded={servicesOpen}
                   aria-haspopup="true"
@@ -265,24 +265,24 @@ const Navbar = memo(() => {
                     {/* Invisible bridge so mouse can move from trigger to panel without leaving dropdown */}
                     <div className="absolute top-full left-0 w-full h-2" aria-hidden="true" />
                     <div 
-                      className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-lg shadow-xl border border-gray-200 py-6 z-50"
+                      className="absolute top-full left-0 mt-3 w-[620px] bg-white dark:bg-[var(--dark-surface)] rounded-2xl shadow-2xl shadow-black/10 dark:shadow-xl dark:border dark:border-[var(--dark-border)] py-7 z-50"
                       onMouseLeave={() => setHoveredCategory(null)}
                     >
                     <div className="flex">
                       {/* Left Column - Categories Only */}
-                      <div className="w-1/2 border-r border-gray-200 px-4">
-                        <div className="space-y-1">
+                      <div className="w-1/2 border-r border-gray-100 dark:border-[var(--dark-border)] pl-5 pr-4">
+                        <div className="space-y-0.5">
                           {servicesCategories.map((category, catIndex) => (
                             <div
                               key={catIndex}
                               onMouseEnter={() => setHoveredCategory(category.category)}
-                              className={`px-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                              className={`px-4 py-3.5 rounded-xl cursor-pointer transition-all duration-200 ${
                                 hoveredCategory === category.category
                                   ? 'bg-[#5e2cb6] text-white'
-                                  : 'text-gray-900 hover:bg-gray-50'
+                                  : 'text-gray-700 dark:text-[var(--dark-text)] hover:bg-gray-50 dark:hover:bg-[var(--dark-surface-elevated)] hover:text-gray-900 dark:hover:text-white'
                               }`}
                             >
-                              <h3 className="font-bold text-sm uppercase tracking-wide">
+                              <h3 className="font-semibold text-[13px] uppercase tracking-wide">
                                 {category.category}
                               </h3>
                             </div>
@@ -303,16 +303,16 @@ const Navbar = memo(() => {
                                     key={itemIndex}
                                     href={item.href}
                                     prefetch={true}
-                                    className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-black rounded-lg transition-colors duration-200 cursor-pointer"
+                                    className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-[var(--dark-text-muted)] hover:bg-gray-50 dark:hover:bg-[var(--dark-surface-elevated)] hover:text-black dark:hover:text-[var(--dark-text)] rounded-lg transition-colors duration-200 cursor-pointer"
                                   >
-                                    {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                                    {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
                                     {item.name}
                                   </Link>
                                 )
                               })}
                           </div>
                         ) : (
-                          <div className="text-sm text-gray-400 text-center py-8">
+                          <div className="text-sm text-gray-400 dark:text-[var(--dark-text-muted)] text-center py-8">
                             Hover over a category to view services
                           </div>
                         )}
@@ -340,7 +340,7 @@ const Navbar = memo(() => {
                       handleDropdownToggle('ai')
                     }
                   }}
-                  className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  className="dropdown-trigger text-gray-700 dark:text-[var(--dark-text)] hover:text-[#5e2cb6] dark:hover:text-[#a78bfa] font-medium transition-colors duration-300 flex items-center gap-1.5 text-[13px] tracking-widest uppercase"
                   aria-label="AI services menu"
                   aria-expanded={aiOpen}
                   aria-haspopup="true"
@@ -350,7 +350,7 @@ const Navbar = memo(() => {
                 </button>
                 
                 {aiOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-72 bg-white rounded-lg shadow-xl border border-gray-200 py-3 z-50">
+                  <div className="absolute top-full left-0 mt-2 w-72 bg-white dark:bg-[var(--dark-surface)] rounded-lg shadow-xl border border-gray-200 dark:border-[var(--dark-border)] py-3 z-50">
                     {aiItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
@@ -358,9 +358,9 @@ const Navbar = memo(() => {
                           key={index}
                           href={item.href}
                           prefetch={true}
-                          className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
+                          className="flex items-center gap-2 px-5 py-3 text-gray-600 dark:text-[var(--dark-text-muted)] hover:bg-gray-50 dark:hover:bg-[var(--dark-surface-elevated)] hover:text-black dark:hover:text-[var(--dark-text)] transition-colors duration-200 border-b border-gray-100 dark:border-[var(--dark-border)] last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -386,7 +386,7 @@ const Navbar = memo(() => {
                       handleDropdownToggle('hire')
                     }
                   }}
-                  className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  className="dropdown-trigger text-gray-700 dark:text-[var(--dark-text)] hover:text-[#5e2cb6] dark:hover:text-[#a78bfa] font-medium transition-colors duration-300 flex items-center gap-1.5 text-[13px] tracking-widest uppercase"
                   aria-label="Hire developers menu"
                   aria-expanded={hireOpen}
                   aria-haspopup="true"
@@ -396,7 +396,7 @@ const Navbar = memo(() => {
                 </button>
                 
                 {hireOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 py-3 z-50 max-h-[600px] overflow-y-auto">
+                  <div className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-[var(--dark-surface)] rounded-lg shadow-xl border border-gray-200 dark:border-[var(--dark-border)] py-3 z-50 max-h-[600px] overflow-y-auto">
                     {hireItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
@@ -404,9 +404,9 @@ const Navbar = memo(() => {
                           key={index}
                           href={item.href}
                           prefetch={true}
-                          className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
+                          className="flex items-center gap-2 px-5 py-3 text-gray-600 dark:text-[var(--dark-text-muted)] hover:bg-gray-50 dark:hover:bg-[var(--dark-surface-elevated)] hover:text-black dark:hover:text-[var(--dark-text)] transition-colors duration-200 border-b border-gray-100 dark:border-[var(--dark-border)] last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -432,7 +432,7 @@ const Navbar = memo(() => {
                       handleDropdownToggle('industry')
                     }
                   }}
-                  className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  className="dropdown-trigger text-gray-700 hover:text-[#5e2cb6] font-medium transition-colors duration-300 flex items-center gap-1.5 text-[13px] tracking-widest uppercase"
                   aria-label="Industry solutions menu"
                   aria-expanded={industryOpen}
                   aria-haspopup="true"
@@ -442,7 +442,7 @@ const Navbar = memo(() => {
                 </button>
                 
                 {industryOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-3 z-50">
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-[var(--dark-surface)] rounded-lg shadow-xl border border-gray-200 dark:border-[var(--dark-border)] py-3 z-50">
                     {industryItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
@@ -450,9 +450,9 @@ const Navbar = memo(() => {
                           key={index}
                           href={item.href}
                           prefetch={true}
-                          className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
+                          className="flex items-center gap-2 px-5 py-3 text-gray-600 dark:text-[var(--dark-text-muted)] hover:bg-gray-50 dark:hover:bg-[var(--dark-surface-elevated)] hover:text-black dark:hover:text-[var(--dark-text)] transition-colors duration-200 border-b border-gray-100 dark:border-[var(--dark-border)] last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -478,7 +478,7 @@ const Navbar = memo(() => {
                       handleDropdownToggle('company')
                     }
                   }}
-                  className="dropdown-trigger text-gray-900 hover:text-black font-semibold transition-colors duration-300 flex items-center gap-1 text-sm tracking-wide uppercase"
+                  className="dropdown-trigger text-gray-700 dark:text-[var(--dark-text)] hover:text-[#5e2cb6] dark:hover:text-[#a78bfa] font-medium transition-colors duration-300 flex items-center gap-1.5 text-[13px] tracking-widest uppercase"
                   aria-label="Company information menu"
                   aria-expanded={companyOpen}
                   aria-haspopup="true"
@@ -488,7 +488,7 @@ const Navbar = memo(() => {
                 </button>
                 
                 {companyOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-3 z-50">
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-[var(--dark-surface)] rounded-lg shadow-xl border border-gray-200 dark:border-[var(--dark-border)] py-3 z-50">
                     {companyItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
@@ -496,9 +496,9 @@ const Navbar = memo(() => {
                           key={index}
                           href={item.href}
                           prefetch={true}
-                          className="flex items-center gap-2 px-5 py-3 text-gray-600 hover:bg-gray-50 hover:text-black transition-colors duration-200 border-b border-gray-100 last:border-0"
+                          className="flex items-center gap-2 px-5 py-3 text-gray-600 dark:text-[var(--dark-text-muted)] hover:bg-gray-50 dark:hover:bg-[var(--dark-surface-elevated)] hover:text-black dark:hover:text-[var(--dark-text)] transition-colors duration-200 border-b border-gray-100 dark:border-[var(--dark-border)] last:border-0"
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -509,7 +509,7 @@ const Navbar = memo(() => {
             </div>
 
             {/* CTA Button */}
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-3">
               <Link href="/contact" prefetch={true} className="bg-[#5e2cb6] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#4a1f8f] transition-all duration-300 inline-block shadow-sm shadow-[#5e2cb6]/20">
                 Get Started
               </Link>
@@ -524,7 +524,7 @@ const Navbar = memo(() => {
                   setIsOpen(!isOpen)
                 }
               }}
-              className="lg:hidden p-2 text-gray-900 hover:text-black transition-colors duration-300"
+              className="lg:hidden p-2 text-gray-900 dark:text-[var(--dark-text)] hover:text-black dark:hover:text-white transition-colors duration-300"
               aria-label={isOpen ? "Close menu" : "Open menu"}
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
@@ -539,14 +539,14 @@ const Navbar = memo(() => {
       {isOpen && (
         <div
           id="mobile-menu"
-          className="lg:hidden fixed inset-0 top-20 z-40 bg-white overflow-y-auto"
+          className="lg:hidden fixed inset-0 top-[4.5rem] lg:top-24 z-40 bg-white dark:bg-[var(--dark-surface)] overflow-y-auto"
           role="menu"
           aria-label="Mobile navigation menu"
         >
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8">
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-6">
             <div className="space-y-4">
               {/* Mobile Services Dropdown */}
-              <div className="border-b border-gray-200 pb-4">
+              <div className="border-b border-gray-200 dark:border-[var(--dark-border)] pb-4">
                 <button
                   onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
                   onKeyDown={(e) => {
@@ -555,7 +555,7 @@ const Navbar = memo(() => {
                       setMobileServicesOpen(!mobileServicesOpen)
                     }
                   }}
-                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
+                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 dark:text-[var(--dark-text)] hover:text-truvixo-blue dark:hover:text-[#a78bfa] transition-colors duration-300 py-2"
                   aria-label="Services menu"
                   aria-expanded={mobileServicesOpen}
                   aria-haspopup="true"
@@ -564,10 +564,10 @@ const Navbar = memo(() => {
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 {mobileServicesOpen && (
-                  <div className="mt-3 pl-4 space-y-4 bg-gray-50 rounded-lg p-4">
+                  <div className="mt-3 pl-4 space-y-4 bg-gray-50 dark:bg-[var(--dark-bg)] rounded-lg p-4">
                     {servicesCategories.map((category, catIndex) => (
                       <div key={catIndex} className="space-y-2">
-                        <h3 className="font-bold text-sm text-gray-900 mb-2 uppercase">
+                        <h3 className="font-bold text-sm text-gray-900 dark:text-[var(--dark-text)] mb-2 uppercase">
                           {category.category}
                         </h3>
                         <div className="space-y-1 pl-2">
@@ -578,13 +578,13 @@ const Navbar = memo(() => {
                                 key={itemIndex}
                                 href={item.href}
                                 prefetch={true}
-                                className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-1.5"
+                                className="flex items-center gap-2 text-sm text-gray-700 dark:text-[var(--dark-text-muted)] hover:text-purple-600 dark:hover:text-[#a78bfa] transition-colors duration-200 py-1.5"
                                 onClick={() => {
                                   setIsOpen(false)
                                   setMobileServicesOpen(false)
                                 }}
                               >
-                                {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                                {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
                                 {item.name}
                               </Link>
                             )
@@ -597,7 +597,7 @@ const Navbar = memo(() => {
               </div>
 
               {/* Mobile AI Dropdown */}
-              <div className="border-b border-gray-200 pb-4">
+              <div className="border-b border-gray-200 dark:border-[var(--dark-border)] pb-4">
                 <button
                   onClick={() => setMobileAiOpen(!mobileAiOpen)}
                   onKeyDown={(e) => {
@@ -606,7 +606,7 @@ const Navbar = memo(() => {
                       setMobileAiOpen(!mobileAiOpen)
                     }
                   }}
-                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
+                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 dark:text-[var(--dark-text)] hover:text-truvixo-blue dark:hover:text-[#a78bfa] transition-colors duration-300 py-2"
                   aria-label="AI services menu"
                   aria-expanded={mobileAiOpen}
                   aria-haspopup="true"
@@ -615,7 +615,7 @@ const Navbar = memo(() => {
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileAiOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 {mobileAiOpen && (
-                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">
+                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 dark:bg-[var(--dark-bg)] rounded-lg p-4">
                     {aiItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
@@ -623,13 +623,13 @@ const Navbar = memo(() => {
                           key={index}
                           href={item.href}
                           prefetch={true}
-                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
+                          className="flex items-center gap-2 text-sm text-gray-700 dark:text-[var(--dark-text-muted)] hover:text-purple-600 dark:hover:text-[#a78bfa] transition-colors duration-200 py-2"
                           onClick={() => {
                             setIsOpen(false)
                             setMobileAiOpen(false)
                           }}
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -639,10 +639,10 @@ const Navbar = memo(() => {
               </div>
 
               {/* Mobile HIRE Dropdown */}
-              <div className="border-b border-gray-200 pb-4">
+              <div className="border-b border-gray-200 dark:border-[var(--dark-border)] pb-4">
                 <button
                   onClick={() => setMobileHireOpen(!mobileHireOpen)}
-                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 hover:text-truvixo-blue transition-colors duration-300 py-2"
+                  className="w-full flex items-center justify-between text-xl font-medium text-gray-700 dark:text-[var(--dark-text)] hover:text-truvixo-blue dark:hover:text-[#a78bfa] transition-colors duration-300 py-2"
                   aria-label="Hire developers menu"
                   aria-expanded={mobileHireOpen}
                 >
@@ -650,7 +650,7 @@ const Navbar = memo(() => {
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileHireOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 {mobileHireOpen && (
-                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">
+                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 dark:bg-[var(--dark-bg)] rounded-lg p-4">
                     {hireItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
@@ -658,13 +658,13 @@ const Navbar = memo(() => {
                           key={index}
                           href={item.href}
                           prefetch={true}
-                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
+                          className="flex items-center gap-2 text-sm text-gray-700 dark:text-[var(--dark-text-muted)] hover:text-purple-600 dark:hover:text-[#a78bfa] transition-colors duration-200 py-2"
                           onClick={() => {
                             setIsOpen(false)
                             setMobileHireOpen(false)
                           }}
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -674,7 +674,7 @@ const Navbar = memo(() => {
               </div>
 
               {/* Mobile INDUSTRY Dropdown */}
-              <div className="border-b border-gray-200 pb-4">
+              <div className="border-b border-gray-200  pb-4">
                 <button
                   onClick={() => setMobileIndustryOpen(!mobileIndustryOpen)}
                   onKeyDown={(e) => {
@@ -692,7 +692,7 @@ const Navbar = memo(() => {
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileIndustryOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 {mobileIndustryOpen && (
-                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">
+                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 dark:bg-[var(--dark-bg)] rounded-lg p-4">
                     {industryItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
@@ -700,13 +700,13 @@ const Navbar = memo(() => {
                           key={index}
                           href={item.href}
                           prefetch={true}
-                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
+                          className="flex items-center gap-2 text-sm text-gray-700 dark:text-[var(--dark-text-muted)] hover:text-purple-600 dark:hover:text-[#a78bfa] transition-colors duration-200 py-2"
                           onClick={() => {
                             setIsOpen(false)
                             setMobileIndustryOpen(false)
                           }}
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
                           {item.name}
                         </Link>
                       )
@@ -716,7 +716,7 @@ const Navbar = memo(() => {
               </div>
 
               {/* Mobile COMPANY Dropdown */}
-              <div className="border-b border-gray-200 pb-4">
+              <div className="border-b border-gray-200  pb-4">
                 <button
                   onClick={() => setMobileCompanyOpen(!mobileCompanyOpen)}
                   onKeyDown={(e) => {
@@ -734,7 +734,7 @@ const Navbar = memo(() => {
                   <ChevronDown className={`w-5 h-5 transition-transform duration-300 ${mobileCompanyOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
                 {mobileCompanyOpen && (
-                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 rounded-lg p-4">
+                  <div className="mt-3 pl-4 space-y-2 bg-gray-50 dark:bg-[var(--dark-bg)] rounded-lg p-4">
                     {companyItems.map((item, index) => {
                       const icon = getMenuIcon(item.name)
                       return (
@@ -742,13 +742,13 @@ const Navbar = memo(() => {
                           key={index}
                           href={item.href}
                           prefetch={true}
-                          className="flex items-center gap-2 text-sm text-gray-700 hover:text-purple-600 transition-colors duration-200 py-2"
+                          className="flex items-center gap-2 text-sm text-gray-700 dark:text-[var(--dark-text-muted)] hover:text-purple-600 dark:hover:text-[#a78bfa] transition-colors duration-200 py-2"
                           onClick={() => {
                             setIsOpen(false)
                             setMobileCompanyOpen(false)
                           }}
                         >
-                          {icon && <span className="text-[#5e2cb6]">{icon}</span>}
+                          {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
                           {item.name}
                         </Link>
                       )

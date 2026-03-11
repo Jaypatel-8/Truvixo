@@ -31,22 +31,22 @@ export default function RelatedLinks({
   return (
     <section className="py-12 bg-gray-50 section-reveal">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8 scroll-animate">
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 mb-2">
-            {title}
+        <div className="text-center mb-8 section-reveal">
+          <h2 className="heading-reveal text-3xl md:text-4xl font-black text-gray-900 mb-2">
+            <span className="heading-reveal-line block">{title}</span>
           </h2>
-          <p className="text-gray-600">
+          <p className="section-desc-reveal text-gray-600">
             Discover more related services and solutions
           </p>
         </div>
         
-        <div className={`grid grid-cols-1 ${gridCols[columns]} gap-4`}>
+        <div className={`grid grid-cols-1 ${gridCols[columns]} gap-4 scroll-stagger`}>
           {links.map((link, index) => (
             <Link
               key={index}
               href={link.href}
               prefetch={true}
-              className="scroll-animate-scale group bg-white rounded-xl p-6 border-2 border-gray-100 hover:border-[#5e2cb6] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
+              className="scroll-stagger-item scroll-animate-scale group bg-white rounded-xl p-6 border-2 border-gray-100 hover:border-[#5e2cb6] transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">

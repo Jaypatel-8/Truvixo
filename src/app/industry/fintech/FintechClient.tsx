@@ -212,7 +212,7 @@ export default function FintechClient({ faqs, fintechData }: FintechClientProps)
             {services.map((service, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: service.color + '40'
                 }}
@@ -259,7 +259,7 @@ export default function FintechClient({ faqs, fintechData }: FintechClientProps)
             {whyChooseUs.map((item, index) => (
               <div
                 key={index}
-                className="group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+                className="scroll-animate-scale group bg-white rounded-2xl p-8 border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
                 style={{ 
                   borderColor: item.color + '40'
                 }}
@@ -306,7 +306,7 @@ export default function FintechClient({ faqs, fintechData }: FintechClientProps)
             {industries.map((industry, index) => (
               <div
                 key={index}
-                className="bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
+                className="scroll-animate-scale bg-white rounded-xl p-6 text-center border-2 border-gray-100 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg group"
                 style={{ 
                   borderColor: industry.color + '40'
                 }}
@@ -373,7 +373,7 @@ export default function FintechClient({ faqs, fintechData }: FintechClientProps)
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 card-grid-direction">
-            {(fintechData?.useCases ?? []).map((useCase: { title: string; description: string; gradient: string; borderColor: string; items: string[] }, index: number) => (
+            {(fintechData?.useCases ?? []).map((useCase, index: number) => (
               <div
                 key={index}
                 className={`scroll-animate-scale card-hover card-hover-dark bg-gradient-to-br ${useCase.gradient} rounded-xl p-8 border relative overflow-hidden`}

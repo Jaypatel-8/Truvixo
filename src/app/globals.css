@@ -31,8 +31,53 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-out-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --scroll-duration: 0.7s;
+  /* AI-style accent (optional) */
+  --ai-glow-purple: #7B2FF7;
+  --ai-glow-blue: #00C6FF;
+  --ai-text-primary: #ffffff;
+  --ai-text-secondary: #b8c5d6;
+  --ai-text-highlight: #7B2FF7;
+  --ai-link: #00C6FF;
 }
 
+/* Premium dark mode: full-bleed background, no layout/size refactor */
+.dark {
+  color-scheme: dark;
+}
+.dark html {
+  background-color: var(--dark-bg);
+  min-height: 100%;
+  height: 100%;
+}
+.dark body {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  min-height: 100%;
+}
+/* Do not change main padding or max-width in dark – same as light mode */
+
+/* Site-wide dark mode: override white/gray backgrounds and borders so all pages and sections respect dark mode */
+.dark main[class*="bg-white"],
+.dark main[class*="bg-gray-50"],
+.dark [class*="min-h-screen"][class*="bg-white"],
+.dark [class*="min-h-screen"][class*="bg-gray-50"] {
+  background-color: var(--dark-bg) !important;
+}
+.dark section[class*="bg-white"] {
+  background-color: var(--dark-surface) !important;
+}
+.dark section[class*="bg-gray-50"] {
+  background-color: var(--dark-bg) !important;
+}
+.dark div[class*="bg-white"][class*="rounded"] {
+  background-color: var(--dark-surface) !important;
+}
+/* Gradient sections and cards: solid dark background in dark mode */
+.dark section[class*="bg-gradient"],
+.dark div[class*="bg-gradient"][class*="rounded"] {
+  background: var(--dark-surface) !important;
+}
+/* Outline buttons/links with bg-white: dark surface so they’re visible */
 /* Smooth scroll for anchor links */
 html {
   scroll-behavior: smooth;
@@ -399,7 +444,15 @@ h1, h2, h3, h4, h5, h6 {
   .p-reveal.animate { animation: none; }
 }
 
-/* Button entrance: icon then text */
+/* Button entrance: whole button or icon+text */
+.btn-entrance:not(:has(.btn-icon)) {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: none;
+}
+.btn-entrance.animate:not(:has(.btn-icon)) {
+  animation: fadeInUp 0.5s var(--ease-out-expo) forwards;
+}
 .btn-entrance .btn-icon,
 .btn-entrance .btn-text {
   opacity: 0;
@@ -420,6 +473,8 @@ h1, h2, h3, h4, h5, h6 {
   to { opacity: 1; transform: translateY(0); }
 }
 @media (prefers-reduced-motion: reduce) {
+  .btn-entrance:not(:has(.btn-icon)) { opacity: 1; transform: none; }
+  .btn-entrance.animate:not(:has(.btn-icon)) { animation: none; }
   .btn-entrance .btn-icon,
   .btn-entrance .btn-text { opacity: 1; transform: none; }
   .btn-entrance.animate .btn-icon,
@@ -475,6 +530,10 @@ h1, h2, h3, h4, h5, h6 {
 .scroll-animate-scale.card-hover:hover {
   border-color: var(--card-accent) !important;
   box-shadow: 0 10px 40px -10px rgba(0,0,0,0.12);
+}
+.dark .card-hover-dark:hover,
+.dark .scroll-animate-scale.card-hover:hover {
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.4);
 }
 
 /* Highlight underline animation for section emphasis */
@@ -670,10 +729,23 @@ h1, h2, h3, h4, h5, h6 {
   height: 100% !important;
   min-height: 320px !important;
   max-height: 320px !important;
-  text-decoration: none;
-  color: inherit;
+  text-decoration: none !important;
+  color: #111827 !important;
   box-sizing: border-box;
   overflow: hidden;
+}
+
+/* Service name: always visible - override content-visibility and any inherited styles */
+.services-swiper-wrapper .service-card-title,
+.services-swiper-wrapper .service-card-link h3,
+.services-swiper-wrapper .service-card-link .service-name-label {
+  content-visibility: visible !important;
+  color: #111827 !important;
+  -webkit-text-fill-color: #111827 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  font-size: inherit !important;
+  font-weight: 700 !important;
 }
 
 /* Ensure equal heights on tablet and desktop */
@@ -701,7 +773,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .services-swiper .swiper-slide > a:hover {
   text-decoration: none;
-  color: inherit;
 }
 
 .services-swiper .swiper-pagination-bullet {
@@ -1185,6 +1256,21 @@ body {
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-blob { animation: none; }
+}
+
+/* Hero bouncing balls background */
+@keyframes heroBallBounce {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+  50% { transform: translateY(-24px) scale(1.1); opacity: 0.8; }
+}
+.hero-ball {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: heroBallBounce 3s var(--ease-out-smooth, ease-in-out) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-ball { animation: none; }
 }
 
 @keyframes pulse {
@@ -2200,7 +2286,7 @@ html {
 }
 
 .dark .loading-skeleton {
-  background-color: #2a2a2a;
+  background-color: var(--dark-surface);
 }
 
 .dark .hollow-text-brand {
