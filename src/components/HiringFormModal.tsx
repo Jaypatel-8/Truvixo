@@ -25,6 +25,7 @@ export default function HiringFormModal({ isOpen, onClose, initialPosition }: Hi
     availability: '',
     salary: ''
   })
+  const [resumeFile, setResumeFile] = useState<File | null>(null)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitMessage, setSubmitMessage] = useState('')
@@ -40,7 +41,7 @@ export default function HiringFormModal({ isOpen, onClose, initialPosition }: Hi
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (file) {
-      // For EmailJS, we'll store the file name and let the user know to include it in cover letter or provide link
+      setResumeFile(file)
       setFormData(prev => ({
         ...prev,
         resume: file.name
@@ -90,13 +91,14 @@ export default function HiringFormModal({ isOpen, onClose, initialPosition }: Hi
       linkedin: formData.linkedin,
       portfolio: formData.portfolio,
       availability: formData.availability,
-      salary: formData.salary
+      salary: formData.salary,
+      resumeFile: resumeFile || undefined
     }
 
     const result = await sendHiringEmail(emailData)
-    
+
     setIsSubmitting(false)
-    
+
     if (result.success) {
       setIsSubmitted(true)
       setSubmitMessage(result.message)
@@ -123,6 +125,7 @@ export default function HiringFormModal({ isOpen, onClose, initialPosition }: Hi
       availability: '',
       salary: ''
     })
+    setResumeFile(null)
     setIsSubmitted(false)
     setSubmitMessage('')
     onClose()
@@ -177,13 +180,13 @@ export default function HiringFormModal({ isOpen, onClose, initialPosition }: Hi
   }
 
   const modalContent = (
-    <div 
+    <div
       className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
       aria-labelledby="hiring-modal-title"
-      style={{ 
+      style={{
         position: 'fixed',
         top: 0,
         left: 0,
@@ -192,11 +195,11 @@ export default function HiringFormModal({ isOpen, onClose, initialPosition }: Hi
         zIndex: 9999
       }}
     >
-      <div 
+      <div
         className="bg-white rounded-3xl max-w-2xl w-full p-8 md:p-12 shadow-2xl max-h-[90vh] overflow-y-auto relative"
         onClick={(e) => e.stopPropagation()}
         role="document"
-        style={{ 
+        style={{
           position: 'relative',
           zIndex: 10000
         }}
@@ -214,17 +217,16 @@ export default function HiringFormModal({ isOpen, onClose, initialPosition }: Hi
             <X className="w-6 h-6" aria-hidden="true" />
           </button>
         </div>
-        
+
         {submitMessage && (
-          <div className={`mb-6 p-4 border rounded-xl ${
-            submitMessage.includes('Thank you') || submitMessage.includes('success')
+          <div className={`mb-6 p-4 border rounded-xl ${submitMessage.includes('Thank you') || submitMessage.includes('success')
               ? 'bg-green-50 border-green-200 text-green-800'
               : 'bg-red-50 border-red-200 text-red-800'
-          }`}>
+            }`}>
             <p>{submitMessage}</p>
           </div>
         )}
-        
+
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
