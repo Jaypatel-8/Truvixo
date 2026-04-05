@@ -1,4 +1,4 @@
-# Deploying the TruVixo static export (`out` folder)
+# Deploying the TruVixoo static export (`out` folder)
 
 The built site is in the **`out`** folder. For CSS and JavaScript to load correctly, follow this structure.
 
@@ -41,13 +41,13 @@ Opening `out/index.html` directly (e.g. double-clicking) uses `file://`. The HTM
 
 ## 3. Deploy to a subdirectory
 
-If the site must live in a subdirectory (e.g. `https://example.com/truvixo/`):
+If the site must live in a subdirectory (e.g. `https://example.com/truvixoo/`):
 
 1. In `next.config.js`, set:
-   - `basePath: '/truvixo'`
-   - `assetPrefix: '/truvixo'`
+   - `basePath: '/truvixoo'`
+   - `assetPrefix: '/truvixoo'`
 2. Run `npm run build` again.
-3. Upload the **contents** of `out` into that subdirectory (e.g. `public_html/truvixo/`).
+3. Upload the **contents** of `out` into that subdirectory (e.g. `public_html/truvixoo/`).
 
 ## 4. After uploading
 

@@ -178,7 +178,7 @@ export const logisticsData = {
     hollowText: 'Logistics Solutions?',
     description: 'Get in touch and let\'s discuss how we can help you build efficient logistics and supply chain technology.',
     buttonText: 'Get Started',
-    email: 'sales@truvixo.com',
+    email: 'sales@truvixoo.com',
     phone: '+91-63543-26412'
   }
 } as const

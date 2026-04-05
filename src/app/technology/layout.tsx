@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: 'Technology Stack & Development Services | TruVixo™',
     description: 'Expert technology development services with React, Node.js, Python, AI/ML, AWS, Docker, Kubernetes. Build modern applications with cutting-edge technologies.',
     type: 'website',
-    url: 'https://truvixo.com/technology',
+    url: 'https://truvixoo.com/technology',
   },
   twitter: {
     card: 'summary_large_image',

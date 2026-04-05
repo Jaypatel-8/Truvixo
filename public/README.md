@@ -2,7 +2,7 @@
 
 ## Logo Image Setup
 
-To add your TruVixo logo to the website:
+To add your TruVixoo logo to the website:
 
 1. **Save your logo image** in this folder as `logo.png`
    - Recommended size: 48x48 pixels (minimum) or 96x96 pixels (optimal)
@@ -22,18 +22,16 @@ To add your TruVixo logo to the website:
 
 ## Current Logo Usage
 
-- **Navbar**: Logo appears next to "TruVixo" text
+- **Navbar**: Logo appears next to "TruVixoo" text
 - **Footer**: Logo appears in the company info section
 - **Size**: 48x48 pixels (w-12 h-12 in Tailwind)
 
 ## Alternative Logo Names
 
 If you prefer a different filename, you can also use:
+
 - `logo.jpg`
 - `logo.svg`
 - `truvixo-logo.png`
 
 Just make sure to update the `src` attribute in the components accordingly.
-
-
-

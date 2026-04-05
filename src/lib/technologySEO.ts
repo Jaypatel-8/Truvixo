@@ -53,13 +53,13 @@ export const technologySEOData: Record<string, TechnologySEO> = {
       'frontend development agency'
     ],
     h1: 'Expert Frontend Development Services | React, Next.js, Vue, Angular',
-    content: `TruVixo is a leading frontend development company specializing in modern web technologies including React, Next.js, Vue.js, Angular, and TypeScript. Our expert frontend developers build high-performance, responsive web applications that deliver exceptional user experiences.
+    content: `TruVixoo is a leading frontend development company specializing in modern web technologies including React, Next.js, Vue.js, Angular, and TypeScript. Our expert frontend developers build high-performance, responsive web applications that deliver exceptional user experiences.
 
 We provide comprehensive frontend development services including React development, Next.js development, Vue.js development, Angular development, and TypeScript development. Our team creates modern, scalable frontend solutions using the latest frameworks and best practices.
 
 Our frontend development expertise includes building single-page applications (SPAs), progressive web apps (PWAs), responsive web applications, and enterprise-level frontend architectures. We focus on performance optimization, SEO-friendly frontend development, and creating intuitive user interfaces.
 
-Whether you need React.js developers, Next.js experts, Vue.js developers, or Angular developers, TruVixo delivers custom frontend solutions tailored to your business needs. We offer frontend consulting, frontend architecture design, and ongoing frontend development support.`,
+Whether you need React.js developers, Next.js experts, Vue.js developers, or Angular developers, TruVixoo delivers custom frontend solutions tailored to your business needs. We offer frontend consulting, frontend architecture design, and ongoing frontend development support.`,
     technologies: ['React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML5', 'CSS3'],
     services: ['Frontend Development', 'React Development', 'Next.js Development', 'Vue.js Development', 'Angular Development', 'TypeScript Development', 'UI/UX Development']
   },
@@ -101,13 +101,13 @@ Whether you need React.js developers, Next.js experts, Vue.js developers, or Ang
       'cloud backend development'
     ],
     h1: 'Expert Backend Development Services | Node.js, Python, Django, FastAPI',
-    content: `TruVixo is a leading backend development company specializing in modern server-side technologies including Node.js, Python, Django, FastAPI, and NestJS. Our expert backend developers build scalable, secure backend systems that power modern applications.
+    content: `TruVixoo is a leading backend development company specializing in modern server-side technologies including Node.js, Python, Django, FastAPI, and NestJS. Our expert backend developers build scalable, secure backend systems that power modern applications.
 
 We provide comprehensive backend development services including Node.js development, Python development, Django development, FastAPI development, and NestJS development. Our team creates robust backend architectures, RESTful APIs, GraphQL APIs, and microservices solutions.
 
 Our backend development expertise includes building scalable APIs, microservices architectures, server-side applications, database integration, and cloud backend solutions. We focus on performance optimization, security best practices, and creating maintainable backend code.
 
-Whether you need Node.js developers, Python developers, Django developers, or FastAPI experts, TruVixo delivers custom backend solutions tailored to your business needs. We offer backend consulting, backend architecture design, and ongoing backend development support.`,
+Whether you need Node.js developers, Python developers, Django developers, or FastAPI experts, TruVixoo delivers custom backend solutions tailored to your business needs. We offer backend consulting, backend architecture design, and ongoing backend development support.`,
     technologies: ['Node.js', 'Python', 'Django', 'FastAPI', 'NestJS', 'Express.js', 'Java', 'Spring Boot', 'PHP', 'Laravel', '.NET Core'],
     services: ['Backend Development', 'Node.js Development', 'Python Development', 'Django Development', 'FastAPI Development', 'API Development', 'Microservices Development']
   },
@@ -149,13 +149,13 @@ Whether you need Node.js developers, Python developers, Django developers, or Fa
       'mobile app maintenance'
     ],
     h1: 'Expert Mobile App Development Services | React Native, Flutter, iOS, Android',
-    content: `TruVixo is a leading mobile app development company specializing in React Native, Flutter, iOS, and Android development. Our expert mobile developers build native and cross-platform mobile applications that deliver exceptional user experiences.
+    content: `TruVixoo is a leading mobile app development company specializing in React Native, Flutter, iOS, and Android development. Our expert mobile developers build native and cross-platform mobile applications that deliver exceptional user experiences.
 
 We provide comprehensive mobile app development services including React Native development, Flutter development, iOS development, and Android development. Our team creates high-performance mobile apps using the latest frameworks and best practices.
 
 Our mobile development expertise includes building native iOS apps, native Android apps, cross-platform applications, progressive mobile apps, and enterprise mobile solutions. We focus on performance optimization, app store optimization, and creating intuitive mobile user interfaces.
 
-Whether you need React Native developers, Flutter developers, iOS developers, or Android developers, TruVixo delivers custom mobile solutions tailored to your business needs. We offer mobile app consulting, mobile app architecture design, and ongoing mobile app development support.`,
+Whether you need React Native developers, Flutter developers, iOS developers, or Android developers, TruVixoo delivers custom mobile solutions tailored to your business needs. We offer mobile app consulting, mobile app architecture design, and ongoing mobile app development support.`,
     technologies: ['React Native', 'Flutter', 'iOS', 'Android', 'Swift', 'Kotlin', 'Java', 'Dart'],
     services: ['Mobile App Development', 'React Native Development', 'Flutter Development', 'iOS Development', 'Android Development', 'Cross-Platform Development']
   },
@@ -199,13 +199,13 @@ Whether you need React Native developers, Flutter developers, iOS developers, or
       'AI development agency'
     ],
     h1: 'Expert AI & Machine Learning Development Services | TensorFlow, PyTorch, LLM',
-    content: `TruVixo is a leading AI and machine learning development company specializing in TensorFlow, PyTorch, OpenAI, and LLM integration. Our expert AI developers build intelligent solutions and machine learning models that drive business innovation.
+    content: `TruVixoo is a leading AI and machine learning development company specializing in TensorFlow, PyTorch, OpenAI, and LLM integration. Our expert AI developers build intelligent solutions and machine learning models that drive business innovation.
 
 We provide comprehensive AI development services including TensorFlow development, PyTorch development, LLM integration, OpenAI development, and custom AI solution development. Our team creates advanced AI applications, ML models, and intelligent automation systems.
 
 Our AI development expertise includes building machine learning models, deep learning solutions, neural networks, natural language processing systems, computer vision applications, and AI-powered automation. We focus on model training, optimization, and creating scalable AI solutions.
 
-Whether you need TensorFlow developers, PyTorch developers, AI consultants, or LLM integration experts, TruVixo delivers custom AI solutions tailored to your business needs. We offer AI consulting, ML model development, and ongoing AI development support.`,
+Whether you need TensorFlow developers, PyTorch developers, AI consultants, or LLM integration experts, TruVixoo delivers custom AI solutions tailored to your business needs. We offer AI consulting, ML model development, and ongoing AI development support.`,
     technologies: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenAI', 'Google Gemini', 'Anthropic Claude', 'LangChain', 'HuggingFace', 'Pandas', 'NumPy'],
     services: ['AI Development', 'Machine Learning Development', 'TensorFlow Development', 'PyTorch Development', 'LLM Integration', 'AI Consulting', 'ML Model Development']
   },
@@ -247,13 +247,13 @@ Whether you need TensorFlow developers, PyTorch developers, AI consultants, or L
       'cloud-native development'
     ],
     h1: 'Expert Cloud & DevOps Services | AWS, Azure, Docker, Kubernetes',
-    content: `TruVixo is a leading cloud and DevOps services company specializing in AWS, Azure, GCP, Docker, and Kubernetes. Our expert cloud developers and DevOps engineers build scalable cloud infrastructure and automated CI/CD pipelines.
+    content: `TruVixoo is a leading cloud and DevOps services company specializing in AWS, Azure, GCP, Docker, and Kubernetes. Our expert cloud developers and DevOps engineers build scalable cloud infrastructure and automated CI/CD pipelines.
 
 We provide comprehensive cloud and DevOps services including AWS development, Azure development, Docker containerization, Kubernetes orchestration, and CI/CD pipeline development. Our team creates scalable cloud architectures, implements infrastructure as code, and automates deployment processes.
 
 Our cloud and DevOps expertise includes building cloud-native applications, container orchestration, microservices deployment, serverless architectures, and automated infrastructure management. We focus on cloud security, performance optimization, and creating resilient cloud solutions.
 
-Whether you need AWS developers, Azure developers, Docker experts, or Kubernetes engineers, TruVixo delivers custom cloud solutions tailored to your business needs. We offer cloud consulting, DevOps automation, and ongoing cloud infrastructure support.`,
+Whether you need AWS developers, Azure developers, Docker experts, or Kubernetes engineers, TruVixoo delivers custom cloud solutions tailored to your business needs. We offer cloud consulting, DevOps automation, and ongoing cloud infrastructure support.`,
     technologies: ['AWS', 'Azure', 'Google Cloud', 'Docker', 'Kubernetes', 'Terraform', 'Jenkins', 'GitHub Actions', 'GitLab CI/CD'],
     services: ['Cloud Development', 'DevOps Services', 'AWS Development', 'Azure Development', 'Docker Services', 'Kubernetes Services', 'CI/CD Development']
   },
@@ -295,13 +295,13 @@ Whether you need AWS developers, Azure developers, Docker experts, or Kubernetes
       'database integration services'
     ],
     h1: 'Expert Database Development Services | MongoDB, PostgreSQL, MySQL',
-    content: `TruVixo is a leading database development company specializing in MongoDB, PostgreSQL, MySQL, Redis, and other database technologies. Our expert database developers design, optimize, and maintain high-performance database solutions.
+    content: `TruVixoo is a leading database development company specializing in MongoDB, PostgreSQL, MySQL, Redis, and other database technologies. Our expert database developers design, optimize, and maintain high-performance database solutions.
 
 We provide comprehensive database development services including MongoDB development, PostgreSQL development, MySQL development, database design, and database optimization. Our team creates scalable database architectures, implements data modeling, and ensures database security and performance.
 
 Our database development expertise includes building NoSQL databases, SQL databases, data warehouses, distributed database systems, and cloud database solutions. We focus on database performance tuning, security best practices, and creating maintainable database structures.
 
-Whether you need MongoDB developers, PostgreSQL developers, MySQL developers, or database consultants, TruVixo delivers custom database solutions tailored to your business needs. We offer database consulting, database migration services, and ongoing database administration support.`,
+Whether you need MongoDB developers, PostgreSQL developers, MySQL developers, or database consultants, TruVixoo delivers custom database solutions tailored to your business needs. We offer database consulting, database migration services, and ongoing database administration support.`,
     technologies: ['MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'DynamoDB', 'SQLite', 'Cassandra', 'Elasticsearch'],
     services: ['Database Development', 'MongoDB Development', 'PostgreSQL Development', 'MySQL Development', 'Database Design', 'Database Optimization']
   },
@@ -343,13 +343,13 @@ Whether you need MongoDB developers, PostgreSQL developers, MySQL developers, or
       'integration testing services'
     ],
     h1: 'Expert Tools & Integration Services | API Development, Third-Party Integrations',
-    content: `TruVixo is a leading tools and integration services company specializing in API development, third-party integrations, and development tools setup. Our expert integration developers build seamless connections between systems and applications.
+    content: `TruVixoo is a leading tools and integration services company specializing in API development, third-party integrations, and development tools setup. Our expert integration developers build seamless connections between systems and applications.
 
 We provide comprehensive integration services including API development, REST API integration, GraphQL integration, payment gateway integration, CRM integration, and cloud service integration. Our team creates custom integrations, implements webhooks, and ensures secure data exchange between systems.
 
 Our integration expertise includes building API gateways, developing custom APIs, integrating third-party services, legacy system integration, and real-time data synchronization. We focus on integration security, performance optimization, and creating maintainable integration solutions.
 
-Whether you need API developers, integration consultants, or custom integration development, TruVixo delivers integration solutions tailored to your business needs. We offer integration consulting, API development, and ongoing integration support.`,
+Whether you need API developers, integration consultants, or custom integration development, TruVixoo delivers integration solutions tailored to your business needs. We offer integration consulting, API development, and ongoing integration support.`,
     technologies: ['REST APIs', 'GraphQL', 'Webhooks', 'Postman', 'Swagger', 'API Gateway', 'Zapier', 'Integromat'],
     services: ['Integration Services', 'API Development', 'Third-Party Integration', 'API Integration', 'System Integration', 'Custom Integration Development']
   }

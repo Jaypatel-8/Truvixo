@@ -94,7 +94,7 @@ export const homeTestimonials = [
     rating: 5
   },
   { 
-    quote: 'TruVixo helped us scale from 0 to 100K users in 6 months. Their expertise in cloud infrastructure and DevOps was invaluable.', 
+    quote: 'TruVixoo helped us scale from 0 to 100K users in 6 months. Their expertise in cloud infrastructure and DevOps was invaluable.', 
     author: 'David Rodriguez', 
     role: 'Founder & CEO',
     company: 'FinTech Startup',
@@ -108,7 +108,7 @@ export const homeTestimonials = [
     rating: 5
   },
   { 
-    quote: 'Working with TruVixo was seamless. They understood our vision and delivered a product that perfectly matched our requirements.', 
+    quote: 'Working with TruVixoo was seamless. They understood our vision and delivered a product that perfectly matched our requirements.', 
     author: 'James Anderson', 
     role: 'Co-Founder',
     company: 'EdTech Company',
@@ -122,42 +122,42 @@ export const homeTestimonials = [
     rating: 5
   },
   {
-    quote: 'TruVixo transformed our business operations with their custom software solution. The team understood our requirements perfectly and delivered beyond expectations. Their technical expertise and commitment to quality is outstanding.',
+    quote: 'TruVixoo transformed our business operations with their custom software solution. The team understood our requirements perfectly and delivered beyond expectations. Their technical expertise and commitment to quality is outstanding.',
     author: 'Rajesh Kumar',
     role: 'Founder & CEO',
     company: 'Mumbai-based FinTech Startup',
     rating: 5
   },
   {
-    quote: 'We partnered with TruVixo for our e-commerce platform development. They delivered a robust, scalable solution that handles our growing customer base seamlessly. Their support team is always available and responsive.',
+    quote: 'We partnered with TruVixoo for our e-commerce platform development. They delivered a robust, scalable solution that handles our growing customer base seamlessly. Their support team is always available and responsive.',
     author: 'Priya Sharma',
     role: 'Director of Technology',
     company: 'Delhi-based Retail Company',
     rating: 5
   },
   {
-    quote: 'The AI-powered analytics system TruVixo built for us has revolutionized our decision-making process. Their team is highly skilled, professional, and always delivers on time. Highly recommended!',
+    quote: 'The AI-powered analytics system TruVixoo built for us has revolutionized our decision-making process. Their team is highly skilled, professional, and always delivers on time. Highly recommended!',
     author: 'Amit Patel',
     role: 'CTO',
     company: 'Bangalore Healthcare Solutions',
     rating: 5
   },
   {
-    quote: 'TruVixo developed our mobile application with exceptional attention to detail. The app has received great feedback from our users. Their development process is transparent and their communication is excellent throughout.',
+    quote: 'TruVixoo developed our mobile application with exceptional attention to detail. The app has received great feedback from our users. Their development process is transparent and their communication is excellent throughout.',
     author: 'Neha Gupta',
     role: 'Product Head',
     company: 'Hyderabad EdTech Platform',
     rating: 5
   },
   {
-    quote: 'Working with TruVixo has been a game-changer for our startup. They helped us build a scalable cloud infrastructure that supports our rapid growth. Their DevOps expertise is truly impressive.',
+    quote: 'Working with TruVixoo has been a game-changer for our startup. They helped us build a scalable cloud infrastructure that supports our rapid growth. Their DevOps expertise is truly impressive.',
     author: 'Vikram Singh',
     role: 'Co-Founder',
     company: 'Pune SaaS Company',
     rating: 5
   },
   {
-    quote: 'TruVixo\'s team delivered our enterprise software solution ahead of schedule. The quality of code and documentation is excellent. They truly understand business requirements and translate them into technical solutions effectively.',
+    quote: 'TruVixoo\'s team delivered our enterprise software solution ahead of schedule. The quality of code and documentation is excellent. They truly understand business requirements and translate them into technical solutions effectively.',
     author: 'Anjali Mehta',
     role: 'IT Director',
     company: 'Chennai Manufacturing Company',

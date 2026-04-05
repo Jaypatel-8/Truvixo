@@ -180,7 +180,7 @@ export const healthcareIndustryData = {
     hollowText: 'Healthcare Solutions?',
     description: 'Get in touch and let\'s discuss how we can help you build secure, compliant healthcare technology.',
     buttonText: 'Get Started',
-    email: 'sales@truvixo.com',
+    email: 'sales@truvixoo.com',
     phone: '+91-63543-26412'
   }
 } as const

@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: getTechnologyMetadata('frontend').title,
     description: getTechnologyMetadata('frontend').description,
     type: 'website',
-    url: 'https://truvixo.com/technology/frontend',
+    url: 'https://truvixoo.com/technology/frontend',
   },
   twitter: {
     card: 'summary_large_image',
