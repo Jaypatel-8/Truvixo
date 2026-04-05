@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 
 const Logo = () => {
   return (
@@ -7,7 +7,7 @@ const Logo = () => {
       <Link href="/" prefetch={true} className="flex items-center logo-link">
         <Image
           src="/TruVixo.png"
-          alt="TruVixo Logo"
+          alt="TruVixoo Logo"
           width={100}
           height={34}
           className="h-6 md:h-7 w-auto shadow-none transition-all duration-300 logo-image dark:brightness-0 dark:invert"
@@ -15,10 +15,7 @@ const Logo = () => {
         />
       </Link>
     </div>
-  )
-}
+  );
+};
 
-export default Logo
-
-
-
+export default Logo;

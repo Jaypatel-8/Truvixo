@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://truvixoo.com/sitemap.xml
+Host: https://truvixoo.com

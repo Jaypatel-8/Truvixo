@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: getTechnologyMetadata('cloud-devops').title,
     description: getTechnologyMetadata('cloud-devops').description,
     type: 'website',
-    url: 'https://truvixo.com/technology/cloud-devops',
+    url: 'https://truvixoo.com/technology/cloud-devops',
   },
   twitter: {
     card: 'summary_large_image',

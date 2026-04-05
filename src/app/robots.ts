@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
-  const site = (process.env.NEXT_PUBLIC_SITE_URL || 'https://truvixo.com').replace(/\/$/, '')
+  const site = (process.env.NEXT_PUBLIC_SITE_URL || 'https://truvixoo.com').replace(/\/$/, '')
   return {
     rules: [
       {
