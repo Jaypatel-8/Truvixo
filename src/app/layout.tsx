@@ -27,7 +27,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "TruVixo™ - Software & Digital Marketing Agency",
+    default: "TruVixoo™ - Software & Digital Marketing Agency",
     template: "%s | TruVixo™",
   },
   description:
@@ -163,7 +163,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "TruVixo™ - Software & Digital Marketing Agency",
+    title: "TruVixoo™ - Software & Digital Marketing Agency",
     description:
       "TruVixoo (Truvixoo / TruVixoo) – top software development & digital marketing agency in India, Dubai, USA, Australia. AI development, web apps, mobile apps, SEO, PPC services.",
     url: "https://truvixoo.com",
@@ -181,7 +181,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TruVixo™ - Software & Digital Marketing Agency",
+    title: "TruVixoo™ - Software & Digital Marketing Agency",
     description:
       "TruVixoo – top software development & digital marketing agency in India, Dubai, USA, Australia. AI development, web apps, mobile apps, SEO, PPC services.",
     images: ["/TruVixo.png"],
