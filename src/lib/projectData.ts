@@ -16,6 +16,9 @@ export interface ProjectDetail {
   challenges: string[]
   impact: string[]
   color: string
+  liveLink?: string
+  githubLink?: string
+  imageUrl?: string
 }
 
 export const projects: ProjectDetail[] = [
@@ -63,7 +66,10 @@ export const projects: ProjectDetail[] = [
       'Significant improvement in customer satisfaction scores',
       'Scalable infrastructure supporting 10x growth'
     ],
-    color: '#5e2cb6'
+    color: '#5e2cb6',
+    liveLink: 'https://novalogistics.demo.truvixo.com',
+    githubLink: 'https://github.com/truvixo/nova-logistics',
+    imageUrl: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format&fit=crop'
   },
   {
     slug: 'brightedge-healthcare-analytics',
@@ -109,7 +115,10 @@ export const projects: ProjectDetail[] = [
       'Enhanced patient outcomes through data-driven care',
       'Reduced healthcare costs through preventive care strategies'
     ],
-    color: '#c91a6f'
+    color: '#c91a6f',
+    liveLink: 'https://brightedge.demo.truvixo.com',
+    githubLink: 'https://github.com/truvixo/brightedge-analytics',
+    imageUrl: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop'
   },
   {
     slug: 'urbanmint-property-platform',
@@ -155,7 +164,10 @@ export const projects: ProjectDetail[] = [
       'Enhanced investment decision-making through comprehensive analytics',
       'Improved tenant satisfaction through automated communication systems'
     ],
-    color: '#d97706'
+    color: '#d97706',
+    liveLink: 'https://urbanmint.demo.truvixo.com',
+    githubLink: 'https://github.com/truvixo/urbanmint-api',
+    imageUrl: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1973&auto=format&fit=crop'
   },
   {
     slug: 'padmavat-construction-management',
@@ -201,7 +213,10 @@ export const projects: ProjectDetail[] = [
       'Better safety compliance and incident tracking',
       'Increased client satisfaction through transparent project visibility'
     ],
-    color: '#059669'
+    color: '#059669',
+    liveLink: 'https://padmavat.demo.truvixo.com',
+    githubLink: 'https://github.com/truvixo/padmavat-mobile',
+    imageUrl: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2071&auto=format&fit=crop'
   }
 ]
 

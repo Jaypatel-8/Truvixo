@@ -17,13 +17,13 @@ const Navbar = memo(() => {
   const [hireOpen, setHireOpen] = useState(false)
   const [industryOpen, setIndustryOpen] = useState(false)
   const [companyOpen, setCompanyOpen] = useState(false)
-  
+
   // Hover: delay before closing so moving between dropdowns works
   const hoverCloseTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  
+
   // Track last click time for double-click detection
   const [lastClickTime, setLastClickTime] = useState<{ [key: string]: number }>({})
-  
+
   // Mobile dropdown states
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
   const [mobileAiOpen, setMobileAiOpen] = useState(false)
@@ -65,7 +65,7 @@ const Navbar = memo(() => {
     setHireOpen(menu === 'hire')
     setIndustryOpen(menu === 'industry')
     setCompanyOpen(menu === 'company')
-    
+
     // Update last click time
     setLastClickTime({ ...lastClickTime, [menu]: now })
   }
@@ -213,6 +213,7 @@ const Navbar = memo(() => {
   const companyItems = [
     { name: 'About Us', href: '/about' },
     { name: 'Our Approach', href: '/our-approach' },
+    { name: 'Our Projects', href: '/projects' },
     { name: 'Insights / Blog', href: '/blog' },
     { name: 'Careers', href: '/careers' },
     { name: 'Contact / Request Quote', href: '/contact' }
@@ -221,11 +222,10 @@ const Navbar = memo(() => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 nav-entrance ${
-          scrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 nav-entrance ${scrolled
             ? 'bg-white/95 dark:bg-[var(--dark-surface)]/98 backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-black/20 border-b border-gray-100 dark:border-[var(--dark-border)]'
             : 'bg-white/98 dark:bg-[var(--dark-surface)]/95 backdrop-blur-sm dark:border-b dark:border-[var(--dark-border)]/50'
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 lg:px-6">
           <div className="flex justify-between items-center h-14 lg:h-16">
@@ -259,65 +259,64 @@ const Navbar = memo(() => {
                   SERVICES
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${servicesOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
-                
+
                 {servicesOpen && (
                   <>
                     {/* Invisible bridge so mouse can move from trigger to panel without leaving dropdown */}
                     <div className="absolute top-full left-0 w-full h-2" aria-hidden="true" />
-                    <div 
+                    <div
                       className="absolute top-full left-0 mt-3 w-[620px] bg-white dark:bg-[var(--dark-surface)] rounded-2xl shadow-2xl shadow-black/10 dark:shadow-xl dark:border dark:border-[var(--dark-border)] py-7 z-50"
                       onMouseLeave={() => setHoveredCategory(null)}
                     >
-                    <div className="flex">
-                      {/* Left Column - Categories Only */}
-                      <div className="w-1/2 border-r border-gray-100 dark:border-[var(--dark-border)] pl-5 pr-4">
-                        <div className="space-y-0.5">
-                          {servicesCategories.map((category, catIndex) => (
-                            <div
-                              key={catIndex}
-                              onMouseEnter={() => setHoveredCategory(category.category)}
-                              className={`px-4 py-3.5 rounded-xl cursor-pointer transition-all duration-200 ${
-                                hoveredCategory === category.category
-                                  ? 'bg-[#5e2cb6] text-white'
-                                  : 'text-gray-700 dark:text-[var(--dark-text)] hover:bg-gray-50 dark:hover:bg-[var(--dark-surface-elevated)] hover:text-gray-900 dark:hover:text-white'
-                              }`}
-                            >
-                              <h3 className="font-semibold text-[13px] uppercase tracking-wide">
-                                {category.category}
-                              </h3>
+                      <div className="flex">
+                        {/* Left Column - Categories Only */}
+                        <div className="w-1/2 border-r border-gray-100 dark:border-[var(--dark-border)] pl-5 pr-4">
+                          <div className="space-y-0.5">
+                            {servicesCategories.map((category, catIndex) => (
+                              <div
+                                key={catIndex}
+                                onMouseEnter={() => setHoveredCategory(category.category)}
+                                className={`px-4 py-3.5 rounded-xl cursor-pointer transition-all duration-200 ${hoveredCategory === category.category
+                                    ? 'bg-[#5e2cb6] text-white'
+                                    : 'text-gray-700 dark:text-[var(--dark-text)] hover:bg-gray-50 dark:hover:bg-[var(--dark-surface-elevated)] hover:text-gray-900 dark:hover:text-white'
+                                  }`}
+                              >
+                                <h3 className="font-semibold text-[13px] uppercase tracking-wide">
+                                  {category.category}
+                                </h3>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Right Column - Services for Hovered Category */}
+                        <div className="w-1/2 px-4">
+                          {hoveredCategory ? (
+                            <div className="space-y-1 animate-in fade-in duration-200">
+                              {servicesCategories
+                                .find(cat => cat.category === hoveredCategory)
+                                ?.items.map((item, itemIndex) => {
+                                  const icon = getMenuIcon(item.name)
+                                  return (
+                                    <Link
+                                      key={itemIndex}
+                                      href={item.href}
+                                      prefetch={true}
+                                      className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-[var(--dark-text-muted)] hover:bg-gray-50 dark:hover:bg-[var(--dark-surface-elevated)] hover:text-black dark:hover:text-[var(--dark-text)] rounded-lg transition-colors duration-200 cursor-pointer"
+                                    >
+                                      {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
+                                      {item.name}
+                                    </Link>
+                                  )
+                                })}
                             </div>
-                          ))}
+                          ) : (
+                            <div className="text-sm text-gray-400 dark:text-[var(--dark-text-muted)] text-center py-8">
+                              Hover over a category to view services
+                            </div>
+                          )}
                         </div>
                       </div>
-
-                      {/* Right Column - Services for Hovered Category */}
-                      <div className="w-1/2 px-4">
-                        {hoveredCategory ? (
-                          <div className="space-y-1 animate-in fade-in duration-200">
-                            {servicesCategories
-                              .find(cat => cat.category === hoveredCategory)
-                              ?.items.map((item, itemIndex) => {
-                                const icon = getMenuIcon(item.name)
-                                return (
-                                  <Link
-                                    key={itemIndex}
-                                    href={item.href}
-                                    prefetch={true}
-                                    className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-[var(--dark-text-muted)] hover:bg-gray-50 dark:hover:bg-[var(--dark-surface-elevated)] hover:text-black dark:hover:text-[var(--dark-text)] rounded-lg transition-colors duration-200 cursor-pointer"
-                                  >
-                                    {icon && <span className="text-[#5e2cb6] dark:text-[#a78bfa]">{icon}</span>}
-                                    {item.name}
-                                  </Link>
-                                )
-                              })}
-                          </div>
-                        ) : (
-                          <div className="text-sm text-gray-400 dark:text-[var(--dark-text-muted)] text-center py-8">
-                            Hover over a category to view services
-                          </div>
-                        )}
-                      </div>
-                    </div>
                     </div>
                   </>
                 )}
@@ -348,7 +347,7 @@ const Navbar = memo(() => {
                   AI
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${aiOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
-                
+
                 {aiOpen && (
                   <div className="absolute top-full left-0 mt-2 w-72 bg-white dark:bg-[var(--dark-surface)] rounded-lg shadow-xl border border-gray-200 dark:border-[var(--dark-border)] py-3 z-50">
                     {aiItems.map((item, index) => {
@@ -394,7 +393,7 @@ const Navbar = memo(() => {
                   HIRE
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${hireOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
-                
+
                 {hireOpen && (
                   <div className="absolute top-full left-0 mt-2 w-80 bg-white dark:bg-[var(--dark-surface)] rounded-lg shadow-xl border border-gray-200 dark:border-[var(--dark-border)] py-3 z-50 max-h-[600px] overflow-y-auto">
                     {hireItems.map((item, index) => {
@@ -440,7 +439,7 @@ const Navbar = memo(() => {
                   INDUSTRY
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${industryOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
-                
+
                 {industryOpen && (
                   <div className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-[var(--dark-surface)] rounded-lg shadow-xl border border-gray-200 dark:border-[var(--dark-border)] py-3 z-50">
                     {industryItems.map((item, index) => {
@@ -486,7 +485,7 @@ const Navbar = memo(() => {
                   COMPANY
                   <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${companyOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                 </button>
-                
+
                 {companyOpen && (
                   <div className="absolute top-full left-0 mt-2 w-64 bg-white dark:bg-[var(--dark-surface)] rounded-lg shadow-xl border border-gray-200 dark:border-[var(--dark-border)] py-3 z-50">
                     {companyItems.map((item, index) => {
