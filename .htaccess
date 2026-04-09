@@ -1,4 +1,4 @@
-# TruVixo Website - Hostinger Configuration for Next.js Static Export
+# TruVixoo Website - Hostinger Configuration for Next.js Static Export
 # Comprehensive routing configuration for all pages
 
 <IfModule mod_rewrite.c>

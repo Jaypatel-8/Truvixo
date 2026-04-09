@@ -1,8 +1,8 @@
-import { Metadata } from 'next'
-import ProjectPageClient from './ProjectPageClient'
-import { projectDataMap } from '@/lib/staticData/projects'
+import { Metadata } from "next";
+import ProjectPageClient from "./ProjectPageClient";
+import { projectDataMap } from "@/lib/staticData/projects";
 
-export const dynamicParams = false
+export const dynamicParams = false;
 
 export async function generateStaticParams() {
   return [
@@ -19,7 +19,11 @@ export async function generateStaticParams() {
   ]
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
   const projectNames: Record<string, string> = {
     // 'nova-logistics': 'Nova Logistics - Digital Transformation Platform',
     // 'brightedge-healthcare-analytics': 'BrightEdge Healthcare Analytics - AI-Powered Solution',
@@ -36,12 +40,18 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const title = projectNames[params.slug] || 'Project Case Study'
 
   return {
-    title: title.length > 50 ? `${title.substring(0, 47)}... | TruVixo` : `${title} | TruVixo`,
-    description: `TruVixo case study: ${title.toLowerCase()}. Explore innovative tech solutions, team expertise, and proven results. Get expert development services.`,
-    keywords: 'project case study, software development, digital transformation, TruVixo projects',
-  }
+    title:
+      title.length > 50
+        ? `${title.substring(0, 47)}... | TruVixo`
+        : `${title} | TruVixo`,
+    description: `TruVixoo case study: ${title.toLowerCase()}. Explore innovative tech solutions, team expertise, and proven results. Get expert development services.`,
+    keywords:
+      "project case study, software development, digital transformation, TruVixoo projects",
+  };
 }
 
 export default function ProjectPage({ params }: { params: { slug: string } }) {
-  return <ProjectPageClient slug={params.slug} projectDataMap={projectDataMap} />
+  return (
+    <ProjectPageClient slug={params.slug} projectDataMap={projectDataMap} />
+  );
 }

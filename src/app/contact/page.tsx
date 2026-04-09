@@ -1,139 +1,195 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { ArrowRight, CheckCircle, Star, Users, Target, Zap, BarChart3, Globe, Building2, Linkedin, Mail, MessageSquare, Palette, Sparkles, Rocket, TrendingUp, Award, MousePointer, ChevronLeft, ChevronRight, Phone, MapPin, Clock, Send, Calendar, Loader2, X } from 'lucide-react'
-import Link from 'next/link'
-import { sendContactEmail, sendScheduleDemoEmail, type ContactFormData, type ScheduleDemoData } from '@/lib/emailService'
-import { useIntersectionObserver } from '@/lib/hooks/useIntersectionObserver'
-import { contactIndustries, contactServices, contactTimeSlots, contactFAQs } from '@/lib/staticData/contact'
+import { useState } from "react";
+import {
+  ArrowRight,
+  CheckCircle,
+  Star,
+  Users,
+  Target,
+  Zap,
+  BarChart3,
+  Globe,
+  Building2,
+  Linkedin,
+  Mail,
+  MessageSquare,
+  Palette,
+  Sparkles,
+  Rocket,
+  TrendingUp,
+  Award,
+  MousePointer,
+  ChevronLeft,
+  ChevronRight,
+  Phone,
+  MapPin,
+  Clock,
+  Send,
+  Calendar,
+  Loader2,
+  X,
+} from "lucide-react";
+import Link from "next/link";
+import {
+  sendContactEmail,
+  sendScheduleDemoEmail,
+  type ContactFormData,
+  type ScheduleDemoData,
+} from "@/lib/emailService";
+import { useIntersectionObserver } from "@/lib/hooks/useIntersectionObserver";
+import {
+  contactIndustries,
+  contactServices,
+  contactTimeSlots,
+  contactFAQs,
+} from "@/lib/staticData/contact";
 
 export default function Contact() {
-  const [isCalendarOpen, setIsCalendarOpen] = useState(false)
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: '',
-    industry: '',
-    service: ''
-  })
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
+    industry: "",
+    service: "",
+  });
   const [calendarData, setCalendarData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    industry: '',
-    service: '',
-    selectedDate: '',
-    selectedTime: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isBookingSubmitting, setIsBookingSubmitting] = useState(false)
-  const [submitMessage, setSubmitMessage] = useState('')
-  const [bookingMessage, setBookingMessage] = useState('')
-  const [formErrors, setFormErrors] = useState<Record<string, string>>({})
-  const [bookingErrors, setBookingErrors] = useState<Record<string, string>>({})
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    industry: "",
+    service: "",
+    selectedDate: "",
+    selectedTime: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isBookingSubmitting, setIsBookingSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState("");
+  const [bookingMessage, setBookingMessage] = useState("");
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [bookingErrors, setBookingErrors] = useState<Record<string, string>>(
+    {},
+  );
 
-    useIntersectionObserver({
+  useIntersectionObserver({
     threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px',
-    selectors: ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal', '.scroll-animate-rotate'],
+    rootMargin: "0px 0px -50px 0px",
+    selectors: [
+      ".scroll-animate",
+      ".scroll-animate-left",
+      ".scroll-animate-right",
+      ".scroll-animate-scale",
+      ".scroll-stagger",
+      ".section-reveal",
+      ".heading-reveal",
+      ".scroll-animate-rotate",
+    ],
     unobserveAfterIntersect: false,
     useIdleCallback: false,
-  })
+  });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
-    }))
+      [name]: value,
+    }));
     // Clear error for this field when user starts typing
     if (formErrors[name]) {
-      setFormErrors(prev => {
-        const newErrors = { ...prev }
-        delete newErrors[name]
-        return newErrors
-      })
+      setFormErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
     }
-  }
+  };
 
-  const handleCalendarInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target
-    setCalendarData(prev => ({
+  const handleCalendarInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = e.target;
+    setCalendarData((prev) => ({
       ...prev,
-      [name]: value
-    }))
+      [name]: value,
+    }));
     // Clear error for this field when user starts typing
     if (bookingErrors[name]) {
-      setBookingErrors(prev => {
-        const newErrors = { ...prev }
-        delete newErrors[name]
-        return newErrors
-      })
+      setBookingErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
     }
-  }
+  };
 
   const validatePhone = (phone: string): boolean => {
     // Allow various phone formats: +1234567890, (123) 456-7890, 123-456-7890, etc.
-    const phoneRegex = /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/
-    return phoneRegex.test(phone.replace(/\s/g, ''))
-  }
+    const phoneRegex =
+      /^[\+]?[(]?[0-9]{1,4}[)]?[-\s\.]?[(]?[0-9]{1,4}[)]?[-\s\.]?[0-9]{1,9}$/;
+    return phoneRegex.test(phone.replace(/\s/g, ""));
+  };
 
   const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
-  const industries = contactIndustries
-  const services = contactServices
-  const timeSlots = contactTimeSlots
+  const industries = contactIndustries;
+  const services = contactServices;
+  const timeSlots = contactTimeSlots;
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitMessage('')
-    setFormErrors({})
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitMessage("");
+    setFormErrors({});
 
     // Client-side validation
-    const errors: Record<string, string> = {}
-    
+    const errors: Record<string, string> = {};
+
     if (!formData.name.trim()) {
-      errors.name = 'Name is required'
+      errors.name = "Name is required";
     }
-    
+
     if (!formData.email.trim()) {
-      errors.email = 'Email is required'
+      errors.email = "Email is required";
     } else if (!validateEmail(formData.email)) {
-      errors.email = 'Please enter a valid email address'
+      errors.email = "Please enter a valid email address";
     }
-    
+
     if (!formData.phone.trim()) {
-      errors.phone = 'Phone number is required'
+      errors.phone = "Phone number is required";
     } else if (!validatePhone(formData.phone)) {
-      errors.phone = 'Please enter a valid phone number'
+      errors.phone = "Please enter a valid phone number";
     }
-    
+
     if (!formData.industry) {
-      errors.industry = 'Please select an industry'
+      errors.industry = "Please select an industry";
     }
-    
+
     if (!formData.service) {
-      errors.service = 'Please select a service'
+      errors.service = "Please select a service";
     }
-    
+
     if (!formData.message.trim()) {
-      errors.message = 'Message is required'
+      errors.message = "Message is required";
     } else if (formData.message.trim().length < 10) {
-      errors.message = 'Message must be at least 10 characters long'
+      errors.message = "Message must be at least 10 characters long";
     }
 
     if (Object.keys(errors).length > 0) {
-      setFormErrors(errors)
-      setIsSubmitting(false)
-      setSubmitMessage('Please fix the errors below and try again.')
-      return
+      setFormErrors(errors);
+      setIsSubmitting(false);
+      setSubmitMessage("Please fix the errors below and try again.");
+      return;
     }
 
     try {
@@ -145,92 +201,95 @@ export default function Contact() {
         message: formData.message.trim(),
         industry: formData.industry,
         service: formData.service,
-        subject: 'New Contact Form Submission from TruVixo Website'
-      }
+        subject: "New Contact Form Submission from TruVixoo Website",
+      };
 
-      const result = await sendContactEmail(emailData)
-      
-      setIsSubmitting(false)
-      setSubmitMessage(result.message)
-      
+      const result = await sendContactEmail(emailData);
+
+      setIsSubmitting(false);
+      setSubmitMessage(result.message);
+
       if (result.success) {
         // Reset form on success
         setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          message: '',
-          industry: '',
-          service: ''
-        })
-        setFormErrors({})
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: "",
+          industry: "",
+          service: "",
+        });
+        setFormErrors({});
       }
     } catch (error: any) {
-      setIsSubmitting(false)
-      setSubmitMessage(error?.message || 'An unexpected error occurred. Please try again or contact us directly at sales@truvixoo.com')
+      setIsSubmitting(false);
+      setSubmitMessage(
+        error?.message ||
+          "An unexpected error occurred. Please try again or contact us directly at sales@truvixoo.com",
+      );
     }
-  }
+  };
 
   const handleTimeSlotClick = (time: string) => {
-    setCalendarData(prev => ({
+    setCalendarData((prev) => ({
       ...prev,
-      selectedTime: prev.selectedTime === time ? '' : time
-    }))
+      selectedTime: prev.selectedTime === time ? "" : time,
+    }));
     if (bookingErrors.selectedTime) {
-      setBookingErrors(prev => {
-        const newErrors = { ...prev }
-        delete newErrors.selectedTime
-        return newErrors
-      })
+      setBookingErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors.selectedTime;
+        return newErrors;
+      });
     }
-  }
+  };
 
   const handleCalendarSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsBookingSubmitting(true)
-    setBookingMessage('')
-    setBookingErrors({})
+    e.preventDefault();
+    setIsBookingSubmitting(true);
+    setBookingMessage("");
+    setBookingErrors({});
 
     // Client-side validation
-    const errors: Record<string, string> = {}
-    
+    const errors: Record<string, string> = {};
+
     if (!calendarData.name.trim()) {
-      errors.name = 'Name is required'
+      errors.name = "Name is required";
     }
-    
+
     if (!calendarData.email.trim()) {
-      errors.email = 'Email is required'
+      errors.email = "Email is required";
     } else if (!validateEmail(calendarData.email)) {
-      errors.email = 'Please enter a valid email address'
+      errors.email = "Please enter a valid email address";
     }
-    
+
     if (!calendarData.phone.trim()) {
-      errors.phone = 'Phone number is required'
+      errors.phone = "Phone number is required";
     } else if (!validatePhone(calendarData.phone)) {
-      errors.phone = 'Please enter a valid phone number'
+      errors.phone = "Please enter a valid phone number";
     }
-    
+
     if (!calendarData.selectedDate) {
-      errors.selectedDate = 'Please select a date'
+      errors.selectedDate = "Please select a date";
     } else {
-      const selectedDate = new Date(calendarData.selectedDate)
-      const today = new Date()
-      today.setHours(0, 0, 0, 0)
+      const selectedDate = new Date(calendarData.selectedDate);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
       if (selectedDate < today) {
-        errors.selectedDate = 'Please select a future date'
+        errors.selectedDate = "Please select a future date";
       }
     }
-    
+
     if (!calendarData.selectedTime) {
-      errors.selectedTime = 'Please select a time slot'
+      errors.selectedTime = "Please select a time slot";
     }
 
     if (Object.keys(errors).length > 0) {
-      setBookingErrors(errors)
-      setIsBookingSubmitting(false)
-      setBookingMessage('Please fix the errors below and try again.')
-      return
+      setBookingErrors(errors);
+      setIsBookingSubmitting(false);
+      setBookingMessage("Please fix the errors below and try again.");
+      return;
     }
 
     try {
@@ -243,86 +302,101 @@ export default function Contact() {
         service: calendarData.service,
         selectedDate: calendarData.selectedDate,
         selectedTime: calendarData.selectedTime,
-        subject: 'New Demo Scheduling Request from TruVixo Website'
-      }
+        subject: "New Demo Scheduling Request from TruVixoo Website",
+      };
 
-      const result = await sendScheduleDemoEmail(bookingData)
-      
-      setIsBookingSubmitting(false)
-      setBookingMessage(result.message)
-      
+      const result = await sendScheduleDemoEmail(bookingData);
+
+      setIsBookingSubmitting(false);
+      setBookingMessage(result.message);
+
       if (result.success) {
         // Reset calendar form on success
         setCalendarData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          industry: '',
-          service: '',
-          selectedDate: '',
-          selectedTime: ''
-        })
-        setBookingErrors({})
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          industry: "",
+          service: "",
+          selectedDate: "",
+          selectedTime: "",
+        });
+        setBookingErrors({});
         // Close modal after 2 seconds
         setTimeout(() => {
-          setIsCalendarOpen(false)
-          setBookingMessage('')
-        }, 2000)
+          setIsCalendarOpen(false);
+          setBookingMessage("");
+        }, 2000);
       }
     } catch (error: any) {
-      setIsBookingSubmitting(false)
-      setBookingMessage(error?.message || 'An unexpected error occurred. Please try again or contact us directly at sales@truvixoo.com')
+      setIsBookingSubmitting(false);
+      setBookingMessage(
+        error?.message ||
+          "An unexpected error occurred. Please try again or contact us directly at sales@truvixoo.com",
+      );
     }
-  }
+  };
 
   const handleCalendarClose = () => {
-    setIsCalendarOpen(false)
-    setBookingMessage('')
-    setBookingErrors({})
+    setIsCalendarOpen(false);
+    setBookingMessage("");
+    setBookingErrors({});
     // Optionally reset calendar data when closing
     // setCalendarData({ name: '', email: '', phone: '', company: '', industry: '', service: '', selectedDate: '', selectedTime: '' })
-  }
+  };
 
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
-      title: 'Phone',
-      details: '+91 63543 26412, +91 79906 31490',
-      color: '#5e2cb6'
+      title: "Phone",
+      details: "+91 63543 26412, +91 79906 31490",
+      color: "#5e2cb6",
     },
     {
       icon: <Mail className="w-6 h-6" />,
-      title: 'Email',
-      details: 'sales@truvixoo.com',
-      color: '#c91a6f'
+      title: "Email",
+      details: "sales@truvixoo.com",
+      color: "#c91a6f",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
-      title: 'Address',
-      details: 'Global Services',
-      color: '#d97706'
+      title: "Address",
+      details: "Global Services",
+      color: "#d97706",
     },
     {
       icon: <Clock className="w-6 h-6" />,
-      title: 'Hours',
-      details: 'Mon - Fri: 9:00 AM - 6:00 PM',
-      color: '#059669'
-    }
-  ]
-
+      title: "Hours",
+      details: "Mon - Fri: 9:00 AM - 6:00 PM",
+      color: "#059669",
+    },
+  ];
 
   return (
     <main className="min-h-screen bg-white overflow-hidden">
-
       {/* Hero Section - Matching Homepage Style */}
       <section className="relative min-h-screen bg-white flex items-center justify-center overflow-hidden pt-20">
         {/* Minimal Grid Background - Matching Homepage */}
         <div className="absolute inset-0 overflow-hidden opacity-[0.03]">
-          <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            className="absolute inset-0 w-full h-full"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <defs>
-              <pattern id="grid-contact" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="currentColor" strokeWidth="1" className="text-gray-900"/>
+              <pattern
+                id="grid-contact"
+                width="40"
+                height="40"
+                patternUnits="userSpaceOnUse"
+              >
+                <path
+                  d="M 40 0 L 0 0 0 40"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1"
+                  className="text-gray-900"
+                />
               </pattern>
             </defs>
             <rect width="100%" height="100%" fill="url(#grid-contact)" />
@@ -339,17 +413,16 @@ export default function Contact() {
           <div className="scroll-animate">
             <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-gray-900 mb-6 leading-[0.9] tracking-tight">
               <span className="block mb-2">
-                Let's{' '}
-                <span className="hollow-text-brand">
-                  Connect
-                </span>
+                Let's <span className="hollow-text-brand">Connect</span>
               </span>
               <span className="block text-gray-700 font-light text-4xl md:text-5xl lg:text-6xl mt-4">
                 and Build Together
               </span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl text-gray-600 max-w-4xl mx-auto font-light leading-relaxed mb-8 px-4">
-              We'd love to hear about your ideas, challenges, or upcoming projects. Get in touch and let's transform your vision into reality.
+              We'd love to hear about your ideas, challenges, or upcoming
+              projects. Get in touch and let's transform your vision into
+              reality.
             </p>
           </div>
         </div>
@@ -359,43 +432,48 @@ export default function Contact() {
       <section className="py-20 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-      {/* Contact Form */}
+            {/* Contact Form */}
             <div className="scroll-animate-left">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-                Send us a{' '}
-                <span className="hollow-text-brand">
-                  Message
-                </span>
+                Send us a <span className="hollow-text-brand">Message</span>
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                Fill out the form below and we'll get back to you within 24 hours.
+                Fill out the form below and we'll get back to you within 24
+                hours.
               </p>
-              
+
               {submitMessage && (
-                <div className={`mb-6 p-4 border rounded-xl flex items-start gap-3 ${
-                  submitMessage.includes('Thank you') || submitMessage.includes('success')
-                    ? 'bg-green-50 border-green-200 text-green-800'
-                    : 'bg-red-50 border-red-200 text-red-800'
-                }`}>
-                  {submitMessage.includes('Thank you') || submitMessage.includes('success') ? (
+                <div
+                  className={`mb-6 p-4 border rounded-xl flex items-start gap-3 ${
+                    submitMessage.includes("Thank you") ||
+                    submitMessage.includes("success")
+                      ? "bg-green-50 border-green-200 text-green-800"
+                      : "bg-red-50 border-red-200 text-red-800"
+                  }`}
+                >
+                  {submitMessage.includes("Thank you") ||
+                  submitMessage.includes("success") ? (
                     <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   ) : (
                     <X className="w-5 h-5 mt-0.5 flex-shrink-0" />
                   )}
                   <p className="flex-1">{submitMessage}</p>
                   <button
-                    onClick={() => setSubmitMessage('')}
+                    onClick={() => setSubmitMessage("")}
                     className="text-current opacity-70 hover:opacity-100"
                   >
                     <X className="w-4 h-4" />
                   </button>
                 </div>
               )}
-                
-                <form onSubmit={handleSubmit} className="space-y-6">
+
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       Name *
                     </label>
                     <input
@@ -406,16 +484,21 @@ export default function Contact() {
                       onChange={handleInputChange}
                       required
                       className={`w-full px-4 py-3 border rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 ${
-                        formErrors.name ? 'border-red-500' : 'border-gray-300'
+                        formErrors.name ? "border-red-500" : "border-gray-300"
                       }`}
                       placeholder="Your full name"
                     />
                     {formErrors.name && (
-                      <p className="mt-1 text-sm text-red-600">{formErrors.name}</p>
+                      <p className="mt-1 text-sm text-red-600">
+                        {formErrors.name}
+                      </p>
                     )}
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       Email *
                     </label>
                     <input
@@ -426,19 +509,24 @@ export default function Contact() {
                       onChange={handleInputChange}
                       required
                       className={`w-full px-4 py-3 border rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 ${
-                        formErrors.email ? 'border-red-500' : 'border-gray-300'
+                        formErrors.email ? "border-red-500" : "border-gray-300"
                       }`}
                       placeholder="your@email.com"
                     />
                     {formErrors.email && (
-                      <p className="mt-1 text-sm text-red-600">{formErrors.email}</p>
+                      <p className="mt-1 text-sm text-red-600">
+                        {formErrors.email}
+                      </p>
                     )}
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       Phone *
                     </label>
                     <input
@@ -449,16 +537,21 @@ export default function Contact() {
                       onChange={handleInputChange}
                       required
                       className={`w-full px-4 py-3 border rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 ${
-                        formErrors.phone ? 'border-red-500' : 'border-gray-300'
+                        formErrors.phone ? "border-red-500" : "border-gray-300"
                       }`}
                       placeholder="+1 (555) 123-4567"
                     />
                     {formErrors.phone && (
-                      <p className="mt-1 text-sm text-red-600">{formErrors.phone}</p>
+                      <p className="mt-1 text-sm text-red-600">
+                        {formErrors.phone}
+                      </p>
                     )}
                   </div>
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="company"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       Company
                     </label>
                     <input
@@ -475,7 +568,10 @@ export default function Contact() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="industry" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="industry"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       Industry *
                     </label>
                     <select
@@ -485,20 +581,29 @@ export default function Contact() {
                       onChange={handleInputChange}
                       required
                       className={`w-full px-4 py-3 border rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 ${
-                        formErrors.industry ? 'border-red-500' : 'border-gray-300'
+                        formErrors.industry
+                          ? "border-red-500"
+                          : "border-gray-300"
                       }`}
                     >
                       <option value="">Select Industry</option>
                       {industries.map((industry) => (
-                        <option key={industry} value={industry}>{industry}</option>
+                        <option key={industry} value={industry}>
+                          {industry}
+                        </option>
                       ))}
                     </select>
                     {formErrors.industry && (
-                      <p className="mt-1 text-sm text-red-600">{formErrors.industry}</p>
+                      <p className="mt-1 text-sm text-red-600">
+                        {formErrors.industry}
+                      </p>
                     )}
                   </div>
                   <div>
-                    <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label
+                      htmlFor="service"
+                      className="block text-sm font-medium text-gray-700 mb-2"
+                    >
                       Service Interested In *
                     </label>
                     <select
@@ -508,22 +613,31 @@ export default function Contact() {
                       onChange={handleInputChange}
                       required
                       className={`w-full px-4 py-3 border rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 ${
-                        formErrors.service ? 'border-red-500' : 'border-gray-300'
+                        formErrors.service
+                          ? "border-red-500"
+                          : "border-gray-300"
                       }`}
                     >
                       <option value="">Select Service</option>
                       {services.map((service) => (
-                        <option key={service} value={service}>{service}</option>
+                        <option key={service} value={service}>
+                          {service}
+                        </option>
                       ))}
                     </select>
                     {formErrors.service && (
-                      <p className="mt-1 text-sm text-red-600">{formErrors.service}</p>
+                      <p className="mt-1 text-sm text-red-600">
+                        {formErrors.service}
+                      </p>
                     )}
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Message *
                   </label>
                   <textarea
@@ -534,12 +648,14 @@ export default function Contact() {
                     required
                     rows={6}
                     className={`w-full px-4 py-3 border rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 resize-none ${
-                      formErrors.message ? 'border-red-500' : 'border-gray-300'
+                      formErrors.message ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="Tell us about your project..."
                   />
                   {formErrors.message && (
-                    <p className="mt-1 text-sm text-red-600">{formErrors.message}</p>
+                    <p className="mt-1 text-sm text-red-600">
+                      {formErrors.message}
+                    </p>
                   )}
                 </div>
 
@@ -576,13 +692,11 @@ export default function Contact() {
             {/* Contact Info & Calendar */}
             <div className="scroll-animate-right">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-                Get in{' '}
-                <span className="hollow-text-brand">
-                  Touch
-                </span>
+                Get in <span className="hollow-text-brand">Touch</span>
               </h2>
               <p className="text-lg text-gray-600 mb-8">
-                We're here to help you succeed. Reach out to us through any of these channels.
+                We're here to help you succeed. Reach out to us through any of
+                these channels.
               </p>
 
               {/* Contact Info Cards */}
@@ -592,22 +706,24 @@ export default function Contact() {
                     key={index}
                     className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-200 hover:shadow-lg hover:border-gray-300 transition-all duration-300 transform hover:-translate-y-1"
                   >
-                    <div 
+                    <div
                       className="w-12 h-12 rounded-xl flex items-center justify-center"
-                      style={{ 
-                        backgroundColor: info.color + '10',
-                        color: info.color
+                      style={{
+                        backgroundColor: info.color + "10",
+                        color: info.color,
                       }}
                     >
                       {info.icon}
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900">{info.title}</h3>
+                      <h3 className="font-semibold text-gray-900">
+                        {info.title}
+                      </h3>
                       <p className="text-gray-600">{info.details}</p>
                     </div>
                   </div>
-                  ))}
-          </div>
+                ))}
+              </div>
 
               {/* Book a Call Button */}
               <div className="bg-gray-50 rounded-2xl p-8 text-center border border-gray-200">
@@ -617,13 +733,13 @@ export default function Contact() {
                 <p className="text-gray-600 mb-6">
                   Schedule a free consultation call with our team.
                 </p>
-                        <button
+                <button
                   onClick={() => setIsCalendarOpen(true)}
                   className="bg-[#5e2cb6] text-white font-semibold py-4 px-8 rounded-xl hover:bg-[#4a1f8f] hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center gap-2 mx-auto shadow-lg"
                 >
-                    <Calendar className="w-5 h-5" />
+                  <Calendar className="w-5 h-5" />
                   Book a Call
-                  </button>
+                </button>
               </div>
             </div>
           </div>
@@ -635,13 +751,12 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 scroll-animate">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-4">
-              Frequently Asked{' '}
-              <span className="hollow-text-brand">
-                Questions
-              </span>
+              Frequently Asked{" "}
+              <span className="hollow-text-brand">Questions</span>
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-              Got questions? We've got answers. Here are some common questions we receive.
+              Got questions? We've got answers. Here are some common questions
+              we receive.
             </p>
           </div>
 
@@ -650,7 +765,7 @@ export default function Contact() {
               <div
                 key={index}
                 className="scroll-animate-scale card-hover card-hover-dark bg-white rounded-2xl p-6 border border-gray-200 relative overflow-hidden"
-                style={{ ['--card-accent' as string]: '#5e2cb6' }}
+                style={{ ["--card-accent" as string]: "#5e2cb6" }}
               >
                 <div className="card-inner-reveal">
                   <h3 className="card-title text-xl font-bold text-gray-900 mb-4">
@@ -682,19 +797,23 @@ export default function Contact() {
             </div>
 
             {bookingMessage && (
-              <div className={`mb-6 p-4 border rounded-xl flex items-start gap-3 ${
-                bookingMessage.includes('Thank you') || bookingMessage.includes('success')
-                  ? 'bg-green-50 border-green-200 text-green-800'
-                  : 'bg-red-50 border-red-200 text-red-800'
-              }`}>
-                {bookingMessage.includes('Thank you') || bookingMessage.includes('success') ? (
+              <div
+                className={`mb-6 p-4 border rounded-xl flex items-start gap-3 ${
+                  bookingMessage.includes("Thank you") ||
+                  bookingMessage.includes("success")
+                    ? "bg-green-50 border-green-200 text-green-800"
+                    : "bg-red-50 border-red-200 text-red-800"
+                }`}
+              >
+                {bookingMessage.includes("Thank you") ||
+                bookingMessage.includes("success") ? (
                   <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
                 ) : (
                   <X className="w-5 h-5 mt-0.5 flex-shrink-0" />
                 )}
                 <p className="flex-1">{bookingMessage}</p>
                 <button
-                  onClick={() => setBookingMessage('')}
+                  onClick={() => setBookingMessage("")}
                   className="text-current opacity-70 hover:opacity-100"
                 >
                   <X className="w-4 h-4" />
@@ -705,7 +824,10 @@ export default function Contact() {
             <form onSubmit={handleCalendarSubmit} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="calendar-name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="calendar-name"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Name *
                   </label>
                   <input
@@ -716,16 +838,21 @@ export default function Contact() {
                     onChange={handleCalendarInputChange}
                     required
                     className={`w-full px-4 py-3 border rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 ${
-                      bookingErrors.name ? 'border-red-500' : 'border-gray-300'
+                      bookingErrors.name ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="Your full name"
                   />
                   {bookingErrors.name && (
-                    <p className="mt-1 text-sm text-red-600">{bookingErrors.name}</p>
+                    <p className="mt-1 text-sm text-red-600">
+                      {bookingErrors.name}
+                    </p>
                   )}
                 </div>
                 <div>
-                  <label htmlFor="calendar-email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="calendar-email"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Email *
                   </label>
                   <input
@@ -736,19 +863,24 @@ export default function Contact() {
                     onChange={handleCalendarInputChange}
                     required
                     className={`w-full px-4 py-3 border rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 ${
-                      bookingErrors.email ? 'border-red-500' : 'border-gray-300'
+                      bookingErrors.email ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="your@email.com"
                   />
                   {bookingErrors.email && (
-                    <p className="mt-1 text-sm text-red-600">{bookingErrors.email}</p>
+                    <p className="mt-1 text-sm text-red-600">
+                      {bookingErrors.email}
+                    </p>
                   )}
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="calendar-phone" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="calendar-phone"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Phone *
                   </label>
                   <input
@@ -759,16 +891,21 @@ export default function Contact() {
                     onChange={handleCalendarInputChange}
                     required
                     className={`w-full px-4 py-3 border rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 ${
-                      bookingErrors.phone ? 'border-red-500' : 'border-gray-300'
+                      bookingErrors.phone ? "border-red-500" : "border-gray-300"
                     }`}
                     placeholder="+1 (555) 123-4567"
                   />
                   {bookingErrors.phone && (
-                    <p className="mt-1 text-sm text-red-600">{bookingErrors.phone}</p>
+                    <p className="mt-1 text-sm text-red-600">
+                      {bookingErrors.phone}
+                    </p>
                   )}
                 </div>
                 <div>
-                  <label htmlFor="calendar-company" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="calendar-company"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Company
                   </label>
                   <input
@@ -785,7 +922,10 @@ export default function Contact() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="calendar-industry" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="calendar-industry"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Industry
                   </label>
                   <select
@@ -797,12 +937,17 @@ export default function Contact() {
                   >
                     <option value="">Select Industry</option>
                     {industries.map((industry) => (
-                      <option key={industry} value={industry}>{industry}</option>
+                      <option key={industry} value={industry}>
+                        {industry}
+                      </option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="calendar-service" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label
+                    htmlFor="calendar-service"
+                    className="block text-sm font-medium text-gray-700 mb-2"
+                  >
                     Service Interested In
                   </label>
                   <select
@@ -814,14 +959,19 @@ export default function Contact() {
                   >
                     <option value="">Select Service</option>
                     {services.map((service) => (
-                      <option key={service} value={service}>{service}</option>
+                      <option key={service} value={service}>
+                        {service}
+                      </option>
                     ))}
                   </select>
                 </div>
               </div>
-            
+
               <div>
-                <label htmlFor="calendar-date" className="block text-sm font-medium text-gray-700 mb-2">
+                <label
+                  htmlFor="calendar-date"
+                  className="block text-sm font-medium text-gray-700 mb-2"
+                >
                   Select Date *
                 </label>
                 <input
@@ -831,16 +981,20 @@ export default function Contact() {
                   value={calendarData.selectedDate}
                   onChange={handleCalendarInputChange}
                   required
-                  min={new Date().toISOString().split('T')[0]}
+                  min={new Date().toISOString().split("T")[0]}
                   className={`w-full px-4 py-3 border rounded-xl bg-white text-gray-900 focus:ring-2 focus:ring-[#5e2cb6] focus:border-transparent transition-all duration-300 ${
-                    bookingErrors.selectedDate ? 'border-red-500' : 'border-gray-300'
+                    bookingErrors.selectedDate
+                      ? "border-red-500"
+                      : "border-gray-300"
                   }`}
                 />
                 {bookingErrors.selectedDate && (
-                  <p className="mt-1 text-sm text-red-600">{bookingErrors.selectedDate}</p>
+                  <p className="mt-1 text-sm text-red-600">
+                    {bookingErrors.selectedDate}
+                  </p>
                 )}
               </div>
-            
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Select Time *
@@ -853,19 +1007,21 @@ export default function Contact() {
                       onClick={() => handleTimeSlotClick(time)}
                       className={`px-3 py-2 text-sm border rounded-lg transition-colors duration-200 ${
                         calendarData.selectedTime === time
-                          ? 'bg-[#5e2cb6] text-white border-[#5e2cb6]'
-                          : 'border-gray-300 bg-white text-gray-900 hover:bg-[#5e2cb6]/10 hover:border-[#5e2cb6]'
-                      } ${bookingErrors.selectedTime ? 'border-red-500' : ''}`}
+                          ? "bg-[#5e2cb6] text-white border-[#5e2cb6]"
+                          : "border-gray-300 bg-white text-gray-900 hover:bg-[#5e2cb6]/10 hover:border-[#5e2cb6]"
+                      } ${bookingErrors.selectedTime ? "border-red-500" : ""}`}
                     >
                       {time}
                     </button>
                   ))}
                 </div>
                 {bookingErrors.selectedTime && (
-                  <p className="mt-1 text-sm text-red-600">{bookingErrors.selectedTime}</p>
+                  <p className="mt-1 text-sm text-red-600">
+                    {bookingErrors.selectedTime}
+                  </p>
                 )}
               </div>
-            
+
               <div className="flex gap-4 pt-2">
                 <button
                   type="button"
@@ -897,9 +1053,6 @@ export default function Contact() {
           </div>
         </div>
       )}
-
     </main>
-  )
+  );
 }
-
-

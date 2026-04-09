@@ -55,7 +55,7 @@ export function generateServiceMetadata(serviceSlug: string): Metadata {
     openGraph: {
       title: seoData.title,
       description: seoData.description,
-      url: `https://truvixo.com/services/${serviceSlug}`,
+      url: `https://truvixoo.com/services/${serviceSlug}`,
       siteName: 'TruVixo',
       locale: 'en_US',
       type: 'website',
@@ -75,7 +75,7 @@ export function generateServiceMetadata(serviceSlug: string): Metadata {
       images: ['/TruVixo.png'],
     },
     alternates: {
-      canonical: `https://truvixo.com/services/${serviceSlug}`,
+      canonical: `https://truvixoo.com/services/${serviceSlug}`,
     },
   }
 }

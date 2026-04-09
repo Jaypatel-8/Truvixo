@@ -124,7 +124,7 @@ export function generateServiceSEO(serviceName: string, serviceSlug: string): Se
     title: `${shortServiceName} Services | TruVixo™`,
     description: `Expert ${serviceName.toLowerCase()} services worldwide. Get professional solutions with proven results. Contact TruVixo (Truvixo / TruVixoo) today.`,
     h1: `Best ${serviceName} Company | Global Services`,
-    content: `TruVixo stands out as the premier ${serviceName.toLowerCase()} company, serving clients worldwide. Our comprehensive ${serviceName.toLowerCase()} services are designed to help businesses achieve their goals through innovative solutions and expert execution.
+    content: `TruVixoo stands out as the premier ${serviceName.toLowerCase()} company, serving clients worldwide. Our comprehensive ${serviceName.toLowerCase()} services are designed to help businesses achieve their goals through innovative solutions and expert execution.
 
 With a proven track record spanning multiple countries and industries, we've established ourselves as a trusted partner for businesses seeking exceptional ${serviceName.toLowerCase()} services. Our team combines deep technical expertise with strategic thinking to deliver results that drive growth and success.
 
@@ -148,7 +148,7 @@ Whether you're a startup looking to build your first product or an established e
 // Main company SEO with all locations
 export const companySEO = {
   title: 'Best Software Development & Digital Marketing Agency | Global Services | TruVixo™',
-  description: 'TruVixo (Truvixo / TruVixoo) is the best software development and digital marketing agency worldwide. We provide comprehensive AI development, web development, mobile apps, SEO, PPC, and digital marketing services. Top-rated agency with proven results and global expertise.',
+  description: 'TruVixoo (Truvixoo / TruVixoo) is the best software development and digital marketing agency worldwide. We provide comprehensive AI development, web development, mobile apps, SEO, PPC, and digital marketing services. Top-rated agency with proven results and global expertise.',
   h1: 'Best Software Development & Digital Marketing Agency | Global Services',
   keywords: [
     'truvixo',
@@ -178,7 +178,7 @@ export const companySEO = {
     'SEO services company',
     'PPC services company',
   ],
-  content: `TruVixo has established itself as the leading software development and digital marketing agency, serving clients worldwide. Our comprehensive suite of services combines cutting-edge technology with strategic marketing expertise to help businesses achieve exceptional growth and success.
+  content: `TruVixoo has established itself as the leading software development and digital marketing agency, serving clients worldwide. Our comprehensive suite of services combines cutting-edge technology with strategic marketing expertise to help businesses achieve exceptional growth and success.
 
 With a global presence and expanding reach across international markets, we bring together the best of both worlds - innovative software development and data-driven digital marketing strategies.
 
@@ -191,7 +191,7 @@ What sets us apart is our commitment to excellence, transparent communication, a
 export const technologySEO = {
   'AI & Machine Learning': {
     title: 'Best AI & Machine Learning Development Company | Global Services | TruVixo™',
-    description: 'TruVixo (Truvixo / TruVixoo) is the best AI and machine learning development company worldwide. Expert AI solutions, ML models, LLM integration, and intelligent automation services.',
+    description: 'TruVixoo (Truvixoo / TruVixoo) is the best AI and machine learning development company worldwide. Expert AI solutions, ML models, LLM integration, and intelligent automation services.',
     keywords: [
       'truvixo AI',
       'truvixoo AI',
@@ -205,7 +205,7 @@ export const technologySEO = {
   },
   'Web Technologies': {
     title: 'Best Web Development Company | Global Services | TruVixo™',
-    description: 'TruVixo (Truvixo / TruVixoo) is the best web development company worldwide. Expert React, Next.js, Vue, Angular development and modern web solutions.',
+    description: 'TruVixoo (Truvixoo / TruVixoo) is the best web development company worldwide. Expert React, Next.js, Vue, Angular development and modern web solutions.',
     keywords: [
       'truvixo web development',
       'truvixoo web development',
@@ -219,7 +219,7 @@ export const technologySEO = {
   },
   'Mobile Technologies': {
     title: 'Best Mobile App Development Company | Global Services | TruVixo™',
-    description: 'TruVixo (Truvixo / TruVixoo) is the best mobile app development company worldwide. Expert iOS, Android, React Native, and Flutter development.',
+    description: 'TruVixoo (Truvixoo / TruVixoo) is the best mobile app development company worldwide. Expert iOS, Android, React Native, and Flutter development.',
     keywords: [
       'truvixo mobile',
       'truvixoo mobile',

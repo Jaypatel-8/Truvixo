@@ -1,25 +1,52 @@
 // Server Component - Static content only
-import { MapPin, Globe, Award, TrendingUp } from 'lucide-react'
+import { MapPin, Globe, Award, TrendingUp } from "lucide-react";
 
 interface SEOLocationSectionProps {
-  serviceName?: string
-  className?: string
+  serviceName?: string;
+  className?: string;
 }
 
-export default function SEOLocationSection({ 
-  serviceName = 'Software Development & Digital Marketing',
-  className = '' 
+export default function SEOLocationSection({
+  serviceName = "Software Development & Digital Marketing",
+  className = "",
 }: SEOLocationSectionProps) {
   const locations = [
-    { name: 'Global', icon: <Globe className="w-5 h-5" strokeWidth={2} />, color: '#5e2cb6', description: 'Worldwide Services' },
-    { name: 'Dubai, UAE', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#c91a6f', description: 'Middle East' },
-    { name: 'USA', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#d97706', description: 'North America' },
-    { name: 'Australia', icon: <MapPin className="w-5 h-5" strokeWidth={2} />, color: '#059669', description: 'Asia-Pacific' },
-    { name: 'Worldwide', icon: <Globe className="w-5 h-5" strokeWidth={2} />, color: '#5e2cb6', description: 'Global Reach' },
-  ]
+    {
+      name: "Global",
+      icon: <Globe className="w-5 h-5" strokeWidth={2} />,
+      color: "#5e2cb6",
+      description: "Worldwide Services",
+    },
+    {
+      name: "Dubai, UAE",
+      icon: <MapPin className="w-5 h-5" strokeWidth={2} />,
+      color: "#c91a6f",
+      description: "Middle East",
+    },
+    {
+      name: "USA",
+      icon: <MapPin className="w-5 h-5" strokeWidth={2} />,
+      color: "#d97706",
+      description: "North America",
+    },
+    {
+      name: "Australia",
+      icon: <MapPin className="w-5 h-5" strokeWidth={2} />,
+      color: "#059669",
+      description: "Asia-Pacific",
+    },
+    {
+      name: "Worldwide",
+      icon: <Globe className="w-5 h-5" strokeWidth={2} />,
+      color: "#5e2cb6",
+      description: "Global Reach",
+    },
+  ];
 
   return (
-    <section className={`py-12 bg-gradient-to-br from-gray-50 to-white ${className}`}>
+    <section
+      className={`py-12 bg-gradient-to-br from-gray-50 to-white ${className}`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* SEO-Optimized Heading - More Subtle */}
         <div className="text-center mb-8 scroll-animate">
@@ -27,7 +54,9 @@ export default function SEOLocationSection({
             Serving Clients Worldwide
           </h2>
           <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Serving clients worldwide. We deliver exceptional {serviceName.toLowerCase()} services with global expertise and international standards.
+            Serving clients worldwide. We deliver exceptional{" "}
+            {serviceName.toLowerCase()} services with global expertise and
+            international standards.
           </p>
         </div>
 
@@ -37,17 +66,20 @@ export default function SEOLocationSection({
             <div
               key={index}
               className="bg-white rounded-lg p-4 text-center border border-gray-200 hover:border-opacity-100 transition-all duration-300 transform hover:scale-105 hover:shadow-md group"
-              style={{ 
-                borderColor: location.color + '40'
+              style={{
+                borderColor: location.color + "40",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = location.color
+                e.currentTarget.style.borderColor = location.color;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = location.color + '40'
+                e.currentTarget.style.borderColor = location.color + "40";
               }}
             >
-              <div className="mb-3 flex justify-center" style={{ color: location.color }}>
+              <div
+                className="mb-3 flex justify-center"
+                style={{ color: location.color }}
+              >
                 {location.icon}
               </div>
               <h3 className="font-bold text-gray-900 text-sm group-hover:text-[#5e2cb6] transition-colors mb-1">
@@ -66,10 +98,16 @@ export default function SEOLocationSection({
             <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
               Why Choose TruVixo?
             </h3>
-            
+
             <div className="space-y-4 text-gray-700 leading-relaxed text-sm md:text-base">
               <p>
-                TruVixo serves clients worldwide. We combine global market expertise with international best practices to deliver {serviceName.toLowerCase()} services that help businesses succeed regardless of their location. Our understanding of diverse business dynamics, regulatory requirements, and market opportunities enables us to provide tailored solutions for each market.
+                TruVixoo serves clients worldwide. We combine global market
+                expertise with international best practices to deliver{" "}
+                {serviceName.toLowerCase()} services that help businesses
+                succeed regardless of their location. Our understanding of
+                diverse business dynamics, regulatory requirements, and market
+                opportunities enables us to provide tailored solutions for each
+                market.
               </p>
             </div>
 
@@ -77,12 +115,19 @@ export default function SEOLocationSection({
             <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 w-12 h-12 bg-[#5e2cb6]/10 rounded-lg flex items-center justify-center">
-                  <TrendingUp className="w-6 h-6 text-[#5e2cb6]" strokeWidth={2} />
+                  <TrendingUp
+                    className="w-6 h-6 text-[#5e2cb6]"
+                    strokeWidth={2}
+                  />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 mb-2">Proven Track Record</h4>
+                  <h4 className="font-bold text-gray-900 mb-2">
+                    Proven Track Record
+                  </h4>
                   <p className="text-sm text-gray-600">
-                    Successfully delivered {serviceName.toLowerCase()} projects across multiple countries and industries with measurable results.
+                    Successfully delivered {serviceName.toLowerCase()} projects
+                    across multiple countries and industries with measurable
+                    results.
                   </p>
                 </div>
               </div>
@@ -94,7 +139,9 @@ export default function SEOLocationSection({
                 <div>
                   <h4 className="font-bold text-gray-900 mb-2">Expert Team</h4>
                   <p className="text-sm text-gray-600">
-                    Skilled professionals with deep expertise in {serviceName.toLowerCase()} and understanding of global markets.
+                    Skilled professionals with deep expertise in{" "}
+                    {serviceName.toLowerCase()} and understanding of global
+                    markets.
                   </p>
                 </div>
               </div>
@@ -106,7 +153,9 @@ export default function SEOLocationSection({
                 <div>
                   <h4 className="font-bold text-gray-900 mb-2">Global Reach</h4>
                   <p className="text-sm text-gray-600">
-                    Serving clients worldwide with local expertise and international standards for {serviceName.toLowerCase()} services.
+                    Serving clients worldwide with local expertise and
+                    international standards for {serviceName.toLowerCase()}{" "}
+                    services.
                   </p>
                 </div>
               </div>
@@ -115,7 +164,5 @@ export default function SEOLocationSection({
         </div>
       </div>
     </section>
-  )
+  );
 }
-
-

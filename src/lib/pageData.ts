@@ -512,15 +512,15 @@ export const pageFAQs: Record<string, Array<{ question: string; answer: string }
   ],
   'about': [
     {
-      question: 'Where is TruVixo located?',
+      question: 'Where is TruVixoo located?',
       answer: 'We serve clients worldwide with global expertise and international standards.'
     },
     {
-      question: 'How many projects has TruVixo completed?',
+      question: 'How many projects has TruVixoo completed?',
       answer: 'We have successfully completed 500+ projects across various industries with a 98% client satisfaction rate.'
     },
     {
-      question: 'What services does TruVixo offer?',
+      question: 'What services does TruVixoo offer?',
       answer: 'We offer comprehensive solutions including custom software development, AI & machine learning, web and mobile app development, digital marketing, branding, cloud infrastructure, and business consulting.'
     },
     {
@@ -528,11 +528,11 @@ export const pageFAQs: Record<string, Array<{ question: string; answer: string }
       answer: 'We serve diverse industries including FinTech, Healthcare, Retail, EdTech, Manufacturing, Real Estate, Logistics, and Construction.'
     },
     {
-      question: 'How long has TruVixo been in business?',
-      answer: 'TruVixo has been delivering innovative solutions for over 3 years, helping businesses transform and grow.'
+      question: 'How long has TruVixoo been in business?',
+      answer: 'TruVixoo has been delivering innovative solutions for over 3 years, helping businesses transform and grow.'
     },
     {
-      question: 'What makes TruVixo different?',
+      question: 'What makes TruVixoo different?',
       answer: 'We combine AI-driven innovation, end-to-end partnership, proven results, and future-ready solutions. We\'re not just service providers – we\'re your partners in transformation.'
     }
   ],

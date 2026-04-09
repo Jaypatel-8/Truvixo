@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: getTechnologyMetadata('ai-ml').title,
     description: getTechnologyMetadata('ai-ml').description,
     type: 'website',
-    url: 'https://truvixo.com/technology/ai-ml',
+    url: 'https://truvixoo.com/technology/ai-ml',
   },
   twitter: {
     card: 'summary_large_image',

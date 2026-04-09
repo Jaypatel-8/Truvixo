@@ -1,4 +1,4 @@
-# Website Speed Check – TruVixo
+# Website Speed Check – TruVixoo
 
 ## What’s already in place
 
@@ -17,13 +17,13 @@
 
 ## Potential issues and quick wins
 
-| Area | Finding | Recommendation |
-|------|--------|----------------|
-| **CSS size** | `globals.css` is ~94 KB. | Consider splitting: one base file (layout, resets, animations) and one “page” file, or use Tailwind purge more aggressively. Remove duplicate or unused animation keyframes if any. |
-| **Build** | Production build failed with `EPERM` on `.next/trace`. | Stop any running dev server/process using `.next`, then run `npm run build` again. Use “build:fresh” (clean + build) if needed. |
-| **Lighthouse** | Not run (build blocked). | After a successful build, run: `npx lighthouse http://localhost:3000 --view --output=html --output-path=./lighthouse-report.html` (with `npm run start` in another terminal). For live site: `npx lighthouse https://truvixo.com --view`. |
-| **Images** | `images.unoptimized: true` (for static export). | On Hostinger, enable image optimization (e.g. WebP, compression) at CDN/server level to improve LCP. |
-| **Fonts** | Custom font preload is good; `font-display: optional` in globals may cause brief FOUT on slow networks. | If you prefer no flash, consider `font-display: swap` and ensure preload URLs match exactly. |
+| Area           | Finding                                                                                                 | Recommendation                                                                                                                                                                                                                             |
+| -------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **CSS size**   | `globals.css` is ~94 KB.                                                                                | Consider splitting: one base file (layout, resets, animations) and one “page” file, or use Tailwind purge more aggressively. Remove duplicate or unused animation keyframes if any.                                                        |
+| **Build**      | Production build failed with `EPERM` on `.next/trace`.                                                  | Stop any running dev server/process using `.next`, then run `npm run build` again. Use “build:fresh” (clean + build) if needed.                                                                                                            |
+| **Lighthouse** | Not run (build blocked).                                                                                | After a successful build, run: `npx lighthouse http://localhost:3000 --view --output=html --output-path=./lighthouse-report.html` (with `npm run start` in another terminal). For live site: `npx lighthouse https://truvixoo.com --view`. |
+| **Images**     | `images.unoptimized: true` (for static export).                                                         | On Hostinger, enable image optimization (e.g. WebP, compression) at CDN/server level to improve LCP.                                                                                                                                       |
+| **Fonts**      | Custom font preload is good; `font-display: optional` in globals may cause brief FOUT on slow networks. | If you prefer no flash, consider `font-display: swap` and ensure preload URLs match exactly.                                                                                                                                               |
 
 ## How to measure speed yourself
 
@@ -33,7 +33,7 @@
    - Open `http://localhost:3000` and run Lighthouse (Chrome DevTools → Lighthouse, or CLI above).
 
 2. **Live site**
-   - [PageSpeed Insights](https://pagespeed.web.dev/) – enter `https://truvixo.com` (or your live URL).
+   - [PageSpeed Insights](https://pagespeed.web.dev/) – enter `https://truvixoo.com` (or your live URL).
    - Chrome DevTools → Network (throttling) and Performance to check TTI and LCP.
 
 ## Summary

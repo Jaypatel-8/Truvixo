@@ -24,8 +24,8 @@ export function TechnologyStructuredData({
     provider: {
       '@type': 'Organization',
       name: 'TruVixo',
-      url: 'https://truvixo.com',
-      logo: 'https://truvixo.com/TruVixo.png',
+      url: 'https://truvixoo.com',
+      logo: 'https://truvixoo.com/TruVixo.png',
       sameAs: [
         'https://www.linkedin.com/company/truvixo',
         'https://twitter.com/truvixo',
@@ -67,8 +67,8 @@ export function OrganizationStructuredData() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'TruVixo',
-    url: 'https://truvixo.com',
-    logo: 'https://truvixo.com/TruVixo.png',
+    url: 'https://truvixoo.com',
+    logo: 'https://truvixoo.com/TruVixo.png',
     description: 'Leading software development and digital marketing agency providing AI development, web development, mobile app development, and technology services worldwide.',
     foundingDate: '2021',
     numberOfEmployees: {
@@ -121,7 +121,7 @@ export function OrganizationStructuredData() {
       '@type': 'ContactPoint',
       telephone: '+91-63543-26412',
       contactType: 'Customer Service',
-      email: 'sales@truvixo.com',
+      email: 'sales@truvixoo.com',
       areaServed: 'Worldwide',
       availableLanguage: ['English']
     }
@@ -141,12 +141,12 @@ export function WebSiteStructuredData() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'TruVixo',
-    url: 'https://truvixo.com',
+    url: 'https://truvixoo.com',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://truvixo.com/search?q={search_term_string}'
+        urlTemplate: 'https://truvixoo.com/search?q={search_term_string}'
       },
       'query-input': 'required name=search_term_string'
     }

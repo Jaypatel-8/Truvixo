@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     title: getTechnologyMetadata('tools-integrations').title,
     description: getTechnologyMetadata('tools-integrations').description,
     type: 'website',
-    url: 'https://truvixo.com/technology/tools-integrations',
+    url: 'https://truvixoo.com/technology/tools-integrations',
   },
   twitter: {
     card: 'summary_large_image',

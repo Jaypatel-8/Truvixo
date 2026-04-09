@@ -1,10 +1,10 @@
-# TruVixo™ Website
+# TruVixoo™ Website
 
-A modern, animated, and professional website for TruVixo™ - an AI-driven digital marketing, branding, and software development company.
+A modern, animated, and professional website for TruVixoo™ - an AI-driven digital marketing, branding, and software development company.
 
 ## 🚀 Features
 
-- **Modern Design**: Clean, minimal design with TruVixo brand colors (purple, red, yellow, pink, white, black)
+- **Modern Design**: Clean, minimal design with TruVixoo brand colors (purple, red, yellow, pink, white, black)
 - **Responsive**: Fully responsive across desktop, tablet, and mobile devices
 - **Animations**: Smooth animations and transitions using Framer Motion
 - **SEO Optimized**: Built with Next.js metadata, schema, and OpenGraph
@@ -13,6 +13,7 @@ A modern, animated, and professional website for TruVixo™ - an AI-driven digit
 ## 🛠️ Tech Stack
 
 ### Frontend
+
 - **Next.js 14** - React framework with App Router
 - **TypeScript** - Type-safe development
 - **Tailwind CSS** - Utility-first CSS framework
@@ -20,6 +21,7 @@ A modern, animated, and professional website for TruVixo™ - an AI-driven digit
 - **Lucide React** - Icon library
 
 ### Backend (Ready for Integration)
+
 - **Node.js** - JavaScript runtime
 - **Express.js** - Web framework
 - **MongoDB** - Database
@@ -52,6 +54,7 @@ src/
 ## 🎨 Design System
 
 ### Color Palette
+
 - **Primary Purple**: `#8B5CF6`
 - **Primary Red**: `#EF4444`
 - **Primary Yellow**: `#F59E0B`
@@ -60,29 +63,34 @@ src/
 - **Black**: `#111827`
 
 ### Typography
+
 - **Primary Font**: Inter (body text)
 - **Display Font**: Poppins (headings)
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js 18+ 
+
+- Node.js 18+
 - npm or yarn
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
-cd truvixo-website
+cd truvixoo-website
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -99,6 +107,7 @@ npm start
 ## 📱 Pages & Components
 
 ### Home Page (`/`)
+
 - Hero section with animated background
 - Services overview with interactive cards
 - Work showcase with project gallery
@@ -107,6 +116,7 @@ npm start
 - Call-to-action sections
 
 ### About Page (`/about`)
+
 - Company mission and vision
 - Why choose us section
 - Team member profiles
@@ -114,6 +124,7 @@ npm start
 - Company values
 
 ### Work Page (`/work`)
+
 - Portfolio with category filters
 - Project showcases with details
 - Interactive project modals
@@ -121,6 +132,7 @@ npm start
 - Results and metrics
 
 ### Contact Page (`/contact`)
+
 - Contact information
 - Contact form
 - Scheduling modal for consultations
@@ -137,15 +149,19 @@ npm start
 ## 🔧 Customization
 
 ### Adding New Services
+
 Edit `src/components/Services.tsx` to add new service cards.
 
 ### Updating Team Members
+
 Edit `src/app/about/page.tsx` to modify team information.
 
 ### Changing Colors
+
 Update `tailwind.config.js` to modify the color palette.
 
 ### Adding New Pages
+
 Create new directories in `src/app/` following Next.js App Router conventions.
 
 ## 📊 Performance
@@ -155,4 +171,3 @@ Create new directories in `src/app/` following Next.js App Router conventions.
 - **CSS-in-JS** with Tailwind for minimal bundle size
 - **SEO optimization** with Next.js metadata
 - **Responsive images** and optimized assets
-
