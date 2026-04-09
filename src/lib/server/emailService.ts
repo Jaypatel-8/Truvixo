@@ -75,7 +75,7 @@ export const sendUserConfirmationEmail = async (data: EmailData) => {
           <p>Thank you for reaching out to <span class="brand">TruVixo™</span>! We have received your message regarding <strong>${data.service || 'our services'}</strong>.</p>
           <p>Our team is already reviewing your inquiry, and we will get in touch with you shortly to discuss how we can help transform your vision into reality.</p>
           <p>In the meantime, feel free to explore our latest work and insights on our website.</p>
-          <a href="https://truvixo.com" class="button">Visit Our Website</a>
+          <a href="https://truvixoo.com" class="button">Visit Our Website</a>
           <p style="margin-top: 30px;">Best Regards,<br><strong>The TruVixo Team</strong></p>
         </div>
         <div class="footer">
