@@ -49,6 +49,7 @@ const menuIconMap: Record<string, string> = {
   // Company
   'About Us': 'Info',
   'Our Approach': 'Target',
+  'Our Projects': 'Layout',
   'Insights / Blog': 'FileText',
   'Careers': 'Briefcase',
   'Contact / Request Quote': 'Phone',
