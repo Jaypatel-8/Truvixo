@@ -16,6 +16,7 @@ const clientLogos: ClientLogo[] = [
   { name: 'Physiofi', logo: '/images/Partners/Physiofi-logo.png' },
   { name: 'SP Bags', logo: '/images/Partners/sp-bags-logo.png' },
   { name: 'Aqua Pro', logo: '/images/Partners/aqua-pro-logo.svg' },
+  { name: 'IVAS', logo: '/images/Partners/IVAS-LOGO.png' },
   // Project clients - using available logos until project-specific logos are added
   { name: 'Nova Logistics', logo: '/images/Partners/Physiofi-logo.png' },
   { name: 'BrightEdge', logo: '/images/Partners/sp-bags-logo.png' },
@@ -24,6 +25,7 @@ const clientLogos: ClientLogo[] = [
   // Additional clients
   { name: 'FinTech Solutions', logo: '/images/Partners/sp-bags-logo.png' },
   { name: 'Healthcare Plus', logo: '/images/Partners/aqua-pro-logo.svg' },
+  { name: 'Healthcare Plus', logo: '/images/Partners/IVAS-LOGO.png' },
 ]
 
 interface ClienteleProps {
