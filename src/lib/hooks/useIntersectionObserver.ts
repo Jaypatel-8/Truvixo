@@ -8,6 +8,7 @@ interface UseIntersectionObserverOptions {
   selectors?: string[]
   unobserveAfterIntersect?: boolean
   useIdleCallback?: boolean
+  refreshKey?: any // Added to trigger re-scan of elements
 }
 
 /**
@@ -20,6 +21,7 @@ export function useIntersectionObserver({
   selectors = ['.scroll-animate', '.scroll-animate-left', '.scroll-animate-right', '.scroll-animate-scale', '.scroll-stagger', '.section-reveal', '.heading-reveal', '.section-desc-reveal', '.p-reveal', '.btn-entrance', '.underline-reveal'],
   unobserveAfterIntersect = false,
   useIdleCallback = true, // Default to true for better navigation performance
+  refreshKey,
 }: UseIntersectionObserverOptions = {}) {
   const observerRef = useRef<IntersectionObserver | null>(null)
   const elementsRef = useRef<NodeListOf<Element> | null>(null)
@@ -28,6 +30,9 @@ export function useIntersectionObserver({
   useEffect(() => {
     // Skip if not in browser
     if (typeof window === 'undefined') return
+
+    // Clear cached elements on refreshKey change to force re-query of the DOM
+    elementsRef.current = null
 
     // Debounce function to avoid multiple rapid queries
     let timeoutId: NodeJS.Timeout | null = null
@@ -113,6 +118,6 @@ export function useIntersectionObserver({
       }
       elementsRef.current = null
     }
-  }, [threshold, rootMargin, selectorsKey, unobserveAfterIntersect, useIdleCallback])
+  }, [threshold, rootMargin, selectorsKey, unobserveAfterIntersect, useIdleCallback, refreshKey])
 }
 

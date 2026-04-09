@@ -220,6 +220,36 @@ export const homeFeaturedProjects = [
     category: 'Consulting',
     description: 'End-to-end modernization of legacy systems',
     href: '/our-work' 
+  },
+  { 
+    title: 'Find24 Platform', 
+    category: 'Hyperlocal Business Discovery',
+    description: 'Empowering local businesses in Tier 2 & 3 cities across India',
+    href: '/our-work/find24' 
+  },
+  { 
+    title: 'Brum Reseller', 
+    category: 'Premium E-commerce',
+    description: 'High-performance digital storefront for curated fashion',
+    href: '/our-work/brum-reseller' 
+  },
+  { 
+    title: 'PhysioFi Health', 
+    category: 'Healthcare & Rehab',
+    description: 'Expert doorstep and virtual physiotherapy services',
+    href: '/our-work/physiofi' 
+  },
+  { 
+    title: 'AquaPro Services', 
+    category: 'Professional Cleaning',
+    description: 'Premium residential & commercial cleaning solutions',
+    href: '/our-work/aquapro-cleaning' 
+  },
+  { 
+    title: 'Akshita Luxury', 
+    category: 'Premium Real Estate',
+    description: 'Verified luxury property listings & transparent guidance',
+    href: '/our-work/akshita-enterprise' 
   }
 ] as const
 
