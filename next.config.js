@@ -1,14 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export for Hostinger (only in production build)
-  // Disable in development mode to allow proper rendering
-  ...(process.env.NODE_ENV === 'production' && { output: 'export' }),
+  // Dynamic hosting for Hostinger (Node.js)
+  // Removed static export to support SSR and dynamic features
+
   trailingSlash: true,
 
   // Asset paths: root-relative so CSS/JS load when site is at domain root.
   // If you deploy to a subdirectory (e.g. example.com/site/), set both to that path, e.g. basePath: '/site', assetPrefix: '/site'
   basePath: '',
-  assetPrefix: '/',
+  assetPrefix: '',
   
   // Build-time optimizations - disable checks during build for speed
   eslint: {
@@ -22,20 +22,23 @@ const nextConfig = {
   
   // Static export - all routes are pre-generated at build time
   // Dynamic routes removed - using only static routes for faster builds
-  skipTrailingSlashRedirect: true,
+  // skipTrailingSlashRedirect: true, // Removed as it can interfere with asset paths in Node.js
+
   
   // Performance optimizations
   experimental: {
     // optimizeCss: true, // Disabled - requires critters module
     optimizePackageImports: ['lucide-react', 'swiper'],
     // Optimize route loading
-    optimizeCss: false, // Disabled for static export
+    optimizeCss: false, 
+
     // Reduce module graph size
     serverActions: {
       bodySizeLimit: '2mb',
     },
     // Enable partial prerendering for faster navigation
-    ppr: false, // Disabled for static export
+    ppr: false, 
+
     // Optimize client component loading
     optimizeServerReact: true,
   },
@@ -70,7 +73,8 @@ const nextConfig = {
   
   // Optimize images
   images: {
-    unoptimized: true,
+    // unoptimized: true, // Enable optimization for Node.js engine
+
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -152,7 +156,9 @@ const nextConfig = {
   },
   
   // Additional performance optimizations (reactStrictMode already set above)
-  compress: false, // Handled by hosting provider for static export
+  compress: true, // Re-enabled for production performance
+
+
   
   // Bundle analyzer (uncomment to analyze bundle)
   // bundleAnalyzer: {
@@ -202,8 +208,8 @@ const nextConfig = {
 
   },
 
-  // Note: Headers are not supported with static export
-  // You can configure these in your hosting provider (Hostinger)
+  // Headers and other server features are now supported
+
 };
 
 module.exports = nextConfig;
