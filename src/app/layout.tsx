@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const LayoutScrollObserver = dynamic(
   () => import("@/components/LayoutScrollObserver"),
@@ -197,9 +198,13 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
-  },
+  ...(process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? {
+        verification: {
+          google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+        },
+      }
+    : {}),
   category: "Technology",
 };
 
@@ -421,6 +426,7 @@ export default function RootLayout({
         />
       </head>
       <body className={`${inter.className} bg-white text-gray-900`}>
+        <GoogleAnalytics />
         <LayoutScrollObserver />
         <ErrorBoundary>
           <Navbar />
